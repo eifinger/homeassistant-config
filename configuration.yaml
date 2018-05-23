@@ -73,6 +73,7 @@ media_player:
     host: !secret denon_ip
   - platform: kodi
     host: !secret kodi_ip
+    enable_websocket: false
 
 #################################################################
 ## Includes

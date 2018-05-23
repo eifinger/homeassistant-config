@@ -81,6 +81,7 @@ light.bedroom_yeelight:
   emulated_hue_name: "Schlafzimmer"
 switch.plug_158d00015694c5:
   friendly_name: Waschmaschine
+  icon: mdi:washing-machine
 sensor.travel_time_work_from_home:
   icon: mdi:clock
 sensor.travel_time_work_from_sindlingen:

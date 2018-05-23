@@ -1,0 +1,148 @@
+#################################################################
+## View
+#################################################################
+default_view:
+  view: yes
+  icon: mdi:home
+  entities:
+    - group.livingroom
+    - group.occupancy
+    - switch.kitchen_ceiling_lamp
+    - media_player.denon_avrx1300w
+    - switch.plug_158d00015694c5
+    - group.traveltimes
+    - sensor.dark_sky_icon
+
+lights:
+  name: Lights
+  view: yes
+  icon: mdi:lightbulb-outline
+  entities:
+    - switch.livingroom_large_lamp
+    - switch.studyroom_lamp
+    - switch.livingroom_small_lamp
+    - switch.studyroom_ceiling_lamp
+    - switch.storageroom_ceiling_lamp
+    - switch.kitchen_ceiling_lamp
+    - switch.livingroom_ceiling
+    - switch.lobby_ceiling
+    - switch.snowboard
+    - light.bedroom_yeelight
+    - light.bar_table
+
+view_studyroom:
+  name: Studyroom
+  view: yes
+  icon: mdi:laptop
+  entities:
+    - group.studyroom
+
+devices:
+  name: Geräte
+  view: yes
+  icon: mdi:wifi
+  entities:
+    - group.all_devices
+
+view_traveltimes:
+  name: Reisezeiten
+  view: yes
+  icon: mdi:google-maps
+  entities:
+    - group.traveltimes
+
+view_sensors:
+  name: Sensoren
+  view: yes
+  icon: mdi:gauge
+  entities:
+    - group.sensors
+    - group.weather
+
+#################################################################
+## Group
+#################################################################
+
+synonym_light:
+  name: synonym_light
+  entities:
+    - switch.livingroom_large_lamp
+livingroom:
+    name: Livingroom
+    entities:
+      - switch.livingroom_ceiling
+      - switch.livingroom_large_lamp
+      - switch.livingroom_small_lamp
+      - switch.snowboard
+      - light.bar_table
+all:
+  name: Everything
+  entities:
+    - media_player.denon_avrx1300w
+    - switch.livingroom_large_lamp
+    - switch.studyroom_lamp
+    - switch.livingroom_small_lamp
+    - switch.studyroom_ceiling_lamp
+    - switch.storageroom_ceiling_lamp
+    - switch.kitchen_ceiling_lamp
+    - switch.livingroom_ceiling
+    - switch.lobby_ceiling
+    - switch.snowboard
+    - light.bedroom_yeelight
+    - light.bar_table
+kitchen:
+  name: Kitchen
+  entities:
+    - switch.kitchen_ceiling_lamp
+studyroom:
+  name: Studyroom
+  entities:
+    - switch.studyroom_ceiling_lamp
+    - switch.studyroom_lamp
+occupancy:
+  name: Anwesenheit
+  entities:
+    - device_tracker.kevin
+    - device_tracker.sina
+    - device_tracker.galaxys8
+sensors:
+  name: Sensoren
+  entities:
+    - sensor.illumination_286c0785b294
+    - sensor.large_lamp_humidity
+    - sensor.large_lamp_temperature
+    - sensor.small_lamp_humidity
+    - sensor.small_lamp_temperature
+    - sensor.storageroom_humidity
+    - sensor.storageroom_temperature
+    - sensor.studyroom_humidity
+    - sensor.studyroom_temperature
+weather:
+  name: Wetter
+  entities:
+    - sensor.dark_sky_icon
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_daily_high_temperature
+    - sensor.dark_sky_daily_low_temperature
+    - sensor.dark_sky_cloud_coverage
+    - sensor.dark_sky_daily_precip_intensity
+    - sensor.dark_sky_precip_probability
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_wind_speed
+
+traveltimes:
+  name: Reisezeiten
+  entities:
+    - sensor.travel_time_home_from_sindlingen
+    - input_boolean.travel_time_home_from_sindlingen
+    - sensor.travel_time_home_from_work
+    - input_boolean.travel_time_home_from_work
+    - sensor.travel_time_sindlingen_from_home
+    - input_boolean.travel_time_sindlingen_from_home
+    - sensor.travel_time_sindlingen_from_work
+    - input_boolean.travel_time_sindlingen_from_work
+    - sensor.travel_time_work_from_home
+    - input_boolean.travel_time_work_from_home
+    - sensor.travel_time_work_from_sindlingen
+    - input_boolean.travel_time_work_from_sindlingen

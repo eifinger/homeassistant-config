@@ -1,0 +1,76 @@
+- platform: darksky
+  api_key: !secret darsky_api_key
+  monitored_conditions:
+    - summary
+    - icon
+    - nearest_storm_distance
+    - precip_type
+    - precip_intensity
+    - precip_probability
+    - temperature
+    - wind_speed
+    - cloud_cover
+    - humidity
+    - pressure
+    - temperature_max
+    - temperature_min
+
+- platform: mqtt
+  state_topic: "tele/storageroom_ceiling_lamp/DHT/TEMPERATURE"
+  name: 'Storageroom Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: 'tele/storageroom_ceiling_lamp/DHT/HUMIDITY'
+  name: 'Storageroom Humidity'
+  unit_of_measurement: '%'
+- platform: mqtt
+  state_topic: "tele/livingroom_small_lamp/DHT/TEMPERATURE"
+  name: 'Small Lamp Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: 'tele/livingroom_small_lamp/DHT/HUMIDITY'
+  name: 'Small Lamp Humidity'
+  unit_of_measurement: '%'
+- platform: mqtt
+  state_topic: 'tele/livingroom_large_lamp/DHT/TEMPERATURE'
+  name: 'Large Lamp Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: 'tele/livingroom_large_lamp/DHT/HUMIDITY'
+  name: 'Large Lamp Humidity'
+  unit_of_measurement: '%'
+- platform: mqtt
+  state_topic: 'tele/studyroom_lamp/DHT/TEMPERATURE'
+  name: 'Studyroom Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: 'tele/studyroom_lamp/DHT/HUMIDITY'
+  name: 'Studyroom Humidity'
+  unit_of_measurement: '%'
+# Travel times
+- platform: template
+  sensors:
+    travel_time_work_from_home:
+      friendly_name: "Dauer von zu Hause zur SVA"
+      unit_of_measurement: "min"
+      value_template: "{{ states('input_number.travel_time_work_from_home') | int}}"
+    travel_time_work_from_sindlingen:
+      friendly_name: "Dauer von Sina zur SVA"
+      unit_of_measurement: "min"
+      value_template: "{{ states('input_number.travel_time_work_from_sindlingen') | int}}"
+    travel_time_sindlingen_from_home:
+      friendly_name: "Dauer von zu Hause zu Sina"
+      unit_of_measurement: "min"
+      value_template: "{{ states('input_number.travel_time_sindlingen_from_home') | int}}"
+    travel_time_sindlingen_from_work:
+      friendly_name: "Dauer von der SVA zu Sina"
+      unit_of_measurement: "min"
+      value_template: "{{ states('input_number.travel_time_sindlingen_from_work') | int}}"
+    travel_time_home_from_sindlingen:
+      friendly_name: "Dauer von Sina nach Hause"
+      unit_of_measurement: "min"
+      value_template: "{{ states('input_number.travel_time_home_from_sindlingen') | int}}"
+    travel_time_home_from_work:
+      friendly_name: "Dauer von der SVA nach Hause"
+      unit_of_measurement: "min"
+      value_template: "{{ states('input_number.travel_time_home_from_work') | int}}"

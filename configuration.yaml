@@ -1,0 +1,91 @@
+#################################################################
+## Home Assistant
+#################################################################
+
+homeassistant:
+  name: Home
+  latitude: !secret homeassistant_latitude
+  longitude: !secret homeassistant_longitude
+  elevation: !secret homeassistant_elevation
+  unit_system: metric
+  time_zone: !secret homeassistant_timezone
+  customize: !include customize.yaml
+
+
+frontend:
+updater:
+  reporting: no
+  include_used_components: true
+sun:
+map:
+config:
+
+logger:
+  default: critical
+  logs:
+    homeassistant.components.http.ban: warning
+
+logbook:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret homeassistant_password
+  # Uncomment this if you are using SSL or running in Docker etc
+  base_url: !secret homeassistant_url
+  ip_ban_enabled: True
+  login_attempts_threshold: 3
+
+history:
+
+#################################################################
+## Components
+#################################################################
+
+emulated_hue:
+  host_ip: !secret homeassistant_host_ip
+  type: alexa
+  expose_by_default: false
+
+mqtt:
+  broker: !secret mqtt_host 
+  port: 1883
+  client_id: !secret mqtt_client_id
+  username: !secret mqtt_user
+  password: !secret mqtt_pass
+  keepalive: 60
+
+recorder:
+  db_url: !secret db_url
+  purge_interval: 0
+
+device_tracker:
+  - platform: fritz
+    track_new_devices: yes
+
+xiaomi_aqara:
+  discovery_retry: 10
+  gateways:
+    - mac:
+      key: !secret xiaomi_aqara_key
+
+media_player:
+  - platform: denonavr
+    host: !secret denon_ip
+  - platform: kodi
+    host: !secret kodi_ip
+
+#################################################################
+## Includes
+#################################################################
+
+switch: !include switch.yaml
+sensor: !include sensor.yaml
+group: !include group.yaml
+automation: !include automation.yaml
+script: !include scripts.yaml
+light: !include_dir_merge_list lights/
+input_boolean: !include input_boolean.yaml
+input_number: !include input_number.yaml
+notify: !include notify.yaml
+zone: !include zone.yaml
+

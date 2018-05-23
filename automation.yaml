@@ -1,0 +1,60 @@
+- alias: Kitchen Ceiling send state off when lwt is seen
+  trigger:
+    platform: mqtt
+    topic: "tele/kitchen_ceiling_lamp/LWT"
+    payload: "Offline"
+  action:
+    service: mqtt.publish
+    data:
+      payload: "OFF"
+      qos: 1
+      retain: true
+      topic: "stat/kitchen_ceiling_lamp/POWER"
+- alias: Livingroom Ceiling send state off when lwt is seen
+  trigger:
+    platform: mqtt
+    topic: "tele/livingroom_ceiling_lamp/LWT"
+    payload: "Offline"
+  action:
+    service: mqtt.publish
+    data:
+      payload: "OFF"
+      qos: 1
+      retain: true
+      topic: "stat/livingroom_ceiling_lamp/POWER"
+- alias: Lobby Ceiling send state off when lwt is seen
+  trigger:
+    platform: mqtt
+    topic: "tele/lobby_ceiling/LWT"
+    payload: "Offline"
+  action:
+    service: mqtt.publish
+    data:
+      payload: "OFF"
+      qos: 1
+      retain: true
+      topic: "stat/lobby_ceiling/POWER"
+- alias: Studyroom Ceiling send state off when lwt is seen
+  trigger:
+    platform: mqtt
+    topic: "tele/studyroom_ceiling_lamp/LWT"
+    payload: "Offline"
+  action:
+    service: mqtt.publish
+    data:
+      payload: "OFF"
+      qos: 1
+      retain: true
+      topic: "stat/studyroom_ceiling_lamp/POWER"
+- alias: Storageroom Ceiling send state off when lwt is seen
+  trigger:
+    platform: mqtt
+    topic: "tele/storageroom_ceiling_lamp/LWT"
+    payload: "Offline"
+  action:
+    service: mqtt.publish
+    data:
+      payload: "OFF"
+      qos: 1
+      retain: true
+      topic: "stat/storageroom_ceiling_lamp/POWER"

@@ -1,0 +1,53 @@
+#################################################################
+## Receiver
+#################################################################
+receiver_set_source_cbl_sat:
+  sequence:    
+    - service: media_player.select_source
+      entity_id: media_player.denon_avrx1300w
+      data:
+        source: 'CBL/SAT'
+
+receiver_set_source_media_player:
+  sequence:
+    - service: media_player.select_source
+      entity_id: media_player.denon_avrx1300w
+      data:
+        source: 'Media Player'
+
+receiver_set_source_dvd:
+  sequence:
+    - service: media_player.select_source
+      entity_id: media_player.denon_avrx1300w
+      data:
+        source: 'DVD/Blu-ray'
+#################################################################
+## Bar Table
+#################################################################
+bar_table_green:
+  sequence:
+    - service: mqtt.publish
+      data:
+        payload: '{"state":"ON","brightness":255,"white_value":0,"color":{"r":0,"g":255,"b":0},"transition":"5"}'
+        qos: 1
+        retain: false
+        topic: "RGBW/00D2EE20/json/set"
+
+bar_table_red:
+  sequence:
+    - service: mqtt.publish
+      data:
+        payload: '{"state":"ON","brightness":255,"white_value":0,"color":{"r":255,"g":0,"b":0},"transition":"5"}'
+        qos: 1
+        retain: false
+        topic: "RGBW/00D2EE20/json/set"
+
+bar_table_white:
+  sequence:
+    - service: mqtt.publish
+      data:
+        payload: '{"state":"ON","brightness":255,"white_value":255,"color":{"r":0,"g":0,"b":0},"transition":"5"}'
+        qos: 1
+        retain: false
+        topic: "RGBW/00D2EE20/json/set"
+

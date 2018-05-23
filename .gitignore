@@ -1,0 +1,8 @@
+secrets.yaml
+known_devices.yaml
+docker-compose.yaml
+home-assistant.log
+home-assistant_v2.db
+deps/
+.HA_VERSION
+.uuid

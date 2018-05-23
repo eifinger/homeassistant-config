@@ -1,0 +1,91 @@
+- platform: mqtt
+  name: "Kitchen Ceiling Lamp"
+  state_topic: "stat/kitchen_ceiling_lamp/POWER"
+  command_topic: "cmnd/kitchen_ceiling_lamp/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: false
+- platform: mqtt
+  name: "Studyroom Ceiling Lamp"
+  state_topic: "stat/studyroom_ceiling_lamp/POWER"
+  command_topic: "cmnd/studyroom_ceiling_lamp/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: false
+- platform: mqtt
+  name: "Snowboard"
+  state_topic: "stat/rosie_socket/POWER"
+  command_topic: "cmnd/rosie_socket/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: false
+- platform: mqtt
+  name: "Storageroom Ceiling Lamp"
+  state_topic: "stat/storageroom_ceiling_lamp/POWER"
+  command_topic: "cmnd/storageroom_ceiling_lamp/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: false
+- platform: mqtt
+  name: "Studyroom Lamp"
+  state_topic: "stat/studyroom_lamp/POWER"
+  command_topic: "cmnd/studyroom_lamp/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: false
+#- platform: mqtt
+#  name: "Snowboard Lamp"
+#  state_topic: "stat/snowboard_lamp/POWER"
+#  command_topic: "cmnd/snowboard_lamp/POWER"
+#  payload_on: "ON"
+#  payload_off: "OFF"
+#  optimistic: false
+#  qos: 1
+#  retain: false
+- platform: mqtt
+  name: "Livingroom Ceiling"
+  state_topic: "stat/livingroom_ceiling_lamp/POWER"
+  command_topic: "cmnd/livingroom_ceiling_lamp/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: false
+- platform: mqtt
+  name: "Livingroom Large Lamp"
+  state_topic: "stat/livingroom_large_lamp/POWER"
+  command_topic: "cmnd/livingroom_large_lamp/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: false
+- platform: mqtt
+  name: "Livingroom Small Lamp"
+  state_topic: "stat/livingroom_small_lamp/POWER"
+  command_topic: "cmnd/livingroom_small_lamp/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: false
+- platform: mqtt
+  name: "Lobby Ceiling"
+  state_topic: "stat/lobby_ceiling/POWER"
+  command_topic: "cmnd/lobby_ceiling/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: false
+

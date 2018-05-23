@@ -5,12 +5,13 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
+    - group.traveltimes
+    - media_player.denon_avrx1300w
+    - media_player.kodi
     - group.livingroom
     - group.occupancy
     - switch.kitchen_ceiling_lamp
-    - media_player.denon_avrx1300w
     - switch.plug_158d00015694c5
-    - group.traveltimes
     - sensor.dark_sky_icon
 
 lights:

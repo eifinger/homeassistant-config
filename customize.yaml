@@ -113,3 +113,8 @@ input_boolean.travel_time_home_from_work:
   friendly_name: "Slack Benachrichtigung"
   icon: mdi:slack
 
+group.lights:
+  friendly_name: "Lichter"
+group.all_devics:
+  hidden: false
+

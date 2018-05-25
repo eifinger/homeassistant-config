@@ -12,24 +12,13 @@ default_view:
     - group.occupancy
     - switch.kitchen_ceiling_lamp
     - switch.plug_158d00015694c5
-    - sensor.dark_sky_icon
 
-lights:
+view_lights:
   name: Lights
   view: yes
   icon: mdi:lightbulb-outline
   entities:
-    - switch.livingroom_large_lamp
-    - switch.studyroom_lamp
-    - switch.livingroom_small_lamp
-    - switch.studyroom_ceiling_lamp
-    - switch.storageroom_ceiling_lamp
-    - switch.kitchen_ceiling_lamp
-    - switch.livingroom_ceiling
-    - switch.lobby_ceiling
-    - switch.snowboard
-    - light.bedroom_yeelight
-    - light.bar_table
+    - group.lights
 
 view_studyroom:
   name: Studyroom
@@ -59,17 +48,34 @@ view_sensors:
   entities:
     - group.sensors
     - group.weather
+    - group.motion
+    - group.reed
 
 #################################################################
 ## Group
 #################################################################
+
+lights:
+  name: Lichter
+  entities:
+    - switch.livingroom_large_lamp
+    - switch.studyroom_lamp
+    - switch.livingroom_small_lamp
+    - switch.studyroom_ceiling_lamp
+    - switch.storageroom_ceiling_lamp
+    - switch.kitchen_ceiling_lamp
+    - switch.livingroom_ceiling
+    - switch.lobby_ceiling
+    - switch.snowboard
+    - light.bedroom_yeelight
+    - light.bar_table
 
 synonym_light:
   name: synonym_light
   entities:
     - switch.livingroom_large_lamp
 livingroom:
-    name: Livingroom
+    name: Wohnzimmer
     entities:
       - switch.livingroom_ceiling
       - switch.livingroom_large_lamp
@@ -92,11 +98,11 @@ all:
     - light.bedroom_yeelight
     - light.bar_table
 kitchen:
-  name: Kitchen
+  name: Küche
   entities:
     - switch.kitchen_ceiling_lamp
 studyroom:
-  name: Studyroom
+  name: Arbeitszimmer
   entities:
     - switch.studyroom_ceiling_lamp
     - switch.studyroom_lamp
@@ -147,3 +153,13 @@ traveltimes:
     - input_boolean.travel_time_work_from_home
     - sensor.travel_time_work_from_sindlingen
     - input_boolean.travel_time_work_from_sindlingen
+
+motion:
+  name: Bewegungsmelder
+  entities:
+    - binary_sensor.motion_sensor_158d00012aab97
+
+reed:
+  name: Tür und Fenster
+  entities:
+    - binary_sensor.door_window_sensor_158d000126a57b

@@ -15,3 +15,9 @@
   longitude: !secret user_two_longitude
   radius: 150
   icon: mdi:home
+
+- name: Elmo
+  latitude: !secret elmo_latitude
+  longitude: !secret elmo_longitude
+  radius: 150
+  icon: mdi:leaf

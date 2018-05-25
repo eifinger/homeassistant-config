@@ -16,3 +16,9 @@
   travel_time_home_from_work:
     min: 0
     max: 120
+  travel_time_elmo_from_home:
+    min: 0
+    max: 120
+  travel_time_elmo_from_sindlingen:
+    min: 0
+    max: 120

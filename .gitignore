@@ -6,3 +6,5 @@ home-assistant_v2.db
 deps/
 .HA_VERSION
 .uuid
+www/user_one.jpg
+www/user_two.JPG

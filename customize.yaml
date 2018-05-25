@@ -115,6 +115,6 @@ input_boolean.travel_time_home_from_work:
 
 group.lights:
   friendly_name: "Lichter"
-group.all_devics:
+group.all_devices:
   hidden: false
 

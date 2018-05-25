@@ -5,7 +5,6 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
-    - group.traveltimes
     - media_player.denon_avrx1300w
     - media_player.kodi
     - group.livingroom

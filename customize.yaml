@@ -64,6 +64,12 @@ script.receiver_set_source_media_player:
 script.receiver_set_source_dvd:
   emulated_hue_hidden: false
   emulated_hue_name: "Receiver Kodi"
+script.kodi_pause:
+  emulated_hue_hidden: false
+  emulated_hue_name: "Kodi Stop"
+script.kodi_play:
+  emulated_hue_hidden: false
+  emulated_hue_name: "Kodi Start"
 light.bar_table:
   emulated_hue_hidden: false
   emulated_hue_name: "Bar"

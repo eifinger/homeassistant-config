@@ -22,6 +22,18 @@ receiver_set_source_dvd:
       data:
         source: 'DVD/Blu-ray'
 #################################################################
+## Kodi
+#################################################################
+kodi_pause:
+  sequence:
+    - service: media_player.media_pause
+      entity_id: media_player.kodi
+
+kodi_play:
+  sequence:
+    - service: media_player.media_play
+      entity_id: media_player.kodi
+#################################################################
 ## Bar Table
 #################################################################
 bar_table_green:

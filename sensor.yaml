@@ -74,3 +74,13 @@
       friendly_name: !secret sensor_friendy_name_travel_time_home_from_work
       unit_of_measurement: "min"
       value_template: "{{ states('input_number.travel_time_home_from_work') | int}}"
+    travel_time_elmo_from_home:
+      friendly_name: !secret sensor_friendy_name_travel_time_elmo_from_home
+      unit_of_measurement: "min"
+      value_template: "{{ states('input_number.travel_time_elmo_from_home') | int}}"
+    travel_time_elmo_from_sindlingen:
+      friendly_name: !secret sensor_friendy_name_travel_time_elmo_from_sindlingen
+      unit_of_measurement: "min"
+      value_template: "{{ states('input_number.travel_time_elmo_from_sindlingen') | int}}"
+
+      

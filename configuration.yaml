@@ -34,6 +34,7 @@ http:
   base_url: !secret homeassistant_url
   ip_ban_enabled: True
   login_attempts_threshold: 3
+  use_x_forwarded_for: True
 
 history:
 

@@ -1,0 +1,13 @@
+- platform: mqtt_json
+  name: bar_table
+  state_topic: "RGBW/00D2EE20/json/state"
+  command_topic: "RGBW/00D2EE20/json/set"
+  brightness: true
+  rgb: true
+  white_value: true
+
+- platform: yeelight
+  devices:
+    !secret bedroom_yeelight_ip:
+      name: Bedroom_Yeelight
+      transition: 1000

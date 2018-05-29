@@ -26,6 +26,12 @@ view_studyroom:
   entities:
     - group.studyroom
 
+view_media_players:
+  name: Media Player
+  icon: mdi:play-circle-outline
+  entities:
+    - group.media_players
+
 devices:
   name: Geräte
   view: yes
@@ -166,3 +172,10 @@ reed:
   name: Tür und Fenster
   entities:
     - binary_sensor.door_window_sensor_158d000126a57b
+
+media_players:
+  name: Media Player
+  entities:
+    - media_player.denon_avrx1300w
+    - media_player.kodi
+    - media_player.emby

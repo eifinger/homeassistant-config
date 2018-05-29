@@ -75,6 +75,9 @@ media_player:
   - platform: kodi
     host: !secret kodi_ip
     port: 80
+  - platform: emby
+    host: !secret emby_ip
+    api_key: !secret emby_api_key
 
 #################################################################
 ## Includes

@@ -179,4 +179,3 @@ media_players:
   entities:
     - media_player.denon_avrx1300w
     - media_player.kodi
-    - media_player.emby

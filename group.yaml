@@ -28,6 +28,7 @@ view_studyroom:
 
 view_media_players:
   name: Media Player
+  view: yes
   icon: mdi:play-circle-outline
   entities:
     - group.media_players

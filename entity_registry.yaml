@@ -22,3 +22,19 @@ binary_sensor.motion_sensor_158d00012aab97:
   name:
   platform: xiaomi_aqara
   unique_id: status158d00012aab97
+media_player.emby__kodi_embycon__embycon:
+  name:
+  platform: emby
+  unique_id: D2A27E3DB8CB4311A7A6C4F784AD4B45.Kodi EmbyCon
+media_player.emby__kodi_embycon__embycon_2:
+  name:
+  platform: emby
+  unique_id: 55085742257748DEA8844C96E7760459.Kodi EmbyCon
+media_player.emby__dlna__denon_avrx1300w:
+  name:
+  platform: emby
+  unique_id: uuid:5f9ec1b3-ff59-19bb-8530-0005cd9051c2.DLNA
+media_player.emby__emby_mobile__chrome_android:
+  name:
+  platform: emby
+  unique_id: eb268e0871e0222495f8e1f16a48125a9ffcbb55.Emby Mobile

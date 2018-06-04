@@ -1,0 +1,8 @@
+  home:
+    tolerance: 50
+  work:
+    zone: Work
+    tolerance: 50
+  sindlingen:
+    zone: Work
+    tolerance: 10

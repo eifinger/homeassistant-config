@@ -1,7 +1,12 @@
   home:
+    devices:
+      - !secret device_user_one
+      - !secret device_user_two
     tolerance: 50
   work:
     zone: Work
+    devices:
+      - !secret device_user_one
     tolerance: 50
   sindlingen:
     devices:

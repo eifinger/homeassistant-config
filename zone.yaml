@@ -7,7 +7,7 @@
 - name: Work
   latitude: !secret work_latitude
   longitude: !secret work_longitude
-  radius: 150
+  radius: 800
   icon: mdi:domain
 
 - name: !secret user_two_name

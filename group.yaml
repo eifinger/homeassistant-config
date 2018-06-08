@@ -19,19 +19,19 @@ view_lights:
   entities:
     - group.lights
 
-view_studyroom:
-  name: Studyroom
-  view: yes
-  icon: mdi:laptop
-  entities:
-    - group.studyroom
-
 view_media_players:
   name: Media Player
   view: yes
   icon: mdi:play-circle-outline
   entities:
     - group.media_players
+
+view_studyroom:
+  name: Studyroom
+  view: yes
+  icon: mdi:laptop
+  entities:
+    - group.studyroom
 
 devices:
   name: Geräte

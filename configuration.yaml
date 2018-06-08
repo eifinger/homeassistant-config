@@ -79,6 +79,9 @@ media_player:
   - platform: emby
     host: !secret emby_ip
     api_key: !secret emby_api_key
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
 
 google:
   client_id: !secret google_calendar_client_id

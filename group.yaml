@@ -57,6 +57,19 @@ view_sensors:
     - group.motion
     - group.reed
 
+view_automation_entities:
+  name: Automation
+  view: yes
+  icon: mdi:pipe-disconnected
+  entities:
+    - input_boolean.is_home
+    - proximity.sindlingen 
+    - proximity.home 
+    - proximity.work
+    - sun.sun
+    - input_boolean.user_one_home
+    - input_boolean.user_two_home 
+
 #################################################################
 ## Group
 #################################################################

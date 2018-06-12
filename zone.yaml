@@ -21,3 +21,9 @@
   longitude: !secret elmo_longitude
   radius: 150
   icon: mdi:leaf
+
+- name: Wohnung
+  latitude: !secret new_flat_latitude
+  longitude: !secret new_flat_longitude
+  radius: 150
+  icon: mdi:home

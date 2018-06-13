@@ -87,6 +87,11 @@ google:
   client_id: !secret google_calendar_client_id
   client_secret: !secret google_calendar_client_key
 
+influxdb:
+  database: !secret influxdb_db_name
+  username: !secret influxdb_user
+  password: !secret influxdb_password
+
 
 #################################################################
 ## Includes

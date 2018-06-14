@@ -3,11 +3,11 @@
     initial: on
     icon: mdi:home
   user_one_home:
-    name: Is user two home
+    name: Is user one home
     initial: on
     icon: mdi:home
   user_two_home:
-    name: Is user one home
+    name: Is user two home
     initial: on
     icon: mdi:home
   travel_time_work_from_home:

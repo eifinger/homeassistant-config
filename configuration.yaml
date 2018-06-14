@@ -91,6 +91,13 @@ influxdb:
   username: !secret influxdb_user
   password: !secret influxdb_password
 
+telegram_bot:
+  - platform: webhooks
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_allowed_chat_id_user_one
+
+
 
 #################################################################
 ## Includes

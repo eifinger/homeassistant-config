@@ -10,9 +10,9 @@
   radius: 800
   icon: mdi:domain
 
-- name: !secret user_two_name
-  latitude: !secret user_two_latitude
-  longitude: !secret user_two_longitude
+- name: !secret user_two_home_name
+  latitude: !secret user_two_home_latitude
+  longitude: !secret user_two_home_longitude
   radius: 150
   icon: mdi:home
 

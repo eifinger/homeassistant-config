@@ -1,4 +1,5 @@
 secrets.yaml
+entity_registry.yaml
 known_devices.yaml
 docker-compose.yaml
 home-assistant.log

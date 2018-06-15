@@ -25,5 +25,5 @@
 - name: Wohnung
   latitude: !secret new_flat_latitude
   longitude: !secret new_flat_longitude
-  radius: 150
+  radius: 30
   icon: mdi:home

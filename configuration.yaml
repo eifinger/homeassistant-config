@@ -97,6 +97,7 @@ telegram_bot:
     allowed_chat_ids:
       - !secret telegram_allowed_chat_id_user_one
       - !secret telegram_allowed_chat_id_user_two
+      - !secret telegram_allowed_chat_id_group_notifications
 
 
 

@@ -6,4 +6,12 @@
   - name: !secret telegram_user_one_name
     platform: telegram
     chat_id: !secret telegram_allowed_chat_id_user_one
+
+  - name: !secret telegram_user_two_name
+    platform: telegram
+    chat_id: !secret telegram_allowed_chat_id_user_two
+
+  - name: group_notifications
+    platform: telegram
+    chat_id: !secret telegram_allowed_chat_id_group_notifications
     

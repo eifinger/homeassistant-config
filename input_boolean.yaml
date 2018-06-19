@@ -12,17 +12,7 @@
     icon: mdi:home
   travel_time_work_from_home:
     initial: off
-  travel_time_work_from_sindlingen:
-    initial: off
-  travel_time_sindlingen_from_home:
-    initial: off
-  travel_time_sindlingen_from_work:
-    initial: off
-  travel_time_home_from_sindlingen:
-    initial: off
   travel_time_home_from_work:
     initial: off
   travel_time_elmo_from_home:
-    initial: off
-  travel_time_elmo_from_sindlingen:
     initial: off

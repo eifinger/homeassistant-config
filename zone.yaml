@@ -1,7 +1,7 @@
 - name: Home
   latitude: !secret homeassistant_latitude
   longitude: !secret homeassistant_longitude
-  radius: 450
+  radius: 30
   icon: mdi:home
 
 - name: Work
@@ -21,9 +21,3 @@
   longitude: !secret elmo_longitude
   radius: 150
   icon: mdi:leaf
-
-- name: Wohnung
-  latitude: !secret new_flat_latitude
-  longitude: !secret new_flat_longitude
-  radius: 30
-  icon: mdi:home

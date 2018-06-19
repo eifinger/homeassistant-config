@@ -9,3 +9,4 @@ deps/
 .uuid
 www/user_one.jpg
 www/user_two.JPG
+entity_registry.yaml

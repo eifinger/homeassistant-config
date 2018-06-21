@@ -2,7 +2,7 @@ switch.snowboard:
   emulated_hue_hidden: false
   emulated_hue_name: "Snowboard"
   icon: mdi:lightbulb
-switch.switch.small_lamp:
+switch.small_lamp:
   emulated_hue_hidden: false
   emulated_hue_name: "Kleine Lampe"
   icon: mdi:lightbulb

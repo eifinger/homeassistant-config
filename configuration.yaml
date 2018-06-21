@@ -13,6 +13,7 @@ homeassistant:
 
 
 frontend:
+  themes:
 updater:
   reporting: no
   include_used_components: true

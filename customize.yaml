@@ -6,6 +6,10 @@ switch.small_lamp:
   emulated_hue_hidden: false
   emulated_hue_name: "Kleine Lampe"
   icon: mdi:lightbulb
+switch.large_lamp:
+  emulated_hue_hidden: false
+  emulated_hue_name: "Große Lampe"
+  icon: mdi:lightbulb
 media_player.denon_avrx1300w:
   emulated_hue_hidden: false
   emulated_hue_name: "Receiver"

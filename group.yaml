@@ -152,12 +152,11 @@ motion:
     - binary_sensor.motion_sensor_158d0001fa464b
     - binary_sensor.motion_sensor_158d0002006cfa
 
-motion:
+xiaomi_button:
   name: Xiaomi Button
   entities:
     - binary_sensor.switch_158d00012db9e5
     - binary_sensor.switch_158d0001b12a12
-    - binary_sensor.motion_sensor_158d0002006cfa
 
 reed:
   name: Tür und Fenster

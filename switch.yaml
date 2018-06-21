@@ -2,6 +2,9 @@
   name: "Snowboard"
   state_topic: "stat/sonoff_snowboard/POWER"
   command_topic: "cmnd/sonoff_snowboard/POWER"
+  availability_topic: "tele/sonoff_snowboard/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
   payload_on: "ON"
   payload_off: "OFF"
   optimistic: false
@@ -11,6 +14,9 @@
   name: "Large Lamp"
   state_topic: "stat/sonoff_large_lamp/POWER"
   command_topic: "cmnd/sonoff_large_lamp/POWER"
+  availability_topic: "tele/sonoff_large_lamp/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
   payload_on: "ON"
   payload_off: "OFF"
   optimistic: false
@@ -20,6 +26,9 @@
   name: "Small Lamp"
   state_topic: "stat/sonoff_small_lamp/POWER"
   command_topic: "cmnd/sonoff_small_lamp/POWER"
+  availability_topic: "tele/sonoff_small_lamp/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
   payload_on: "ON"
   payload_off: "OFF"
   optimistic: false
@@ -29,6 +38,9 @@
   name: "Ventilator"
   state_topic: "stat/sonoff_ventilator/POWER"
   command_topic: "cmnd/sonoff_ventilator/POWER"
+  availability_topic: "tele/sonoff_ventilator/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
   payload_on: "ON"
   payload_off: "OFF"
   optimistic: false

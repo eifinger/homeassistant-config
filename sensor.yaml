@@ -32,19 +32,23 @@
 ## Sonoff
 #################################################################
 - platform: mqtt
-  state_topic: "tele/sonoff_small_lamp/DHT/TEMPERATURE"
+  state_topic: "tele/sonoff_small_lamp/SENSOR"
+  value_template: "{{ value_json['AM2301'].Temperature }}"
   name: 'Small Lamp Temperature'
   unit_of_measurement: '°C'
 - platform: mqtt
-  state_topic: 'tele/sonoff_small_lamp/DHT/HUMIDITY'
+  state_topic: "tele/sonoff_small_lamp/SENSOR"
+  value_template: "{{ value_json['AM2301'].Humidity }}"
   name: 'Small Lamp Humidity'
   unit_of_measurement: '%'
 - platform: mqtt
-  state_topic: 'tele/sonoff_large_lamp/DHT/TEMPERATURE'
+  state_topic: "tele/sonoff_small_lamp/SENSOR"
+  value_template: "{{ value_json['AM2301'].Temperature }}"
   name: 'Large Lamp Temperature'
   unit_of_measurement: '°C'
 - platform: mqtt
-  state_topic: 'tele/sonoff_large_lamp/DHT/HUMIDITY'
+  state_topic: "tele/sonoff_small_lamp/SENSOR"
+  value_template: "{{ value_json['AM2301'].Humidity }}"
   name: 'Large Lamp Humidity'
   unit_of_measurement: '%'
 #################################################################

@@ -3,11 +3,11 @@
     api_key: !secret slack_api_key
     default_channel: '#notifications'
 
-  - name: !secret telegram_user_one_name
+  - name: !secret user_one_name
     platform: telegram
     chat_id: !secret telegram_allowed_chat_id_user_one
 
-  - name: !secret telegram_user_two_name
+  - name: !secret user_two_name
     platform: telegram
     chat_id: !secret telegram_allowed_chat_id_user_two
 

@@ -1,41 +1,10 @@
-switch.kitchen_ceiling_lamp:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Küchen Lampe"
-  icon: mdi:lightbulb
 switch.snowboard:
   emulated_hue_hidden: false
   emulated_hue_name: "Snowboard"
   icon: mdi:lightbulb
-switch.livingroom_ceiling:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Decken Lampe"
-  icon: mdi:lightbulb
-switch.livingroom_small_lamp:
+switch.switch.small_lamp:
   emulated_hue_hidden: false
   emulated_hue_name: "Kleine Lampe"
-  icon: mdi:lightbulb
-switch.livingroom_large_lamp:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Große Lampe"
-  icon: mdi:lightbulb
-switch.rosie_station:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Rosie Station"
-switch.storageroom_ceiling_lamp:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Abstellkammer Lampe"
-  icon: mdi:lightbulb
-switch.studyroom_ceiling_lamp:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Arbeitszimmer Decken Lampe"
-  icon: mdi:lightbulb
-switch.studyroom_lamp:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Arbeitszimmer Steh Lampe"
-  icon: mdi:lightbulb
-switch.lobby_ceiling:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Flur"
   icon: mdi:lightbulb
 media_player.denon_avrx1300w:
   emulated_hue_hidden: false
@@ -52,9 +21,6 @@ group.kitchen:
 group.studyroom:
   emulated_hue_hidden: false
   emulated_hue_name: "Arbeitszimmer"
-group.synonym_light:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Licht"
 script.receiver_set_source_cbl_sat:
   emulated_hue_hidden: false
   emulated_hue_name: "Sat"

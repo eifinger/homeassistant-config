@@ -9,7 +9,6 @@ default_view:
     - media_player.kodi
     - group.livingroom
     - group.occupancy
-    - switch.kitchen_ceiling_lamp
     - switch.plug_158d00015694c5
 
 view_lights:
@@ -63,7 +62,6 @@ view_automation_entities:
   icon: mdi:pipe-disconnected
   entities:
     - input_boolean.is_home
-    - proximity.sindlingen 
     - proximity.home 
     - proximity.work
     - sun.sun
@@ -77,60 +75,45 @@ view_automation_entities:
 lights:
   name: Lichter
   entities:
-    - switch.livingroom_large_lamp
-    - switch.studyroom_lamp
-    - switch.livingroom_small_lamp
-    - switch.studyroom_ceiling_lamp
-    - switch.storageroom_ceiling_lamp
-    - switch.kitchen_ceiling_lamp
-    - switch.livingroom_ceiling
-    - switch.lobby_ceiling
+    - switch.large_lamp
+    - switch.small_lamp
     - switch.snowboard
     - light.bedroom_yeelight
     - light.bar_table
 
-synonym_light:
-  name: synonym_light
-  entities:
-    - switch.livingroom_large_lamp
 livingroom:
     name: Wohnzimmer
     entities:
-      - switch.livingroom_ceiling
-      - switch.livingroom_large_lamp
-      - switch.livingroom_small_lamp
+      - switch.large_lamp
+      - switch.small_lamp
       - switch.snowboard
       - light.bar_table
+
 all:
   name: Everything
   entities:
     - media_player.denon_avrx1300w
-    - switch.livingroom_large_lamp
-    - switch.studyroom_lamp
-    - switch.livingroom_small_lamp
-    - switch.studyroom_ceiling_lamp
-    - switch.storageroom_ceiling_lamp
-    - switch.kitchen_ceiling_lamp
-    - switch.livingroom_ceiling
-    - switch.lobby_ceiling
+    - switch.large_lamp
+    - switch.small_lamp
     - switch.snowboard
     - light.bedroom_yeelight
     - light.bar_table
+
 kitchen:
   name: Küche
   entities:
-    - switch.kitchen_ceiling_lamp
+
 studyroom:
   name: Arbeitszimmer
   entities:
-    - switch.studyroom_ceiling_lamp
-    - switch.studyroom_lamp
+
 occupancy:
   name: Anwesenheit
   entities:
     - device_tracker.kevin
     - device_tracker.sina
     - device_tracker.galaxys8
+
 sensors:
   name: Sensoren
   entities:
@@ -139,18 +122,13 @@ sensors:
     - sensor.large_lamp_temperature
     - sensor.small_lamp_humidity
     - sensor.small_lamp_temperature
-    - sensor.storageroom_humidity
-    - sensor.storageroom_temperature
-    - sensor.studyroom_humidity
-    - sensor.studyroom_temperature
+
 weather:
   name: Wetter
   entities:
     - sensor.dark_sky_icon
     - sensor.dark_sky_humidity
     - sensor.dark_sky_temperature
-    - sensor.dark_sky_daily_high_temperature
-    - sensor.dark_sky_daily_low_temperature
     - sensor.dark_sky_cloud_coverage
     - sensor.dark_sky_daily_precip_intensity
     - sensor.dark_sky_precip_probability

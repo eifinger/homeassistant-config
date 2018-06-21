@@ -85,11 +85,6 @@ script.bar_table_white:
 light.bedroom_yeelight:
   emulated_hue_hidden: false
   emulated_hue_name: "Schlafzimmer"
-switch.plug_158d00015694c5:
-  friendly_name: Ventilator
-  icon: mdi:fan
-  emulated_hue_hidden: false
-  emulated_hue_name: "Ventilator"
 sensor.travel_time_work_from_home:
   icon: mdi:clock
 sensor.travel_time_home_from_work:

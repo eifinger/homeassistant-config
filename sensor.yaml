@@ -1,3 +1,6 @@
+#################################################################
+## Darksky
+#################################################################
 - platform: darksky
   api_key: !secret darsky_api_key
   monitored_conditions:
@@ -14,40 +17,39 @@
     - pressure
     - temperature_max
     - temperature_min
-
+#################################################################
+## Room Presence
+#################################################################
 - platform: mqtt
-  state_topic: "tele/storageroom_ceiling_lamp/DHT/TEMPERATURE"
-  name: 'Storageroom Temperature'
-  unit_of_measurement: '°C'
+  name: room_user_one
+  state_topic: !secret room_user_one_state_topic # "crows/location/RogueCrow"
+  value_template: '{{ value_json.location }}'
 - platform: mqtt
-  state_topic: 'tele/storageroom_ceiling_lamp/DHT/HUMIDITY'
-  name: 'Storageroom Humidity'
-  unit_of_measurement: '%'
+  name: room_user_two
+  state_topic: !secret room_user_two_state_topic # "crows/location/RogueCrow"
+  value_template: '{{ value_json.location }}'
+#################################################################
+## Sonoff
+#################################################################
 - platform: mqtt
-  state_topic: "tele/livingroom_small_lamp/DHT/TEMPERATURE"
+  state_topic: "tele/sonoff_small_lamp/DHT/TEMPERATURE"
   name: 'Small Lamp Temperature'
   unit_of_measurement: '°C'
 - platform: mqtt
-  state_topic: 'tele/livingroom_small_lamp/DHT/HUMIDITY'
+  state_topic: 'tele/sonoff_small_lamp/DHT/HUMIDITY'
   name: 'Small Lamp Humidity'
   unit_of_measurement: '%'
 - platform: mqtt
-  state_topic: 'tele/livingroom_large_lamp/DHT/TEMPERATURE'
+  state_topic: 'tele/sonoff_large_lamp/DHT/TEMPERATURE'
   name: 'Large Lamp Temperature'
   unit_of_measurement: '°C'
 - platform: mqtt
-  state_topic: 'tele/livingroom_large_lamp/DHT/HUMIDITY'
+  state_topic: 'tele/sonoff_large_lamp/DHT/HUMIDITY'
   name: 'Large Lamp Humidity'
   unit_of_measurement: '%'
-- platform: mqtt
-  state_topic: 'tele/studyroom_lamp/DHT/TEMPERATURE'
-  name: 'Studyroom Temperature'
-  unit_of_measurement: '°C'
-- platform: mqtt
-  state_topic: 'tele/studyroom_lamp/DHT/HUMIDITY'
-  name: 'Studyroom Humidity'
-  unit_of_measurement: '%'
-# Travel times
+#################################################################
+## Travel Times
+#################################################################
 - platform: template
   sensors:
     travel_time_work_from_home:

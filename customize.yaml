@@ -1,3 +1,6 @@
+#################################################################
+## Emulated Hue
+#################################################################
 switch.snowboard:
   emulated_hue_hidden: false
   emulated_hue_name: "Snowboard"
@@ -55,6 +58,9 @@ script.bar_table_white:
 light.bedroom_yeelight:
   emulated_hue_hidden: false
   emulated_hue_name: "Schlafzimmer"
+#################################################################
+## Travel times
+#################################################################
 sensor.travel_time_work_from_home:
   icon: mdi:clock
 sensor.travel_time_home_from_work:
@@ -70,7 +76,19 @@ input_boolean.travel_time_home_from_work:
 input_boolean.travel_time_elmo_from_home:
   friendly_name: "Slack Benachrichtigung"
   icon: mdi:slack
-
+#################################################################
+## XIaomi Reed Switches
+#################################################################
+binary_sensor.door_window_sensor_158d0001bb4dc0:
+  friendly_name: "Terassentür"
+  device_class: door
+binary_sensor.door_window_sensor_158d000126a57b:
+  device_class: door
+binary_sensor.door_window_sensor_158d0001bb4d94:
+  device_class: door
+#################################################################
+## Visibility
+#################################################################
 group.lights:
   friendly_name: "Lichter"
 group.all_devices:

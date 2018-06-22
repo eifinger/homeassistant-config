@@ -57,6 +57,7 @@ view_sensors:
     - group.weather
     - group.motion
     - group.reed
+    - group.xiaomi_button
 
 view_automation_entities:
   name: Automation

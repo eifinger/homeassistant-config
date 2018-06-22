@@ -6,10 +6,12 @@ switch.snowboard:
   emulated_hue_name: "Snowboard"
   icon: mdi:lightbulb
 switch.small_lamp:
+  friendly_name: "Kleine Lampe"
   emulated_hue_hidden: false
   emulated_hue_name: "Kleine Lampe"
   icon: mdi:lightbulb
 switch.large_lamp:
+  friendly_name: "Große Lampe"
   emulated_hue_hidden: false
   emulated_hue_name: "Große Lampe"
   icon: mdi:lightbulb

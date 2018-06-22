@@ -83,6 +83,7 @@ binary_sensor.door_window_sensor_158d0001bb4dc0:
   friendly_name: "Terassentür"
   device_class: door
 binary_sensor.door_window_sensor_158d000126a57b:
+  friendly_name: "Wohnungstür"
   device_class: door
 binary_sensor.door_window_sensor_158d0001bb4d94:
   friendly_name: "Terassentür Schlafzimmer"

@@ -85,6 +85,7 @@ binary_sensor.door_window_sensor_158d0001bb4dc0:
 binary_sensor.door_window_sensor_158d000126a57b:
   device_class: door
 binary_sensor.door_window_sensor_158d0001bb4d94:
+  friendly_name: "Terassentür Schlafzimmer"
   device_class: door
 #################################################################
 ## Visibility

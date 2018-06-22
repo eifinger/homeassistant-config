@@ -77,7 +77,7 @@ input_boolean.travel_time_elmo_from_home:
   friendly_name: "Slack Benachrichtigung"
   icon: mdi:slack
 #################################################################
-## XIaomi Reed Switches
+## Xiaomi Reed Switches
 #################################################################
 binary_sensor.door_window_sensor_158d0001bb4dc0:
   friendly_name: "Terassentür"
@@ -93,4 +93,8 @@ group.lights:
   friendly_name: "Lichter"
 group.all_devices:
   hidden: false
+sensor.room_user_one:
+  entity_picture: /local/user_one.jpg
+sensor.room_user_two:
+  entity_picture: /local/user_two.JPG
 

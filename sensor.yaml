@@ -49,8 +49,6 @@
           {% else %}
             Unbekannt
           {% endif %}
-- platform: template
-    sensors:
       room_user_two:
         friendly_name: !secret user_two_name
         value_template: >-

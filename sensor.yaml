@@ -30,43 +30,43 @@
   value_template: '{{ value_json.location }}'
 #Rename sensors in frontend
 - platform: template
-    sensors:
-      room_user_one:
-        friendly_name: !secret user_one_name
-        value_template: >-
-          {% if is_state('sensor.mqtt_room_user_one', 'livingroom') %}
-            Wohnzimmer
-          {% elif is_state('sensor.mqtt_room_user_one', 'kitchen') %}
-            Küche
-          {% elif is_state('sensor.mqtt_room_user_one', 'studyroom') %}
-            Arbeitszimmer
-          {% elif is_state('sensor.mqtt_room_user_one', 'bedroom') %}
-            Schlafzimmer
-          {% elif is_state('sensor.mqtt_room_user_one', 'lower_bathroom') %}
-            Bad unten
-          {% elif is_state('sensor.mqtt_room_user_one', 'upper_bathroom') %}
-            Bad oben
-          {% else %}
-            Unbekannt
-          {% endif %}
-      room_user_two:
-        friendly_name: !secret user_two_name
-        value_template: >-
-          {% if is_state('sensor.mqtt_room_user_two', 'livingroom') %}
-            Wohnzimmer
-          {% elif is_state('sensor.mqtt_room_user_two', 'kitchen') %}
-            Küche
-          {% elif is_state('sensor.mqtt_room_user_two', 'studyroom') %}
-            Arbeitszimmer
-          {% elif is_state('sensor.mqtt_room_user_two', 'bedroom') %}
-            Schlafzimmer
-          {% elif is_state('sensor.mqtt_room_user_two', 'lower_bathroom') %}
-            Bad unten
-          {% elif is_state('sensor.mqtt_room_user_two', 'upper_bathroom') %}
-            Bad oben
-          {% else %}
-            Unbekannt
-          {% endif %}
+  sensors:
+    room_user_one:
+      friendly_name: !secret user_one_name
+      value_template: >-
+        {% if is_state('sensor.mqtt_room_user_one', 'livingroom') %}
+          Wohnzimmer
+        {% elif is_state('sensor.mqtt_room_user_one', 'kitchen') %}
+          Küche
+        {% elif is_state('sensor.mqtt_room_user_one', 'studyroom') %}
+          Arbeitszimmer
+        {% elif is_state('sensor.mqtt_room_user_one', 'bedroom') %}
+          Schlafzimmer
+        {% elif is_state('sensor.mqtt_room_user_one', 'lower_bathroom') %}
+          Bad unten
+        {% elif is_state('sensor.mqtt_room_user_one', 'upper_bathroom') %}
+          Bad oben
+        {% else %}
+          Unbekannt
+        {% endif %}
+    room_user_two:
+      friendly_name: !secret user_two_name
+      value_template: >-
+        {% if is_state('sensor.mqtt_room_user_two', 'livingroom') %}
+          Wohnzimmer
+        {% elif is_state('sensor.mqtt_room_user_two', 'kitchen') %}
+          Küche
+        {% elif is_state('sensor.mqtt_room_user_two', 'studyroom') %}
+          Arbeitszimmer
+        {% elif is_state('sensor.mqtt_room_user_two', 'bedroom') %}
+          Schlafzimmer
+        {% elif is_state('sensor.mqtt_room_user_two', 'lower_bathroom') %}
+          Bad unten
+        {% elif is_state('sensor.mqtt_room_user_two', 'upper_bathroom') %}
+          Bad oben
+        {% else %}
+          Unbekannt
+        {% endif %}
 #################################################################
 ## Sonoff
 #################################################################

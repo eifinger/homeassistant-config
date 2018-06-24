@@ -21,13 +21,54 @@
 ## Room Presence
 #################################################################
 - platform: mqtt
-  name: room_user_one
-  state_topic: !secret room_user_one_state_topic # "crows/location/RogueCrow"
+  name: mqtt_room_user_one
+  state_topic: !secret room_user_one_state_topic
   value_template: '{{ value_json.location }}'
 - platform: mqtt
-  name: room_user_two
-  state_topic: !secret room_user_two_state_topic # "crows/location/RogueCrow"
+  name: mqtt_room_user_two
+  state_topic: !secret room_user_two_state_topic
   value_template: '{{ value_json.location }}'
+#Rename sensors in frontend
+- platform: template
+    sensors:
+      room_user_one:
+        friendly_name: !secret user_one_name
+        value_template: >-
+          {% if is_state('sensor.mqtt_room_user_one', 'livingroom') %}
+            Wohnzimmer
+          {% elif is_state('sensor.mqtt_room_user_one', 'kitchen') %}
+            Küche
+          {% elif is_state('sensor.mqtt_room_user_one', 'studyroom') %}
+            Arbeitszimmer
+          {% elif is_state('sensor.mqtt_room_user_one', 'bedroom') %}
+            Schlafzimmer
+          {% elif is_state('sensor.mqtt_room_user_one', 'lower_bathroom') %}
+            Bad unten
+          {% elif is_state('sensor.mqtt_room_user_one', 'upper_bathroom') %}
+            Bad oben
+          {% else %}
+            Unbekannt
+          {% endif %}
+- platform: template
+    sensors:
+      room_user_two:
+        friendly_name: !secret user_two_name
+        value_template: >-
+          {% if is_state('sensor.mqtt_room_user_two', 'livingroom') %}
+            Wohnzimmer
+          {% elif is_state('sensor.mqtt_room_user_two', 'kitchen') %}
+            Küche
+          {% elif is_state('sensor.mqtt_room_user_two', 'studyroom') %}
+            Arbeitszimmer
+          {% elif is_state('sensor.mqtt_room_user_two', 'bedroom') %}
+            Schlafzimmer
+          {% elif is_state('sensor.mqtt_room_user_two', 'lower_bathroom') %}
+            Bad unten
+          {% elif is_state('sensor.mqtt_room_user_two', 'upper_bathroom') %}
+            Bad oben
+          {% else %}
+            Unbekannt
+          {% endif %}
 #################################################################
 ## Sonoff
 #################################################################
@@ -68,5 +109,3 @@
       friendly_name: !secret sensor_friendy_name_travel_time_elmo_from_home
       unit_of_measurement: "min"
       value_template: "{{ states('input_number.travel_time_elmo_from_home') | int}}"
-
-      

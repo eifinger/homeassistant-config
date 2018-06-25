@@ -1,6 +1,9 @@
 #################################################################
 ## Emulated Hue
 #################################################################
+light.treppe_oben:
+  emulated_hue_hidden: false
+  emulated_hue_name: "Treppe Oben"
 switch.snowboard:
   emulated_hue_hidden: false
   emulated_hue_name: "Snowboard"
@@ -106,4 +109,3 @@ sensor.room_user_one:
   entity_picture: /local/user_one.jpg
 sensor.room_user_two:
   entity_picture: /local/user_two.JPG
-

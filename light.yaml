@@ -11,3 +11,9 @@
     !secret bedroom_yeelight_ip:
       name: Bedroom_Yeelight
       transition: 1000
+
+- platform: xiaomi_miio
+  name: Treppe Oben
+  host: !secret xiaomi_treppe_oben_ip
+  token: !secret xiaomi_treppe_oben_token
+  model: philips.light.bulb

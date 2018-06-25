@@ -12,6 +12,7 @@ default_view:
     - group.rooms
     - group.traveltimes
     - switch.plug_158d00015694c5
+    - group.next_appointment
 
 view_lights:
   name: Lights
@@ -180,3 +181,10 @@ rooms:
   entities:
     - sensor.room_user_one
     - sensor.room_user_two
+
+next_appointment:
+  name: Nächster Termin
+  entities:
+    - sensor.cal_next_appointment_title
+    - sensor.cal_next_appointment_location
+    - sensor.cal_next_appointment_start_time

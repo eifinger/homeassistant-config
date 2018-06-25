@@ -68,6 +68,18 @@
           Unbekannt
         {% endif %}
 #################################################################
+## Next Appointment
+#################################################################
+    cal_next_appointment_title:
+      friendly_name: Termin
+      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.message }}"
+    cal_next_appointment_location:
+      friendly_name: Ort
+      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.location }}"
+    cal_next_appointment_start_time:
+      friendly_name: Um
+      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.start_time }}"
+#################################################################
 ## Sonoff
 #################################################################
 - platform: mqtt

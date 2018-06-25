@@ -71,7 +71,9 @@ view_automation_entities:
     - proximity.work
     - sun.sun
     - input_boolean.user_one_home
-    - input_boolean.user_two_home 
+    - input_boolean.user_two_home
+    - sensor.mqtt_room_user_one
+    - sensor.mqtt_room_user_two
 
 #################################################################
 ## Group

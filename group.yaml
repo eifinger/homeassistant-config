@@ -67,6 +67,7 @@ view_automation_entities:
   entities:
     - input_boolean.is_home
     - proximity.home 
+    - proximity.home_user_one
     - proximity.work
     - sun.sun
     - input_boolean.user_one_home

@@ -46,6 +46,8 @@
           Bad unten
         {% elif is_state('sensor.mqtt_room_user_one', 'upper_bathroom') %}
           Bad oben
+        {% elif is_state('sensor.mqtt_room_user_one', 'upper_balcony') %}
+          Balkon Oben
         {% else %}
           Unbekannt
         {% endif %}
@@ -64,6 +66,8 @@
           Bad unten
         {% elif is_state('sensor.mqtt_room_user_two', 'upper_bathroom') %}
           Bad oben
+        {% elif is_state('sensor.mqtt_room_user_one', 'upper_balcony') %}
+          Balkon Oben
         {% else %}
           Unbekannt
         {% endif %}

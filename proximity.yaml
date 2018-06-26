@@ -7,7 +7,6 @@
     devices:
       - !secret device_user_one
     tolerance: 50
-    friendly_name: Zu Hause
   work:
     zone: Work
     devices:

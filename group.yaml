@@ -191,3 +191,9 @@ next_appointment:
     - sensor.cal_next_appointment_title
     - sensor.cal_next_appointment_location
     - sensor.cal_next_appointment_start_time
+
+stair_lights:
+  name: Treppenlichter
+  entities:
+    - light.stairs_lower_yeelight
+    - light.treppe_oben

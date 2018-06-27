@@ -63,6 +63,12 @@ script.bar_table_white:
 light.bedroom_yeelight:
   emulated_hue_hidden: false
   emulated_hue_name: "Schlafzimmer"
+light.stairs_lower_yeelight:
+  emulated_hue_hidden_false:
+  emulated_hue_name: "Treppe Unten"
+group.stair_lights:
+  emulated_hue_hidden_false:
+  emulated_hue_name: "Treppe"
 #################################################################
 ## Travel times
 #################################################################

@@ -72,18 +72,6 @@
           Unbekannt
         {% endif %}
 #################################################################
-## Next Appointment
-#################################################################
-    cal_next_appointment_title:
-      friendly_name: Termin
-      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.message }}"
-    cal_next_appointment_location:
-      friendly_name: Ort
-      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.location }}"
-    cal_next_appointment_start_time:
-      friendly_name: Um
-      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.start_time }}"
-#################################################################
 ## Sonoff
 #################################################################
 - platform: mqtt
@@ -123,3 +111,34 @@
       friendly_name: !secret sensor_friendy_name_travel_time_elmo_from_home
       unit_of_measurement: "min"
       value_template: "{{ states('input_number.travel_time_elmo_from_home') | int}}"
+#################################################################
+## Next Appointment
+#################################################################
+- platform: template
+  sensors:
+    cal_next_appointment_title:
+      friendly_name: Termin
+      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.message }}"
+    cal_next_appointment_location:
+      friendly_name: Ort
+      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.location }}"
+    cal_next_appointment_start_time:
+      friendly_name: Um
+      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.start_time }}"
+#################################################################
+## Sun
+#################################################################
+- platform: template
+  sensors:
+    sunset_time:
+      value_template: "{% set timestamp = as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom('%I:%M') %} {{ timestamp.lstrip('0') }}"
+      friendly_name: Sonnenuntergang
+      unit_of_measurement: PM
+    sunrise_time:
+      value_template: "{% set timestamp = as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom('%I:%M') %} {{ timestamp.lstrip('0') }}"
+      friendly_name: Sonnenaufgang
+      unit_of_measurement: AM
+    solar_angle:
+      value_template: "{{ states.sun.sun.attributes.elevation }}"
+      friendly_name: Solar Angle
+      unit_of_measurement: degrees

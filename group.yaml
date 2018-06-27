@@ -87,6 +87,8 @@ lights:
     - switch.snowboard
     - light.bedroom_yeelight
     - light.bar_table
+    - light.stairs_lower_yeelight
+    - light.treppe_oben
 
 livingroom:
     name: Wohnzimmer

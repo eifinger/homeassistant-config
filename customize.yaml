@@ -2,6 +2,7 @@
 ## Emulated Hue
 #################################################################
 light.treppe_oben:
+  friendly_name: "Treppe Oben"
   emulated_hue_hidden: false
   emulated_hue_name: "Treppe Oben"
 switch.snowboard:
@@ -61,11 +62,17 @@ script.bar_table_white:
   emulated_hue_hidden: false
   emulated_hue_name: "Bar Weiss"
 light.bedroom_yeelight:
+  friendly_name: "Schlafzimmer"
   emulated_hue_hidden: false
   emulated_hue_name: "Schlafzimmer"
 light.stairs_lower_yeelight:
+  friendly_name: "Treppe Unten"
   emulated_hue_hidden_false:
   emulated_hue_name: "Treppe Unten"
+light.reading_lamp_yeelight:
+  friendly_name: "Leselampe"
+  emulated_hue_hidden_false:
+  emulated_hue_name: "Leselampe"
 group.stair_lights:
   emulated_hue_hidden_false:
   emulated_hue_name: "Treppe"

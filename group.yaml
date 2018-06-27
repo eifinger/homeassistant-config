@@ -89,6 +89,7 @@ lights:
     - light.bar_table
     - light.stairs_lower_yeelight
     - light.treppe_oben
+    - light.reading_lamp_yeelight
 
 livingroom:
     name: Wohnzimmer
@@ -97,6 +98,7 @@ livingroom:
       - switch.small_lamp
       - switch.snowboard
       - light.bar_table
+      - light.reading_lamp_yeelight
 
 all:
   name: Everything

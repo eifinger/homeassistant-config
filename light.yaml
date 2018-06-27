@@ -14,6 +14,9 @@
     !secret stairs_lower_yeelight_ip:
       name: stairs_lower_yeelight
       transition: 1000
+    !secret reading_lamp_yeelight_ip:
+      name: reading_lamp_yeelight
+      transition: 1000
 
 - platform: xiaomi_miio
   name: Treppe Oben

@@ -97,6 +97,7 @@
 #################################################################
 ## Travel Times
 #################################################################
+#Set by Appdaemon
 - platform: template
   sensors:
     travel_time_work_from_home:
@@ -111,6 +112,19 @@
       friendly_name: !secret sensor_friendy_name_travel_time_elmo_from_home
       unit_of_measurement: "min"
       value_template: "{{ states('input_number.travel_time_elmo_from_home') | int}}"
+
+#Google
+- platform: google_travel_time
+  name: Zu Hause -> SVA
+  api_key: !secret google_maps_api_token
+  origin: zone.home
+  destination: zone.work
+
+#Waze
+- platform: waze_travel_time
+    origin: !secret waze_home
+    destination: !secret waze_work
+    region: 'EU'
 #################################################################
 ## Next Appointment
 #################################################################

@@ -16,3 +16,7 @@
     initial: off
   travel_time_elmo_from_home:
     initial: off
+  announce_time_to_leave:
+    name: Notification wenn es Zeit ist loszufahren
+    initial: on
+    icon: mdi:speaker-wireless

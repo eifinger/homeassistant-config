@@ -98,13 +98,18 @@ input_boolean.travel_time_elmo_from_home:
 ## Xiaomi Reed Switches
 #################################################################
 binary_sensor.door_window_sensor_158d0001bb4dc0:
-  friendly_name: "Terassentür"
+  friendly_name: "Terassentür Gekippt"
   device_class: door
 binary_sensor.door_window_sensor_158d000126a57b:
   friendly_name: "Wohnungstür"
   device_class: door
 binary_sensor.door_window_sensor_158d0001bb4d94:
   friendly_name: "Terassentür Schlafzimmer"
+  device_class: door
+binary_sensor.door_window_sensor_158d000205b808:
+  friendly_name: "Terassentür"
+binary_sensor.door_window_sensor_158d000205b82e:
+  friendly_name: "Terrassentür Arbeitszimmer"
   device_class: door
 #################################################################
 ## Xiaomi Motion Sensors

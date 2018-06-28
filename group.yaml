@@ -155,6 +155,10 @@ traveltimes:
     - input_boolean.travel_time_work_from_home
     - sensor.travel_time_elmo_from_home
     - input_boolean.travel_time_elmo_from_home
+    - sensor.travel_time_next_appointment_location
+    - sensor.travel_time_next_appointment_location_arrival_time
+    - sensor.travel_time_ikea_from_dom
+    - sensor.waze_travel_time_ikea_from_dom
 
 motion:
   name: Bewegungsmelder

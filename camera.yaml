@@ -1,0 +1,8 @@
+- platform: generic
+  name: next_appointment_location_staticmap
+  still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{sensor.cal_next_appointment_location_google_prepared}}&zoom=17&size=600x300&maptype=roadmap&markers=color:blue
+  limit_refetch_to_url_change: true
+- platform: generic
+  name: next_appointment_location_street_view
+  still_image_url: !secret next_appointment_location_street_view_url #https://maps.googleapis.com/maps/api/streetview?size=600x300&location={{sensor.cal_next_appointment_location_google_prepared}}&key=APIKEY
+  limit_refetch_to_url_change: true

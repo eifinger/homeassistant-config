@@ -50,6 +50,7 @@ script.kodi_play:
   emulated_hue_hidden: false
   emulated_hue_name: "Kodi Start"
 light.bar_table:
+  friendly_name: "Bar"
   emulated_hue_hidden: false
   emulated_hue_name: "Bar"
 script.bar_table_green:
@@ -73,6 +74,10 @@ light.reading_lamp_yeelight:
   friendly_name: "Leselampe"
   emulated_hue_hidden_false:
   emulated_hue_name: "Leselampe"
+light.lobby_yeelight:
+  friendly_name: "Garderobe"
+  emulated_hue_hidden_false:
+  emulated_hue_name: "Garderobe"
 group.stair_lights:
   emulated_hue_hidden_false:
   emulated_hue_name: "Treppe"

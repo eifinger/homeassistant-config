@@ -59,6 +59,7 @@ view_sensors:
     - group.motion
     - group.reed
     - group.xiaomi_button
+    - group.illumination
 
 view_automation_entities:
   name: Automation
@@ -90,6 +91,7 @@ lights:
     - light.stairs_lower_yeelight
     - light.treppe_oben
     - light.reading_lamp_yeelight
+    - light.lobby_yeelight
 
 livingroom:
     name: Wohnzimmer
@@ -99,6 +101,7 @@ livingroom:
       - switch.snowboard
       - light.bar_table
       - light.reading_lamp_yeelight
+      - light.lobby_yeelight
 
 all:
   name: Everything
@@ -182,6 +185,13 @@ reed:
     - binary_sensor.door_window_sensor_158d000205b808
     - binary_sensor.door_window_sensor_158d000205b82e
 
+illumination:
+  name: Lumen
+  entities:
+    - sensor.illumination_158d0001fa464b
+    - sensor.illumination_158d0002006cfa
+    - sensor.illumination_286c0785b294
+
 media_players:
   name: Media Player
   entities:
@@ -201,6 +211,9 @@ next_appointment:
     - sensor.cal_next_appointment_title
     - sensor.cal_next_appointment_location
     - sensor.cal_next_appointment_start_time
+    - sensor.calc_leave_time
+    - camera.street_view
+    - camera.destination
 
 stair_lights:
   name: Treppenlichter

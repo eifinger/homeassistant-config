@@ -74,6 +74,10 @@ light.reading_lamp_yeelight:
   friendly_name: "Leselampe"
   emulated_hue_hidden_false:
   emulated_hue_name: "Leselampe"
+light.lobby_yeelight:
+  friendly_name: "Lobby"
+  emulated_hue_hidden_false:
+  emulated_hue_name: "Lobby"
 group.stair_lights:
   emulated_hue_hidden_false:
   emulated_hue_name: "Treppe"

@@ -121,7 +121,7 @@
   name: travel_time_next_appointment_location
   api_key: !secret google_maps_api_token
   origin: !secret device_user_one
-  destination: sensor.cal_next_appointment_location
+  destination: sensor.cal_next_appointment_location_google_prepared
 #Next Appointment with arrival time option
 - platform: google_travel_time
   name: travel_time_next_appointment_location_arrival_time

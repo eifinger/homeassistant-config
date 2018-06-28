@@ -50,6 +50,7 @@ script.kodi_play:
   emulated_hue_hidden: false
   emulated_hue_name: "Kodi Start"
 light.bar_table:
+  friendly_name: "Bar"
   emulated_hue_hidden: false
   emulated_hue_name: "Bar"
 script.bar_table_green:

@@ -210,6 +210,8 @@ next_appointment:
     - sensor.cal_next_appointment_location
     - sensor.cal_next_appointment_start_time
     - sensor.calc_leave_time
+    - camera.street_view
+    - camera.destination
 
 stair_lights:
   name: Treppenlichter

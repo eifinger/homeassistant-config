@@ -117,4 +117,4 @@ input_number: !include input_number.yaml
 notify: !include notify.yaml
 zone: !include zone.yaml
 proximity: !include proximity.yaml
-
+camera: !include camera.yaml

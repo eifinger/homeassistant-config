@@ -59,6 +59,7 @@ view_sensors:
     - group.motion
     - group.reed
     - group.xiaomi_button
+    - group.illumination
 
 view_automation_entities:
   name: Automation
@@ -181,6 +182,13 @@ reed:
     - binary_sensor.door_window_sensor_158d000126a57b
     - binary_sensor.door_window_sensor_158d0001bb4d94
     - binary_sensor.door_window_sensor_158d0001bb4dc0
+
+illumination:
+  name: Lumen
+  entities:
+    - sensor.illumination_158d0001fa464b
+    - sensor.illumination_158d0002006cfa
+    - sensor.illumination_286c0785b294
 
 media_players:
   name: Media Player

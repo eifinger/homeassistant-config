@@ -20,6 +20,5 @@
     initial: off
     icon: mdi:slack
   announce_time_to_leave:
-    name: Notification wenn es Zeit ist loszufahren
     initial: on
-    icon: mdi:speaker-wireless
+    icon: icon: mdi:slack

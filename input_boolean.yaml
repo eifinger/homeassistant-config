@@ -22,3 +22,6 @@
   announce_time_to_leave:
     initial: on
     icon: mdi:slack
+  room_based_light:
+    initial: off
+    device_class: light

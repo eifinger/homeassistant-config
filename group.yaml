@@ -10,7 +10,6 @@ default_view:
     - group.livingroom
     - group.occupancy
     - group.rooms
-    - group.traveltimes
     - switch.plug_158d00015694c5
     - group.next_appointment
 
@@ -159,7 +158,6 @@ traveltimes:
     - sensor.travel_time_elmo_from_home
     - input_boolean.travel_time_elmo_from_home
     - sensor.travel_time_next_appointment_location
-    - sensor.travel_time_next_appointment_location_arrival_time
     - sensor.travel_time_ikea_from_dom
     - sensor.waze_travel_time_ikea_from_dom
 

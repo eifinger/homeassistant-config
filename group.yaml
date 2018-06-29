@@ -28,7 +28,7 @@ view_media_players:
     - group.media_players
 
 view_studyroom:
-  name: Studyroom
+  name: Arbeitszimmer
   view: yes
   icon: mdi:laptop
   entities:

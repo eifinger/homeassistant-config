@@ -115,6 +115,7 @@ binary_sensor.door_window_sensor_158d0001bb4d94:
   device_class: door
 binary_sensor.door_window_sensor_158d000205b808:
   friendly_name: "Terassentür"
+  device_class: window
 binary_sensor.door_window_sensor_158d000205b82e:
   friendly_name: "Terrassentür Arbeitszimmer"
   device_class: door

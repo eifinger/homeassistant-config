@@ -106,7 +106,7 @@ input_boolean.announce_time_to_leave:
 #################################################################
 binary_sensor.door_window_sensor_158d0001bb4dc0:
   friendly_name: "Terassentür Gekippt"
-  device_class: door
+  device_class: window
 binary_sensor.door_window_sensor_158d000126a57b:
   friendly_name: "Wohnungstür"
   device_class: door
@@ -115,7 +115,7 @@ binary_sensor.door_window_sensor_158d0001bb4d94:
   device_class: door
 binary_sensor.door_window_sensor_158d000205b808:
   friendly_name: "Terassentür"
-  device_class: window
+  device_class: door
 binary_sensor.door_window_sensor_158d000205b82e:
   friendly_name: "Terrassentür Arbeitszimmer"
   device_class: door

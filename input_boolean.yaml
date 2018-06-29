@@ -24,4 +24,4 @@
     icon: mdi:slack
   room_based_light:
     initial: off
-    device_class: light
+    icon: mdi:lightbulb

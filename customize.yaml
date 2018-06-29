@@ -99,7 +99,7 @@ input_boolean.travel_time_home_from_work:
   friendly_name: "Slack Benachrichtigung"
 input_boolean.travel_time_elmo_from_home:
   friendly_name: "Slack Benachrichtigung"
-input.boolean.announce_time_to_leave:
+input_boolean.announce_time_to_leave:
   friendly_name: "Slack Benachrichtigung"
 #################################################################
 ## Xiaomi Reed Switches
@@ -135,4 +135,4 @@ sensor.room_user_one:
 sensor.room_user_two:
   entity_picture: /local/user_two.JPG
 proximity.home_user_one:
-  friendly_name: Zu Hause
+  friendly_name: "Zu Hause"

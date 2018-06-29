@@ -180,6 +180,8 @@ reed:
     - binary_sensor.door_window_sensor_158d000126a57b
     - binary_sensor.door_window_sensor_158d0001bb4d94
     - binary_sensor.door_window_sensor_158d0001bb4dc0
+    - binary_sensor.door_window_sensor_158d000205b808
+    - binary_sensor.door_window_sensor_158d000205b82e
 
 illumination:
   name: Lumen

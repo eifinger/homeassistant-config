@@ -34,13 +34,6 @@ view_studyroom:
   entities:
     - group.studyroom
 
-devices:
-  name: Geräte
-  view: yes
-  icon: mdi:wifi
-  entities:
-    - group.all_devices
-
 view_traveltimes:
   name: Reisezeiten
   view: yes
@@ -59,6 +52,13 @@ view_sensors:
     - group.reed
     - group.xiaomi_button
     - group.illumination
+
+devices:
+  name: Geräte
+  view: yes
+  icon: mdi:wifi
+  entities:
+    - group.all_devices
 
 view_automation_entities:
   name: Automation
@@ -224,3 +224,4 @@ automation_entities:
     - sensor.mqtt_room_user_two
     - sensor.travel_time_ikea_from_dom
     - sensor.waze_travel_time_ikea_from_dom
+    - input_boolean.room_based_light

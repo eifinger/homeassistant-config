@@ -26,3 +26,33 @@
   host: !secret xiaomi_treppe_oben_ip
   token: !secret xiaomi_treppe_oben_token
   model: philips.light.bulb
+
+- platform: mqtt
+  name: bar_table
+  state_topic: "stat/bar_light/RESULT"
+  command_topic: "cmnd/bar_light/POWER"
+  state_value_template: "{{ value_json.POWER }}"
+  brightness_state_topic: "stat/bar_light/RESULT"
+  brightness_command_topic: "cmnd/bar_light/Dimmer"
+  brightness_scale: 100
+  brightness_value_template: "{{ value_json.Dimmer }}"
+  white_value_state_topic: "stat/bar_light/RESULT"
+  white_value_command_topic: "cmnd/bar_light/Channel4"
+  white_value_scale: 100
+  white_value_template: "{{ value_json.Channel[3] }}"
+  rgb_command_topic: "cmnd/bar_light/Color"
+  rgb_command_template: "{{ '%02x%02x%02x' | format(red, green, blue)}}"
+  rgb_state_topic: "stat/bar_light/RESULT"
+  rgb_value_template: "{{(value_json.Channel[0]*2.55)|int}},{{(value_json.Channel[1]*2.55)|int}},{{(value_json.Channel[2]*2.55)|int}}"
+  effect_state_topic: "stat/bar_light/RESULT"
+  effect_command_topic: "cmnd/bar_light/Scheme"
+  effect_list:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+  retain: false
+  qos: 2
+  payload_on: "ON"
+  payload_off: "OFF"

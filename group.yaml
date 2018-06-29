@@ -65,15 +65,7 @@ view_automation_entities:
   view: yes
   icon: mdi:pipe-disconnected
   entities:
-    - input_boolean.is_home
-    - proximity.home 
-    - proximity.home_user_one
-    - proximity.work
-    - sun.sun
-    - input_boolean.user_one_home
-    - input_boolean.user_two_home
-    - sensor.mqtt_room_user_one
-    - sensor.mqtt_room_user_two
+    - group.automation_entities
 
 #################################################################
 ## Group
@@ -218,3 +210,16 @@ stair_lights:
   entities:
     - light.stairs_lower_yeelight
     - light.treppe_oben
+
+automation_entities:
+  name: Automation
+  entities:
+    - input_boolean.is_home
+    - proximity.home 
+    - proximity.home_user_one
+    - proximity.work
+    - sun.sun
+    - input_boolean.user_one_home
+    - input_boolean.user_two_home
+    - sensor.mqtt_room_user_one
+    - sensor.mqtt_room_user_two

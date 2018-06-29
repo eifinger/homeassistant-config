@@ -68,21 +68,21 @@ light.bedroom_yeelight:
   emulated_hue_name: "Schlafzimmer"
 light.stairs_lower_yeelight:
   friendly_name: "Treppe Unten"
-  emulated_hue_hidden_false:
+  emulated_hue_hidden: false
   emulated_hue_name: "Treppe Unten"
 light.reading_lamp_yeelight:
   friendly_name: "Leselampe"
-  emulated_hue_hidden_false:
+  emulated_hue_hidden: false
   emulated_hue_name: "Leselampe"
 light.lobby_yeelight:
   friendly_name: "Garderobe"
-  emulated_hue_hidden_false:
+  emulated_hue_hidden: false
   emulated_hue_name: "Garderobe"
 group.stair_lights:
-  emulated_hue_hidden_false:
+  emulated_hue_hidden: false
   emulated_hue_name: "Treppe"
 input_boolean.room_based_light:
-  emulated_hue_hidden_false:
+  emulated_hue_hidden: false
   emulated_hue_name: "Licht"
 #################################################################
 ## Travel times

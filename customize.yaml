@@ -81,6 +81,9 @@ light.lobby_yeelight:
 group.stair_lights:
   emulated_hue_hidden_false:
   emulated_hue_name: "Treppe"
+input_boolean.room_based_light:
+  emulated_hue_hidden_false:
+  emulated_hue_name: "Licht"
 #################################################################
 ## Travel times
 #################################################################

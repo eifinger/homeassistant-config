@@ -113,7 +113,7 @@ automation: !include automation.yaml
 script: !include scripts.yaml
 light: !include light.yaml
 input_boolean: !include input_boolean.yaml
-#input_number: !include input_number.yaml
+input_number: !include input_number.yaml
 notify: !include notify.yaml
 zone: !include zone.yaml
 proximity: !include proximity.yaml

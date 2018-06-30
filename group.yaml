@@ -11,7 +11,7 @@ default_view:
     - group.occupancy
     - group.rooms
     - switch.plug_158d00015694c5
-    - group.next_appointment
+    - calendar.keifingergooglemailcom
 
 view_lights:
   name: Lights
@@ -33,6 +33,13 @@ view_media_players:
 #  icon: mdi:laptop
 #  entities:
 #    - group.studyroom
+
+view_next_appointment:
+  name: Nächster Termin
+  view: yes
+  icon: mdi:calendar
+  entities:
+    - group.next_appointment
 
 view_traveltimes:
   name: Reisezeiten

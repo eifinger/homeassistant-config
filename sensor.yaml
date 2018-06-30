@@ -155,7 +155,7 @@
       friendly_name: Um
       value_template: "{{ states.calendar.keifingergooglemailcom.attributes.start_time }}"
     calc_leave_time:
-       value_template: '{{ (as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time) - states.sensor.travel_time_next_appointment_location.attributes.duration.split(" ")[0] | int *3600 - states.sensor.travel_time_next_appointment_location.attributes.duration.split(" ")[2] | int * 60 + (states("input_number.leave_time_offset") | int * 60))| timestamp_custom("%Y-%m-%d %H:%M") }}'
+       value_template: '{{ (as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time) - states.sensor.travel_time_next_appointment_location.attributes.duration.split(" ")[0] | int *3600 - states.sensor.travel_time_next_appointment_location.attributes.duration.split(" ")[2] | int * 60 - (states("input_number.leave_time_offset") | int * 60))| timestamp_custom("%Y-%m-%d %H:%M") }}'
        friendly_name: Losfahren
 #################################################################
 ## Sun

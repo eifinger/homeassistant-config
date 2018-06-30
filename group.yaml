@@ -225,3 +225,4 @@ automation_entities:
     - sensor.travel_time_ikea_from_dom
     - sensor.waze_travel_time_ikea_from_dom
     - input_boolean.room_based_light
+    - input_boolean.heading_home_notifier_user_one

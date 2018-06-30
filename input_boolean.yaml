@@ -25,3 +25,6 @@
   room_based_light:
     initial: off
     icon: mdi:lightbulb
+  heading_home_notifier_user_one:
+    initial: one
+    icon: mdi:telegram

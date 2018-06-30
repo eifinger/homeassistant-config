@@ -27,12 +27,12 @@ view_media_players:
   entities:
     - group.media_players
 
-view_studyroom:
-  name: Arbeitszimmer
-  view: yes
-  icon: mdi:laptop
-  entities:
-    - group.studyroom
+#view_studyroom:
+#  name: Arbeitszimmer
+#  view: yes
+#  icon: mdi:laptop
+#  entities:
+#    - group.studyroom
 
 view_traveltimes:
   name: Reisezeiten
@@ -201,6 +201,7 @@ next_appointment:
     - sensor.cal_next_appointment_location
     - sensor.cal_next_appointment_start_time
     - sensor.calc_leave_time
+    - input_number.leave_time_offset
     - camera.street_view
     - camera.destination
 

@@ -12,16 +12,16 @@
     icon: mdi:home
   travel_time_work_from_home:
     initial: off
-    icon: mdi:slack
+    icon: mdi:telegram
   travel_time_home_from_work:
     initial: off
-    icon: mdi:slack
+    icon: mdi:telegram
   travel_time_elmo_from_home:
     initial: off
-    icon: mdi:slack
+    icon: mdi:telegram
   announce_time_to_leave:
     initial: on
-    icon: mdi:slack
+    icon: mdi:telegram
   room_based_light:
     initial: off
     icon: mdi:lightbulb

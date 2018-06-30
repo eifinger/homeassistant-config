@@ -26,5 +26,5 @@
     initial: off
     icon: mdi:lightbulb
   heading_home_notifier_user_one:
-    initial: one
+    initial: on
     icon: mdi:telegram

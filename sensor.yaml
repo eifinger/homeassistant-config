@@ -23,11 +23,11 @@
 - platform: mqtt
   name: mqtt_room_user_one
   state_topic: !secret room_user_one_state_topic
-  value_template: '{{ value_json.location }}'
+  value_template: '{{ value_json.guesses[0].location }}'
 - platform: mqtt
   name: mqtt_room_user_two
   state_topic: !secret room_user_two_state_topic
-  value_template: '{{ value_json.location }}'
+  value_template: '{{ value_json.guesses[0].location }}'
 #Rename sensors in frontend
 - platform: template
   sensors:

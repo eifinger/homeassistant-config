@@ -92,7 +92,7 @@ sensor.travel_time_work_from_home:
   friendly_name: "Zu Hause -> SVA"
 sensor.travel_time_home_from_work:
   icon: mdi:car
-  friendly_name: "SVA-> Zu Hause"
+  friendly_name: "SVA -> Zu Hause"
 sensor.travel_time_elmo_from_home:
   icon: mdi:car
   friendly_name: "Zu Hause -> Elmo"
@@ -102,7 +102,7 @@ sensor.travel_time_next_appointment_location:
 input_boolean.travel_time_work_from_home:
   friendly_name: "Zu Hause -> SVA Benachrichtigung"
 input_boolean.travel_time_home_from_work:
-  friendly_name: "SVA-> Zu Hause Benachrichtigung"
+  friendly_name: "SVA -> Zu Hause Benachrichtigung"
 input_boolean.travel_time_elmo_from_home:
   friendly_name: "Zu Hause -> Elmo Benachrichtigung"
 input_boolean.announce_time_to_leave:

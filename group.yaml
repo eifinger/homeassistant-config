@@ -33,19 +33,13 @@ view_media_players:
 #  entities:
 #    - group.studyroom
 
-view_next_appointment:
-  name: Nächster Termin
-  view: yes
-  icon: mdi:calendar
-  entities:
-    - group.next_appointment
-
 view_traveltimes:
   name: Reisezeiten
   view: yes
   icon: mdi:google-maps
   entities:
     - group.traveltimes
+    - group.next_appointment
 
 view_sensors:
   name: Sensoren

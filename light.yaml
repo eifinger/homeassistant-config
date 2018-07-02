@@ -19,7 +19,6 @@
       transition: 1000
     !secret lobby_yeelight_ip:
       name: lobby_yeelight
-      transition: 1000
 
 - platform: xiaomi_miio
   name: Treppe Oben

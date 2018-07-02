@@ -1,6 +1,10 @@
 #################################################################
 ## Emulated Hue
 #################################################################
+group.eingang:
+  friendly_name: "Eingang"
+  emulated_hue_hidden: false
+  emulated_hue_name: "Eingang"
 light.treppe_oben:
   friendly_name: "Treppe Oben"
   emulated_hue_hidden: false

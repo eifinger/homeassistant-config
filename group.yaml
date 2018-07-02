@@ -237,3 +237,11 @@ s8plus_location:
   entities:
     - device_tracker.galaxys8
     - sensor.room_s8plus
+
+#################################################################
+## Synonym
+#################################################################
+eingang:
+  name: Eingang
+  entities:
+    - light.lobby_yeelight

@@ -23,6 +23,21 @@ switch.large_lamp:
   emulated_hue_hidden: false
   emulated_hue_name: "Große Lampe"
   icon: mdi:lightbulb
+switch.lobby:
+  friendly_name: "Flur"
+  emulated_hue_hidden: false
+  emulated_hue_name: "Flur"
+  icon: mdi:lightbulb
+switch.studyroom:
+  friendly_name: "Arbeitszimmer"
+  emulated_hue_hidden: false
+  emulated_hue_name: "Arbeitszimmer"
+  icon: mdi:lightbulb
+switch.bath_mirror:
+  friendly_name: "Badspiegel"
+  emulated_hue_hidden: false
+  emulated_hue_name: "Badspiegel"
+  icon: mdi:lightbulb
 media_player.denon_avrx1300w:
   emulated_hue_hidden: false
   emulated_hue_name: "Receiver"

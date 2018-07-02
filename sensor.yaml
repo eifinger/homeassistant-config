@@ -20,15 +20,12 @@
 #################################################################
 ## Room Presence
 #################################################################
+#########User one
 - platform: mqtt
   name: mqtt_room_user_one
   state_topic: !secret room_user_one_state_topic
   value_template: '{{ value_json.guesses[0].location }}'
-- platform: mqtt
-  name: mqtt_room_user_two
-  state_topic: !secret room_user_two_state_topic
-  value_template: '{{ value_json.guesses[0].location }}'
-#Rename sensors in frontend
+#Rename sensor in frontend
 - platform: template
   sensors:
     room_user_one:
@@ -48,9 +45,19 @@
           Bad oben
         {% elif is_state('sensor.mqtt_room_user_one', 'upper_balcony') %}
           Balkon Oben
+        {% elif is_state('sensor.mqtt_room_user_one', 'guest_room') %}
+          Gästezimmer
         {% else %}
           Unbekannt
         {% endif %}
+#########User two
+- platform: mqtt
+  name: mqtt_room_user_two
+  state_topic: !secret room_user_two_state_topic
+  value_template: '{{ value_json.guesses[0].location }}'
+#Rename sensor in frontend
+- platform: template
+  sensors:
     room_user_two:
       friendly_name: !secret user_two_name
       value_template: >-
@@ -66,8 +73,40 @@
           Bad unten
         {% elif is_state('sensor.mqtt_room_user_two', 'upper_bathroom') %}
           Bad oben
-        {% elif is_state('sensor.mqtt_room_user_one', 'upper_balcony') %}
+        {% elif is_state('sensor.mqtt_room_user_two', 'upper_balcony') %}
           Balkon Oben
+        {% elif is_state('sensor.mqtt_room_user_two', 'guest_room') %}
+          Gästezimmer
+        {% else %}
+          Unbekannt
+        {% endif %}
+#########S8Plus
+- platform: mqtt
+  name: mqtt_room_galaxys8
+  state_topic: !secret room_user_two_state_topic
+  value_template: '{{ value_json.guesses[0].location }}'
+#Rename sensor in frontend
+- platform: template
+  sensors:
+    room_s8plus:
+      friendly_name: S8-Plus
+      value_template: >-
+        {% if is_state('sensor.mqtt_room_galaxys8', 'livingroom') %}
+          Wohnzimmer
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'kitchen') %}
+          Küche
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'studyroom') %}
+          Arbeitszimmer
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'bedroom') %}
+          Schlafzimmer
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'lower_bathroom') %}
+          Bad unten
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'upper_bathroom') %}
+          Bad oben
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'upper_balcony') %}
+          Balkon Oben
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'guest_room') %}
+          Gästezimmer
         {% else %}
           Unbekannt
         {% endif %}

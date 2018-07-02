@@ -52,6 +52,7 @@ view_sensors:
     - group.reed
     - group.xiaomi_button
     - group.illumination
+    - group.s8plus_location
 
 devices:
   name: Geräte
@@ -230,3 +231,9 @@ automation_entities:
     - sensor.waze_travel_time_ikea_from_dom
     - input_boolean.room_based_light
     - input_boolean.heading_home_notifier_user_one
+
+s8plus_location:
+  name: S8 Plus Standort
+  entities:
+    - device_tracker.galaxys8
+    - sensor.room_s8plus

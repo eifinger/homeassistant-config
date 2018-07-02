@@ -35,10 +35,34 @@
   qos: 2
   retain: false
 - platform: mqtt
-  name: "Ventilator"
-  state_topic: "stat/sonoff_ventilator/POWER"
-  command_topic: "cmnd/sonoff_ventilator/POWER"
-  availability_topic: "tele/sonoff_ventilator/LWT"
+  name: "lobby"
+  state_topic: "stat/sonoff_lobby/POWER"
+  command_topic: "cmnd/sonoff_lobby/POWER"
+  availability_topic: "tele/sonoff_lobby/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
+- platform: mqtt
+  name: "studyroom"
+  state_topic: "stat/sonoff_studyroom/POWER"
+  command_topic: "cmnd/sonoff_studyroom/POWER"
+  availability_topic: "tele/sonoff_studyroom/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
+- platform: mqtt
+  name: "bath_mirror"
+  state_topic: "stat/sonoff_bath_mirror/POWER"
+  command_topic: "cmnd/sonoff_bath_mirror/POWER"
+  availability_topic: "tele/sonoff_bath_mirror/LWT"
   payload_available: "Online"
   payload_not_available: "Offline"
   payload_on: "ON"

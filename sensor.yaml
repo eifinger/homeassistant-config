@@ -83,7 +83,7 @@
 #########S8Plus
 - platform: mqtt
   name: mqtt_room_galaxys8
-  state_topic: !secret room_user_two_state_topic
+  state_topic: eifinger/location/galaxys8
   value_template: '{{ value_json.guesses[0].location }}'
 #Rename sensor in frontend
 - platform: template

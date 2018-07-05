@@ -46,7 +46,7 @@ view_cameras:
   view: yes
   icon: mdi:cctv
   entities:
-    -group.cameras
+    - group.cameras
 
 view_sensors:
   name: Sensoren

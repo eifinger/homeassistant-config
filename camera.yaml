@@ -6,6 +6,6 @@
   name: next_appointment_location_street_view
   still_image_url: !secret next_appointment_location_street_view_url #https://maps.googleapis.com/maps/api/streetview?size=600x300&location={{sensor.cal_next_appointment_location_google_prepared}}&key=APIKEY
   limit_refetch_to_url_change: true
-#- platform: mjpeg
-#  name: door_cam
-#  mjpeg_url: !secret door_cam_url
+- platform: local_file
+  name: Saved Image
+  file_path: /config/www/facebox/tmp/image.jpg

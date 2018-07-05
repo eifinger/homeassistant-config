@@ -211,3 +211,11 @@
       value_template: "{{ states.sun.sun.attributes.elevation }}"
       friendly_name: Solar Angle
       unit_of_measurement: degrees
+#################################################################
+## Face Detection
+#################################################################
+- platform: template
+  sensors:
+    facebox_detection:
+      friendly_name: 'Facebox Detection'
+       value_template: '{{ states.image_processing.facebox_saved_images.attributes.faces[0]["name"].title}}'

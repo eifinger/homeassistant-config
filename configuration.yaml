@@ -100,33 +100,6 @@ telegram_bot:
       - !secret telegram_allowed_chat_id_user_two
       - !secret telegram_allowed_chat_id_group_notifications
 
-android_ip_webcam:
-  - host: !secret android_ip_webcam_door_ip
-    port: 8080
-    sensors:
-      - audio_connections
-      - battery_level
-      - battery_temp
-      - battery_voltage
-      - light
-      - motion
-      - pressure
-      - proximity
-      - sound
-      - video_connections
-    switches:
-      - exposure_lock
-      - ffc
-      - focus
-      - gps_active
-      - night_vision
-      - overlay
-      - torch
-      - whitebalance_lock
-      - video_recording
-
-
-
 #################################################################
 ## Includes
 #################################################################
@@ -143,3 +116,5 @@ notify: !include notify.yaml
 zone: !include zone.yaml
 proximity: !include proximity.yaml
 camera: !include camera.yaml
+image_processing: !include image_processing.yaml
+android_ip_webcam: !include android_ip_webcam.yaml

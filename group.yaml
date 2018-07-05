@@ -41,6 +41,13 @@ view_traveltimes:
     - group.traveltimes
     - group.next_appointment
 
+view_cameras:
+  name: Kameras
+  view: yes
+  icon: mdi:cctv
+  entities:
+    -group.cameras
+
 view_sensors:
   name: Sensoren
   view: yes
@@ -238,6 +245,12 @@ s8plus_location:
     - device_tracker.galaxys8
     - sensor.room_s8plus
 
+cameras:
+  name: Kameras
+  entities:
+    - camera.android_ip_webcam_door
+    - camera.saved_image
+    - image_processing.facebox
 #################################################################
 ## Synonym
 #################################################################

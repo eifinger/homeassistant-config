@@ -248,9 +248,20 @@ s8plus_location:
 cameras:
   name: Kameras
   entities:
-    - camera.android_ip_webcam_door
+    - group.group_android_ip_webcam_door
     - camera.saved_image
     - image_processing.facebox
+
+group_android_ip_webcam_door:
+  name: Webcam Tür
+  entities:
+    - camera.android_ip_webcam_door
+    - sensor.android_ip_webcam_door_battery_level
+    - sensor.android_ip_webcam_door_battery_temperature
+    - sensor.android_ip_webcam_door_light_level
+    - sensor.android_ip_webcam_door_motion
+    - sensor.android_ip_webcam_door_sound
+    - switch.android_ip_webcam_door_torch
 #################################################################
 ## Synonym
 #################################################################

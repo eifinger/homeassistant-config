@@ -1,3 +1,6 @@
+#################################################################
+## Tasmota
+#################################################################
 - platform: mqtt
   name: "Snowboard"
   state_topic: "stat/sonoff_snowboard/POWER"
@@ -70,4 +73,9 @@
   optimistic: false
   qos: 2
   retain: false
+#################################################################
+## Tp Link
+#################################################################
+- platform: tplink
+    host: !secret tp_link_ventilator_ip
 

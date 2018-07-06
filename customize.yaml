@@ -1,6 +1,11 @@
 #################################################################
 ## Emulated Hue
 #################################################################
+switch.ventilaor:
+  friendly_name: "Ventilaor"
+  emulated_hue_hidden: false
+  emulated_hue_name: "Ventilaor"
+  icon: mdi:fan
 group.eingang:
   friendly_name: "Eingang"
   emulated_hue_hidden: false

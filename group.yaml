@@ -91,6 +91,8 @@ lights:
     - light.treppe_oben
     - light.reading_lamp_yeelight
     - light.lobby_yeelight
+    - switch.ventilator
+    - switch.lobby
 
 livingroom:
     name: Wohnzimmer

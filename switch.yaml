@@ -78,4 +78,6 @@
 #################################################################
 - platform: tplink
     host: !secret tp_link_ventilator_ip
+    name: Ventilator
+    enable_leds: False
 

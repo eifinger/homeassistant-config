@@ -13,5 +13,5 @@
 - name: Elmo
   latitude: !secret elmo_latitude
   longitude: !secret elmo_longitude
-  radius: 150
+  radius: 600
   icon: mdi:leaf

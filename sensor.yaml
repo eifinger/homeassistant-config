@@ -231,5 +231,5 @@
 - platform: template
   sensors:
     ventilator_power_usage:
-    friendly_name: Ventilator Verbrauch
-    value_template: "{{states.switch.ventilator.attributes.current_power_w}}"
+      friendly_name: Ventilator Verbrauch
+      value_template: "{{states.switch.ventilator.attributes.current_power_w}}"

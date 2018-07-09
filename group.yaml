@@ -47,6 +47,7 @@ view_cameras:
   icon: mdi:cctv
   entities:
     - group.cameras
+    - group.group_android_ip_webcam_door
 
 view_sensors:
   name: Sensoren
@@ -250,9 +251,8 @@ s8plus_location:
     - sensor.room_s8plus
 
 cameras:
-  name: Kameras
+  name: Wohnungstür Erkennung
   entities:
-    - group.group_android_ip_webcam_door
     - camera.saved_image
     - image_processing.facebox
 

@@ -169,3 +169,5 @@ proximity.home_user_one:
   friendly_name: "Zu Hause"
 input_boolean.heading_home_notifier_user_one:
   friendly_name: Benachrichtigung wenn Kevin in Richtung nach Hause fährt
+sensor.ventilator_power_usage:
+  icon: mdi:gauge

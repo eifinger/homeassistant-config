@@ -41,6 +41,8 @@
           Schlafzimmer
         {% elif is_state('sensor.mqtt_room_user_one', 'lower_bathroom') %}
           Bad unten
+        {% elif is_state('sensor.mqtt_room_user_one', 'lowe_bathroom') %}
+          Bad unten
         {% elif is_state('sensor.mqtt_room_user_one', 'upper_bathroom') %}
           Bad oben
         {% elif is_state('sensor.mqtt_room_user_one', 'upper_balcony') %}
@@ -71,6 +73,8 @@
           Schlafzimmer
         {% elif is_state('sensor.mqtt_room_user_two', 'lower_bathroom') %}
           Bad unten
+        {% elif is_state('sensor.mqtt_room_user_two', 'lowe_bathroom') %}
+          Bad unten
         {% elif is_state('sensor.mqtt_room_user_two', 'upper_bathroom') %}
           Bad oben
         {% elif is_state('sensor.mqtt_room_user_two', 'upper_balcony') %}
@@ -100,6 +104,8 @@
         {% elif is_state('sensor.mqtt_room_galaxys8', 'bedroom') %}
           Schlafzimmer
         {% elif is_state('sensor.mqtt_room_galaxys8', 'lower_bathroom') %}
+          Bad unten
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'lowe_bathroom') %}
           Bad unten
         {% elif is_state('sensor.mqtt_room_galaxys8', 'upper_bathroom') %}
           Bad oben

@@ -159,7 +159,9 @@ binary_sensor.door_window_sensor_158d000204ba26:
 ## Xiaomi Motion Sensors
 #################################################################
 binary_sensor.motion_sensor_158d00012aab97:
-  friendly_name: "Bewegungsmelder Treppe"  
+  friendly_name: "Bewegungsmelder Treppe"
+binary_sensor.motion_sensor_158d0002006cfa:
+  friendly_name: "Bewegungsmelder Schlafzimmer"
 #################################################################
 ## Visibility
 #################################################################

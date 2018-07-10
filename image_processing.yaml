@@ -1,7 +1,7 @@
 
   - platform: facebox
-    ip_address: localhost
-    port: 9921
+    ip_address: !secret facebox_ip
+    port: !secret facebox_port
     scan_interval: 10000
     source:
       - entity_id: camera.local_file

@@ -10,7 +10,6 @@ default_view:
     - group.livingroom
     - group.occupancy
     - group.rooms
-    - switch.plug_158d00015694c5
 
 view_lights:
   name: Lights

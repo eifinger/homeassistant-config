@@ -232,10 +232,11 @@
   sensors:
     ventilator_power_usage:
       friendly_name: Ventilator Verbrauch
+      unit_of_measurement: 'W'
       value_template: "{{states.switch.ventilator.attributes.current_power_w}}"
 - platform: template
   sensors:
     varzilseiner_power_usage:
       friendly_name: Varzilseiner Verbrauch
+      unit_of_measurement: 'W'
       value_template: "{{states.switch.varzilseiner.attributes.current_power_w}}"
-      

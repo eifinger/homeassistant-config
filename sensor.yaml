@@ -233,3 +233,9 @@
     ventilator_power_usage:
       friendly_name: Ventilator Verbrauch
       value_template: "{{states.switch.ventilator.attributes.current_power_w}}"
+- platform: template
+  sensors:
+    varzilseiner_power_usage:
+      friendly_name: Ventilator Verbrauch
+      value_template: "{{states.switch.varzilseiner.attributes.current_power_w}}"
+      

@@ -80,4 +80,9 @@
   host: !secret tp_link_ventilator_ip
   name: Ventilator
   enable_leds: False
+- platform: tplink
+  host: !secret tp_link_varzilseiner_ip
+  name: Varzilseiner
+  enable_leds: False
+
 

@@ -4,5 +4,5 @@
     port: !secret facebox_port
     scan_interval: 10000
     source:
-      - entity_id: camera.local_file
+      - entity_id: camera.saved_image
         name: facebox

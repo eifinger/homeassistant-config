@@ -236,6 +236,6 @@
 - platform: template
   sensors:
     varzilseiner_power_usage:
-      friendly_name: Ventilator Verbrauch
+      friendly_name: Varzilseiner Verbrauch
       value_template: "{{states.switch.varzilseiner.attributes.current_power_w}}"
       

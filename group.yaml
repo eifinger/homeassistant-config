@@ -246,6 +246,7 @@ automation_entities:
     - input_boolean.room_based_light
     - input_boolean.heading_home_notifier_user_one
     - switch.varzilseiner
+    - switch.facebox_wol
 
 s8plus_location:
   name: S8 Plus Standort

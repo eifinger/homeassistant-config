@@ -84,5 +84,12 @@
   host: !secret tp_link_varzilseiner_ip
   name: Varzilseiner
   enable_leds: False
+#################################################################
+## WoL
+#################################################################
+- platform: wake_on_lan
+  name: facebox_wol
+  host: !secret facebox_ip
+  mac_address: !secret facebox_mac
 
 

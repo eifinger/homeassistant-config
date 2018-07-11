@@ -48,6 +48,13 @@ view_cameras:
     - group.cameras
     - group.group_android_ip_webcam_door
 
+view_gas_stations:
+  name: Tankstellen
+  view: yes
+  icon: mdi:gas-station
+  entities:
+    - group.gas_stations
+
 view_sensors:
   name: Sensoren
   view: yes
@@ -270,6 +277,13 @@ group_android_ip_webcam_door:
     - sensor.android_ip_webcam_door_motion
     - sensor.android_ip_webcam_door_sound
     - switch.android_ip_webcam_door_torch
+
+gas_stations:
+  name: Tankstellen
+  entities:
+    - sensor.gas_station_star
+    - sensor.gas_station_metro
+    - sensor.gas_station_globus
 #################################################################
 ## Synonym
 #################################################################

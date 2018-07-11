@@ -183,7 +183,7 @@ sensor.varzilseiner_power_usage:
   icon: mdi:gauge
 sensor.gas_station_star:
   icon: mdi:gas-station
-sensor:gas_station_metro:
+sensor.gas_station_metro:
   icon: mdi:gas-station
-sensor:gas_station_globus:
+sensor.gas_station_globus:
   icon: mdi:gas-station

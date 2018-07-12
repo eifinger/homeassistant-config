@@ -54,6 +54,7 @@ view_gas_stations:
   icon: mdi:gas-station
   entities:
     - group.gas_stations
+    - group.gas_station_statistics
 
 view_sensors:
   name: Sensoren
@@ -284,6 +285,14 @@ gas_stations:
     - sensor.gas_station_star
     - sensor.gas_station_metro
     - sensor.gas_station_globus
+
+gas_station_statistics:
+  name: Tankstellen Statistik
+  entities:
+    - sensor.statistics_gas_station_star
+    - sensor.statistics_gas_station_metro
+    - sensor.statistics_gas_station_globus
+    - sensor.min_gas_station
 #################################################################
 ## Synonym
 #################################################################

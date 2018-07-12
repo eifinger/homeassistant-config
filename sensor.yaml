@@ -264,3 +264,25 @@
       friendly_name: 'GLOBUS SVA Tankstelle'
       value_template: '{{ states.sensor.fuel.attributes["prices"]["51d4b634-a095-1aa0-e100-80009459e03a"]["diesel"]}}'
       unit_of_measurement: '€'
+- platform: statistics
+  entity_id: sensor.gas_station_star
+  name: statistics_gas_station_star
+  max_age:
+    days: 7
+- platform: statistics
+  entity_id: sensor.gas_station_metro
+  name: statistics_gas_station_metro
+  max_age:
+    days: 7
+- platform: statistics
+  entity_id: sensor.gas_station_globus
+  name: statistics_gas_station_globus
+  max_age:
+    days: 7
+- platform: min_max
+  type: min
+  name: min_gas_station
+  entity_ids:
+    - sensor.gas_station_star
+    - sensor.gas_station_metro
+    - sensor.gas_station_globus

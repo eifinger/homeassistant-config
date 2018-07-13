@@ -244,11 +244,11 @@
       value_template: "{{states.switch.dishwasher.attributes.current_power_w}}"
     dishwasher_power_usage_total:
       friendly_name: Spülmaschinen Verbrauch Total
-      unit_of_measurement: 'W'
+      unit_of_measurement: 'kWh'
       value_template: "{{states.switch.dishwasher.attributes.total_energy_kwh}}"
     dishwasher_power_usage_today:
       friendly_name: Spülmaschinen Verbrauch Heute
-      unit_of_measurement: 'W'
+      unit_of_measurement: 'kWh'
       value_template: "{{states.switch.dishwasher.attributes.today_energy_kwh}}"
 #################################################################
 ## Gas Stations

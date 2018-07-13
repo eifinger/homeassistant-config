@@ -61,7 +61,9 @@ view_pollen:
   view: yes
   icon: mdi:chart-bubble
   entities:
-    - group.pollen
+    - group.pollen_graeser
+    - group.pollen_birke
+    - group.pollen_roggen
 
 view_sensors:
   name: Sensoren
@@ -304,15 +306,21 @@ gas_station_statistics:
     - sensor.statistics_gas_station_globus
     - sensor.min_gas_station
 
-pollen:
-  name: Pollen
+pollen_graeser:
+  name: Gräser
   entities:
     - sensor.pollen_101_graeser_today
     - sensor.pollen_101_graeser_tomorrow
     - sensor.pollen_101_graeser_dayaftertomorrow
+pollen_birke:
+  name: Birke
+  entities:
     - sensor.pollen_101_birke_today
     - sensor.pollen_101_birke_tomorrow
     - sensor.pollen_101_birke_dayaftertomorrow
+pollen_roggen:
+  name: Roggen
+  entities:
     - sensor.pollen_101_roggen_today
     - sensor.pollen_101_roggen_tomorrow
     - sensor.pollen_101_roggen_dayaftertomorrow

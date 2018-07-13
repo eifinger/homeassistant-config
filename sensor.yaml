@@ -296,3 +296,39 @@
     - sensor.gas_station_star
     - sensor.gas_station_metro
     - sensor.gas_station_globus
+#################################################################
+## DWD Pollen
+#################################################################
+- platform: rest
+  resource: https://opendata.dwd.de/climate_environment/health/alerts/s31fg.json
+  name: pollen_101 # Rhein, Pfalz, Nahe und Mosel
+  value_template: '{% for region in value_json.content -%}{%- if region.partregion_id == 101 %}{{region.Pollen}}{% endif -%}{%- endfor %}'
+- platform: template
+  sensors:
+    pollen_101_graeser_today:
+      friendly_name: 'Gräser'
+      value_template: '{{ states.sensor.pollen_101.value_json.Graeser.today}}'
+    pollen_101_graeser_tomorrow:
+      friendly_name: 'Gräser'
+      value_template: '{{ states.sensor.pollen_101.value_json.Graeser.tomorrow}}'
+    pollen_101_graeser_dayaftertomorrow:
+      friendly_name: 'Gräser'
+      value_template: '{{ states.sensor.pollen_101.value_json.Graeser.dayafter_to}}'
+     pollen_101_birke_today:
+      friendly_name: 'Gräser'
+      value_template: '{{ states.sensor.pollen_101.value_json.Birke.today}}'
+    pollen_101_birke_tomorrow:
+      friendly_name: 'Gräser'
+      value_template: '{{ states.sensor.pollen_101.value_json.Birke.tomorrow}}'
+    pollen_101_birke_dayaftertomorrow:
+      friendly_name: 'Gräser'
+      value_template: '{{ states.sensor.pollen_101.value_json.Birke.dayafter_to}}'
+    pollen_101_roggen_today:
+      friendly_name: 'Gräser'
+      value_template: '{{ states.sensor.pollen_101.value_json.Roggen.today}}'
+    pollen_101_roggen_tomorrow:
+      friendly_name: 'Gräser'
+      value_template: '{{ states.sensor.pollen_101.value_json.Roggen.tomorrow}}'
+    pollen_101_roggen_dayaftertomorrow:
+      friendly_name: 'Gräser'
+      value_template: '{{ states.sensor.pollen_101.value_json.Roggen.dayafter_to}}'

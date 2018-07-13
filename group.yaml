@@ -56,6 +56,13 @@ view_gas_stations:
     - group.gas_stations
     - group.gas_station_statistics
 
+view_pollen:
+  name: Pollen
+  view: yes
+  icon: mdi:chart-bubble
+  entities:
+    - group.pollen
+
 view_sensors:
   name: Sensoren
   view: yes
@@ -296,6 +303,19 @@ gas_station_statistics:
     - sensor.statistics_gas_station_metro
     - sensor.statistics_gas_station_globus
     - sensor.min_gas_station
+
+pollen:
+  name: Pollen
+  entities:
+    - sensor.pollen_101_graeser_today
+    - sensor.pollen_101_graeser_tomorrow
+    - sensor.pollen_101_graeser_dayaftertomorrow
+    - sensor.pollen_101_birke_today
+    - sensor.pollen_101_birke_tomorrow
+    - sensor.pollen_101_birke_dayaftertomorrow
+    - sensor.pollen_101_roggen_today
+    - sensor.pollen_101_roggen_tomorrow
+    - sensor.pollen_101_roggen_dayaftertomorrow
 #################################################################
 ## Synonym
 #################################################################

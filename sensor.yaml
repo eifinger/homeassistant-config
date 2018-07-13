@@ -300,35 +300,49 @@
 ## DWD Pollen
 #################################################################
 - platform: rest
+  scan_interval: 43200   
   resource: https://opendata.dwd.de/climate_environment/health/alerts/s31fg.json
-  name: pollen_101 # Rhein, Pfalz, Nahe und Mosel
-  #value_template: '{% for region in value_json.content -%}{%- if region.partregion_id == 101 %}{{region.Pollen[]}}{% endif -%}{%- endfor %}'
+  name: pollen_101_graeser # Rhein, Pfalz, Nahe und Mosel
+  value_template: '{% for region in value_json.content -%}{%- if region.partregion_id == 101 %}{{region.Pollen.Graeser}}{% endif -%}{%- endfor %}'
+- platform: rest
+  scan_interval: 43200 
+  resource: https://opendata.dwd.de/climate_environment/health/alerts/s31fg.json
+  name: pollen_101_birke # Rhein, Pfalz, Nahe und Mosel
+  value_template: '{% for region in value_json.content -%}{%- if region.partregion_id == 101 %}{{region.Pollen.Birke}}{% endif -%}{%- endfor %}'
+- platform: rest
+  scan_interval: 43200  
+  resource: https://opendata.dwd.de/climate_environment/health/alerts/s31fg.json
+  name: pollen_101_roggen # Rhein, Pfalz, Nahe und Mosel
+  value_template: '{% for region in value_json.content -%}{%- if region.partregion_id == 101 %}{{region.Pollen.Roggen}}{% endif -%}{%- endfor %}'
 - platform: template
   sensors:
     pollen_101_graeser_today:
-      friendly_name: 'Gräser'
-      value_template: '{{ states.sensor.pollen_101.value_json.Graeser.today}}'
+      friendly_name: 'Gräser Heute'
+      value_template: >
+        {{ states('sensor.pollen_101_graeser')
+             |regex_findall_index("'today': '[-0-9]+'")
+             |regex_findall_index("[-0-9]+") }}
     pollen_101_graeser_tomorrow:
-      friendly_name: 'Gräser'
-      value_template: '{{ states.sensor.pollen_101.value_json.Graeser.tomorrow}}'
+      friendly_name: 'Gräser Morgen'
+      value_template: '{{ states.sensor.pollen_101_graeser.value_json.tomorrow}}'
     pollen_101_graeser_dayaftertomorrow:
-      friendly_name: 'Gräser'
-      value_template: '{{ states.sensor.pollen_101.value_json.Graeser.dayafter_to}}'
+      friendly_name: 'Gräser Übermorgen'
+      value_template: '{{ states.sensor.pollen_101_graeser.value_json.dayafter_to}}'
     pollen_101_birke_today:
-      friendly_name: 'Gräser'
-      value_template: '{{ states.sensor.pollen_101.value_json.Birke.today}}'
+      friendly_name: 'Birke Heute'
+      value_template: '{{ states.sensor.pollen_101_birke.value_json.today}}'
     pollen_101_birke_tomorrow:
-      friendly_name: 'Gräser'
-      value_template: '{{ states.sensor.pollen_101.value_json.Birke.tomorrow}}'
+      friendly_name: 'Birke Morgen'
+      value_template: '{{ states.sensor.pollen_101_birke.value_json.tomorrow}}'
     pollen_101_birke_dayaftertomorrow:
-      friendly_name: 'Gräser'
-      value_template: '{{ states.sensor.pollen_101.value_json.Birke.dayafter_to}}'
+      friendly_name: 'Birke Übermorgen'
+      value_template: '{{ states.sensor.pollen_101_birke.value_json.dayafter_to}}'
     pollen_101_roggen_today:
-      friendly_name: 'Gräser'
-      value_template: '{{ states.sensor.pollen_101.value_json.Roggen.today}}'
+      friendly_name: 'Roggen Heute'
+      value_template: '{{ states.sensor.pollen_101_roggen.value_json.today}}'
     pollen_101_roggen_tomorrow:
-      friendly_name: 'Gräser'
-      value_template: '{{ states.sensor.pollen_101.value_json.Roggen.tomorrow}}'
+      friendly_name: 'Roggen Morgen'
+      value_template: '{{ states.sensor.pollen_101_roggen.value_json.tomorrow}}'
     pollen_101_roggen_dayaftertomorrow:
-      friendly_name: 'Gräser'
-      value_template: '{{ states.sensor.pollen_101.value_json.Roggen.dayafter_to}}'
+      friendly_name: 'Roggen Übermorgen'
+      value_template: '{{ states.sensor.pollen_101_roggen.value_json.dayafter_to}}'

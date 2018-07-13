@@ -84,6 +84,10 @@
   host: !secret tp_link_varzilseiner_ip
   name: Varzilseiner
   enable_leds: False
+- platform: tplink
+  host: !secret tp_link_dishwasher_ip
+  name: Dishwasher
+  enable_leds: False
 #################################################################
 ## WoL
 #################################################################

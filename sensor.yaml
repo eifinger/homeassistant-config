@@ -234,14 +234,24 @@
       friendly_name: Ventilator Verbrauch
       unit_of_measurement: 'W'
       value_template: "{{states.switch.ventilator.attributes.current_power_w}}"
-- platform: template
-  sensors:
     varzilseiner_power_usage:
       friendly_name: Varzilseiner Verbrauch
       unit_of_measurement: 'W'
       value_template: "{{states.switch.varzilseiner.attributes.current_power_w}}"
+    dishwasher_power_usage:
+      friendly_name: Spülmaschinen Verbrauch
+      unit_of_measurement: 'W'
+      value_template: "{{states.switch.dishwasher.attributes.current_power_w}}"
+    dishwasher_power_usage_total:
+      friendly_name: Spülmaschinen Verbrauch Total
+      unit_of_measurement: 'W'
+      value_template: "{{states.switch.dishwasher.attributes.total_energy_kwh}}"
+    dishwasher_power_usage_today:
+      friendly_name: Spülmaschinen Verbrauch Heute
+      unit_of_measurement: 'W'
+      value_template: "{{states.switch.dishwasher.attributes.today_energy_kwh}}"
 #################################################################
-## Power Usage
+## Gas Stations
 #################################################################
 - platform: rest
   name: Fuel

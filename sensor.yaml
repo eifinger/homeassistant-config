@@ -314,7 +314,7 @@
     pollen_101_graeser_dayaftertomorrow:
       friendly_name: 'Gräser'
       value_template: '{{ states.sensor.pollen_101.value_json.Graeser.dayafter_to}}'
-     pollen_101_birke_today:
+    pollen_101_birke_today:
       friendly_name: 'Gräser'
       value_template: '{{ states.sensor.pollen_101.value_json.Birke.today}}'
     pollen_101_birke_tomorrow:

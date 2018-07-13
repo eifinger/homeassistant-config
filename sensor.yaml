@@ -324,25 +324,49 @@
              |regex_findall_index("[-0-9]+") }}
     pollen_101_graeser_tomorrow:
       friendly_name: 'Gräser Morgen'
-      value_template: '{{ states.sensor.pollen_101_graeser.value_json.tomorrow}}'
+      value_template: >
+        {{ states('sensor.pollen_101_graeser')
+             |regex_findall_index("'tomorrow': '[-0-9]+'")
+             |regex_findall_index("[-0-9]+") }}
     pollen_101_graeser_dayaftertomorrow:
       friendly_name: 'Gräser Übermorgen'
-      value_template: '{{ states.sensor.pollen_101_graeser.value_json.dayafter_to}}'
+      value_template: >
+        {{ states('sensor.pollen_101_graeser')
+             |regex_findall_index("'dayafter_to': '[-0-9]+'")
+             |regex_findall_index("[-0-9]+") }}
     pollen_101_birke_today:
       friendly_name: 'Birke Heute'
-      value_template: '{{ states.sensor.pollen_101_birke.value_json.today}}'
+      value_template: >
+        {{ states('sensor.pollen_101_birke')
+             |regex_findall_index("'today': '[-0-9]+'")
+             |regex_findall_index("[-0-9]+") }}
     pollen_101_birke_tomorrow:
       friendly_name: 'Birke Morgen'
-      value_template: '{{ states.sensor.pollen_101_birke.value_json.tomorrow}}'
+      value_template: >
+        {{ states('sensor.pollen_101_birke')
+             |regex_findall_index("'tomorrow': '[-0-9]+'")
+             |regex_findall_index("[-0-9]+") }}
     pollen_101_birke_dayaftertomorrow:
       friendly_name: 'Birke Übermorgen'
-      value_template: '{{ states.sensor.pollen_101_birke.value_json.dayafter_to}}'
+      value_template: >
+        {{ states('sensor.pollen_101_birke')
+             |regex_findall_index("'dayafter_to': '[-0-9]+'")
+             |regex_findall_index("[-0-9]+") }}
     pollen_101_roggen_today:
       friendly_name: 'Roggen Heute'
-      value_template: '{{ states.sensor.pollen_101_roggen.value_json.today}}'
+      value_template: >
+        {{ states('sensor.pollen_101_roggen')
+             |regex_findall_index("'today': '[-0-9]+'")
+             |regex_findall_index("[-0-9]+") }}
     pollen_101_roggen_tomorrow:
       friendly_name: 'Roggen Morgen'
-      value_template: '{{ states.sensor.pollen_101_roggen.value_json.tomorrow}}'
+      value_template: >
+        {{ states('sensor.pollen_101_roggen')
+             |regex_findall_index("'tomorrow': '[-0-9]+'")
+             |regex_findall_index("[-0-9]+") }}
     pollen_101_roggen_dayaftertomorrow:
       friendly_name: 'Roggen Übermorgen'
-      value_template: '{{ states.sensor.pollen_101_roggen.value_json.dayafter_to}}'
+      value_template: >
+        {{ states('sensor.pollen_101_roggen')
+             |regex_findall_index("'dayafter_to': '[-0-9]+'")
+             |regex_findall_index("[-0-9]+") }}

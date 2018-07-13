@@ -302,7 +302,9 @@
 - platform: rest
   resource: https://opendata.dwd.de/climate_environment/health/alerts/s31fg.json
   name: pollen_101 # Rhein, Pfalz, Nahe und Mosel
-  value_template: '{% for region in value_json.content -%}{%- if region.partregion_id == 101 %}{{region.Pollen}}{% endif -%}{%- endfor %}'
+  value_template: '{% for region in value_json.content -%}{%- if region.partregion_id == 101 %}{{region.Pollen[]}}{% endif -%}{%- endfor %}'
+  json_attributes:
+    - Pollen
 - platform: template
   sensors:
     pollen_101_graeser_today:

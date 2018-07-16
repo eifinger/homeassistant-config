@@ -53,8 +53,9 @@ view_gas_stations:
   view: yes
   icon: mdi:gas-station
   entities:
-    - group.gas_stations
-    - group.gas_station_statistics
+    - group.gas_station_star
+    - group.gas_station_metro
+    - group.gas_station_globus
 
 view_pollen:
   name: Pollen
@@ -291,20 +292,26 @@ group_android_ip_webcam_door:
     - sensor.android_ip_webcam_door_sound
     - switch.android_ip_webcam_door_torch
 
-gas_stations:
-  name: Tankstellen
+gas_station_star:
+  name: Star Tankstelle
   entities:
     - sensor.gas_station_star
-    - sensor.gas_station_metro
-    - sensor.gas_station_globus
-
-gas_station_statistics:
-  name: Tankstellen Statistik
-  entities:
     - sensor.statistics_gas_station_star
+    - history_graph.gas_station_star
+
+gas_station_metro:
+  name: Metro Tankstelle
+  entities:
+    - sensor.gas_station_metro
     - sensor.statistics_gas_station_metro
+    - history_graph.gas_station_metro
+
+gas_station_globus:
+  name: Globus Tankstelle
+  entities:
+    - sensor.gas_station_globus
     - sensor.statistics_gas_station_globus
-    - sensor.min_gas_station
+    - history_graph.gas_station_globus
 
 pollen_graeser:
   name: Gräser

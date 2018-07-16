@@ -193,6 +193,12 @@ sensor.gas_station_metro:
   icon: mdi:gas-station
 sensor.gas_station_globus:
   icon: mdi:gas-station
+history_graph.gas_station_globus:
+  friendly_name: Historie
+history_graph.gas_station_star:
+  friendly_name: Historie
+history_graph.gas_station_metro:
+  friendly_name: Historie
 #################################################################
 ## Android IP Webcam
 #################################################################

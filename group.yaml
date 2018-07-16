@@ -296,21 +296,21 @@ gas_station_star:
   name: Star Tankstelle
   entities:
     - sensor.gas_station_star
-    - sensor.statistics_gas_station_star
+    - sensor.statistics_gas_station_star_mean
     - history_graph.gas_station_star
 
 gas_station_metro:
   name: Metro Tankstelle
   entities:
     - sensor.gas_station_metro
-    - sensor.statistics_gas_station_metro
+    - sensor.statistics_gas_station_metro_mean
     - history_graph.gas_station_metro
 
 gas_station_globus:
   name: Globus Tankstelle
   entities:
     - sensor.gas_station_globus
-    - sensor.statistics_gas_station_globus
+    - sensor.statistics_gas_station_globus_mean
     - history_graph.gas_station_globus
 
 pollen_graeser:

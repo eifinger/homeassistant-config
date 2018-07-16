@@ -1,17 +1,17 @@
 gas_station_star:
-  name: Star Historie
+  name: gas_station_star
   entities:
     - sensor.gas_station_star
   hours_to_show: 240
   refresh: 900
 gas_station_metro:
-  name: Metro Historie
+  name: gas_station_metro
   entities:
     - sensor.gas_station_metro
   hours_to_show: 240
   refresh: 900
 gas_station_globus:
-  name: Globus Historie
+  name: gas_station_globus
   entities:
     - sensor.gas_station_globus
   hours_to_show: 240

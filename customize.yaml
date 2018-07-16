@@ -199,6 +199,12 @@ history_graph.gas_station_star:
   friendly_name: Historie
 history_graph.gas_station_metro:
   friendly_name: Historie
+sensor.statistics_gas_station_globus_mean:
+  friendly_name: Statistik (Mean)
+sensor.statistics_gas_station_star_mean:
+  friendly_name: Statistik (Mean)
+sensor.statistics_gas_station_metro_mean:
+  friendly_name: Statistik (Mean)
 #################################################################
 ## Android IP Webcam
 #################################################################

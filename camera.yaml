@@ -9,3 +9,6 @@
 - platform: local_file
   name: Saved Image
   file_path: /config/www/facebox/tmp/image.jpg
+- platform: local_file
+  name: facebox_health_check_picture
+  file_path: /config/www/facebox/healthcheck/user_one.jpg

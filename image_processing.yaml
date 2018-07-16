@@ -6,3 +6,5 @@
     source:
       - entity_id: camera.saved_image
         name: facebox
+      - entity_id: camera.facebox_health_check_picture
+        name: facebox_health_check_picture

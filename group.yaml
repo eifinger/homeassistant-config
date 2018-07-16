@@ -56,6 +56,7 @@ view_gas_stations:
     - group.gas_station_star
     - group.gas_station_metro
     - group.gas_station_globus
+    - history_graph.gas_stations
 
 view_pollen:
   name: Pollen

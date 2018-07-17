@@ -179,7 +179,7 @@ input_boolean.heading_home_notifier_user_one:
   friendly_name: Benachrichtigung wenn Kevin in Richtung nach Hause fährt
 sensor.ventilator_power_usage:
   icon: mdi:gauge
-sensor.varzilseiner_power_usage:
+sensor.washingmachine_power_usage:
   icon: mdi:gauge
 sensor.dishwasher_power_usage:
   icon: mdi:gauge

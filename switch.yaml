@@ -81,8 +81,8 @@
   name: Ventilator
   enable_leds: False
 - platform: tplink
-  host: !secret tp_link_varzilseiner_ip
-  name: Varzilseiner
+  host: !secret tp_link_washingmachine_ip
+  name: washingmachine
   enable_leds: False
 - platform: tplink
   host: !secret tp_link_dishwasher_ip

@@ -1,6 +1,5 @@
 leave_time_offset:
   name: Extra Zeit
-  initial: 30
   min: 0
   max: 60
   step: 1

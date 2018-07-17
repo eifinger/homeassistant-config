@@ -83,13 +83,6 @@ view_sensors:
     - group.user_one_location
     - group.user_two_location
 
-devices:
-  name: Geräte
-  view: yes
-  icon: mdi:wifi
-  entities:
-    - group.all_devices
-
 view_automation_entities:
   name: Automation
   view: yes

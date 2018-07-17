@@ -79,9 +79,6 @@ view_sensors:
     - group.reed
     - group.xiaomi_button
     - group.illumination
-    - group.s8plus_location
-    - group.user_one_location
-    - group.user_two_location
 
 view_automation_entities:
   name: Automation
@@ -260,24 +257,6 @@ automation_entities:
     - switch.washingmachine
     - switch.facebox_wol
     - sensor.uptime
-
-s8plus_location:
-  name: S8 Plus Standort
-  entities:
-    - device_tracker.galaxys8
-    - sensor.room_s8plus
-
-user_one_location:
-  name: Kevin Standort
-  entities:
-    - device_tracker.kevin
-    - sensor.room_user_one
-
-user_two_location:
-  name: Sina Standort
-  entities:
-    - device_tracker.sina
-    - sensor.room_user_two
 
 cameras:
   name: Wohnungstür Erkennung

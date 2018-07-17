@@ -372,6 +372,6 @@
 #################################################################
 ## Current Commit
 #################################################################
-- platform: file
+- platform: command_line
   name: current_commit
-  file_path: /config/currentCommit.txt
+  command: cat currentCommit.txt

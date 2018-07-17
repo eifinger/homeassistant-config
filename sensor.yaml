@@ -363,3 +363,9 @@
         {{ states('sensor.pollen_101_roggen')
              |regex_findall_index("'dayafter_to': '[-0-9]+'")
              |regex_findall_index("[-0-9]+") }}
+#################################################################
+## Uptime
+#################################################################
+- platform: uptime
+  name: Uptime
+  unit_of_measurement: minutes

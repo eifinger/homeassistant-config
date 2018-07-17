@@ -93,7 +93,7 @@ influxdb:
   password: !secret influxdb_password
 
 telegram_bot:
-  - platform: webhooks
+  - platform: polling
     api_key: !secret telegram_api_key
     allowed_chat_ids:
       - !secret telegram_allowed_chat_id_group_notifications

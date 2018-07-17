@@ -10,7 +10,6 @@ default_view:
     - group.livingroom
     - group.occupancy
     - group.rooms
-    - group.current_commit
 
 view_lights:
   name: Lights
@@ -88,6 +87,7 @@ view_automation_entities:
   icon: mdi:pipe-disconnected
   entities:
     - group.automation_entities
+    - group.current_commit
 
 #################################################################
 ## Group

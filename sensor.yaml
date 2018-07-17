@@ -374,4 +374,4 @@
 #################################################################
 - platform: command_line
   name: current_commit
-  command: cat currentCommit.txt
+  command: cat /config/currentCommit.txt

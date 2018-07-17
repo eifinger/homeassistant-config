@@ -10,6 +10,7 @@ default_view:
     - group.livingroom
     - group.occupancy
     - group.rooms
+    - group.current_commit
 
 view_lights:
   name: Lights
@@ -333,6 +334,10 @@ pollen_roggen:
     - sensor.pollen_101_roggen_today
     - sensor.pollen_101_roggen_tomorrow
     - sensor.pollen_101_roggen_dayaftertomorrow
+current_commit:
+  name: Running Commit
+  entities:
+    - sensor.current_commit
 #################################################################
 ## Synonym
 #################################################################

@@ -369,3 +369,9 @@
 - platform: uptime
   name: Uptime
   unit_of_measurement: minutes
+#################################################################
+## Current Commit
+#################################################################
+- platform: file
+  name: current_commit
+  file_path: /config/currentCommit.txt

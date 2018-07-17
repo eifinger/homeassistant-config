@@ -335,9 +335,10 @@ pollen_roggen:
     - sensor.pollen_101_roggen_tomorrow
     - sensor.pollen_101_roggen_dayaftertomorrow
 current_commit:
-  name: Running Commit
+  name: Basiert auf Commit
   entities:
-    - sensor.current_commit
+    - sensor.current_commit_id
+    - sensor.current_commit_name
 #################################################################
 ## Synonym
 #################################################################

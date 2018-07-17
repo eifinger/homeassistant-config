@@ -169,9 +169,9 @@ group.lights:
   friendly_name: "Lichter"
 group.all_devices:
   hidden: false
-sensor.room_user_one:
+sensor.location_user_one:
   entity_picture: /local/user_one.jpg
-sensor.room_user_two:
+sensor.location_user_two:
   entity_picture: /local/user_two.JPG
 proximity.home_user_one:
   friendly_name: "Zu Hause"

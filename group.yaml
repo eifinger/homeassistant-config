@@ -80,6 +80,8 @@ view_sensors:
     - group.xiaomi_button
     - group.illumination
     - group.s8plus_location
+    - group.user_one_location
+    - group.user_two_location
 
 devices:
   name: Geräte
@@ -150,8 +152,8 @@ studyroom:
 occupancy:
   name: Anwesenheit
   entities:
-    - device_tracker.kevin
-    - device_tracker.sina
+    - sensor.location_user_one
+    - sensor.location_user_two
 
 sensors:
   name: Sensoren
@@ -229,12 +231,6 @@ media_players:
     - media_player.kodi
     - media_player.spotify
 
-rooms:
-  name: Raum
-  entities:
-    - sensor.room_user_one
-    - sensor.room_user_two
-
 next_appointment:
   name: Nächster Termin
   entities:
@@ -277,6 +273,18 @@ s8plus_location:
   entities:
     - device_tracker.galaxys8
     - sensor.room_s8plus
+
+user_one_location:
+  name: Kevin Standort
+  entities:
+    - device_tracker.kevin
+    - sensor.room_user_one
+
+user_two_location:
+  name: Sina Standort
+  entities:
+    - device_tracker.sina
+    - sensor.room_user_two
 
 cameras:
   name: Wohnungstür Erkennung

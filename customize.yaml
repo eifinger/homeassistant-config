@@ -135,9 +135,9 @@ sensor.travel_time_elmo_from_home:
   templates:
     icon_color: >
       if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
-        return [255,0,0];
-      } else if (attributes.duration_in_traffic > attributes.duration * 1.1 ) {
-        return [255, 153, 0];
+        return "red";
+      } else if (attributes.duration_in_traffic > attributes.duration ) {
+        return "orange";
       } else {
         return "green";
       }
@@ -148,7 +148,7 @@ sensor.travel_time_next_appointment_location:
     icon_color: >
       if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
         return [255,0,0];
-      } else if (attributes.duration_in_traffic > attributes.duration * 1.1 ) {
+      } else if (attributes.duration_in_traffic > attributes.duration ) {
         return [255, 153, 0];
       } else {
         return [0, 128, 0];

@@ -139,7 +139,7 @@ sensor.travel_time_elmo_from_home:
       } else if (attributes.duration_in_traffic > attributes.duration * 1.1 ) {
         return [255, 153, 0];
       } else {
-        return green;
+        return "green";
       }
 sensor.travel_time_next_appointment_location:
   icon: mdi:car

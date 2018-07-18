@@ -117,11 +117,11 @@ sensor.travel_time_work_from_home:
   templates:
     hs_color: >
       if (attributes.duration in traffic > attributes.duration * 1.2 ) {
-        return [255,0,0];
+        return '(255,0,0)';
       } else if (attributes.duration in traffic > attributes.duration * 1.1 ) {
-        return [255, 153, 0];
+        return '(255, 153, 0)';
       } else {
-        return [0, 128, 0];
+        return '(0, 128, 0)';
       }
 sensor.travel_time_home_from_work:
   icon: mdi:car
@@ -129,11 +129,11 @@ sensor.travel_time_home_from_work:
   templates:
     icon_color: >
       if (attributes.duration in traffic > attributes.duration * 1.2 ) {
-        return [255,0,0];
+        return '(255,0,0)';
       } else if (attributes.duration in traffic > attributes.duration * 1.1 ) {
-        return [255, 153, 0];
+        return '(255, 153, 0)';
       } else {
-        return [0, 128, 0];
+        return '(0, 128, 0)';
       }
 sensor.travel_time_elmo_from_home:
   icon: mdi:car

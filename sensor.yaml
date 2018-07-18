@@ -3,6 +3,7 @@
 #################################################################
 - platform: darksky
   api_key: !secret darsky_api_key
+  language: de
   monitored_conditions:
     - summary
     - icon

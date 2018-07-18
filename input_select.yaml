@@ -1,0 +1,6 @@
+next_appointment_travel_mode:
+  name: Reiseart
+  options:
+    - Auto
+    - Fahrrad
+    - Öffis

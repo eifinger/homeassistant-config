@@ -168,6 +168,11 @@ input_boolean.travel_time_elmo_from_home:
   friendly_name: "Zu Hause -> Elmo Benachrichtigung"
 input_boolean.announce_time_to_leave:
   friendly_name: "Kevin -> Nächster Termin Benachrichtigung"
+input_select.next_appointment_travel_mode:
+  templates:
+    icon: if (state === 'Auto') {
+      return "mdi:car";
+    }
 #################################################################
 ## Xiaomi Reed Switches
 #################################################################

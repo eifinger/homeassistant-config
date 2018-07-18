@@ -128,7 +128,7 @@ sensor.travel_time_home_from_work:
   friendly_name: "SVA -> Zu Hause"
   templates:
     icon_color: >
-      return '(0, 128, 0)';
+      green;
   
 sensor.travel_time_elmo_from_home:
   icon: mdi:car
@@ -140,7 +140,7 @@ sensor.travel_time_elmo_from_home:
       } else if (attributes.duration_in_traffic > attributes.duration * 1.1 ) {
         return [255, 153, 0];
       } else {
-        return [0, 128, 0];
+        return green;
       }
 sensor.travel_time_next_appointment_location:
   icon: mdi:car

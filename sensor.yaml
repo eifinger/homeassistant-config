@@ -10,6 +10,7 @@
     - precip_type
     - precip_intensity
     - precip_probability
+    - precip_intensity_max 
     - temperature
     - wind_speed
     - cloud_cover

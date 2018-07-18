@@ -170,9 +170,14 @@ input_boolean.announce_time_to_leave:
   friendly_name: "Kevin -> Nächster Termin Benachrichtigung"
 input_select.next_appointment_travel_mode:
   templates:
-    icon: if (state === 'Auto') {
-      return "mdi:car";
-    }
+    icon: >
+      if ( state === 'Auto' ) {
+        return "mdi:car";
+      } else if ( state === 'Fahrrad' ) {
+        return "mdi:bike"
+      } else if ( state === 'Öffis' ) {
+        return "mdi:bus"
+      }
 #################################################################
 ## Xiaomi Reed Switches
 #################################################################

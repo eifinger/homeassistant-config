@@ -38,6 +38,12 @@ view_traveltimes:
   icon: mdi:google-maps
   entities:
     - group.traveltimes
+
+view_next_appointment:
+  name: Nächster Termin
+  view: yes
+  icon: mdi:calendar
+  entities:
     - group.next_appointment
 
 view_cameras:

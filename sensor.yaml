@@ -202,7 +202,7 @@
     mode: transit
 
 # debug
-platform: google_travel_time
+- platform: google_travel_time
   name: debug
   api_key: !secret google_maps_api_token
   origin: zone.home

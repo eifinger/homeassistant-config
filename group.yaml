@@ -279,6 +279,7 @@ cameras:
   entities:
     - camera.saved_image
     - image_processing.facebox
+    - sensor.facebox_detection
 
 group_android_ip_webcam_door:
   name: Webcam Tür

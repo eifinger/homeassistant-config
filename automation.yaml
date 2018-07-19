@@ -10,3 +10,15 @@
           {{trigger.event.data.host_name}}
           ({{trigger.event.data.entity_id}})
         title: Unbekanntes Gerät entdeckt
+
+- alias: Turn on Red Upper Stair Light on Shutdown
+  trigger:
+    platform: homeassistant
+    event: shutdown
+  action:
+    - service: light.turn_on
+      data:
+        brightness: 255
+        rgb_color: [0, 255, 0]
+        entity_id:
+        - light.bar_table

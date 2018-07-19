@@ -393,6 +393,9 @@ input_boolean.user_two_home:
 sensor.cal_next_appointment_title:
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
+script.learn_faces:
+  action_name: Learn
+  friendly_name: Lerne Gesichter
 #################################################################
 ## Android IP Webcam
 #################################################################

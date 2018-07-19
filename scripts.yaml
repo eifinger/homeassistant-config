@@ -62,4 +62,9 @@ bar_table_white:
         qos: 1
         retain: false
         topic: "RGBW/00D2EE20/json/set"
-
+#################################################################
+## Learn Faces
+#################################################################
+learn_faces:
+  sequence:
+    - event: eifinger_learn_faces

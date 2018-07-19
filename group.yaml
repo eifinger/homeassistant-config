@@ -296,6 +296,7 @@ cameras:
     - camera.saved_image
     - image_processing.facebox
     - sensor.facebox_detection
+    - script.learn_faces
 
 group_android_ip_webcam_door:
   name: Webcam Tür

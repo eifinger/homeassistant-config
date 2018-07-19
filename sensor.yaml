@@ -181,7 +181,7 @@
   origin: !secret device_user_one
   destination: sensor.cal_next_appointment_location_google_prepared
   options:
-    arrival_time: sensor.cal_work_start_time
+    arrival_time: sensor.cal_next_appointment_start_time
 #Next Appointment Bike
 - platform: google_travel_time
   name: travel_time_next_appointment_location_bike
@@ -189,7 +189,7 @@
   origin: !secret device_user_one
   destination: sensor.cal_next_appointment_location_google_prepared
   options:
-    arrival_time: sensor.cal_work_start_time
+    arrival_time: sensor.cal_next_appointment_start_time
     mode: bicycling
 #Next Appointment Transit
 - platform: google_travel_time
@@ -198,7 +198,7 @@
   origin: !secret device_user_one
   destination: sensor.cal_next_appointment_location_google_prepared
   options:
-    arrival_time: sensor.cal_work_start_time
+    arrival_time: sensor.cal_next_appointment_start_time
     mode: transit
 #compare with waze
 - platform: google_travel_time
@@ -229,7 +229,7 @@
        friendly_name: Ort
     cal_next_appointment_start_time:
       friendly_name: Um
-      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.start_time }}"
+      value_template: "{{ states.calendar.keifingergooglemailcom.attributes.start_time or now() }}"
     calc_leave_time:
        value_template: '{% if is_state("input_select.next_appointment_travel_mode","Auto") %}{{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_car") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% elif is_state("input_select.next_appointment_travel_mode","Fahrrad")%} {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_bike") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% elif is_state("input_select.next_appointment_travel_mode","Öffis")%} {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_transit") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% endif %}'
        friendly_name: Losfahren

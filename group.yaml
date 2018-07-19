@@ -45,6 +45,7 @@ view_next_appointment:
   icon: mdi:calendar
   entities:
     - group.next_appointment
+    - group.next_appointment_traveltimes
     - camera.next_appointment_location_staticmap
     - camera.next_appointment_location_street_view
 
@@ -198,6 +199,14 @@ traveltimes:
     - sensor.travel_time_elmo_from_home
     - input_boolean.travel_time_elmo_from_home
     - sensor.travel_time_next_appointment_location
+    - input_boolean.announce_time_to_leave
+
+next_appointment_traveltimes:
+  name: Reisezeiten
+  entities:
+    - sensor.travel_time_next_appointment_location_car
+    - sensor.travel_time_next_appointment_location_bike
+    - sensor.travel_time_next_appointment_location_transit
     - input_boolean.announce_time_to_leave
 
 motion:

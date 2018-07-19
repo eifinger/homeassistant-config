@@ -164,8 +164,34 @@ sensor.travel_time_elmo_from_home:
       } else {
         return "green";
       }
-sensor.travel_time_next_appointment_location:
+sensor.travel_time_next_appointment_location_car:
   icon: mdi:car
+  friendly_name: "Kevin -> Nächster Termin"
+  show_last_changed: true
+  templates:
+    icon_color: >
+      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
+        return "red";
+      } else if (attributes.duration_in_traffic > attributes.duration ) {
+        return "orange";
+      } else {
+        return "green";
+      }
+sensor.travel_time_next_appointment_location_bike:
+  icon: mdi:bike
+  friendly_name: "Kevin -> Nächster Termin"
+  show_last_changed: true
+  templates:
+    icon_color: >
+      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
+        return "red";
+      } else if (attributes.duration_in_traffic > attributes.duration ) {
+        return "orange";
+      } else {
+        return "green";
+      }
+sensor.travel_time_next_appointment_location_transit:
+  icon: mdi:bus
   friendly_name: "Kevin -> Nächster Termin"
   show_last_changed: true
   templates:

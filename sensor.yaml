@@ -210,19 +210,6 @@ platform: google_travel_time
   options:
     arrival_time: sensor.cal_next_appointment_start_time
     mode: transit
-#compare with waze
-- platform: google_travel_time
-  name: travel_time_ikea_from_dom
-  api_key: !secret google_maps_api_token
-  origin: 49.999112, 8.273897
-  destination: 50.058128, 8.371457
-
-#Waze
-- platform: waze_travel_time
-  name: waze_travel_time_ikea_from_dom
-  origin: 49.999112, 8.273897
-  destination: 50.058128, 8.371457
-  region: EU
 #################################################################
 ## Next Appointment
 #################################################################

@@ -298,6 +298,16 @@ sensor.statistics_gas_station_metro_mean:
   friendly_name: Statistik (Mean)
 sensor.room_s8plus:
   icon: mdi:cellphone
+sensor.cal_next_appointment_title:
+  icon: mdi:calendar
+sensor.cal_next_appointment_location:
+  icon: mdi:map-marker
+sensor.cal_next_appointment_start_time:
+  icon: mdi:clock
+sensor.calc_leave_time:
+  icon: mdi:clock
+input_number.leave_time_offset:
+  icon: mdi:clock
 #################################################################
 ## Android IP Webcam
 #################################################################

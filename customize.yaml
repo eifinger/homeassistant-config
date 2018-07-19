@@ -15,6 +15,7 @@ light.treppe_oben:
   friendly_name: "Treppe Oben"
   emulated_hue_hidden: false
   emulated_hue_name: "Treppe Oben"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.snowboard:
   emulated_hue_hidden: false

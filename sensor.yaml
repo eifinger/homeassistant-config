@@ -198,17 +198,6 @@
   origin: !secret device_user_one
   destination: sensor.cal_next_appointment_location_google_prepared
   options:
-    arrival_time: sensor.cal_next_appointment_start_time
-    mode: transit
-
-# debug
-- platform: google_travel_time
-  name: debug
-  api_key: !secret google_maps_api_token
-  origin: zone.home
-  destination: zone.work
-  options:
-    arrival_time: "14:00:00"
     mode: transit
 #################################################################
 ## Next Appointment

@@ -208,7 +208,7 @@
   origin: zone.home
   destination: zone.work
   options:
-#    arrival_time: sensor.cal_next_appointment_start_time
+    arrival_time: "14:00:00"
     mode: transit
 #################################################################
 ## Next Appointment

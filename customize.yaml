@@ -6,6 +6,7 @@ switch.ventilator:
   emulated_hue_hidden: false
   emulated_hue_name: "Ventilator"
   icon: mdi:fan
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 group.eingang:
   friendly_name: "Eingang"
@@ -16,41 +17,48 @@ light.treppe_oben:
   emulated_hue_hidden: false
   emulated_hue_name: "Treppe Oben"
   custom_ui_state_card: state-card-custom-ui
+  state_card_mode: break-slider
   show_last_changed: true
 switch.snowboard:
   emulated_hue_hidden: false
   emulated_hue_name: "Snowboard"
   icon: mdi:lightbulb
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.small_lamp:
   friendly_name: "Kleine Lampe"
   emulated_hue_hidden: false
   emulated_hue_name: "Kleine Lampe"
   icon: mdi:lightbulb
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.large_lamp:
   friendly_name: "Große Lampe"
   emulated_hue_hidden: false
   emulated_hue_name: "Große Lampe"
   icon: mdi:lightbulb
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.lobby:
   friendly_name: "Flur"
   emulated_hue_hidden: false
   emulated_hue_name: "Flur"
   icon: mdi:lightbulb
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.studyroom:
   friendly_name: "Arbeitszimmer"
   emulated_hue_hidden: false
   emulated_hue_name: "Arbeitszimmer"
   icon: mdi:lightbulb
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.bath_mirror:
   friendly_name: "Badspiegel"
   emulated_hue_hidden: false
   emulated_hue_name: "Badspiegel"
   icon: mdi:lightbulb
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 media_player.denon_avrx1300w:
   emulated_hue_hidden: false
@@ -86,6 +94,8 @@ light.bar_table:
   friendly_name: "Bar"
   emulated_hue_hidden: false
   emulated_hue_name: "Bar"
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: break-slider
   show_last_changed: true
 script.bar_table_green:
   emulated_hue_hidden: false
@@ -100,21 +110,29 @@ light.bedroom_yeelight:
   friendly_name: "Schlafzimmer"
   emulated_hue_hidden: false
   emulated_hue_name: "Schlafzimmer"
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: break-slider
   show_last_changed: true
 light.stairs_lower_yeelight:
   friendly_name: "Treppe Unten"
   emulated_hue_hidden: false
   emulated_hue_name: "Treppe Unten"
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: break-slider
   show_last_changed: true
 light.reading_lamp_yeelight:
   friendly_name: "Leselampe"
   emulated_hue_hidden: false
   emulated_hue_name: "Leselampe"
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: break-slider
   show_last_changed: true
 light.lobby_yeelight:
   friendly_name: "Garderobe"
   emulated_hue_hidden: false
   emulated_hue_name: "Garderobe"
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: break-slider
   show_last_changed: true
 group.stair_lights:
   emulated_hue_hidden: false
@@ -128,6 +146,7 @@ input_boolean.room_based_light:
 sensor.travel_time_work_from_home:
   icon: mdi:car
   friendly_name: "Zu Hause -> SVA"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
   templates:
     icon_color: >
@@ -141,6 +160,7 @@ sensor.travel_time_work_from_home:
 sensor.travel_time_home_from_work:
   icon: mdi:car
   friendly_name: "SVA -> Zu Hause"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
   templates:
     icon_color: >
@@ -155,6 +175,7 @@ sensor.travel_time_home_from_work:
 sensor.travel_time_elmo_from_home:
   icon: mdi:car
   friendly_name: "Zu Hause -> Elmo"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
   templates:
     icon_color: >
@@ -168,6 +189,7 @@ sensor.travel_time_elmo_from_home:
 sensor.travel_time_next_appointment_location_car:
   icon: mdi:car
   friendly_name: "Kevin -> Nächster Termin"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
   templates:
     icon_color: >
@@ -181,6 +203,7 @@ sensor.travel_time_next_appointment_location_car:
 sensor.travel_time_next_appointment_location_bike:
   icon: mdi:bike
   friendly_name: "Kevin -> Nächster Termin"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
   templates:
     icon_color: >
@@ -194,6 +217,7 @@ sensor.travel_time_next_appointment_location_bike:
 sensor.travel_time_next_appointment_location_transit:
   icon: mdi:bus
   friendly_name: "Kevin -> Nächster Termin"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
   templates:
     icon_color: >
@@ -206,17 +230,22 @@ sensor.travel_time_next_appointment_location_transit:
       }
 input_boolean.travel_time_work_from_home:
   friendly_name: "Zu Hause -> SVA Benachrichtigung"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 input_boolean.travel_time_home_from_work:
   friendly_name: "SVA -> Zu Hause Benachrichtigung"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 input_boolean.travel_time_elmo_from_home:
   friendly_name: "Zu Hause -> Elmo Benachrichtigung"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 input_boolean.announce_time_to_leave:
   friendly_name: "Kevin -> Nächster Termin Benachrichtigung"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 input_select.next_appointment_travel_mode:
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
   templates:
     icon: >
@@ -233,39 +262,48 @@ input_select.next_appointment_travel_mode:
 binary_sensor.door_window_sensor_158d0001bb4dc0:
   friendly_name: "Terassentür Gekippt"
   device_class: window
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 binary_sensor.door_window_sensor_158d000126a57b:
   friendly_name: "Wohnungstür"
   device_class: door
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 binary_sensor.door_window_sensor_158d0001bb4d94:
   friendly_name: "Terassentür Schlafzimmer"
   device_class: door
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 binary_sensor.door_window_sensor_158d000205b808:
   friendly_name: "Terassentür"
   device_class: door
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 binary_sensor.door_window_sensor_158d000205b82e:
   friendly_name: "Terrassentür Arbeitszimmer"
   device_class: door
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 binary_sensor.door_window_sensor_158d00020498b6:
   friendly_name: "Küchenfenster"
   device_class: window
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 binary_sensor.door_window_sensor_158d000204ba26:
   friendly_name: "Badfenster Oben"
   device_class: window
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 #################################################################
 ## Xiaomi Motion Sensors
 #################################################################
 binary_sensor.motion_sensor_158d00012aab97:
   friendly_name: "Bewegungsmelder Treppe"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 binary_sensor.motion_sensor_158d0002006cfa:
   friendly_name: "Bewegungsmelder Schlafzimmer"
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 #################################################################
 ## Visibility
@@ -282,6 +320,7 @@ proximity.home_user_one:
   friendly_name: "Zu Hause"
 input_boolean.heading_home_notifier_user_one:
   friendly_name: Benachrichtigung wenn Kevin in Richtung nach Hause fährt
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 sensor.ventilator_power_usage:
   icon: mdi:gauge

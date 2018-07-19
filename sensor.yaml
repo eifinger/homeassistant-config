@@ -233,6 +233,8 @@
     calc_leave_time:
        value_template: '{% if is_state("input_select.next_appointment_travel_mode","Auto") %}{{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_car") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% elif is_state("input_select.next_appointment_travel_mode","Fahrrad")%} {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_bike") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% elif is_state("input_select.next_appointment_travel_mode","Öffis")%} {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_transit") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% endif %}'
        friendly_name: Losfahren
+    travel_time_next_appointment_location:
+      value_template: '{% if is_state("input_select.next_appointment_travel_mode","Auto") %}{{states("sensor.travel_time_next_appointment_location_car")}} {% elif is_state("input_select.next_appointment_travel_mode","Fahrrad")%} {{states("sensor.travel_time_next_appointment_location_bike")}} {% elif is_state("input_select.next_appointment_travel_mode","Öffis")%} {{ states("sensor.travel_time_next_appointment_location_transit")}} {% endif %}'
 #################################################################
 ## Sun
 #################################################################

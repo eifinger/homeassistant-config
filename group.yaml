@@ -11,6 +11,7 @@ default_view:
     - group.occupancy
     - group.rooms
     - group.reed
+    - group.alarm
 
 view_lights:
   name: Lights
@@ -352,6 +353,10 @@ current_commit:
   entities:
     - sensor.current_commit_id
     - sensor.current_commit_name
+alarm:
+  name: Wecker
+  entities:
+    - input_datetime.alarm
 #################################################################
 ## Synonym
 #################################################################

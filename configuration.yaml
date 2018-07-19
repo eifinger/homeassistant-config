@@ -124,3 +124,4 @@ image_processing: !include image_processing.yaml
 android_ip_webcam: !include android_ip_webcam.yaml
 history_graph: !include history_graph.yaml
 input_select: !include input_select.yaml
+input_datetime: !include input_datetime.yaml

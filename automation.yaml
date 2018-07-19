@@ -1,1 +1,12 @@
-
+- alias: Notify for new devices
+  trigger:
+    platform: event
+    event_type: device_tracker_new_device
+  action:
+    - service: notify.group_notifications
+      data:
+        message: >
+          Unbekanntes Gerät entdeckt:
+          {{trigger.event.data.host_name}}
+          ({{trigger.event.data.entity_id}})
+        title: Unbekanntes Gerät entdeckt

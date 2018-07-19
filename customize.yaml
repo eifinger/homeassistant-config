@@ -336,6 +336,8 @@ input_number.leave_time_offset:
   icon: mdi:clock
 sensor.facebox_detection:
   icon: mdi:account
+sensor.travel_time_next_appointment_location:
+  icon: mdi:clock
 #################################################################
 ## Android IP Webcam
 #################################################################

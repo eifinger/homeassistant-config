@@ -198,8 +198,6 @@ traveltimes:
     - input_boolean.travel_time_work_from_home
     - sensor.travel_time_elmo_from_home
     - input_boolean.travel_time_elmo_from_home
-    - sensor.travel_time_next_appointment_location
-    - input_boolean.announce_time_to_leave
 
 next_appointment_traveltimes:
   name: Reisezeiten
@@ -253,6 +251,7 @@ next_appointment:
     - sensor.cal_next_appointment_title
     - sensor.cal_next_appointment_location
     - sensor.cal_next_appointment_start_time
+    - sensor.travel_time_next_appointment_location
     - sensor.calc_leave_time
     - input_select.next_appointment_travel_mode
     - input_number.leave_time_offset

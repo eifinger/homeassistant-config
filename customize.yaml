@@ -381,6 +381,15 @@ sensor.facebox_detection:
   icon: mdi:account
 sensor.travel_time_next_appointment_location:
   icon: mdi:clock
+input_boolean.is_home:
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+input_boolean.user_one_home:
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+input_boolean.user_two_home:
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
 #################################################################
 ## Android IP Webcam
 #################################################################

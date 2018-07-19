@@ -45,6 +45,8 @@ view_next_appointment:
   icon: mdi:calendar
   entities:
     - group.next_appointment
+    - camera.next_appointment_location_staticmap
+    - camera.next_appointment_location_street_view
 
 view_cameras:
   name: Kameras
@@ -245,8 +247,6 @@ next_appointment:
     - sensor.calc_leave_time
     - input_select.next_appointment_travel_mode
     - input_number.leave_time_offset
-    - camera.next_appointment_location_staticmap
-    - camera.next_appointment_location_street_view
 
 stair_lights:
   name: Treppenlichter

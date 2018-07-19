@@ -390,6 +390,9 @@ input_boolean.user_one_home:
 input_boolean.user_two_home:
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
+sensor.cal_next_appointment_title:
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
 #################################################################
 ## Android IP Webcam
 #################################################################

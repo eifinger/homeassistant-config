@@ -255,10 +255,26 @@
       friendly_name: Ventilator Verbrauch
       unit_of_measurement: 'W'
       value_template: "{{states.switch.ventilator.attributes.current_power_w}}"
+    ventilator_power_usage_total:
+      friendly_name: Ventilator Verbrauch Total
+      unit_of_measurement: 'kWh'
+      value_template: "{{states.switch.ventilator.attributes.total_energy_kwh}}"
+    ventilator_power_usage_today:
+      friendly_name: Ventilator Verbrauch Heute
+      unit_of_measurement: 'kWh'
+      value_template: "{{states.switch.ventilator.attributes.today_energy_kwh}}"
     washingmachine_power_usage:
       friendly_name: Waschmaschinen Verbrauch
       unit_of_measurement: 'W'
       value_template: "{{states.switch.washingmachine.attributes.current_power_w}}"
+    washingmachine_power_usage_total:
+      friendly_name: Waschmaschinen Verbrauch Total
+      unit_of_measurement: 'kWh'
+      value_template: "{{states.switch.washingmachine.attributes.total_energy_kwh}}"
+    washingmachine_power_usage_today:
+      friendly_name: Waschmaschinen Verbrauch Heute
+      unit_of_measurement: 'kWh'
+      value_template: "{{states.switch.washingmachine.attributes.today_energy_kwh}}"
     dishwasher_power_usage:
       friendly_name: Spülmaschinen Verbrauch
       unit_of_measurement: 'W'

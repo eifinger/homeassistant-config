@@ -337,12 +337,15 @@ sensor.dishwasher_power_usage_total:
   icon: mdi:gauge
 sensor.gas_station_star:
   icon: mdi:gas-station
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 sensor.gas_station_metro:
   icon: mdi:gas-station
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 sensor.gas_station_globus:
   icon: mdi:gas-station
+  custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 sensor.large_lamp_humidity:
   icon: mdi:water-percent

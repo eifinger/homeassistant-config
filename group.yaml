@@ -95,6 +95,7 @@ view_automation_entities:
   view: yes
   icon: mdi:pipe-disconnected
   entities:
+    - group.automation_presence_entities
     - group.automation_entities
     - group.current_commit
 
@@ -269,22 +270,23 @@ stair_lights:
 automation_entities:
   name: Automation
   entities:
+    - sun.sun
+    - input_boolean.heading_home_notifier_user_one
+    - switch.facebox_wol
+    - sensor.uptime
+
+automation_presence_entities:
+  name: Presence
+  entities:
     - input_boolean.is_home
+    - input_boolean.user_one_home
+    - input_boolean.user_two_home
     - proximity.home 
     - proximity.home_user_one
     - proximity.work
-    - sun.sun
-    - input_boolean.user_one_home
-    - input_boolean.user_two_home
     - sensor.mqtt_room_user_one
     - sensor.mqtt_room_user_two
-    - sensor.travel_time_ikea_from_dom
-    - sensor.waze_travel_time_ikea_from_dom
     - input_boolean.room_based_light
-    - input_boolean.heading_home_notifier_user_one
-    - switch.washingmachine
-    - switch.facebox_wol
-    - sensor.uptime
 
 cameras:
   name: Wohnungstür Erkennung

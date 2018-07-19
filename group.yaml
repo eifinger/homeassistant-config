@@ -10,6 +10,7 @@ default_view:
     - group.livingroom
     - group.occupancy
     - group.rooms
+    - group.reed
 
 view_lights:
   name: Lights

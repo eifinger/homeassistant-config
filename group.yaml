@@ -253,8 +253,8 @@ next_appointment:
     - sensor.cal_next_appointment_start_time
     - sensor.travel_time_next_appointment_location
     - sensor.calc_leave_time
-    - input_select.next_appointment_travel_mode
     - input_number.leave_time_offset
+    - input_select.next_appointment_travel_mode
 
 stair_lights:
   name: Treppenlichter

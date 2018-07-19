@@ -290,6 +290,7 @@ group_android_ip_webcam_door:
     - sensor.android_ip_webcam_door_motion
     - sensor.android_ip_webcam_door_sound
     - switch.android_ip_webcam_door_torch
+    - switch.android_ip_webcam_door_video_recording
 
 gas_station_star:
   name: Star Tankstelle

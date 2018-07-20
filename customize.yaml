@@ -274,6 +274,8 @@ input_select.next_appointment_travel_mode:
       }
 sensor.cal_next_appointment_title:
   icon: mdi:calendar
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
   templates:
     friendly_name: >
       if ( entities['input_select.next_appointment_travel_mode'].state === 'Laufen' ) {
@@ -419,9 +421,6 @@ input_boolean.user_one_home:
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 input_boolean.user_two_home:
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-sensor.cal_next_appointment_title:
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 script.learn_faces:

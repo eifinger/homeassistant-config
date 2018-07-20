@@ -175,14 +175,15 @@ power_usage:
   name: Stromverbrauch
   entities:
     - sensor.ventilator_power_usage
-    - sensor.ventilator_power_usage_total
     - sensor.ventilator_power_usage_today
+    - sensor.ventilator_power_usage_total
     - sensor.washingmachine_power_usage
-    - sensor.washingmachine_power_usage_total
     - sensor.washingmachine_power_usage_today
+    - sensor.washingmachine_power_usage_total
     - sensor.dishwasher_power_usage
-    - sensor.dishwasher_power_usage_total
     - sensor.dishwasher_power_usage_today 
+    - sensor.dishwasher_power_usage_total
+    
 
 weather:
   name: Wetter

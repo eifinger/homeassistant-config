@@ -350,9 +350,17 @@ input_boolean.heading_home_notifier_user_one:
 sensor.ventilator_power_usage:
   icon: mdi:gauge
   show_last_changed: true
+sensor.ventilator_power_usage_total:
+  icon: mdi:gauge
+sensor.ventilator_power_usage_today:
+  icon: mdi:gauge
 sensor.washingmachine_power_usage:
   icon: mdi:gauge
   show_last_changed: true
+sensor.washingmachine_power_usage_total:
+  icon: mdi:gauge
+sensor.washingmachine_power_usage_today:
+  icon: mdi:gauge
 sensor.dishwasher_power_usage:
   icon: mdi:gauge
   show_last_changed: true

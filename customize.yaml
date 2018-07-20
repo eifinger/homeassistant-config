@@ -430,6 +430,8 @@ sensor.current_commit_id:
   icon: mdi:github-circle
 sensor.current_commit_name:
   icon: mdi:github-circle
+sensor.alarm_time:
+  icon: mdi:clock
 #################################################################
 ## Android IP Webcam
 #################################################################

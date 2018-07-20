@@ -412,6 +412,10 @@ sensor.cal_next_appointment_title:
 script.learn_faces:
   action_name: Learn
   friendly_name: Lerne Gesichter
+sensor.current_commit_id:
+  icon: mdi:github-circle
+sensor.current_commit_name:
+  icon: mdi:github-circle
 #################################################################
 ## Android IP Webcam
 #################################################################

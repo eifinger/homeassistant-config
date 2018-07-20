@@ -15,3 +15,9 @@ alarmminutes:
   min: 0
   max: 59
   step: 5
+alarm_natural_wakeup_fade_in:
+  name: Fade-In Dauer
+  icon: mdi:theme-light-dark
+  min: 0
+  max: 30
+  step: 5

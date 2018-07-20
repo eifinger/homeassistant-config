@@ -25,6 +25,5 @@
   wakemeup:
     name: Weck mich
     icon: mdi:alarm-check
-  naturalwakeup:
-    name: Fade-In Licht
-    icon: mdi:theme-light-dark
+  radiowakeup:
+    name: Radio

@@ -101,6 +101,13 @@ view_automation_entities:
     - group.automation_entities
     - group.current_commit
 
+view_settings:
+  name: Einstellungen
+  view: yes
+  icon: mdi:gear
+  entities:
+    - group.standards
+
 #################################################################
 ## Group
 #################################################################
@@ -363,10 +370,15 @@ alarm:
     - input_number.alarmhour
     - input_number.alarmminutes
     - input_boolean.wakemeup
-    - input_boolean.naturalwakeup
+    - input_number.alarm_natural_wakeup_fade_in
     - input_boolean.alarmweekday
+    - input_boolean.radiowakeup
     - binary_sensor.workday_today
     - binary_sensor.workday_tomorrow
+standards:
+  name: Standard Einstellungen
+  entities:
+   - input_select.next_appointment_travel_mode_standard
 #################################################################
 ## Synonym
 #################################################################

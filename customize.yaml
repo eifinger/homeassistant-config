@@ -466,7 +466,20 @@ binary_sensor.workday_today:
         return "Nein";
       } 
 binary_sensor.workday_tomorrow:
-  friendly_name: Ist Morgen ein Arbeitstag?  
+  friendly_name: Ist Morgen ein Arbeitstag? 
+  templates:
+    icon: >
+      if ( state === 'on' ) {
+        return "mdi:briefcase";
+      } else if ( state === 'off' ) {
+        return "mdi:beach";
+      } 
+    state: >
+      if ( state === 'on' ) {
+        return "Ja";
+      } else if ( state === 'off' ) {
+        return "Nein";
+      } 
 #################################################################
 ## Android IP Webcam
 #################################################################

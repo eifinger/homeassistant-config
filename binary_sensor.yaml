@@ -1,4 +1,4 @@
 - platform: workday
-    name: workday
-    country: DE
-    province: HE
+  name: workday
+  country: DE
+  province: HE

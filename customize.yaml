@@ -272,6 +272,15 @@ input_select.next_appointment_travel_mode:
       } else if ( state === 'Laufen' ) {
         return "mdi:walk"
       }
+sensor.cal_next_appointment_title:
+  icon: mdi:calendar
+  templates:
+    friendly_name: >
+      if ( entities['input_select.next_appointment_travel_mode'].state === 'Laufen' ) {
+        return "Loslaufen";
+      } else {
+        return "Losfahren";
+      } 
 #################################################################
 ## Xiaomi Reed Switches
 #################################################################
@@ -383,8 +392,6 @@ sensor.statistics_gas_station_metro_mean:
   friendly_name: Statistik (Mean)
 sensor.room_s8plus:
   icon: mdi:cellphone
-sensor.cal_next_appointment_title:
-  icon: mdi:calendar
 sensor.cal_next_appointment_location:
   icon: mdi:map-marker
 sensor.cal_next_appointment_start_time:

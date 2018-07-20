@@ -276,13 +276,6 @@ sensor.cal_next_appointment_title:
   icon: mdi:calendar
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
-  templates:
-    friendly_name: >
-      if ( entities['input_select.next_appointment_travel_mode'].state === 'Laufen' ) {
-        return "Loslaufen";
-      } else {
-        return "Losfahren";
-      } 
 #################################################################
 ## Xiaomi Reed Switches
 #################################################################
@@ -408,6 +401,13 @@ sensor.cal_next_appointment_start_time:
   icon: mdi:clock
 sensor.calc_leave_time:
   icon: mdi:clock
+  templates:
+    friendly_name: >
+      if ( entities['input_select.next_appointment_travel_mode'].state === 'Laufen' ) {
+        return "Loslaufen";
+      } else {
+        return "Losfahren";
+      } 
 input_number.leave_time_offset:
   icon: mdi:clock
 sensor.facebox_detection:

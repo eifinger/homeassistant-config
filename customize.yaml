@@ -214,6 +214,20 @@ sensor.travel_time_next_appointment_location_bike:
       } else {
         return "green";
       }
+sensor.travel_time_next_appointment_location_walking:
+  icon: mdi:walk
+  friendly_name: "Kevin -> Nächster Termin"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+  templates:
+    icon_color: >
+      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
+        return "red";
+      } else if (attributes.duration_in_traffic > attributes.duration ) {
+        return "orange";
+      } else {
+        return "green";
+      }
 sensor.travel_time_next_appointment_location_transit:
   icon: mdi:bus
   friendly_name: "Kevin -> Nächster Termin"
@@ -255,6 +269,8 @@ input_select.next_appointment_travel_mode:
         return "mdi:bike"
       } else if ( state === 'Öffis' ) {
         return "mdi:bus"
+      } else if ( state === 'Laufen' ) {
+        return "mdi:walk"
       }
 #################################################################
 ## Xiaomi Reed Switches

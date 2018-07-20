@@ -212,6 +212,7 @@ next_appointment_traveltimes:
     - sensor.travel_time_next_appointment_location_car
     - sensor.travel_time_next_appointment_location_bike
     - sensor.travel_time_next_appointment_location_transit
+    - sensor.travel_time_next_appointment_location_walking
     - input_boolean.announce_time_to_leave
 
 motion:

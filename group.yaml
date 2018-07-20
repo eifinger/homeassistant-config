@@ -365,8 +365,8 @@ alarm:
     - input_boolean.wakemeup
     - input_boolean.naturalwakeup
     - input_boolean.alarmweekday
-    - binary_sensor.binary_sensor.workday_today
-    - binary_sensor.binary_sensor.workday_tomorrow
+    - binary_sensor.workday_today
+    - binary_sensor.workday_tomorrow
 #################################################################
 ## Synonym
 #################################################################

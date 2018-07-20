@@ -450,6 +450,23 @@ sensor.pollen_101_birke_tomorrow:
   icon:  mdi:tree
 sensor.pollen_101_birke_dayaftertomorrow:
   icon:  mdi:tree
+binary_sensor.workday_today:
+  friendly_name: Ist Heute ein Arbeitstag?
+  templates:
+    icon: >
+      if ( state === 'on' ) {
+        return "mdi:briefcase";
+      } else if ( state === 'off' ) {
+        return "mdi:beach";
+      } 
+    state: >
+      if ( state === 'on' ) {
+        return "Ja";
+      } else if ( state === 'off' ) {
+        return "Nein";
+      } 
+binary_sensor.workday_tomorrow:
+  friendly_name: Ist Morgen ein Arbeitstag?  
 #################################################################
 ## Android IP Webcam
 #################################################################

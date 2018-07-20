@@ -1,4 +1,9 @@
 - platform: workday
-  name: workday
+  name: workday_today
   country: DE
   province: HE
+- platform: workday
+  name: workday_tomorrow
+  country: DE
+  province: HE
+  offset: 1

@@ -363,6 +363,7 @@ alarm:
     - input_number.alarmhour
     - input_number.alarmminutes
     - input_boolean.wakemeup
+    - input_boolean.naturalwakeup
     - input_boolean.alarmweekday
 #################################################################
 ## Synonym

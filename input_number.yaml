@@ -3,3 +3,15 @@ leave_time_offset:
   min: 0
   max: 60
   step: 1
+alarmhour:
+  name: Stunde
+  icon: mdi:timer
+  min: 0
+  max: 23
+  step: 1
+alarmminutes:
+  name: Minute
+  icon: mdi:timer
+  min: 0
+  max: 59
+  step: 5

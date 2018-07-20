@@ -358,8 +358,12 @@ current_commit:
     - sensor.current_commit_name
 alarm:
   name: Wecker
-  entities:
-    - input_datetime.alarm
+  entities: 
+    - sensor.alarm_time
+    - input_number.alarmhour
+    - input_number.alarmminutes
+    - input_boolean.wakemeup
+    - input_boolean.alarmweekday
 #################################################################
 ## Synonym
 #################################################################

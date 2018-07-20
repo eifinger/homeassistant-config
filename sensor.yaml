@@ -429,3 +429,11 @@
     current_commit_name:
       friendly_name: Message
       value_template: "{{states.sensor.current_commit.state.split(' ',1)[1]}}"
+#################################################################
+## Alarm Clock
+#################################################################
+- platform: template
+  sensors:
+    alarm_time:
+      friendly_name: 'Uhrzeit'
+      value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmhour") | int, states("input_number.alarmminutes") | int) }}'

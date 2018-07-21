@@ -480,6 +480,20 @@ binary_sensor.workday_tomorrow:
       } else if ( state === 'off' ) {
         return "Nein";
       } 
+input_select.next_appointment_travel_mode_standard:
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+  templates:
+    icon: >
+      if ( state === 'Auto' ) {
+        return "mdi:car";
+      } else if ( state === 'Fahrrad' ) {
+        return "mdi:bike"
+      } else if ( state === 'Öffis' ) {
+        return "mdi:bus"
+      } else if ( state === 'Laufen' ) {
+        return "mdi:walk"
+      }
 #################################################################
 ## Android IP Webcam
 #################################################################

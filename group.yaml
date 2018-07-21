@@ -104,7 +104,7 @@ view_automation_entities:
 view_settings:
   name: Einstellungen
   view: yes
-  icon: mdi:gear
+  icon: mdi:settings
   entities:
     - group.standards
 

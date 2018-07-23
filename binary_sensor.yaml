@@ -6,4 +6,4 @@
   name: workday_tomorrow
   country: DE
   province: HE
-  offset: 1
+  days_offset: 1

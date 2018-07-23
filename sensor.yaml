@@ -48,7 +48,7 @@
     - rain
     - snow
 - platform: dwd_weather_warnings
-    region_name: !secret dwd_weather_warnings_region
+  region_name: !secret dwd_weather_warnings_region
 #################################################################
 ## Room Presence
 #################################################################

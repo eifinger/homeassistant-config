@@ -325,6 +325,10 @@ binary_sensor.motion_sensor_158d0002006cfa:
   friendly_name: "Bewegungsmelder Schlafzimmer"
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
+binary_sensor.motion_sensor_158d0001fa464b:
+  friendly_name: "Bewegungsmelder Flur"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
 #################################################################
 ## Visibility
 #################################################################
@@ -343,19 +347,19 @@ input_boolean.heading_home_notifier_user_one:
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 sensor.ventilator_power_usage:
-  icon: mdi:gauge
+  icon: mdi:fan
   show_last_changed: true
 sensor.ventilator_power_usage_total:
-  icon: mdi:gauge
+  icon: mdi:fan
 sensor.ventilator_power_usage_today:
-  icon: mdi:gauge
+  icon: mdi:fan
 sensor.washingmachine_power_usage:
-  icon: mdi:gauge
+  icon: mdi:washing-machine
   show_last_changed: true
 sensor.washingmachine_power_usage_total:
-  icon: mdi:gauge
+  icon: mdi:washing-machine
 sensor.washingmachine_power_usage_today:
-  icon: mdi:gauge
+  icon: mdi:washing-machine
 sensor.dishwasher_power_usage:
   icon: mdi:gauge
   show_last_changed: true

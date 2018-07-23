@@ -2,7 +2,7 @@ leave_time_offset:
   name: Extra Zeit
   min: 0
   max: 60
-  step: 1
+  step: 5
 alarmhour:
   name: Stunde
   icon: mdi:timer

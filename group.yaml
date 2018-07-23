@@ -85,12 +85,19 @@ view_sensors:
   entities:
     - group.temperature
     - group.humidity
-    - group.weather
     - group.motion
     - group.reed
     - group.xiaomi_button
     - group.illumination
     - group.power_usage
+
+view_weather:
+  name: Wetter
+  icon: mdi:weather-partlycloudy
+  entities:
+    - group.weather_dark_ky
+    - group.weather_dwd
+    - group.weather_yr
 
 view_automation_entities:
   name: Automation
@@ -192,8 +199,8 @@ power_usage:
     - sensor.dishwasher_power_usage_total
     
 
-weather:
-  name: Wetter
+weather_dark_ky:
+  name: Dark Sky
   entities:
     - sensor.dark_sky_icon
     - sensor.dark_sky_humidity
@@ -203,6 +210,40 @@ weather:
     - sensor.dark_sky_precip_probability
     - sensor.dark_sky_summary
     - sensor.dark_sky_wind_speed
+
+weather_dwd:
+  name: Deutscher Wetterdienst
+  entities:
+   - sensor.dwdweatherwarnings_advance_warning_level
+   - sensor.dwdweatherwarnings_current_warning_level
+   - weather.yweather
+   - sensor.owm_cloud_coverage
+   - sensor.owm_condition
+   - sensor.owm_humidity
+   - sensor.owm_pressure
+   - sensor.owm_rain
+   - sensor.owm_snow
+   - sensor.owm_temperature
+   - sensor.owm_wind_bearing
+   - sensor.owm_wind_speed
+
+weather_yr:
+  name: Wetter YR
+  entities:
+   - sensor.yr_cloudiness
+   - sensor.yr_dewpoint_temperature
+   - sensor.yr_fog
+   - sensor.yr_high_clouds
+   - sensor.yr_humidity
+   - sensor.yr_low_clouds
+   - sensor.yr_medium_clouds
+   - sensor.yr_precipitation
+   - sensor.yr_pressure
+   - sensor.yr_symbol
+   - sensor.yr_temperature
+   - sensor.yr_wind_direction
+   - sensor.yr_wind_speed
+
 
 traveltimes:
   name: Reisezeiten

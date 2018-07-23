@@ -93,6 +93,7 @@ view_sensors:
 
 view_weather:
   name: Wetter
+  view: yes
   icon: mdi:weather-partlycloudy
   entities:
     - group.weather_dark_ky

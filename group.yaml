@@ -101,6 +101,8 @@ view_weather:
     - group.weather_owm
     - group.weather_yr
     - weather.yweather
+    - weather.dark_sky
+    - weather.openweathermap
 
 view_automation_entities:
   name: Automation

@@ -98,7 +98,9 @@ view_weather:
   entities:
     - group.weather_dark_ky
     - group.weather_dwd
+    - group.weather_owm
     - group.weather_yr
+    - weather.yweather
 
 view_automation_entities:
   name: Automation
@@ -217,7 +219,10 @@ weather_dwd:
   entities:
    - sensor.dwdweatherwarnings_advance_warning_level
    - sensor.dwdweatherwarnings_current_warning_level
-   - weather.yweather
+
+weather_owm:
+  name: OpenWeatherMap
+  entities:
    - sensor.owm_cloud_coverage
    - sensor.owm_condition
    - sensor.owm_humidity

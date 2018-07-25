@@ -1,7 +1,7 @@
 - alias: Turn on Red Upper Stair Light on Shutdown
   trigger:
-    platform: event
-    event_type: homeassistant_stop
+    platform: homeassistant
+    event_type: shutdown
   action:
     - service: light.turn_on
       data:

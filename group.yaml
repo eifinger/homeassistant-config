@@ -147,6 +147,7 @@ livingroom:
       - light.bar_table
       - light.reading_lamp_yeelight
       - light.lobby_yeelight
+      - light.livingroom_yeelight
       - switch.ventilator
       - switch.markise
       - switch.rosie_clean

@@ -150,6 +150,13 @@ light.lobby_yeelight:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
+light.livingroom_yeelight:
+  friendly_name: "Deckenlampe"
+  emulated_hue_hidden: false
+  emulated_hue_name: "Deckenlampe"
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: break-slider
+  show_last_changed: true
 group.stair_lights:
   emulated_hue_hidden: false
   emulated_hue_name: "Treppe"

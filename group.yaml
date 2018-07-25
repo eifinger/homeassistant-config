@@ -148,6 +148,10 @@ livingroom:
       - light.reading_lamp_yeelight
       - light.lobby_yeelight
       - switch.ventilator
+      - switch.markise
+      - switch.rosie_clean
+      - switch.rosie_home
+      - switch.tv
 
 all:
   name: Everything
@@ -334,6 +338,7 @@ automation_entities:
     - input_boolean.heading_home_notifier_user_one
     - switch.facebox_wol
     - sensor.uptime
+    - input_boolean.persistence_plantwateringnotifier_reminder_acknowledged
 
 automation_presence_entities:
   name: Presence

@@ -27,3 +27,8 @@
     icon: mdi:alarm-check
   radiowakeup:
     name: Radio
+#################################################################
+## Appdaemon persistence layer
+#################################################################
+  persistence_plantwateringnotifier_reminder_acknowledged:
+    name: Plant Watering Notifier got Acknowledged

@@ -8,6 +8,22 @@ switch.ventilator:
   icon: mdi:fan
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
+switch.markise:
+  emulated_hue_hidden: false
+  emulated_hue_name: "Markise"
+  icon: mdi:sunglasses
+switch.rosie_clean:
+  emulated_hue_hidden: false
+  emulated_hue_name: "Rosie"
+  icon: mdi:robot-vacuum
+switch.rosie_home:
+  emulated_hue_hidden: false
+  emulated_hue_name: "Rose Nach Hause"
+  icon: mdi:home
+switch.tv:
+  emulated_hue_hidden: false
+  emulated_hue_name: "Fernseher"
+  icon: mdi:television
 group.eingang:
   friendly_name: "Eingang"
   emulated_hue_hidden: false

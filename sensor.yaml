@@ -467,3 +467,12 @@
     alarm_time:
       friendly_name: 'Uhrzeit'
       value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmhour") | int, states("input_number.alarmminutes") | int) }}'
+#################################################################
+## Broadlink
+#################################################################
+- platform: broadlink
+    update_interval: 60
+    host: !secret rm_pro_plus_ip
+    mac: !secret rm_pro_plus_mac
+    monitored_conditions:
+      - temperature

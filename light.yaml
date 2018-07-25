@@ -44,7 +44,7 @@
   rgb_command_topic: "cmnd/bar_light/Color"
   rgb_command_template: "{{ '%02x%02x%02x' | format(green, red, blue)}}"
   rgb_state_topic: "stat/bar_light/RESULT"
-  rgb_value_template: "{{(value_json.Channel[0]*2.55)|int}},{{(value_json.Channel[1]*2.55)|int}},{{(value_json.Channel[2]*2.55)|int}}"
+  rgb_value_template: "{{(value_json.Channel[1]*2.55)|int}},{{(value_json.Channel[0]*2.55)|int}},{{(value_json.Channel[2]*2.55)|int}}"
   effect_state_topic: "stat/bar_light/RESULT"
   effect_command_topic: "cmnd/bar_light/Scheme"
   effect_list:

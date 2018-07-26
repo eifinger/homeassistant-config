@@ -349,6 +349,7 @@ stair_lights:
 
 automation_entities:
   name: Automation
+  control: hidden
   entities:
     - sun.sun
     - input_boolean.heading_home_notifier_user_one
@@ -358,6 +359,7 @@ automation_entities:
 
 automation_presence_entities:
   name: Presence
+  control: hidden
   entities:
     - input_boolean.is_home
     - input_boolean.user_one_home

@@ -11,7 +11,7 @@ switch.ventilator:
 switch.markise:
   emulated_hue_hidden: false
   emulated_hue_name: "Markise"
-  icon: mdi:sunglasses
+  icon: mdi:garage
 switch.rosie_clean:
   emulated_hue_hidden: false
   emulated_hue_name: "Rosie"

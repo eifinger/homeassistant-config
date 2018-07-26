@@ -323,7 +323,7 @@ binary_sensor.door_window_sensor_158d000205b808:
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 binary_sensor.door_window_sensor_158d000205b82e:
-  friendly_name: "Terrassentür Arbeitszimmer"
+  friendly_name: "Terrassentür Arbeitszimmer Gekippt"
   device_class: door
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
@@ -334,6 +334,26 @@ binary_sensor.door_window_sensor_158d00020498b6:
   show_last_changed: true
 binary_sensor.door_window_sensor_158d000204ba26:
   friendly_name: "Badfenster Oben"
+  device_class: window
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+binary_sensor.door_window_sensor_158d0002059ddf:
+  friendly_name: "Markise"
+  device_class: garage_door
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+binary_sensor.door_window_sensor_158d00020499ad:
+  friendly_name: "Terrassentür Arbeitszimmer"
+  device_class: window
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+binary_sensor.door_window_sensor_158d0002048951:
+  friendly_name: "Badfenster Unten"
+  device_class: window
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+binary_sensor.door_window_sensor_158d00020455bf:
+  friendly_name: "Gästezimmerfenster"
   device_class: window
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true

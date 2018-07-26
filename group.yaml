@@ -153,11 +153,11 @@ livingroom:
     - light.reading_lamp_yeelight
     - light.lobby_yeelight
     - light.livingroom_yeelight
+    - switch.ventilator
 
 infrared:
   name: Infrarot
   entities:
-    - switch.ventilator
     - switch.markise
     - switch.rosie_clean
     - switch.rosie_home

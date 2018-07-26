@@ -270,6 +270,7 @@ weather_yr:
 
 traveltimes:
   name: Reisezeiten
+  control: hidden
   entities:
     - sensor.travel_time_home_from_work
     - input_boolean.travel_time_home_from_work

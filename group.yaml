@@ -434,6 +434,7 @@ current_commit:
     - sensor.current_commit_name
 alarm:
   name: Wecker
+  control: hidden
   entities: 
     - sensor.alarm_time
     - input_number.alarmhour

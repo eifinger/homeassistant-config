@@ -6,12 +6,10 @@ default_view:
   icon: mdi:home
   entities:
     - media_player.denon_avrx1300w
-    - media_player.kodi
     - group.livingroom
+    - group.infrared
     - group.occupancy
-    - group.rooms
     - group.reed
-    - group.alarm
 
 view_lights:
   name: Lights
@@ -26,6 +24,13 @@ view_media_players:
   icon: mdi:play-circle-outline
   entities:
     - group.media_players
+
+view_alarm:
+  name: Wecker
+  view: yes
+  icon: mdi:clock
+  entities:
+    - group.alarm
 
 #view_studyroom:
 #  name: Arbeitszimmer
@@ -139,20 +144,24 @@ lights:
     - switch.lobby
 
 livingroom:
-    name: Wohnzimmer
-    entities:
-      - switch.large_lamp
-      - switch.small_lamp
-      - switch.snowboard
-      - light.bar_table
-      - light.reading_lamp_yeelight
-      - light.lobby_yeelight
-      - light.livingroom_yeelight
-      - switch.ventilator
-      - switch.markise
-      - switch.rosie_clean
-      - switch.rosie_home
-      - switch.tv
+  name: Wohnzimmer
+  entities:
+    - switch.large_lamp
+    - switch.small_lamp
+    - switch.snowboard
+    - light.bar_table
+    - light.reading_lamp_yeelight
+    - light.lobby_yeelight
+    - light.livingroom_yeelight
+
+infrared:
+  name: Infrarot
+  entities:
+    - switch.ventilator
+    - switch.markise
+    - switch.rosie_clean
+    - switch.rosie_home
+    - switch.tv
 
 all:
   name: Everything

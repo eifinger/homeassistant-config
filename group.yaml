@@ -379,6 +379,7 @@ cameras:
 
 group_android_ip_webcam_door:
   name: Webcam Tür
+  control: hidden
   entities:
     - camera.android_ip_webcam_door
     - sensor.android_ip_webcam_door_battery_level

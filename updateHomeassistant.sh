@@ -3,5 +3,5 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd $DIR
 git pull
 git log -1 --oneline > currentCommit.txt
-./turnBarRed.sh
+./turnBarRed.sh > /dev/null
 sudo docker restart homeassistant

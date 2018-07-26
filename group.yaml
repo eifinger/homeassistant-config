@@ -157,6 +157,7 @@ livingroom:
 
 infrared:
   name: Infrarot
+  control: hidden
   entities:
     - switch.markise
     - switch.rosie_clean

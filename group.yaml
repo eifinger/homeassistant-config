@@ -369,6 +369,7 @@ automation_presence_entities:
     - proximity.work
     - sensor.mqtt_room_user_one
     - sensor.mqtt_room_user_two
+    - sensor.location_s8plus
     - input_boolean.room_based_light
 
 cameras:

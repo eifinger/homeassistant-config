@@ -454,6 +454,11 @@ standards:
   name: Standard Einstellungen
   entities:
    - input_select.next_appointment_travel_mode_standard
+ventilator:
+  name: Ventilator Automation
+  entities:
+   - input_number.turn_fan_on_when_hot_threshold
+   - input_boolean.turn_fan_on_when_hot
 #################################################################
 ## Synonym
 #################################################################

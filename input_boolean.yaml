@@ -32,3 +32,8 @@
 #################################################################
   persistence_plantwateringnotifier_reminder_acknowledged:
     name: Plant Watering Notifier got Acknowledged
+#################################################################
+## Appdaemon App switches
+#################################################################
+  turn_fan_on_when_hot:
+    name: TurnFanOnWhenHot

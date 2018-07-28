@@ -170,6 +170,9 @@ group.stair_lights:
 input_boolean.room_based_light:
   emulated_hue_hidden: false
   emulated_hue_name: "Licht"
+input_boolean.turn_fan_on_when_hot:
+  emulated_hue_hidden: false
+  emulated_hue_name: "Ventilator Automation"
 #################################################################
 ## Travel times
 #################################################################

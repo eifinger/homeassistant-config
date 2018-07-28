@@ -124,6 +124,7 @@ view_settings:
   icon: mdi:settings
   entities:
     - group.standards
+    - group.ventilator
 
 #################################################################
 ## Group

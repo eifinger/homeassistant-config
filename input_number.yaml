@@ -23,7 +23,7 @@ alarm_natural_wakeup_fade_in:
   step: 5
 turn_fan_on_when_hot_threshold:
   name: Ventilator - Temperatur Grenze
-  icon: mdi:theme-light-dark
+  icon: mdi:temperature-celsius
   min: 20
   max: 40
   step: 1

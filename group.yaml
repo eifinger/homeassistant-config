@@ -143,6 +143,7 @@ lights:
     - light.reading_lamp_yeelight
     - light.lobby_yeelight
     - switch.lobby
+    - light.lower_bathroom_yeelight
 
 livingroom:
   name: Wohnzimmer

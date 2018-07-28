@@ -21,6 +21,8 @@
       name: lobby_yeelight
     !secret livingroom_yeelight_ip:
       name: livingroom_yeelight
+    !secret lower_bathroom_yeelight_ip:
+      name: lower_bathroom_yeelight
 
 - platform: xiaomi_miio
   name: Treppe Oben

@@ -541,6 +541,8 @@ input_select.next_appointment_travel_mode_standard:
       } else if ( state === 'Laufen' ) {
         return "mdi:walk"
       }
+input_boolean.turn_fan_on_when_hot:
+  device_class: moving
 #################################################################
 ## Android IP Webcam
 #################################################################

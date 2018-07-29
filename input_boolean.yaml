@@ -35,8 +35,8 @@
 #################################################################
 ## Appdaemon App switches
 #################################################################    
-  notfiyOfActionWhenAway:
-    icon: mdi:arrow-decision-auto
+notfiyOfActionWhenAway:
+  icon: mdi:arrow-decision-auto
 
   faceboxNotifier:
     icon: mdi:arrow-decision-auto

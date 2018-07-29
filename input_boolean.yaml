@@ -32,9 +32,6 @@
 #################################################################
   persistence_plantwateringnotifier_reminder_acknowledged:
     name: Plant Watering Notifier got Acknowledged
-#################################################################
-## Appdaemon App switches
-#################################################################
   notfiyOfActionWhenAway:
     icon: mdi:arrow-decision-auto
 

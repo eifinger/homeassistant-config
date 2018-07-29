@@ -34,10 +34,7 @@
     name: Plant Watering Notifier got Acknowledged
 #################################################################
 ## Appdaemon App switches
-#################################################################
-  turn_fan_on_when_hot:
-    icon: mdi:arrow-decision-auto
-    
+#################################################################    
   detectWrongStateWhenLeaving:
     icon: mdi:arrow-decision-auto
 
@@ -78,4 +75,6 @@
   powerUsageNotification_Dishwasher:
     icon: mdi:arrow-decision-auto
   powerUsageNotification_Washingmachine:
+    icon: mdi:arrow-decision-auto
+  turn_fan_on_when_hot:
     icon: mdi:arrow-decision-auto

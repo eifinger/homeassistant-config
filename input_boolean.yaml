@@ -32,15 +32,17 @@
 #################################################################
   persistence_plantwateringnotifier_reminder_acknowledged:
     name: Plant Watering Notifier got Acknowledged
+#################################################################
+## Appdaemon App switches
+#################################################################
+  turn_fan_on_when_hot:
+    icon: mdi:arrow-decision-auto
   notfiyOfActionWhenAway:
     icon: mdi:arrow-decision-auto
-
   faceboxNotifier:
     icon: mdi:arrow-decision-auto
-
   faceboxTeacher:
     icon: mdi:arrow-decision-auto
-
   obenTreppeMotionTrigger:
     icon: mdi:arrow-decision-auto
   bedroomMotionTrigger:
@@ -67,10 +69,7 @@
     icon: mdi:arrow-decision-auto
   powerUsageNotification_Washingmachine:
     icon: mdi:arrow-decision-auto
-  turn_fan_on_when_hot:
-    icon: mdi:arrow-decision-auto
   detectWrongStateWhenLeaving:
     icon: mdi:arrow-decision-auto
-
   detectDoorOpenWhenGoingToBed:
     icon: mdi:arrow-decision-auto

@@ -36,11 +36,8 @@
 ## Appdaemon App switches
 #################################################################
   turn_fan_on_when_hot:
-    name: TurnFanOnWhenHot
     icon: mdi:arrow-decision-auto
-
-  detectWrongStae:
-    name: detectWrongStateWhenLeaving
+  detectWrongStateWhenLeaving:
     icon: mdi:arrow-decision-auto
   detectDoorOpenWhenGoingToBed:
     icon: mdi:arrow-decision-auto

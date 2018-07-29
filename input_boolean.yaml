@@ -37,3 +37,21 @@
 #################################################################
   turn_fan_on_when_hot:
     name: TurnFanOnWhenHot
+  detectWrongStateWhenLeaving:
+  detectDoorOpenWhenGoingToBed:
+  notfiyOfActionWhenAway:
+  faceboxNotifier:
+  faceboxTeacher:
+  obenTreppeMotionTrigger:
+  bedroomMotionTrigger:
+  comingHomeYeelight:
+  comingHomeAlexa:
+  homeArrivalNotifierUserOne:
+  homeArrivalNotifierUserTwo:
+  isHomeDeterminer:
+  isUserHomeDeterminerUserOne:
+  isUserHomeDeterminerUserTwo:
+  leavingWorkNotifierUserOne:
+  plantWateringNotifier:
+  powerUsageNotification_Dishwasher:
+  powerUsageNotification_Washingmachine:

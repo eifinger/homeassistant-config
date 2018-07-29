@@ -456,11 +456,35 @@ standards:
   name: Standard Einstellungen
   entities:
    - input_select.next_appointment_travel_mode_standard
+
 ventilator:
   name: Ventilator Automation
   entities:
    - input_number.turn_fan_on_when_hot_threshold
    - input_boolean.turn_fan_on_when_hot
+app_switches:
+  name: App Switches
+  entities:
+    - input_boolean.detectWrongStateWhenLeaving
+    - input_boolean.detectDoorOpenWhenGoingToBed
+    - input_boolean.notfiyOfActionWhenAway
+    - input_boolean.detectWrongStateWhenLeaving
+    - input_boolean.detectWrongStateWhenLeaving
+    - input_boolean.faceboxNotifier
+    - input_boolean.faceboxTeacher
+    - input_boolean.obenTreppeMotionTrigger
+    - input_boolean.bedroomMotionTrigger
+    - input_boolean.comingHomeYeelight
+    - input_boolean.comingHomeAlexa
+    - input_boolean.homeArrivalNotifierUserOne
+    - input_boolean.homeArrivalNotifierUserTwo
+    - input_boolean.isHomeDeterminer
+    - input_boolean.isUserHomeDeterminerUserOne
+    - input_boolean.isUserHomeDeterminerUserTwo
+    - input_boolean.leavingWorkNotifierUserOne
+    - input_boolean.plantWateringNotifier
+    - input_boolean.powerUsageNotification_Dishwasher
+    - input_boolean.powerUsageNotification_Washingmachine
 #################################################################
 ## Synonym
 #################################################################

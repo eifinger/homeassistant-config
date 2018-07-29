@@ -36,38 +36,3 @@
 ## Appdaemon App switches
 #################################################################
   turn_fan_on_when_hot:
-  detectWrongStateWhenLeaving:
-  detectDoorOpenWhenGoingToBed:
-    icon: mdi:arrow-decision-auto
-  notfiyOfActionWhenAway:
-    icon: mdi:arrow-decision-auto
-  faceboxNotifier:
-    icon: mdi:arrow-decision-auto
-  faceboxTeacher:
-    icon: mdi:arrow-decision-auto
-  obenTreppeMotionTrigger:
-    icon: mdi:arrow-decision-auto
-  bedroomMotionTrigger:
-    icon: mdi:arrow-decision-auto
-  comingHomeYeelight:
-    icon: mdi:arrow-decision-auto
-  comingHomeAlexa:
-    icon: mdi:arrow-decision-auto
-  homeArrivalNotifierUserOne:
-    icon: mdi:arrow-decision-auto
-  homeArrivalNotifierUserTwo:
-    icon: mdi:arrow-decision-auto
-  isHomeDeterminer:
-    icon: mdi:arrow-decision-auto
-  isUserHomeDeterminerUserOne:
-    icon: mdi:arrow-decision-auto
-  isUserHomeDeterminerUserTwo:
-    icon: mdi:arrow-decision-auto
-  leavingWorkNotifierUserOne:
-    icon: mdi:arrow-decision-auto
-  plantWateringNotifier:
-    icon: mdi:arrow-decision-auto
-  powerUsageNotification_Dishwasher:
-    icon: mdi:arrow-decision-auto
-  powerUsageNotification_Washingmachine:
-    icon: mdi:arrow-decision-auto

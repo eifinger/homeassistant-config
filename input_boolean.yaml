@@ -38,7 +38,7 @@
   turn_fan_on_when_hot:
     name: TurnFanOnWhenHot
     icon: mdi:arrow-decision-auto
-  detect_Wrong_State_When_Leaving:
+  detectWrongStae:
     name: detectWrongStateWhenLeaving
     icon: mdi:arrow-decision-auto
   detectDoorOpenWhenGoingToBed:

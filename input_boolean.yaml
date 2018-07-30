@@ -37,7 +37,7 @@
 #################################################################
   turn_fan_on_when_hot:
     icon: mdi:arrow-decision-auto
-  notfiyOfActionWhenAway:
+  notfiy_of_action_when_away:
     icon: mdi:arrow-decision-auto
   faceboxNotifier:
     icon: mdi:arrow-decision-auto

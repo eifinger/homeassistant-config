@@ -73,12 +73,24 @@
   optimistic: false
   qos: 2
   retain: false
+- platform: mqtt
+  name: "ventilator"
+  state_topic: "stat/sonoff_ventilator/POWER"
+  command_topic: "cmnd/sonoff_ventilator/POWER"
+  availability_topic: "tele/sonoff_ventilator/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
 #################################################################
 ## Tp Link
 #################################################################
 - platform: tplink
-  host: !secret tp_link_ventilator_ip
-  name: Ventilator
+  host: !secret tp_link_ip
+  name: tplink
   enable_leds: False
 - platform: tplink
   host: !secret tp_link_washingmachine_ip

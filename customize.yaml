@@ -400,13 +400,8 @@ input_boolean.heading_home_notifier_user_one:
   friendly_name: Benachrichtigung wenn Kevin in Richtung nach Hause fährt
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
-sensor.ventilator_power_usage:
-  icon: mdi:fan
+sensor.tplink_power_usage:
   show_last_changed: true
-sensor.ventilator_power_usage_total:
-  icon: mdi:fan
-sensor.ventilator_power_usage_today:
-  icon: mdi:fan
 sensor.washingmachine_power_usage:
   icon: mdi:washing-machine
   show_last_changed: true

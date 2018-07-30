@@ -296,18 +296,18 @@
 #################################################################
 - platform: template
   sensors:
-    ventilator_power_usage:
-      friendly_name: Ventilator Verbrauch
+    tplink_power_usage:
+      friendly_name: tplink Verbrauch
       unit_of_measurement: 'W'
-      value_template: "{{states.switch.ventilator.attributes.current_power_w}}"
-    ventilator_power_usage_total:
-      friendly_name: Ventilator Verbrauch Total
+      value_template: "{{states.switch.tplink.attributes.current_power_w}}"
+    tplink_power_usage_total:
+      friendly_name: tplink Verbrauch Total
       unit_of_measurement: 'kWh'
-      value_template: "{{states.switch.ventilator.attributes.total_energy_kwh}}"
-    ventilator_power_usage_today:
-      friendly_name: Ventilator Verbrauch Heute
+      value_template: "{{states.switch.tplink.attributes.total_energy_kwh}}"
+    tplink_power_usage_today:
+      friendly_name: tplink Verbrauch Heute
       unit_of_measurement: 'kWh'
-      value_template: "{{states.switch.ventilator.attributes.today_energy_kwh}}"
+      value_template: "{{states.switch.tplink.attributes.today_energy_kwh}}"
     washingmachine_power_usage:
       friendly_name: Waschmaschinen Verbrauch
       unit_of_measurement: 'W'

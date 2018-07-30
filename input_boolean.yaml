@@ -36,40 +36,40 @@
 ## Appdaemon App switches
 #################################################################
   turn_fan_on_when_hot:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   notify_of_action_when_away:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   facebox_notifier:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   facebox_teacher:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   oben_treppe_motion_trigger:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   bedroom_motion_trigger:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   coming_home_yeelight:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   coming_home_alexa:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   home_arrival_notifier_user_one:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   home_arrival_notifier_user_two:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   is_home_determiner:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   is_user_home_determiner_user_one:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   is_user_home_determiner_user_two:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   leaving_work_notifier_user_one:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   plant_watering_notifier:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   power_usage_notification_dishwasher:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   power_usage_notification_washingmachine:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   detect_wrong_state_when_leaving:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix
   detect_door_open_when_going_to_bed:
-    icon: mdi:arrow-decision-auto
+    icon: mdi:auto-fix

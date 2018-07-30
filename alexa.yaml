@@ -1,0 +1,11 @@
+  smart_home:
+    filter:
+      include_entities:
+        - sensor.large_lamp_temperature
+      include_domains:
+        - light
+    entity_config:
+      sensor.large_lamp_temperature:
+        name: Temperatur Wohnzimmer
+        description: Die Wohnzimmer Temperatur
+        display_categories: TEMPERATURE_SENSOR

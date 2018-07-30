@@ -188,6 +188,16 @@
   value_template: "{{ value_json['AM2301'].Humidity }}"
   name: 'Large Lamp Humidity'
   unit_of_measurement: '%'
+- platform: mqtt
+  state_topic: "tele/sonoff_ventilator/SENSOR"
+  value_template: "{{ value_json['AM2301'].Temperature }}"
+  name: 'Ventilator Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: "tele/sonoff_ventilator/SENSOR"
+  value_template: "{{ value_json['AM2301'].Humidity }}"
+  name: 'Ventilator Humidity'
+  unit_of_measurement: '%'
 #################################################################
 ## Travel Times
 #################################################################

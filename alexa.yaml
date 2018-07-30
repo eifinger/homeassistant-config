@@ -2,10 +2,148 @@
     filter:
       include_entities:
         - sensor.large_lamp_temperature
+        - sensor.small_lamp_temperature
+        - sensor.ventilator_temperature
+        - switch.ventilator
+        - switch.markise
+        - switch.rosie_clean
+        - switch.rosie_home
+        - switch.tv
+        - group.eingang
+        - switch.snowboard
+        - switch.small_lamp
+        - switch.large_lamp
+        - switch.lobby
+        - media_player.denon_avrx1300w
+        - media_player.kodi
+        - media_player.spotify
+        - group.all
+        - script.receiver_set_source_cbl_sat
+        - script.receiver_set_source_media_player
+        - script.receiver_set_source_dvd
+        - group.stair_lights
+        - input_boolean.turn_fan_on_when_hot
+        - binary_sensor.door_window_sensor_158d000126a57b
       include_domains:
         - light
     entity_config:
       sensor.large_lamp_temperature:
-        name: Temperatur Wohnzimmer
-        description: Die Wohnzimmer Temperatur
+        name: Große Lampe
+        description: Die Temperatur von Große Lampe
         display_categories: TEMPERATURE_SENSOR
+      sensor.small_lamp_temperature:
+        name: Kleine Lampe
+        description: Die Temperatur von Kleine Lampe
+        display_categories: TEMPERATURE_SENSOR
+      sensor.ventilator_temperature:
+        name: Ventilator
+        description: Die Temperatur von Ventilator
+        display_categories: TEMPERATURE_SENSOR
+      switch.ventilator:
+        name: Ventilator
+        description: Ventilator
+        display_categories: SWITCH
+      switch.markise:
+        name: Markise
+        description: Markise
+        display_categories: SWITCH
+      switch.rosie_clean:
+        name: Rosie
+        description: Simuliere Rosies "Clean" Kommando
+        display_categories: SWITCH
+      switch.rosie_home:
+        name: Rosie Nach Hause
+        description: Schicke Rosie nach Hause
+        display_categories: SWITCH
+      switch.tv:
+        name: Fernseher
+        description: Fernseher
+        display_categories: TV
+      group.eingang:
+        name: Eingang
+        description: Anderer Name für Garderobe
+        display_categories: LIGHT
+      light.treppe_oben:
+        name: Treppe Oben
+        description: Oberes Treppenlicht
+        display_categories: LIGHT
+      switch.snowboard:
+        name: Snowboard
+        description: Snowboard
+        display_categories: LIGHT
+      switch.small_lamp:
+        name: Kleine Lampe
+        description: Kleine Lampe
+        display_categories: LIGHT
+      switch.large_lamp:
+        name: Große Lampe
+        description: Große Lampe
+        display_categories: LIGHT
+      switch.lobby:
+        name: Flur
+        description: Flur
+        display_categories: LIGHT
+      switch.studyroom:
+        name: Arbeitszimmer
+        description: Arbeitszimmer
+        display_categories: LIGHT
+      media_player.denon_avrx1300w:
+        name: Receiver
+        description: Receiver Denon AVRX 1300W
+        display_categories: SPEAKER
+      group.all:
+        name: Wohnung
+        description: Alle Geräte
+        display_categories: SCENE_TRIGGER
+      script.receiver_set_source_cbl_sat:
+        name: Sat
+        description: Schalte Receiver auf Sat / Alexa
+        display_categories: SCENE_TRIGGER
+      script.receiver_set_source_media_player:
+        name: Receiver Mediaplayer
+        description: Schalte Receiver auf Mediaplayer / FireTV Stick
+        display_categories: SCENE_TRIGGER
+      script.receiver_set_source_dvd:
+        name: Receiver Kodi
+        description: Schalte Receiver auf DvD / Kodi
+        display_categories: SCENE_TRIGGER
+      light.bar_table:
+        name: Bar
+        description: Bartisch
+        display_categories: LIGHT
+      light.bedroom_yeelight:
+        name: Schlafzimmer
+        description: Schlafzimmer Deckenlampe
+        display_categories: LIGHT
+      light.stairs_lower_yeelight:
+        name: Treppe Unten
+        description: Unteres Treppenlicht
+        display_categories: LIGHT
+      light.reading_lamp_yeelight:
+        name: Leselampe
+        description: Runde Lampe im Wohnzimmer
+        display_categories: LIGHT
+      light.lobby_yeelight:
+        name: Garderobe
+        description: Garderobe hinter der Wohnungstür
+        display_categories: LIGHT
+      light.livingroom_yeelight:
+        name: Deckenlampe
+        description: Deckenlampe im Wohnzimmer
+        display_categories: LIGHT
+      light.lower_bathroom_yeelight:
+        name: Bad
+        description: Deckenlampe im Bad
+        display_categories: LIGHT
+      group.stair_lights:
+        name: Treppe
+        description: Beide Treppenlichter
+        display_categories: LIGHT
+      input_boolean.turn_fan_on_when_hot:
+        name: Automation Ventilator
+        description: Schalte Automation für den Ventilator an/aus
+        display_categories: SWITCH
+      binary_sensor.door_window_sensor_158d000126a57b:
+        name: Wohnungstür
+        description: Wohnungstür
+        display_categories: DOOR

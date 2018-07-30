@@ -3,177 +3,87 @@
 #################################################################
 switch.ventilator:
   friendly_name: "Ventilator"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Ventilator"
   icon: mdi:fan
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.markise:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Markise"
   icon: mdi:garage
 switch.rosie_clean:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Rosie"
   icon: mdi:robot-vacuum
 switch.rosie_home:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Rose Nach Hause"
   icon: mdi:home
 switch.tv:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Fernseher"
   icon: mdi:television
 group.eingang:
   friendly_name: "Eingang"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Eingang"
 light.treppe_oben:
   friendly_name: "Treppe Oben"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Treppe Oben"
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
 switch.snowboard:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Snowboard"
+  friendly_name: "Snowboard"
   icon: mdi:lightbulb
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.small_lamp:
   friendly_name: "Kleine Lampe"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Kleine Lampe"
   icon: mdi:lightbulb
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.large_lamp:
   friendly_name: "Große Lampe"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Große Lampe"
   icon: mdi:lightbulb
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.lobby:
   friendly_name: "Flur"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Flur"
   icon: mdi:lightbulb
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 switch.studyroom:
   friendly_name: "Arbeitszimmer"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Arbeitszimmer"
   icon: mdi:lightbulb
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
-switch.bath_mirror:
-  friendly_name: "Badspiegel"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Badspiegel"
-  icon: mdi:lightbulb
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-media_player.denon_avrx1300w:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Receiver"
-group.all:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Wohnung"
-group.livingroom:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Wohnzimmer"
-group.kitchen:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Küche"
-group.studyroom:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Arbeitszimmer"
-script.receiver_set_source_cbl_sat:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Sat"
-script.receiver_set_source_media_player:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Receiver Media Player"
-script.receiver_set_source_dvd:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Receiver Kodi"
-script.kodi_pause:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Kodi Stop"
-script.kodi_play:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Kodi Start"
 light.bar_table:
   friendly_name: "Bar"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Bar"
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
-script.bar_table_green:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Bar Grün"
-script.bar_table_red:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Bar Rot"
-script.bar_table_white:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Bar Weiss"
 light.bedroom_yeelight:
   friendly_name: "Schlafzimmer"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Schlafzimmer"
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
 light.stairs_lower_yeelight:
   friendly_name: "Treppe Unten"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Treppe Unten"
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
 light.reading_lamp_yeelight:
   friendly_name: "Leselampe"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Leselampe"
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
 light.lobby_yeelight:
   friendly_name: "Garderobe"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Garderobe"
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
 light.livingroom_yeelight:
   friendly_name: "Deckenlampe"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Deckenlampe"
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
 light.lower_bathroom_yeelight:
   friendly_name: "Bad"
-  emulated_hue_hidden: false
-  emulated_hue_name: "Bad"
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
-group.stair_lights:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Treppe"
 input_boolean.room_based_light:
   emulated_hue_hidden: false
   emulated_hue_name: "Licht"
-input_boolean.turn_fan_on_when_hot:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Ventilator Automation"
-  device_class: moving
 #################################################################
 ## Travel times
 #################################################################

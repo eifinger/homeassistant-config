@@ -73,3 +73,9 @@
     icon: mdi:auto-fix
   detect_door_open_when_going_to_bed:
     icon: mdi:auto-fix
+  roggen_notifier:
+    icon: mdi:auto-fix
+  graeser_notifier:
+    icon: mdi:auto-fix
+  birke_notifier:
+    icon: mdi:auto-fix

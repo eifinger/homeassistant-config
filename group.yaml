@@ -487,6 +487,9 @@ app_switches:
     - input_boolean.plant_watering_notifier
     - input_boolean.power_usage_notification_dishwasher
     - input_boolean.power_usage_notification_washingmachine
+    - input_boolean.roggen_notifier
+    - input_boolean.graeser_notifier
+    - input_boolean.birke_notifier
 #################################################################
 ## Synonym
 #################################################################

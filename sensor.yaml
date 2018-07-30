@@ -379,16 +379,22 @@
   resource: https://opendata.dwd.de/climate_environment/health/alerts/s31fg.json
   name: pollen_101_graeser # Rhein, Pfalz, Nahe und Mosel
   value_template: '{% for region in value_json.content -%}{%- if region.partregion_id == 101 %}{{region.Pollen.Graeser}}{% endif -%}{%- endfor %}'
+  json_attributes:
+    - next_update
 - platform: rest
   scan_interval: 43200 
   resource: https://opendata.dwd.de/climate_environment/health/alerts/s31fg.json
   name: pollen_101_birke # Rhein, Pfalz, Nahe und Mosel
   value_template: '{% for region in value_json.content -%}{%- if region.partregion_id == 101 %}{{region.Pollen.Birke}}{% endif -%}{%- endfor %}'
+  json_attributes:
+    - next_update
 - platform: rest
   scan_interval: 43200  
   resource: https://opendata.dwd.de/climate_environment/health/alerts/s31fg.json
   name: pollen_101_roggen # Rhein, Pfalz, Nahe und Mosel
   value_template: '{% for region in value_json.content -%}{%- if region.partregion_id == 101 %}{{region.Pollen.Roggen}}{% endif -%}{%- endfor %}'
+  json_attributes:
+    - next_update
 - platform: template
   sensors:
     pollen_101_graeser_today:

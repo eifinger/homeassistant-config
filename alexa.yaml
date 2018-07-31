@@ -90,7 +90,6 @@
       media_player.denon_avrx1300w:
         name: Receiver
         description: Receiver Denon AVRX 1300W
-        display_categories: SPEAKER
       group.all:
         name: Wohnung
         description: Alle Geräte

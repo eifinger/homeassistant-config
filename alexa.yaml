@@ -9,6 +9,7 @@
         - switch.rosie_clean
         - switch.rosie_home
         - switch.tv
+        - switch.bedroom_receiver
         - group.eingang
         - switch.snowboard
         - switch.small_lamp
@@ -58,7 +59,11 @@
       switch.tv:
         name: Fernseher
         description: Fernseher
-        display_categories: TV
+        display_categories: SWITCH
+      switch.bedroom_receiver:
+        name: Schlafzimmer Receiver
+        description: Schlafzimmer Receiver
+        display_categories: SWITCH
       group.eingang:
         name: Eingang
         description: Anderer Name für Garderobe

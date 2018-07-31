@@ -159,6 +159,7 @@ infrared:
     - switch.rosie_clean
     - switch.rosie_home
     - switch.tv
+    - switch.bedroom_receiver
 
 all:
   name: Everything

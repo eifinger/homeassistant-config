@@ -186,12 +186,14 @@ humidity:
   entities:
     - sensor.large_lamp_humidity
     - sensor.small_lamp_humidity
+    - sensor.ventilator_humidity
 
 temperature:
   name: Temperatur
   entities:
     - sensor.large_lamp_temperature
     - sensor.small_lamp_temperature
+    - sensor.ventilator_temperature
     
 power_usage:
   name: Stromverbrauch

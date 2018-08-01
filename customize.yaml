@@ -342,6 +342,8 @@ sensor.large_lamp_humidity:
   icon: mdi:water-percent
 sensor.small_lamp_humidity:
   icon: mdi:water-percent
+sensor.ventilator_humidity:
+  icon: mdi:water-percent
 history_graph.gas_station_globus:
   friendly_name: Historie
 history_graph.gas_station_star:

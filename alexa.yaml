@@ -19,11 +19,13 @@
         - media_player.kodi
         - media_player.spotify
         - group.all
+        - group.livingroom
         - script.receiver_set_source_cbl_sat
         - script.receiver_set_source_media_player
         - script.receiver_set_source_dvd
         - group.stair_lights
         - input_boolean.turn_fan_on_when_hot
+        - input_boolean.sleepmode
         - binary_sensor.door_window_sensor_158d000126a57b
       include_domains:
         - light
@@ -99,6 +101,9 @@
         name: Wohnung
         description: Alle Geräte
         display_categories: SCENE_TRIGGER
+      group.livingroom:
+        name: Wohnzimmer
+        description: Alles im Wohnzimmer
       script.receiver_set_source_cbl_sat:
         name: Sat
         description: Schalte Receiver auf Sat / Alexa
@@ -146,6 +151,10 @@
       input_boolean.turn_fan_on_when_hot:
         name: Automation Ventilator
         description: Schalte Automation für den Ventilator an/aus
+        display_categories: SWITCH
+      input_boolean.sleepmode:
+        name: Schlafmodus
+        description: Schalte Schlafmodus an/aus
         display_categories: SWITCH
       binary_sensor.door_window_sensor_158d000126a57b:
         name: Wohnungstür

@@ -388,6 +388,9 @@ input_boolean.user_one_home:
 input_boolean.user_two_home:
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
+input_boolean.sleepmode:
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
 script.learn_faces:
   action_name: Learn
   friendly_name: Lerne Gesichter

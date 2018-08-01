@@ -1,6 +1,9 @@
   is_home:
     name: Is someone home
     icon: mdi:home
+  sleepmode:
+    name: Schlafmodus
+    icon: mdi:sleep
   user_one_home:
     name: Is user one home
     icon: mdi:home

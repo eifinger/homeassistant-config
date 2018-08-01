@@ -355,6 +355,7 @@ automation_presence_entities:
     - input_boolean.is_home
     - input_boolean.user_one_home
     - input_boolean.user_two_home
+    - input_boolean.sleepmode
     - proximity.home 
     - proximity.home_user_one
     - proximity.work

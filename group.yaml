@@ -21,7 +21,7 @@ view_lights:
 view_bedroom:
   name: Schlafzimmer
   view: yes
-  icon: mdi:bed
+  icon: mdi:hotel
   entities:
     - group.bedroom
 

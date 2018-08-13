@@ -504,6 +504,9 @@ input_select.next_appointment_travel_mode_standard:
       }
 switch.large_ventilator:
   friendly_name: "Großer Ventilator"
+  icon: mdi:fan
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
 #################################################################
 ## Android IP Webcam
 #################################################################

@@ -517,12 +517,12 @@ eingang:
   entities:
     - light.lobby_yeelight
 
-ernie:
-  name: Ernie
+jerry:
+  name: Jerry
   entities:
     - switch.ventilator
 
-bert:
-  name: Bert
+tom:
+  name: Tom
   entities:
     - switch.large_ventilator

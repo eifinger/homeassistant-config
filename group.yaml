@@ -318,8 +318,10 @@ media_players:
   name: Media Player
   entities:
     - media_player.denon_avrx1300w
-    - media_player.kodi
     - media_player.spotify
+    - media_player.kevins_echo_dot_oben
+    - media_player.kevins_echo_dot_unten
+    - media_player.kodi
 
 next_appointment:
   name: Nächster Termin

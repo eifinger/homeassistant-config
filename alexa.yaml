@@ -50,16 +50,16 @@
         name: Großer Ventilator Thermostat
         description: Die Temperatur von Großer Ventilator
         display_categories: TEMPERATURE_SENSOR
-      group.tom:
-        name: Tom
+      group.strolch:
+        name: Strolch
         description: Großer Ventilator
         display_categories: SWITCH
       switch.large_ventilator:
         name: Großer Ventilator
         description: Großer Ventilator
         display_categories: SWITCH
-      group.jerry:
-        name: Jerry
+      group.susie:
+        name: Susie
         description: Ventilator
         display_categories: SWITCH
       switch.ventilator:

@@ -73,6 +73,18 @@
   optimistic: false
   qos: 2
   retain: false
+- platform: mqtt
+  name: "Large Ventilator"
+  state_topic: "stat/sonoff_large_ventilator/POWER"
+  command_topic: "cmnd/sonoff_large_ventilator/POWER"
+  availability_topic: "tele/sonoff_large_ventilator/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
 #################################################################
 ## Tp Link
 #################################################################

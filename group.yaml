@@ -188,6 +188,8 @@ humidity:
     - sensor.large_lamp_humidity
     - sensor.small_lamp_humidity
     - sensor.ventilator_humidity
+    - sensor.humidity_158d0002320b3f
+    - sensor.humidity_158d000245a938
 
 temperature:
   name: Temperatur
@@ -195,6 +197,8 @@ temperature:
     - sensor.large_lamp_temperature
     - sensor.small_lamp_temperature
     - sensor.ventilator_temperature
+    - sensor.temperature_158d0002320b3f
+    - sensor.temperature_158d000245a938
     
 power_usage:
   name: Stromverbrauch
@@ -285,12 +289,18 @@ motion:
     - binary_sensor.motion_sensor_158d00012aab97
     - binary_sensor.motion_sensor_158d0001fa464b
     - binary_sensor.motion_sensor_158d0002006cfa
+    - binary_sensor.motion_sensor_158d000236d83c
+    - binary_sensor.motion_sensor_158d000236d982
+    - binary_sensor.motion_sensor_158d000204c95d
 
 xiaomi_button:
   name: Xiaomi Button
   entities:
     - binary_sensor.switch_158d00012db9e5
     - binary_sensor.switch_158d0001b12a12
+    - binary_sensor.switch_158d000215aa28
+    - binary_sensor.switch_158d0002008d07
+    - binary_sensor.switch_158d00021329bc
 
 reed:
   name: Tür und Fenster

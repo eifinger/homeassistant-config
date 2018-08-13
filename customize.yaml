@@ -293,6 +293,46 @@ binary_sensor.motion_sensor_158d0001fa464b:
   friendly_name: "Bewegungsmelder Flur"
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
+binary_sensor.motion_sensor_158d000236d83c:
+  friendly_name: "Bewegungsmelder Küche"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+binary_sensor.motion_sensor_158d000236d982:
+  friendly_name: "Bewegungsmelder Terassenfenster"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+binary_sensor.motion_sensor_158d000204c95d:
+  friendly_name: "Bewegungsmelder Fernseher"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+#################################################################
+## Xiaomi Button
+#################################################################
+binary_sensor.switch_158d000215aa28:
+  friendly_name: "Button Bar"
+binary_sensor.switch_158d0002008d07:
+  friendly_name: "Button Arbeitszimmer"
+binary_sensor.switch_158d00021329bc:
+  friendly_name: "Button Flur"
+#################################################################
+## Xiaomi Temp/Hum Sensor
+#################################################################
+sensor.humidity_158d0002320b3f:
+  friendly_name: "Luftfeuchtigkeit 1"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+sensor.humidity_158d000245a938:
+  friendly_name: "Luftfeuchtigkeit 2"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+sensor.temperature_158d0002320b3f:
+  friendly_name: "Temperatur 2"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+sensor.temperature_158d000245a938:
+  friendly_name: "Temperatur 1"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
 #################################################################
 ## Visibility
 #################################################################

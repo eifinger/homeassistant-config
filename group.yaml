@@ -18,6 +18,13 @@ view_lights:
   entities:
     - group.lights
 
+view_bedroom:
+  name: Schlafzimmer
+  view: yes
+  icon: mdi:bed
+  entities:
+    - group.bedroom
+
 view_media_players:
   name: Media Player
   view: yes
@@ -151,6 +158,14 @@ livingroom:
     - light.livingroom_yeelight
     - switch.ventilator
 
+bedroom:
+  name: Schlafzimmer
+  entities:
+    - switch.large_ventilator
+    - light.bedroom_yeelight
+    - binary_sensor.door_window_sensor_158d0001bb4d94
+    - binary_sensor.motion_sensor_158d0002006cfa
+
 infrared:
   name: Infrarot
   control: hidden
@@ -175,6 +190,7 @@ all:
     - light.reading_lamp_yeelight
     - light.lobby_yeelight
     - switch.ventilator
+    - switch.large_ventilator
 
 occupancy:
   name: Anwesenheit
@@ -188,6 +204,7 @@ humidity:
     - sensor.large_lamp_humidity
     - sensor.small_lamp_humidity
     - sensor.ventilator_humidity
+    - sensor.large_ventilator_humidity
     - sensor.humidity_158d0002320b3f
     - sensor.humidity_158d000245a938
 
@@ -197,6 +214,7 @@ temperature:
     - sensor.large_lamp_temperature
     - sensor.small_lamp_temperature
     - sensor.ventilator_temperature
+    - sensor.large_ventilator_temperature
     - sensor.temperature_158d0002320b3f
     - sensor.temperature_158d000245a938
     
@@ -498,3 +516,13 @@ eingang:
   name: Eingang
   entities:
     - light.lobby_yeelight
+
+ernie:
+  name: Ernie
+  entities:
+    - switch.ventilator
+
+bert:
+  name: Bert
+  entities:
+    - switch.large_ventilator

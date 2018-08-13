@@ -502,6 +502,8 @@ input_select.next_appointment_travel_mode_standard:
       } else if ( state === 'Laufen' ) {
         return "mdi:walk"
       }
+switch.large_ventilator:
+  friendly_name: "Großer Ventilator"
 #################################################################
 ## Android IP Webcam
 #################################################################

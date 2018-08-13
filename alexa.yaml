@@ -4,7 +4,11 @@
         - sensor.large_lamp_temperature
         - sensor.small_lamp_temperature
         - sensor.ventilator_temperature
+        - sensor.large_ventilator_temperature
         - switch.ventilator
+        - group.ernie
+        - switch.large_ventilator
+        - group.bert
         - switch.markise
         - switch.rosie_clean
         - switch.rosie_home
@@ -42,6 +46,22 @@
         name: Ventilator Thermostat
         description: Die Temperatur von Ventilator
         display_categories: TEMPERATURE_SENSOR
+      sensor.large_ventilator_temperature:
+        name: Großer Ventilator Thermostat
+        description: Die Temperatur von Großer Ventilator
+        display_categories: TEMPERATURE_SENSOR
+      group.bert:
+        name: Bert
+        description: Großer Ventilator
+        display_categories: SWITCH
+      switch.large_ventilator:
+        name: Großer Ventilator
+        description: Großer Ventilator
+        display_categories: SWITCH
+      group.ernie:
+        name: Ernie
+        description: Ventilator
+        display_categories: SWITCH
       switch.ventilator:
         name: Ventilator
         description: Ventilator

@@ -321,35 +321,35 @@
       unit_of_measurement: 'W'
       value_template: "{{states.switch.tplink.attributes.current_power_w}}"
     tplink_power_usage_total:
-      friendly_name: tplink Verbrauch Total
+      friendly_name: tplink Total
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.tplink.attributes.total_energy_kwh}}"
     tplink_power_usage_today:
-      friendly_name: tplink Verbrauch Heute
+      friendly_name: tplink Heute
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.tplink.attributes.today_energy_kwh}}"
     washingmachine_power_usage:
-      friendly_name: Waschmaschinen Verbrauch
+      friendly_name: Waschmaschine
       unit_of_measurement: 'W'
       value_template: "{{states.switch.washingmachine.attributes.current_power_w}}"
     washingmachine_power_usage_total:
-      friendly_name: Waschmaschinen Verbrauch Total
+      friendly_name: Waschmaschine Total
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.washingmachine.attributes.total_energy_kwh}}"
     washingmachine_power_usage_today:
-      friendly_name: Waschmaschinen Verbrauch Heute
+      friendly_name: Waschmaschine Heute
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.washingmachine.attributes.today_energy_kwh}}"
     dishwasher_power_usage:
-      friendly_name: Spülmaschinen Verbrauch
+      friendly_name: Spülmaschine
       unit_of_measurement: 'W'
       value_template: "{{states.switch.dishwasher.attributes.current_power_w}}"
     dishwasher_power_usage_total:
-      friendly_name: Spülmaschinen Verbrauch Total
+      friendly_name: Spülmaschine Total
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.dishwasher.attributes.total_energy_kwh}}"
     dishwasher_power_usage_today:
-      friendly_name: Spülmaschinen Verbrauch Heute
+      friendly_name: Spülmaschine Heute
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.dishwasher.attributes.today_energy_kwh}}"
 #################################################################

@@ -19,8 +19,8 @@ gas_station_globus:
 gas_stations:
   name: gas_stations
   entities:
-    - sensor.gas_station_globus
-    - sensor.gas_station_metro
-    - sensor.gas_station_star
-  hours_to_show: 24
+    - sensor.statistics_gas_station_globus
+    - sensor.statistics_gas_station_metro
+    - sensor.statistics_gas_station_star
+  hours_to_show: 120
   refresh: 900

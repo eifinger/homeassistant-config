@@ -165,6 +165,7 @@ bedroom:
     - light.bedroom_yeelight
     - binary_sensor.door_window_sensor_158d0001bb4d94
     - binary_sensor.motion_sensor_158d0002006cfa
+    - switch.bedroom_receiver
 
 infrared:
   name: Infrarot
@@ -174,7 +175,6 @@ infrared:
     - switch.rosie_clean
     - switch.rosie_home
     - switch.tv
-    - switch.bedroom_receiver
 
 all:
   name: Everything

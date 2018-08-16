@@ -82,3 +82,6 @@
     icon: mdi:auto-fix
   birke_notifier:
     icon: mdi:auto-fix
+  notifier_alexa:
+    icon: mdi:amazon-alexa
+    name: Alexa Ansagen

@@ -10,7 +10,7 @@
         - switch.large_ventilator
         - group.tom
         - switch.markise
-        - switch.goldie_clean
+        - script.goldie_clean
         - switch.goldie_home
         - switch.tv
         - switch.bedroom_receiver

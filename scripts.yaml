@@ -21,6 +21,13 @@ receiver_set_source_dvd:
       entity_id: media_player.denon_avrx1300w
       data:
         source: 'DVD/Blu-ray'
+
+receiver_set_source_gaming:
+  sequence:
+    - service: media_player.select_source
+      entity_id: media_player.denon_avrx1300w
+      data:
+        source: 'Game'
 #################################################################
 ## Kodi
 #################################################################
@@ -68,3 +75,13 @@ bar_table_white:
 learn_faces:
   sequence:
     - event: eifinger_learn_faces
+#################################################################
+## Goldie
+#################################################################
+goldie_clean:
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.goldie_clean
+    - delay: '00:00:05'
+    - service: switch.turn_on
+      entity_id: switch.goldie_clean

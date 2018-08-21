@@ -48,7 +48,7 @@ view_traveltimes:
     - group.traveltimes
 
 view_next_appointment:
-  name: Nächster Termin
+  name: Nächster Termin Kevin
   view: yes
   icon: mdi:calendar
   entities:
@@ -56,6 +56,16 @@ view_next_appointment:
     - group.next_appointment_traveltimes
     - camera.next_appointment_location_staticmap
     - camera.next_appointment_location_street_view
+
+view_next_appointment_user_two:
+  name: Nächster Termin Sina
+  view: yes
+  icon: mdi:calendar
+  entities:
+    - group.next_appointment_user_two
+    - group.next_appointment_traveltimes_user_two
+    - camera.next_appointment_location_staticmap_user_two
+    - camera.next_appointment_location_street_view_user_two
 
 view_cameras:
   name: Kameras
@@ -302,6 +312,15 @@ next_appointment_traveltimes:
     - sensor.travel_time_next_appointment_location_walking
     - input_boolean.announce_time_to_leave
 
+next_appointment_traveltimes_user_two:
+  name: Reisezeiten
+  entities:
+    - sensor.travel_time_next_appointment_location_car_user_two
+    - sensor.travel_time_next_appointment_location_bike_user_two
+    - sensor.travel_time_next_appointment_location_transit_user_two
+    - sensor.travel_time_next_appointment_location_walking_user_two
+    - input_boolean.announce_time_to_leave_user_two
+
 motion:
   name: Bewegungsmelder
   entities:
@@ -353,7 +372,7 @@ media_players:
     - media_player.kodi
 
 next_appointment:
-  name: Nächster Termin
+  name: Nächster Termin Kevin
   entities:
     - sensor.cal_next_appointment_title
     - sensor.cal_next_appointment_location
@@ -362,6 +381,17 @@ next_appointment:
     - sensor.calc_leave_time
     - input_number.leave_time_offset
     - input_select.next_appointment_travel_mode
+
+next_appointment_user_two:
+  name: Nächster Termin Sina
+  entities:
+    - sensor.cal_next_appointment_title_user_two
+    - sensor.cal_next_appointment_location_user_two
+    - sensor.cal_next_appointment_start_time_user_two
+    - sensor.travel_time_next_appointment_location_user_two
+    - sensor.calc_leave_time_user_two
+    - input_number.leave_time_offset_user_two
+    - input_select.next_appointment_travel_mode_user_two
 
 stair_lights:
   name: Treppenlichter
@@ -473,10 +503,12 @@ alarm:
     - input_boolean.radiowakeup
     - binary_sensor.workday_today
     - binary_sensor.workday_tomorrow
+
 standards:
   name: Standard Einstellungen
   entities:
    - input_select.next_appointment_travel_mode_standard
+   - input_select.next_appointment_travel_mode_standard_user_two
 
 ventilator:
   name: Ventilator Automation

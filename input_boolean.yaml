@@ -18,6 +18,8 @@
     icon: mdi:telegram
   announce_time_to_leave:
     icon: mdi:telegram
+    announce_time_to_leave_user_two:
+    icon: mdi:telegram
   room_based_light:
     icon: mdi:lightbulb
   heading_home_notifier_user_one:
@@ -75,6 +77,8 @@
   detect_wrong_state_when_leaving:
     icon: mdi:auto-fix
   detect_door_open_when_going_to_bed:
+    icon: mdi:auto-fix
+  detect_windows_open_when_going_to_bed:
     icon: mdi:auto-fix
   roggen_notifier:
     icon: mdi:auto-fix

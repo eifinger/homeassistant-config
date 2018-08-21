@@ -13,3 +13,19 @@ next_appointment_travel_mode_standard:
     - Fahrrad
     - Öffis
     - Laufen
+
+next_appointment_travel_mode_user_two:
+  name: Reiseart
+  options:
+    - Auto
+    - Fahrrad
+    - Öffis
+    - Laufen
+
+next_appointment_travel_mode_standard_user_two:
+  name: Standard Reiseart
+  options:
+    - Auto
+    - Fahrrad
+    - Öffis
+    - Laufen

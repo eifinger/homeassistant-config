@@ -106,6 +106,62 @@ sensor.travel_time_next_appointment_location_transit:
       } else {
         return "green";
       }
+sensor.travel_time_next_appointment_location_car_user_two:
+  icon: mdi:car
+  friendly_name: "Sina -> Nächster Termin"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+  templates:
+    icon_color: >
+      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
+        return "red";
+      } else if (attributes.duration_in_traffic > attributes.duration ) {
+        return "orange";
+      } else {
+        return "green";
+      }
+sensor.travel_time_next_appointment_location_bike_user_two:
+  icon: mdi:bike
+  friendly_name: "Sina -> Nächster Termin"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+  templates:
+    icon_color: >
+      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
+        return "red";
+      } else if (attributes.duration_in_traffic > attributes.duration ) {
+        return "orange";
+      } else {
+        return "green";
+      }
+sensor.travel_time_next_appointment_location_walking_user_two:
+  icon: mdi:walk
+  friendly_name: "Sina -> Nächster Termin"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+  templates:
+    icon_color: >
+      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
+        return "red";
+      } else if (attributes.duration_in_traffic > attributes.duration ) {
+        return "orange";
+      } else {
+        return "green";
+      }
+sensor.travel_time_next_appointment_location_transit_user_two:
+  icon: mdi:bus
+  friendly_name: "Sina -> Nächster Termin"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+  templates:
+    icon_color: >
+      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
+        return "red";
+      } else if (attributes.duration_in_traffic > attributes.duration ) {
+        return "orange";
+      } else {
+        return "green";
+      }
 input_boolean.travel_time_work_from_home:
   friendly_name: "Zu Hause -> SVA Benachrichtigung"
   custom_ui_state_card: state-card-custom-ui
@@ -136,7 +192,29 @@ input_select.next_appointment_travel_mode:
       } else if ( state === 'Laufen' ) {
         return "mdi:walk"
       }
-sensor.cal_next_appointment_title:
+sensor.cal_next_appointment_title_user_two:
+  icon: mdi:calendar
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+input_boolean.announce_time_to_leave_user_two:
+  friendly_name: "Sina -> Nächster Termin Benachrichtigung"
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+input_select.next_appointment_travel_mode_user_two:
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+  templates:
+    icon: >
+      if ( state === 'Auto' ) {
+        return "mdi:car";
+      } else if ( state === 'Fahrrad' ) {
+        return "mdi:bike"
+      } else if ( state === 'Öffis' ) {
+        return "mdi:bus"
+      } else if ( state === 'Laufen' ) {
+        return "mdi:walk"
+      }
+sensor.cal_next_appointment_title_user_two:
   icon: mdi:calendar
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
@@ -234,23 +312,25 @@ binary_sensor.switch_158d0002008d07:
   friendly_name: "Button Arbeitszimmer"
 binary_sensor.switch_158d00021329bc:
   friendly_name: "Button Flur"
+binary_sensor.switch_158d0001b12a12:
+  friendly_name: "Button Schlafzimmer"
 #################################################################
 ## Xiaomi Temp/Hum Sensor
 #################################################################
 sensor.humidity_158d0002320b3f:
-  friendly_name: "Luftfeuchtigkeit 1"
+  friendly_name: "Arbeitszimmer Humidity"
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 sensor.humidity_158d000245a938:
-  friendly_name: "Luftfeuchtigkeit 2"
+  friendly_name: "Schlafzimmer Humidity"
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 sensor.temperature_158d0002320b3f:
-  friendly_name: "Temperatur 2"
+  friendly_name: "Arbeitszimmer Temperature"
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 sensor.temperature_158d000245a938:
-  friendly_name: "Temperatur 1"
+  friendly_name: "Schlafzimmer Temperature"
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 #################################################################

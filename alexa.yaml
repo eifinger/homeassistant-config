@@ -10,8 +10,8 @@
         - switch.large_ventilator
         - group.tom
         - switch.markise
-        - switch.rosie_clean
-        - switch.rosie_home
+        - switch.goldie_clean
+        - switch.goldie_home
         - switch.tv
         - switch.bedroom_receiver
         - group.eingang
@@ -27,6 +27,7 @@
         - script.receiver_set_source_cbl_sat
         - script.receiver_set_source_media_player
         - script.receiver_set_source_dvd
+        - script.receiver_set_source_gaming
         - group.stair_lights
         - input_boolean.turn_fan_on_when_hot
         - input_boolean.sleepmode
@@ -70,13 +71,13 @@
         name: Markise
         description: Markise
         display_categories: SWITCH
-      switch.rosie_clean:
-        name: Rosie
-        description: Simuliere Rosies "Clean" Kommando
-        display_categories: SWITCH
-      switch.rosie_home:
-        name: Rosie Nach Hause
-        description: Schicke Rosie nach Hause
+      script.goldie_clean:
+        name: Goldie
+        description: Simuliere Goldies "Clean" Kommando
+        display_categories: SCENE_TRIGGER
+      switch.goldie_home:
+        name: Goldie Nach Hause
+        description: Schicke Goldie nach Hause
         display_categories: SWITCH
       switch.tv:
         name: Fernseher
@@ -135,6 +136,10 @@
       script.receiver_set_source_dvd:
         name: Receiver Kodi
         description: Schalte Receiver auf DvD / Kodi
+        display_categories: SCENE_TRIGGER
+      script.receiver_set_source_gaming:
+        name: Receiver Gaming
+        description: Schalte Receiver auf Gaming
         display_categories: SCENE_TRIGGER
       light.bar_table:
         name: Bar

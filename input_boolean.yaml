@@ -18,7 +18,7 @@
     icon: mdi:telegram
   announce_time_to_leave:
     icon: mdi:telegram
-    announce_time_to_leave_user_two:
+  announce_time_to_leave_user_two:
     icon: mdi:telegram
   room_based_light:
     icon: mdi:lightbulb

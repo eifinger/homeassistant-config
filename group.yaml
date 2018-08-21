@@ -183,8 +183,8 @@ infrared:
   control: hidden
   entities:
     - switch.markise
-    - switch.rosie_clean
-    - switch.rosie_home
+    - switch.goldie_clean
+    - switch.goldie_home
     - switch.tv
 
 all:

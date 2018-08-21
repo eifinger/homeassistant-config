@@ -530,9 +530,9 @@ switch.ventilator:
   show_last_changed: true
 switch.markise:
   icon: mdi:garage
-switch.rosie_clean:
+switch.goldie_clean:
   icon: mdi:robot-vacuum
-switch.rosie_home:
+switch.goldie_home:
   icon: mdi:home
 switch.tv:
   icon: mdi:television

@@ -504,6 +504,20 @@ input_select.next_appointment_travel_mode_standard:
       } else if ( state === 'Laufen' ) {
         return "mdi:walk"
       }
+input_select.next_appointment_travel_mode_standard_user_two:
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+  templates:
+    icon: >
+      if ( state === 'Auto' ) {
+        return "mdi:car";
+      } else if ( state === 'Fahrrad' ) {
+        return "mdi:bike"
+      } else if ( state === 'Öffis' ) {
+        return "mdi:bus"
+      } else if ( state === 'Laufen' ) {
+        return "mdi:walk"
+      }
 switch.large_ventilator:
   friendly_name: "Großer Ventilator"
   icon: mdi:fan

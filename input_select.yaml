@@ -7,7 +7,7 @@ next_appointment_travel_mode:
     - Laufen
 
 next_appointment_travel_mode_standard:
-  name: Standard Reiseart
+  name: Standard Reiseart Kevin
   options:
     - Auto
     - Fahrrad
@@ -23,7 +23,7 @@ next_appointment_travel_mode_user_two:
     - Laufen
 
 next_appointment_travel_mode_standard_user_two:
-  name: Standard Reiseart
+  name: Standard Reiseart Sina
   options:
     - Auto
     - Fahrrad

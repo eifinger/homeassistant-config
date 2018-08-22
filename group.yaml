@@ -521,6 +521,7 @@ app_switches:
   entities:
     - input_boolean.detect_wrong_state_when_leaving
     - input_boolean.detect_door_open_when_going_to_bed
+    - input_boolean.detect_windows_open_when_going_to_bed
     - input_boolean.notify_of_action_when_away
     - input_boolean.detectWrongStateWhenLeaving
     - input_boolean.detectWrongStateWhenLeaving

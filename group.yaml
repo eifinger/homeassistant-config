@@ -404,7 +404,6 @@ automation_entities:
   control: hidden
   entities:
     - sun.sun
-    - input_boolean.heading_home_notifier_user_one
     - switch.facebox_wol
     - sensor.uptime
     - input_boolean.persistence_plantwateringnotifier_reminder_acknowledged
@@ -532,6 +531,7 @@ app_switches:
     - input_boolean.bedroom_motion_trigger
     - input_boolean.coming_home_yeelight
     - input_boolean.coming_home_alexa
+    - input_boolean.heading_home_notifier_user_one
     - input_boolean.home_arrival_notifier_user_one
     - input_boolean.home_arrival_notifier_user_two
     - input_boolean.is_home_determiner

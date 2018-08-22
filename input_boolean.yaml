@@ -80,6 +80,8 @@
     icon: mdi:auto-fix
   detect_windows_open_when_going_to_bed:
     icon: mdi:auto-fix
+  set_multiroom_audio_when_sleepmode_turns_off:
+    icon: mdi:auto-fix
   roggen_notifier:
     icon: mdi:auto-fix
   graeser_notifier:

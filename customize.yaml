@@ -613,3 +613,8 @@ switch.bedroom_receiver:
 #################################################################
 sensor.android_ip_webcam_door_motion:
   unit_of_measurement: 'motion_units'
+#################################################################
+## Zone
+#################################################################
+zone.work:
+  friendly_name: "Arbeit"

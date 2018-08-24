@@ -46,6 +46,8 @@ view_traveltimes:
   icon: mdi:google-maps
   entities:
     - group.traveltimes
+    - group.rmv_departures_nach_mainz_hofchen
+    - group.rmv_departures_nach_mainz_hbf
 
 view_next_appointment:
   name: Nächster Termin Kevin
@@ -302,6 +304,24 @@ traveltimes:
     - input_boolean.travel_time_work_from_home
     - sensor.travel_time_elmo_from_home
     - input_boolean.travel_time_elmo_from_home
+
+rmv_departures_nach_mainz_hofchen:
+  name: Nach Mainz Höfchen/Listmann
+  entities:
+    - sensor.nach_mainz_hofchen_0
+    - sensor.nach_mainz_hofchen_1
+    - sensor.nach_mainz_hofchen_2
+    - sensor.nach_mainz_hofchen_3
+    - sensor.nach_mainz_hofchen_4
+
+rmv_departures_nach_mainz_hbf:
+  name: Nach Mainz HBF
+  entities:
+    - sensor.nach_mainz_hbf_0
+    - sensor.nach_mainz_hbf_1
+    - sensor.nach_mainz_hbf_2
+    - sensor.nach_mainz_hbf_3
+    - sensor.nach_mainz_hbf_4
 
 next_appointment_traveltimes:
   name: Reisezeiten

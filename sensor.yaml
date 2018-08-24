@@ -569,15 +569,15 @@
 ## RMV
 #################################################################
 - platform: rmvtransport
-    next_departure:
-      - station: 3025386
-        name: Ruthof
-        time_offset: 5
-        products:
-          - 'RB'
-          - 'RE'
-          - 'Bus'
-          - 'S'
-      - station: 3025386
-        name: Nach Mainz
-        destinations: ['Mainz Höfchen/Listmann', 'Mainz Hauptbahnhof']
+  next_departure:
+    - station: 3025386
+      name: Ruthof
+      time_offset: 5
+      products:
+        - 'RB'
+        - 'RE'
+        - 'Bus'
+        - 'S'
+    - station: 3025386
+      name: Nach Mainz
+      destinations: ['Mainz Höfchen/Listmann', 'Mainz Hauptbahnhof']

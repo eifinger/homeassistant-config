@@ -17,6 +17,3 @@
 - platform: local_file
   name: Saved Image
   file_path: !secret saved_image_filepath
-- platform: local_file
-  name: facebox_health_check_picture
-  file_path: !secret facebox_health_check_picture_filepath

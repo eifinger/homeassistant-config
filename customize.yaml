@@ -395,11 +395,11 @@ history_graph.gas_station_metro:
 history_graph.gas_stations:
   friendly_name: Historie
 sensor.statistics_gas_station_globus_mean:
-  friendly_name: Statistik (Mean)
+  friendly_name: Globus (Mean)
 sensor.statistics_gas_station_star_mean:
-  friendly_name: Statistik (Mean)
+  friendly_name: Star (Mean)
 sensor.statistics_gas_station_metro_mean:
-  friendly_name: Statistik (Mean)
+  friendly_name: Metro (Mean)
 sensor.room_s8plus:
   icon: mdi:cellphone
 sensor.cal_next_appointment_location:

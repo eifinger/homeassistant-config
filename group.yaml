@@ -46,7 +46,7 @@ view_traveltimes:
   icon: mdi:google-maps
   entities:
     - group.traveltimes
-    - group.rmv_departures_nach_mainz_hofchen
+    - group.rmv_departures_nach_bruckenkopf
     - group.rmv_departures_nach_mainz_hbf
 
 view_next_appointment:
@@ -305,14 +305,14 @@ traveltimes:
     - sensor.travel_time_elmo_from_home
     - input_boolean.travel_time_elmo_from_home
 
-rmv_departures_nach_mainz_hofchen:
+rmv_departures_nach_bruckenkopf:
   name: Nach Mainz Höfchen/Listmann
   entities:
-    - sensor.nach_mainz_hofchen_0
-    - sensor.nach_mainz_hofchen_1
-    - sensor.nach_mainz_hofchen_2
-    - sensor.nach_mainz_hofchen_3
-    - sensor.nach_mainz_hofchen_4
+    - sensor.nach_bruckenkopf_0
+    - sensor.nach_bruckenkopf_1
+    - sensor.nach_bruckenkopf_2
+    - sensor.nach_bruckenkopf_3
+    - sensor.nach_bruckenkopf_4
 
 rmv_departures_nach_mainz_hbf:
   name: Nach Mainz HBF

@@ -581,7 +581,7 @@
     - station: 3025386
       name: Nach Mainz Höfchen
       destinations: ['Mainz Höfchen/Listmann']
-    - station:
+    - station: 3025386
       name: Nach Mainz HBF
       destinations: ['Mainz Hauptbahnhof']
 - platform: template

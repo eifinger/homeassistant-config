@@ -192,7 +192,7 @@ input_select.next_appointment_travel_mode:
       } else if ( state === 'Laufen' ) {
         return "mdi:walk"
       }
-sensor.cal_next_appointment_title_user_two:
+sensor.cal_next_appointment_title:
   icon: mdi:calendar
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true

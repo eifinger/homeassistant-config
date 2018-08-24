@@ -306,7 +306,7 @@ traveltimes:
     - input_boolean.travel_time_elmo_from_home
 
 rmv_departures_nach_bruckenkopf:
-  name: Nach Mainz Höfchen/Listmann
+  name: Nach Brückenkopf
   entities:
     - sensor.nach_bruckenkopf_0
     - sensor.nach_bruckenkopf_1

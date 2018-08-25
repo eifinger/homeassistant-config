@@ -91,3 +91,6 @@
   notifier_alexa:
     icon: mdi:amazon-alexa
     name: Alexa Ansagen
+  start_goldie_when_leaving:
+    icon: mdi:auto-fix
+    name: Goldie Starten wenn wir weg gehen

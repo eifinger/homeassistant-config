@@ -564,6 +564,7 @@ app_switches:
     - input_boolean.roggen_notifier
     - input_boolean.graeser_notifier
     - input_boolean.birke_notifier
+    - input_boolean.start_goldie_when_leaving
 
 notifier_alexa:
   name: Alexa Ansagen

@@ -5,6 +5,7 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
+    - group.start_goldie_when_leaving
     - group.notifier_alexa
     - media_player.denon_avrx1300w
     - group.livingroom
@@ -570,6 +571,10 @@ notifier_alexa:
   name: Alexa Ansagen
   entities:
     - input_boolean.notifier_alexa
+start_goldie_when_leaving:
+  name: Goldie
+  entities:
+    - input_boolean.start_goldie_when_leaving
 #################################################################
 ## Synonym
 #################################################################

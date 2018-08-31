@@ -5,7 +5,6 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
-    - group.start_goldie_when_leaving
     - group.notifier_alexa
     - media_player.denon_avrx1300w
     - group.livingroom
@@ -139,6 +138,7 @@ view_settings:
   entities:
     - group.standards
     - group.ventilator
+    - group.start_goldie_when_leaving
     - group.app_switches
 
 #################################################################

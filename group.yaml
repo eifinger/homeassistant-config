@@ -560,6 +560,7 @@ app_switches:
     - input_boolean.is_user_home_determiner_user_one
     - input_boolean.is_user_home_determiner_user_two
     - input_boolean.leaving_work_notifier_user_one
+    - input_boolean.leaving_elmo_notifier_user_two
     - input_boolean.plant_watering_notifier
     - input_boolean.power_usage_notification_dishwasher
     - input_boolean.power_usage_notification_washingmachine

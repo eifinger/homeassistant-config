@@ -68,6 +68,8 @@
     icon: mdi:auto-fix
   leaving_work_notifier_user_one:
     icon: mdi:auto-fix
+  leaving_elmo_notifier_user_two:
+    icon: mdi:auto-fix
   plant_watering_notifier:
     icon: mdi:auto-fix
   power_usage_notification_dishwasher:

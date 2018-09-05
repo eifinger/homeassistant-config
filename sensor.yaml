@@ -239,31 +239,31 @@
   options:
     arrival_time: sensor.cal_next_appointment_start_time
 #Next Appointment Bike
-- platform: google_travel_time
-  name: travel_time_next_appointment_location_bike
-  api_key: !secret google_maps_api_token
-  origin: !secret device_user_one
-  destination: sensor.cal_next_appointment_location_google_prepared
-  options:
-    arrival_time: sensor.cal_next_appointment_start_time
-    mode: bicycling
+#- platform: google_travel_time
+#  name: travel_time_next_appointment_location_bike
+#  api_key: !secret google_maps_api_token
+#  origin: !secret device_user_one
+#  destination: sensor.cal_next_appointment_location_google_prepared
+#  options:
+#    arrival_time: sensor.cal_next_appointment_start_time
+#    mode: bicycling
 #Next Appointment Walking
-- platform: google_travel_time
-  name: travel_time_next_appointment_location_walking
-  api_key: !secret google_maps_api_token
-  origin: !secret device_user_one
-  destination: sensor.cal_next_appointment_location_google_prepared
-  options:
-    arrival_time: sensor.cal_next_appointment_start_time
-    mode: walking
+#- platform: google_travel_time
+#  name: travel_time_next_appointment_location_walking
+#  api_key: !secret google_maps_api_token
+#  origin: !secret device_user_one
+#  destination: sensor.cal_next_appointment_location_google_prepared
+#  options:
+#    arrival_time: sensor.cal_next_appointment_start_time
+#    mode: walking
 #Next Appointment Transit
-- platform: google_travel_time
-  name: travel_time_next_appointment_location_transit
-  api_key: !secret google_maps_api_token
-  origin: !secret device_user_one
-  destination: sensor.cal_next_appointment_location_google_prepared
-  options:
-    mode: transit
+#- platform: google_travel_time
+#  name: travel_time_next_appointment_location_transit
+#  api_key: !secret google_maps_api_token
+#  origin: !secret device_user_one
+#  destination: sensor.cal_next_appointment_location_google_prepared
+#  options:
+#    mode: transit
 #Next Appointment Car User Two
 - platform: google_travel_time
   name: travel_time_next_appointment_location_car_user_two
@@ -273,31 +273,31 @@
   options:
     arrival_time: sensor.cal_next_appointment_start_time_user_two
 #Next Appointment Bike User Two
-- platform: google_travel_time
-  name: travel_time_next_appointment_location_bike_user_two
-  api_key: !secret google_maps_api_token_user_two
-  origin: !secret device_user_two
-  destination: sensor.cal_next_appointment_location_google_prepared_user_two
-  options:
-    arrival_time: sensor.cal_next_appointment_start_time_user_two
-    mode: bicycling
+#- platform: google_travel_time
+#  name: travel_time_next_appointment_location_bike_user_two
+#  api_key: !secret google_maps_api_token_user_two
+#  origin: !secret device_user_two
+#  destination: sensor.cal_next_appointment_location_google_prepared_user_two
+#  options:
+#    arrival_time: sensor.cal_next_appointment_start_time_user_two
+#    mode: bicycling
 #Next Appointment Walking User Two
-- platform: google_travel_time
-  name: travel_time_next_appointment_location_walking_user_two
-  api_key: !secret google_maps_api_token_user_two
-  origin: !secret device_user_two
-  destination: sensor.cal_next_appointment_location_google_prepared_user_two
-  options:
-    arrival_time: sensor.cal_next_appointment_start_time_user_two
-    mode: walking
+#- platform: google_travel_time
+#  name: travel_time_next_appointment_location_walking_user_two
+#  api_key: !secret google_maps_api_token_user_two
+#  origin: !secret device_user_two
+#  destination: sensor.cal_next_appointment_location_google_prepared_user_two
+#  options:
+#    arrival_time: sensor.cal_next_appointment_start_time_user_two
+#    mode: walking
 #Next Appointment Transit User Two
-- platform: google_travel_time
-  name: travel_time_next_appointment_location_transit_user_two
-  api_key: !secret google_maps_api_token_user_two
-  origin: !secret device_user_two
-  destination: sensor.cal_next_appointment_location_google_prepared_user_two
-  options:
-    mode: transit
+#- platform: google_travel_time
+#  name: travel_time_next_appointment_location_transit_user_two
+#  api_key: !secret google_maps_api_token_user_two
+#  origin: !secret device_user_two
+#  destination: sensor.cal_next_appointment_location_google_prepared_user_two
+#  options:
+#    mode: transit
 #################################################################
 ## Next Appointment
 #################################################################

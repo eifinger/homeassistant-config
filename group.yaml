@@ -329,18 +329,18 @@ next_appointment_traveltimes:
   name: Reisezeiten
   entities:
     - sensor.travel_time_next_appointment_location_car
-    - sensor.travel_time_next_appointment_location_bike
-    - sensor.travel_time_next_appointment_location_transit
-    - sensor.travel_time_next_appointment_location_walking
+#    - sensor.travel_time_next_appointment_location_bike
+#    - sensor.travel_time_next_appointment_location_transit
+#    - sensor.travel_time_next_appointment_location_walking
     - input_boolean.announce_time_to_leave
 
 next_appointment_traveltimes_user_two:
   name: Reisezeiten
   entities:
     - sensor.travel_time_next_appointment_location_car_user_two
-    - sensor.travel_time_next_appointment_location_bike_user_two
-    - sensor.travel_time_next_appointment_location_transit_user_two
-    - sensor.travel_time_next_appointment_location_walking_user_two
+#    - sensor.travel_time_next_appointment_location_bike_user_two
+#    - sensor.travel_time_next_appointment_location_transit_user_two
+#    - sensor.travel_time_next_appointment_location_walking_user_two
     - input_boolean.announce_time_to_leave_user_two
 
 motion:

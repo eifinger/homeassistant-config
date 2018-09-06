@@ -15,3 +15,15 @@
   longitude: !secret elmo_longitude
   radius: 600
   icon: mdi:horseshoe
+
+- name: Elmo1
+  latitude: !secret elmo_latitude_1
+  longitude: !secret elmo_longitude_1
+  radius: 600
+  icon: mdi:horseshoe
+
+- name: Elmo2
+  latitude: !secret elmo_latitude_2
+  longitude: !secret elmo_longitude_2
+  radius: 600
+  icon: mdi:horseshoe

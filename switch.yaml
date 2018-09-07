@@ -104,7 +104,7 @@
 ## WoL
 #################################################################
 - platform: wake_on_lan
-  name: facebox_wol
+  name: Starte Vive PC
   host: !secret facebox_ip
   mac_address: !secret facebox_mac
 #################################################################

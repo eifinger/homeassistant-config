@@ -19,6 +19,7 @@
         - switch.small_lamp
         - switch.large_lamp
         - switch.lobby
+        - switch.start_vive_pc
         - media_player.denon_avrx1300w
         - media_player.kodi
         - media_player.spotify
@@ -111,10 +112,10 @@
         name: Flur
         description: Flur
         display_categories: LIGHT
-      switch.studyroom:
-        name: Arbeitszimmer
-        description: Arbeitszimmer
-        display_categories: LIGHT
+      switch.start_vive_pc:
+        name: Vive PC
+        description: Vive PC Wake on Lan
+        display_categories: SWITCH
       media_player.denon_avrx1300w:
         name: Receiver
         description: Receiver Denon AVRX 1300W

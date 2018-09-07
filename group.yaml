@@ -426,7 +426,7 @@ automation_entities:
   control: hidden
   entities:
     - sun.sun
-    - switch.facebox_wol
+    - switch.start_vive_pc
     - sensor.uptime
     - input_boolean.persistence_plantwateringnotifier_reminder_acknowledged
 

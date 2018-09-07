@@ -610,6 +610,10 @@ switch.bedroom_receiver:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
+switch.start_vive_pc:
+  icon: mdi:google-cardboard
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
 #################################################################
 ## Android IP Webcam
 #################################################################

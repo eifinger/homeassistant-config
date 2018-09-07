@@ -300,7 +300,7 @@ binary_sensor.motion_sensor_158d000236d982:
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 binary_sensor.motion_sensor_158d000204c95d:
-  friendly_name: "Bewegungsmelder Fernseher"
+  friendly_name: "Bewegungsmelder Goldie"
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
 #################################################################

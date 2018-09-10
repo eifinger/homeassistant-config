@@ -40,7 +40,9 @@
 #################################################################
 ## Appdaemon App switches
 #################################################################
-  turn_fan_on_when_hot:
+  turn_small_fan_on_when_hot:
+    icon: mdi:auto-fix
+  turn_large_fan_on_when_hot:
     icon: mdi:auto-fix
   notify_of_action_when_away:
     icon: mdi:auto-fix

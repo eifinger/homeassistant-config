@@ -137,7 +137,8 @@ view_settings:
   icon: mdi:settings
   entities:
     - group.standards
-    - group.ventilator
+    - group.small_ventilator
+    - group.large_ventilator
     - group.start_goldie_when_leaving
     - group.app_switches
 
@@ -531,11 +532,17 @@ standards:
    - input_select.next_appointment_travel_mode_standard
    - input_select.next_appointment_travel_mode_standard_user_two
 
-ventilator:
-  name: Ventilator Automation
+small_ventilator:
+  name: Small Ventilator Automation
   entities:
-   - input_number.turn_fan_on_when_hot_threshold
-   - input_boolean.turn_fan_on_when_hot
+   - input_number.turn_small_fan_on_when_hot_threshold
+   - input_boolean.turn_small_fan_on_when_hot
+
+large_ventilator:
+  name: Large Ventilator Automation
+  entities:
+   - input_number.turn_large_fan_on_when_hot_threshold
+   - input_boolean.turn_large_fan_on_when_hot
 
 app_switches:
   name: App Switches

@@ -211,6 +211,25 @@
 #################################################################
 ## Travel Times
 #################################################################
+#Waze
+#Work from Home
+- platform: waze_travel_time
+  name: travel_time_work_from_home_waze
+  region: 'EU'
+  origin: zone.home
+  destination: zone.work
+#Home from Work
+- platform: waze_travel_time
+  name: travel_time_home_from_work_waze
+  region: 'EU'
+  origin: zone.work
+  destination: zone.home
+#Elmo from Home
+- platform: waze_travel_time
+  name: travel_time_elmo_from_home_waze
+  region: 'EU'
+  origin: zone.home
+  destination: zone.elmo
 #Google
 #Work from Home
 - platform: google_travel_time

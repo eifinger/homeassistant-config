@@ -47,6 +47,7 @@ view_traveltimes:
   entities:
     - group.traveltimes
     - group.traveltimes_waze
+    - group.traveltimes_waze_realtime
     - group.rmv_departures_nach_bruckenkopf
     - group.rmv_departures_nach_mainz_hbf
 
@@ -316,6 +317,14 @@ traveltimes_waze:
     - sensor.travel_time_home_from_work_waze
     - sensor.travel_time_work_from_home_waze
     - sensor.travel_time_elmo_from_home_waze
+
+traveltimes_waze_realtime:
+  name: Reisezeiten Waze
+  control: hidden
+  entities:
+    - sensor.travel_time_home_from_work_waze_realtime
+    - sensor.travel_time_work_from_home_waze_realtime
+    - sensor.travel_time_elmo_from_home_waze_realtime
 
 rmv_departures_nach_bruckenkopf:
   name: Nach Brückenkopf

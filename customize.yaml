@@ -614,6 +614,8 @@ switch.start_vive_pc:
   icon: mdi:google-cardboard
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
+script.goldie_clean:
+  friendly_name: "Aktiviere und starte Goldie"
 #################################################################
 ## Android IP Webcam
 #################################################################

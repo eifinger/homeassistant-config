@@ -76,7 +76,7 @@ learn_faces:
   sequence:
     - event: eifinger_learn_faces
 #################################################################
-## Goldie
+## Goldie (Vacuum Robot)
 #################################################################
 goldie_clean:
   sequence:

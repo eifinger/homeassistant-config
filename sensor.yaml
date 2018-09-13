@@ -153,23 +153,23 @@
     location_user_one:
       friendly_name: Kevin
       value_template: >-
-      {%- if states.device_tracker.kevin.state != 'home' %}
+      {% if states.device_tracker.kevin.state != 'home' %}
       {{states.device_tracker.kevin.state}}
-      {{%elif states.device_tracker.kevin.state != 'not_home'}}
+      {% elif states.device_tracker.kevin.state != 'not_home' %}
       Unterwegs
       {% else %}
       {{states.sensor.room_user_one.state}}
-      {% endif -%}
+      {% endif %}
     location_user_two:
       friendly_name: Sina
       value_template: >-
-      {%- if states.device_tracker.sina.state != 'home' %}
+      {% if states.device_tracker.sina.state != 'home' %}
       {{states.device_tracker.sina.state}}
-      {{%elif states.device_tracker.sina.state != 'not_home'}}
+      {% elif states.device_tracker.sina.state != 'not_home' %}
       Unterwegs
       {% else %}
       {{states.sensor.room_user_two.state}}
-      {% endif -%}
+      {% endif %}
     location_s8plus:
       friendly_name: S8Plus
       value_template: >-

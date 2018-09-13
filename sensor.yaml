@@ -422,18 +422,15 @@
 - platform: statistics
   entity_id: sensor.gas_station_star
   name: statistics_gas_station_star
-  max_age:
-    days: 7
+  sampling_size: 900 #Roughly 30 days
 - platform: statistics
   entity_id: sensor.gas_station_metro
   name: statistics_gas_station_metro
-  max_age:
-    days: 7
+  sampling_size: 900 #Roughly 30 days
 - platform: statistics
   entity_id: sensor.gas_station_globus
   name: statistics_gas_station_globus
-  max_age:
-    days: 7
+  sampling_size: 900 #Roughly 30 days
 #################################################################
 ## DWD Pollen
 #################################################################

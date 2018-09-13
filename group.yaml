@@ -46,8 +46,6 @@ view_traveltimes:
   icon: mdi:google-maps
   entities:
     - group.traveltimes
-    - group.traveltimes_waze
-    - group.traveltimes_waze_realtime
     - group.rmv_departures_nach_bruckenkopf
     - group.rmv_departures_nach_mainz_hbf
 
@@ -303,28 +301,12 @@ traveltimes:
   name: Reisezeiten
   control: hidden
   entities:
-    - sensor.travel_time_home_from_work
-    - input_boolean.travel_time_home_from_work
-    - sensor.travel_time_work_from_home
-    - input_boolean.travel_time_work_from_home
-    - sensor.travel_time_elmo_from_home
-    - input_boolean.travel_time_elmo_from_home
-
-traveltimes_waze:
-  name: Reisezeiten Waze
-  control: hidden
-  entities:
-    - sensor.travel_time_home_from_work_waze
-    - sensor.travel_time_work_from_home_waze
-    - sensor.travel_time_elmo_from_home_waze
-
-traveltimes_waze_realtime:
-  name: Reisezeiten Waze
-  control: hidden
-  entities:
     - sensor.travel_time_home_from_work_waze_realtime
+    - input_boolean.travel_time_home_from_work
     - sensor.travel_time_work_from_home_waze_realtime
+    - input_boolean.travel_time_work_from_home
     - sensor.travel_time_elmo_from_home_waze_realtime
+    - input_boolean.travel_time_elmo_from_home
 
 rmv_departures_nach_bruckenkopf:
   name: Nach Brückenkopf
@@ -348,18 +330,12 @@ next_appointment_traveltimes:
   name: Reisezeiten
   entities:
     - sensor.travel_time_next_appointment_location_car
-#    - sensor.travel_time_next_appointment_location_bike
-#    - sensor.travel_time_next_appointment_location_transit
-#    - sensor.travel_time_next_appointment_location_walking
     - input_boolean.announce_time_to_leave
 
 next_appointment_traveltimes_user_two:
   name: Reisezeiten
   entities:
     - sensor.travel_time_next_appointment_location_car_user_two
-#    - sensor.travel_time_next_appointment_location_bike_user_two
-#    - sensor.travel_time_next_appointment_location_transit_user_two
-#    - sensor.travel_time_next_appointment_location_walking_user_two
     - input_boolean.announce_time_to_leave_user_two
 
 motion:

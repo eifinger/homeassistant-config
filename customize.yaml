@@ -7,45 +7,45 @@ input_boolean.room_based_light:
 #################################################################
 ## Travel times
 #################################################################
-sensor.travel_time_work_from_home:
+sensor.travel_time_work_from_home_waze_realtime:
   icon: mdi:car
   friendly_name: "Zu Hause -> SVA"
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
   templates:
     icon_color: >
-      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
+      if (attributes.duration_in_traffic > entities['sensor.travel_time_work_from_home_waze'].state * 1.2 ) {
         return "red";
-      } else if (attributes.duration_in_traffic > attributes.duration ) {
+      } else if (attributes.duration_in_traffic > entities['sensor.travel_time_work_from_home_waze'].state ) {
         return "orange";
       } else {
         return "green";
       }
-sensor.travel_time_home_from_work:
+sensor.travel_time_home_from_work_waze_realtime:
   icon: mdi:car
   friendly_name: "SVA -> Zu Hause"
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
   templates:
     icon_color: >
-      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
+      if (attributes.duration_in_traffic > entities['sensor.travel_time_home_from_work_waze'].state * 1.2 ) {
         return "red";
-      } else if (attributes.duration_in_traffic > attributes.duration ) {
+      } else if (attributes.duration_in_traffic > entities['sensor.travel_time_home_from_work_waze'].state ) {
         return "orange";
       } else {
         return "green";
       }
   
-sensor.travel_time_elmo_from_home:
+sensor.travel_time_elmo_from_home_waze_realtime:
   icon: mdi:car
   friendly_name: "Zu Hause -> Elmo"
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
   templates:
     icon_color: >
-      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
+      if (attributes.duration_in_traffic > entities['sensor.travel_time_elmo_from_home_waze'].state * 1.2 ) {
         return "red";
-      } else if (attributes.duration_in_traffic > attributes.duration ) {
+      } else if (attributes.duration_in_traffic > entities['sensor.travel_time_elmo_from_home_waze'].state ) {
         return "orange";
       } else {
         return "green";
@@ -64,48 +64,6 @@ sensor.travel_time_next_appointment_location_car:
       } else {
        return "green";
       }
-#sensor.travel_time_next_appointment_location_bike:
-#  icon: mdi:bike
-#  friendly_name: "Kevin -> Nächster Termin"
-#  custom_ui_state_card: state-card-custom-ui
-#  show_last_changed: true
-#  templates:
-#    icon_color: >
-#      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
-#        return "red";
-#      } else if (attributes.duration_in_traffic > attributes.duration ) {
-#        return "orange";
-#      } else {
-#        return "green";
-#      }
-#sensor.travel_time_next_appointment_location_walking:
-#  icon: mdi:walk
-#  friendly_name: "Kevin -> Nächster Termin"
-#  custom_ui_state_card: state-card-custom-ui
-#  show_last_changed: true
-#  templates:
-#    icon_color: >
-#      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
-#        return "red";
-#      } else if (attributes.duration_in_traffic > attributes.duration ) {
-#        return "orange";
-#      } else {
-#        return "green";
-#      }
-#sensor.travel_time_next_appointment_location_transit:
-#  icon: mdi:bus
-#  friendly_name: "Kevin -> Nächster Termin"
-#  custom_ui_state_card: state-card-custom-ui
-#  show_last_changed: true
-#  templates:
-#    icon_color: >
-#      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
-#        return "red";
-#      } else if (attributes.duration_in_traffic > attributes.duration ) {
-#        return "orange";
-#      } else {
-#        return "green";
-#      }
 sensor.travel_time_next_appointment_location_car_user_two:
   icon: mdi:car
   friendly_name: "Sina -> Nächster Termin"
@@ -120,48 +78,6 @@ sensor.travel_time_next_appointment_location_car_user_two:
       } else {
         return "green";
       }
-#sensor.travel_time_next_appointment_location_bike_user_two:
-#  icon: mdi:bike
-#  friendly_name: "Sina -> Nächster Termin"
-#  custom_ui_state_card: state-card-custom-ui
-#  show_last_changed: true
-#  templates:
-#    icon_color: >
-#      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
-#        return "red";
-#      } else if (attributes.duration_in_traffic > attributes.duration ) {
-#        return "orange";
-#      } else {
-#        return "green";
-#      }
-#sensor.travel_time_next_appointment_location_walking_user_two:
-#  icon: mdi:walk
-#  friendly_name: "Sina -> Nächster Termin"
-#  custom_ui_state_card: state-card-custom-ui
-#  show_last_changed: true
-#  templates:
-#    icon_color: >
-#      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
-#        return "red";
-#      } else if (attributes.duration_in_traffic > attributes.duration ) {
-#        return "orange";
-#      } else {
-#        return "green";
-#      }
-#sensor.travel_time_next_appointment_location_transit_user_two:
-#  icon: mdi:bus
-#  friendly_name: "Sina -> Nächster Termin"
-#  custom_ui_state_card: state-card-custom-ui
-#  show_last_changed: true
-#  templates:
-#    icon_color: >
-#      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
-#        return "red";
-#      } else if (attributes.duration_in_traffic > attributes.duration ) {
-#        return "orange";
-#      } else {
-#        return "green";
-#      }
 input_boolean.travel_time_work_from_home:
   friendly_name: "Zu Hause -> SVA Benachrichtigung"
   custom_ui_state_card: state-card-custom-ui

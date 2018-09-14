@@ -47,7 +47,6 @@ view_traveltimes:
   entities:
     - group.traveltimes
     - group.rmv_departures_nach_bruckenkopf
-    - group.rmv_departures_nach_mainz_hbf
 
 view_next_appointment:
   name: Nächster Termin Kevin
@@ -316,15 +315,6 @@ rmv_departures_nach_bruckenkopf:
     - sensor.nach_bruckenkopf_2
     - sensor.nach_bruckenkopf_3
     - sensor.nach_bruckenkopf_4
-
-rmv_departures_nach_mainz_hbf:
-  name: Nach Mainz HBF
-  entities:
-    - sensor.nach_mainz_hbf_0
-    - sensor.nach_mainz_hbf_1
-    - sensor.nach_mainz_hbf_2
-    - sensor.nach_mainz_hbf_3
-    - sensor.nach_mainz_hbf_4
 
 next_appointment_traveltimes:
   name: Reisezeiten

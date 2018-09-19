@@ -173,7 +173,7 @@
     location_s8plus:
       friendly_name: S8Plus
       value_template: >-
-        {%- if states.device_tracker.kevin.state != 'home' %}
+        {% if states.device_tracker.kevin.state != 'home' %}
           {{states.device_tracker.galaxys8.state}}
         {{%elif states.device_tracker.galaxys8.state != 'not_home'}}
           Unterwegs

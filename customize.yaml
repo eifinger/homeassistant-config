@@ -450,6 +450,8 @@ switch.goldie_clean:
   icon: mdi:robot-vacuum
 input_boolean.start_goldie_when_leaving:
   icon: mdi:robot-vacuum
+input_boolean.start_snowie_when_leaving:
+  icon: mdi:robot-vacuum
 switch.goldie_home:
   icon: mdi:home
 switch.tv:

@@ -71,7 +71,7 @@ view_next_appointment_user_two:
 view_vaccum:
   name: Staubsauger
   view: yes
-  icon: mdi:vacuum
+  icon: mdi:robot-vacuum
   entities:
     - vacuum.xiaomi_vacuum_cleaner
     - camera.snowies_karte
@@ -567,11 +567,13 @@ app_switches:
     - input_boolean.graeser_notifier
     - input_boolean.birke_notifier
     - input_boolean.start_goldie_when_leaving
+    - input_boolean.start_snowie_when_leaving
 
 notifier_alexa:
   name: Alexa Ansagen
   entities:
     - input_boolean.notifier_alexa
+
 start_goldie_when_leaving:
   name: Goldie
   entities:

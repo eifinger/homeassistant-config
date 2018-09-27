@@ -5,6 +5,17 @@
         - sensor.small_lamp_temperature
         - sensor.ventilator_temperature
         - sensor.large_ventilator_temperature
+        - binary_sensor.door_window_sensor_158d000126a57b
+        - binary_sensor.door_window_sensor_158d0001bb4d94
+        - binary_sensor.door_window_sensor_158d0001bb4dc0
+        - binary_sensor.door_window_sensor_158d000205b808
+        - binary_sensor.door_window_sensor_158d000205b82e
+        - binary_sensor.door_window_sensor_158d00020498b6
+        - binary_sensor.door_window_sensor_158d000204ba26
+        - binary_sensor.door_window_sensor_158d0002059ddf
+        - binary_sensor.door_window_sensor_158d00020499ad
+        - binary_sensor.door_window_sensor_158d0002048951
+        - binary_sensor.door_window_sensor_158d00020455bf
         - switch.ventilator
         - group.jerry
         - switch.large_ventilator
@@ -32,7 +43,6 @@
         - group.stair_lights
         - input_boolean.turn_fan_on_when_hot
         - input_boolean.sleepmode
-        - binary_sensor.door_window_sensor_158d000126a57b
       include_domains:
         - light
     entity_config:
@@ -52,6 +62,50 @@
         name: Großer Ventilator Thermostat
         description: Die Temperatur von Großer Ventilator
         display_categories: TEMPERATURE_SENSOR
+      binary_sensor.door_window_sensor_158d000126a57b:
+        name: Wohnungstür
+        description: Der Wohnungstür Sensor
+        display_categories: CONTACT_SENSOR
+      binary_sensor.door_window_sensor_158d0001bb4d94:
+        name: Terassentür Schlafzimmer
+        description: Terassentür Schlafzimmer Sensor
+        display_categories: CONTACT_SENSOR
+      binary_sensor.door_window_sensor_158d0001bb4dc0:
+        name: Terassentür Gekippt
+        description: Terassentür Gekippt Sensor
+        display_categories: CONTACT_SENSOR
+      binary_sensor.door_window_sensor_158d000205b808:
+        name: Terassentür
+        description: Terassentür Sensor
+        display_categories: CONTACT_SENSOR
+      binary_sensor.door_window_sensor_158d000205b82e:
+        name: Terassentür Arbeitszimmer Gekippt
+        description: Terassentür Arbeitszimmer Gekippt Sensor
+        display_categories: CONTACT_SENSOR
+      binary_sensor.door_window_sensor_158d00020498b6:
+        name: Küchenfenster
+        description: Küchenfenster Sensor
+        display_categories: CONTACT_SENSOR
+      binary_sensor.door_window_sensor_158d000204ba26:
+        name: Badfenster Oben
+        description: Badfenster Oben Sensor
+        display_categories: CONTACT_SENSOR
+      binary_sensor.door_window_sensor_158d0002059ddf:
+        name: Markise
+        description: Markise Sensor
+        display_categories: CONTACT_SENSOR
+      binary_sensor.door_window_sensor_158d00020499ad:
+        name: Terassentür Arbeitszimmer
+        description: Terassentür Arbeitszimmer Sensor
+        display_categories: CONTACT_SENSOR
+      binary_sensor.door_window_sensor_158d0002048951:
+        name: Badfenster Unten
+        description: Badfenster Unten Sensor
+        display_categories: CONTACT_SENSOR
+      binary_sensor.door_window_sensor_158d00020455bf:
+        name: Gästezimmer Fenster
+        description: Gästezimmer Fenster Sensor
+        display_categories: CONTACT_SENSOR
       group.strolch:
         name: Strolch
         description: Großer Ventilator
@@ -182,7 +236,3 @@
         name: Schlafmodus
         description: Schalte Schlafmodus an/aus
         display_categories: SWITCH
-      binary_sensor.door_window_sensor_158d000126a57b:
-        name: Wohnungstür
-        description: Wohnungstür
-        display_categories: DOOR

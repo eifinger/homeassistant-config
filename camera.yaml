@@ -17,3 +17,11 @@
 - platform: local_file
   name: Saved Image
   file_path: !secret saved_image_filepath
+#################################################################
+## Valetudo / Xiaomi Vacuum
+#################################################################
+- platform: generic
+    name: Snowies Karte
+    still_image_url: !secret snowie_map_url #http://192.168.x.x{{states.sensor.snowie_map.state | string }}
+    content_type: image/png
+    framerate: 1

@@ -68,6 +68,16 @@ view_next_appointment_user_two:
     - camera.next_appointment_location_staticmap_user_two
     - camera.next_appointment_location_street_view_user_two
 
+view_vaccum:
+  name: Staubsauger
+  view: yes
+  icon: mdi:vacuum
+  entities:
+    - vacuum.xiaomi_vacuum_cleaner
+    - camera.snowies_karte
+    - switch.goldie_clean
+    - switch.goldie_home
+
 view_cameras:
   name: Kameras
   view: yes
@@ -187,8 +197,6 @@ infrared:
   control: hidden
   entities:
     - switch.markise
-    - switch.goldie_clean
-    - switch.goldie_home
     - switch.tv
 
 all:

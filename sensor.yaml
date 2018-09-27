@@ -576,3 +576,10 @@
       value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][3]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][3]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][3]["minutes"]}} Minuten'
     nach_bruckenkopf_4:
       value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][4]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][4]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][4]["minutes"]}} Minuten'
+#################################################################
+## Valetudo / Xiaomi Vacuum
+#################################################################
+- platform: rest
+    resource: !secret valetudo_url #http://192.168.x.x/api/remote/map
+    name: snowie_map
+    value_template: '{{ value_json.mapsrc }}'

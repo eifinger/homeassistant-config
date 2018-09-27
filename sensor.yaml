@@ -580,6 +580,6 @@
 ## Valetudo / Xiaomi Vacuum
 #################################################################
 - platform: rest
-    resource: !secret valetudo_url #http://192.168.x.x/api/remote/map
-    name: snowie_map
-    value_template: '{{ value_json.mapsrc }}'
+  resource: !secret valetudo_url #http://192.168.x.x/api/remote/map
+  name: snowie_map
+  value_template: '{{ value_json.mapsrc }}'

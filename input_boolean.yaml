@@ -41,62 +41,62 @@
 ## Appdaemon App switches
 #################################################################
   turn_small_fan_on_when_hot:
-    icon: mdi:auto-fix
+    icon: mdi:temperature-celsius
   turn_large_fan_on_when_hot:
-    icon: mdi:auto-fix
+    icon: mdi:temperature-celsius
   notify_of_action_when_away:
-    icon: mdi:auto-fix
+    icon: mdi:alert
   facebox_notifier:
-    icon: mdi:auto-fix
+    icon: mdi:face
   facebox_teacher:
-    icon: mdi:auto-fix
+    icon: mdi:face
   oben_treppe_motion_trigger:
-    icon: mdi:auto-fix
+    icon: mdi:stairs
   bedroom_motion_trigger:
-    icon: mdi:auto-fix
+    icon: mdi:hotel
   coming_home_yeelight:
-    icon: mdi:auto-fix
+    icon: mdi:lightbulb
   coming_home_alexa:
-    icon: mdi:auto-fix
+    icon: mdi:amazon-alexa
   home_arrival_notifier_user_one:
-    icon: mdi:auto-fix
+    icon: mdi:home-account
   home_arrival_notifier_user_two:
-    icon: mdi:auto-fix
+    icon: mdi:home-account
   is_home_determiner:
-    icon: mdi:auto-fix
+    icon: mdi:home
   is_user_home_determiner_user_one:
-    icon: mdi:auto-fix
+    icon: mdi:home-account
   is_user_home_determiner_user_two:
-    icon: mdi:auto-fix
+    icon: mdi:home-account
   leaving_work_notifier_user_one:
-    icon: mdi:auto-fix
+    icon: mdi:airplane-takeoff
   leaving_elmo_notifier_user_two:
-    icon: mdi:auto-fix
+    icon: mdi:airplane-takeoff
   plant_watering_notifier:
-    icon: mdi:auto-fix
+    icon: mdi:leaf
   power_usage_notification_dishwasher:
-    icon: mdi:auto-fix
+    icon: mdi:gauge
   power_usage_notification_washingmachine:
-    icon: mdi:auto-fix
+    icon: mdi:gauge
   detect_wrong_state_when_leaving:
-    icon: mdi:auto-fix
+    icon: mdi:alarm
   detect_door_open_when_going_to_bed:
-    icon: mdi:auto-fix
+    icon: mdi:door-open
   detect_windows_open_when_going_to_bed:
-    icon: mdi:auto-fix
+    icon: mdi:window-open
   set_multiroom_audio_when_sleepmode_turns_off:
-    icon: mdi:auto-fix
+    icon: mdi:speaker
   roggen_notifier:
-    icon: mdi:auto-fix
+    icon: mdi:chart-bubble
   graeser_notifier:
-    icon: mdi:auto-fix
+    icon: mdi:chart-bubble
   birke_notifier:
-    icon: mdi:auto-fix
+    icon: mdi:chart-bubble
   notifier_alexa:
     icon: mdi:amazon-alexa
     name: Alexa Ansagen
   start_goldie_when_leaving:
-    icon: mdi:auto-fix
+    icon: mdi:robot-vacuum
     name: Goldie Starten wenn wir weg gehen
   start_snowie_when_leaving:
     icon: mdi:robot-vacuum

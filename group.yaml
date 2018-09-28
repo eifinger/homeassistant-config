@@ -148,7 +148,7 @@ view_settings:
     - group.standards
     - group.small_ventilator
     - group.large_ventilator
-    - group.start_goldie_when_leaving
+    - group.vaccum_apps
     - group.app_switches
 
 #################################################################
@@ -566,18 +566,17 @@ app_switches:
     - input_boolean.roggen_notifier
     - input_boolean.graeser_notifier
     - input_boolean.birke_notifier
-    - input_boolean.start_goldie_when_leaving
-    - input_boolean.start_snowie_when_leaving
 
 notifier_alexa:
   name: Alexa Ansagen
   entities:
     - input_boolean.notifier_alexa
 
-start_goldie_when_leaving:
+vacuum_apps:
   name: Goldie
   entities:
     - input_boolean.start_goldie_when_leaving
+    - input_boolean.start_snowie_when_leaving
 #################################################################
 ## Synonym
 #################################################################

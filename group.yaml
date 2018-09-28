@@ -148,7 +148,7 @@ view_settings:
     - group.standards
     - group.small_ventilator
     - group.large_ventilator
-    - group.vaccum_apps
+    - group.vacuum_apps
     - group.app_switches
 
 #################################################################

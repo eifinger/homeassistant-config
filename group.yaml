@@ -117,6 +117,7 @@ view_sensors:
     - group.xiaomi_button
     - group.illumination
     - group.power_usage
+    - group.heating
 
 view_weather:
   name: Wetter
@@ -577,6 +578,12 @@ vacuum_apps:
   entities:
     - input_boolean.start_goldie_when_leaving
     - input_boolean.start_snowie_when_leaving
+
+heating:
+  entities:
+    - climate.bad_thermostat
+    - sensor.bad_thermostat_heating_state
+    - sensor.bad_thermostat_auto_override
 #################################################################
 ## Synonym
 #################################################################

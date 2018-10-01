@@ -1,0 +1,7 @@
+- platform: broadlinkHysen
+  name: Bad Thermostat
+  host: !secret bad_thermostat_ip
+  mac: !secret bad_thermostat_mac
+  target_temp_default: 20
+  target_temp_step: 0.5
+  scan_interval: 15

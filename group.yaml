@@ -574,12 +574,13 @@ notifier_alexa:
     - input_boolean.notifier_alexa
 
 vacuum_apps:
-  name: Goldie
+  name: Staubsauger
   entities:
     - input_boolean.start_goldie_when_leaving
     - input_boolean.start_snowie_when_leaving
 
 heating:
+  name: Thermostate
   entities:
     - climate.bad_thermostat
     - sensor.bad_thermostat_heating_state

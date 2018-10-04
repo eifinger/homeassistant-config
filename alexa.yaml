@@ -36,7 +36,7 @@
         - media_player.spotify
         - group.all
         - group.livingroom
-        - script.receiver_set_source_cbl_sat
+        - script.receiver_set_source_bluetooth
         - script.receiver_set_source_media_player
         - script.receiver_set_source_dvd
         - script.receiver_set_source_gaming
@@ -181,9 +181,9 @@
       group.livingroom:
         name: Wohnzimmer
         description: Alles im Wohnzimmer
-      script.receiver_set_source_cbl_sat:
+      script.receiver_set_source_bluetooth:
         name: Sat
-        description: Schalte Receiver auf Sat / Alexa
+        description: Schalte Receiver auf Bluetooth / Alexa
         display_categories: SCENE_TRIGGER
       script.receiver_set_source_media_player:
         name: Receiver Mediaplayer

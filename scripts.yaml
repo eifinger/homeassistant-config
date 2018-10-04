@@ -8,6 +8,13 @@ receiver_set_source_cbl_sat:
       data:
         source: 'CBL/SAT'
 
+receiver_set_source_bluetooth:
+  sequence:    
+    - service: media_player.select_source
+      entity_id: media_player.denon_avrx1300w
+      data:
+        source: 'Bluetooth'
+
 receiver_set_source_media_player:
   sequence:
     - service: media_player.select_source

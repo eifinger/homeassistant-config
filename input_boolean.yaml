@@ -101,6 +101,6 @@
   start_snowie_when_leaving:
     icon: mdi:robot-vacuum
     name: Snowie Starten wenn wir weg gehen
-  alexaSpeakerConnector:
+  alexa_speaker_connector:
     icon: mdi:amazon-alexa
     name: Alexa automatisch auf Receiver Bluetooth spielen lassen

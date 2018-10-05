@@ -567,7 +567,7 @@ app_switches:
     - input_boolean.roggen_notifier
     - input_boolean.graeser_notifier
     - input_boolean.birke_notifier
-    - input_boolean.alexaSpeakerConnector
+    - input_boolean.alexa_speaker_connector
 
 notifier_alexa:
   name: Alexa Ansagen

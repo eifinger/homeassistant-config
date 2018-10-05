@@ -19,12 +19,12 @@ view_lights:
   entities:
     - group.lights
 
-view_bedroom:
-  name: Schlafzimmer
-  view: yes
-  icon: mdi:hotel
-  entities:
-    - group.bedroom
+# view_bedroom:
+#   name: Schlafzimmer
+#   view: yes
+#   icon: mdi:hotel
+#   entities:
+#     - group.bedroom
 
 view_media_players:
   name: Media Player

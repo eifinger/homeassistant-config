@@ -104,3 +104,6 @@
   alexa_speaker_connector:
     icon: mdi:amazon-alexa
     name: Alexa automatisch auf Receiver Bluetooth spielen lassen
+  warm_bath_before_wakeup:
+    icon: mdi:temperature-celsius
+    name: Fußbodenheizung im Bad vorm aufstehen anschalten

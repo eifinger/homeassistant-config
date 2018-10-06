@@ -38,3 +38,9 @@ turn_large_fan_on_when_hot_threshold:
   min: 20
   max: 40
   step: 1
+warm_bath_before_wakeup:
+  name: Temperature
+  icon: mdi:temperature-celsius
+  min: 18
+  max: 30
+  step: 0.5

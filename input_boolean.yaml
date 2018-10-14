@@ -107,3 +107,9 @@
   warm_bath_before_wakeup:
     icon: mdi:temperature-celsius
     name: Fußbodenheizung im Bad vorm aufstehen anschalten
+  turn_off_bath_thermostat_when_window_open:
+    icon: mdi:window-open
+    name: Fußbodenheizung im Bad ausschalten wenn Fenster offen
+  turn_on_bath_thermostat_when_window_closed:
+    icon: mdi:window-closed
+    name: Fußbodenheizung im Bad anschalten wenn Fenster zu

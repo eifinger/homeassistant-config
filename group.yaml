@@ -576,6 +576,8 @@ app_switches:
     - input_boolean.birke_notifier
     - input_boolean.alexa_speaker_connector
     - input_boolean.notifier_alexa
+    - input_boolean.turn_on_bath_thermostat_when_window_closed
+    - input_boolean.turn_off_bath_thermostat_when_window_open
 
 notifier_alexa:
   name: Alexa Ansagen

@@ -148,6 +148,7 @@ view_settings:
   entities:
     - group.standards
     - group.warm_bath_before_wakeup
+    - group.set_thermostat_when_leaving
     - group.small_ventilator
     - group.large_ventilator
     - group.vacuum_apps
@@ -544,6 +545,12 @@ warm_bath_before_wakeup:
    - input_number.warm_bath_before_wakeup
    - input_boolean.warm_bath_before_wakeup
 
+set_thermostat_when_leaving:
+  name: Fußbdodenheizung Wohnzimmer
+  entities:
+   - input_number.set_thermostat_when_leaving
+   - input_boolean.set_thermostat_when_leaving
+
 app_switches:
   name: App Switches
   entities:
@@ -578,6 +585,8 @@ app_switches:
     - input_boolean.notifier_alexa
     - input_boolean.turn_on_bath_thermostat_when_window_closed
     - input_boolean.turn_off_bath_thermostat_when_window_open
+    - input_boolean.set_thermostat_when_leaving
+
 
 notifier_alexa:
   name: Alexa Ansagen

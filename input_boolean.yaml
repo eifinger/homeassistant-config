@@ -113,3 +113,6 @@
   turn_on_bath_thermostat_when_window_closed:
     icon: mdi:window-closed
     name: Fußbodenheizung im Bad anschalten wenn Fenster zu
+  set_thermostat_when_leaving:
+    icon: mdi:temperature-celsius
+    name: Fußbodenheizung im Wohnzimmer wenn wir gehen

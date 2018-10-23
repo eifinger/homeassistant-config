@@ -594,8 +594,7 @@ heating:
   name: Thermostate
   entities:
     - climate.bad_thermostat
-    - sensor.bad_thermostat_heating_state
-    - sensor.bad_thermostat_auto_override
+    - climate.wohnzimmer_thermostat
 #################################################################
 ## Synonym
 #################################################################

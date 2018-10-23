@@ -5,3 +5,11 @@
   target_temp_default: 20
   target_temp_step: 0.5
   scan_interval: 15
+
+- platform: broadlinkHysen
+  name: Wohnzimmer Thermostat
+  host: !secret livingroom_thermostat_ip
+  mac: !secret livingroom_thermostat_mac
+  target_temp_default: 20
+  target_temp_step: 0.5
+  scan_interval: 15

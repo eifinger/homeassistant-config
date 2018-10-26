@@ -27,3 +27,9 @@
   longitude: !secret elmo_longitude_2
   radius: 600
   icon: mdi:horseshoe
+
+- name: Elmo2
+  latitude: !secret elmo_latitude_3
+  longitude: !secret elmo_longitude_3
+  radius: 1200
+  icon: mdi:horseshoe

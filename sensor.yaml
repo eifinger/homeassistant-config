@@ -84,6 +84,8 @@
         {% else %}
           Unbekannt
         {% endif %}
+      entity_id:
+        - sensor.mqtt_room_user_one
 #########User two
 - platform: mqtt
   name: mqtt_room_user_two
@@ -116,6 +118,8 @@
         {% else %}
           Unbekannt
         {% endif %}
+      entity_id:
+       - sensor.mqtt_room_user_two
 #########S8Plus
 - platform: mqtt
   name: mqtt_room_galaxys8
@@ -148,6 +152,8 @@
         {% else %}
           Unbekannt
         {% endif %}
+      entity_id:
+       - sensor.mqtt_room_galaxys8
 - platform: template
   sensors:
     location_user_one:
@@ -160,6 +166,9 @@
         {% else %}
           {{states.sensor.room_user_one.state}}
         {% endif %}
+      entity_id:
+       - sensor.room_user_one
+       - device_tracker.kevin
     location_user_two:
       friendly_name: Sina
       value_template: >-
@@ -170,6 +179,9 @@
         {% else %}
           {{states.sensor.room_user_two.state}}
         {% endif %}
+      entity_id:
+       - sensor.room_user_two
+       - device_tracker.sina
     location_s8plus:
       friendly_name: S8Plus
       value_template: >-
@@ -180,6 +192,9 @@
         {% else %}
           {{states.sensor.room_s8plus.state}}
         {% endif %}
+      entity_id:
+       - sensor.room_s8plus
+       - device_tracker.galaxys8
 #################################################################
 ## Sonoff
 #################################################################
@@ -293,44 +308,86 @@
     cal_next_appointment_title:
       friendly_name: Termin
       value_template: "{{ states.calendar.keifingergooglemailcom.attributes.message }}"
+      entity_id:
+       - calendar.keifingergooglemailcom
     cal_next_appointment_location:
       friendly_name: Ort
       value_template: "{{ states.calendar.keifingergooglemailcom.attributes.location }}"
+      entity_id:
+       - calendar.keifingergooglemailcom
     cal_next_appointment_location_google_prepared:
        value_template: '{% if is_state("sensor.cal_next_appointment_location","None") %}{{ "47.641223,68.803727"}}{% else %}{{ states.calendar.keifingergooglemailcom.attributes.location }}{% endif %}'
        friendly_name: Ort
+       entity_id:
+       - calendar.keifingergooglemailcom
+       - sensor.cal_next_appointment_location
     cal_next_appointment_start_time:
       friendly_name: Um
       value_template: "{{ states.calendar.keifingergooglemailcom.attributes.start_time or now() }}"
+      entity_id:
+       - calendar.keifingergooglemailcom
     calc_leave_time:
        value_template: '{% if is_state("input_select.next_appointment_travel_mode","Auto") %}{{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_car") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% elif is_state("input_select.next_appointment_travel_mode","Fahrrad")%} {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_bike") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% elif is_state("input_select.next_appointment_travel_mode","Öffis")%} {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_transit") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% elif is_state("input_select.next_appointment_travel_mode","Laufen")%} {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_walking") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% endif %}'
        friendly_name: Losfahren
+       entity_id:
+       - input_select.next_appointment_travel_mode
+       - calendar.keifingergooglemailcom
+       - input_number.leave_time_offset
+       - sensor.travel_time_next_appointment_location_car
+       - sensor.travel_time_next_appointment_location_transit
+       - sensor.travel_time_next_appointment_location_bike
     travel_time_next_appointment_location:
       friendly_name: Dauer
       unit_of_measurement: min
       value_template: '{% if is_state("input_select.next_appointment_travel_mode","Auto") %}{{states("sensor.travel_time_next_appointment_location_car")}} {% elif is_state("input_select.next_appointment_travel_mode","Fahrrad")%} {{states("sensor.travel_time_next_appointment_location_bike")}} {% elif is_state("input_select.next_appointment_travel_mode","Öffis")%} {{ states("sensor.travel_time_next_appointment_location_transit")}} {% elif is_state("input_select.next_appointment_travel_mode","Laufen")%} {{ states("sensor.travel_time_next_appointment_location_walking")}} {% endif %}'
+      entity_id:
+       - input_select.next_appointment_travel_mode
+       - sensor.travel_time_next_appointment_location_car
+       - sensor.travel_time_next_appointment_location_transit
+       - sensor.travel_time_next_appointment_location_bike
 #User Two
 - platform: template
   sensors:
     cal_next_appointment_title_user_two:
       friendly_name: Termin
       value_template: "{{ states.calendar.stillhammersinagmailcom.attributes.message }}"
+      entity_id:
+       - calendar.stillhammersinagmailcom
     cal_next_appointment_location_user_two:
       friendly_name: Ort
       value_template: "{{ states.calendar.stillhammersinagmailcom.attributes.location }}"
+      entity_id:
+       - calendar.stillhammersinagmailcom
     cal_next_appointment_location_google_prepared_user_two:
        value_template: '{% if is_state("sensor.cal_next_appointment_location_user_two","None") %}{{ "47.641223,68.803727"}}{% else %}{{ states.calendar.stillhammersinagmailcom.attributes.location }}{% endif %}'
        friendly_name: Ort
+       entity_id:
+       - sensor.cal_next_appointment_location_user_two
+       - calendar.stillhammersinagmailcom
     cal_next_appointment_start_time_user_two:
       friendly_name: Um
       value_template: "{{ states.calendar.stillhammersinagmailcom.attributes.start_time or now() }}"
+      entity_id:
+       - calendar.stillhammersinagmailcom
     calc_leave_time_user_two:
        value_template: '{% if is_state("input_select.next_appointment_travel_mode_user_two","Auto") %}{{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_car_user_two") | int *60  - (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% elif is_state("input_select.next_appointment_travel_mode_user_two","Fahrrad")%} {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_bike_user_two") | int *60  - (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% elif is_state("input_select.next_appointment_travel_mode_user_two","Öffis")%} {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_transit_user_two") | int *60  - (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% elif is_state("input_select.next_appointment_travel_mode_user_two","Laufen")%} {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_walking_user_two") | int *60  - (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}} {% endif %}'
        friendly_name: Losfahren
+       entity_id:
+       - input_select.next_appointment_travel_mode_user_two
+       - calendar.stillhammersinagmailcom
+       - input_number.leave_time_offset_user_two
+       - sensor.travel_time_next_appointment_location_car_user_two
+       - sensor.travel_time_next_appointment_location_transit_user_two
+       - sensor.travel_time_next_appointment_location_bike_user_two
     travel_time_next_appointment_location_user_two:
       friendly_name: Dauer
       unit_of_measurement: min
       value_template: '{% if is_state("input_select.next_appointment_travel_mode_user_two","Auto") %}{{states("sensor.travel_time_next_appointment_location_car_user_two")}} {% elif is_state("input_select.next_appointment_travel_mode_user_two","Fahrrad")%} {{states("sensor.travel_time_next_appointment_location_bike_user_two")}} {% elif is_state("input_select.next_appointment_travel_mode_user_two","Öffis")%} {{ states("sensor.travel_time_next_appointment_location_transit_user_two")}} {% elif is_state("input_select.next_appointment_travel_mode_user_two","Laufen")%} {{ states("sensor.travel_time_next_appointment_location_walking_user_two")}} {% endif %}'
+      entity_id:
+       - input_select.next_appointment_travel_mode_user_two
+       - sensor.travel_time_next_appointment_location_car_user_two
+       - sensor.travel_time_next_appointment_location_transit_user_two
+       - sensor.travel_time_next_appointment_location_bike_user_two
 #################################################################
 ## Sun
 #################################################################
@@ -339,13 +396,19 @@
     sunset_time:
       value_template: "{{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom('%H:%M') }}"
       friendly_name: Sonnenuntergang
+      entity_id:
+       - sun.sun
     sunrise_time:
       value_template: "{{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom('%H:%M') }}"
       friendly_name: Sonnenaufgang
+      entity_id:
+       - sun.sun
     solar_angle:
       value_template: "{{ states.sun.sun.attributes.elevation }}"
       friendly_name: Solar Angle
       unit_of_measurement: degrees
+      entity_id:
+       - sun.sun
 #################################################################
 ## Face Detection
 #################################################################
@@ -363,38 +426,56 @@
       friendly_name: tplink Verbrauch
       unit_of_measurement: 'W'
       value_template: "{{states.switch.tplink.attributes.current_power_w}}"
+      entity_id:
+       - switch.tplink
     tplink_power_usage_total:
       friendly_name: tplink Total
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.tplink.attributes.total_energy_kwh}}"
+      entity_id:
+       - switch.tplink
     tplink_power_usage_today:
       friendly_name: tplink Heute
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.tplink.attributes.today_energy_kwh}}"
+      entity_id:
+       - switch.tplink
     washingmachine_power_usage:
       friendly_name: Waschmaschine
       unit_of_measurement: 'W'
       value_template: "{{states.switch.washingmachine.attributes.current_power_w}}"
+      entity_id:
+       - switch.washingmachine
     washingmachine_power_usage_total:
       friendly_name: Waschmaschine Total
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.washingmachine.attributes.total_energy_kwh}}"
+      entity_id:
+       - switch.washingmachine
     washingmachine_power_usage_today:
       friendly_name: Waschmaschine Heute
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.washingmachine.attributes.today_energy_kwh}}"
+      entity_id:
+       - switch.washingmachine
     dishwasher_power_usage:
       friendly_name: Spülmaschine
       unit_of_measurement: 'W'
       value_template: "{{states.switch.dishwasher.attributes.current_power_w}}"
+      entity_id:
+       - switch.washingmachine
     dishwasher_power_usage_total:
       friendly_name: Spülmaschine Total
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.dishwasher.attributes.total_energy_kwh}}"
+      entity_id:
+       - switch.washingmachine
     dishwasher_power_usage_today:
       friendly_name: Spülmaschine Heute
       unit_of_measurement: 'kWh'
       value_template: "{{states.switch.dishwasher.attributes.today_energy_kwh}}"
+      entity_id:
+       - switch.washingmachine
 #################################################################
 ## Gas Stations
 #################################################################
@@ -411,14 +492,20 @@
       friendly_name: 'STAR Tankstelle'
       value_template: '{{ states.sensor.fuel.attributes["prices"]["005056ba-7cb6-1ed2-bceb-6b90ef1a8d20"]["diesel"]}}'
       unit_of_measurement: '€'
+      entity_id:
+       - sensor.fuel
     gas_station_metro:
       friendly_name: 'METRO Tankstelle'
       value_template: '{{ states.sensor.fuel.attributes["prices"]["51d4b62c-a095-1aa0-e100-80009459e03a"]["diesel"]}}'
       unit_of_measurement: '€'
+      entity_id:
+       - sensor.fuel
     gas_station_globus: 
       friendly_name: 'GLOBUS SVA Tankstelle'
       value_template: '{{ states.sensor.fuel.attributes["prices"]["51d4b634-a095-1aa0-e100-80009459e03a"]["diesel"]}}'
       unit_of_measurement: '€'
+      entity_id:
+       - sensor.fuel
 - platform: statistics
   entity_id: sensor.gas_station_star
   name: statistics_gas_station_star
@@ -463,54 +550,72 @@
         {{ states('sensor.pollen_101_graeser')
              |regex_findall_index("'today': '[-0-9]+'")
              |regex_findall_index("[-0-9]+") }}
+      entity_id:
+       - sensor.pollen_101_graeser
     pollen_101_graeser_tomorrow:
       friendly_name: 'Gräser Morgen'
       value_template: >
         {{ states('sensor.pollen_101_graeser')
              |regex_findall_index("'tomorrow': '[-0-9]+'")
              |regex_findall_index("[-0-9]+") }}
+      entity_id:
+       - sensor.pollen_101_graeser
     pollen_101_graeser_dayaftertomorrow:
       friendly_name: 'Gräser Übermorgen'
       value_template: >
         {{ states('sensor.pollen_101_graeser')
              |regex_findall_index("'dayafter_to': '[-0-9]+'")
              |regex_findall_index("[-0-9]+") }}
+      entity_id:
+       - sensor.pollen_101_graeser
     pollen_101_birke_today:
       friendly_name: 'Birke Heute'
       value_template: >
         {{ states('sensor.pollen_101_birke')
              |regex_findall_index("'today': '[-0-9]+'")
              |regex_findall_index("[-0-9]+") }}
+      entity_id:
+       - sensor.pollen_101_birke
     pollen_101_birke_tomorrow:
       friendly_name: 'Birke Morgen'
       value_template: >
         {{ states('sensor.pollen_101_birke')
              |regex_findall_index("'tomorrow': '[-0-9]+'")
              |regex_findall_index("[-0-9]+") }}
+      entity_id:
+       - sensor.pollen_101_birke
     pollen_101_birke_dayaftertomorrow:
       friendly_name: 'Birke Übermorgen'
       value_template: >
         {{ states('sensor.pollen_101_birke')
              |regex_findall_index("'dayafter_to': '[-0-9]+'")
              |regex_findall_index("[-0-9]+") }}
+      entity_id:
+       - sensor.pollen_101_birke
     pollen_101_roggen_today:
       friendly_name: 'Roggen Heute'
       value_template: >
         {{ states('sensor.pollen_101_roggen')
              |regex_findall_index("'today': '[-0-9]+'")
              |regex_findall_index("[-0-9]+") }}
+      entity_id:
+       - sensor.pollen_101_roggen
     pollen_101_roggen_tomorrow:
       friendly_name: 'Roggen Morgen'
       value_template: >
         {{ states('sensor.pollen_101_roggen')
              |regex_findall_index("'tomorrow': '[-0-9]+'")
              |regex_findall_index("[-0-9]+") }}
+      entity_id:
+       - sensor.pollen_101_roggen
     pollen_101_roggen_dayaftertomorrow:
       friendly_name: 'Roggen Übermorgen'
       value_template: >
         {{ states('sensor.pollen_101_roggen')
              |regex_findall_index("'dayafter_to': '[-0-9]+'")
              |regex_findall_index("[-0-9]+") }}
+      entity_id:
+       - sensor.pollen_101_roggen
 #################################################################
 ## Uptime
 #################################################################
@@ -528,9 +633,13 @@
     current_commit_id:
       friendly_name: Id
       value_template: "{{states.sensor.current_commit.state.split(' ',1)[0]}}"
+      entity_id:
+       - sensor.current_commit
     current_commit_name:
       friendly_name: Message
       value_template: "{{states.sensor.current_commit.state.split(' ',1)[1]}}"
+      entity_id:
+       - sensor.current_commit
 #################################################################
 ## Alarm Clock
 #################################################################
@@ -539,6 +648,9 @@
     alarm_time:
       friendly_name: 'Uhrzeit'
       value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmhour") | int, states("input_number.alarmminutes") | int) }}'
+      entity_id:
+       - input_number.alarmhour
+       - input_number.alarmminutes
 #################################################################
 ## Broadlink
 #################################################################
@@ -568,14 +680,24 @@
   sensors:
     nach_bruckenkopf_0:
       value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][0]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][0]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][0]["minutes"]}} Minuten'
+      entity_id:
+       - sensor.nach_bruckenkopf
     nach_bruckenkopf_1:
       value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][1]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][1]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][1]["minutes"]}} Minuten'
+      entity_id:
+       - sensor.nach_bruckenkopf
     nach_bruckenkopf_2:
       value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][2]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][2]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][2]["minutes"]}} Minuten'
+      entity_id:
+       - sensor.nach_bruckenkopf
     nach_bruckenkopf_3:
       value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][3]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][3]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][3]["minutes"]}} Minuten'
+      entity_id:
+       - sensor.nach_bruckenkopf
     nach_bruckenkopf_4:
       value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][4]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][4]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][4]["minutes"]}} Minuten'
+      entity_id:
+       - sensor.nach_bruckenkopf
 #################################################################
 ## Valetudo / Xiaomi Vacuum
 #################################################################

@@ -12,7 +12,6 @@ homeassistant:
   customize: !include customize.yaml
   auth_providers:
    - type: homeassistant
-   - type: legacy_api_password
 
 # CustomUI
 customizer:
@@ -36,8 +35,6 @@ logger:
 logbook:
 
 http:
-  # Uncomment this to add a password (recommended!)
-  api_password: !secret homeassistant_password
   # Uncomment this if you are using SSL or running in Docker etc
   base_url: !secret homeassistant_url
   ip_ban_enabled: True

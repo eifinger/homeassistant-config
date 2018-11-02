@@ -4,6 +4,6 @@ python:
 install:
   - pip3 install homeassistant
 script:
-  - hass -c . --script check_config
+  - hass -c . --script check_config --info all
 before_install:
   - mv travis_secrets.yaml secrets.yaml

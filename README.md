@@ -219,6 +219,8 @@ The Hubs help the home communicate across all the various protocols running in t
 <tr><td colspan="4">
 
 Almost all of my lights are Xiaomi Yeelight Color bulbs. Before I started using them I used SonOffs with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) and I stil do. You will find them in the [switches](https://github.com/eifinger/homeassistant-config#switches) section. I have one lightstrip under my bar table controlled by a MagicHome LED Controller also running [Tasmota](https://github.com/arendst/Sonoff-Tasmota).
+
+*Click on the sections to expand them* 
 <details>
 <summary>Turn Bar Red when Homeassistant goes offline</summary><p align="center">
 As I sometimes restart HA when working on it from remote I turn the Bar lights to red with [this script](https://github.com/eifinger/homeassistant-config/blob/master/updateHomeassistant.sh). This way everyone can see HA is currently unavailable. If it comes back up again this<br>
@@ -249,6 +251,8 @@ As I sometimes restart HA when working on it from remote I turn the Bar lights t
 <tr><td colspan="4">
 
 Before I used smart bulbs I bought SonOff switches because they are much cheaper than a $20 bulb and put them in front of "normal" bulbs. I use 2 S20 to control lightstrips.
+
+*Click on the sections to expand them* 
 <details>
 <summary>Notify me when the dishwasher starts/stops</summary><p align="center">
 <a href=https://github.com/eifinger/appdaemon-scripts#powerusagenotification>
@@ -265,12 +269,13 @@ Appdaemon App -  powerUsageNotification</a><br>
 [Android IP Webcam](https://play.google.com/store/apps/details?id=com.pas.webcam&hl=en)
 </tr>
 
-<tr><td align="center" colspan="4"><a href="https://play.google.com/store/apps/details?id=com.pas.webcam&hl=en" target="_blank"><img border="0" src="https://images-na.ssl-images-amazon.com/images/I/61AZLo3EW7L._SY355_.png" ></a><img src="https://images-na.ssl-images-amazon.com/images/I/61AZLo3EW7L._SY355_.png" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<tr><td align="center" colspan="4"><a href="https://play.google.com/store/apps/details?id=com.pas.webcam&hl=en" target="_blank"><img border="0" width="120" height="120"src="https://images-na.ssl-images-amazon.com/images/I/61AZLo3EW7L._SY355_.png" ></a><img src="https://images-na.ssl-images-amazon.com/images/I/61AZLo3EW7L._SY355_.png" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 </td></tr>
 <tr><td colspan="4">
 
 I currently only use old Anroid Smartphones as IP Cameras.
 
+*Click on the sections to expand them* 
 <details>
 <summary>Selflearning Facerecognition for the Frontdoor</summary><p align="center">
 <a href=https://github.com/eifinger/appdaemon-scripts#facerecognitionbot>
@@ -323,6 +328,7 @@ Just the usual things for Netflix
 
 All of my windows have Xiaomi Contact Sensors and my Terrace Doors have two so I can distinguish between open and tilted. I have several Motion Sensors which I use for presence detection and light control. To get a good overview of the temperature distribution I use Xiaomi temperature sensors where I don't already have Sonoff TH16s.
 
+*Click on the sections to expand them* 
 <details>
 <summary>Turn on light when sun is down and motion detected</summary><p align="center">
 <a href=https://github.com/eifinger/appdaemon-scripts#motiontrigger>
@@ -357,6 +363,7 @@ Appdaemon App - isUserHomeDeterminer</a><br>
 
 I am using a [custom_component](https://community-home-assistant-assets.s3-us-west-2.amazonaws.com/original/3X/1/0/107fdc37b36eb0fbf55d93ca6a56183a4575f091.yaml) for Broadlink Thermostats which works perfectly.
 
+*Click on the sections to expand them* 
 <details>
 <summary>Turn on floor heating for 1 hour before wake up</summary><p align="center">
 <a href=https://github.com/eifinger/appdaemon-scripts#setthermostat>

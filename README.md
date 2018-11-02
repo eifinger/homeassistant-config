@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a name="logo" href=""><img src="https://raw.githubusercontent.com/eifinger/homeassistant-config/master/config/www/images/logo-round-192x192.png" alt="Home Assistant Logo" width="192"></a>
+  <a name="logo" href=""><img src="https://github.com/eifinger/homeassistant-config/blob/master/www/images/logo-round-192x192.png?raw=true" alt="Home Assistant Logo" width="192"></a>
   <br>
   My Home Assistant Configuration
 </h1>

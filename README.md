@@ -361,7 +361,7 @@ Appdaemon App - isUserHomeDeterminer</a><br>
 </td></tr>
 <tr><td colspan="4">
 
-I am using a [custom_component](https://community-home-assistant-assets.s3-us-west-2.amazonaws.com/original/3X/1/0/107fdc37b36eb0fbf55d93ca6a56183a4575f091.yaml) for Broadlink Thermostats which works perfectly.
+I am using a [custom_component](https://community.home-assistant.io/t/beta-for-hysen-thermostats-powered-by-broadlink/56267/) for Broadlink Thermostats which works perfectly.
 
 *Click on the sections to expand them* 
 <details>

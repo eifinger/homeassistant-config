@@ -154,13 +154,11 @@ Appdaemon App - alexaSpeakerConnector</a><br>
 </td><td align="center" colspan="2">
 
 [TP-Link Smart Plug](https://amzn.to/2wPNJ7F)
-
 </td></tr>
 
 <tr><td align="center" colspan="2"><a href="https://www.amazon.de/Denon-AVRX1300WBKE2-7-2-Kanal-AV-Receiver-Bluetooth/dp/B01GQ85GW6/ref=as_li_ss_il?s=computers&ie=UTF8&qid=1536329265&sr=8-2&keywords=denon+avr+x1300&linkCode=li1&tag=kevineifinger-21&linkId=c0677ebccc90d28fec772d2f5bdec65f&language=de_DE" target="_blank"><img border="0" src="https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01GQ85GW6&Format=_SL110_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=kevineifinger-21&language=de_DE" ></a><img src="https://ir-de.amazon-adsystem.com/e/ir?t=kevineifinger-21&language=de_DE&l=li1&o=3&a=B01GQ85GW6" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 </td><td align="center" colspan="2"><a href="https://www.amazon.de/TP-Link-Steckdose-Stromverbrauchsaufzeichnung-funktionieren-erforderlich/dp/B017X72IES/ref=as_li_ss_il?s=computers&ie=UTF8&qid=1536329452&sr=1-1&keywords=hs110&linkCode=li1&tag=kevineifinger-21&linkId=25d7083477f36e734235264c18a3bccc&language=de_DE" target="_blank"><img border="0" src="https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B017X72IES&Format=_SL110_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=kevineifinger-21&language=de_DE" ></a><img src="https://ir-de.amazon-adsystem.com/e/ir?t=kevineifinger-21&language=de_DE&l=li1&o=3&a=B017X72IES" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-</td><td align="center">
-</td><td align="center"></td></tr>
+</td></tr>
 
 <tr><td colspan="4">
 
@@ -376,6 +374,6 @@ AppDaemon App - setThermostat</a></p>
 **Message me on twitter :** [@eifinger](https://twitter.com/eifinger)
 
 <br>
-<a align="center" href="https://raw.githubusercontent.com/eifinger/homeassistant-config/master/affiliate_disclosure.md">
+<a align="center" href="https://raw.githubusercontent.com/eifinger/homeassistant-config/master/AFFILIATEDISCLOSURE.md">
 Affiliate Disclosure
 </a></p>

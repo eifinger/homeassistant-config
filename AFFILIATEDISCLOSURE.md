@@ -1,3 +1,5 @@
+<h1>Affiliate Disclosure</h1>
+
 This repository uses affiliate programs for monetization or store credit, which means when you click on links to various sites that I recommend in my posts and make a purchase, this can result in a small commission that is credited to me.  Prices are exactly the same for you if your purchase is through an affiliate link or a non-affiliate link. You will not pay more by clicking through to the link.
 Some affiliate programs and affiliations include, but are not limited to, Amazon.de.
 

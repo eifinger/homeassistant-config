@@ -53,3 +53,6 @@ set_thermostat_when_leaving:
 travel_time_home_user_one_update_interval:
   min: 2
   max: 2678400 # 1 month
+travel_time_home_user_two_update_interval:
+  min: 2
+  max: 2678400 # 1 month

@@ -596,6 +596,7 @@ app_switches:
     - input_boolean.turn_off_bath_thermostat_when_window_open
     - input_boolean.set_thermostat_when_leaving
     - input_boolean.travel_time_home_user_one_update
+    - input_boolean.travel_time_home_user_two_update
     - input_boolean.increase_counter_on_google_maps_update
     - input_boolean.reset_googlemapsapicounter_on_last_day_of_month
 

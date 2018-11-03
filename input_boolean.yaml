@@ -119,3 +119,9 @@
   travel_time_home_user_one_update:
     icon: mdi:update
     name: Update Travel Time Home User One
+  increase_counter_on_google_maps_update:
+    icon: mdi:plus-one
+    name: Increase Counter on Google Maps Update Calls
+  reset_googlemapsapicounter_on_last_day_of_month:
+    icon: mdi:replay
+    name: Reset Google Maps API Timer

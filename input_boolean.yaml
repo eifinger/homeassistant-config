@@ -116,3 +116,6 @@
   set_thermostat_when_leaving:
     icon: mdi:temperature-celsius
     name: Fußbodenheizung im Wohnzimmer wenn wir gehen
+  travel_time_home_user_one_update:
+    icon: mdi:update
+    name: Update Travel Time Home User One

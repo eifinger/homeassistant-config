@@ -140,6 +140,8 @@ view_automation_entities:
     - group.automation_presence_entities
     - group.automation_entities
     - group.current_commit
+    - counter.google_maps_api_calls
+    - group.travel_time_home_user_one
 
 view_settings:
   name: Einstellungen
@@ -521,6 +523,13 @@ alarm:
     - binary_sensor.workday_today
     - binary_sensor.workday_tomorrow
 
+travel_time_home_user_one:
+  name: Travel Timer Home User One
+  entities:
+    - script.travel_time_home_user_one_update
+    - sensor.travel_time_home_user_one
+    - input_number.travel_time_home_user_one_update_interval
+
 standards:
   name: Standard Einstellungen
   entities:
@@ -586,6 +595,7 @@ app_switches:
     - input_boolean.turn_on_bath_thermostat_when_window_closed
     - input_boolean.turn_off_bath_thermostat_when_window_open
     - input_boolean.set_thermostat_when_leaving
+    - input_boolean.travel_time_home_user_one_update
 
 
 notifier_alexa:

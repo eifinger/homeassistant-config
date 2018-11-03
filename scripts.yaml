@@ -92,3 +92,10 @@ goldie_clean:
     - delay: '00:00:05'
     - service: switch.turn_on
       entity_id: switch.goldie_clean
+#################################################################
+## Update Entities
+#################################################################
+travel_time_home_user_one_update:
+  sequence:
+    - service: homeassistant.update_entity
+      entity_id: sensor.travel_time_home_user_one

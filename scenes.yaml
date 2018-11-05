@@ -45,7 +45,6 @@
     light.reading_lamp_yeelight:
       state: on
       brightness: 255
-      color_temp: 588
       rgb_color: [0,255,0]
     light.bar_table:
       state: on

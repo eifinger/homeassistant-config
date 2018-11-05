@@ -141,3 +141,4 @@ binary_sensor: !include binary_sensor.yaml
 weather: !include weather.yaml
 climate: !include climate.yaml
 counter: !include counter.yaml
+scene: !include scenes.yaml

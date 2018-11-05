@@ -1,0 +1,85 @@
+- name: Gemütliches Wohnzimmer
+  entities:
+    light.reading_lamp_yeelight:
+      state: on
+      brightness: 255
+      color_temp: 460
+      rgb_color: [255,126,0]
+    switch.large_lamp:
+      state: on
+    switch.small_lamp:
+      state: on
+    switch.snowboard:
+      state: on
+    light.stairs_lower_yeelight:
+      state: on
+      brightness: 209
+      color_temp: 588
+      rgb_color: [255,120,0]
+- name: Alles Rot
+  entities:
+    light.lobby_yeelight:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [255,0,0]
+    light.stairs_lower_yeelight:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [255,0,0]
+    light.reading_lamp_yeelight:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [255,0,0]
+    light.bar_table:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [255,0,0]
+- name: Alles Grün
+  entities:
+    light.lobby_yeelight:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [0,255,0]
+    light.stairs_lower_yeelight:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [0,255,0]
+    light.reading_lamp_yeelight:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [0,255,0]
+    light.bar_table:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [0,255,0]
+- name: Alles Blau
+  entities:
+    light.lobby_yeelight:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [0,0,255]
+    light.stairs_lower_yeelight:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [0,0,255]
+    light.reading_lamp_yeelight:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [0,0,255]
+    light.bar_table:
+      state: on
+      brightness: 255
+      color_temp: 588
+      rgb_color: [0,0,255]
+    

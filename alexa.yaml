@@ -44,6 +44,12 @@
         - input_boolean.turn_fan_on_when_hot
         - input_boolean.sleepmode
         - vacuum.xiaomi_vacuum_cleaner
+        - scene.gemutliches_wohnzimmer
+        - scene.alles_grun
+        - scene.alles_rot
+        - scene.alles_blau
+        - climate.bad_thermostat
+        - climate.wohnzimmer_thermostat
       include_domains:
         - light
     entity_config:
@@ -241,3 +247,20 @@
         name: Snowie
         description: Schalte Snowie an/aus
         display_categories: SWITCH
+      scene.alles_grun:
+        name: Alles Grün
+        description: Das Wohnzimmer wird grün
+      scene.alles_rot:
+        name: Alles Rot
+        description: Das Wohnzimmer wird rot
+      scene.alles_blau:
+        name: Alles Blau
+        description: Das Wohnzimmer wird blau
+      climate.bad_thermostat:
+        name: Bad Thermostat
+        description: Das Badezimmer Fußboden Thermostat
+        display_categories: THERMOSTAT
+      climate.wohnzimmer_thermostat:
+        name: Wohnzimmer Thermostat
+        description: Das Wohnzimmer Fußboden Thermostat
+        display_categories: THERMOSTAT

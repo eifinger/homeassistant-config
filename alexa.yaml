@@ -247,6 +247,9 @@
         name: Snowie
         description: Schalte Snowie an/aus
         display_categories: SWITCH
+      scene.gemutliches_wohnzimmer:
+        name: Gemütliches Wohnzimmer
+        description: Lichter im Wohnzimmer wie wir sie mögen
       scene.alles_grun:
         name: Alles Grün
         description: Das Wohnzimmer wird grün

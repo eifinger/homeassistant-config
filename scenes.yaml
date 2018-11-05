@@ -14,8 +14,15 @@
       state: on
       brightness: 209
       rgb_color: [255,120,0]
+    light.livingroom_yeelight: off
+    light.bar_table: off
+    light.treppe_oben: off
 - name: Alles Rot
   entities:
+    light.livingroom_yeelight:
+      state: on
+      brightness: 255
+      rgb_color: [255,0,0]
     light.lobby_yeelight:
       state: on
       brightness: 255
@@ -34,6 +41,10 @@
       rgb_color: [255,0,0]
 - name: Alles Grün
   entities:
+    light.livingroom_yeelight:
+      state: on
+      brightness: 255
+      rgb_color: [0,255,0]
     light.lobby_yeelight:
       state: on
       brightness: 255
@@ -52,6 +63,10 @@
       rgb_color: [0,255,0]
 - name: Alles Blau
   entities:
+    light.livingroom_yeelight:
+      state: on
+      brightness: 255
+      rgb_color: [0,0,255]
     light.lobby_yeelight:
       state: on
       brightness: 255

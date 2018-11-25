@@ -131,3 +131,5 @@
   reset_googlemapsapicounter_on_last_day_of_month:
     icon: mdi:replay
     name: Reset Google Maps API Timer
+  detect_devices_on_when_going_to_bed:
+    name: Schalte alles aus wenn wir ins Bett gehen

@@ -607,6 +607,7 @@ app_switches:
     - input_boolean.travel_time_home_user_two_update
     - input_boolean.increase_counter_on_google_maps_update
     - input_boolean.reset_googlemapsapicounter_on_last_day_of_month
+    - input_boolean.detect_devices_on_when_going_to_bed
 
 
 notifier_alexa:

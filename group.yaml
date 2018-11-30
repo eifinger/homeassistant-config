@@ -220,6 +220,7 @@ all:
     - light.lobby_yeelight
     - switch.ventilator
     - switch.large_ventilator
+    - switch.tv
 
 occupancy:
   name: Anwesenheit

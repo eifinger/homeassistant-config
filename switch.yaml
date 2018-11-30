@@ -144,14 +144,14 @@
 ## Template switch
 #################################################################
 - platform: template
-    switches:
-      tv:
-        value_template: "{{float(states.sensor.tplink_tv_power_usage.state) > 10}}"
-        turn_on:
-          service: switch.turn_on
-          data:
-            entity_id: switch.broadlink_tv
-        turn_off:
-          service: switch.turn_off
-          data:
-            entity_id: switch.broadlink_tv
+  switches:
+    tv:
+      value_template: "{{float(states.sensor.tplink_tv_power_usage.state) > 10}}"
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.broadlink_tv
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.broadlink_tv

@@ -266,7 +266,7 @@ input_boolean.heading_home_notifier_user_one:
   friendly_name: Benachrichtigung wenn Kevin in Richtung nach Hause fährt
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
-sensor.tplink_power_usage:
+sensor.tplink_tv_power_usage:
   show_last_changed: true
 sensor.washingmachine_power_usage:
   icon: mdi:washing-machine

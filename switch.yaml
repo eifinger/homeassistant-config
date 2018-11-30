@@ -90,7 +90,7 @@
 #################################################################
 - platform: tplink
   host: !secret tp_link_ip
-  name: tplink
+  name: tplink_tv
   enable_leds: False
 - platform: tplink
   host: !secret tp_link_washingmachine_ip
@@ -115,7 +115,7 @@
   mac: !secret rm_pro_plus_mac
   timeout: 15
   switches:
-    tv:
+    broadlink_tv:
       friendly_name: "Fernseher"
       command_on: 'JgAYAZWREzcSOBE4EhISExITEhISExI4ETgSNxITEhMSExETEhMSExI3EhMSExETEhMSExISEjgSExE4EjcSOBI3EjgSNxIABgWUkxM2EjgSNxITEhMSEhITEhMSNxI4EjcSExISEhMSExITEhISOBISEhMSExITEhISExI3EhMSOBE4EjcSOBI3EjgSAAYFk5QSNxI4EjcSExISEhMSExISEjgSNxI4EhISExITEhMRExITEjcSExITEhMRExITEhMSNxITEjcSOBI3EjcSOBI3EgAGBpWREzcSNxI4ERMSExITEhISExI4ETgSNxITEhMSEhITEhMSExI3EhMSEhITEhMSExETEjgSEhI4EjcSOBI3EjcSOBIADQU=='
       command_off: 'JgAYAZWREzcSOBE4EhISExITEhISExI4ETgSNxITEhMSExETEhMSExI3EhMSExETEhMSExISEjgSExE4EjcSOBI3EjgSNxIABgWUkxM2EjgSNxITEhMSEhITEhMSNxI4EjcSExISEhMSExITEhISOBISEhMSExITEhISExI3EhMSOBE4EjcSOBI3EjgSAAYFk5QSNxI4EjcSExISEhMSExISEjgSNxI4EhISExITEhMRExITEjcSExITEhMRExITEhMSNxITEjcSOBI3EjcSOBI3EgAGBpWREzcSNxI4ERMSExITEhISExI4ETgSNxITEhMSEhITEhMSExI3EhMSEhITEhMSExETEjgSEhI4EjcSOBI3EjcSOBIADQU=='
@@ -140,3 +140,18 @@
       friendly_name: "Receiver Schlafzimmer"
       command_on: 'JgAOAYWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPhM+Ex8TPhMfEz4THxM+EwABA4SBEz8SPxIgEiASIBIgEj8SIBI/EiASPxIgEiASIBI/Ej8TPhM+Ex8TPhMfEz4THxM+EwABAoWBEz4TPxIgEiASHxMfEz4THxM+EyASPxIgEiASHxM/Ej8SPxI/Ex8TPhMfEz4THxM+EwABAoWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPxI/EiASPxIgEj8THxI/EwABAoWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPhM/EiASPxIgEj8SIBI/EgANBQAAAAAAAAAAAAA='
       command_off: 'JgAOAYWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPhM+Ex8TPhMfEz4THxM+EwABA4SBEz8SPxIgEiASIBIgEj8SIBI/EiASPxIgEiASIBI/Ej8TPhM+Ex8TPhMfEz4THxM+EwABAoWBEz4TPxIgEiASHxMfEz4THxM+EyASPxIgEiASHxM/Ej8SPxI/Ex8TPhMfEz4THxM+EwABAoWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPxI/EiASPxIgEj8THxI/EwABAoWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPhM/EiASPxIgEj8SIBI/EgANBQAAAAAAAAAAAAA='
+#################################################################
+## Template switch
+#################################################################
+- platform: template
+    switches:
+      tv:
+        value_template: "{{float(states.sensor.tplink_tv_power_usage.state) > 10}}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: switch.broadlink_tv
+        turn_off:
+          service: switch.turn_off
+          data:
+            entity_id: switch.broadlink_tv

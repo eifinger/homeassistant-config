@@ -436,24 +436,24 @@
 #################################################################
 - platform: template
   sensors:
-    tplink_power_usage:
-      friendly_name: tplink Verbrauch
+    tplink_tv_power_usage:
+      friendly_name: Fernseher Verbrauch
       unit_of_measurement: 'W'
-      value_template: "{{states.switch.tplink.attributes.current_power_w}}"
+      value_template: "{{states.switch.tplink_tv.attributes.current_power_w}}"
       entity_id:
-       - switch.tplink
-    tplink_power_usage_total:
-      friendly_name: tplink Total
+       - switch.tplink_tv
+    tplink_tv_power_usage_total:
+      friendly_name: Fernseher Total
       unit_of_measurement: 'kWh'
-      value_template: "{{states.switch.tplink.attributes.total_energy_kwh}}"
+      value_template: "{{states.switch.tplink_tv.attributes.total_energy_kwh}}"
       entity_id:
-       - switch.tplink
-    tplink_power_usage_today:
-      friendly_name: tplink Heute
+       - switch.tplink_tv
+    tplink_tv_power_usage_today:
+      friendly_name: Fernseher Heute
       unit_of_measurement: 'kWh'
-      value_template: "{{states.switch.tplink.attributes.today_energy_kwh}}"
+      value_template: "{{states.switch.tplink_tv.attributes.today_energy_kwh}}"
       entity_id:
-       - switch.tplink
+       - switch.tplink_tv
     washingmachine_power_usage:
       friendly_name: Waschmaschine
       unit_of_measurement: 'W'

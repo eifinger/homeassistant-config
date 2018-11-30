@@ -180,6 +180,7 @@ lights:
 livingroom:
   name: Wohnzimmer
   entities:
+    - switch.tv
     - switch.large_lamp
     - switch.small_lamp
     - switch.snowboard
@@ -203,7 +204,6 @@ infrared:
   control: hidden
   entities:
     - switch.markise
-    - switch.tv
 
 all:
   name: Everything
@@ -250,9 +250,9 @@ temperature:
 power_usage:
   name: Stromverbrauch
   entities:
-    - sensor.tplink_power_usage
-    - sensor.tplink_power_usage_today
-    - sensor.tplink_power_usage_total
+    - sensor.tplink_tv_power_usage
+    - sensor.tplink_tv_power_usage_today
+    - sensor.tplink_tv_power_usage_total
     - sensor.washingmachine_power_usage
     - sensor.washingmachine_power_usage_today
     - sensor.washingmachine_power_usage_total

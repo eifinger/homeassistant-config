@@ -627,6 +627,8 @@ heating:
   entities:
     - climate.bad_thermostat
     - climate.wohnzimmer_thermostat
+    - climate.bad_oben_thermostat
+    - climate.kuche_thermostat
 #################################################################
 ## Synonym
 #################################################################

@@ -142,6 +142,7 @@ view_automation_entities:
     - group.current_commit
     - counter.google_maps_api_calls
     - group.travel_time_home_user_one
+    - group.travel_time_home_user_two
 
 view_settings:
   name: Einstellungen
@@ -531,6 +532,13 @@ travel_time_home_user_one:
     - script.travel_time_home_user_one_update
     - sensor.travel_time_home_user_one
     - input_number.travel_time_home_user_one_update_interval
+
+travel_time_home_user_two:
+  name: Travel Timer Home User Two
+  entities:
+    - script.travel_time_home_user_two_update
+    - sensor.travel_time_home_user_two
+    - input_number.travel_time_home_user_two_update_interval
 
 standards:
   name: Standard Einstellungen

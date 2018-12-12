@@ -50,6 +50,9 @@
         - scene.alles_blau
         - climate.bad_thermostat
         - climate.wohnzimmer_thermostat
+        - climate.bad_oben_thermostat
+        - climate.kuche_thermostat
+        - switch.starte_vive_pc
       include_domains:
         - light
     entity_config:
@@ -267,3 +270,15 @@
         name: Wohnzimmer Thermostat
         description: Das Wohnzimmer Fußboden Thermostat
         display_categories: THERMOSTAT
+      climate.bad_oben_thermostat:
+        name: Bad Oben Thermostat
+        description: Das Fußboden Thermostat im oberen Bad
+        display_categories: THERMOSTAT
+      climate.kuche_thermostat:
+        name: Küche Thermostat
+        description: Das Fußboden Thermostat in der Küche
+        display_categories: THERMOSTAT
+      switch.starte_vive_pc:
+        name: Gaming PC
+        description: Schalte Gaming PC an
+        display_categories: SWITCH

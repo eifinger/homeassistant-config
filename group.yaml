@@ -9,7 +9,6 @@ default_view:
     - media_player.denon_avrx1300w
     - group.livingroom
     - group.occupancy
-    - group.reed
 
 view_lights:
   name: Lights

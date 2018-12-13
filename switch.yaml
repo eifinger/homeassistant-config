@@ -145,7 +145,7 @@
 #################################################################
 - platform: template
   switches:
-    - tv:
+    tv:
       friendly_name: Fernseher
       value_template: "{{float(states.sensor.tplink_tv_power_usage.state) > 10}}"
       turn_on:
@@ -162,9 +162,9 @@
         - service: switch.turn_off
           data:
             entity_id: switch.broadlink_tv
-    - markise:
+    markise:
       friendly_name: Markise
-      value_template: "{{states.binary_sensor.door_window_sensor_158d0002059ddf.state == "on"}}"
+      value_template: "{{states.binary_sensor.door_window_sensor_158d0002059ddf.state == \"on\"}}"
       turn_on:
         - condition: state
           entity_id: switch.markise

@@ -603,6 +603,8 @@ app_switches:
     - input_boolean.notifier_alexa
     - input_boolean.turn_on_bath_thermostat_when_window_closed
     - input_boolean.turn_off_bath_thermostat_when_window_open
+    - input_boolean.turn_on_upper_bath_thermostat_when_window_closed
+    - input_boolean.turn_off_upper_bath_thermostat_when_window_open
     - input_boolean.set_thermostat_when_leaving
     - input_boolean.set_thermostat_when_sleeping
     - input_boolean.travel_time_home_user_one_update

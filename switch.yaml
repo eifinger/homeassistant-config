@@ -127,7 +127,7 @@
       friendly_name: "Goldie Home"
       command_on: 'JgBcAJKQEhIREhIREjUSEhIREjUSEZKQEhISERISETYREhISETUSEpKQERISERISEjUSERISETYREpKQEhESEhESEjUSEhESEjUSEZKQEhIREhISETUSEhISETUSAA0FAAAAAAAAAAAAAAAA'
       command_off: 'JgBcAJKQEhIREhIREjUSEhIREjUSEZKQEhISERISETYREhISETUSEpKQERISERISEjUSERISETYREpKQEhESEhESEjUSEhESEjUSEZKQEhIREhISETUSEhISETUSAA0FAAAAAAAAAAAAAAAA'
-    markise:
+    broadlink_markise:
       friendly_name: "Markise"
       command_on: 'sgCIAcY6HR0dHToeHDoeHR0dHR0dHR0dHR06HcE7HR0dHR0dOh4cOh0d3js6Oh0dHR0eHDoeHB2kAATxxjodHR4cOh4cOx0dHR0dHR0dHR0dHTodwTsdHR0dHR06Hhw6HhzeOzo6HR0dHR0dOh4cHaUABPDGOh4cHhw6Hhw7HR0dHR0dHR0dHR0dOh3BOx0dHR0dHToeHDodHd47OjodHR0dHR45HhweowAE8cY6HR0dHToeHDsdHR0dHR0dHR0dHR06HcE7HR0dHR0dOh4cOh4c3zo6Oh0dHR0eHDoeHB6kAATwxjodHR0dOh4cOx0dHR0dHR0dHR0eHDodwjodHR0dHhw6Hhw6HR3fOjo6HhwdHR4cOh4cHqQABPDGOh0eHRw6Hhw7HR0dHR0dHR0dHR4cOh3COh0dHR0dHToeHDoeHd46OjoeHR0cHh05HhwepAAE8MY6Hh0dHTkeHDsdHR0dHR0dHR0dHhw6HsA7HR0dHR0dOh4cOx0d3jo6Oh0dHhweHTkeHB6kAAXc'
       command_off: 'sgAQA8Y7HR0dHTkeHDsdHR0dHR0eHB0dHhweHd46HR0dHR4cOh4cOx0d3js5Ox0dHR0dHTkeHB6kAATwxjsdHR0dOh0cOx0dHR0dHR0eHR0dHR0d3joeHB0eHR05Hh06HR3eOjo7HR0dHR0dOh0dHaQABPDGOx0dHR06HR06HR0dHR4cHhweHR0dHR3eOh4dHR0dHTkeHTodHd47OTsdHR0dHR06HR0dpAAE8MY7HR0dHTodHTodHh0dHR0dHR0dHR0dHd47HR0dHR0dOh0cOx0d3js5Ox0dHR0dHToeHB2kAATxxTsdHR0dOh4cOh0eHR0dHB4dHR0dHR0d3joeHR0dHR05Hh06HR3eOzk7HR0dHR0dOh4cHaQABPHFOx0dHR06Hhw7HRweHR0dHR0dHR0dHR3eOx0dHR0dHTodHTodHd47OjodHR0dHR06HhweowAE8cY6HR0eHDoeHDsdHR0dHR0dHR0dHR0dHd47HR0dHR0dOh0dOh0d3zo6Oh0dHR0dHToeHB6jAATxxjodHR0dOh4cOh4dHR0dHR0dHR0dHR0d3zodHR0dHR06Hhw6Hh3dOzo6HR0dHR0eOR4cHqQABPDGOh4cHR45Hhw7HR0dHR0dHR0dHR0dHR3fOh0dHR0dHToeHDsdHN86OjodHR0eHR05HhwepAAE8MY6Hh0dHTkeHTodHR0dHR0dHR0dHhweHN86HR0dHR4cOh4cOx0d3jo6Oh0dHhweHTkeHB6kAATwxjsdHR0dOR4cOx0dHR0dHR0dHhwdHR4c3zodHR0dHR06Hhw7HR3eOjo6HhweHR0dOR4cHqQABPDGOx0dHR05Hhw7HR0dHR0dHhwdHh0cHh3eOh4cHhweHTkeHDsdHd46OjsdHR0dHR05HhwepAAE8MY7HR0dHTkeHDsdHR0dHR0eHB0eHB4dHd46HR0dHh0dOR4cOx0d3jo6Ox0dHR0dHTodHR2kAATxxTsdHR0dOh0dOh0dHR0dHR0dHR4dHR0d3joeHB4dHR05Hhw7HR3eOzk7HR0dHR0dOh4cHaQABdwAAAAAAAAAAA=='
@@ -162,3 +162,20 @@
         - service: switch.turn_off
           data:
             entity_id: switch.broadlink_tv
+    markise:
+      friendly_name: Markise
+      value_template: "{{states.binary_sensor.door_window_sensor_158d0002059ddf.state == "on"}}"
+      turn_on:
+        - condition: state
+          entity_id: switch.markise
+          state: 'off'
+        - service: switch.turn_on
+          data:
+            entity_id: switch.markise
+      turn_off:
+        - condition: state
+          entity_id: switch.markise
+          state: 'on'
+        - service: switch.turn_off
+          data:
+            entity_id: switch.markise

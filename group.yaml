@@ -8,7 +8,6 @@ default_view:
     - group.notifier_alexa
     - media_player.denon_avrx1300w
     - group.livingroom
-    - group.infrared
     - group.occupancy
     - group.reed
 
@@ -190,6 +189,7 @@ livingroom:
     - light.lobby_yeelight
     - light.livingroom_yeelight
     - switch.ventilator
+    - switch.markise
 
 bedroom:
   name: Schlafzimmer
@@ -199,12 +199,6 @@ bedroom:
     - binary_sensor.door_window_sensor_158d0001bb4d94
     - binary_sensor.motion_sensor_158d0002006cfa
     - switch.bedroom_receiver
-
-infrared:
-  name: Infrarot
-  control: hidden
-  entities:
-    - switch.markise
 
 all:
   name: Everything

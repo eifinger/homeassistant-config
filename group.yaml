@@ -190,6 +190,7 @@ livingroom:
     - light.livingroom_yeelight
     - switch.ventilator
     - switch.markise
+    - media_player.denon_avrx1300w
 
 bedroom:
   name: Schlafzimmer

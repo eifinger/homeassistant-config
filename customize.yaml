@@ -484,6 +484,8 @@ switch.studyroom:
   icon: mdi:lightbulb
   custom_ui_state_card: state-card-custom-ui
   show_last_changed: true
+switch.weihnachtslichter:
+  icon: mdi:pine-tree
 light.bar_table:
   friendly_name: "Bar"
   custom_ui_state_card: state-card-custom-ui

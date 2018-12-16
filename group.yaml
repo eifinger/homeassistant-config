@@ -179,6 +179,7 @@ lights:
 livingroom:
   name: Wohnzimmer
   entities:
+    - switch.weihnachtslichter
     - switch.tv
     - switch.large_lamp
     - switch.small_lamp

@@ -53,6 +53,7 @@
         - climate.bad_oben_thermostat
         - climate.kuche_thermostat
         - switch.starte_vive_pc
+        - switch.weihnachtslichter
       include_domains:
         - light
     entity_config:
@@ -281,4 +282,8 @@
       switch.starte_vive_pc:
         name: Gaming PC
         description: Schalte Gaming PC an
+        display_categories: SWITCH
+      switch.weihnachtslichter:
+        name: Weihnachtslichter
+        description: Schalte Weihnachtsbeleuchtung an/aus
         display_categories: SWITCH

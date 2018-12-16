@@ -85,6 +85,18 @@
   optimistic: false
   qos: 2
   retain: false
+- platform: mqtt
+  name: "Weihnachtslichter"
+  state_topic: "stat/sonoff_weihnachtslichter/POWER"
+  command_topic: "cmnd/sonoff_weihnachtslichter/POWER"
+  availability_topic: "tele/sonoff_weihnachtslichter/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
 #################################################################
 ## Tp Link
 #################################################################

@@ -107,6 +107,9 @@
   warm_bath_before_wakeup:
     icon: mdi:temperature-celsius
     name: Fußbodenheizung im Bad vorm aufstehen anschalten
+  warm_upper_bath_before_wakeup:
+    icon: mdi:temperature-celsius
+    name: Fußbodenheizung im Bad Oben vorm aufstehen anschalten
   turn_off_bath_thermostat_when_window_open:
     icon: mdi:window-open
     name: Fußbodenheizung im Bad ausschalten wenn Fenster offen
@@ -139,3 +142,7 @@
     name: Reset Google Maps API Timer
   detect_devices_on_when_going_to_bed:
     name: Schalte alles aus wenn wir ins Bett gehen
+    icon: mdi:alarm
+  set_livingroom_thermostat_when_waking_up:
+    icon: mdi:temperature-celsius
+    name: Fußbodenheizung im Wohnzimmer wenn wir aufstehen

@@ -149,8 +149,10 @@ view_settings:
   entities:
     - group.standards
     - group.warm_bath_before_wakeup
+    - group.warm_upper_bath_before_wakeup
     - group.set_thermostat_when_leaving
     - group.set_thermostat_when_sleeping
+    - group.set_livingroom_thermostat_when_waking_up
     - group.small_ventilator
     - group.large_ventilator
     - group.vacuum_apps
@@ -559,6 +561,12 @@ warm_bath_before_wakeup:
    - input_number.warm_bath_before_wakeup
    - input_boolean.warm_bath_before_wakeup
 
+warm_upper_bath_before_wakeup:
+  name: Fußbdodenheizung Bad Oben
+  entities:
+   - input_number.warm_upper_bath_before_wakeup
+   - input_boolean.warm_upper_bath_before_wakeup
+
 set_thermostat_when_leaving:
   name: Fußbdodenheizung Wohnzimmer Weg
   entities:
@@ -570,6 +578,12 @@ set_thermostat_when_sleeping:
   entities:
    - input_number.set_thermostat_when_sleeping
    - input_boolean.set_thermostat_when_sleeping
+
+set_livingroom_thermostat_when_waking_up:
+  name: Fußbdodenheizung Wohnzimmer wenn wir aufstehen
+  entities:
+   - input_number.set_livingroom_thermostat_when_waking_up
+   - input_boolean.set_livingroom_thermostat_when_waking_up
 
 app_switches:
   name: App Switches

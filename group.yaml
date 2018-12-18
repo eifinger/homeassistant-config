@@ -154,6 +154,7 @@ view_settings:
     - group.set_thermostat_when_leaving
     - group.set_thermostat_when_sleeping
     - group.set_livingroom_thermostat_when_waking_up
+    - group.set_thermostat_when_heading_home
     - group.small_ventilator
     - group.large_ventilator
     - group.vacuum_apps
@@ -585,6 +586,12 @@ set_thermostat_when_sleeping:
 
 set_livingroom_thermostat_when_waking_up:
   name: Fußbdodenheizung Wohnzimmer wenn wir aufstehen
+  entities:
+   - input_number.set_livingroom_thermostat_when_waking_up
+   - input_boolean.set_livingroom_thermostat_when_waking_up
+
+set_thermostat_when_heading_home:
+  name: Fußbodenheizung im Wohnzimmer wenn Richtung nach Hause
   entities:
    - input_number.set_livingroom_thermostat_when_waking_up
    - input_boolean.set_livingroom_thermostat_when_waking_up

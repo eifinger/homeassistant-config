@@ -146,3 +146,6 @@
   set_livingroom_thermostat_when_waking_up:
     icon: mdi:temperature-celsius
     name: Fußbodenheizung im Wohnzimmer wenn wir aufstehen
+  set_thermostat_when_heading_home:
+    icon: mdi:temperature-celsius
+    name: Fußbodenheizung im Wohnzimmer wenn Richtung nach Hause

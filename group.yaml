@@ -593,8 +593,8 @@ set_livingroom_thermostat_when_waking_up:
 set_thermostat_when_heading_home:
   name: Fußbodenheizung im Wohnzimmer wenn Richtung nach Hause
   entities:
-   - input_number.set_livingroom_thermostat_when_waking_up
-   - input_boolean.set_livingroom_thermostat_when_waking_up
+   - input_number.set_thermostat_when_heading_home
+   - input_boolean.set_thermostat_when_heading_home
 
 app_switches:
   name: App Switches

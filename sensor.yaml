@@ -240,7 +240,7 @@
   unit_of_measurement: '%'
 - platform: mqtt
   name: "teckin_power_usage"
-  friendly_name: Schlafzimmerreceiver Verbrauch
+  friendly_name: "Schlafzimmerreceiver Verbrauch"
   icon: mdi:speaker
   state_topic: "tele/sonoff_teckin/SENSOR"
   value_template: "{{ value_json['ENERGY'].Power }}"
@@ -251,7 +251,7 @@
   payload_not_available: "Offline"
 - platform: mqtt
   name: "teckin_power_usage_today"
-  friendly_name: Schlafzimmerreceiver Heute
+  friendly_name: "Schlafzimmerreceiver Heute"
   icon: mdi:speaker
   state_topic: "tele/sonoff_teckin/SENSOR"
   value_template: "{{ value_json['ENERGY'].Today }}"
@@ -262,7 +262,7 @@
   payload_not_available: "Offline"
 - platform: mqtt
   name: "teckin_power_usage_total"
-  friendly_name: Schlafzimmerreceiver Total
+  friendly_name: "Schlafzimmerreceiver Total"
   icon: mdi:speaker
   state_topic: "tele/sonoff_teckin/SENSOR"
   value_template: "{{ value_json['ENERGY'].Total }}"

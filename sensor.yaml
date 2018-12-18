@@ -238,6 +238,39 @@
   value_template: "{{ value_json['AM2301'].Humidity }}"
   name: 'Large Ventilator Humidity'
   unit_of_measurement: '%'
+- platform: mqtt
+  name: "teckin_power_usage"
+  friendly_name: Schlafzimmerreceiver Verbrauch
+  icon: mdi:speaker
+  state_topic: "tele/sonoff_teckin/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Power }}"
+  unit_of_measurement: "W"
+  availability_topic: "tele/sonoff_teckin/LWT"
+  qos: 2
+  payload_available: "Online"
+  payload_not_available: "Offline"
+- platform: mqtt
+  name: "teckin_power_usage_today"
+  friendly_name: Schlafzimmerreceiver Heute
+  icon: mdi:speaker
+  state_topic: "tele/sonoff_teckin/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Today }}"
+  unit_of_measurement: "kWh"
+  availability_topic: "tele/sonoff_teckin/LWT"
+  qos: 2
+  payload_available: "Online"
+  payload_not_available: "Offline"
+- platform: mqtt
+  name: "teckin_power_usage_total"
+  friendly_name: Schlafzimmerreceiver Total
+  icon: mdi:speaker
+  state_topic: "tele/sonoff_teckin/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Total }}"
+  unit_of_measurement: "kWh"
+  availability_topic: "tele/sonoff_teckin/LWT"
+  qos: 2
+  payload_available: "Online"
+  payload_not_available: "Offline"
 #################################################################
 ## Travel Times
 #################################################################

@@ -282,6 +282,8 @@ sensor.dishwasher_power_usage_today:
   icon: mdi:gauge
 sensor.dishwasher_power_usage_total:
   icon: mdi:gauge
+sensor.teckin_power_usage:
+  show_last_changed: true
 sensor.gas_station_star:
   icon: mdi:gas-station
   custom_ui_state_card: state-card-custom-ui

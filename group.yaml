@@ -9,6 +9,7 @@ default_view:
     - media_player.denon_avrx1300w
     - group.livingroom
     - group.occupancy
+    - switch.bedroom_receiver
 
 view_lights:
   name: Lights
@@ -258,6 +259,9 @@ power_usage:
     - sensor.dishwasher_power_usage
     - sensor.dishwasher_power_usage_today 
     - sensor.dishwasher_power_usage_total
+    - sensor.teckin_power_usage
+    - sensor.teckin_power_usage_today
+    - sensor.teckin_power_usage_total
     
 
 weather_dark_ky:

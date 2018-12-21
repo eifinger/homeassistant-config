@@ -1,12 +1,16 @@
 resources:
   - type: js
-    url: /local/tracker-card.js?v=0
+    url: /local/tracker-card.js?v=0.1.5
   - type: js
-    url: /local/card-tools.js?v=0
+    url: /local/card-tools.js?v=445b68
   - type: js
-    url: /local/slider-entity-row.js?v=0
+    url: /local/slider-entity-row.js?v=d6da75
   - type: js
-    url: /local/time-input-row.js?v=0
+    url: /local/time-input-row.js?v=f503b7
+  - type: js
+    url: /local/fold-entity-row.js?v=0
+  - type: js
+    url: /local/state-switch.js?v=0
 title: Home
 views:
   - badges: []

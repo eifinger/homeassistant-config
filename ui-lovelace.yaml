@@ -1,0 +1,560 @@
+resources:
+  - type: js
+    url: /local/tracker-card.js?v=0
+  - type: js
+    url: /local/card-tools.js?v=0
+  - type: js
+    url: /local/slider-entity-row.js?v=0
+  - type: js
+    url: /local/time-input-row.js?v=0
+title: Home
+views:
+  - badges: []
+    cards:
+      - entities:
+          - sensor.location_user_one
+          - sensor.location_user_two
+        show_header_toggle: false
+        title: Anwesenheit
+        type: entities
+      - card:
+          show_header_toggle: false
+          title: Wohnzimmer
+          type: entities
+        entities:
+          - switch.weihnachtslichter
+          - switch.tv
+          - switch.large_lamp
+          - switch.small_lamp
+          - switch.snowboard
+          - type: 'custom:slider-entity-row'
+            toggle: true
+            entity: light.bar_table
+          - type: 'custom:slider-entity-row'
+            toggle: true
+            entity: light.reading_lamp_yeelight
+          - type: 'custom:slider-entity-row'
+            toggle: true
+            entity: light.lobby_yeelight
+          - type: 'custom:slider-entity-row'
+            toggle: true
+            entity: light.livingroom_yeelight
+          - switch.ventilator
+          - switch.markise
+        state_filter:
+          - 'on'
+          - 'off'
+        type: entity-filter
+      - entity: media_player.denon_avrx1300w
+        type: media-control
+      - entities:
+          - switch.bedroom_receiver
+        title: Switch
+        type: entities
+    icon: 'mdi:home'
+    path: default_view
+    title: default_view
+  - badges: []
+    cards:
+      - entities:
+          - switch.large_lamp
+          - switch.small_lamp
+          - switch.snowboard
+          - light.bedroom_yeelight
+          - light.bar_table
+          - light.stairs_lower_yeelight
+          - light.treppe_oben
+          - light.reading_lamp_yeelight
+          - light.lobby_yeelight
+          - switch.lobby
+          - light.lower_bathroom_yeelight
+          - light.livingroom_yeelight
+        title: Lichter
+        type: entities
+    icon: 'mdi:lightbulb-outline'
+    path: view_lights
+    title: Lights
+  - badges: []
+    cards:
+      - entity: media_player.denon_avrx1300w
+        type: media-control
+      - entity: media_player.spotify
+        type: media-control
+      - entity: media_player.kevins_echo_dot_oben
+        type: media-control
+      - entity: media_player.kevins_echo_dot_unten
+        type: media-control
+      - entity: media_player.kodi
+        type: media-control
+    icon: 'mdi:play-circle-outline'
+    path: view_media_players
+    title: Media Player
+  - badges: []
+    cards:
+      - entities:
+          - sensor.alarm_time
+          - input_number.alarmhour
+          - input_number.alarmminutes
+          - input_boolean.wakemeup
+          - input_number.alarm_natural_wakeup_fade_in
+          - input_boolean.alarmweekday
+          - input_boolean.radiowakeup
+          - binary_sensor.workday_today
+          - binary_sensor.workday_tomorrow
+        title: Wecker
+        type: entities
+    icon: 'mdi:clock'
+    path: view_alarm
+    title: Wecker
+  - badges: []
+    cards:
+      - entities:
+          - sensor.travel_time_home_from_work_waze_realtime
+          - input_boolean.travel_time_home_from_work
+          - sensor.travel_time_work_from_home_waze_realtime
+          - input_boolean.travel_time_work_from_home
+          - sensor.travel_time_elmo_from_home_waze_realtime
+          - input_boolean.travel_time_elmo_from_home
+        title: Reisezeiten
+        type: entities
+      - entities:
+          - sensor.nach_bruckenkopf_0
+          - sensor.nach_bruckenkopf_1
+          - sensor.nach_bruckenkopf_2
+          - sensor.nach_bruckenkopf_3
+          - sensor.nach_bruckenkopf_4
+        title: Nach Brückenkopf
+        type: entities
+    icon: 'mdi:google-maps'
+    path: view_traveltimes
+    title: Reisezeiten
+  - badges: []
+    cards:
+      - entities:
+          - sensor.cal_next_appointment_title
+          - sensor.cal_next_appointment_location
+          - sensor.cal_next_appointment_start_time
+          - sensor.travel_time_next_appointment_location
+          - sensor.calc_leave_time
+          - input_number.leave_time_offset
+          - input_select.next_appointment_travel_mode
+        title: Nächster Termin Kevin
+        type: entities
+      - entities:
+          - sensor.travel_time_next_appointment_location_car
+          - input_boolean.announce_time_to_leave
+        title: Reisezeiten
+        type: entities
+      - entities:
+          - camera.next_appointment_location_staticmap
+          - camera.next_appointment_location_street_view
+        title: Camera
+        type: entities
+    icon: 'mdi:calendar'
+    path: view_next_appointment
+    title: Nächster Termin Kevin
+  - badges: []
+    cards:
+      - entities:
+          - sensor.cal_next_appointment_title_user_two
+          - sensor.cal_next_appointment_location_user_two
+          - sensor.cal_next_appointment_start_time_user_two
+          - sensor.travel_time_next_appointment_location_user_two
+          - sensor.calc_leave_time_user_two
+          - input_number.leave_time_offset_user_two
+          - input_select.next_appointment_travel_mode_user_two
+        title: Nächster Termin Sina
+        type: entities
+      - entities:
+          - sensor.travel_time_next_appointment_location_car_user_two
+          - input_boolean.announce_time_to_leave_user_two
+        title: Reisezeiten
+        type: entities
+      - entities:
+          - camera.next_appointment_location_staticmap_user_two
+          - camera.next_appointment_location_street_view_user_two
+        title: Camera
+        type: entities
+    icon: 'mdi:calendar'
+    path: view_next_appointment_user_two
+    title: Nächster Termin Sina
+  - badges: []
+    cards:
+      - entities:
+          - camera.snowies_karte
+        title: Camera
+        type: entities
+      - entities:
+          - switch.goldie_clean
+          - switch.goldie_home
+        title: Switch
+        type: entities
+      - entities:
+          - vacuum.xiaomi_vacuum_cleaner
+        title: Vacuum
+        type: entities
+    icon: 'mdi:robot-vacuum'
+    path: view_vaccum
+    title: Staubsauger
+  - badges: []
+    cards:
+      - entities:
+          - camera.saved_image
+          - image_processing.facebox
+          - sensor.facebox_detection
+          - script.learn_faces
+        title: Wohnungstür Erkennung
+        type: entities
+      - entities:
+          - camera.android_ip_webcam_door
+          - sensor.android_ip_webcam_door_battery_level
+          - sensor.android_ip_webcam_door_battery_temperature
+          - sensor.android_ip_webcam_door_light_level
+          - sensor.android_ip_webcam_door_motion
+          - sensor.android_ip_webcam_door_sound
+          - switch.android_ip_webcam_door_torch
+          - switch.android_ip_webcam_door_video_recording
+        title: Webcam Tür
+        type: entities
+    icon: 'mdi:cctv'
+    path: view_cameras
+    title: Kameras
+  - badges: []
+    cards:
+      - entities:
+          - sensor.gas_station_star
+          - sensor.statistics_gas_station_star_mean
+          - history_graph.gas_station_star
+        title: Star Tankstelle
+        type: entities
+      - entities:
+          - sensor.gas_station_metro
+          - sensor.statistics_gas_station_metro_mean
+          - history_graph.gas_station_metro
+        title: Metro Tankstelle
+        type: entities
+      - entities:
+          - sensor.gas_station_globus
+          - sensor.statistics_gas_station_globus_mean
+          - history_graph.gas_station_globus
+        title: Globus Tankstelle
+        type: entities
+      - entities:
+          - history_graph.gas_stations
+        title: History graph
+        type: entities
+    icon: 'mdi:gas-station'
+    path: view_gas_stations
+    title: Tankstellen
+  - badges: []
+    cards:
+      - entities:
+          - sensor.pollen_101_graeser_today
+          - sensor.pollen_101_graeser_tomorrow
+          - sensor.pollen_101_graeser_dayaftertomorrow
+        title: Gräser
+        type: entities
+      - entities:
+          - sensor.pollen_101_birke_today
+          - sensor.pollen_101_birke_tomorrow
+          - sensor.pollen_101_birke_dayaftertomorrow
+        title: Birke
+        type: entities
+      - entities:
+          - sensor.pollen_101_roggen_today
+          - sensor.pollen_101_roggen_tomorrow
+          - sensor.pollen_101_roggen_dayaftertomorrow
+        title: Roggen
+        type: entities
+    icon: 'mdi:chart-bubble'
+    path: view_pollen
+    title: Pollen
+  - badges: []
+    cards:
+      - entities:
+          - sensor.large_lamp_temperature
+          - sensor.small_lamp_temperature
+          - sensor.ventilator_temperature
+          - sensor.large_ventilator_temperature
+          - sensor.temperature_158d0002320b3f
+          - sensor.temperature_158d000245a938
+        title: Temperatur
+        type: entities
+      - entities:
+          - sensor.large_lamp_humidity
+          - sensor.small_lamp_humidity
+          - sensor.ventilator_humidity
+          - sensor.large_ventilator_humidity
+          - sensor.humidity_158d0002320b3f
+          - sensor.humidity_158d000245a938
+        title: Luftfeuchtigkeit
+        type: entities
+      - entities:
+          - binary_sensor.motion_sensor_158d00012aab97
+          - binary_sensor.motion_sensor_158d0001fa464b
+          - binary_sensor.motion_sensor_158d0002006cfa
+          - binary_sensor.motion_sensor_158d000236d83c
+          - binary_sensor.motion_sensor_158d000236d982
+          - binary_sensor.motion_sensor_158d000204c95d
+        title: Bewegungsmelder
+        type: entities
+      - entities:
+          - binary_sensor.door_window_sensor_158d000126a57b
+          - binary_sensor.door_window_sensor_158d0001bb4d94
+          - binary_sensor.door_window_sensor_158d0001bb4dc0
+          - binary_sensor.door_window_sensor_158d000205b808
+          - binary_sensor.door_window_sensor_158d000205b82e
+          - binary_sensor.door_window_sensor_158d00020498b6
+          - binary_sensor.door_window_sensor_158d000204ba26
+          - binary_sensor.door_window_sensor_158d0002059ddf
+          - binary_sensor.door_window_sensor_158d00020499ad
+          - binary_sensor.door_window_sensor_158d0002048951
+          - binary_sensor.door_window_sensor_158d00020455bf
+        title: Tür und Fenster
+        type: entities
+      - entities:
+          - binary_sensor.switch_158d00012db9e5
+          - binary_sensor.switch_158d0001b12a12
+          - binary_sensor.switch_158d000215aa28
+          - binary_sensor.switch_158d0002008d07
+          - binary_sensor.switch_158d00021329bc
+        title: Xiaomi Button
+        type: entities
+      - entities:
+          - sensor.illumination_158d0001fa464b
+          - sensor.illumination_158d0002006cfa
+          - sensor.illumination_286c0785b294
+        title: Lumen
+        type: entities
+      - entities:
+          - sensor.tplink_tv_power_usage
+          - sensor.tplink_tv_power_usage_today
+          - sensor.tplink_tv_power_usage_total
+          - sensor.washingmachine_power_usage
+          - sensor.washingmachine_power_usage_today
+          - sensor.washingmachine_power_usage_total
+          - sensor.dishwasher_power_usage
+          - sensor.dishwasher_power_usage_today
+          - sensor.dishwasher_power_usage_total
+          - sensor.teckin_power_usage
+          - sensor.teckin_power_usage_today
+          - sensor.teckin_power_usage_total
+        title: Stromverbrauch
+        type: entities
+      - entity: climate.bad_thermostat
+        type: thermostat
+      - entity: climate.wohnzimmer_thermostat
+        type: thermostat
+      - entity: climate.bad_oben_thermostat
+        type: thermostat
+      - entity: climate.kuche_thermostat
+        type: thermostat
+    icon: 'mdi:gauge'
+    path: view_sensors
+    title: Sensoren
+  - badges: []
+    cards:
+      - entities:
+          - sensor.dark_sky_icon
+          - sensor.dark_sky_humidity
+          - sensor.dark_sky_temperature
+          - sensor.dark_sky_cloud_coverage
+          - sensor.dark_sky_precip_intensity
+          - sensor.dark_sky_precip_probability
+          - sensor.dark_sky_summary
+          - sensor.dark_sky_wind_speed
+        title: Dark Sky
+        type: entities
+      - entities:
+          - sensor.dwdweatherwarnings_advance_warning_level
+          - sensor.dwdweatherwarnings_current_warning_level
+        title: Deutscher Wetterdienst
+        type: entities
+      - entities:
+          - sensor.owm_cloud_coverage
+          - sensor.owm_condition
+          - sensor.owm_humidity
+          - sensor.owm_pressure
+          - sensor.owm_rain
+          - sensor.owm_snow
+          - sensor.owm_temperature
+          - sensor.owm_wind_bearing
+          - sensor.owm_wind_speed
+        title: OpenWeatherMap
+        type: entities
+      - entities:
+          - sensor.yr_cloudiness
+          - sensor.yr_dewpoint_temperature
+          - sensor.yr_fog
+          - sensor.yr_high_clouds
+          - sensor.yr_humidity
+          - sensor.yr_low_clouds
+          - sensor.yr_medium_clouds
+          - sensor.yr_precipitation
+          - sensor.yr_pressure
+          - sensor.yr_symbol
+          - sensor.yr_temperature
+          - sensor.yr_wind_direction
+          - sensor.yr_wind_speed
+        title: Wetter YR
+        type: entities
+      - entity: weather.yweather
+        type: weather-forecast
+      - entity: weather.dark_sky
+        type: weather-forecast
+      - entity: weather.openweathermap
+        type: weather-forecast
+    icon: 'mdi:weather-partlycloudy'
+    path: view_weather
+    title: Wetter
+  - badges: []
+    cards:
+      - entities:
+          - input_boolean.is_home
+          - input_boolean.user_one_home
+          - input_boolean.user_two_home
+          - input_boolean.sleepmode
+          - proximity.home
+          - proximity.home_user_one
+          - proximity.work
+          - sensor.mqtt_room_user_one
+          - sensor.mqtt_room_user_two
+          - sensor.location_s8plus
+          - input_boolean.room_based_light
+        title: Presence
+        type: entities
+      - entities:
+          - sun.sun
+          - switch.starte_vive_pc
+          - sensor.uptime
+          - >-
+            input_boolean.persistence_plantwateringnotifier_reminder_acknowledged
+        title: Automation
+        type: entities
+      - entities:
+          - sensor.current_commit_id
+          - sensor.current_commit_name
+        title: Basiert auf Commit
+        type: entities
+      - entities:
+          - script.travel_time_home_user_one_update
+          - sensor.travel_time_home_user_one
+          - input_number.travel_time_home_user_one_update_interval
+        title: Travel Timer Home User One
+        type: entities
+      - entities:
+          - script.travel_time_home_user_two_update
+          - sensor.travel_time_home_user_two
+          - input_number.travel_time_home_user_two_update_interval
+        title: Travel Timer Home User Two
+        type: entities
+      - entities:
+          - counter.google_maps_api_calls
+        title: ''
+        type: entities
+      - title: Custom Tracker
+        trackers:
+          - sensor.custom_card_tracker
+          - sensor.custom_component_tracker
+        type: 'custom:tracker-card'
+    icon: 'mdi:pipe-disconnected'
+    path: view_automation_entities
+    title: Automation
+  - badges: []
+    cards:
+      - entities:
+          - input_select.next_appointment_travel_mode_standard
+          - input_select.next_appointment_travel_mode_standard_user_two
+        title: Standard Einstellungen
+        type: entities
+      - entities:
+          - input_number.warm_bath_before_wakeup
+          - input_boolean.warm_bath_before_wakeup
+        title: Fußbdodenheizung Bad
+        type: entities
+      - entities:
+          - input_number.warm_upper_bath_before_wakeup
+          - input_boolean.warm_upper_bath_before_wakeup
+        title: Fußbdodenheizung Bad Oben
+        type: entities
+      - entities:
+          - input_number.set_thermostat_when_leaving
+          - input_boolean.set_thermostat_when_leaving
+        title: Fußbdodenheizung Wohnzimmer Weg
+        type: entities
+      - entities:
+          - input_number.set_thermostat_when_sleeping
+          - input_boolean.set_thermostat_when_sleeping
+        title: Fußbdodenheizung Wohnzimmer Nachts
+        type: entities
+      - entities:
+          - input_number.set_livingroom_thermostat_when_waking_up
+          - input_boolean.set_livingroom_thermostat_when_waking_up
+        title: Fußbdodenheizung Wohnzimmer wenn wir aufstehen
+        type: entities
+      - entities:
+          - input_number.set_thermostat_when_heading_home
+          - input_boolean.set_thermostat_when_heading_home
+        title: Fußbodenheizung im Wohnzimmer wenn Richtung nach Hause
+        type: entities
+      - entities:
+          - input_number.turn_small_fan_on_when_hot_threshold
+          - input_boolean.turn_small_fan_on_when_hot
+        title: Small Ventilator Automation
+        type: entities
+      - entities:
+          - input_number.turn_large_fan_on_when_hot_threshold
+          - input_boolean.turn_large_fan_on_when_hot
+        title: Large Ventilator Automation
+        type: entities
+      - entities:
+          - input_boolean.start_goldie_when_leaving
+          - input_boolean.start_snowie_when_leaving
+        title: Staubsauger
+        type: entities
+      - entities:
+          - input_boolean.detect_wrong_state_when_leaving
+          - input_boolean.detect_door_open_when_going_to_bed
+          - input_boolean.detect_windows_open_when_going_to_bed
+          - input_boolean.set_multiroom_audio_when_sleepmode_turns_off
+          - input_boolean.notify_of_action_when_away
+          - input_boolean.detectwrongstatewhenleaving
+          - input_boolean.detectwrongstatewhenleaving
+          - input_boolean.facebox_notifier
+          - input_boolean.facebox_teacher
+          - input_boolean.oben_treppe_motion_trigger
+          - input_boolean.bedroom_motion_trigger
+          - input_boolean.coming_home_yeelight
+          - input_boolean.coming_home_alexa
+          - input_boolean.heading_home_notifier_user_one
+          - input_boolean.home_arrival_notifier_user_one
+          - input_boolean.home_arrival_notifier_user_two
+          - input_boolean.is_home_determiner
+          - input_boolean.is_user_home_determiner_user_one
+          - input_boolean.is_user_home_determiner_user_two
+          - input_boolean.leaving_work_notifier_user_one
+          - input_boolean.leaving_elmo_notifier_user_two
+          - input_boolean.plant_watering_notifier
+          - input_boolean.power_usage_notification_dishwasher
+          - input_boolean.power_usage_notification_washingmachine
+          - input_boolean.roggen_notifier
+          - input_boolean.graeser_notifier
+          - input_boolean.birke_notifier
+          - input_boolean.alexa_speaker_connector
+          - input_boolean.notifier_alexa
+          - input_boolean.turn_on_bath_thermostat_when_window_closed
+          - input_boolean.turn_off_bath_thermostat_when_window_open
+          - input_boolean.turn_on_upper_bath_thermostat_when_window_closed
+          - input_boolean.turn_off_upper_bath_thermostat_when_window_open
+          - input_boolean.set_thermostat_when_leaving
+          - input_boolean.set_thermostat_when_sleeping
+          - input_boolean.travel_time_home_user_one_update
+          - input_boolean.travel_time_home_user_two_update
+          - input_boolean.increase_counter_on_google_maps_update
+          - input_boolean.reset_googlemapsapicounter_on_last_day_of_month
+          - input_boolean.detect_devices_on_when_going_to_bed
+        title: App Switches
+        type: entities
+    icon: 'mdi:settings'
+    path: view_settings
+    title: Einstellungen

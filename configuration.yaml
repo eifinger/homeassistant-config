@@ -115,6 +115,11 @@ vacuum:
     host: !secret xiaomi_vacuum_ip
     token: !secret xiaomi_vacuum_token
 
+custom_updater:
+  track:
+    - components
+    - cards
+
 #################################################################
 ## Includes
 #################################################################

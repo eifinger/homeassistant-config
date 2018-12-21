@@ -15,3 +15,5 @@ currentCommit.txt
 .spotify-token-cache
 google_calendars.yaml
 turnBarRed.sh
+
+.vscode

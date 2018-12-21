@@ -11,6 +11,26 @@ resources:
     url: /local/fold-entity-row.js?v=f28e6e
   - type: js
     url: /local/state-switch.js?v=2b02f2
+  - url: /local/custom-lovelace/monster-card/monster-card.js?v=0
+    type: js
+  - url: /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js?v=0
+    type: js
+  - url: /local/custom-lovelace/beer-card/beer-card.js?v=0
+    type: js
+  - url: /local/custom-lovelace/bignumber-card/bignumber-card.js?v=0
+    type: js
+  - url: /local/custom-lovelace/entity-attributes-card/entity-attributes-card.js?v=0
+    type: js
+  - url: /local/custom-lovelace/gauge-card/gauge-card.js?v=0
+    type: js
+  - url: /local/custom-lovelace/group-card/group-card.js?v=0
+    type: js
+  - url: /local/custom-lovelace/home-setter/home-setter.js?v=0
+    type: js
+  - url: /local/custom-lovelace/plan-coordinates/plan-coordinates.js?v=0
+    type: js
+  - url: /local/custom-lovelace/thermostat-card/thermostat-card.js?v=0
+    type: js
 title: Home
 views:
   - badges: []

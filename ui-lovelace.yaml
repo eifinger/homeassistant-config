@@ -8,9 +8,9 @@ resources:
   - type: js
     url: /local/time-input-row.js?v=f503b7
   - type: js
-    url: /local/fold-entity-row.js?v=0
+    url: /local/fold-entity-row.js?v=f28e6e
   - type: js
-    url: /local/state-switch.js?v=0
+    url: /local/state-switch.js?v=2b02f2
 title: Home
 views:
   - badges: []

@@ -8,18 +8,6 @@ leave_time_offset_user_two:
   min: 0
   max: 60
   step: 5
-alarmhour:
-  name: Stunde
-  icon: mdi:timer
-  min: 0
-  max: 23
-  step: 1
-alarmminutes:
-  name: Minute
-  icon: mdi:timer
-  min: 0
-  max: 59
-  step: 5
 alarm_natural_wakeup_fade_in:
   name: Fade-In Dauer
   icon: mdi:theme-light-dark

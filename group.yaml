@@ -519,8 +519,6 @@ alarm:
   control: hidden
   entities: 
     - sensor.alarm_time
-    - input_number.alarmhour
-    - input_number.alarmminutes
     - input_boolean.wakemeup
     - input_number.alarm_natural_wakeup_fade_in
     - input_boolean.alarmweekday

@@ -33,6 +33,7 @@ This repository is a companion to my [appdeamon-scripts](https://github.com/eifi
 * HAASKA [Haaska-repo](https://github.com/mike-grant/haaska) - Alexa Smarthome V3 API for all your HA devices
 * Tasmota [Tasmota-repo](https://github.com/arendst/Sonoff-Tasmota) - Custom Firmware for ESP8266 devices offering MQTT and much more.
 * Raspberry Pi running [PiHole](https://pi-hole.net/) - DNS Server and AdBlocker
+* [hassalarm](https://github.com/Johboh/hassalarm) - link my android alarms to HA
 
 <a name="devices"></a>
 <div align="center">

@@ -694,6 +694,7 @@
   sensors:
     alarm_time:
       friendly_name: 'Uhrzeit'
+      # If both are home we use the timer that is earliest. Else we use the timer of the person who is home
       value_template: '{%if states.device_tracker.sina.state == "home" and states.device_tracker.kevin.state == "home" %}{% if as_timestamp(states.sensor.alarm_kevin.state) > as_timestamp(states.sensor.alarm_sina.state) %}{{states.sensor.alarm_kevin.state}}{% else %}{{states.sensor.alarm_sina.state}}{% endif %}{% elif states.device_tracker.sina.state == "home" %}{{states.sensor.alarm_sina.state}}{% elif states.device_tracker.kevin.state == "home" %}{{states.sensor.alarm_kevin.state}}{% endif %}'
       entity_id:
        - device_tracker.sina

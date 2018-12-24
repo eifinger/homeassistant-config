@@ -149,3 +149,6 @@
   set_thermostat_when_heading_home:
     icon: mdi:temperature-celsius
     name: Fußbodenheizung im Wohnzimmer wenn Richtung nach Hause
+  sensor_watcher:
+    icon: mdi:alarm
+    name: Überwache ob alle Sensoren online sind

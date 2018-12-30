@@ -128,7 +128,7 @@ panel_iframe:
   pihole:
     title: 'Pi-Hole'
     url: !secret pihole_ip
-    icon: /local/pihole_logo_black.png
+    icon: mdi:block-helper
 #################################################################
 ## Includes
 #################################################################

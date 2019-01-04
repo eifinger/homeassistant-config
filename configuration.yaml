@@ -124,11 +124,11 @@ custom_updater:
   component_urls:
     - https://raw.githubusercontent.com/custom-components/information/master/repos.json
 
-panel_iframe:
-  pihole:
-    title: 'Pi-Hole'
-    url: !secret pihole_ip
-    icon: mdi:block-helper
+#panel_iframe:
+#  pihole:
+#    title: 'Pi-Hole'
+#    url: !secret pihole_ip
+#    icon: mdi:block-helper
 #################################################################
 ## Includes
 #################################################################

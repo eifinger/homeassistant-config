@@ -103,7 +103,7 @@ travel_time_home_user_one_update:
 travel_time_home_user_two_update:
   sequence:
     - service: homeassistant.update_entity
-      entity_id: sensor.
+      entity_id: sensor.travel_time_home_user_two
       
 #################################################################
 ## Control Thermostats
@@ -115,12 +115,14 @@ livingroom_wakeup:
       entity_id: climate.wohnzimmer_thermostat
     - service: climate.set_temperature
       entity_id: climate.wohnzimmer_thermostat
-      temperature: 22
+      data:
+        temperature: 22
     - service: climate.turn_on
       entity_id: climate.kuche_thermostat
     - service: climate.set_temperature
       entity_id: climate.kuche_thermostat
-      temperature: 23
+      data:
+        temperature: 23
 
 livingroom_sleep:
   sequence:
@@ -128,9 +130,11 @@ livingroom_sleep:
       entity_id: climate.wohnzimmer_thermostat
     - service: climate.set_temperature
       entity_id: climate.wohnzimmer_thermostat
-      temperature: 18
+      data:
+        temperature: 18
     - service: climate.turn_on
       entity_id: climate.kuche_thermostat
     - service: climate.set_temperature
       entity_id: climate.kuche_thermostat
-      temperature: 18
+      data:
+        temperature: 18

@@ -4,6 +4,12 @@
   sleepmode:
     name: Schlafmodus
     icon: mdi:sleep
+  user_one_sleep:
+    name: Kevin
+    icon: mdi:sleep
+  user_two_sleep:
+    name: Sina
+    icon: mdi:sleep
   user_one_home:
     name: Is user one home
     icon: mdi:home
@@ -152,3 +158,12 @@
   sensor_watcher:
     icon: mdi:alarm
     name: Überwache ob alle Sensoren online sind
+  user_sleep_mode_handler_user_one:
+    icon: mdi:sleep
+    name: Schlafmodus Kevin
+  user_sleep_mode_handler_user_two:
+    icon: mdi:sleep
+    name: Schlafmodus Sina
+  sleep_mode_handler:
+    icon: mdi:sleep
+    name: Schlafmodus

@@ -64,6 +64,9 @@ mqtt:
 
 recorder:
   db_url: !secret db_url
+  exlude:
+    entities:
+      - sensor.snowie_map
 
 device_tracker:
   - platform: fritz

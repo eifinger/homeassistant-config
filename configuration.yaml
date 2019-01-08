@@ -64,7 +64,7 @@ mqtt:
 
 recorder:
   db_url: !secret db_url
-  exlude:
+  exclude:
     entities:
       - sensor.snowie_map
 

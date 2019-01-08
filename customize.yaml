@@ -555,31 +555,31 @@ climate.bad_thermostat:
   templates:
     icon_color: >
       if (attributes.heating_active == 1 ) {
-        return "yellow";
+        return "#FDD835";
       } else {
-        return "blue";
+        return "#44739e";
       }
 climate.bad_oben_thermostat:
   templates:
     icon_color: >
       if (attributes.heating_active == 1 ) {
-        return "yellow";
+        return "#FDD835";
       } else {
-        return "blue";
+        return "#44739e";
       }
 climate.kuche_thermostat:
   templates:
     icon_color: >
       if (attributes.heating_active == 1 ) {
-        return "yellow";
+        return "#FDD835";
       } else {
-        return "blue";
+        return "#44739e";
       }
 climate.wohnzimmer_thermostat:
   templates:
     icon_color: >
       if (attributes.heating_active == 1 ) {
-        return "yellow";
+        return "#FDD835";
       } else {
-        return "blue";
+        return "#44739e";
       }

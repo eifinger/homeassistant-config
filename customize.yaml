@@ -548,3 +548,38 @@ zone.elmo1:
   friendly_name: "Elmo"
 zone.elmo2:
   friendly_name: "Elmo"
+#################################################################
+## Zone
+#################################################################
+climate.bad_thermostat:
+  templates:
+    icon_color: >
+      if (attributes.heating_active == 1 ) {
+        return "yellow";
+      } else {
+        return "blue";
+      }
+climate.bad_oben_thermostat:
+  templates:
+    icon_color: >
+      if (attributes.heating_active == 1 ) {
+        return "yellow";
+      } else {
+        return "blue";
+      }
+climate.kuche_thermostat:
+  templates:
+    icon_color: >
+      if (attributes.heating_active == 1 ) {
+        return "yellow";
+      } else {
+        return "blue";
+      }
+climate.wohnzimmer_thermostat:
+  templates:
+    icon_color: >
+      if (attributes.heating_active == 1 ) {
+        return "yellow";
+      } else {
+        return "blue";
+      }

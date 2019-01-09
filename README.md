@@ -85,9 +85,12 @@ This repository is a companion to my [appdeamon-scripts](https://github.com/eifi
 
 #### Networking / Server <a name="networking" href="https://github.com/eifinger/homeassistant-config#networking"><img align="right" border="0" src="https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/up_arrow.png" width="22"> </a>
 </td></tr>
-<tr><td align="center" colspan="2">
+<tr><td align="center" colspan="1">
 
 [AVM FRITZ!Box 7490](https://amzn.to/2NWAoSi)
+</td><td align="center" colspan="1">
+
+[Ubiquiti Networks UAP-AC-PRO](https://amzn.to/2RkaKww)
 </td><td align="center" colspan="1">
 
 [AVM FRITZ!WLAN Repeater 1750E](https://amzn.to/2NWlvzC)
@@ -95,7 +98,8 @@ This repository is a companion to my [appdeamon-scripts](https://github.com/eifi
 
 [HP Microserver Gen10](https://amzn.to/2DmHPRf)
 </td></tr>
-<tr><td align="center" colspan="2"><a href="https://www.amazon.de/AVM-Router-DECT-Basis-geeignet-Deutschland/dp/B00EO777DI/ref=as_li_ss_il?s=computers&ie=UTF8&qid=1536327184&sr=1-1-spons&keywords=fritzbox+7490&psc=1&linkCode=li1&tag=kevineifinger-21&linkId=07a0c1999ece256ed8ae69ae6ccef04d&language=de_DE" target="_blank"><img border="0" src="https://images-eu.ssl-images-amazon.com/images/I/41Y51Zr3ngL.jpg" width="100" height="100"></a><img src="https://ir-de.amazon-adsystem.com/e/ir?t=kevineifinger-21&language=de_DE&l=li1&o=3&a=B00EO777DI" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<tr><td align="center" colspan="1"><a href="https://www.amazon.de/AVM-Router-DECT-Basis-geeignet-Deutschland/dp/B00EO777DI/ref=as_li_ss_il?s=computers&ie=UTF8&qid=1536327184&sr=1-1-spons&keywords=fritzbox+7490&psc=1&linkCode=li1&tag=kevineifinger-21&linkId=07a0c1999ece256ed8ae69ae6ccef04d&language=de_DE" target="_blank"><img border="0" src="https://images-eu.ssl-images-amazon.com/images/I/41Y51Zr3ngL.jpg" width="100" height="100"></a><img src="https://ir-de.amazon-adsystem.com/e/ir?t=kevineifinger-21&language=de_DE&l=li1&o=3&a=B00EO777DI" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+</td><td align="center" colspan="1"><a href="https://www.amazon.de/Ubiquiti-UAP-AC-PRO-Networks-wei%C3%9F/dp/B016XYQ3WK/ref=as_li_ss_il?ie=UTF8&qid=1547046545&sr=8-2&keywords=unifi+ap&linkCode=li1&tag=kevineifinger-21&linkId=4ac94e88d228472e5b7ab3cec4cb99ee&language=de_DE" target="_blank"><img border="0" src="https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B016XYQ3WK&Format=_SL110_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=kevineifinger-21&language=de_DE" ></a><img src="https://ir-de.amazon-adsystem.com/e/ir?t=kevineifinger-21&language=de_DE&l=li1&o=3&a=B016XYQ3WK" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 </td><td align="center" colspan="1"><a href="https://www.amazon.de/AVM-Repeater-Dual-WLAN-450MBit-deutschsprachige/dp/B00N80IK88/ref=as_li_ss_il?s=computers&ie=UTF8&qid=1536328173&sr=1-1-spons&keywords=fritz+wlan+repeater+1750e&psc=1&linkCode=li1&tag=kevineifinger-21&linkId=5e26cfd26ea7097d1c5a319991f8beb1&language=de_DE" target="_blank"><img border="0" src="https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00N80IK88&Format=_SL110_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=kevineifinger-21&language=de_DE" ></a><img src="https://ir-de.amazon-adsystem.com/e/ir?t=kevineifinger-21&language=de_DE&l=li1&o=3&a=B00N80IK88" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 </td><td align="center" colspan="1"><a href="https://www.amazon.de/ProLiant-MicroServer-Hot-Plug-f%C3%A4hig-200-W-Netzteil-Einstiegsserver/dp/B072X2YJ2N/ref=as_li_ss_il?_encoding=UTF8&pd_rd_i=B072X2YJ2N&pd_rd_r=9aa43e3f-e0fe-11e8-9a86-056d0d37c5cd&pd_rd_w=xb4Yt&pd_rd_wg=oVBqF&pf_rd_i=desktop-dp-sims&pf_rd_m=A3JWKAKR8XB7XF&pf_rd_p=51bcaa00-4765-4e8f-a690-5db3c9ed1b31&pf_rd_r=0F177YEG4J1VA3R23QV6&pf_rd_s=desktop-dp-sims&pf_rd_t=40701&psc=1&refRID=0F177YEG4J1VA3R23QV6&linkCode=li1&tag=kevineifinger-21&linkId=97434f67b4777536cc0c07309f06324c&language=de_DE" target="_blank"><img border="0" src="https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B072X2YJ2N&Format=_SL110_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=kevineifinger-21&language=de_DE" ></a><img src="https://ir-de.amazon-adsystem.com/e/ir?t=kevineifinger-21&language=de_DE&l=li1&o=3&a=B072X2YJ2N" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 </td></tr>
@@ -108,6 +112,11 @@ As a server running Homeassistant and everything else I use a HP Microserver Gen
 *Click on the sections to expand them* 
 <details>
   <summary>Notify if an unkown device is found on the network</summary><p align="center">
+  <a href=https://github.com/eifinger/appdaemon-scripts#newwifidevicenotify>
+  Appdaemon App - newWifiDeviceNotify</a><br>
+<p></details>
+<details>
+  <summary>Allow a device internet access via Telegram Bot</summary><p align="center">
   <a href=https://github.com/eifinger/appdaemon-scripts#newwifidevicenotify>
   Appdaemon App - newWifiDeviceNotify</a><br>
 <p></details>

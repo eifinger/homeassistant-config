@@ -239,6 +239,16 @@
   name: 'Large Ventilator Humidity'
   unit_of_measurement: '%'
 - platform: mqtt
+  state_topic: "tele/sonoff_weihnachtslichter/SENSOR"
+  value_template: "{{ value_json['AM2301'].Temperature }}"
+  name: 'Weihnachtslichter Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: "tele/sonoff_weihnachtslichter/SENSOR"
+  value_template: "{{ value_json['AM2301'].Humidity }}"
+  name: 'Weihnachtslichter Humidity'
+  unit_of_measurement: '%'
+- platform: mqtt
   name: "teckin_power_usage"
   friendly_name: "Schlafzimmerreceiver Verbrauch"
   icon: mdi:speaker

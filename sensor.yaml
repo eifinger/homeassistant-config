@@ -557,12 +557,12 @@
       unit_of_measurement: '€'
       entity_id:
        - sensor.fuel
-    gas_station_globus: 
-      friendly_name: 'GLOBUS SVA Tankstelle'
-      value_template: '{{ states.sensor.fuel.attributes["prices"]["51d4b634-a095-1aa0-e100-80009459e03a"]["diesel"]}}'
-      unit_of_measurement: '€'
-      entity_id:
-       - sensor.fuel
+#    gas_station_globus: 
+#      friendly_name: 'GLOBUS SVA Tankstelle'
+#      value_template: '{{ states.sensor.fuel.attributes["prices"]["51d4b634-a095-1aa0-e100-80009459e03a"]["diesel"]}}'
+#      unit_of_measurement: '€'
+#      entity_id:
+#       - sensor.fuel
 - platform: statistics
   entity_id: sensor.gas_station_star
   name: statistics_gas_station_star
@@ -571,10 +571,10 @@
   entity_id: sensor.gas_station_metro
   name: statistics_gas_station_metro
   sampling_size: 900 #Roughly 30 days
-- platform: statistics
-  entity_id: sensor.gas_station_globus
-  name: statistics_gas_station_globus
-  sampling_size: 900 #Roughly 30 days
+#- platform: statistics
+#  entity_id: sensor.gas_station_globus
+#  name: statistics_gas_station_globus
+#  sampling_size: 900 #Roughly 30 days
 #################################################################
 ## DWD Pollen
 #################################################################

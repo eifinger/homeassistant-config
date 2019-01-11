@@ -92,7 +92,7 @@ view_gas_stations:
   entities:
     - group.gas_station_star
     - group.gas_station_metro
-    - group.gas_station_globus
+#    - group.gas_station_globus
     - history_graph.gas_stations
 
 view_pollen:
@@ -484,12 +484,12 @@ gas_station_metro:
     - sensor.statistics_gas_station_metro_mean
     - history_graph.gas_station_metro
 
-gas_station_globus:
-  name: Globus Tankstelle
-  entities:
-    - sensor.gas_station_globus
-    - sensor.statistics_gas_station_globus_mean
-    - history_graph.gas_station_globus
+#gas_station_globus:
+#  name: Globus Tankstelle
+#  entities:
+#    - sensor.gas_station_globus
+#    - sensor.statistics_gas_station_globus_mean
+#    - history_graph.gas_station_globus
 
 pollen_graeser:
   name: Gräser

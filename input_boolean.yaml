@@ -170,3 +170,6 @@
   sleep_mode_handler:
     icon: mdi:sleep
     name: Schlafmodus
+  bath_motion_trigger:
+    icon: mdi:shower
+    name: Badlicht Bewegungsmelder

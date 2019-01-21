@@ -17,6 +17,7 @@
     light.livingroom_yeelight: off
     light.bar_table: off
     light.treppe_oben: off
+    switch.weihnachtslichter: on
 - name: Alles Rot
   entities:
     light.livingroom_yeelight:

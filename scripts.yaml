@@ -40,7 +40,7 @@ receiver_mute_unmute:
   sequence:
     - service: media_player.volume_mute
       entity_id: media_player.denon_avrx1300w
-      data:
+      data_template:
         is_volume_muted: "{{state_attr('media_player.denon_avr_x1300w', 'is_volume_muted') == false}}"
 #################################################################
 ## Kodi

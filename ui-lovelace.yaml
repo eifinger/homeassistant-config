@@ -2,13 +2,13 @@ resources:
   - type: js
     url: /local/tracker-card.js?v=0.1.5
   - type: js
-    url: /local/card-tools.js?v=445b68
+    url: /local/card-tools.js?v=6ce5d0
   - type: js
     url: /local/slider-entity-row.js?v=d6da75
   - type: js
     url: /local/time-input-row.js?v=f503b7
   - type: js
-    url: /local/fold-entity-row.js?v=f28e6e
+    url: /local/fold-entity-row.js?v=5ab35c
   - type: js
     url: /local/state-switch.js?v=2b02f2
   - type: js
@@ -36,32 +36,30 @@ views:
   - badges: []
     cards:
       - cards:
-          - entity: media_player.denon_avrx1300w
+          - entity: media_player.denon_avr_x1300w
             icon: 'mdi:volume-off'
             name: Mute
             tap_action:
               action: call-service
-              service: media_player.volume_mute
-              service_data:
-                entity_id: media_player.denon_avrx1300w
+              service: script.receiver_mute_unmute
             type: entity-button
-          - entity: media_player.denon_avrx1300w
+          - entity: media_player.denon_avr_x1300w
             icon: 'mdi:volume-medium'
             name: Leiser
             tap_action:
               action: call-service
               service: media_player.volume_down
               service_data:
-                entity_id: media_player.denon_avrx1300w
+                entity_id: media_player.denon_avr_x1300w
             type: entity-button
-          - entity: media_player.denon_avrx1300w
+          - entity: media_player.denon_avr_x1300w
             icon: 'mdi:volume-high'
             name: Lauter
             tap_action:
               action: call-service
               service: media_player.volume_up
               service_data:
-                entity_id: media_player.denon_avrx1300w
+                entity_id: media_player.denon_avr_x1300w
             type: entity-button
         type: horizontal-stack
       - entities:
@@ -161,18 +159,20 @@ views:
   - badges: []
     cards:
       - entities:
-          - switch.large_lamp
-          - switch.small_lamp
-          - switch.snowboard
-          - light.bedroom_yeelight
-          - light.bar_table
-          - light.stairs_lower_yeelight
-          - light.treppe_oben
-          - light.reading_lamp_yeelight
-          - light.lobby_yeelight
-          - switch.lobby
-          - light.lower_bathroom_yeelight
-          - light.livingroom_yeelight
+          - entity: switch.large_lamp
+          - entity: switch.small_lamp
+          - entity: switch.snowboard
+          - entity: light.bedroom_yeelight
+          - entity: light.bar_table
+          - entity: light.stairs_lower_yeelight
+          - entity: light.treppe_oben
+          - entity: light.reading_lamp_yeelight
+          - entity: light.lobby_yeelight
+          - entity: switch.lobby
+          - entity: light.lower_bathroom_yeelight
+          - entity: light.livingroom_yeelight
+          - entity: switch.weihnachtslichter
+        show_header_toggle: true
         title: Lichter
         type: entities
     icon: 'mdi:lightbulb-outline'
@@ -180,7 +180,7 @@ views:
     title: Lights
   - badges: []
     cards:
-      - entity: media_player.denon_avrx1300w
+      - entity: media_player.denon_avr_x1300w
         type: media-control
       - entity: media_player.spotify
         type: media-control
@@ -366,17 +366,6 @@ views:
             type: entities
           - entities:
               - sensor.gas_station_metro
-            type: history-graph
-        type: vertical-stack
-      - cards:
-          - entities:
-              - sensor.gas_station_globus
-              - sensor.statistics_gas_station_globus_mean
-            show_header_toggle: false
-            title: Globus Tankstelle
-            type: entities
-          - entities:
-              - sensor.gas_station_globus
             type: history-graph
         type: vertical-stack
       - entities:
@@ -763,6 +752,7 @@ views:
           - entity: input_boolean.facebox_notifier
           - entity: input_boolean.facebox_teacher
           - entity: input_boolean.oben_treppe_motion_trigger
+          - entity: input_boolean.bath_motion_trigger
           - entity: input_boolean.bedroom_motion_trigger
           - entity: input_boolean.coming_home_yeelight
           - entity: input_boolean.coming_home_alexa

@@ -1,4 +1,6 @@
 resources:
+  - url: /local/rmv-card.js?v=0
+    type: js
   - type: js
     url: /local/tracker-card.js?v=0.1.5
   - type: js
@@ -241,15 +243,8 @@ views:
           - input_boolean.travel_time_elmo_from_home
         title: Reisezeiten
         type: entities
-      - entities:
-          - sensor.nach_bruckenkopf_0
-          - sensor.nach_bruckenkopf_1
-          - sensor.nach_bruckenkopf_2
-          - sensor.nach_bruckenkopf_3
-          - sensor.nach_bruckenkopf_4
-        show_header_toggle: false
-        title: Nach Brückenkopf
-        type: entities
+      - type: 'custom:rmv-card'
+        entity: sensor.nach_bruckenkopf
     icon: 'mdi:google-maps'
     path: view_traveltimes
     title: Reisezeiten

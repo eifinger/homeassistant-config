@@ -128,14 +128,6 @@ custom_updater:
     - https://raw.githubusercontent.com/custom-components/information/master/repos.json
 
 panel_iframe:
-  floorplan_upper:
-    title: Oben
-    url: /lovelace/view_floorplan_upper
-    icon: mdi:home-assistant
-  floorplan_lower:
-    title: Unten
-    url: /lovelace/view_floorplan_lower
-    icon: mdi:home-assistant
 #  pihole:
 #    title: 'Pi-Hole'
 #    url: !secret pihole_ip

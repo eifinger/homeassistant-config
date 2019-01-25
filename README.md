@@ -548,14 +548,14 @@ volumes:
 
 <tr><td colspan="4">
 
-[default_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/default_view.png)
-[alarm_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/alarm_view.png)
-[travel_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/travel_view.png)
-[fuel_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/fuel_view.png)
-[sensor_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/sensor_view.png)
-[automation_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/automation_view.png)
-[settings_view_1](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/settings_view_1.png)
-[floorplan_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/floorplan_view.png)
+![default_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/default_view.png)
+![alarm_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/alarm_view.png)
+![travel_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/travel_view.png)
+![fuel_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/fuel_view.png)
+![sensor_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/sensor_view.png)
+![automation_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/automation_view.png)
+![settings_view_1](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/settings_view_1.png)
+![floorplan_view](https://raw.githubusercontent.com/eifinger/homeassistant-config/master/www/images/floorplan_view.png)
 
 </td></tr>
 </table>

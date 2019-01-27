@@ -6,7 +6,7 @@ default_view:
   icon: mdi:home
   entities:
     - group.notifier_alexa
-    - media_player.denon_avrx1300w
+    - media_player.denon_avr_x1300w
     - group.livingroom
     - group.occupancy
     - switch.bedroom_receiver
@@ -194,7 +194,7 @@ livingroom:
     - light.livingroom_yeelight
     - switch.ventilator
     - switch.markise
-    - media_player.denon_avrx1300w
+    - media_player.denon_avr_x1300w
 
 bedroom:
   name: Schlafzimmer
@@ -208,7 +208,7 @@ bedroom:
 all:
   name: Everything
   entities:
-    - media_player.denon_avrx1300w
+    - media_player.denon_avr_x1300w
     - switch.large_lamp
     - switch.small_lamp
     - switch.snowboard
@@ -390,7 +390,7 @@ illumination:
 media_players:
   name: Media Player
   entities:
-    - media_player.denon_avrx1300w
+    - media_player.denon_avr_x1300w
     - media_player.spotify
     - media_player.kevins_echo_dot_oben
     - media_player.kevins_echo_dot_unten

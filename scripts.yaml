@@ -4,35 +4,35 @@
 receiver_set_source_cbl_sat:
   sequence:    
     - service: media_player.select_source
-      entity_id: media_player.denon_avrx1300w
+      entity_id: media_player.denon_avr_x1300w
       data:
         source: 'CBL/SAT'
 
 receiver_set_source_bluetooth:
   sequence:    
     - service: media_player.select_source
-      entity_id: media_player.denon_avrx1300w
+      entity_id: media_player.denon_avr_x1300w
       data:
         source: 'Bluetooth'
 
 receiver_set_source_media_player:
   sequence:
     - service: media_player.select_source
-      entity_id: media_player.denon_avrx1300w
+      entity_id: media_player.denon_avr_x1300w
       data:
         source: 'Media Player'
 
 receiver_set_source_dvd:
   sequence:
     - service: media_player.select_source
-      entity_id: media_player.denon_avrx1300w
+      entity_id: media_player.denon_avr_x1300w
       data:
         source: 'DVD/Blu-ray'
 
 receiver_set_source_gaming:
   sequence:
     - service: media_player.select_source
-      entity_id: media_player.denon_avrx1300w
+      entity_id: media_player.denon_avr_x1300w
       data:
         source: 'Game'
 

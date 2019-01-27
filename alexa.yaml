@@ -31,7 +31,7 @@
         - switch.large_lamp
         - switch.lobby
         - switch.start_vive_pc
-        - media_player.denon_avrx1300w
+        - media_player.denon_avr_x1300w
         - media_player.kodi
         - media_player.spotify
         - group.all
@@ -181,7 +181,7 @@
         name: Vive PC
         description: Vive PC Wake on Lan
         display_categories: SWITCH
-      media_player.denon_avrx1300w:
+      media_player.denon_avr_x1300w:
         name: Receiver
         description: Receiver Denon AVRX 1300W
       group.all:

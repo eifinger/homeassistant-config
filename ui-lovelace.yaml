@@ -4,15 +4,15 @@ resources:
   - type: js
     url: /local/tracker-card.js?v=0.1.5
   - type: js
-    url: /local/card-tools.js?v=6ce5d0
+    url: /local/card-tools.js?v=297fcc
   - type: js
-    url: /local/slider-entity-row.js?v=d6da75
+    url: /local/slider-entity-row.js?v=ba8f50
   - type: js
     url: /local/time-input-row.js?v=f503b7
   - type: js
-    url: /local/fold-entity-row.js?v=5ab35c
+    url: /local/fold-entity-row.js?v=6d11d3
   - type: js
-    url: /local/state-switch.js?v=2b02f2
+    url: /local/state-switch.js?v=c7dd70
   - type: js
     url: /local/custom-lovelace/monster-card/monster-card.js?v=0.2.3
   - type: js
@@ -157,7 +157,7 @@ views:
         type: entities
     icon: 'mdi:home'
     path: default_view
-    title: default_view
+    title: ''
   - badges: []
     cards:
       - entities:
@@ -188,7 +188,7 @@ views:
         type: media-control
       - entity: media_player.kevins_echo_dot_oben
         type: media-control
-      - entity: media_player.kevins_echo_dot_unten
+      - entity: media_player.kevin_s_echo_dot_unten
         type: media-control
     icon: 'mdi:play-circle-outline'
     path: view_media_players
@@ -243,8 +243,8 @@ views:
           - input_boolean.travel_time_elmo_from_home
         title: Reisezeiten
         type: entities
-      - type: 'custom:rmv-card'
-        entity: sensor.nach_bruckenkopf
+      - entity: sensor.nach_bruckenkopf
+        type: 'custom:rmv-card'
     icon: 'mdi:google-maps'
     path: view_traveltimes
     title: Reisezeiten
@@ -786,3 +786,248 @@ views:
     icon: 'mdi:settings'
     path: view_settings
     title: Einstellungen
+  - badges: []
+    cards:
+      - elements:
+          - entity: switch.large_lamp
+            hold_action:
+              action: more-info
+            style:
+              left: 22%
+              top: 39%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: binary_sensor.door_window_sensor_158d00020498b6
+            style:
+              left: 19%
+              top: 1%
+            type: state-icon
+          - entity: binary_sensor.door_window_sensor_158d000204ba26
+            style:
+              left: 61%
+              top: 1%
+            type: state-icon
+          - entity: binary_sensor.door_window_sensor_158d000126a57b
+            style:
+              left: 72%
+              top: 20%
+            type: state-icon
+          - entity: light.treppe_oben
+            hold_action:
+              action: more-info
+            style:
+              left: 10%
+              top: 28%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: light.stairs_lower_yeelight
+            hold_action:
+              action: more-info
+            style:
+              left: 7%
+              top: 49%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: switch.small_lamp
+            hold_action:
+              action: more-info
+            style:
+              left: 71%
+              top: 39%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: light.bar_table
+            hold_action:
+              action: more-info
+            style:
+              left: 49%
+              top: 31%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: light.reading_lamp_yeelight
+            hold_action:
+              action: more-info
+            style:
+              left: 75%
+              top: 65%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: switch.snowboard
+            hold_action:
+              action: more-info
+            style:
+              left: 95%
+              top: 50%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: switch.weihnachtslichter
+            hold_action:
+              action: more-info
+            style:
+              left: 40%
+              top: 66%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: switch.tv
+            hold_action:
+              action: more-info
+            style:
+              left: 25%
+              top: 45%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: media_player.denon_avr_x1300w
+            hold_action:
+              action: more-info
+            style:
+              left: 31%
+              top: 45%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: climate.wohnzimmer_thermostat
+            hold_action:
+              action: more-info
+            style:
+              left: 50%
+              top: 45%
+            tap_action:
+              action: more-info
+            type: state-icon
+          - entity: sensor.climate_wohnzimmer_current
+            style:
+              left: 50%
+              top: 43%
+            type: state-label
+          - entity: sensor.climate_wohnzimmer_target
+            style:
+              font-weight: bold
+              left: 50%
+              top: 47%
+            type: state-label
+          - entity: climate.kuche_thermostat
+            hold_action:
+              action: more-info
+            style:
+              left: 25%
+              top: 16%
+            tap_action:
+              action: more-info
+            type: state-icon
+          - entity: sensor.climate_kuche_current
+            style:
+              left: 25%
+              top: 14%
+            type: state-label
+          - entity: sensor.climate_kuche_target
+            style:
+              font-weight: bold
+              left: 25%
+              top: 18%
+            type: state-label
+          - entity: climate.bad_oben_thermostat
+            hold_action:
+              action: more-info
+            style:
+              left: 60%
+              top: 8%
+            tap_action:
+              action: more-info
+            type: state-icon
+          - entity: sensor.climate_bad_oben_current
+            style:
+              left: 60%
+              top: 6%
+            type: state-label
+          - entity: sensor.climate_bad_oben_target
+            style:
+              font-weight: bold
+              left: 60%
+              top: 10%
+            type: state-label
+        image: /local/floorplan_upper.png
+        type: picture-elements
+      - type: 'custom:plan-coordinates'
+    icon: 'mdi:home-assistant'
+    path: view_floorplan_upper
+    title: Oben
+  - badges: []
+    cards:
+      - elements:
+          - entity: light.lower_bathroom_yeelight
+            hold_action:
+              action: more-info
+            style:
+              left: 63%
+              top: 10%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: climate.bad_thermostat
+            hold_action:
+              action: more-info
+            style:
+              left: 63%
+              top: 18%
+            tap_action:
+              action: more-info
+            type: state-icon
+          - entity: sensor.climate_bad_current
+            style:
+              left: 63%
+              top: 16%
+            type: state-label
+          - entity: sensor.climate_bad_target
+            style:
+              font-weight: bold
+              left: 63%
+              top: 20%
+            type: state-label
+          - entity: binary_sensor.motion_sensor_158d000204c95d
+            style:
+              left: 53%
+              top: 15%
+            type: state-icon
+          - entity: binary_sensor.motion_sensor_158d0001fa464b
+            style:
+              left: 69%
+              top: 38%
+            type: state-icon
+          - entity: binary_sensor.motion_sensor_158d00012aab97
+            style:
+              left: 14%
+              top: 50%
+            type: state-icon
+          - entity: binary_sensor.motion_sensor_158d0002006cfa
+            style:
+              left: 51%
+              top: 53%
+            type: state-icon
+          - entity: light.bedroom_yeelight
+            hold_action:
+              action: more-info
+            style:
+              left: 75%
+              top: 60%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: binary_sensor.door_window_sensor_158d0001bb4d94
+            style:
+              left: 75%
+              top: 85%
+            type: state-icon
+        image: /local/floorplan_lower.png
+        type: picture-elements
+      - type: 'custom:plan-coordinates'
+    icon: 'mdi:home-assistant'
+    title: Unten

@@ -212,15 +212,18 @@ all:
     - switch.large_lamp
     - switch.small_lamp
     - switch.snowboard
+    - switch.weihnachtslichter
     - light.bedroom_yeelight
     - light.bar_table
     - light.stairs_lower_yeelight
     - light.treppe_oben
     - light.reading_lamp_yeelight
     - light.lobby_yeelight
+    - light.livingroom_yeelight
     - switch.ventilator
     - switch.large_ventilator
     - switch.tv
+
 
 occupancy:
   name: Anwesenheit

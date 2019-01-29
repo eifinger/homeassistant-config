@@ -25,6 +25,8 @@
         - switch.goldie_home
         - switch.tv
         - switch.bedroom_receiver
+        - switch.broadlink_tv_select_hdm1
+        - switch.broadlink_tv_select_tv
         - group.eingang
         - switch.snowboard
         - switch.small_lamp
@@ -150,6 +152,14 @@
         name: Fernseher
         description: Fernseher
         display_categories: SWITCH
+      switch.broadlink_tv_select_hdm1:
+        name: Fernseher HDMI
+        description: Fernseher Input HDMI1
+        display_categories: SCENE_TRIGGER
+      switch.broadlink_tv_select_tv:
+        name: Fernseher TV
+        description: Fernseher Input TV
+        display_categories: SCENE_TRIGGER
       switch.bedroom_receiver:
         name: Schlafzimmer Receiver
         description: Schlafzimmer Receiver

@@ -13,7 +13,7 @@
     - platform: time_pattern
       minutes: '/5'
   action:
-    - service: notify.group_notifications
+    - service: notify.kevin
       data:
         title: 'Alarm'
         message: "Appdaemon scheint nicht mehr zu funktionieren"

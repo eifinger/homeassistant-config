@@ -193,7 +193,6 @@ livingroom:
     - light.lobby_yeelight
     - light.livingroom_yeelight
     - switch.ventilator
-    - switch.markise
     - media_player.denon_avr_x1300w
 
 bedroom:

@@ -16,12 +16,6 @@
     !secret lower_bathroom_yeelight_ip:
       name: lower_bathroom_yeelight
 
-- platform: xiaomi_miio
-  name: Treppe Oben
-  host: !secret xiaomi_treppe_oben_ip
-  token: !secret xiaomi_treppe_oben_token
-  model: philips.light.bulb
-
 - platform: mqtt
   name: bar_table
   state_topic: "stat/bar_light/RESULT"

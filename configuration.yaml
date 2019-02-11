@@ -132,6 +132,8 @@ panel_iframe:
 #    title: 'Pi-Hole'
 #    url: !secret pihole_ip
 #    icon: mdi:block-helper
+
+system_health:
 #################################################################
 ## Includes
 #################################################################

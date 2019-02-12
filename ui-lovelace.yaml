@@ -1,8 +1,8 @@
 resources:
-  - url: /local/rmv-card.js?v=0
-    type: js
   - type: js
-    url: /local/tracker-card.js?v=0.1.5
+    url: /local/rmv-card.js?v=0
+  - type: js
+    url: /local/tracker-card.js?v=0.3.0
   - type: js
     url: /local/card-tools.js?v=297fcc
   - type: js
@@ -12,7 +12,7 @@ resources:
   - type: js
     url: /local/fold-entity-row.js?v=6d11d3
   - type: js
-    url: /local/state-switch.js?v=c7dd70
+    url: /local/state-switch.js?v=c806ca
   - type: js
     url: /local/custom-lovelace/monster-card/monster-card.js?v=0.2.3
   - type: js
@@ -70,34 +70,31 @@ views:
         show_header_toggle: false
         title: Anwesenheit
         type: entities
-      - entity: vacuum.xiaomi_vacuum_cleaner
-        states:
-          cleaning:
-            camera_image: camera.snowies_karte
-            entities:
-              - vacuum.xiaomi_vacuum_cleaner
-            title: Snowie
-            type: picture-glance
-        type: 'custom:state-switch'
-      - card:
-          show_header_toggle: false
-          title: Offene Türen/Fenster
-        entities:
-          - binary_sensor.door_window_sensor_158d000126a57b
-          - binary_sensor.door_window_sensor_158d0001bb4d94
-          - binary_sensor.door_window_sensor_158d0001bb4dc0
-          - binary_sensor.door_window_sensor_158d000205b808
-          - binary_sensor.door_window_sensor_158d000205b82e
-          - binary_sensor.door_window_sensor_158d00020498b6
-          - binary_sensor.door_window_sensor_158d000204ba26
-          - binary_sensor.door_window_sensor_158d0002059ddf
-          - binary_sensor.door_window_sensor_158d00020499ad
-          - binary_sensor.door_window_sensor_158d0002048951
-          - binary_sensor.door_window_sensor_158d00020455bf
-        show_empty: false
-        state_filter:
-          - 'on'
-        type: entity-filter
+      - cards:
+          - entities:
+              - entity: climate.bad_thermostat
+              - entity: climate.bad_oben_thermostat
+              - entity: climate.wohnzimmer_thermostat
+              - entity: climate.kuche_thermostat
+            show_header_toggle: false
+            type: entities
+          - cards:
+              - entity: script.livingroom_wakeup
+                icon: 'mdi:thermometer'
+                name: Kalt
+                tap_action:
+                  action: call-service
+                  service: script.livingroom_sleep
+                type: entity-button
+              - entity: script.livingroom_wakeup
+                icon: 'mdi:thermometer-lines'
+                name: Warm
+                tap_action:
+                  action: call-service
+                  service: script.livingroom_wakeup
+                type: entity-button
+            type: horizontal-stack
+        type: vertical-stack
       - card:
           show_header_toggle: false
           title: Wohnzimmer
@@ -126,35 +123,38 @@ views:
           - 'on'
           - 'off'
         type: entity-filter
-      - cards:
-          - entities:
-              - entity: climate.bad_thermostat
-              - entity: climate.bad_oben_thermostat
-              - entity: climate.wohnzimmer_thermostat
-              - entity: climate.kuche_thermostat
-            show_header_toggle: false
-            type: entities
-          - cards:
-              - entity: script.livingroom_wakeup
-                icon: 'mdi:thermometer'
-                name: Kalt
-                tap_action:
-                  action: call-service
-                  service: script.livingroom_sleep
-                type: entity-button
-              - entity: script.livingroom_wakeup
-                icon: 'mdi:thermometer-lines'
-                name: Warm
-                tap_action:
-                  action: call-service
-                  service: script.livingroom_wakeup
-                type: entity-button
-            type: horizontal-stack
-        type: vertical-stack
       - entities:
           - switch.bedroom_receiver
         title: Switch
         type: entities
+      - card:
+          show_header_toggle: false
+          title: Offene Türen/Fenster
+        entities:
+          - binary_sensor.door_window_sensor_158d000126a57b
+          - binary_sensor.door_window_sensor_158d0001bb4d94
+          - binary_sensor.door_window_sensor_158d0001bb4dc0
+          - binary_sensor.door_window_sensor_158d000205b808
+          - binary_sensor.door_window_sensor_158d000205b82e
+          - binary_sensor.door_window_sensor_158d00020498b6
+          - binary_sensor.door_window_sensor_158d000204ba26
+          - binary_sensor.door_window_sensor_158d0002059ddf
+          - binary_sensor.door_window_sensor_158d00020499ad
+          - binary_sensor.door_window_sensor_158d0002048951
+          - binary_sensor.door_window_sensor_158d00020455bf
+        show_empty: false
+        state_filter:
+          - 'on'
+        type: entity-filter
+      - entity: vacuum.xiaomi_vacuum_cleaner
+        states:
+          cleaning:
+            camera_image: camera.snowies_karte
+            entities:
+              - vacuum.xiaomi_vacuum_cleaner
+            title: Snowie
+            type: picture-glance
+        type: 'custom:state-switch'
     icon: 'mdi:home'
     path: default_view
     title: ''
@@ -167,7 +167,6 @@ views:
           - entity: light.bedroom_yeelight
           - entity: light.bar_table
           - entity: light.stairs_lower_yeelight
-          - entity: light.treppe_oben
           - entity: light.reading_lamp_yeelight
           - entity: light.lobby_yeelight
           - entity: switch.lobby
@@ -783,6 +782,19 @@ views:
           - entity: input_boolean.sleep_mode_handler
         title: App Switches
         type: entities
+      - type: entities
+        entities:
+          - entity: input_boolean.zigbee_permit_join
+          - entity: timer.zigbee_permit_join
+          - entity: sensor.zigbee2mqtt_bridge_state
+          - entity: switch.zigbee2mqtt_main_join
+          - entity: automation.enable_zigbee_joining
+          - entity: automation.disable_zigbee_joining
+          - entity: automation.disable_zigbee_joining_by_timer
+          - entity: input_select.zigbee2mqtt_log_level
+          - entity: automation.zigbee2mqtt_log_level
+        title: Zigbee2MQTT
+        show_header_toggle: false
     icon: 'mdi:settings'
     path: view_settings
     title: Einstellungen
@@ -992,6 +1004,11 @@ views:
               left: 63%
               top: 20%
             type: state-label
+          - entity: binary_sensor.door_window_sensor_158d0002048951
+            style:
+              left: 61%
+              top: 1%
+            type: state-icon
           - entity: binary_sensor.motion_sensor_158d000204c95d
             style:
               left: 53%
@@ -1025,6 +1042,25 @@ views:
             style:
               left: 75%
               top: 85%
+            type: state-icon
+          - entity: binary_sensor.door_window_sensor_158d000205b82e
+            style:
+              left: 23%
+              top: 85%
+            type: state-icon
+          - entity: binary_sensor.door_window_sensor_158d00020499ad
+            style:
+              left: 32%
+              top: 85%
+            type: state-icon
+          - entity: switch.lobby
+            hold_action:
+              action: more-info
+            style:
+              left: 40%
+              top: 35%
+            tap_action:
+              action: toggle
             type: state-icon
         image: /local/floorplan_lower.png
         type: picture-elements

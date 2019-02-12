@@ -48,12 +48,6 @@ history:
 #################################################################
 ## Components
 #################################################################
-
-emulated_hue:
-  host_ip: !secret homeassistant_host_ip
-  type: alexa
-  expose_by_default: false
-
 mqtt:
   broker: !secret mqtt_host 
   port: 1883

@@ -61,6 +61,7 @@ mqtt:
   username: !secret mqtt_user
   password: !secret mqtt_pass
   keepalive: 60
+  discovery: true
 
 recorder:
   db_url: !secret db_url

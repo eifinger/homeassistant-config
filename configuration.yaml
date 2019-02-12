@@ -127,15 +127,15 @@ custom_updater:
   component_urls:
     - https://raw.githubusercontent.com/custom-components/information/master/repos.json
 
-panel_iframe:
-  pihole:
-    title: 'Pi-Hole'
-    url: !secret pihole_ip
-    icon: mdi:block-helper
-  unifi:
-    title: 'Unifi'
-    url: !secret unifi_ip
-    icon: mdi:wan
+#panel_iframe:
+#  pihole:
+#    title: 'Pi-Hole'
+#    url: !secret pihole_ip
+#    icon: mdi:block-helper
+#  unifi:
+#    title: 'Unifi'
+#    url: !secret unifi_ip
+#    icon: mdi:wan
 
 system_health:
 #################################################################

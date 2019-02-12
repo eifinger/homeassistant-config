@@ -9,8 +9,8 @@
     !secret reading_lamp_yeelight_ip:
       name: reading_lamp_yeelight
       transition: 1000
-    !secret lobby_yeelight_ip:
-      name: lobby_yeelight
+    !secret upper_stairs_yeelight_ip:
+      name: upper_stairs_yeelight
     !secret livingroom_yeelight_ip:
       name: livingroom_yeelight
     !secret lower_bathroom_yeelight_ip:

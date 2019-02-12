@@ -515,8 +515,8 @@ light.reading_lamp_yeelight:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true
-light.lobby_yeelight:
-  friendly_name: "Garderobe"
+light.upper_stairs_yeelight:
+  friendly_name: "Treppe Oben"
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: break-slider
   show_last_changed: true

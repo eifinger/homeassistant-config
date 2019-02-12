@@ -62,6 +62,12 @@ mqtt:
   password: !secret mqtt_pass
   keepalive: 60
   discovery: true
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 
 recorder:
   db_url: !secret db_url

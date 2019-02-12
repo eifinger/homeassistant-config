@@ -173,3 +173,10 @@
   bath_motion_trigger:
     icon: mdi:shower
     name: Badlicht Bewegungsmelder
+#################################################################
+## zigbee2mqtt
+#################################################################
+zigbee_permit_join:
+  name: Allow devices to join
+  initial: off
+  icon: mdi:cellphone-wireless

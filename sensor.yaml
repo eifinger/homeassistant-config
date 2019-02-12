@@ -799,3 +799,10 @@
       value_template: '{{states.climate.bad_thermostat.attributes["temperature"]}}'
       entity_id:
        - climate.bad_thermostat
+#################################################################
+## zigbee2mqtt
+#################################################################
+- platform: mqtt
+  name: Zigbee2mqtt Bridge state
+  state_topic: "zigbee2mqtt/bridge/state"
+  icon: mdi:router-wireless

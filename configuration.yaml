@@ -172,3 +172,4 @@ weather: !include weather.yaml
 climate: !include climate.yaml
 counter: !include counter.yaml
 scene: !include scenes.yaml
+timer: !include timer.yaml

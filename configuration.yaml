@@ -70,15 +70,7 @@ recorder:
       - sensor.snowie_map
 
 device_tracker:
-  - platform: fritz
-    track_new_devices: yes
   - platform: gpslogger
-
-xiaomi_aqara:
-  discovery_retry: 10
-  gateways:
-    - mac:
-      key: !secret xiaomi_aqara_key
 
 media_player:
   - platform: denonavr
@@ -127,16 +119,6 @@ custom_updater:
     - https://raw.githubusercontent.com/custom-cards/information/master/repos.json
   component_urls:
     - https://raw.githubusercontent.com/custom-components/information/master/repos.json
-
-#panel_iframe:
-#  pihole:
-#    title: 'Pi-Hole'
-#    url: !secret pihole_ip
-#    icon: mdi:block-helper
-#  unifi:
-#    title: 'Unifi'
-#    url: !secret unifi_ip
-#    icon: mdi:wan
 
 system_health:
 #################################################################

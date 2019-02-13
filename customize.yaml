@@ -436,6 +436,8 @@ sensor.android_ip_webcam_door_motion:
 #################################################################
 zone.work:
   friendly_name: "Arbeit"
+zone.work_user_two:
+  friendly_name: !secret friendly_name_work_user_two
 zone.elmo1:
   friendly_name: "Elmo"
 zone.elmo2:

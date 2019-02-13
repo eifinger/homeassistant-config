@@ -76,6 +76,8 @@
     icon: mdi:home-account
   leaving_work_notifier_user_one:
     icon: mdi:airplane-takeoff
+  leaving_work_notifier_user_two:
+    icon: mdi:airplane-takeoff
   leaving_elmo_notifier_user_two:
     icon: mdi:airplane-takeoff
   plant_watering_notifier:

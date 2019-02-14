@@ -38,6 +38,10 @@
     icon: mdi:alarm-check
   radiowakeup:
     name: Radio
+  dishwasher:
+    name: Spühlmaschine
+  washingmachine:
+    name: Waschmaschine  
 #################################################################
 ## Appdaemon persistence layer
 #################################################################

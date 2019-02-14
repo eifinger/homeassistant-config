@@ -153,6 +153,11 @@ input_boolean.heading_home_notifier_user_one:
   show_last_changed: true
 sensor.tplink_tv_power_usage:
   show_last_changed: true
+  icon: mdi:television
+sensor.tplink_tv_power_usage_today:
+  icon: mdi:television
+sensor.tplink_tv_power_usage_total:
+  icon: mdi:television
 sensor.washingmachine_power_usage:
   icon: mdi:washing-machine
   show_last_changed: true

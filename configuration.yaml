@@ -89,7 +89,7 @@ media_player:
     password: !secret amazon_password
     url: "amazon.de"
   - platform: firetv
-    name: Kevins 2nd FireTV Stick
+    name: firetv_stick_oben
     host: !secret fire_tv_stick_2_ip
 
 google:

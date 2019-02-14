@@ -88,6 +88,9 @@ media_player:
     email: !secret amazon_email
     password: !secret amazon_password
     url: "amazon.de"
+  - platform: firetv
+    name: Kevins 2nd FireTV Stick
+    host: !secret fire_tv_stick_2_ip
 
 google:
   client_id: !secret google_calendar_client_id

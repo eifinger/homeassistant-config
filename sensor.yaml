@@ -708,6 +708,8 @@
        - device_tracker.kevin
        - sensor.alarm_kevin
        - sensor.alarm_sina
+       - input_boolean.user_one_home
+       - input_boolean.user_two_home
 #################################################################
 ## Broadlink
 #################################################################

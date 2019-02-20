@@ -823,6 +823,6 @@
 #################################################################
 - platform: rest
   scan_interval: 3600   
-  resource: https://hub.docker.com/v2/repositories/homeassistant/home-assistant/tags
+  resource: "https://hub.docker.com/v2/repositories/homeassistant/home-assistant/tags"
   name: home_assistant_docker_tags
   value_template: '{{ value_json.results }}'

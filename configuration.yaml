@@ -71,6 +71,23 @@ recorder:
 
 device_tracker:
   - platform: gpslogger
+  - platform: unifi
+    host: !secret unifi_controller_host
+    port: 443
+    username: !secret unifi_controller_user
+    password: !secret unifi_controller_password
+    ssid_filter:
+      - !secret unifi_controller_ssid1
+      - !secret unifi_controller_ssid2
+      - !secret unifi_controller_ssid3
+    monitored_conditions:
+      - mac
+      - first_seen
+      - hostname
+      - ip
+      - name
+      - radio
+      - uptime
 
 media_player:
   - platform: denonavr

@@ -818,3 +818,10 @@
       query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "value" FROM information_schema.tables WHERE table_schema="hass_db" GROUP BY table_schema;'
       column: 'value'
       unit_of_measurement: MB
+#################################################################
+## Available Homeassistant Version
+#################################################################
+- platform: rest
+  scan_interval: 3600   
+  resource: https://hub.docker.com/v2/repositories/homeassistant/home-assistant/tags
+  name: home_assistant_docker_tags

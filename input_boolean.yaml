@@ -179,6 +179,12 @@
   bath_motion_trigger:
     icon: mdi:shower
     name: Badlicht Bewegungsmelder
+  set_livingroom_thermostat_when_coming_home:
+    icon: mdi:temperature-celsius
+    name: Fußbodenheizung in der Küche wenn wir heimkommen
+  set_kitchen_thermostat_when_coming_home:
+    icon: mdi:temperature-celsius
+    name: Fußbodenheizung in der Küche wenn wir heimkommen
 #################################################################
 ## zigbee2mqtt
 #################################################################

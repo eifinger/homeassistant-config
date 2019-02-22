@@ -62,6 +62,18 @@ set_kitchen_thermostat_when_waking_up:
   min: 18
   max: 30
   step: 0.5
+set_livingroom_thermostat_when_coming_home:
+  name: Temperature
+  icon: mdi:temperature-celsius
+  min: 18
+  max: 30
+  step: 0.5
+set_kitchen_thermostat_when_coming_home:
+  name: Temperature
+  icon: mdi:temperature-celsius
+  min: 18
+  max: 30
+  step: 0.5
 set_thermostat_when_heading_home:
   name: Temperature
   icon: mdi:temperature-celsius

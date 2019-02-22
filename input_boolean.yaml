@@ -136,13 +136,10 @@
     name: Fußbodenheizung im Bad Oben anschalten wenn Fenster zu
   set_thermostat_when_leaving:
     icon: mdi:temperature-celsius
-    name: Fußbodenheizung im Wohnzimmer wenn wir gehen
-  set_wohnzimmer_thermostat_when_sleeping:
+    name: Fußbodenheizung wenn wir gehen
+  set_thermostat_when_sleeping:
     icon: mdi:temperature-celsius
-    name: Fußbodenheizung im Wohnzimmer wenn wir schlafen
-  set_kitchen_thermostat_when_sleeping:
-    icon: mdi:temperature-celsius
-    name: Fußbodenheizung im Wohnzimmer wenn wir schlafen
+    name: Fußbodenheizung wenn wir schlafen
   travel_time_home_user_one_update:
     icon: mdi:update
     name: Update Travel Time Home User One
@@ -158,12 +155,9 @@
   detect_devices_on_when_going_to_bed:
     name: Schalte alles aus wenn wir ins Bett gehen
     icon: mdi:alarm
-  set_livingroom_thermostat_when_waking_up:
+  set_thermostat_when_waking_up:
     icon: mdi:temperature-celsius
-    name: Fußbodenheizung im Wohnzimmer wenn wir aufstehen
-  set_kitchen_thermostat_when_waking_up:
-    icon: mdi:temperature-celsius
-    name: Fußbodenheizung in der Küche wenn wir aufstehen
+    name: Fußbodenheizung wenn wir aufstehen
   set_thermostat_when_heading_home:
     icon: mdi:temperature-celsius
     name: Fußbodenheizung im Wohnzimmer wenn Richtung nach Hause
@@ -182,12 +176,9 @@
   bath_motion_trigger:
     icon: mdi:shower
     name: Badlicht Bewegungsmelder
-  set_livingroom_thermostat_when_coming_home:
+  set_thermostat_when_coming_home:
     icon: mdi:temperature-celsius
-    name: Fußbodenheizung im Wohnzimmer wenn wir heimkommen
-  set_kitchen_thermostat_when_coming_home:
-    icon: mdi:temperature-celsius
-    name: Fußbodenheizung in der Küche wenn wir heimkommen
+    name: Fußbodenheizung wenn wir heimkommen
 #################################################################
 ## zigbee2mqtt
 #################################################################

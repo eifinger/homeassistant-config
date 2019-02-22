@@ -823,6 +823,6 @@
 #################################################################
 # https://community.home-assistant.io/t/sensor-for-latest-docker-image-versions/4874
 - platform: command_line
-    name:  Home Assistant Latest Docker
-    command:  curl -s -L https://registry.hub.docker.com/v2/repositories/homeassistant/home-assistant/tags/ | grep -Eo '"name":\s"[0-9.]*"' | head -1 | sed -e "s/\"name\":\s\"/${replace}/g" | sed -e "s/\"/${replace}/g"
-    scan_interval: 28800
+  name:  Home Assistant Latest Docker
+  command:  curl -s -L https://registry.hub.docker.com/v2/repositories/homeassistant/home-assistant/tags/ | grep -Eo '"name":\s"[0-9.]*"' | head -1 | sed -e "s/\"name\":\s\"/${replace}/g" | sed -e "s/\"/${replace}/g"
+  scan_interval: 28800

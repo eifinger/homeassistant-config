@@ -1,10 +1,4 @@
 #################################################################
-## Emulated Hue
-#################################################################
-input_boolean.room_based_light:
-  emulated_hue_hidden: false
-  emulated_hue_name: "Licht"
-#################################################################
 ## Travel times
 #################################################################
 sensor.travel_time_work_from_home_waze_realtime:
@@ -431,6 +425,8 @@ switch.start_vive_pc:
   show_last_changed: true
 script.goldie_clean:
   friendly_name: "Aktiviere und starte Goldie"
+sensor.home_assistant_latest_docker:
+  icon: mdi:docker
 #################################################################
 ## Android IP Webcam
 #################################################################
@@ -443,12 +439,8 @@ zone.work:
   friendly_name: "Arbeit"
 zone.work_user_two:
   friendly_name: !secret friendly_name_work_user_two
-zone.elmo1:
-  friendly_name: "Elmo"
-zone.elmo2:
-  friendly_name: "Elmo"
 #################################################################
-## Zone
+## Thermostat
 #################################################################
 climate.bad_thermostat:
   templates:

@@ -137,7 +137,10 @@
   set_thermostat_when_leaving:
     icon: mdi:temperature-celsius
     name: Fußbodenheizung im Wohnzimmer wenn wir gehen
-  set_thermostat_when_sleeping:
+  set_wohnzimmer_thermostat_when_sleeping:
+    icon: mdi:temperature-celsius
+    name: Fußbodenheizung im Wohnzimmer wenn wir schlafen
+  set_kitchen_thermostat_when_sleeping:
     icon: mdi:temperature-celsius
     name: Fußbodenheizung im Wohnzimmer wenn wir schlafen
   travel_time_home_user_one_update:
@@ -181,7 +184,7 @@
     name: Badlicht Bewegungsmelder
   set_livingroom_thermostat_when_coming_home:
     icon: mdi:temperature-celsius
-    name: Fußbodenheizung in der Küche wenn wir heimkommen
+    name: Fußbodenheizung im Wohnzimmer wenn wir heimkommen
   set_kitchen_thermostat_when_coming_home:
     icon: mdi:temperature-celsius
     name: Fußbodenheizung in der Küche wenn wir heimkommen

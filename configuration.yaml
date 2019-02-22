@@ -132,6 +132,7 @@ vacuum:
     token: !secret xiaomi_vacuum_token
 
 custom_updater:
+  mode: storage
   track:
     - components
     - cards

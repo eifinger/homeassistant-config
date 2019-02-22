@@ -90,6 +90,19 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.zigbee_permit_join
+
+- id: alert_zigbee_bridge_offline
+  alias: 'Alarm wenn Zigbee2Mqtt offline'
+  initial_state: 'on'
+  trigger:
+    - entity_id: sensor.zigbee2mqtt_bridge_state
+      platform: state
+      to: 'offline'
+  action:
+    - service: notify.kevin
+      data:
+        title: 'Zigbee2Mqtt offline'
+        message: "Zigbee2Mqtt ist offline"
 #################################################################
 ## New Home Assistant Version
 #################################################################

@@ -116,6 +116,39 @@
   alexa_speaker_connector:
     icon: mdi:amazon-alexa
     name: Alexa automatisch auf Receiver Bluetooth spielen lassen
+  travel_time_home_user_one_update:
+    icon: mdi:update
+    name: Update Travel Time Home User One
+  travel_time_home_user_two_update:
+    icon: mdi:update
+    name: Update Travel Time Home User Two
+  increase_counter_on_google_maps_update:
+    icon: mdi:plus-one
+    name: Increase Counter on Google Maps Update Calls
+  reset_googlemapsapicounter_on_last_day_of_month:
+    icon: mdi:replay
+    name: Reset Google Maps API Timer
+  detect_devices_on_when_going_to_bed:
+    name: Schalte alles aus wenn wir ins Bett gehen
+    icon: mdi:alarm
+  sensor_watcher:
+    icon: mdi:alarm
+    name: Überwache ob alle Sensoren online sind
+  user_sleep_mode_handler_user_one:
+    icon: mdi:sleep
+    name: Schlafmodus Kevin
+  user_sleep_mode_handler_user_two:
+    icon: mdi:sleep
+    name: Schlafmodus Sina
+  sleep_mode_handler:
+    icon: mdi:sleep
+    name: Schlafmodus
+  bath_motion_trigger:
+    icon: mdi:shower
+    name: Badlicht Bewegungsmelder
+#################################################################
+## Appdaemon App Switches - Thermostats
+#################################################################
   warm_bath_before_wakeup:
     icon: mdi:temperature-celsius
     name: Fußbodenheizung im Bad vorm aufstehen anschalten
@@ -134,51 +167,76 @@
   turn_on_upper_bath_thermostat_when_window_closed:
     icon: mdi:window-closed
     name: Fußbodenheizung im Bad Oben anschalten wenn Fenster zu
-  set_thermostat_when_leaving:
+#################################################################
+## Appdaemon App Switches - Thermostats - Leaving
+#################################################################
+  set_livingroom_thermostat_when_leaving:
     icon: mdi:temperature-celsius
-    name: Fußbodenheizung wenn wir gehen
-  set_thermostat_when_sleeping:
+    name: Wohnzimmer wenn wir gehen
+  set_kitchen_thermostat_when_leaving:
     icon: mdi:temperature-celsius
-    name: Fußbodenheizung wenn wir schlafen
-  travel_time_home_user_one_update:
-    icon: mdi:update
-    name: Update Travel Time Home User One
-  travel_time_home_user_two_update:
-    icon: mdi:update
-    name: Update Travel Time Home User Two
-  increase_counter_on_google_maps_update:
-    icon: mdi:plus-one
-    name: Increase Counter on Google Maps Update Calls
-  reset_googlemapsapicounter_on_last_day_of_month:
-    icon: mdi:replay
-    name: Reset Google Maps API Timer
-  detect_devices_on_when_going_to_bed:
-    name: Schalte alles aus wenn wir ins Bett gehen
-    icon: mdi:alarm
-  set_thermostat_when_waking_up:
+    name: Küche wenn wir gehen
+  set_upper_bath_thermostat_when_leaving:
     icon: mdi:temperature-celsius
-    name: Fußbodenheizung wenn wir aufstehen
-  set_thermostat_when_heading_home:
+    name: Bad Oben wenn wir gehen
+  set_bath_thermostat_when_leaving:
     icon: mdi:temperature-celsius
-    name: Fußbodenheizung im Wohnzimmer wenn Richtung nach Hause
-  sensor_watcher:
-    icon: mdi:alarm
-    name: Überwache ob alle Sensoren online sind
-  user_sleep_mode_handler_user_one:
-    icon: mdi:sleep
-    name: Schlafmodus Kevin
-  user_sleep_mode_handler_user_two:
-    icon: mdi:sleep
-    name: Schlafmodus Sina
-  sleep_mode_handler:
-    icon: mdi:sleep
-    name: Schlafmodus
-  bath_motion_trigger:
-    icon: mdi:shower
-    name: Badlicht Bewegungsmelder
-  set_thermostat_when_coming_home:
+    name: Bad wenn wir gehen
+#################################################################
+## Appdaemon App Switches - Thermostats - Sleeping
+#################################################################
+  set_livingroom_thermostat_when_sleeping:
     icon: mdi:temperature-celsius
-    name: Fußbodenheizung wenn wir heimkommen
+    name: Wohnzimmer wenn wir schlafen
+  set_kitchen_thermostat_when_sleeping:
+    icon: mdi:temperature-celsius
+    name: Küche wenn wir schlafen
+  set_bath_thermostat_when_sleeping:
+    icon: mdi:temperature-celsius
+    name: Bad wenn wir schlafen
+  set_upper_bath_thermostat_when_sleeping:
+    icon: mdi:temperature-celsius
+    name: Bad Oben wenn wir schlafen
+#################################################################
+## Appdaemon App Switches - Thermostats - Waking Up
+#################################################################
+  set_livingroom_thermostat_when_waking_up:
+    icon: mdi:temperature-celsius
+    name: Wohnzimmer wenn wir aufstehen
+  set_kitchen_thermostat_when_waking_up:
+    icon: mdi:temperature-celsius
+    name: Küche wenn wir aufstehen
+  set_bath_thermostat_when_waking_up:
+    icon: mdi:temperature-celsius
+    name: Bad wenn wir aufstehen
+  set_upper_bath_thermostat_when_waking_up:
+    icon: mdi:temperature-celsius
+    name: Bad Oben wenn wir aufstehen
+#################################################################
+## Appdaemon App Switches - Thermostats - Coming Home
+#################################################################
+  set_livingroom_thermostat_when_coming_home:
+    icon: mdi:temperature-celsius
+    name: Wohnzimmer wenn wir nach Hause kommen
+  set_kitchen_thermostat_when_coming_home:
+    icon: mdi:temperature-celsius
+    name: Küche wenn wir nach Hause kommen
+  set_bath_thermostat_when_coming_home:
+    icon: mdi:temperature-celsius
+    name: Bad wenn wir nach Hause kommen
+  set_upper_bath_thermostat_when_coming_home:
+    icon: mdi:temperature-celsius
+    name: Bad Oben wenn wir nach Hause kommen
+#################################################################
+## Appdaemon App Switches - Thermostats - Heading Home
+#################################################################
+  set_livingroom_thermostat_when_heading_home:
+    icon: mdi:temperature-celsius
+    name: Wohnzimmer wenn Richtung nach Hause
+  set_kitchen_thermostat_when_heading_home:
+    icon: mdi:temperature-celsius
+    name: Küche wenn Richtung nach Hause
+
 #################################################################
 ## zigbee2mqtt
 #################################################################

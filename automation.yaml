@@ -115,5 +115,17 @@
   action:
     - service: notify.kevin
       data_template:
-        title: "Neue Homeassistant Version verfügbar"
         message: "Neue Homeassistant Version verfügbar: {{states.sensor.home_assistant_latest_docker.state}}"
+#################################################################
+## New Unifi Controller Version
+#################################################################
+- id: new_unifi_controller_version
+  alias: 'Notify of new Unifi Controller Version'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: sensor.unifi_controller_latest_docker
+  action:
+    - service: notify.kevin
+      data_template:
+        message: "Neue Unifi Controller Version verfügbar: {{states.sensor.unifi_controller_latest_docker.state}}"

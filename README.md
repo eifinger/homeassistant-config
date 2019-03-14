@@ -35,6 +35,8 @@ This repository is a companion to my [appdeamon-scripts](https://github.com/eifi
 * Raspberry Pi running [PiHole](https://pi-hole.net/) - DNS Server and AdBlocker
 * [hassalarm](https://github.com/Johboh/hassalarm) - link my android alarms to HA
 
+![diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/eifinger/homeassistant-config/master/www/plantuml/homeassistant-architecture.puml)
+
 <a name="devices"></a>
 <div align="center">
   <h4>

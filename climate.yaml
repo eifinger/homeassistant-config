@@ -1,6 +1,6 @@
 - platform: hysen
   scan_interval: 15
-  device:
+  devices:
     bad_thermostat:
       name: Bad Thermostat
       host: !secret bad_thermostat_ip

@@ -108,7 +108,7 @@ media_player:
 alexa_media:
   accounts:
     - email: !secret amazon_email
-      passsword: !secret amazon_password
+      password: !secret amazon_password
       url: amazon.de
 
 google:

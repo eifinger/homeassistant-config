@@ -133,15 +133,6 @@ vacuum:
     host: !secret xiaomi_vacuum_ip
     token: !secret xiaomi_vacuum_token
 
-custom_updater:
-  track:
-    - components
-    - cards
-  card_urls:
-    - https://raw.githubusercontent.com/custom-cards/information/master/repos.json
-  component_urls:
-    - https://raw.githubusercontent.com/custom-components/information/master/repos.json
-
 system_health:
 #################################################################
 ## Includes

@@ -1,31 +1,27 @@
-- platform: broadlinkHysen
-  name: Bad Thermostat
-  host: !secret bad_thermostat_ip
-  mac: !secret bad_thermostat_mac
-  target_temp_default: 20
-  target_temp_step: 0.5
+- platform: hysen
   scan_interval: 15
-
-- platform: broadlinkHysen
-  name: Wohnzimmer Thermostat
-  host: !secret livingroom_thermostat_ip
-  mac: !secret livingroom_thermostat_mac
-  target_temp_default: 20
-  target_temp_step: 0.5
-  scan_interval: 15
-
-- platform: broadlinkHysen
-  name: Bad Oben Thermostat
-  host: !secret bad_oben_thermostat_ip
-  mac: !secret bad_oben_thermostat_mac
-  target_temp_default: 20
-  target_temp_step: 0.5
-  scan_interval: 15
-
-- platform: broadlinkHysen
-  name: Küche Thermostat
-  host: !secret kitchen_thermostat_ip
-  mac: !secret kitchen_thermostat_mac
-  target_temp_default: 20
-  target_temp_step: 0.5
-  scan_interval: 15
+  device:
+    bad_thermostat:
+      name: Bad Thermostat
+      host: !secret bad_thermostat_ip
+      mac: !secret bad_thermostat_mac
+      target_temp_default: 20
+      target_temp_step: 0.5
+    wohnzimmer_thermostat:
+      name: Wohnzimmer Thermostat
+      host: !secret livingroom_thermostat_ip
+      mac: !secret livingroom_thermostat_mac
+      target_temp_default: 20
+      target_temp_step: 0.5
+    bad_oben_thermostat:
+      name: Bad Oben Thermostat
+      host: !secret bad_oben_thermostat_ip
+      mac: !secret bad_oben_thermostat_mac
+      target_temp_default: 20
+      target_temp_step: 0.5
+    kuche_thermostat:
+      name: Küche Thermostat
+      host: !secret kitchen_thermostat_ip
+      mac: !secret kitchen_thermostat_mac
+      target_temp_default: 20
+      target_temp_step: 0.5

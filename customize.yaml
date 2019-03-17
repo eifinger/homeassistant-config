@@ -427,6 +427,8 @@ script.goldie_clean:
   friendly_name: "Aktiviere und starte Goldie"
 sensor.home_assistant_latest_docker:
   icon: mdi:docker
+sensor.unifi_controller_latest_docker:
+  icon: mdi:docker
 sensor.home_assistant_installed_version:
   icon: mdi:home-assistant
 #################################################################

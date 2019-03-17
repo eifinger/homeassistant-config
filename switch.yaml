@@ -98,21 +98,6 @@
   qos: 2
   retain: false
 #################################################################
-## Tp Link
-#################################################################
-- platform: tplink
-  host: !secret tp_link_ip
-  name: tplink_tv
-  enable_leds: False
-- platform: tplink
-  host: !secret tp_link_washingmachine_ip
-  name: washingmachine
-  enable_leds: False
-- platform: tplink
-  host: !secret tp_link_dishwasher_ip
-  name: Dishwasher
-  enable_leds: False
-#################################################################
 ## WoL
 #################################################################
 - platform: wake_on_lan

@@ -837,3 +837,17 @@
   name:  Unifi Controller Latest Docker
   command:  curl -s -L https://registry.hub.docker.com/v2/repositories/jacobalberty/unifi/tags/ | grep -Eo '"name":\s"[0-9]*[.]+[0-9]*[.]+[0-9]*"' | head -1 | sed -e "s/\"name\":\s\"/${replace}/g" | sed -e "s/\"/${replace}/g"
   scan_interval: 28800
+#################################################################
+## Glances
+#################################################################
+- platform: glances
+  host: !secret pihole_ip
+  name: glances_pihole
+  version: 3
+  resources:
+    - 'disk_use'
+    - 'disk_use_percent'
+    - 'disk_free'
+    - 'cpu_temp'
+    - 'processor_load'
+    - 'memory_use'  

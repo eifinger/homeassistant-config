@@ -844,6 +844,8 @@
   host: !secret pihole_ip
   name: glances_pihole
   version: 3
+  username: !secret glances_pihole_username
+  password: !secret glances_pihole_password
   resources:
     - 'disk_use'
     - 'disk_use_percent'
@@ -851,3 +853,14 @@
     - 'cpu_temp'
     - 'processor_load'
     - 'memory_use'  
+#################################################################
+## Alexa
+#################################################################
+- platform: template
+  sensors:
+    last_alexa:
+      entity_id:
+        - media_player.kevin_s_echo_dot_unten
+        - media_player.kevin_s_echo_dot_oben
+      value_template: >
+        {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}    

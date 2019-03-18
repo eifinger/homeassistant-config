@@ -1,0 +1,347 @@
+sensor:
+  - platform: mqtt
+    name: Zigbee2mqtt Bridge state
+    state_topic: "zigbee2mqtt/bridge/state"
+    icon: mdi:router-wireless
+  - platform: mqtt
+    name: Zigbee2mqtt1 Bridge state
+    state_topic: "zigbee2mqtt1/bridge/state"
+    icon: mdi:router-wireless
+  - platform: mqtt
+    name: Zigbee2mqtt2 Bridge state
+    state_topic: "zigbee2mqtt2/bridge/state"
+    icon: mdi:router-wireless
+
+input_boolean:
+  zigbee_permit_join:
+    name: Allow devices to join
+    initial: off
+    icon: mdi:cellphone-wireless
+  zigbee_permit_join1:
+    name: Allow devices to join 1
+    initial: off
+    icon: mdi:cellphone-wireless
+  zigbee_permit_join2:
+    name: Allow devices to join 2
+    initial: off
+    icon: mdi:cellphone-wireless
+
+input_select:
+  zigbee2mqtt_log_level:
+    name: Zigbee2mqtt Log Level
+    options:
+      - debug
+      - info
+      - warn
+      - error
+    initial: info
+    icon: mdi:format-list-bulleted
+  zigbee2mqtt_log_level1:
+    name: Zigbee2mqtt1 Log Level
+    options:
+      - debug
+      - info
+      - warn
+      - error
+    initial: info
+    icon: mdi:format-list-bulleted
+  zigbee2mqtt_log_level2:
+    name: Zigbee2mqtt2 Log Level
+    options:
+      - debug
+      - info
+      - warn
+      - error
+    initial: info
+    icon: mdi:format-list-bulleted
+
+switch:
+  - platform: mqtt
+    name: "Zigbee2mqtt Main join"
+    state_topic: "zigbee2mqtt/bridge/config/permit_join"
+    command_topic: "zigbee2mqtt/bridge/config/permit_join"
+    payload_on: "true"
+    payload_off: "false"
+  - platform: mqtt
+    name: "Zigbee2mqtt1 Main join"
+    state_topic: "zigbee2mqtt1/bridge/config/permit_join"
+    command_topic: "zigbee2mqtt1/bridge/config/permit_join"
+    payload_on: "true"
+    payload_off: "false"
+  - platform: mqtt
+    name: "Zigbee2mqtt2 Main join"
+    state_topic: "zigbee2mqtt2/bridge/config/permit_join"
+    command_topic: "zigbee2mqtt2/bridge/config/permit_join"
+    payload_on: "true"
+    payload_off: "false"
+
+timer:
+  zigbee_permit_join:
+    name: Time remaining
+    duration: 120
+  zigbee_permit_join1:
+    name: Time remaining 1
+    duration: 120
+  zigbee_permit_join2:
+    name: Time remaining 2
+    duration: 120
+
+automation:
+#################################################################
+## 0
+#################################################################
+  - id: zigbee2mqtt_log_level
+    alias: Zigbee2mqtt Log Level
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_select.zigbee2mqtt_log_level
+        to: debug
+      - platform: state
+        entity_id: input_select.zigbee2mqtt_log_level
+        to: warn
+      - platform: state
+        entity_id: input_select.zigbee2mqtt_log_level
+        to: error
+      - platform: state
+        entity_id: input_select.zigbee2mqtt_log_level
+        to: info
+    action:
+      - service: mqtt.publish
+        data:
+          payload_template: '{{ states(''input_select.zigbee2mqtt_log_level'') }}'
+          topic: zigbee2mqtt/bridge/config/log_level
+
+  - id: enable_zigbee_join
+    alias: Enable Zigbee joining
+    hide_entity: true
+    trigger:
+      platform: state
+      entity_id: input_boolean.zigbee_permit_join
+      to: 'on'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: zigbee2mqtt/bridge/config/permit_join
+        payload: 'true'
+    - service: timer.start
+      data:
+        entity_id: timer.zigbee_permit_join
+
+  - id: disable_zigbee_join
+    alias: Disable Zigbee joining
+    hide_entity: true
+    trigger:
+    - entity_id: input_boolean.zigbee_permit_join
+      platform: state
+      to: 'off'
+    action:
+    - data:
+        payload: 'false'
+        topic: zigbee2mqtt/bridge/config/permit_join
+      service: mqtt.publish
+    - data:
+        entity_id: timer.zigbee_permit_join
+      service: timer.cancel
+
+  - id: disable_zigbee_join_timer
+    alias: Disable Zigbee joining by timer
+    hide_entity: true
+    trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.zigbee_permit_join
+    action:
+    - service: mqtt.publish
+      data:
+        topic: zigbee2mqtt/bridge/config/permit_join
+        payload: 'false'
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.zigbee_permit_join
+
+  - id: alert_zigbee_bridge_offline
+    alias: 'Alarm wenn Zigbee2Mqtt offline'
+    initial_state: 'on'
+    trigger:
+      - entity_id: sensor.zigbee2mqtt_bridge_state
+        platform: state
+        to: 'offline'
+    action:
+      - service: notify.kevin
+        data:
+          title: 'Zigbee2Mqtt offline'
+          message: "Zigbee2Mqtt ist offline"
+#################################################################
+## 1
+#################################################################
+    - id: zigbee2mqtt1_log_level
+    alias: Zigbee2mqtt1 Log Level
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_select.zigbee2mqtt1_log_level
+        to: debug
+      - platform: state
+        entity_id: input_select.zigbee2mqtt1_log_level
+        to: warn
+      - platform: state
+        entity_id: input_select.zigbee2mqtt1_log_level
+        to: error
+      - platform: state
+        entity_id: input_select.zigbee2mqtt1_log_level
+        to: info
+    action:
+      - service: mqtt.publish
+        data:
+          payload_template: '{{ states(''input_select.zigbee2mqtt1_log_level'') }}'
+          topic: zigbee2mqtt1/bridge/config/log_level
+
+  - id: enable_zigbee_join1
+    alias: Enable Zigbee joining 1
+    hide_entity: true
+    trigger:
+      platform: state
+      entity_id: input_boolean.zigbee_permit_join1
+      to: 'on'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: zigbee2mqtt1/bridge/config/permit_join
+        payload: 'true'
+    - service: timer.start
+      data:
+        entity_id: timer.zigbee_permit_join1
+
+  - id: disable_zigbee_join1
+    alias: Disable Zigbee joining 1
+    hide_entity: true
+    trigger:
+    - entity_id: input_boolean.zigbee_permit_join1
+      platform: state
+      to: 'off'
+    action:
+    - data:
+        payload: 'false'
+        topic: zigbee2mqtt1/bridge/config/permit_join
+      service: mqtt.publish
+    - data:
+        entity_id: timer.zigbee_permit_join1
+      service: timer.cancel
+
+  - id: disable_zigbee_join_timer1
+    alias: Disable Zigbee joining by timer 1
+    hide_entity: true
+    trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.zigbee_permit_join1
+    action:
+    - service: mqtt.publish
+      data:
+        topic: zigbee2mqtt1/bridge/config/permit_join
+        payload: 'false'
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.zigbee_permit_join1
+
+  - id: alert_zigbee_bridge1_offline
+    alias: 'Alarm wenn Zigbee2Mqtt1 offline'
+    initial_state: 'on'
+    trigger:
+      - entity_id: sensor.zigbee2mqtt1_bridge_state
+        platform: state
+        to: 'offline'
+    action:
+      - service: notify.kevin
+        data:
+          title: 'Zigbee2Mqtt1 offline'
+          message: "Zigbee2Mqtt1 ist offline"
+#################################################################
+## 2
+#################################################################  
+    - id: zigbee2mqtt_log_level2
+    alias: Zigbee2mqtt2 Log Level
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_select.zigbee2mqtt_log_level2
+        to: debug
+      - platform: state
+        entity_id: input_select.zigbee2mqtt_log_level2
+        to: warn
+      - platform: state
+        entity_id: input_select.zigbee2mqtt_log_level2
+        to: error
+      - platform: state
+        entity_id: input_select.zigbee2mqtt_log_level2
+        to: info
+    action:
+      - service: mqtt.publish
+        data:
+          payload_template: '{{ states(''input_select.zigbee2mqtt_log_level2'') }}'
+          topic: zigbee2mqtt2/bridge/config/log_level
+
+  - id: enable_zigbee_join2
+    alias: Enable Zigbee joining 2
+    hide_entity: true
+    trigger:
+      platform: state
+      entity_id: input_boolean.zigbee_permit_join2
+      to: 'on'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: zigbee2mqtt2/bridge/config/permit_join
+        payload: 'true'
+    - service: timer.start
+      data:
+        entity_id: timer.zigbee_permit_join2
+
+  - id: disable_zigbee_join2
+    alias: Disable Zigbee joining 2
+    hide_entity: true
+    trigger:
+    - entity_id: input_boolean.zigbee_permit_join2
+      platform: state
+      to: 'off'
+    action:
+    - data:
+        payload: 'false'
+        topic: zigbee2mqtt2/bridge/config/permit_join
+      service: mqtt.publish
+    - data:
+        entity_id: timer.zigbee_permit_join2
+      service: timer.cancel
+
+  - id: disable_zigbee_join_timer2
+    alias: Disable Zigbee joining by timer 2
+    hide_entity: true
+    trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.zigbee_permit_join2
+    action:
+    - service: mqtt.publish
+      data:
+        topic: zigbee2mqtt2/bridge/config/permit_join
+        payload: 'false'
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.zigbee_permit_join2
+
+  - id: alert_zigbee_bridge_offline2
+    alias: 'Alarm wenn Zigbee2Mqtt2 offline'
+    initial_state: 'on'
+    trigger:
+      - entity_id: sensor.zigbee2mqtt2_bridge_state
+        platform: state
+        to: 'offline'
+    action:
+      - service: notify.kevin
+        data:
+          title: 'Zigbee2Mqtt2 offline'
+          message: "Zigbee2Mqtt2 ist offline"

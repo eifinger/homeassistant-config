@@ -236,11 +236,3 @@
   set_kitchen_thermostat_when_heading_home:
     icon: mdi:temperature-celsius
     name: Küche wenn Richtung nach Hause
-
-#################################################################
-## zigbee2mqtt
-#################################################################
-  zigbee_permit_join:
-    name: Allow devices to join
-    initial: off
-    icon: mdi:cellphone-wireless

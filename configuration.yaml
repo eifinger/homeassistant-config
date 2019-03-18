@@ -12,6 +12,7 @@ homeassistant:
   customize: !include customize.yaml
   auth_providers:
    - type: homeassistant
+  packages: !include_dir_named packages
 
 # CustomUI
 customizer:
@@ -134,11 +135,6 @@ vacuum:
     token: !secret xiaomi_vacuum_token
 
 system_health:
-#################################################################
-## Packages
-#################################################################
-packages:
-  zigbee2mqtt: !include zigbee2mqtt.yaml
 #################################################################
 ## Includes
 #################################################################

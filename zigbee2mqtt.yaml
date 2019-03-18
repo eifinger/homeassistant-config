@@ -176,7 +176,7 @@ automation:
 #################################################################
 ## 1
 #################################################################
-  - id: zigbee2mqtt1_log_level
+- id: zigbee2mqtt1_log_level
   alias: Zigbee2mqtt1 Log Level
   initial_state: 'on'
   trigger:
@@ -262,7 +262,7 @@ automation:
 #################################################################
 ## 2
 #################################################################  
-  - id: zigbee2mqtt_log_level2
+- id: zigbee2mqtt_log_level2
   alias: Zigbee2mqtt2 Log Level
   initial_state: 'on'
   trigger:

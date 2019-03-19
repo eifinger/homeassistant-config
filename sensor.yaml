@@ -829,36 +829,7 @@
 - platform: command_line
   name:  Unifi Controller Latest Docker
   command:  curl -s -L https://registry.hub.docker.com/v2/repositories/jacobalberty/unifi/tags/ | grep -Eo '"name":\s"[0-9]*[.]+[0-9]*[.]+[0-9]*"' | head -1 | sed -e "s/\"name\":\s\"/${replace}/g" | sed -e "s/\"/${replace}/g"
-  scan_interval: 28800
-#################################################################
-## Glances
-#################################################################
-- platform: glances
-  host: !secret pihole_ip
-  name: glances_pihole
-  version: 3
-  username: !secret glances_pihole_username
-  password: !secret glances_pihole_password
-  resources:
-    - 'disk_use'
-    - 'disk_use_percent'
-    - 'disk_free'
-    - 'cpu_temp'
-    - 'processor_load'
-    - 'memory_use'
-- platform: glances
-  host: !secret zigbee2mqtt_ip
-  name: glances_zigbee2mqtt
-  version: 3
-  username: !secret glances_zigbee2mqtt_username
-  password: !secret glances_zigbee2mqtt_password
-  resources:
-    - 'disk_use'
-    - 'disk_use_percent'
-    - 'disk_free'
-    - 'cpu_temp'
-    - 'processor_load'
-    - 'memory_use'  
+  scan_interval: 28800  
 #################################################################
 ## Alexa
 #################################################################

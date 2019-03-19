@@ -28,7 +28,7 @@ sensor:
 
 automation:
   - id: alert_when_glances_pihole_disk_used_gt_80
-    alias: 'Alarm wenn Disk Used > 80%'
+    alias: 'Alarm wenn PiHole Disk Used > 80%'
     initial_state: 'on'
     trigger:
       - platform: numeric_state
@@ -40,7 +40,7 @@ automation:
           message: "PiHole Disk Usage über 80%"
 
   - id: alert_when_glances_zigbee2mqtt_disk_used_gt_80
-    alias: 'Alarm wenn Disk Used > 80%'
+    alias: 'Alarm wenn ZIgbee2MQTT Disk Used > 80%'
     initial_state: 'on'
     trigger:
       - platform: numeric_state

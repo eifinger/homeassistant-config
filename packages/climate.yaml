@@ -1,0 +1,45 @@
+climate:
+  - platform: hysen
+    scan_interval: 15
+    devices:
+      bad_thermostat:
+        name: Bad Thermostat
+        host: !secret bad_thermostat_ip
+        mac: !secret bad_thermostat_mac
+        target_temp_default: 20
+        target_temp_step: 0.5
+      wohnzimmer_thermostat:
+        name: Wohnzimmer Thermostat
+        host: !secret livingroom_thermostat_ip
+        mac: !secret livingroom_thermostat_mac
+        target_temp_default: 20
+        target_temp_step: 0.5
+      bad_oben_thermostat:
+        name: Bad Oben Thermostat
+        host: !secret bad_oben_thermostat_ip
+        mac: !secret bad_oben_thermostat_mac
+        target_temp_default: 20
+        target_temp_step: 0.5
+      kuche_thermostat:
+        name: Küche Thermostat
+        host: !secret kitchen_thermostat_ip
+        mac: !secret kitchen_thermostat_mac
+        target_temp_default: 20
+        target_temp_step: 0.5
+
+switch:
+  - platform: template
+    switches:
+      bad_oben_thermostat_remote_lock:
+        friendly_name: Thermostat Lock
+        value_template: "{{ is_state_attr('climate.bad_oben_thermostat', 'remote_lock', 1) }}"
+        turn_on:
+          service: climate.hysen_set_remotelock
+          data:
+            entity_id: climate.bad_oben_thermostat
+            remotelock: 1
+        turn_off:
+          service: climate.hysen_set_remotelock
+          data:
+            entity_id: climate.bad_oben_thermostat
+            remotelock: 0

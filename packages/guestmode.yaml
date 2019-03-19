@@ -1,0 +1,44 @@
+input_boolean:
+  guestmode:
+    name: Gäste Modus
+    icon: mdi:home-account
+
+alexa:
+  smart_home:
+    filter:
+      include_entities:
+        - input_boolean.guestmode
+    entity_config:
+      input_boolean.guestmode:
+        name: Gäste Modus
+        description: Der Gästemodus
+        display_categories: SWITCH
+
+automation:
+  - id: on_guestmode_on
+    alias: On Guestmode on
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.guestmode
+        from: "off"
+        to: "on"
+    actions:
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.warm_upper_bath_before_wakeup
+      - service: homeassistant.turn_on
+        entity_id: switch.bad_oben_thermostat_remote_lock
+  - id: on_guestmode_off
+    alias: On Guestmode off
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.guestmode
+        from: "on"
+        to: "off"
+    actions:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.warm_upper_bath_before_wakeup
+      - service: homeassistant.turn_off
+        entity_id: switch.bad_oben_thermostat_remote_lock
+    

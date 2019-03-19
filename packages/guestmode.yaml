@@ -23,7 +23,7 @@ automation:
         entity_id: input_boolean.guestmode
         from: "off"
         to: "on"
-    actions:
+    action:
       - service: homeassistant.turn_on
         entity_id: input_boolean.warm_upper_bath_before_wakeup
       - service: homeassistant.turn_on
@@ -36,7 +36,7 @@ automation:
         entity_id: input_boolean.guestmode
         from: "on"
         to: "off"
-    actions:
+    action:
       - service: homeassistant.turn_off
         entity_id: input_boolean.warm_upper_bath_before_wakeup
       - service: homeassistant.turn_off

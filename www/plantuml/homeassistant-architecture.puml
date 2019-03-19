@@ -5,7 +5,7 @@
 LAYOUT_LEFT_RIGHT
 
 package "HP Microserver Gen10" {
-    Container(homeassistant, "homeassistant/home-assistant:0.88.2", "Homeassistant")
+    Container(homeassistant, "homeassistant/home-assistant:0.89.2", "Homeassistant")
     Container(find3, "https://github.com/schollz/find3", "FIND3")
     Container(mqtt, "eclipse-mosquitto:latest", "Mosquitto")
     Container(facerec_service, "eifinger/face_recognition:latest", "Facerecognition")
@@ -35,7 +35,7 @@ package "8x ESP8266" {
 }
 
 package "RPI Zero" {
-    Container(zigbee2mqtt, "koenkk/zigbee2mqtt:1.1.1", "zigbee2mqtt")
+    Container(zigbee2mqtt, "koenkk/zigbee2mqtt:1.2.1", "zigbee2mqtt")
 }
 
 package "Android" {

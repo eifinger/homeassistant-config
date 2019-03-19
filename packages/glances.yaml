@@ -31,7 +31,8 @@ automation:
     alias: 'Alarm wenn Disk Used > 80%'
     initial_state: 'on'
     trigger:
-      - entity_id: sensor.glances_pihole_disk_used_2
+      - platform: numeric_state
+        entity_id: sensor.glances_pihole_disk_used_2
         above: 80
     action:
       - service: notify.kevin
@@ -42,7 +43,8 @@ automation:
     alias: 'Alarm wenn Disk Used > 80%'
     initial_state: 'on'
     trigger:
-      - entity_id: sensor.glances_zigbee2mqtt_disk_used_2
+      - platform: numeric_state
+        entity_id: sensor.glances_zigbee2mqtt_disk_used_2
         above: 80
     action:
       - service: notify.kevin

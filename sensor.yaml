@@ -845,7 +845,21 @@
     - 'disk_free'
     - 'cpu_temp'
     - 'processor_load'
+    - 'memory_use'
+- platform: glances
+  host: !secret zigbee2mqtt_ip
+  name: glances_zigbee2mqtt
+  version: 3
+  username: !secret glances_zigbee2mqtt_username
+  password: !secret glances_zigbee2mqtt_password
+  resources:
+    - 'disk_use'
+    - 'disk_use_percent'
+    - 'disk_free'
+    - 'cpu_temp'
+    - 'processor_load'
     - 'memory_use'  
+    - 'docker_active'
 #################################################################
 ## Alexa
 #################################################################

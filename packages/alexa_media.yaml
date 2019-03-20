@@ -101,7 +101,7 @@ automation:
       - service: notify.alexa_media
         data_template:
           target:
-            - "{% if is_state('input_select.alexa', 'Oben') %}media_player.kevin_s_echo_dot_oben{% elif is_state('input_select.alexa', 'Unten') %}media_player.kevin_s_echo_dot_unten{% endif %}"
+            - !secret echo_dot_oben_serial
           data:
             type: tts
           message: "{{  states.input_text.alexa_tts.state }}"

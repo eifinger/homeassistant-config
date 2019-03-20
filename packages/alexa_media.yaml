@@ -64,7 +64,7 @@ input_select:
     options:
       - Oben
       - Unten
-
+      - None
     initial: None
     icon: mdi:alexa
 #####################################################################

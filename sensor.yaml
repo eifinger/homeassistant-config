@@ -829,15 +829,4 @@
 - platform: command_line
   name:  Unifi Controller Latest Docker
   command:  curl -s -L https://registry.hub.docker.com/v2/repositories/jacobalberty/unifi/tags/ | grep -Eo '"name":\s"[0-9]*[.]+[0-9]*[.]+[0-9]*"' | head -1 | sed -e "s/\"name\":\s\"/${replace}/g" | sed -e "s/\"/${replace}/g"
-  scan_interval: 28800  
-#################################################################
-## Alexa
-#################################################################
-- platform: template
-  sensors:
-    last_alexa:
-      entity_id:
-        - media_player.kevin_s_echo_dot_unten
-        - media_player.kevin_s_echo_dot_oben
-      value_template: >
-        {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}    
+  scan_interval: 28800

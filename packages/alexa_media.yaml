@@ -1,0 +1,118 @@
+homeassistant:
+  customize:
+
+    ################################################
+    ## Input Text
+    ################################################
+    input_text.alexa_tts:
+      icon: mdi:textbox
+
+
+    ################################################
+    ## Input Select
+    ################################################
+    input_select.alexa:
+      icon: mdi:format-list-bulleted
+
+
+    ################################################
+    ## Input Number
+    ################################################
+    input_number.alexa_volume:
+      icon: mdi:volume-high
+
+################################################
+## Component
+################################################
+alexa_media:
+  accounts:
+    - email: !secret amazon_email
+      password: !secret amazon_password
+      url: amazon.de
+
+notify:
+  - platform: alexa_media
+    name: alexa_media
+
+#####################################################################
+### Input Text
+#####################################################################
+input_text:
+  alexa_tts:
+    name: Alexa TTS
+    initial: Hallo
+
+
+#####################################################################
+### Input Number
+#####################################################################
+input_number:
+  alexa_volume:
+    name: Alexa Volume
+    initial: 4
+    min: 1
+    max: 10
+    step: 1
+
+
+#####################################################################
+### Input Select
+#####################################################################
+input_select:
+  alexa:
+    name: Alexa
+    options:
+      - Oben
+      - Unten
+
+    initial: None
+    icon: mdi:alexa
+#####################################################################
+### Sensor
+#####################################################################
+sensor:
+  - platform: template
+    sensors:
+      last_alexa:
+        entity_id:
+          - media_player.kevin_s_echo_dot_unten
+          - media_player.kevin_s_echo_dot_oben
+        value_template: >
+          {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}    
+
+automation:
+  ## Announce what is typed as input
+  - alias: Alexa TTS
+    trigger:
+      platform: state
+      entity_id: input_select.alexa
+    action:
+      - service: media_player.volume_set
+        data_template:
+          entity_id: >
+            {% if is_state('input_select.alexa', 'Oben') %}
+              media_player.kevin_s_echo_dot_oben
+            {% elif is_state('input_select.alexa', 'Unten') %}
+              media_player.kevin_s_echo_dot_unten
+            {% elif is_state('input_select.alexa', 'None') %}
+              false
+            {% endif %}
+          volume_level: '{{ states.input_number.alexa_volume.state | float /10 }}'
+      - service: notify.alexa_media
+        data_template:
+          target: >
+            {% if is_state('input_select.alexa', 'Oben') %}
+              media_player.kevin_s_echo_dot_oben
+            {% elif is_state('input_select.alexa', 'Unten') %}
+              media_player.kevin_s_echo_dot_unten
+            {% endif %}
+          data:
+            type: tts
+          message: "{{  states.input_text.alexa_tts.state }}"
+
+      - delay: '00:00:02'
+
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.alexa
+          option: None

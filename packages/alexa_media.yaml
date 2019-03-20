@@ -100,18 +100,12 @@ automation:
           volume_level: '{{ states.input_number.alexa_volume.state | float /10 }}'
       - service: notify.alexa_media
         data_template:
-          target: >
-            {% if is_state('input_select.alexa', 'Oben') %}
-              media_player.kevin_s_echo_dot_oben
-            {% elif is_state('input_select.alexa', 'Unten') %}
-              media_player.kevin_s_echo_dot_unten
-            {% endif %}
+          target:
+            - "{% if is_state('input_select.alexa', 'Oben') %}media_player.kevin_s_echo_dot_oben{% elif is_state('input_select.alexa', 'Unten') %}media_player.kevin_s_echo_dot_unten{% endif %}"
           data:
             type: tts
           message: "{{  states.input_text.alexa_tts.state }}"
-
       - delay: '00:00:02'
-
       - service: input_select.select_option
         data:
           entity_id: input_select.alexa

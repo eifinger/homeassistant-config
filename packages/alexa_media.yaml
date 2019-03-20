@@ -76,7 +76,7 @@ sensor:
       last_alexa:
         entity_id:
           - media_player.kevin_s_echo_dot_unten
-          - media_player.kevin_s_echo_dot_oben
+          - media_player.kevins_echo_dot_oben
         value_template: >
           {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}    
 
@@ -91,7 +91,7 @@ automation:
         data_template:
           entity_id: >
             {% if is_state('input_select.alexa', 'Oben') %}
-              media_player.kevin_s_echo_dot_oben
+              media_player.kevins_echo_dot_oben
             {% elif is_state('input_select.alexa', 'Unten') %}
               media_player.kevin_s_echo_dot_unten
             {% elif is_state('input_select.alexa', 'None') %}
@@ -101,7 +101,7 @@ automation:
       - service: notify.alexa_media
         data_template:
           target:
-            - !secret echo_dot_oben_serial
+            - "{% if is_state('input_select.alexa', 'Oben') %}media_player.kevins_echo_dot_oben{% elif is_state('input_select.alexa', 'Unten') %}media_player.kevin_s_echo_dot_unten{% endif %}"
           data:
             type: tts
           message: "{{  states.input_text.alexa_tts.state }}"

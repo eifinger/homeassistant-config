@@ -345,3 +345,15 @@ automation:
       data:
         title: 'Zigbee2Mqtt2 offline'
         message: "Zigbee2Mqtt2 ist offline"
+#################################################################
+## Map
+#################################################################  
+webhook:
+
+zigbee2mqtt_networkmap:
+ 
+panel_iframe:
+ networkmap:
+   title: 'Zigbee Map'
+   url: '/local/zigbee2mqtt_networkmap/map.html'
+   icon: 'mdi:graphql'

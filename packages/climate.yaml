@@ -43,3 +43,39 @@ switch:
           data:
             entity_id: climate.bad_oben_thermostat
             remotelock: 0
+
+sensor:
+  - platform: template
+    sensors:
+      climate_wohnzimmer_current:
+        value_template: '{{states.climate.wohnzimmer_thermostat.attributes["current_temperature"]}}'
+        entity_id:
+        - climate.wohnzimmer_thermostat
+      climate_wohnzimmer_target:
+        value_template: '{{states.climate.wohnzimmer_thermostat.attributes["temperature"]}}'
+        entity_id:
+        - climate.wohnzimmer_thermostat
+      climate_kuche_current:
+        value_template: '{{states.climate.kuche_thermostat.attributes["current_temperature"]}}'
+        entity_id:
+        - climate.kuche_thermostat
+      climate_kuche_target:
+        value_template: '{{states.climate.kuche_thermostat.attributes["temperature"]}}'
+        entity_id:
+        - climate.kuche_thermostat
+      climate_bad_oben_current:
+        value_template: '{{states.climate.bad_oben_thermostat.attributes["current_temperature"]}}'
+        entity_id:
+        - climate.bad_oben_thermostat
+      climate_bad_oben_target:
+        value_template: '{{states.climate.bad_oben_thermostat.attributes["temperature"]}}'
+        entity_id:
+        - climate.bad_oben_thermostat
+      climate_bad_current:
+        value_template: '{{states.climate.bad_thermostat.attributes["current_temperature"]}}'
+        entity_id:
+        - climate.bad_thermostat
+      climate_bad_target:
+        value_template: '{{states.climate.bad_thermostat.attributes["temperature"]}}'
+        entity_id:
+        - climate.bad_thermostat

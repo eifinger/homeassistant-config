@@ -102,11 +102,6 @@ media_player:
   - platform: spotify
     client_id: !secret spotify_client_id
     client_secret: !secret spotify_client_secret
-  - platform: androidtv
-    name: firetv_stick_oben
-    device_class: firetv
-    host: !secret fire_tv_stick_2_ip
-    adbkey: "./android/adbkey"
 
 google:
   client_id: !secret google_calendar_client_id

@@ -106,7 +106,7 @@ media_player:
     name: firetv_stick_oben
     device_class: firetv
     host: !secret fire_tv_stick_2_ip
-    adbkey: "/config/android/adbkey"
+    adbkey: "./android/adbkey"
 
 google:
   client_id: !secret google_calendar_client_id

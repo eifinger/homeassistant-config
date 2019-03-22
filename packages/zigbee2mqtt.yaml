@@ -99,7 +99,7 @@ automation:
   action:
     - service: mqtt.publish
       data:
-        payload_template: '{{ states('input_select.zigbee2mqtt_log_level') }}'
+        payload_template: "{{ states('input_select.zigbee2mqtt_log_level') }}"
         topic: zigbee2mqtt/bridge/config/log_level
 
 - id: enable_zigbee_join
@@ -175,7 +175,7 @@ automation:
   action:
     - service: mqtt.publish
       data:
-        payload_template: '{{ states('input_select.zigbee2mqtt_log_level1') }}'
+        payload_template: "{{ states('input_select.zigbee2mqtt_log_level1') }}"
         topic: zigbee2mqtt1/bridge/config/log_level
 
 - id: enable_zigbee_join1

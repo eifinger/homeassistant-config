@@ -1,38 +1,40 @@
 resources:
   - type: js
-    url: /local/rmv-card.js?v=0
+    url: /local/rmv-card.js?v=1
   - type: js
-    url: /local/tracker-card.js?v=0.3.0
+    url: /local/card-tools.js?v=2
   - type: js
-    url: /local/card-tools.js?v=297fcc
+    url: /local/slider-entity-row.js?v=2
   - type: js
-    url: /local/slider-entity-row.js?v=ba8f50
+    url: /local/time-input-row.js?v=1
   - type: js
-    url: /local/time-input-row.js?v=f503b7
+    url: /local/fold-entity-row.js?v=2
   - type: js
-    url: /local/fold-entity-row.js?v=6d11d3
+    url: /local/state-switch.js?v=2
   - type: js
-    url: /local/state-switch.js?v=c806ca
+    url: /local/auto-entities.js?v=2
   - type: js
-    url: /local/custom-lovelace/monster-card/monster-card.js?v=0.2.3
-  - type: js
-    url: >-
-      /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js?v=0.4.0
-  - type: js
-    url: /local/custom-lovelace/beer-card/beer-card.js?v=0.2.3
-  - type: js
-    url: /local/custom-lovelace/bignumber-card/bignumber-card.js?v=0.0.1
+    url: /local/custom-lovelace/monster-card/monster-card.js?v=1
   - type: js
     url: >-
-      /local/custom-lovelace/entity-attributes-card/entity-attributes-card.js?v=0.1.1
+      /local/custom-lovelace/alarm_control_panel-card/alarm_control_panel-card.js?v=1
   - type: js
-    url: /local/custom-lovelace/gauge-card/gauge-card.js?v=0.2.0
+    url: /local/custom-lovelace/beer-card/beer-card.js?v=1
   - type: js
-    url: /local/custom-lovelace/group-card/group-card.js?v=0.0.2
+    url: /local/custom-lovelace/bignumber-card/bignumber-card.js?v=1
   - type: js
-    url: /local/custom-lovelace/home-setter/home-setter.js?v=0.0.1
+    url: >-
+      /local/custom-lovelace/entity-attributes-card/entity-attributes-card.js?v=1
   - type: js
-    url: /local/custom-lovelace/plan-coordinates/plan-coordinates.js?v=0.1.0
+    url: /local/custom-lovelace/gauge-card/gauge-card.js?v=1
+  - type: js
+    url: /local/custom-lovelace/group-card/group-card.js?v=1
+  - type: js
+    url: /local/custom-lovelace/home-setter/home-setter.js?v=1
+  - type: js
+    url: /local/custom-lovelace/plan-coordinates/plan-coordinates.js?v=2
+  - type: module
+    url: /local/config-template-card.js?v=2
 title: Home
 views:
   - badges: []
@@ -64,20 +66,49 @@ views:
                 entity_id: media_player.denon_avr_x1300w
             type: entity-button
         type: horizontal-stack
-      - entities:
-          - sensor.location_user_one
-          - sensor.location_user_two
-        show_header_toggle: false
-        title: Anwesenheit
-        type: entities
       - cards:
-          - entities:
-              - entity: climate.bad_thermostat
-              - entity: climate.bad_oben_thermostat
-              - entity: climate.wohnzimmer_thermostat
-              - entity: climate.kuche_thermostat
-            show_header_toggle: false
-            type: entities
+          - entity: script.watch_kodi
+            icon: 'mdi:kodi'
+            name: Kodi
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.watch_kodi
+            type: entity-button
+          - entity: script.watch_netflix
+            icon: 'mdi:netflix'
+            name: Netflix
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.watch_netflix
+            type: entity-button
+        type: horizontal-stack
+      - cards:
+          - card:
+              entities:
+                - entity: climate.bad_thermostat
+                  icon: >-
+                    ${states['climate.bad_thermostat'].attributes['heating_active']
+                    === 0 ? '' : 'mdi:fire'}
+                - entity: climate.bad_oben_thermostat
+                  icon: >-
+                    ${states['climate.bad_oben_thermostat'].attributes['heating_active']
+                    === 0 ? '' : 'mdi:fire'}
+                - entity: climate.wohnzimmer_thermostat
+                  icon: >-
+                    ${states['climate.wohnzimmer_thermostat'].attributes['heating_active']
+                    === 0 ? '' : 'mdi:fire'}
+                - entity: climate.kuche_thermostat
+                  icon: >-
+                    ${states['climate.kuche_thermostat'].attributes['heating_active']
+                    === 0 ? '' : 'mdi:fire'}
+              type: 'custom:hui-entities-card'
+            entities:
+              - climate.bad_oben_thermostat
+            type: 'custom:config-template-card'
           - cards:
               - entity: script.livingroom_wakeup
                 icon: 'mdi:thermometer'
@@ -124,28 +155,26 @@ views:
           - 'off'
         type: entity-filter
       - entities:
+          - sensor.location_user_one
+          - sensor.location_user_two
+        show_header_toggle: false
+        title: Anwesenheit
+        type: entities
+      - entities:
           - switch.bedroom_receiver
+        show_header_toggle: false
         title: Switch
         type: entities
       - card:
           show_header_toggle: false
           title: Offene Türen/Fenster
-        entities:
-          - binary_sensor.door_window_sensor_158d000126a57b
-          - binary_sensor.door_window_sensor_158d0001bb4d94
-          - binary_sensor.door_window_sensor_158d0001bb4dc0
-          - binary_sensor.door_window_sensor_158d000205b808
-          - binary_sensor.door_window_sensor_158d000205b82e
-          - binary_sensor.door_window_sensor_158d00020498b6
-          - binary_sensor.door_window_sensor_158d000204ba26
-          - binary_sensor.door_window_sensor_158d0002059ddf
-          - binary_sensor.door_window_sensor_158d00020499ad
-          - binary_sensor.door_window_sensor_158d0002048951
-          - binary_sensor.door_window_sensor_158d00020455bf
+          type: entities
+        filter:
+          include:
+            - entity_id: '*contact'
+              state: 'on'
         show_empty: false
-        state_filter:
-          - 'on'
-        type: entity-filter
+        type: 'custom:auto-entities'
       - entity: vacuum.xiaomi_vacuum_cleaner
         states:
           cleaning:
@@ -155,6 +184,15 @@ views:
             title: Snowie
             type: picture-glance
         type: 'custom:state-switch'
+      - entities:
+          - entity: input_boolean.guestmode
+        show_header_toggle: false
+        type: entities
+      - entities:
+          - entity: input_text.alexa_tts
+          - entity: input_number.alexa_volume
+          - entity: input_select.alexa
+        type: entities
     icon: 'mdi:home'
     path: default_view
     title: ''
@@ -168,7 +206,7 @@ views:
           - entity: light.bar_table
           - entity: light.stairs_lower_yeelight
           - entity: light.reading_lamp_yeelight
-          - entity: light.lobby_yeelight
+          - entity: light.upper_stairs_yeelight
           - entity: switch.lobby
           - entity: light.lower_bathroom_yeelight
           - entity: light.livingroom_yeelight
@@ -286,7 +324,7 @@ views:
           - input_number.leave_time_offset_user_two
           - input_select.next_appointment_travel_mode_user_two
         show_header_toggle: false
-        title: Nächster Termin Sina
+        title: Nächster Termin User Two
         type: entities
       - entities:
           - sensor.travel_time_next_appointment_location_car_user_two
@@ -302,7 +340,7 @@ views:
         type: entities
     icon: 'mdi:calendar'
     path: view_next_appointment_user_two
-    title: Nächster Termin Sina
+    title: Nächster Termin User Two
   - badges: []
     cards:
       - entities:
@@ -320,21 +358,23 @@ views:
     title: Staubsauger
   - badges: []
     cards:
-      - entity: camera.saved_image
+      - entity: camera.android_ip_webcam_door
         title: Wohnungstür Erkennung
         type: picture-entity
       - entities:
-          - camera.android_ip_webcam_door
-          - sensor.android_ip_webcam_door_battery_level
-          - sensor.android_ip_webcam_door_battery_temperature
-          - sensor.android_ip_webcam_door_light_level
-          - sensor.android_ip_webcam_door_motion
-          - sensor.android_ip_webcam_door_sound
-          - switch.android_ip_webcam_door_torch
-          - switch.android_ip_webcam_door_video_recording
+          - entity: sensor.android_ip_webcam_door_battery_level
+          - entity: sensor.android_ip_webcam_door_battery_temperature
+          - entity: sensor.android_ip_webcam_door_light_level
+          - entity: sensor.android_ip_webcam_door_motion
+          - entity: sensor.android_ip_webcam_door_sound
+          - entity: switch.android_ip_webcam_door_torch
+          - entity: switch.android_ip_webcam_door_video_recording
         show_header_toggle: false
         title: Webcam Tür
         type: entities
+      - entity: camera.saved_image
+        title: Wohnungstür Erkennung
+        type: picture-entity
     icon: 'mdi:cctv'
     path: view_cameras
     title: Kameras
@@ -373,23 +413,26 @@ views:
   - badges: []
     cards:
       - entities:
-          - sensor.pollen_101_graeser_today
-          - sensor.pollen_101_graeser_tomorrow
-          - sensor.pollen_101_graeser_dayaftertomorrow
+          - entity: sensor.pollen_101_graeser_today
+          - entity: sensor.pollen_101_graeser_tomorrow
+          - entity: sensor.pollen_101_graeser_dayaftertomorrow
+          - entity: input_boolean.graeser_notifier
         show_header_toggle: false
         title: Gräser
         type: entities
       - entities:
-          - sensor.pollen_101_birke_today
-          - sensor.pollen_101_birke_tomorrow
-          - sensor.pollen_101_birke_dayaftertomorrow
+          - entity: sensor.pollen_101_birke_today
+          - entity: sensor.pollen_101_birke_tomorrow
+          - entity: sensor.pollen_101_birke_dayaftertomorrow
+          - entity: input_boolean.birke_notifier
         show_header_toggle: false
         title: Birke
         type: entities
       - entities:
-          - sensor.pollen_101_roggen_today
-          - sensor.pollen_101_roggen_tomorrow
-          - sensor.pollen_101_roggen_dayaftertomorrow
+          - entity: sensor.pollen_101_roggen_today
+          - entity: sensor.pollen_101_roggen_tomorrow
+          - entity: sensor.pollen_101_roggen_dayaftertomorrow
+          - entity: input_boolean.roggen_notifier
         show_header_toggle: false
         title: Roggen
         type: entities
@@ -415,9 +458,9 @@ views:
                 name: Kleiner Ventilator
               - entity: sensor.large_ventilator_temperature
                 name: Großer Ventilator
-              - entity: sensor.temperature_158d0002320b3f
+              - entity: sensor.0x00158d0002320b3f_temperature
                 name: Arbeitszimmer
-              - entity: sensor.temperature_158d000245a938
+              - entity: sensor.0x00158d0002320b3f_temperature
                 name: Schlafzimmer
               - entity: sensor.weihnachtslichter_temperature
                 name: Weihnachtslichter
@@ -429,41 +472,30 @@ views:
               - sensor.ventilator_temperature
               - sensor.large_ventilator_temperature
               - sensor.temperature_158d0002320b3f
-              - sensor.temperature_158d000245a938
+              - sensor.0x00158d0002320b3f_temperature
               - sensor.weihnachtslichter_temperature
             type: history-graph
         type: vertical-stack
       - card:
           show_header_toggle: false
           title: Offene Türen/Fenster
-        entities:
-          - binary_sensor.door_window_sensor_158d000126a57b
-          - binary_sensor.door_window_sensor_158d0001bb4d94
-          - binary_sensor.door_window_sensor_158d0001bb4dc0
-          - binary_sensor.door_window_sensor_158d000205b808
-          - binary_sensor.door_window_sensor_158d000205b82e
-          - binary_sensor.door_window_sensor_158d00020498b6
-          - binary_sensor.door_window_sensor_158d000204ba26
-          - binary_sensor.door_window_sensor_158d0002059ddf
-          - binary_sensor.door_window_sensor_158d00020499ad
-          - binary_sensor.door_window_sensor_158d0002048951
-          - binary_sensor.door_window_sensor_158d00020455bf
-        state_filter:
-          - 'on'
-        type: entity-filter
+          type: entities
+        filter:
+          include:
+            - entity_id: '*contact'
+              state: 'on'
+        show_empty: false
+        type: 'custom:auto-entities'
       - card:
           show_header_toggle: false
           title: Aktivierte Bewegungsmelder
-        entities:
-          - binary_sensor.motion_sensor_158d00012aab97
-          - binary_sensor.motion_sensor_158d0001fa464b
-          - binary_sensor.motion_sensor_158d0002006cfa
-          - binary_sensor.motion_sensor_158d000236d83c
-          - binary_sensor.motion_sensor_158d000236d982
-          - binary_sensor.motion_sensor_158d000204c95d
-        state_filter:
-          - 'on'
-        type: entity-filter
+          type: entities
+        filter:
+          include:
+            - entity_id: '*occu*'
+              state: 'on'
+        show_empty: false
+        type: 'custom:auto-entities'
       - cards:
           - columns: 3
             entities:
@@ -475,9 +507,9 @@ views:
                 name: Kleiner Ventilator
               - entity: sensor.large_ventilator_humidity
                 name: Großer Ventilator
-              - entity: sensor.humidity_158d0002320b3f
+              - entity: sensor.0x00158d000245a938_humidity
                 name: Arbeitszimmer
-              - entity: sensor.humidity_158d000245a938
+              - entity: sensor.0x00158d0002320b3f_humidity
                 name: Schlafzimmer
               - entity: sensor.weihnachtslichter_humidity
                 name: Weihnachtslichter
@@ -488,8 +520,8 @@ views:
               - sensor.small_lamp_humidity
               - sensor.ventilator_humidity
               - sensor.large_ventilator_humidity
-              - sensor.humidity_158d0002320b3f
-              - sensor.humidity_158d000245a938
+              - sensor.0x00158d0002320b3f_humidity
+              - sensor.0x00158d000245a938_humidity
               - sensor.weihnachtslichter_humidity
             type: history-graph
         type: vertical-stack
@@ -509,6 +541,13 @@ views:
         show_header_toggle: false
         title: Stromverbrauch
         type: entities
+      - entity: sensor.db_size
+        graph: line
+        hours_to_show: 3600
+        icon: 'mdi:database'
+        theme: Backend-selected
+        type: sensor
+        unit: MB
     icon: 'mdi:gauge'
     path: view_sensors
     title: Sensoren
@@ -524,11 +563,6 @@ views:
           - sensor.dark_sky_summary
           - sensor.dark_sky_wind_speed
         title: Dark Sky
-        type: entities
-      - entities:
-          - sensor.dwdweatherwarnings_advance_warning_level
-          - sensor.dwdweatherwarnings_current_warning_level
-        title: Deutscher Wetterdienst
         type: entities
       - entities:
           - sensor.owm_cloud_coverage
@@ -558,8 +592,6 @@ views:
           - sensor.yr_wind_speed
         title: Wetter YR
         type: entities
-      - entity: weather.yweather
-        type: weather-forecast
       - entity: weather.dark_sky
         type: weather-forecast
       - entity: weather.openweathermap
@@ -602,6 +634,15 @@ views:
         title: Basiert auf Commit
         type: entities
       - entities:
+          - entity: sensor.home_assistant_installed_version
+          - entity: sensor.home_assistant_latest_docker
+          - entity: automation.notify_of_new_homeassistant_version
+          - entity: sensor.unifi_controller_latest_docker
+          - entity: automation.notify_of_new_unifi_controller_version
+        show_header_toggle: false
+        title: Version
+        type: entities
+      - entities:
           - script.travel_time_home_user_one_update
           - sensor.travel_time_home_user_one
           - input_number.travel_time_home_user_one_update_interval
@@ -619,11 +660,6 @@ views:
           - counter.google_maps_api_calls
         title: ''
         type: entities
-      - title: Custom Tracker
-        trackers:
-          - sensor.custom_card_tracker
-          - sensor.custom_component_tracker
-        type: 'custom:tracker-card'
     icon: 'mdi:pipe-disconnected'
     path: view_automation_entities
     title: Automation
@@ -667,6 +703,20 @@ views:
                   - input_number.set_kitchen_thermostat_when_waking_up
                   - input_boolean.set_kitchen_thermostat_when_waking_up
                 type: 'custom:fold-entity-row'
+              - head:
+                  label: Bad
+                  type: section
+                items:
+                  - input_number.set_bath_thermostat_when_waking_up
+                  - input_boolean.set_bath_thermostat_when_waking_up
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Bad Oben
+                  type: section
+                items:
+                  - input_number.set_upper_bath_thermostat_when_waking_up
+                  - input_boolean.set_upper_bath_thermostat_when_waking_up
+                type: 'custom:fold-entity-row'
             type: 'custom:fold-entity-row'
           - head:
               label: Beim Schlafen gehen
@@ -676,8 +726,29 @@ views:
                   label: Wohnzimmer
                   type: section
                 items:
-                  - input_number.set_thermostat_when_sleeping
-                  - input_boolean.set_thermostat_when_sleeping
+                  - input_number.set_livingroom_thermostat_when_sleeping
+                  - input_boolean.set_livingroom_thermostat_when_sleeping
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Küche
+                  type: section
+                items:
+                  - input_number.set_kitchen_thermostat_when_sleeping
+                  - input_boolean.set_kitchen_thermostat_when_sleeping
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Bad
+                  type: section
+                items:
+                  - input_number.set_bath_thermostat_when_sleeping
+                  - input_boolean.set_bath_thermostat_when_sleeping
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Bad Oben
+                  type: section
+                items:
+                  - input_number.set_upper_bath_thermostat_when_sleeping
+                  - input_boolean.set_upper_bath_thermostat_when_sleeping
                 type: 'custom:fold-entity-row'
             type: 'custom:fold-entity-row'
           - head:
@@ -688,8 +759,29 @@ views:
                   label: Wohnzimmer
                   type: section
                 items:
-                  - input_number.set_thermostat_when_leaving
-                  - input_boolean.set_thermostat_when_leaving
+                  - input_number.set_livingroom_thermostat_when_leaving
+                  - input_boolean.set_livingroom_thermostat_when_leaving
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Küche
+                  type: section
+                items:
+                  - input_number.set_kitchen_thermostat_when_leaving
+                  - input_boolean.set_kitchen_thermostat_when_leaving
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Bad
+                  type: section
+                items:
+                  - input_number.set_bath_thermostat_when_leaving
+                  - input_boolean.set_bath_thermostat_when_leaving
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Bad Oben
+                  type: section
+                items:
+                  - input_number.set_upper_bath_thermostat_when_leaving
+                  - input_boolean.set_upper_bath_thermostat_when_leaving
                 type: 'custom:fold-entity-row'
             type: 'custom:fold-entity-row'
           - head:
@@ -700,12 +792,52 @@ views:
                   label: Wohnzimmer
                   type: section
                 items:
-                  - input_number.set_thermostat_when_heading_home
-                  - input_boolean.set_thermostat_when_heading_home
+                  - input_number.set_livingroom_thermostat_when_heading_home
+                  - input_boolean.set_livingroom_thermostat_when_heading_home
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Küche
+                  type: section
+                items:
+                  - input_number.set_kitchen_thermostat_when_heading_home
+                  - input_boolean.set_kitchen_thermostat_when_heading_home
+                type: 'custom:fold-entity-row'
+            type: 'custom:fold-entity-row'
+          - head:
+              label: Beim nach Hause Kommen
+              type: section
+            items:
+              - head:
+                  label: Wohnzimmer
+                  type: section
+                items:
+                  - input_number.set_livingroom_thermostat_when_coming_home
+                  - input_boolean.set_livingroom_thermostat_when_coming_home
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Küche
+                  type: section
+                items:
+                  - input_number.set_kitchen_thermostat_when_coming_home
+                  - input_boolean.set_kitchen_thermostat_when_coming_home
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Bad
+                  type: section
+                items:
+                  - input_number.set_bath_thermostat_when_coming_home
+                  - input_boolean.set_bath_thermostat_when_coming_home
+                type: 'custom:fold-entity-row'
+              - head:
+                  label: Bad Oben
+                  type: section
+                items:
+                  - input_number.set_upper_bath_thermostat_when_coming_home
+                  - input_boolean.set_upper_bath_thermostat_when_coming_home
                 type: 'custom:fold-entity-row'
             type: 'custom:fold-entity-row'
         show_header_toggle: false
-        title: Fußbdodenheizung
+        title: Fußbodenheizung
         type: entities
       - entities:
           - head:
@@ -745,9 +877,6 @@ views:
           - entity: input_boolean.notify_of_action_when_away
           - entity: input_boolean.facebox_notifier
           - entity: input_boolean.facebox_teacher
-          - entity: input_boolean.oben_treppe_motion_trigger
-          - entity: input_boolean.bath_motion_trigger
-          - entity: input_boolean.bedroom_motion_trigger
           - entity: input_boolean.coming_home_yeelight
           - entity: input_boolean.coming_home_alexa
           - entity: input_boolean.heading_home_notifier_user_one
@@ -757,6 +886,7 @@ views:
           - entity: input_boolean.is_user_home_determiner_user_one
           - entity: input_boolean.is_user_home_determiner_user_two
           - entity: input_boolean.leaving_work_notifier_user_one
+          - entity: input_boolean.leaving_work_notifier_user_two
           - entity: input_boolean.leaving_elmo_notifier_user_two
           - entity: input_boolean.plant_watering_notifier
           - entity: input_boolean.power_usage_notification_dishwasher
@@ -770,8 +900,6 @@ views:
           - entity: input_boolean.turn_off_bath_thermostat_when_window_open
           - entity: input_boolean.turn_on_upper_bath_thermostat_when_window_closed
           - entity: input_boolean.turn_off_upper_bath_thermostat_when_window_open
-          - entity: input_boolean.set_thermostat_when_leaving
-          - entity: input_boolean.set_thermostat_when_sleeping
           - entity: input_boolean.travel_time_home_user_one_update
           - entity: input_boolean.travel_time_home_user_two_update
           - entity: input_boolean.increase_counter_on_google_maps_update
@@ -782,19 +910,42 @@ views:
           - entity: input_boolean.sleep_mode_handler
         title: App Switches
         type: entities
-      - type: entities
-        entities:
+      - entities:
           - entity: input_boolean.zigbee_permit_join
           - entity: timer.zigbee_permit_join
           - entity: sensor.zigbee2mqtt_bridge_state
+          - entity: automation.alarm_wenn_zigbee2mqtt_offline
           - entity: switch.zigbee2mqtt_main_join
           - entity: automation.enable_zigbee_joining
           - entity: automation.disable_zigbee_joining
           - entity: automation.disable_zigbee_joining_by_timer
           - entity: input_select.zigbee2mqtt_log_level
           - entity: automation.zigbee2mqtt_log_level
-        title: Zigbee2MQTT
         show_header_toggle: false
+        title: Zigbee2MQTT
+        type: entities
+      - entities:
+          - entity: input_boolean.zigbee_permit_join1
+          - entity: timer.zigbee_permit_join1
+          - entity: sensor.zigbee2mqtt1_bridge_state
+          - entity: automation.alarm_wenn_zigbee2mqtt1_offline
+          - entity: switch.zigbee2mqtt1_main_join
+          - entity: automation.enable_zigbee_joining_1
+          - entity: automation.disable_zigbee_joining_1
+          - entity: automation.disable_zigbee_joining_by_timer_1
+          - entity: input_select.zigbee2mqtt_log_level1
+          - entity: automation.zigbee2mqtt1_log_level
+        show_header_toggle: false
+        title: Zigbee2MQTT1
+        type: entities
+      - entities:
+          - entity: input_boolean.oben_treppe_motion_trigger
+          - entity: input_number.oben_treppe_motion_trigger_delay
+          - entity: input_boolean.bath_motion_trigger
+          - entity: input_boolean.bedroom_motion_trigger
+        show_header_toggle: false
+        title: App Switches Motion Trigger
+        type: entities
     icon: 'mdi:settings'
     path: view_settings
     title: Einstellungen
@@ -1067,3 +1218,29 @@ views:
       - type: 'custom:plan-coordinates'
     icon: 'mdi:home-assistant'
     title: Unten
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.glances_pihole_cpu_load
+          - entity: sensor.glances_pihole_cpu_temp
+          - entity: sensor.glances_pihole_disk_free
+          - entity: sensor.glances_pihole_disk_used
+          - entity: sensor.glances_pihole_disk_used_2
+          - entity: sensor.glances_pihole_ram_used
+          - entity: automation.alarm_wenn_pihole_disk_used_80
+        show_header_toggle: false
+        title: Glances Pihole
+        type: entities
+      - entities:
+          - entity: sensor.glances_zigbee2mqtt_cpu_load
+          - entity: sensor.glances_zigbee2mqtt_cpu_temp
+          - entity: sensor.glances_zigbee2mqtt_disk_free
+          - entity: sensor.glances_zigbee2mqtt_disk_used
+          - entity: sensor.glances_zigbee2mqtt_disk_used_2
+          - entity: sensor.glances_zigbee2mqtt_ram_used
+          - entity: automation.alarm_wenn_zigbee2mqtt_disk_used_80
+        show_header_toggle: false
+        title: Glances Zigbee2MQTT
+        type: entities
+    icon: 'mdi:monitor-dashboard'
+    title: System Monitor

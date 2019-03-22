@@ -38,6 +38,12 @@ warm_upper_bath_before_wakeup:
   min: 18
   max: 30
   step: 0.5
+oben_treppe_motion_trigger_delay:
+  name: Treppen Bewegungsmelder Licht Dauer
+  icon: mdi:alarm
+  min: 10
+  max: 300
+  step: 5
 #################################################################
 ## Appdaemon App Switches - Thermostats - Leaving
 #################################################################

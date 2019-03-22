@@ -222,6 +222,10 @@
         name: Kodi
         description: Gaming PC an, Fernseher an, Receiver auf Game
         display_categories: SCENE_TRIGGER
+      script.watch_netflix:
+        name: Mediaplayer
+        description: Gaming PC an, Fernseher an, Receiver auf Mediaplayer
+        display_categories: SCENE_TRIGGER
       light.bar_table:
         name: Bar
         description: Bartisch

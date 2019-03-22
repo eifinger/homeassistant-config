@@ -17,8 +17,8 @@
     - cloud_cover
     - humidity
     - pressure
-    - temperature_max
-    - temperature_min
+    - temperature_high
+    - temperature_low
 - platform: yr
   forecast: 24
   monitored_conditions:
@@ -463,14 +463,6 @@
       unit_of_measurement: degrees
       entity_id:
        - sun.sun
-#################################################################
-## Face Detection
-#################################################################
-- platform: template
-  sensors:
-    facebox_detection:
-      friendly_name: 'Erkanntes Gesicht'
-      value_template: '{% if states.image_processing.facebox.attributes.faces | length > 0 %}{{ states.image_processing.facebox.attributes.faces[0]["name"]}}{% else %}Kein Gesicht{% endif %}'
 #################################################################
 ## Power Usage
 #################################################################

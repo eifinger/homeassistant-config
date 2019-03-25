@@ -30,6 +30,10 @@
     - service: notify.kevin
       data_template:
         message: "Neue Homeassistant Version verfügbar: {{states.sensor.home_assistant_latest_docker.state}}"
+  condition:
+    condition: template
+    value_template: >
+      {{ trigger.to_state.state not in [trigger.from_state.state, 'unavailable'] }}
 #################################################################
 ## New Unifi Controller Version
 #################################################################
@@ -43,3 +47,7 @@
     - service: notify.kevin
       data_template:
         message: "Neue Unifi Controller Version verfügbar: {{states.sensor.unifi_controller_latest_docker.state}}"
+  condition:
+    condition: template
+    value_template: >
+      {{ trigger.to_state.state not in [trigger.from_state.state, 'unavailable'] }}

@@ -121,6 +121,26 @@ automation:
   action:
     entity_id: light.bar_table
     service: light.toggle
+- alias: Xiaomi Button Bad
+  trigger:
+    platform: mqtt
+    topic: 'zigbee2mqtt/0x00158d00012db9e5'
+  condition:
+    condition: template
+    value_template: '{{ "single" == trigger.payload_json.click }}'
+  action:
+    entity_id: light.lower_bathroom_yeelight
+    service: light.toggle  
+- alias: Xiaomi Button Schlafzimmer
+  trigger:
+    platform: mqtt
+    topic: 'zigbee2mqtt/0x00158d0001b12a12'
+  condition:
+    condition: template
+    value_template: '{{ "single" == trigger.payload_json.click }}'
+  action:
+    entity_id: light.bedroom_yeelight
+    service: light.toggle  
 #################################################################
 ## Map
 #################################################################  

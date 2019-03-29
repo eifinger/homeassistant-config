@@ -109,6 +109,19 @@ automation:
         title: 'Zigbee2Mqtt offline'
         message: "Zigbee2Mqtt ist offline"
 #################################################################
+## Button Presses
+#################################################################
+- alias: Xiaomi Button Bar
+  trigger:
+    platform: mqtt
+    topic: 'zigbee2mqtt/0x00158d00021329bc'
+  condition:
+    condition: template
+    value_template: '{{ "single" == trigger.payload_json.click }}'
+  action:
+    entity_id: light.bar_table
+    service: light.toggle
+#################################################################
 ## Map
 #################################################################  
 - id: update_zigbee_networkmap

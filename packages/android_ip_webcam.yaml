@@ -1,0 +1,35 @@
+android_ip_webcam:
+  - host: !secret android_ip_webcam_door_ip
+    port: 8080
+    name: android_ip_webcam_door
+    username: !secret android_ip_webcam_door_username
+    password: !secret android_ip_webcam_door_password
+    sensors:
+      - battery_level
+      - battery_temp
+      - battery_voltage
+      - light
+      - motion
+      - sound
+    switches:
+      - exposure_lock
+      - ffc
+      - focus
+      - night_vision
+      - overlay
+      - torch
+      - whitebalance_lock
+      - video_recording
+
+automation:
+  - id: alert_when_android_ip_webcam_battery_lt_80
+    alias: 'Alarm wenn Tür Webcam Batterie < 20%'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.android_ip_webcam_door_battery_level
+        below: 20
+    action:
+      - service: notify.kevin
+        data:
+          message: "Tür Webcam Batterie < 20%"

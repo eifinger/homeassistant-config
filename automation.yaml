@@ -51,3 +51,31 @@
     condition: template
     value_template: >
       {{ trigger.to_state.state not in [trigger.from_state.state, 'unavailable'] }}
+#################################################################
+## Turn on/off Alexa Notifications on Sleepmode
+#################################################################
+- id: turn_off_alexa_notifications_when_sleeping
+  alias: 'Alexa Ansagen aus wenn wir schlafen'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.sleepmode
+      from: "off"
+      to: "on"
+  action:
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.notifier_alexa
+- id: turn_on_alexa_notifications_when_sleeping
+  alias: 'Alexa Ansagen an wenn wir aufstehen'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.sleepmode
+      from: "on"
+      to: "off"
+  action:
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.notifier_alexa
+
+
+      

@@ -1,21 +1,3 @@
-- platform: yeelight
-  devices:
-    !secret bedroom_yeelight_ip:
-      name: Bedroom_Yeelight
-      transition: 1000
-    !secret stairs_lower_yeelight_ip:
-      name: stairs_lower_yeelight
-      transition: 1000
-    !secret reading_lamp_yeelight_ip:
-      name: reading_lamp_yeelight
-      transition: 1000
-    !secret upper_stairs_yeelight_ip:
-      name: upper_stairs_yeelight
-    !secret livingroom_yeelight_ip:
-      name: livingroom_yeelight
-    !secret lower_bathroom_yeelight_ip:
-      name: lower_bathroom_yeelight
-
 - platform: mqtt
   name: bar_table
   state_topic: "stat/bar_light/RESULT"

@@ -5,7 +5,7 @@
 LAYOUT_LEFT_RIGHT
 
 package "HP Microserver Gen10" {
-    Container(homeassistant, "homeassistant/home-assistant:0.90.2", "Homeassistant")
+    Container(homeassistant, "homeassistant/home-assistant:0.91.3", "Homeassistant")
     Container(find3, "https://github.com/schollz/find3", "FIND3")
     Container(mqtt, "eclipse-mosquitto:latest", "Mosquitto")
     Container(facerec_service, "eifinger/face_recognition:latest", "Facerecognition")
@@ -28,7 +28,7 @@ System(xiaomiVacuum, "Xiaomi Vacuum Gen1")
 System(androidWebcam, "2x Android Webcam")
 System(yeelight, "7x Yeelight")
 System(denon, "Denon AVR")
-System(thermostat, "3x Thermostat")
+System(thermostat, "4x Thermostat")
 
 package "8x ESP8266" {
     Container(tasmota, "https://github.com/arendst/Sonoff-Tasmota", "Tasmota")

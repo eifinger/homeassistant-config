@@ -153,3 +153,4 @@ counter: !include counter.yaml
 scene: !include scenes.yaml
 timer: !include timer.yaml
 tplink: !include tplink.yaml
+yeelight: !include yeelight.yaml

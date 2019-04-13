@@ -8,7 +8,7 @@ resources:
   - type: js
     url: /local/time-input-row.js?v=1
   - type: js
-    url: /local/fold-entity-row.js?v=2
+    url: /local/fold-entity-row.js?v=3
   - type: js
     url: /local/state-switch.js?v=2
   - type: js
@@ -171,7 +171,7 @@ views:
           type: entities
         filter:
           include:
-            - entity_id: '*contact'
+            - entity_id: '*contact*'
               state: 'on'
         show_empty: false
         type: 'custom:auto-entities'
@@ -324,7 +324,7 @@ views:
           - input_number.leave_time_offset_user_two
           - input_select.next_appointment_travel_mode_user_two
         show_header_toggle: false
-        title: Nächster Termin User Two
+        title: Nächster Termin Sina
         type: entities
       - entities:
           - sensor.travel_time_next_appointment_location_car_user_two
@@ -340,7 +340,7 @@ views:
         type: entities
     icon: 'mdi:calendar'
     path: view_next_appointment_user_two
-    title: Nächster Termin User Two
+    title: Nächster Termin Sina
   - badges: []
     cards:
       - entities:
@@ -458,7 +458,7 @@ views:
                 name: Kleiner Ventilator
               - entity: sensor.large_ventilator_temperature
                 name: Großer Ventilator
-              - entity: sensor.0x00158d0002320b3f_temperature
+              - entity: sensor.0x00158d000245a938_temperature
                 name: Arbeitszimmer
               - entity: sensor.0x00158d0002320b3f_temperature
                 name: Schlafzimmer
@@ -471,7 +471,7 @@ views:
               - sensor.small_lamp_temperature
               - sensor.ventilator_temperature
               - sensor.large_ventilator_temperature
-              - sensor.temperature_158d0002320b3f
+              - sensor.0x00158d000245a938_temperature
               - sensor.0x00158d0002320b3f_temperature
               - sensor.weihnachtslichter_temperature
             type: history-graph
@@ -482,7 +482,7 @@ views:
           type: entities
         filter:
           include:
-            - entity_id: '*contact'
+            - entity_id: '*contact*'
               state: 'on'
         show_empty: false
         type: 'custom:auto-entities'
@@ -925,20 +925,6 @@ views:
         title: Zigbee2MQTT
         type: entities
       - entities:
-          - entity: input_boolean.zigbee_permit_join1
-          - entity: timer.zigbee_permit_join1
-          - entity: sensor.zigbee2mqtt1_bridge_state
-          - entity: automation.alarm_wenn_zigbee2mqtt1_offline
-          - entity: switch.zigbee2mqtt1_main_join
-          - entity: automation.enable_zigbee_joining_1
-          - entity: automation.disable_zigbee_joining_1
-          - entity: automation.disable_zigbee_joining_by_timer_1
-          - entity: input_select.zigbee2mqtt_log_level1
-          - entity: automation.zigbee2mqtt1_log_level
-        show_header_toggle: false
-        title: Zigbee2MQTT1
-        type: entities
-      - entities:
           - entity: input_boolean.oben_treppe_motion_trigger
           - entity: input_number.oben_treppe_motion_trigger_delay
           - entity: input_boolean.bath_motion_trigger
@@ -1241,6 +1227,38 @@ views:
           - entity: automation.alarm_wenn_zigbee2mqtt_disk_used_80
         show_header_toggle: false
         title: Glances Zigbee2MQTT
+        type: entities
+      - type: entities
+        entities:
+          - entity: sensor.pi_hole_dns_queries_today
+          - entity: sensor.pi_hole_ads_blocked_today
+          - entity: sensor.pi_hole_ads_percentage_blocked_today
+        title: PiHole Stats
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: sensor.pi_hole_dns_queries_today_2
+          - entity: sensor.pi_hole_ads_blocked_today_2
+          - entity: sensor.pi_hole_ads_percentage_blocked_today_2
+        title: PiHole Stats Backup
+        show_header_toggle: false
+      - entities:
+          - icon: 'mdi:car-esp'
+            name: Tasmoadmin
+            type: weblink
+            url: ''
+          - icon: 'mdi:language-python'
+            name: Hass-Data-Detective
+            type: weblink
+            url: ''
+          - icon: 'mdi:grafana'
+            name: Grafana
+            type: weblink
+            url: ''
+          - icon: 'mdi:splunk'
+            name: Splunk
+            type: weblink
+            url: ''
         type: entities
     icon: 'mdi:monitor-dashboard'
     title: System Monitor

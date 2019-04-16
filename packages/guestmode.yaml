@@ -2,16 +2,24 @@ input_boolean:
   guestmode:
     name: Gäste Modus
     icon: mdi:home-account
+  guestmode_livingroom:
+    name: Gäste Modus Wohnzimmer
+    icon: mdi:home-account
 
 alexa:
   smart_home:
     filter:
       include_entities:
         - input_boolean.guestmode
+        - input_boolean.guestmode_livingroom
     entity_config:
       input_boolean.guestmode:
         name: Gäste Modus
         description: Der Gästemodus
+        display_categories: SWITCH
+      input_boolean.guestmode_livingroom:
+        name: Gäste Modus Wohnzimmer
+        description: Der Gästemodus wenn Gäste im Wohnzimmer schlafen
         display_categories: SWITCH
 
 automation:
@@ -34,6 +42,33 @@ automation:
     trigger:
       - platform: state
         entity_id: input_boolean.guestmode
+        from: "on"
+        to: "off"
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.warm_upper_bath_before_wakeup
+      - service: homeassistant.turn_off
+        entity_id: switch.bad_oben_thermostat_remote_lock
+  
+  - id: on_guestmode_livingroom_on
+    alias: On Guestmode Livingroom on
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.guestmode_livingroom
+        from: "off"
+        to: "on"
+    action:
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.warm_upper_bath_before_wakeup
+      - service: homeassistant.turn_on
+        entity_id: switch.bad_oben_thermostat_remote_lock
+  - id: on_guestmode_livingroom_off
+    alias: On Guestmode Livingroom off
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.guestmode_livingroom
         from: "on"
         to: "off"
     action:

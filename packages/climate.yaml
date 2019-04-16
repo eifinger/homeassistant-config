@@ -43,13 +43,13 @@ switch:
           data:
             entity_id: climate.bad_oben_thermostat
             remotelock: 0
-    floor_heating:
-            friendly_name: "Fußbodenheizung"
-            value_template: "{{float(states.climate.wohnzimmer_thermostat.attributes.temperature) > 18 and float(states.climate.kuche_thermostat.attributes.temperature) > 18}}"
-            turn_on:
-              - service: script.livingroom_wakeup
-            turn_off:
-              - service: script.livingroom_sleep
+      floor_heating:
+              friendly_name: "Fußbodenheizung"
+              value_template: "{{float(states.climate.wohnzimmer_thermostat.attributes.temperature) > 18 and float(states.climate.kuche_thermostat.attributes.temperature) > 18}}"
+              turn_on:
+                - service: script.livingroom_wakeup
+              turn_off:
+                - service: script.livingroom_sleep
       
 
 sensor:

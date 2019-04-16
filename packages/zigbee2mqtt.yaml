@@ -106,8 +106,20 @@ automation:
   action:
     - service: notify.kevin
       data:
-        title: 'Zigbee2Mqtt offline'
         message: "Zigbee2Mqtt ist offline"
+
+- id: alert_zigbee_bridge_online_again
+  alias: 'Alarm wenn Zigbee2Mqtt wieder online'
+  initial_state: 'on'
+  trigger:
+    - entity_id: sensor.zigbee2mqtt_bridge_state
+      platform: state
+      from: 'offline'
+      to: 'online'
+  action:
+    - service: notify.kevin
+      data:
+        message: "Zigbee2Mqtt ist wieder online"
 #################################################################
 ## Button Presses
 #################################################################

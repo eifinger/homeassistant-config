@@ -195,4 +195,5 @@
           state: 'on'
         - service: switch.turn_off
           data:
-            entity_id: switch.broadlink_bedroom_receiver         
+            entity_id: switch.broadlink_bedroom_receiver    
+          

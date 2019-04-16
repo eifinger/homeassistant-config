@@ -213,3 +213,20 @@ zone.work:
   friendly_name: "Arbeit"
 zone.work_user_two:
   friendly_name: !secret friendly_name_work_user_two
+#################################################################
+## Zone
+#################################################################
+binary_sensor.0x00158d0001bb4dc0_contact:
+  device_class: window
+binary_sensor.0x00158d000205b82e_contact:
+  device_class: window
+binary_sensor.0x00158d000232c3d1_contact_2:
+  device_class: window
+binary_sensor.0x00158d00020455bf_contact:
+  device_class: window
+binary_sensor.0x00158d0002048951_contact:
+  device_class: window
+binary_sensor.0x00158d00020498b6_contact:
+  device_class: window
+binary_sensor.0x00158d000204ba26_contact:
+  device_class: window

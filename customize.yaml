@@ -4,130 +4,32 @@
 sensor.travel_time_work_from_home_waze_realtime:
   icon: mdi:car
   friendly_name: "Zu Hause -> SVA"
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-  templates:
-    icon_color: >
-      if (attributes.duration_in_traffic > entities['sensor.travel_time_work_from_home_waze'].state * 1.2 ) {
-        return "red";
-      } else if (attributes.duration_in_traffic > entities['sensor.travel_time_work_from_home_waze'].state ) {
-        return "orange";
-      } else {
-        return "green";
-      }
 sensor.travel_time_home_from_work_waze_realtime:
   icon: mdi:car
   friendly_name: "SVA -> Zu Hause"
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-  templates:
-    icon_color: >
-      if (attributes.duration_in_traffic > entities['sensor.travel_time_home_from_work_waze'].state * 1.2 ) {
-        return "red";
-      } else if (attributes.duration_in_traffic > entities['sensor.travel_time_home_from_work_waze'].state ) {
-        return "orange";
-      } else {
-        return "green";
-      }
-  
 sensor.travel_time_elmo_from_home_waze_realtime:
   icon: mdi:car
   friendly_name: "Zu Hause -> Elmo"
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-  templates:
-    icon_color: >
-      if (attributes.duration_in_traffic > entities['sensor.travel_time_elmo_from_home_waze'].state * 1.2 ) {
-        return "red";
-      } else if (attributes.duration_in_traffic > entities['sensor.travel_time_elmo_from_home_waze'].state ) {
-        return "orange";
-      } else {
-        return "green";
-      }
 sensor.travel_time_next_appointment_location_car:
   icon: mdi:car
   friendly_name: "Kevin -> Nächster Termin"
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-  templates:
-    icon_color: >
-      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
-        return "red";
-      } else if (attributes.duration_in_traffic > attributes.duration ) {
-        return "orange";
-      } else {
-       return "green";
-      }
 sensor.travel_time_next_appointment_location_car_user_two:
   icon: mdi:car
   friendly_name: "Sina -> Nächster Termin"
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-  templates:
-    icon_color: >
-      if (attributes.duration_in_traffic > attributes.duration * 1.2 ) {
-        return "red";
-      } else if (attributes.duration_in_traffic > attributes.duration ) {
-        return "orange";
-      } else {
-        return "green";
-      }
 input_boolean.travel_time_work_from_home:
   friendly_name: "Zu Hause -> SVA Benachrichtigung"
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 input_boolean.travel_time_home_from_work:
   friendly_name: "SVA -> Zu Hause Benachrichtigung"
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 input_boolean.travel_time_elmo_from_home:
   friendly_name: "Zu Hause -> Elmo Benachrichtigung"
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 input_boolean.announce_time_to_leave:
   friendly_name: "Kevin -> Nächster Termin Benachrichtigung"
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-input_select.next_appointment_travel_mode:
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-  templates:
-    icon: >
-      if ( state === 'Auto' ) {
-        return "mdi:car";
-      } else if ( state === 'Fahrrad' ) {
-        return "mdi:bike"
-      } else if ( state === 'Öffis' ) {
-        return "mdi:bus"
-      } else if ( state === 'Laufen' ) {
-        return "mdi:walk"
-      }
 sensor.cal_next_appointment_title:
   icon: mdi:calendar
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 input_boolean.announce_time_to_leave_user_two:
   friendly_name: "Sina -> Nächster Termin Benachrichtigung"
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-input_select.next_appointment_travel_mode_user_two:
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-  templates:
-    icon: >
-      if ( state === 'Auto' ) {
-        return "mdi:car";
-      } else if ( state === 'Fahrrad' ) {
-        return "mdi:bike"
-      } else if ( state === 'Öffis' ) {
-        return "mdi:bus"
-      } else if ( state === 'Laufen' ) {
-        return "mdi:walk"
-      }
 sensor.cal_next_appointment_title_user_two:
   icon: mdi:calendar
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 #################################################################
 ## Visibility
 #################################################################
@@ -143,10 +45,7 @@ proximity.home_user_one:
   friendly_name: "Zu Hause"
 input_boolean.heading_home_notifier_user_one:
   friendly_name: Benachrichtigung wenn Kevin in Richtung nach Hause fährt
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 sensor.tplink_tv_power_usage:
-  show_last_changed: true
   icon: mdi:television
 sensor.tplink_tv_power_usage_today:
   icon: mdi:television
@@ -154,37 +53,28 @@ sensor.tplink_tv_power_usage_total:
   icon: mdi:television
 sensor.washingmachine_power_usage:
   icon: mdi:washing-machine
-  show_last_changed: true
 sensor.washingmachine_power_usage_total:
   icon: mdi:washing-machine
 sensor.washingmachine_power_usage_today:
   icon: mdi:washing-machine
 sensor.dishwasher_power_usage:
   icon: mdi:gauge
-  show_last_changed: true
 sensor.dishwasher_power_usage_today:
   icon: mdi:gauge
 sensor.dishwasher_power_usage_total:
   icon: mdi:gauge
 sensor.teckin_power_usage:
   friendly_name: "Schlafzimmerreceiver Verbrauch"
-  show_last_changed: true
 sensor.teckin_power_usage_today:
   friendly_name: "Schlafzimmerreceiver Heute"
 sensor.teckin_power_usage_total:
   friendly_name: "Schlafzimmerreceiver Total"
 sensor.gas_station_star:
   icon: mdi:gas-station
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 sensor.gas_station_metro:
   icon: mdi:gas-station
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 sensor.gas_station_globus:
   icon: mdi:gas-station
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 sensor.large_lamp_humidity:
   icon: mdi:water-percent
 sensor.small_lamp_humidity:
@@ -217,31 +107,12 @@ sensor.cal_next_appointment_start_time:
   icon: mdi:clock
 sensor.calc_leave_time:
   icon: mdi:clock
-  templates:
-    friendly_name: >
-      if ( entities['input_select.next_appointment_travel_mode'].state === 'Laufen' ) {
-        return "Loslaufen";
-      } else {
-        return "Losfahren";
-      } 
 input_number.leave_time_offset:
   icon: mdi:clock
 sensor.facebox_detection:
   icon: mdi:account
 sensor.travel_time_next_appointment_location:
   icon: mdi:clock
-input_boolean.is_home:
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-input_boolean.user_one_home:
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-input_boolean.user_two_home:
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-input_boolean.sleepmode:
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 script.learn_faces:
   action_name: Learn
   friendly_name: Lerne Gesichter
@@ -269,74 +140,12 @@ sensor.pollen_101_birke_tomorrow:
   icon:  mdi:tree
 sensor.pollen_101_birke_dayaftertomorrow:
   icon:  mdi:tree
-binary_sensor.workday_today:
-  friendly_name: Ist Heute ein Arbeitstag?
-  templates:
-    icon: >
-      if ( state === 'on' ) {
-        return "mdi:briefcase";
-      } else if ( state === 'off' ) {
-        return "mdi:beach";
-      } 
-    state: >
-      if ( state === 'on' ) {
-        return "Ja";
-      } else if ( state === 'off' ) {
-        return "Nein";
-      } 
-binary_sensor.workday_tomorrow:
-  friendly_name: Ist Morgen ein Arbeitstag? 
-  templates:
-    icon: >
-      if ( state === 'on' ) {
-        return "mdi:briefcase";
-      } else if ( state === 'off' ) {
-        return "mdi:beach";
-      } 
-    state: >
-      if ( state === 'on' ) {
-        return "Ja";
-      } else if ( state === 'off' ) {
-        return "Nein";
-      } 
-input_select.next_appointment_travel_mode_standard:
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-  templates:
-    icon: >
-      if ( state === 'Auto' ) {
-        return "mdi:car";
-      } else if ( state === 'Fahrrad' ) {
-        return "mdi:bike"
-      } else if ( state === 'Öffis' ) {
-        return "mdi:bus"
-      } else if ( state === 'Laufen' ) {
-        return "mdi:walk"
-      }
-input_select.next_appointment_travel_mode_standard_user_two:
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
-  templates:
-    icon: >
-      if ( state === 'Auto' ) {
-        return "mdi:car";
-      } else if ( state === 'Fahrrad' ) {
-        return "mdi:bike"
-      } else if ( state === 'Öffis' ) {
-        return "mdi:bus"
-      } else if ( state === 'Laufen' ) {
-        return "mdi:walk"
-      }
 switch.large_ventilator:
   friendly_name: "Großer Ventilator"
   icon: mdi:fan
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 switch.ventilator:
   friendly_name: "Ventilator"
   icon: mdi:fan
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 switch.markise:
   icon: mdi:garage
 switch.goldie_clean:
@@ -349,80 +158,41 @@ group.eingang:
   friendly_name: "Eingang"
 light.treppe_oben:
   friendly_name: "Treppe Oben"
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: break-slider
-  show_last_changed: true
 switch.snowboard:
   friendly_name: "Snowboard"
   icon: mdi:lightbulb
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 switch.small_lamp:
   friendly_name: "Kleine Lampe"
   icon: mdi:lightbulb
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 switch.large_lamp:
   friendly_name: "Große Lampe"
   icon: mdi:lightbulb
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 switch.lobby:
   friendly_name: "Flur"
   icon: mdi:lightbulb
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 switch.studyroom:
   friendly_name: "Arbeitszimmer"
   icon: mdi:lightbulb
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 switch.weihnachtslichter:
   icon: mdi:pine-tree
 light.bar_table:
   friendly_name: "Bar"
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: break-slider
-  show_last_changed: true
 light.bedroom_yeelight:
   friendly_name: "Schlafzimmer"
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: break-slider
-  show_last_changed: true
 light.stairs_lower_yeelight:
   friendly_name: "Treppe Unten"
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: break-slider
-  show_last_changed: true
 light.reading_lamp_yeelight:
   friendly_name: "Leselampe"
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: break-slider
-  show_last_changed: true
 light.upper_stairs_yeelight:
   friendly_name: "Treppe Oben"
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: break-slider
-  show_last_changed: true
 light.livingroom_yeelight:
   friendly_name: "Deckenlampe"
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: break-slider
-  show_last_changed: true
 light.lower_bathroom_yeelight:
   friendly_name: "Bad"
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: break-slider
-  show_last_changed: true
 switch.bedroom_receiver:
   icon: mdi:speaker
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: break-slider
-  show_last_changed: true
 switch.start_vive_pc:
   icon: mdi:google-cardboard
-  custom_ui_state_card: state-card-custom-ui
-  show_last_changed: true
 script.goldie_clean:
   friendly_name: "Aktiviere und starte Goldie"
 sensor.home_assistant_latest_docker:
@@ -443,38 +213,3 @@ zone.work:
   friendly_name: "Arbeit"
 zone.work_user_two:
   friendly_name: !secret friendly_name_work_user_two
-#################################################################
-## Thermostat
-#################################################################
-climate.bad_thermostat:
-  templates:
-    icon_color: >
-      if (attributes.heating_active == 1 ) {
-        return "#FDD835";
-      } else {
-        return "#44739e";
-      }
-climate.bad_oben_thermostat:
-  templates:
-    icon_color: >
-      if (attributes.heating_active == 1 ) {
-        return "#FDD835";
-      } else {
-        return "#44739e";
-      }
-climate.kuche_thermostat:
-  templates:
-    icon_color: >
-      if (attributes.heating_active == 1 ) {
-        return "#FDD835";
-      } else {
-        return "#44739e";
-      }
-climate.wohnzimmer_thermostat:
-  templates:
-    icon_color: >
-      if (attributes.heating_active == 1 ) {
-        return "#FDD835";
-      } else {
-        return "#44739e";
-      }

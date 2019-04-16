@@ -14,11 +14,6 @@ homeassistant:
    - type: homeassistant
   packages: !include_dir_named packages
 
-# CustomUI
-customizer:
-  custom_ui: local
-
-
 frontend:
   themes: !include themes.yaml
 updater:

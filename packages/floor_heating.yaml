@@ -22,31 +22,31 @@ switch:
 
 script:
   livingroom_wakeup:
-  sequence:
-    - service: climate.turn_on
-      entity_id: climate.wohnzimmer_thermostat
-    - service: climate.set_temperature
-      entity_id: climate.wohnzimmer_thermostat
-      data:
-        temperature: 22
-    - service: climate.turn_on
-      entity_id: climate.kuche_thermostat
-    - service: climate.set_temperature
-      entity_id: climate.kuche_thermostat
-      data:
-        temperature: 23
+    sequence:
+      - service: climate.turn_on
+        entity_id: climate.wohnzimmer_thermostat
+      - service: climate.set_temperature
+        entity_id: climate.wohnzimmer_thermostat
+        data:
+          temperature: 22
+      - service: climate.turn_on
+        entity_id: climate.kuche_thermostat
+      - service: climate.set_temperature
+        entity_id: climate.kuche_thermostat
+        data:
+          temperature: 23
 
-livingroom_sleep:
-  sequence:
-    - service: climate.turn_on
-      entity_id: climate.wohnzimmer_thermostat
-    - service: climate.set_temperature
-      entity_id: climate.wohnzimmer_thermostat
-      data:
-        temperature: 18
-    - service: climate.turn_on
-      entity_id: climate.kuche_thermostat
-    - service: climate.set_temperature
-      entity_id: climate.kuche_thermostat
-      data:
-        temperature: 18
+  livingroom_sleep:
+    sequence:
+      - service: climate.turn_on
+        entity_id: climate.wohnzimmer_thermostat
+      - service: climate.set_temperature
+        entity_id: climate.wohnzimmer_thermostat
+        data:
+          temperature: 18
+      - service: climate.turn_on
+        entity_id: climate.kuche_thermostat
+      - service: climate.set_temperature
+        entity_id: climate.kuche_thermostat
+        data:
+          temperature: 18

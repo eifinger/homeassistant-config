@@ -201,6 +201,8 @@ sensor.unifi_controller_latest_docker:
   icon: mdi:docker
 sensor.home_assistant_installed_version:
   icon: mdi:home-assistant
+sensor.last_alexa:
+  icon: mdi:amazon-alexa
 #################################################################
 ## Android IP Webcam
 #################################################################

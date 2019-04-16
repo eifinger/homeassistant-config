@@ -46,7 +46,6 @@
         - group.stair_lights
         - input_boolean.turn_fan_on_when_hot
         - input_boolean.sleepmode
-        - vacuum.xiaomi_vacuum_cleaner
         - scene.gemutliches_wohnzimmer
         - scene.alles_grun
         - scene.alles_rot
@@ -265,10 +264,6 @@
       input_boolean.sleepmode:
         name: Schlafmodus
         description: Schalte Schlafmodus an/aus
-        display_categories: SWITCH
-      vacuum.xiaomi_vacuum_cleaner:
-        name: Snowie
-        description: Schalte Snowie an/aus
         display_categories: SWITCH
       scene.gemutliches_wohnzimmer:
         name: Gemütlich

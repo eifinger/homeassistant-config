@@ -18,7 +18,7 @@ switch:
             turn_on:
               - service: script.livingroom_wakeup
             turn_off:
-              - service: script.livingroom_wakeup
+              - service: script.livingroom_sleep
 
 script:
   livingroom_wakeup:

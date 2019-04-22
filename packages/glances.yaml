@@ -25,6 +25,17 @@ sensor:
       - 'cpu_temp'
       - 'processor_load'
       - 'memory_use'
+  - platform: glances
+    host: glances
+    name: glances_host
+    version: 3
+    resources:
+      - 'disk_use'
+      - 'disk_use_percent'
+      - 'disk_free'
+      - 'cpu_temp'
+      - 'processor_load'
+      - 'memory_use'
 
 automation:
   - id: alert_when_glances_pihole_disk_used_gt_80

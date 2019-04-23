@@ -26,7 +26,7 @@ sensor:
       - 'processor_load'
       - 'memory_use'
   - platform: glances
-    host: glances
+    host: localhost
     name: glances_host
     version: 3
     resources:

@@ -29,6 +29,8 @@ sensor:
     host: !secret glances_host
     name: glances_host
     version: 3
+    username: !secret glances_host_username
+    password: !secret glances_host_password
     resources:
       - 'disk_use'
       - 'disk_use_percent'

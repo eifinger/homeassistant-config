@@ -47,6 +47,8 @@
 #################################################################
   persistence_plantwateringnotifier_reminder_acknowledged:
     name: Plant Watering Notifier got Acknowledged
+  persistence_reminder_plantwatering_new_reminder_acknowledged:
+    name: Plant Watering Notifier new got Acknowledged
 #################################################################
 ## Appdaemon App switches
 #################################################################
@@ -85,6 +87,8 @@
   leaving_elmo_notifier_user_two:
     icon: mdi:airplane-takeoff
   plant_watering_notifier:
+    icon: mdi:leaf
+  plant_watering_reminder_new:
     icon: mdi:leaf
   power_usage_notification_dishwasher:
     icon: mdi:gauge

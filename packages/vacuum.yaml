@@ -20,13 +20,14 @@ switch:
 - platform: template
   switches:
     xiaomi_vacuum_cleaner:
-      value_template: "{{ is_state( 'vacuum.xiaomi_vacuum_cleaner', 'on') }}"
+      value_template: "{{ is_state( 'vacuum.xiaomi_vacuum_cleaner', 'cleaning') }}"
       turn_on:
         service: vacuum.start
         entity_id: vacuum.xiaomi_vacuum_cleaner
       turn_off:
         service: vacuum.return_to_base
         entity_id: vacuum.xiaomi_vacuum_cleaner
+      icon_template: mdi:robot-vaccum
 
 alexa:
   smart_home:

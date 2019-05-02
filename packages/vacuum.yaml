@@ -27,7 +27,7 @@ switch:
       turn_off:
         service: vacuum.return_to_base
         entity_id: vacuum.xiaomi_vacuum_cleaner
-      icon_template: mdi:robot-vaccum
+      icon_template: mdi:robot-vacuum
 
 alexa:
   smart_home:

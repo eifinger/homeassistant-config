@@ -71,7 +71,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: numeric_state
-        entity_id: sensor.glances_pihole_disk_used_2
+        entity_id: sensor.glances_pihole_disk_used
         above: 80
     action:
       - service: notify.kevin
@@ -79,13 +79,73 @@ automation:
           message: "PiHole Disk Usage über 80%"
 
   - id: alert_when_glances_zigbee2mqtt_disk_used_gt_80
-    alias: 'Alarm wenn ZIgbee2MQTT Disk Used > 80%'
+    alias: 'Alarm wenn Zigbee2MQTT Disk Used > 80%'
     initial_state: 'on'
     trigger:
       - platform: numeric_state
-        entity_id: sensor.glances_zigbee2mqtt_disk_used_2
+        entity_id: sensor.glances_zigbee2mqtt_disk_used
         above: 80
     action:
       - service: notify.kevin
         data:
-          message: "ZIgbee2MQTT Disk Usage über 80%"
+          message: "Zigbee2MQTT Disk Usage über 80%"
+
+  - id: alert_when_glances_host_disk_used_gt_80
+    alias: 'Alarm wenn Host Disk Used > 80%'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.sensor.glances_host_disk_used
+        above: 80
+    action:
+      - service: notify.kevin
+        data:
+          message: "Host Disk Usage über 80%"
+
+  - id: alert_when_host_disk1_used_gt_80
+    alias: 'Alarm wenn Host Disk1 Used > 80%'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: !secret host_disk1_usage_sensor
+        above: 80
+    action:
+      - service: notify.kevin
+        data:
+          message: "Host Disk1 Usage über 80%"
+
+  - id: alert_when_host_disk2_used_gt_80
+    alias: 'Alarm wenn Host Disk2 Used > 80%'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: !secret host_disk2_usage_sensor
+        above: 80
+    action:
+      - service: notify.kevin
+        data:
+          message: "Host Disk2 Usage über 80%"
+
+  - id: alert_when_host_disk3_used_gt_80
+    alias: 'Alarm wenn Host Disk3 Used > 80%'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: !secret host_disk3_usage_sensor
+        above: 80
+    action:
+      - service: notify.kevin
+        data:
+          message: "Host Disk3 Usage über 80%"
+
+  - id: alert_when_host_disk4_used_gt_80
+    alias: 'Alarm wenn Host Disk4 Used > 80%'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: !secret host_disk4_usage_sensor
+        above: 80
+    action:
+      - service: notify.kevin
+        data:
+          message: "Host Disk4 Usage über 80%"

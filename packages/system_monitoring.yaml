@@ -95,7 +95,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: numeric_state
-        entity_id: sensor.sensor.glances_host_disk_used
+        entity_id: sensor.glances_host_disk_used
         above: 80
     action:
       - service: notify.kevin

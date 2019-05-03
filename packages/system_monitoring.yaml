@@ -38,6 +38,32 @@ sensor:
       - 'cpu_temp'
       - 'processor_load'
       - 'memory_use'
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: !secret host_path_disk1
+      - type: disk_use
+        arg: !secret host_path_disk1
+      - type: disk_free
+        arg: !secret host_path_disk1
+      - type: disk_use_percent
+        arg: !secret host_path_disk2
+      - type: disk_use
+        arg: !secret host_path_disk2
+      - type: disk_free
+        arg: !secret host_path_disk2
+      - type: disk_use_percent
+        arg: !secret host_path_disk3
+      - type: disk_use
+        arg: !secret host_path_disk3
+      - type: disk_free
+        arg: !secret host_path_disk3
+      - type: disk_use_percent
+        arg: !secret host_path_disk4
+      - type: disk_use
+        arg: !secret host_path_disk4
+      - type: disk_free
+        arg: !secret host_path_disk4
 
 automation:
   - id: alert_when_glances_pihole_disk_used_gt_80

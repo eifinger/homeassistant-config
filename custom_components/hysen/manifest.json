@@ -1,0 +1,10 @@
+{
+  "domain": "hysen",
+  "name": "Hysen",
+  "documentation": "",
+  "requirements": [],
+  "dependencies": [
+    "http"
+  ],
+  "codeowners": []
+}

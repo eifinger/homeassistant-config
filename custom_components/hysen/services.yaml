@@ -1,0 +1,123 @@
+# Describes the format for available hysen climate services
+
+hysen_set_remotelock:
+  description: Set Hysen Heating device key access.
+  fields:
+    entity_id:
+      description: Name(s) of entities to change.
+      example: 'climate.bathroom'
+    remotelock:
+      description: Set keys to locked/unlocked.
+      example: '0 = unlocked, 1 = locked'
+
+hysen_set_advanced:
+  description: Set Hysen advanced settings.
+  fields:
+    entity_id:
+      description: Name(s) of entities to change.
+      example: 'climate.bathroom'
+    loop_mode:
+      description: Set scedule weekly loop mode 12345,67 = 0   123456,7 = 1  1234567 = 2.
+      example: '0 = 12345,67'
+    sensor_mode:
+      description: Set Sensor mode sensor = 0 for internal sensor, 1 for external sensor, 2 for internal control temperature, external limit temperature. Factory default: 0
+      example: '0 = internal sensor'
+    min_temp:
+      description: Set min_temp Factory default: 5C
+      example: '5'
+    max_temp:
+      description: Set min_temp Factory default: 35C
+      example: '35'
+    roomtemp_offset:
+      description: Actual temperature calibration (AdJ) adj = -0.5. Prescision 0.1C
+      example: '-0.5'
+    anti_freeze_function:
+      description: Anti-freezing function (FrE) fre = 0 for anti-freezing function shut down, 1 for anti-freezing function open. Factory default: 0
+      example: '1 = anti-freezing function open'
+    poweron_mem:
+      description: Power on memory (POn) poweronmem = 0 for power on memory off, 1 for power on memory on. Factory default: 0
+      example: '1 = power on memory on'
+    external_sensor_temprange:
+      description: Set temperature range for external sensor (OSV) osv = 5..99. Factory default: 42C
+      example: '42'
+    deadzone_sensor_temprange:
+      description: Deadzone for floor temprature (dIF) dif = 1..9. Factory default: 2C
+      example: '2'
+
+
+hysen_config_wifi:
+  description: To get the hysen thermostat in the mode to allow setting of the Wi-fi parameters.
+               With the device off Press and hold on the“power” button, then press the “time” button
+               Enter to the advanced setting, then press the “auto” button 9 times until “FAC” appears on the display
+               Press the“up” button up to “32”, then Press the “power” key, and the thermostat will be shutdown.
+               Press and hold on the “power” button, then press the “time”, the wifi icon beging flashing WiFi fast flashing show.
+               Run this service and the wifi icon on the device should stop fast flashing and go stable.
+               In you router find the thermostat and set it to have a fixed IP, then set it up in your HA config file.
+  fields:
+    ssid:
+      description: Wifi SSID
+      example: 'mywifi'
+    password:
+      description: Wifi password
+      example: 'password'
+   sectype:
+      description: Security mode options are (0 - none, 1 = WEP, 2 = WPA1, 3 = WPA2, 4 = WPA1/2)
+      example: '3'
+   timeout:
+      description: set the timeout for setting the device
+      example: '5'
+
+hysen_set_timeschedule:
+  description: Set Hysen Heating device key access.
+  fields:
+    entity_id:
+      description: Name(s) of entities to change.
+      example: 'climate.bathroom'
+    week_period1_start:
+      description: Start time of the first period.
+      example: '9:00'
+    week_period1_temp:
+      description: Temp of the first period.
+      example: '20'
+    week_period2_start:
+      description: Start time of the second period.
+      example: '12:00'
+    week_period2_temp:
+      description: Temp of the second period.
+      example: '15'
+    week_period3_start:
+      description: Start time of the third period.
+      example: '13:00'
+    week_period3_temp:
+      description: Temp of the third period.
+      example: '20'    
+    week_period4_start:
+      description: Start time of the forth period.
+      example: '14:00'
+    week_period4_temp:
+      description: Temp of the forth period.
+      example: '15'
+    week_period5_start:
+      description: Start time of the fifth period.
+      example: '16:00'
+    week_period5_temp:
+      description: Temp of the fifth period.
+      example: '20'
+    week_period6_start:
+      description: Start time of the sixth period.
+      example: '22:00'
+    week_period6_temp:
+      description: Temp of the sixth period.
+      example: '10'
+    weekend_period1_start:
+      description: Start time of the first weekend period.
+      example: '8:00'
+    weekend_period1_temp:
+      description: Temp of the first weekend period.
+      example: '20'
+    weekend_period2_start:
+      description: Start time of the second weekend period.
+      example: '22:00'
+    weekend_period2_temp:
+      description: Temp of the second weekend period.
+      example: '10'

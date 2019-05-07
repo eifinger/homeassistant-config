@@ -145,3 +145,14 @@ light:
         turn_on:
         turn_off:
         set_level:
+
+alexa:
+  smart_home:
+    filter:
+      include_entities:
+        - light.alexa_virtual
+    entity_config:
+      light.alexa_virtual:
+        name: Sequence Trigger
+        description: Virtual Light / Alexa Sequences
+        display_categories: LIGHT

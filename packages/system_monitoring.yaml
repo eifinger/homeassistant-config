@@ -38,6 +38,19 @@ sensor:
       - 'cpu_temp'
       - 'processor_load'
       - 'memory_use'
+  - platform: glances
+    host: !secret glances_odroid
+    name: glances_odroid
+    version: 3
+    username: !secret glances_odroid_username
+    password: !secret glances_odroid_password
+    resources:
+      - 'disk_use'
+      - 'disk_use_percent'
+      - 'disk_free'
+      - 'cpu_temp'
+      - 'processor_load'
+      - 'memory_use'
   - platform: systemmonitor
     resources:
       - type: disk_use_percent
@@ -101,6 +114,18 @@ automation:
       - service: notify.kevin
         data:
           message: "Host Disk Usage über 80%"
+
+  - id: alert_when_glances_odroid_disk_used_gt_80
+    alias: 'Alarm wenn Odroid Disk Used > 80%'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.glances_odroid_disk_used
+        above: 80
+    action:
+      - service: notify.kevin
+        data:
+          message: "Odroid Disk Usage über 80%"
 
   - id: alert_when_host_disk1_used_gt_80
     alias: 'Alarm wenn Host Disk1 Used > 80%'

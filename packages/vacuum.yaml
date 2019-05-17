@@ -39,3 +39,17 @@ alexa:
         name: Snowie
         description: Snowie Xiaomi Staubsauger
         display_categories: SWITCH
+
+automation:
+  - id: alert_when_snowie_is_offline
+    alias: 'Alarm wenn Snowie offline ist'
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        to: 'unavailable'
+        for: '00:05:00'
+    action:
+      - service: notify.kevin
+        data:
+          message: "Snowie ist offline"

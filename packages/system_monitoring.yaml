@@ -53,6 +53,7 @@ sensor:
       - 'memory_use'
   - platform: glances
     host: !secret glances_wackernheim_pi
+    port: !secret glances_wackernheim_pi_port
     name: glances_wackernheim_pi
     version: 3
     username: !secret glances_wackernheim_pi_username

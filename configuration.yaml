@@ -106,6 +106,7 @@ influxdb:
   database: !secret influxdb_db_name
   username: !secret influxdb_user
   password: !secret influxdb_password
+  max_retries: 5
 
 telegram_bot:
   - platform: polling

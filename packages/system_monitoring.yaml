@@ -207,8 +207,8 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.seafile_fsck
-        from: "off"
-        to: "on"
+        from: "on"
+        to: "off"
     action:
       - service: notify.kevin
         data:

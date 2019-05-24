@@ -200,3 +200,16 @@ automation:
       - service: notify.kevin
         data:
           message: "Host Disk4 Usage über 80%"
+
+  - id: alert_when_check_seafile_failed
+    alias: 'Alarm wenn Seafile fsck fehlgeschlagen'
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: sensor.check_seafile
+        from: "off"
+        to: "on"
+    action:
+      - service: notify.kevin
+        data:
+          message: "Seafile fsck ist fehlgeschlagen"

@@ -66,7 +66,6 @@ recorder:
       - sensor.snowie_map
 
 device_tracker:
-  - platform: gpslogger
   - platform: unifi
     host: !secret unifi_controller_host
     port: 443

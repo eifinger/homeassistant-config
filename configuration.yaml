@@ -116,6 +116,8 @@ telegram_bot:
       - !secret telegram_allowed_chat_id_user_two  
 
 system_health:
+
+breaking_changes:
 #################################################################
 ## Includes
 #################################################################

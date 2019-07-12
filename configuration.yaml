@@ -118,6 +118,9 @@ telegram_bot:
 system_health:
 
 breaking_changes:
+
+hacs:
+  token: !secret hacs_token
 #################################################################
 ## Includes
 #################################################################

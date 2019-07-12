@@ -1,3 +1,4 @@
+# Homeassistant
 secrets.yaml
 entity_registry.yaml
 known_devices.yaml
@@ -7,14 +8,22 @@ home-assistant_v2.db
 deps/
 .HA_VERSION
 .uuid
+.storage/
+# custom_components
+__pycache__/
+ *.pyc
+# private stuff
+www/facebox/
+www/github/
 www/user_one.jpg
 www/user_two.JPG
-entity_registry.yaml
 currentCommit.txt
 .google.token
 .spotify-token-cache
 google_calendars.yaml
 turnBarRed.sh
-
+alexa_media*.pickle
+# vscode
 .vscode
 out/
+

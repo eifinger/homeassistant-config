@@ -22,6 +22,7 @@ currentCommit.txt
 .spotify-token-cache
 google_calendars.yaml
 turnBarRed.sh
+sendNotification.sh
 alexa_media*.pickle
 # vscode
 .vscode

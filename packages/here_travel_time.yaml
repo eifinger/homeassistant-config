@@ -27,3 +27,9 @@ sensor:
   destination: sensor.cal_next_appointment_location_google_prepared
   app_id: !secret here_app_id
   app_code: !secret here_app_code
+- platform: here_travel_time
+  name: travel_time_next_appointment_location_here_user_two
+  origin: !secret device_user_two
+  destination: sensor.cal_next_appointment_location_google_prepared_user_two
+  app_id: !secret here_app_id
+  app_code: !secret here_app_code

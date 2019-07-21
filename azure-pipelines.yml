@@ -15,13 +15,11 @@ strategy:
       hass.version: '0.95.4'
     Python36_Latest:
       python.version: '3.6'
-      hass.version: '*'
     Python37_Installed:
       python.version: '3.7'
       hass.version: '0.95.4'
     Python37_Latest:
       python.version: '3.7'
-      hass.version: '*'
 
 steps:
 - task: UsePythonVersion@0

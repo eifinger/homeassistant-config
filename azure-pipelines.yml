@@ -32,6 +32,7 @@ steps:
     if [ $(hass.version) ]; 
     then pip install homeassistant==$(hass.version);
     else pip install homeassistant;
+    fi
   displayName: 'Install Homeassistant'
 
 - script: |

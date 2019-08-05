@@ -3,6 +3,7 @@ Platform for Hysen Electronic heating Thermostats power by broadlink.
 (Beok, Floureon, Decdeal)
 As discussed in https://community.home-assistant.io/t/floor-heat-thermostat/29908
              https://community.home-assistant.io/t/beta-for-hysen-thermostats-powered-by-broadlink/56267/55
+Author: Mark Carter
 """
 #*****************************************************************************************************************************
 # Example Homeassistant Config
@@ -34,23 +35,24 @@ import datetime
 import time
 import random
 
+from homeassistant.const import (ATTR_TEMPERATURE, ATTR_ENTITY_ID, ATTR_UNIT_OF_MEASUREMENT, CONF_NAME, CONF_HOST, CONF_MAC, CONF_TIMEOUT, CONF_CUSTOMIZE, STATE_UNAVAILABLE)
+
 from homeassistant.components.climate import (ClimateDevice, ENTITY_ID_FORMAT, PLATFORM_SCHEMA)
 
-from homeassistant.components.climate.const import (DOMAIN, SUPPORT_TARGET_TEMPERATURE, SUPPORT_OPERATION_MODE, SUPPORT_ON_OFF, SUPPORT_AWAY_MODE, STATE_HEAT, STATE_AUTO)
-
-from homeassistant.const import (ATTR_TEMPERATURE, ATTR_ENTITY_ID, ATTR_UNIT_OF_MEASUREMENT, CONF_NAME, CONF_HOST, CONF_MAC, CONF_TIMEOUT, CONF_CUSTOMIZE, STATE_OFF, STATE_ON, STATE_UNAVAILABLE)
+from homeassistant.components.climate.const import (DOMAIN, SUPPORT_TARGET_TEMPERATURE,SUPPORT_PRESET_MODE, HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_AUTO, PRESET_AWAY,
+PRESET_NONE)
 
 from homeassistant.helpers.entity import async_generate_entity_id
 
-DEFAULT_NAME = 'Broadlink Hysen Climate'
+DEFAULT_NAME = 'Hysen Thermostat Controller'
 
-VERSION = '1.0.6'
+VERSION = '2.0.1'
 
 REQUIREMENTS = ['broadlink==0.9.0']
 
 _LOGGER = logging.getLogger(__name__)
 
-SUPPORT_FLAGS = SUPPORT_TARGET_TEMPERATURE | SUPPORT_OPERATION_MODE | SUPPORT_ON_OFF
+SUPPORT_FLAGS = SUPPORT_TARGET_TEMPERATURE
 
 DEFAULT_RETRY = 2
 DEFAULT_TIMEOUT = 5
@@ -155,7 +157,7 @@ SET_TIME_SCHEDULE_SCHEMA = vol.Schema({
     vol.Required(CONFIG_WEEKEND_PERIOD2_TEMP): vol.Coerce(float),
 })
 
-DEFAULT_OPERATIONS_LIST = [STATE_HEAT, STATE_AUTO, STATE_OFF]
+DEFAULT_OPERATIONS_LIST = [HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_AUTO]
 HYSEN_POWERON = 1
 HYSEN_POWEROFF = 0
 HYSEN_MANUALMODE = 0
@@ -513,7 +515,7 @@ class BroadlinkHysenClimate(ClimateDevice):
         self._operation_list = operation_list
 
         self._away_mode = False
-        self._awaymodeLastState = STATE_OFF
+        self._awaymodeLastState = HVAC_MODE_OFF
 
         self._is_heating_active = 0
         self._auto_override = 0
@@ -604,14 +606,25 @@ class BroadlinkHysenClimate(ClimateDevice):
         return self._target_temperature_step
 
     @property
-    def current_operation(self):
+    def hvac_mode(self):
         """Return current operation ie. heat, idle."""
         return self._current_operation
 
     @property
-    def operation_list(self):
+    def hvac_modes(self):
         """Return the list of available operation modes."""
         return self._operation_list
+
+    @property
+    def supported_features(self):
+        """Return the list of supported features."""
+        return SUPPORT_FLAGS
+
+    def preset_modes(self):
+        """Return valid preset modes."""
+        return [
+            PRESET_AWAY,PRESET_NONE
+        ]
 
     @property
     def is_away_mode_on(self):
@@ -619,20 +632,15 @@ class BroadlinkHysenClimate(ClimateDevice):
         return self._away_mode
 
     @property
-    def supported_features(self):
-        """Return the list of supported features."""
-        return SUPPORT_FLAGS
-
-    @property
     def device_state_attributes(self):
         """Return device specific state attributes."""
         attr = {}
         attr['sfw_version'] = VERSION
         attr['power_state'] = self._power_state
+        attr['away_mode'] = self._away_mode
         attr['sensor_mode'] = self._sensor_mode
         attr['room_temp'] = self._room_temp
         attr['external_temp'] = self._external_temp
-        attr['away_mode'] = self._away_mode
         attr['heating_active'] = self._is_heating_active
         attr['auto_override'] = self._auto_override
         attr['external_sensor_temprange'] = self._external_sensor_temprange
@@ -650,20 +658,14 @@ class BroadlinkHysenClimate(ClimateDevice):
         attr['week_end'] = str(self._week_end)
         return attr
 
-    @property
-    def is_on(self):
-        if self._power_state == HYSEN_POWERON:
-            return True
-        else:
-            return False
-
     def turn_on(self):
         self.send_power_command(HYSEN_POWERON,self._remote_lock)
-        self.turn_away_mode_off()
+        self.set_preset_mode(PRESET_NONE)
         return True
 
     def turn_off(self):
         self.send_power_command(HYSEN_POWEROFF,self._remote_lock)
+        self.set_preset_mode(PRESET_NONE)
         return True
 
     def set_temperature(self, **kwargs):
@@ -674,28 +676,29 @@ class BroadlinkHysenClimate(ClimateDevice):
                 self.send_tempset_command(self._target_temperature)
             self.schedule_update_ha_state()
 
-    def set_operation_mode(self, operation_mode):
+    def set_hvac_mode(self, operation_mode):
         """Set new opmode """
         self._current_operation = operation_mode
         if self._away_mode == True:
-            self.turn_away_mode_off()
+            self.set_preset_mode(PRESET_NONE)
         else:
             self.set_operation_mode_command(operation_mode)
         self.schedule_update_ha_state()
 
-    def turn_away_mode_on(self):
-        """Turn away mode on."""
-        if self._away_mode == False:
-            self._awaymodeLastState = self._current_operation
-            self._away_mode = True
-            self.set_operation_mode_command(STATE_OFF)
-        self.schedule_update_ha_state()
-
-    def turn_away_mode_off(self):
-        """Turn away mode off."""
-        if self._away_mode == True:
-            self._away_mode = False
-            self.set_operation_mode_command(self._awaymodeLastState)
+    def set_preset_mode(self, preset_mode):
+        if self._power_state == 0: 
+            return
+        if preset_mode == PRESET_AWAY:
+            if self._away_mode == False:
+                self._awaymodeLastState = self._current_operation
+                self._away_mode = True
+                self.set_operation_mode_command(HVAC_MODE_OFF)
+        elif preset_mode == PRESET_NONE:
+            if self._away_mode == True:
+                self._away_mode = False
+                self.set_operation_mode_command(self._awaymodeLastState)
+        else:
+            _LOGGER.error("Unknown mode: %s", preset_mode)
         self.schedule_update_ha_state()
 
     def send_tempset_command(self, target_temperature):
@@ -738,15 +741,15 @@ class BroadlinkHysenClimate(ClimateDevice):
                             "Failed to send OpMode-Heat/Manual command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)
 
     def set_operation_mode_command(self, operation_mode):
-        if operation_mode == STATE_HEAT:
+        if operation_mode == HVAC_MODE_HEAT:
             if self._power_state == HYSEN_POWEROFF:
                 self.send_power_command(HYSEN_POWERON,self._remote_lock)
             self.send_mode_command(HYSEN_MANUALMODE, self._loop_mode,self._sensor_mode)
-        elif operation_mode == STATE_AUTO:
+        elif operation_mode == HVAC_MODE_AUTO:
             if self._power_state == HYSEN_POWEROFF:
                 self.send_power_command(HYSEN_POWERON,self._remote_lock)
             self.send_mode_command(HYSEN_AUTOMODE, self._loop_mode,self._sensor_mode)
-        elif operation_mode == STATE_OFF:
+        elif operation_mode == HVAC_MODE_OFF:
                   self.send_power_command(HYSEN_POWEROFF,self._remote_lock)
         else:
             _LOGGER.error("Unknown command for Broadlink Hysen Device: %s",self.entity_id)
@@ -778,7 +781,7 @@ class BroadlinkHysenClimate(ClimateDevice):
         poweronmem = self._poweron_mem if poweronmem is None else poweronmem
 
        # Fix for native broadlink.py set_advanced breaking loopmode and operation_mode
-        if self._current_operation == STATE_HEAT:
+        if self._current_operation == HVAC_MODE_HEAT:
             current_mode = HYSEN_MANUALMODE
         else:
             current_mode = HYSEN_AUTOMODE
@@ -858,12 +861,12 @@ class BroadlinkHysenClimate(ClimateDevice):
                     self._available = True
                     if self._power_state == HYSEN_POWERON:
                         if self._auto_state == HYSEN_AUTOMODE:
-                            self._current_operation = STATE_AUTO
+                            self._current_operation = HVAC_MODE_AUTO
                         else:
-                            self._current_operation = STATE_HEAT
+                            self._current_operation = HVAC_MODE_HEAT
                     elif self._power_state == HYSEN_POWEROFF:
                          self._target_temperature = self._min_temp
-                         self._current_operation = STATE_OFF
+                         self._current_operation = HVAC_MODE_OFF
                     else:
                          self._current_operation = STATE_UNAVAILABLE
                          self._available = False

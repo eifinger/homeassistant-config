@@ -6,7 +6,7 @@
 <h4 align="center">Be sure to :star: my repo so you can keep up to date on the daily progress!.</h4>
 <div align="center">
   <h4>
-    <a href="https://travis-ci.org/eifinger/homeassistant-config"><img src="https://travis-ci.org/eifinger/homeassistant-config.svg?branch=master"/></a>
+    <a href="https://dev.azure.com/keifinger/homeassistant-config/_build"><img src="https://dev.azure.com/keifinger/homeassistant-config/_apis/build/status/eifinger.homeassistant-config?branchName=master"/></a>
     <a href="https://github.com/eifinger/homeassistant-config/stargazers"><img src="https://img.shields.io/github/stars/eifinger/homeassistant-config.svg?style=plasticr"/></a>
     <a href="https://github.com/eifinger/homeassistant-config/commits/master"><img src="https://img.shields.io/github/last-commit/eifinger/homeassistant-config.svg?style=plasticr"/></a>
   </h4>

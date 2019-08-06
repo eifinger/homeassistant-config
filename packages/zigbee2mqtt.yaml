@@ -153,25 +153,3 @@ automation:
   action:
     entity_id: light.bedroom_yeelight
     service: light.toggle  
-#################################################################
-## Map
-#################################################################  
-- id: update_zigbee_networkmap
-  alias: 'Zigbee Map aktualisieren'  
-  hide_entity: true  
-  trigger:
-    platform: time_pattern
-    minutes: '/10'
-    seconds: 00
-  action:
-    service: zigbee2mqtt_networkmap.update
-
-webhook:
-
-zigbee2mqtt_networkmap:
- 
-panel_iframe:
- networkmap:
-   title: 'Zigbee Map'
-   url: '/local/community/zigbee2mqtt_networkmap/map.html'
-   icon: 'mdi:graphql'

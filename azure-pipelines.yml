@@ -12,12 +12,12 @@ strategy:
   matrix:
     Python36_Installed:
       python.version: '3.6'
-      hass.version: '0.95.4'
+      hass.version: '0.96.5'
     Python36_Latest:
       python.version: '3.6'
     Python37_Installed:
       python.version: '3.7'
-      hass.version: '0.95.4'
+      hass.version: '0.96.5'
     Python37_Latest:
       python.version: '3.7'
 

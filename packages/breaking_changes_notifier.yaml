@@ -9,14 +9,17 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: >
-            Potentielle Breaking Changes festgestellt in Version {{ states.sensor.potential_breaking_changes.attributes.versions[0] }}\\n
+          message: 
+            "Potentielle Breaking Changes festgestellt in Version {{ states.sensor.potential_breaking_changes.attributes.versions[0] }}
             {% for key, value in states.sensor.potential_breaking_changes.attributes.items() %}
-            {% if key not in ("versions", "friendly_name", "icon")%}
-            \\n
-            Component: {{ value['component'] }}\\n
-            Decscription: {{ value['description'] }}\\n
-            PR: {{ value['prlink'] }}\\n
+            {% if key not in ('versions', 'friendly_name', 'icon')%}
+            
+            Component: {{ value['component'] }}
+
+            Decscription: {{ value['description'] }}
+            
+            PR: {{ value['prlink'] }}
+
             Doc: {{ value['doclink'] }}
             {% endif %}
-            {% endfor %}
+            {% endfor %}"

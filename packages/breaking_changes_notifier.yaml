@@ -10,13 +10,13 @@ automation:
       - service: notify.kevin
         data_template:
           message: >
-            Potentielle Breaking Changes festgestellt in Version {{ states.sensor.potential_breaking_changes.attributes.versions[0] }}\n
+            Potentielle Breaking Changes festgestellt in Version {{ states.sensor.potential_breaking_changes.attributes.versions[0] }}\\n
             {% for key, value in states.sensor.potential_breaking_changes.attributes.items() %}
             {% if key not in ("versions", "friendly_name", "icon")%}
-            \n
-            Component: {{ value['component'] }}\n
-            Decscription: {{ value['description'] }}\n
-            PR: {{ value['prlink'] }}\n
+            \\n
+            Component: {{ value['component'] }}\\n
+            Decscription: {{ value['description'] }}\\n
+            PR: {{ value['prlink'] }}\\n
             Doc: {{ value['doclink'] }}
             {% endif %}
             {% endfor %}

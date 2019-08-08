@@ -14,10 +14,11 @@ automation:
             {% for key, value in states.sensor.potential_breaking_changes.attributes.items() %}
             {% if key not in ('versions', 'friendly_name', 'icon')%}
             
+            
             Component: {{ value['component'] }}
 
             Decscription: {{ value['description'] }}
-            
+
             PR: {{ value['prlink'] }}
 
             Doc: {{ value['doclink'] }}

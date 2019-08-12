@@ -218,17 +218,25 @@ zone.work_user_two:
 #################################################################
 ## Zone
 #################################################################
-binary_sensor.0x00158d0001bb4dc0_contact:
+binary_sensor.kitchen_window:
   device_class: window
-binary_sensor.0x00158d000205b82e_contact:
+binary_sensor.guest_window:
   device_class: window
-binary_sensor.0x00158d000232c3d1_contact_2:
+binary_sensor.bathroom_window:
   device_class: window
-binary_sensor.0x00158d00020455bf_contact:
+binary_sensor.bedroom_door:
+  device_class: door
+binary_sensor.bedroom_door_tilted:
   device_class: window
-binary_sensor.0x00158d0002048951_contact:
+binary_sensor.door:
+  device_class: door
+binary_sensor.studyroom_door:
+  device_class: door
+binary_sensor.studyroom_door_tilted:
   device_class: window
-binary_sensor.0x00158d00020498b6_contact:
+binary_sensor.terrace_door:
+  device_class: door
+binary_sensor.terrace_door_tilted:
   device_class: window
-binary_sensor.0x00158d000204ba26_contact:
+binary_sensor.upper_bathroom_window:
   device_class: window

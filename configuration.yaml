@@ -24,7 +24,7 @@ map:
 config:
 
 logger:
-  default: critical
+  default: error
   logs:
     homeassistant.components.http.ban: warning
 

@@ -1,0 +1,3 @@
+deconz:
+  host: !secret deconz_host
+  port: !secret deconz_port

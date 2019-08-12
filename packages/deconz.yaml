@@ -2,3 +2,28 @@ deconz:
   host: !secret deconz_host
   port: !secret deconz_port
   api_key: !secret deconz_api_key
+
+homeassistant:
+  customize:
+    binary_sensor.contact_kitchen_window:
+      device_class: window
+    binary_sensor.contact_guest_window:
+      device_class: window
+    binary_sensor.contact_bathroom_window:
+      device_class: window
+    binary_sensor.contact_bedroom_door:
+      device_class: door
+    binary_sensor.contact_bedroom_door_tilted:
+      device_class: window
+    binary_sensor.contact_door:
+      device_class: door
+    binary_sensor.contact_studyroom_door:
+      device_class: door
+    binary_sensor.contact_studyroom_door_tilted:
+      device_class: window
+    binary_sensor.contact_terrace_door:
+      device_class: door
+    binary_sensor.contact_terrace_door_tilted:
+      device_class: window
+    binary_sensor.contact_upper_bathroom_window:
+      device_class: window

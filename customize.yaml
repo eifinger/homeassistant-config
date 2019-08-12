@@ -215,28 +215,3 @@ zone.work:
   friendly_name: "Arbeit"
 zone.work_user_two:
   friendly_name: !secret friendly_name_work_user_two
-#################################################################
-## Zone
-#################################################################
-binary_sensor.kitchen_window:
-  device_class: window
-binary_sensor.guest_window:
-  device_class: window
-binary_sensor.bathroom_window:
-  device_class: window
-binary_sensor.bedroom_door:
-  device_class: door
-binary_sensor.bedroom_door_tilted:
-  device_class: window
-binary_sensor.door:
-  device_class: door
-binary_sensor.studyroom_door:
-  device_class: door
-binary_sensor.studyroom_door_tilted:
-  device_class: window
-binary_sensor.terrace_door:
-  device_class: door
-binary_sensor.terrace_door_tilted:
-  device_class: window
-binary_sensor.upper_bathroom_window:
-  device_class: window

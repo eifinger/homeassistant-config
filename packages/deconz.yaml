@@ -1,3 +1,4 @@
 deconz:
   host: !secret deconz_host
   port: !secret deconz_port
+  api_key: !secret deconz_api_key

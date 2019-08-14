@@ -4,7 +4,7 @@ automation:
   trigger: 
     - platform: state
       entity_id: binary_sensor.contact_bathroom_window
-      to: "off"
+      to: "on"
   condition:
   action: 
     - service: homeassistant.turn_off
@@ -14,7 +14,7 @@ automation:
   trigger: 
     - platform: state
       entity_id: binary_sensor.contact_bathroom_window
-      to: "on"
+      to: "off"
   condition:
   action: 
     - service: homeassistant.turn_on

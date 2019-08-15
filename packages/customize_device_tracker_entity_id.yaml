@@ -1,0 +1,6 @@
+homeassistant:
+  customize:
+    device_tracker.kevin_2:
+      entity_picture: /local/user_one.jpg
+    device_tracker.sina_2:
+      entity_picture: /local/user_two.JPG

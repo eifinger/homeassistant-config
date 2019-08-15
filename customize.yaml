@@ -1,15 +1,6 @@
 #################################################################
 ## Travel times
 #################################################################
-sensor.travel_time_work_from_home_waze_realtime:
-  icon: mdi:car
-  friendly_name: "Zu Hause -> SVA"
-sensor.travel_time_home_from_work_waze_realtime:
-  icon: mdi:car
-  friendly_name: "SVA -> Zu Hause"
-sensor.travel_time_elmo_from_home_waze_realtime:
-  icon: mdi:car
-  friendly_name: "Zu Hause -> Elmo"
 sensor.travel_time_next_appointment_location_car:
   icon: mdi:car
   friendly_name: "Kevin -> Nächster Termin"

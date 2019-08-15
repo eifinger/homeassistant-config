@@ -33,3 +33,12 @@ sensor:
   destination: sensor.cal_next_appointment_location_google_prepared_user_two
   app_id: !secret here_app_id
   app_code: !secret here_app_code
+
+homeassistant:
+  customize:
+    sensor.travel_time_work_from_home_here:
+      friendly_name: "Zu Hause -> SVA"
+    sensor.travel_time_home_from_work_here:
+      friendly_name: "SVA -> Zu Hause"
+    sensor.travel_time_elmo_from_home_here:
+      friendly_name: "Zu Hause -> Elmo"

@@ -6,6 +6,7 @@ sensor:
   destination_entity_id: zone.work
   app_id: !secret here_app_id
   app_code: !secret here_app_code
+  traffic_mode: True
 # Home from Work
 - platform: here_travel_time
   name: travel_time_home_from_work_here
@@ -13,6 +14,7 @@ sensor:
   destination_entity_id: zone.home
   app_id: !secret here_app_id
   app_code: !secret here_app_code
+  traffic_mode: True
 # Elmo from Home
 - platform: here_travel_time
   name: travel_time_elmo_from_home_here
@@ -20,6 +22,7 @@ sensor:
   destination_entity_id: zone.elmo
   app_id: !secret here_app_id
   app_code: !secret here_app_code
+  traffic_mode: True
 # Next Appointment
 - platform: here_travel_time
   name: travel_time_next_appointment_location_here
@@ -27,12 +30,14 @@ sensor:
   destination_entity_id: sensor.cal_next_appointment_location_google_prepared
   app_id: !secret here_app_id
   app_code: !secret here_app_code
+  traffic_mode: True
 - platform: here_travel_time
   name: travel_time_next_appointment_location_here_user_two
   origin_entity_id: !secret device_user_two
   destination_entity_id: sensor.cal_next_appointment_location_google_prepared_user_two
   app_id: !secret here_app_id
   app_code: !secret here_app_code
+  traffic_mode: True
 
 homeassistant:
   customize:

@@ -2,35 +2,35 @@ sensor:
 # Work from Home
 - platform: here_travel_time
   name: travel_time_work_from_home_here
-  origin: zone.home
-  destination: zone.work
+  origin_entity_id: zone.home
+  destination_entity_id: zone.work
   app_id: !secret here_app_id
   app_code: !secret here_app_code
 # Home from Work
 - platform: here_travel_time
   name: travel_time_home_from_work_here
-  origin: zone.work
-  destination: zone.home
+  origin_entity_id: zone.work
+  destination_entity_id: zone.home
   app_id: !secret here_app_id
   app_code: !secret here_app_code
 # Elmo from Home
 - platform: here_travel_time
   name: travel_time_elmo_from_home_here
-  origin: zone.home
-  destination: zone.elmo
+  origin_entity_id: zone.home
+  destination_entity_id: zone.elmo
   app_id: !secret here_app_id
   app_code: !secret here_app_code
 # Next Appointment
 - platform: here_travel_time
   name: travel_time_next_appointment_location_here
-  origin: !secret device_user_one
-  destination: sensor.cal_next_appointment_location_google_prepared
+  origin_entity_id: !secret device_user_one
+  destination_entity_id: sensor.cal_next_appointment_location_google_prepared
   app_id: !secret here_app_id
   app_code: !secret here_app_code
 - platform: here_travel_time
   name: travel_time_next_appointment_location_here_user_two
-  origin: !secret device_user_two
-  destination: sensor.cal_next_appointment_location_google_prepared_user_two
+  origin_entity_id: !secret device_user_two
+  destination_entity_id: sensor.cal_next_appointment_location_google_prepared_user_two
   app_id: !secret here_app_id
   app_code: !secret here_app_code
 

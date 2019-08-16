@@ -9,9 +9,11 @@ deps/
 .HA_VERSION
 .uuid
 .storage/
+
 # custom_components
 __pycache__/
  *.pyc
+
 # private stuff
 www/facebox/
 www/github/
@@ -24,7 +26,10 @@ google_calendars.yaml
 turnBarRed.sh
 sendNotification.sh
 alexa_media*.pickle
+
 # vscode
 .vscode
 out/
 
+# homeassistant in different repo
+appdaemon/

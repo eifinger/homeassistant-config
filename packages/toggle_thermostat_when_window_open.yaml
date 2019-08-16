@@ -42,11 +42,11 @@ automation:
 
 homeassistant:
   customize:
-    automation.turn_off_bath_thermostat_when_window_open:
+    automation.fussbodenheizung_im_bad_ausschalten_wenn_fenster_offen:
       icon: mdi:window-open
-    automation.turn_on_bath_thermostat_when_window_closed:
+    automation.fussbodenheizung_im_bad_anschalten_wenn_fenster_zu:
       icon: mdi:window-closed
-    automation.turn_off_upper_bath_thermostat_when_window_open:
+    automation.fussbodenheizung_im_bad_oben_ausschalten_wenn_fenster_offen:
       icon: mdi:window-open
-    automation.turn_on_upper_bath_thermostat_when_window_closed:
+    automation.fussbodenheizung_im_bad_oben_anschalten_wenn_fenster_zu:
       icon: mdi:window-closed

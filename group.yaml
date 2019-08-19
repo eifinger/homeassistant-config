@@ -38,8 +38,6 @@ bedroom:
   entities:
     - switch.large_ventilator
     - light.bedroom_yeelight
-    - binary_sensor.door_window_sensor_158d0001bb4d94
-    - binary_sensor.motion_sensor_158d0002006cfa
     - switch.bedroom_receiver
 
 all:

@@ -164,7 +164,7 @@
             entity_id: switch.broadlink_tv
     markise:
       friendly_name: Markise
-      value_template: "{{states('binary_sensor.markise') == 'on'}}"
+      value_template: "{{states('binary_sensor.contact_markise') == 'on'}}"
       turn_on:
         - condition: state
           entity_id: switch.markise

@@ -1,0 +1,20 @@
+person:
+  - name: Kevin
+    id: kevin
+    user_id: !secret user_id_user_one
+    device_trackers:
+      - device_tracker.kevin_2
+      - device_tracker.oneplus3
+  - name: sina
+    id: sina
+    user_id: !secret user_id_user_two
+    device_trackers:
+      - device_tracker.sina_2
+      - device_tracker.oneplus3t
+
+homeassistant:
+  customize:
+    person.kevin:
+      entity_picture: /local/user_one.jpg
+    person.sina:
+      entity_picture: /local/user_two.JPG

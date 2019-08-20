@@ -22,14 +22,40 @@ android_ip_webcam:
       - video_recording
 
 automation:
-  - id: alert_when_android_ip_webcam_battery_lt_80
-    alias: 'Alarm wenn Tür Webcam Batterie < 20%'
+  - id: alert_when_android_ip_webcam_battery_lt_15
+    alias: 'Alarm wenn Tür Webcam Batterie < 15%'
     initial_state: 'on'
     trigger:
       - platform: numeric_state
         entity_id: sensor.android_ip_webcam_door_battery_level
-        below: 20
+        below: 15
     action:
       - service: notify.kevin
         data:
-          message: "Tür Webcam Batterie < 20%"
+          message: "Tür Webcam Batterie < 15%"
+  - id: switch_off_loading_android_ip_webcam_battery_gt_99
+    alias: 'Android IP Webcam nicht laden wenn Akku > 99%'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.android_ip_webcam_door_battery_level
+        above: 99
+    condition:
+      - condition: state
+        entity_id: switch.xiaomi_plug
+        state: "on"
+    action:
+      - service: switch.turn_off
+        data:
+          entity_id: switch.xiaomi_plug
+  - id: switch_on_loading_android_ip_webcam_battery_lt_15
+    alias: 'Android IP Webcam laden wenn Akku < 15%'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.android_ip_webcam_door_battery_level
+        below: 15
+    action:
+      - service: switch.turn_on
+        data:
+          entity_id: switch.xiaomi_plug

@@ -29,6 +29,7 @@ automation:
       - platform: numeric_state
         entity_id: sensor.android_ip_webcam_door_battery_level
         below: 15
+        for: "00:05:00"
     action:
       - service: notify.kevin
         data:

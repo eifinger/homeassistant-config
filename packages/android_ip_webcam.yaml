@@ -48,13 +48,14 @@ automation:
       - service: switch.turn_off
         data:
           entity_id: switch.xiaomi_plug
-  - id: switch_on_loading_android_ip_webcam_battery_lt_15
-    alias: 'Android IP Webcam laden wenn Akku < 15%'
+  - id: switch_on_loading_android_ip_webcam_battery_lt_20
+    alias: 'Android IP Webcam laden wenn Akku < 20%'
     initial_state: 'on'
     trigger:
       - platform: numeric_state
         entity_id: sensor.android_ip_webcam_door_battery_level
-        below: 15
+        below: 20
+        for: "00:05:00"
     action:
       - service: switch.turn_on
         data:

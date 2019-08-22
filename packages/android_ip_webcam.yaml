@@ -34,13 +34,13 @@ automation:
       - service: notify.kevin
         data:
           message: "Tür Webcam Batterie < 15%"
-  - id: switch_off_loading_android_ip_webcam_battery_gt_99
-    alias: 'Android IP Webcam nicht laden wenn Akku > 99%'
+  - id: switch_off_loading_android_ip_webcam_battery_gt_80
+    alias: 'Android IP Webcam nicht laden wenn Akku > 80%'
     initial_state: 'on'
     trigger:
       - platform: numeric_state
         entity_id: sensor.android_ip_webcam_door_battery_level
-        above: 99
+        above: 80
     condition:
       - condition: state
         entity_id: switch.xiaomi_plug

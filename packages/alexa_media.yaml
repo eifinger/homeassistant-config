@@ -134,6 +134,18 @@ automation:
           {% endif %}
     - service: light.turn_off
       entity_id: light.alexa_virtual
+  - alias: Where is Vaccuum
+    trigger:
+    - platform: state
+      entity_id: light.alexa_virtual
+      to: 'on'
+    condition: 
+      condition: template
+      value_template: '{{ (states.light.alexa_virtual.attributes.brightness | int / 255 * 100 ) | round  == 2 }}'
+    action:
+    - service: vacuum.locate
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner 
 #####################################################################
 ### Virtual Light / Alexa Sequences
 #####################################################################

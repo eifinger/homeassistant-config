@@ -145,7 +145,9 @@ automation:
     action:
     - service: vacuum.locate
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner 
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+    - service: light.turn_off
+      entity_id: light.alexa_virtual
 #####################################################################
 ### Virtual Light / Alexa Sequences
 #####################################################################

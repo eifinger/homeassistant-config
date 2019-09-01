@@ -56,7 +56,7 @@ automation:
       - platform: numeric_state
         entity_id: sensor.android_ip_webcam_door_battery_level
         below: 20
-        for: "00:05:00"
+        for: "00:01:00"
     action:
       - service: switch.turn_on
         data:

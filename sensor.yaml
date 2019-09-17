@@ -159,29 +159,29 @@
     location_user_one:
       friendly_name: Kevin
       value_template: >-
-        {% if states.device_tracker.kevin_2.state != 'home' and states.device_tracker.kevin_2.state == 'not_home' %}
+        {% if states.device_tracker.kevin.state != 'home' and states.device_tracker.kevin.state == 'not_home' %}
           Unterwegs
-        {% elif states.device_tracker.kevin_2.state != 'home' and states.device_tracker.kevin_2.state != 'not_home' %}
-          {{states.device_tracker.kevin_2.state}}
+        {% elif states.device_tracker.kevin.state != 'home' and states.device_tracker.kevin.state != 'not_home' %}
+          {{states.device_tracker.kevin.state}}
         {% else %}
           {{states.sensor.room_user_one.state}}
         {% endif %}
       entity_id:
        - sensor.room_user_one
-       - device_tracker.kevin_2
+       - device_tracker.kevin
     location_user_two:
       friendly_name: Sina
       value_template: >-
-        {% if states.device_tracker.sina_2.state != 'home' and states.device_tracker.sina_2.state == 'not_home' %}
+        {% if states.device_tracker.sina.state != 'home' and states.device_tracker.sina.state == 'not_home' %}
           Unterwegs
-        {% elif states.device_tracker.sina_2.state != 'home' and states.device_tracker.sina_2.state != 'not_home' %}
-          {{states.device_tracker.sina_2.state}}
+        {% elif states.device_tracker.sina.state != 'home' and states.device_tracker.sina.state != 'not_home' %}
+          {{states.device_tracker.sina.state}}
         {% else %}
           {{states.sensor.room_user_two.state}}
         {% endif %}
       entity_id:
        - sensor.room_user_two
-       - device_tracker.sina_2
+       - device_tracker.sina
     location_s8plus:
       friendly_name: S8Plus
       value_template: >-
@@ -611,10 +611,10 @@
     alarm_time:
       friendly_name: 'Uhrzeit'
       # If both are home we use the timer that is earliest. Else we use the timer of the person who is home
-      value_template: '{%if states.device_tracker.sina_2.state == "home" and states.device_tracker.kevin_2.state == "home" %}{% if as_timestamp(states.sensor.alarm_kevin.state or "2100-12-29 09:25:00") < as_timestamp(states.sensor.alarm_sina.state or "2100-12-29 09:25:00") %}{{states.sensor.alarm_kevin.state}}{% else %}{{states.sensor.alarm_sina.state}}{% endif %}{% elif states.device_tracker.sina_2.state == "home" %}{{states.sensor.alarm_sina.state}}{% elif states.device_tracker.kevin_2.state == "home" %}{{states.sensor.alarm_kevin.state}}{% endif %}'
+      value_template: '{%if states.device_tracker.sina.state == "home" and states.device_tracker.kevin.state == "home" %}{% if as_timestamp(states.sensor.alarm_kevin.state or "2100-12-29 09:25:00") < as_timestamp(states.sensor.alarm_sina.state or "2100-12-29 09:25:00") %}{{states.sensor.alarm_kevin.state}}{% else %}{{states.sensor.alarm_sina.state}}{% endif %}{% elif states.device_tracker.sina.state == "home" %}{{states.sensor.alarm_sina.state}}{% elif states.device_tracker.kevin.state == "home" %}{{states.sensor.alarm_kevin.state}}{% endif %}'
       entity_id:
-       - device_tracker.sina_2
-       - device_tracker.kevin_2
+       - device_tracker.sina
+       - device_tracker.kevin
        - sensor.alarm_kevin
        - sensor.alarm_sina
        - input_boolean.user_one_home

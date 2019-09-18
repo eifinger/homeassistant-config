@@ -5,7 +5,7 @@
 LAYOUT_LEFT_RIGHT
 
 package "HP Microserver Gen10" {
-    Container(homeassistant, "homeassistant/home-assistant:0.96.5", "Homeassistant")
+    Container(homeassistant, "homeassistant/home-assistant:0.98.5", "Homeassistant")
     Container(find3, "https://github.com/schollz/find3", "FIND3")
     Container(mqtt, "eclipse-mosquitto:latest", "Mosquitto")
     Container(facerec_service, "eifinger/face_recognition:latest", "Facerecognition")
@@ -34,8 +34,8 @@ package "8x ESP8266" {
     Container(tasmota, "https://github.com/arendst/Sonoff-Tasmota", "Tasmota")
 }
 
-package "RPI Zero" {
-    Container(zigbee2mqtt, "koenkk/zigbee2mqtt:1.4.0", "zigbee2mqtt")
+package "RPI 3B+" {
+    Container(deconz, "marthoc/deconz", "deconz")
 }
 
 package "Android" {
@@ -59,7 +59,7 @@ Rel(appdaemon, homeassistant, "Automate")
 Rel(haaska, homeassistant, "Control")
 Rel(tasmota, mqtt, "Send Data")
 Rel(mqtt, tasmota, "Control")
-Rel(zigbee2mqtt, mqtt, "Send Data")
+Rel(deconz, mqtt, "Send Data")
 Rel(homeassistant, unifi, "DeviceTracker")
 Rel(homeassistant, influxdb, "Store Data")
 Rel(grafana, influxdb, "Display Data")

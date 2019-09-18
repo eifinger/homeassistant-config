@@ -412,7 +412,7 @@ version: '2.1'
 services:
   homeassistant:
     container_name: homeassistant
-    image: homeassistant/home-assistant:0.96.5
+    image: homeassistant/home-assistant:0.98.5
     volumes:
       - /home/admin/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
@@ -428,7 +428,7 @@ services:
   appdaemon:
     container_name: appdaemon
     restart: unless-stopped
-    image: acockburn/appdaemon:3.0.2
+    image: acockburn/appdaemon:3.0.5
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /home/admin/appdaemon:/conf

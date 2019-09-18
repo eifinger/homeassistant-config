@@ -64,6 +64,16 @@ recorder:
   exclude:
     entities:
       - sensor.snowie_map
+      - sensor.nach_bruckenkopf
+      - sensor.nach_bruckenkopf_0
+      - sensor.nach_bruckenkopf_1
+      - sensor.nach_bruckenkopf_2
+      - sensor.nach_bruckenkopf_3
+      - sensor.nach_bruckenkopf_4
+      - sensor.appdaemon_heartbeat
+      - sensor.calc_leave_time
+      - sensor.calc_leave_time_user_two
+      - sensor.yr_symbol
 
 media_player:
   - platform: denonavr

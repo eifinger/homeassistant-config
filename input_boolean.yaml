@@ -120,12 +120,6 @@
   alexa_speaker_connector:
     icon: mdi:amazon-alexa
     name: Alexa automatisch auf Receiver Bluetooth spielen lassen
-  increase_counter_on_google_maps_update:
-    icon: mdi:plus-one
-    name: Increase Counter on Google Maps Update Calls
-  reset_googlemapsapicounter_on_last_day_of_month:
-    icon: mdi:replay
-    name: Reset Google Maps API Timer
   detect_devices_on_when_going_to_bed:
     name: Schalte alles aus wenn wir ins Bett gehen
     icon: mdi:alarm

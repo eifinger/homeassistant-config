@@ -120,12 +120,6 @@
   alexa_speaker_connector:
     icon: mdi:amazon-alexa
     name: Alexa automatisch auf Receiver Bluetooth spielen lassen
-  travel_time_home_user_one_update:
-    icon: mdi:update
-    name: Update Travel Time Home User One
-  travel_time_home_user_two_update:
-    icon: mdi:update
-    name: Update Travel Time Home User Two
   increase_counter_on_google_maps_update:
     icon: mdi:plus-one
     name: Increase Counter on Google Maps Update Calls

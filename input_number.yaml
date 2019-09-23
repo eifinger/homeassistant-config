@@ -167,12 +167,3 @@ set_kitchen_thermostat_when_heading_home:
   min: 18
   max: 30
   step: 0.5
-#################################################################
-## ´Travel Time Update Interval
-#################################################################
-travel_time_home_user_one_update_interval:
-  min: 2
-  max: 2678400 # 1 month
-travel_time_home_user_two_update_interval:
-  min: 2
-  max: 2678400 # 1 month

@@ -27,7 +27,7 @@ This repository is a companion to my [appdeamon-scripts](https://github.com/eifi
 * SSL via [letsencrypt](https://letsencrypt.org/) - Support a more secure and privacy-respecting Web
 * Indoor positioning with [find3](https://www.internalpositioning.com/) - Machine Learning tells your phone location without any other hardware
 * MQTT Broker [mosquitto-docker](https://hub.docker.com/_/eclipse-mosquitto/)
-* [Face Recognition Container](https://hub.docker.com/eifinger/face_recognition) - Forked from [JanLoebel](https://github.com/JanLoebel/face_recognition)
+* [Face Recognition Container](https://hub.docker.com/r/eifinger/face_recognition) - Forked from [JanLoebel](https://github.com/JanLoebel/face_recognition)
 * [MySQL Docker](https://hub.docker.com/_/mysql/)
 * [Appdaemon](https://github.com/eifinger/appdaemon) - See my Appdaemon scripts [here](https://github.com/eifinger/appdaemon-scripts)
 * HAASKA [Haaska-repo](https://github.com/mike-grant/haaska) - Alexa Smarthome V3 API for all your HA devices

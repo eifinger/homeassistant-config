@@ -4,7 +4,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: numeric_state
-        entity_id: sensor.sensor.venue_8_7840_battery_sensor
+        entity_id: sensor.venue_8_7840_battery_sensor
         below: 15
         for: "00:05:00"
     action:

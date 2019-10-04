@@ -10,3 +10,7 @@ sensor:
       - name: Monero
         from: XMR
         to: EUR
+  - platform: rest
+    resource: !secret xmr_hashrate_url
+    name: Monero Hash Rate
+    value_template: "{{ value_json.hash }}"

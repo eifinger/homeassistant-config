@@ -43,6 +43,13 @@ receiver_set_source_tv:
       data:
         source: 'TV Audio'
 
+receiver_set_standard_volume:
+  sequence:
+    - service: media_player.volume_set
+      entity_id: media_player.denon_avr_x1300w
+      data:
+        volume_level: 0.3
+
 # solution from https://community.home-assistant.io/t/cant-figure-out-template-to-toggle-volume-mute/9987/2
 receiver_mute_unmute:
   sequence:

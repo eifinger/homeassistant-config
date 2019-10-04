@@ -70,6 +70,8 @@
     icon: mdi:lightbulb
   coming_home_alexa:
     icon: mdi:amazon-alexa
+  coming_home_set_volume:
+    icon: mdi:volume-medium
   home_arrival_notifier_user_one:
     icon: mdi:home-account
   home_arrival_notifier_user_two:

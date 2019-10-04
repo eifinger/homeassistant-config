@@ -1,0 +1,12 @@
+sensor:
+  - platform: alpha_vantage
+    api_key: !secret alpha_vantage_api_key
+    symbols:
+      - symbol: MSFT
+        name: Microsoft
+      - symbol: IBM
+        name: IBM
+    foreign_exchange:
+      - name: Monero
+        from: XMR
+        to: EUR

@@ -1,0 +1,6 @@
+# Example configuration.yaml entry
+sensor:
+  - platform: version
+    source: docker
+  - platform: version
+    source: local

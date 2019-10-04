@@ -676,22 +676,3 @@
       query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "value" FROM information_schema.tables WHERE table_schema="hass_db" GROUP BY table_schema;'
       column: 'value'
       unit_of_measurement: MB
-#################################################################
-## Available Homeassistant Version
-#################################################################
-# https://community.home-assistant.io/t/sensor-for-latest-docker-image-versions/4874
-- platform: command_line
-  name:  Home Assistant Latest Docker
-  command:  curl -s -L https://registry.hub.docker.com/v2/repositories/homeassistant/home-assistant/tags/ | grep -Eo '"name":\s"[0-9.]*"' | head -1 | sed -e "s/\"name\":\s\"/${replace}/g" | sed -e "s/\"/${replace}/g"
-  scan_interval: 28800
-- platform: command_line
-  name:  Home Assistant Installed Version
-  command: python -m homeassistant --version
-  scan_interval: 2678400
-#################################################################
-## Available Unifi Version
-#################################################################
-- platform: command_line
-  name:  Unifi Controller Latest Docker
-  command:  curl -s -L https://registry.hub.docker.com/v2/repositories/jacobalberty/unifi/tags/ | grep -Eo '"name":\s"[0-9]*[.]+[0-9]*[.]+[0-9]*"' | head -1 | sed -e "s/\"name\":\s\"/${replace}/g" | sed -e "s/\"/${replace}/g"
-  scan_interval: 28800

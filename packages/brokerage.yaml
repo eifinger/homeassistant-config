@@ -14,6 +14,7 @@ sensor:
     resource: !secret xmr_hashrate_url
     name: Monero Hash Rate
     value_template: "{{ value_json.hash }}"
+    unit_of_measurement: H/s
     json_attributes:
       - totalHashes
       - validShares

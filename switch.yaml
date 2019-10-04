@@ -139,7 +139,7 @@
   switches:
     tv:
       friendly_name: Fernseher
-      value_template: "{{float(states.sensor.tplink_tv_power_usage.state) > 10}}"
+      value_template: "{{states('sensor.tplink_tv_power_usage') | float > 10}}"
       turn_on:
         - condition: state
           entity_id: switch.tv
@@ -173,7 +173,7 @@
             entity_id: switch.broadlink_markise
     bedroom_receiver:
       friendly_name: "Receiver Schlafzimmer"
-      value_template: "{{float(states.sensor.teckin_power_usage.state) > 5}}"
+      value_template: "{{state('sensor.teckin_power_usage') | float > 5}}"
       turn_on:
         - condition: state
           entity_id: switch.bedroom_receiver

@@ -21,8 +21,6 @@
         - switch.large_ventilator
         - group.tom
         - switch.markise
-        - script.goldie_clean
-        - switch.goldie_home
         - switch.tv
         - switch.bedroom_receiver
         - switch.broadlink_tv_select_hdm1
@@ -138,14 +136,6 @@
       switch.markise:
         name: Markise
         description: Markise
-        display_categories: SWITCH
-      script.goldie_clean:
-        name: Goldie
-        description: Simuliere Goldies "Clean" Kommando
-        display_categories: SCENE_TRIGGER
-      switch.goldie_home:
-        name: Goldie Nach Hause
-        description: Schicke Goldie nach Hause
         display_categories: SWITCH
       switch.tv:
         name: Fernseher

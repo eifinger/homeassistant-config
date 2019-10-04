@@ -103,16 +103,6 @@ learn_faces:
   sequence:
     - event: eifinger_learn_faces
 #################################################################
-## Goldie (Vacuum Robot)
-#################################################################
-goldie_clean:
-  sequence:
-    - service: switch.turn_on
-      entity_id: switch.goldie_clean
-    - delay: '00:00:05'
-    - service: switch.turn_on
-      entity_id: switch.goldie_clean
-#################################################################
 ## Update Entities
 #################################################################
 travel_time_home_user_one_update:

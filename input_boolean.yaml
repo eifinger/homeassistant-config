@@ -113,9 +113,6 @@
   notifier_alexa:
     icon: mdi:amazon-alexa
     name: Alexa Ansagen
-  start_goldie_when_leaving:
-    icon: mdi:robot-vacuum
-    name: Goldie Starten wenn wir weg gehen
   start_snowie_when_leaving:
     icon: mdi:robot-vacuum
     name: Snowie Starten wenn wir weg gehen

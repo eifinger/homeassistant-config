@@ -139,10 +139,6 @@ switch.ventilator:
   icon: mdi:fan
 switch.markise:
   icon: mdi:garage
-switch.goldie_clean:
-  icon: mdi:robot-vacuum
-switch.goldie_home:
-  icon: mdi:home
 switch.tv:
   icon: mdi:television
 group.eingang:
@@ -184,8 +180,6 @@ switch.bedroom_receiver:
   icon: mdi:speaker
 switch.start_vive_pc:
   icon: mdi:google-cardboard
-script.goldie_clean:
-  friendly_name: "Aktiviere und starte Goldie"
 sensor.home_assistant_latest_docker:
   icon: mdi:docker
 sensor.unifi_controller_latest_docker:

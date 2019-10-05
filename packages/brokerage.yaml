@@ -121,3 +121,9 @@ sensor:
       - amtPaid
       - amtDue
       - txnCount
+  - platform: template
+    sensors:
+      monero_amount_earned:
+        friendly_name: "Monero Amount Earned"
+        value_template: "{{ state_attr('sensor.monero_hash_rate', 'amtDue') / 1000000000000 + state_attr('sensor.monero_hash_rate', 'amtPaid') / 1000000000000 }}"
+        unit_of_measurement: "XMR"

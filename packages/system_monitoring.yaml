@@ -103,7 +103,7 @@ sensor:
       odroid_xu4_cpu_temp:
         friendly_name: "Odroid XU4 CPU Temp"
         unit_of_measurement: "°C"
-        value_template: "{{  states.sensor.odroid_xu4_cpu_temp.state.split('\r\n')[1] | float / 1000 }}"
+        value_template: "{{  states.sensor.odroid_xu4_cpu_temp_raw.state.split('\r\n')[1] | float / 1000 }}"
 
 automation:
   - id: alert_when_glances_pihole_disk_used_gt_80

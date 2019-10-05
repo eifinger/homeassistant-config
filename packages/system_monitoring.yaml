@@ -222,6 +222,8 @@ automation:
         entity_id: sensor.seafile_fsck
         from: "on"
         to: "off"
+      - platform: template
+        value_template: "{{ states('sensor.seafile_fsck') == 'unknown'}}"
     action:
       - service: notify.kevin
         data:

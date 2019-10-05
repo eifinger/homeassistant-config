@@ -97,6 +97,7 @@ sensor:
     username: !secret odroid_user
     password: !secret odroid_password
     command: "cat /sys/devices/virtual/thermal/thermal_zone0/temp"
+    unit_of_measurement: "String"
   - platform: template
     sensors:
       odroid_xu4_cpu_temp:

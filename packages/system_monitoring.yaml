@@ -93,12 +93,16 @@ sensor:
         arg: !secret host_path_disk4
   - platform: ssh
     host: !secret glances_odroid
-    name: 'Odroid XU4 CPU Temp'
+    name: 'Odroid XU4 CPU Temp Raw'
     username: !secret odroid_user
     password: !secret odroid_password
     command: "cat /sys/devices/virtual/thermal/thermal_zone0/temp"
-    value_template: "{{  states('sensor.odroid_xu4_cpu_temp').split('\r\n')[1] | float / 1000 }}"
-    unit_of_measurement: "°C"
+  - platform: template
+    sensors:
+      odroid_xu4_cpu_temp:
+        friendly_name: "Odroid XU4 CPU Temp"
+        unit_of_measurement: "°C"
+        value_template: "{{  states.sensor.odroid_xu4_cpu_temp.state.split('\r\n')[1] | float / 1000 }}"
 
 automation:
   - id: alert_when_glances_pihole_disk_used_gt_80

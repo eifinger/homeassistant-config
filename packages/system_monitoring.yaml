@@ -97,7 +97,7 @@ sensor:
     username: !secret odroid_user
     password: !secret odroid_password
     command: "cat /sys/devices/virtual/thermal/thermal_zone0/temp"
-    #value_template: "{{ value | float / 1000 }}"
+    value_template: "{{  states('sensor.odroid_xu4_cpu_temp').split('\r\n')[1] | float / 1000 }}"
     unit_of_measurement: "°C"
 
 automation:

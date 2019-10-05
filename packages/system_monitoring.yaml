@@ -91,6 +91,14 @@ sensor:
         arg: !secret host_path_disk4
       - type: disk_free
         arg: !secret host_path_disk4
+  - platform: ssh
+    host: !secret glances_odroid
+    name: 'Odroid XU4 CPU Temp'
+    username: !secret odroid_user
+    password: !secret odroid_password
+    command: "cat /sys/devices/virtual/thermal/thermal_zone0/temp"
+    value_template: "{{ value | float / 1000 }}"
+    unit_of_measurement: "°C"
 
 automation:
   - id: alert_when_glances_pihole_disk_used_gt_80

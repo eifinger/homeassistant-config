@@ -138,4 +138,4 @@ sensor:
       monero_hash_share_ratio:
         friendly_name: "Monero Hash to Share Ratio"
         value_template: "{{ state_attr('sensor.monero_hash_rate', 'totalHashes') / state_attr('sensor.monero_hash_rate', 'validShares') }}"
-        unit_of_measurement: "Shares"
+        unit_of_measurement: "Hash/Share"

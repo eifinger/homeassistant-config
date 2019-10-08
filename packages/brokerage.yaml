@@ -127,3 +127,15 @@ sensor:
         friendly_name: "Monero Amount Earned"
         value_template: "{{ state_attr('sensor.monero_hash_rate', 'amtDue') / 1000000000000 + state_attr('sensor.monero_hash_rate', 'amtPaid') / 1000000000000 }}"
         unit_of_measurement: "XMR"
+      monero_total_hashes:
+        friendly_name: "Monero Valid Shares"
+        value_template: "{{ state_attr('sensor.monero_hash_rate', 'totalHashes') }}"
+        unit_of_measurement: "Hashes"
+      monero_valid_shares:
+        friendly_name: "Monero Valid Shares"
+        value_template: "{{ state_attr('sensor.monero_hash_rate', 'validShares') }}"
+        unit_of_measurement: "Shares"
+      monero_hash_share_ratio:
+        friendly_name: "Monero Hash to Share Ratio"
+        value_template: "{{ state_attr('sensor.monero_hash_rate', 'totalHashes') / state_attr('sensor.monero_hash_rate', 'validShares') }}"
+        unit_of_measurement: "Shares"

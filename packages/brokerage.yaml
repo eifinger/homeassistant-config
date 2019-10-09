@@ -155,4 +155,4 @@ sensor:
       monero_average_hash_rate_24_hours:
         friendly_name: "Monero Average Hash Rate 24 Hours"
         value_template: "{{ state_attr('sensor.statistics_monero_hash_rate', 'mean') }}"
-        unit_of_measurement: "Hashes"
+        unit_of_measurement: "H/s"

@@ -10,7 +10,10 @@ devices:
     transition: 1000
   !secret upper_stairs_yeelight_ip:
     name: upper_stairs_yeelight
+    transition: 1000
   !secret livingroom_yeelight_ip:
     name: livingroom_yeelight
+    transition: 1000
   !secret lower_bathroom_yeelight_ip:
     name: lower_bathroom_yeelight
+    transition: 1000

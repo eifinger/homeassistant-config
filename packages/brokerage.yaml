@@ -121,6 +121,11 @@ sensor:
       - amtPaid
       - amtDue
       - txnCount
+  - platform: statistics
+    entity_id: sensor.monero_hash_rate
+    name: statistics_monero_hash_rate
+    max_age:
+      hours: 24
   - platform: template
     sensors:
       monero_amount_earned:
@@ -128,7 +133,7 @@ sensor:
         value_template: "{{ state_attr('sensor.monero_hash_rate', 'amtDue') / 1000000000000 + state_attr('sensor.monero_hash_rate', 'amtPaid') / 1000000000000 }}"
         unit_of_measurement: "XMR"
       monero_total_hashes:
-        friendly_name: "Monero Valid Shares"
+        friendly_name: "Monero Total Shares"
         value_template: "{{ state_attr('sensor.monero_hash_rate', 'totalHashes') }}"
         unit_of_measurement: "Hashes"
       monero_valid_shares:
@@ -139,3 +144,7 @@ sensor:
         friendly_name: "Monero Hash to Share Ratio"
         value_template: "{{ state_attr('sensor.monero_hash_rate', 'totalHashes') / state_attr('sensor.monero_hash_rate', 'validShares') }}"
         unit_of_measurement: "Hash/Share"
+      monero_average_hash_rate_24_hours:
+        friendly_name: "Monero Average Hash Rate 24 Hours"
+        value_template: "{{ state_attr('sensor.statistics_monero_hash_rate', 'mean')"
+        unit_of_measurement: "Hashes"

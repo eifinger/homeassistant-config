@@ -178,7 +178,7 @@ light.lower_bathroom_yeelight:
   friendly_name: "Bad"
 switch.bedroom_receiver:
   icon: mdi:speaker
-switch.start_vive_pc:
+switch.starte_vive_pc:
   icon: mdi:google-cardboard
 sensor.home_assistant_latest_docker:
   icon: mdi:docker

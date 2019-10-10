@@ -41,7 +41,7 @@ warm_upper_bath_before_wakeup:
 oben_treppe_motion_trigger_delay:
   name: Treppen Bewegungsmelder Licht Dauer
   icon: mdi:alarm
-  min: 60
+  min: 90
   max: 300
   step: 5
 #################################################################

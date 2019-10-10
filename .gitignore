@@ -2,6 +2,7 @@
 secrets.yaml
 entity_registry.yaml
 known_devices.yaml
+known_devices.yaml.bkp
 docker-compose.yaml
 home-assistant.log
 home-assistant_v2.db

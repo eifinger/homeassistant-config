@@ -533,3 +533,85 @@ sensor:
         friendly_name: "Monero Average Hash Rate 24 Hours"
         value_template: "{{ state_attr('sensor.statistics_monero_hash_rate', 'mean') }}"
         unit_of_measurement: "Hash/s"
+
+input_text:
+  avanza_ibm_min:
+    icon: mdi:arrow-collapse-up
+    name: Min Alert
+  avanza_ibm_max:
+    icon: mdi:arrow-collapse-down
+    name: Max Alert
+  avanza_microsoft_min:
+    icon: mdi:arrow-collapse-up
+    name: Min Alert
+  avanza_microsoft_max:
+    icon: mdi:arrow-collapse-down
+    name: Max Alert
+  avanza_munich_re_min:
+    icon: mdi:arrow-collapse-up
+    name: Min Alert
+  avanza_munich_re_max:
+    icon: mdi:arrow-collapse-down
+    name: Max Alert
+  avanza_siemens_min:
+    icon: mdi:arrow-collapse-up
+    name: Min Alert
+  avanza_siemens_max:
+    icon: mdi:arrow-collapse-down
+    name: Max Alert
+  avanza_bayer_min:
+    icon: mdi:arrow-collapse-up
+    name: Min Alert
+  avanza_bayer_max:
+    icon: mdi:arrow-collapse-down
+    name: Max Alert
+  avanza_basf_min:
+    icon: mdi:arrow-collapse-up
+    name: Min Alert
+  avanza_basf_max:
+    icon: mdi:arrow-collapse-down
+    name: Max Alert
+  avanza_allianz_min:
+    icon: mdi:arrow-collapse-up
+    name: Min Alert
+  avanza_allianz_max:
+    icon: mdi:arrow-collapse-down
+    name: Max Alert
+  avanza_procter_and_gamble_min:
+    icon: mdi:arrow-collapse-up
+    name: Min Alert
+  avanza_procter_and_gamble_max:
+    icon: mdi:arrow-collapse-down
+    name: Max Alert
+  avanza_johnson_and_johnson_min:
+    icon: mdi:arrow-collapse-up
+    name: Min Alert
+  avanza_johnson_and_johnson_max:
+    icon: mdi:arrow-collapse-down
+    name: Max Alert
+  avanza_vinci_min:
+    icon: mdi:arrow-collapse-up
+    name: Min Alert
+  avanza_vinci_max:
+    icon: mdi:arrow-collapse-down
+    name: Max Alert
+
+automation:
+ - id: Send Stock Alert
+   alias: Send Stock Alert
+   trigger:
+     platform: template
+     value_template: >
+      {% for input_text in states.input_text-%}
+        {% for sensor in states.sensor -%}
+          {% if sensor.entity_id.startswith("sensor.avanza") %}
+            {% if input_text.entity_id.split(".")[1].startswith( sensor.entity_id.split(".")[1]) %}
+              {{ (sensor.state | float) > (input_text.state | float) }}
+            {% endif %}
+          {% endif %}
+        {%- endfor %}
+      {%- endfor %}
+   action:
+     - service: notify.kevin
+       data_template:
+         message: "Stock alert: {{trigger.entity_id}}"

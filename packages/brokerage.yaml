@@ -455,7 +455,7 @@ sensor:
       - volatility
   - platform: avanza_stock
     stock: 745799
-    name: avanza_johnson_and_johnson
+    name: avanza_vinci
     monitored_conditions:
       - change
       - changePercent

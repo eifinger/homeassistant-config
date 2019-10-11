@@ -47,4 +47,4 @@ automation:
   condition:
     condition: template
     value_template: >
-      {{ trigger.to_state.state not in [trigger.from_state.state, 'unavailable'] }}
+      {{ trigger.to_state.state not in [trigger.from_state.state, 'unavailable', 'unknown'] }}

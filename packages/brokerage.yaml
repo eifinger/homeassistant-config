@@ -596,22 +596,22 @@ input_text:
     icon: mdi:arrow-collapse-down
     name: Max Alert
 
-automation:
- - id: Send Stock Alert
-   alias: Send Stock Alert
-   trigger:
-     platform: template
-     value_template: >
-      {% for input_text in states.input_text-%}
-        {% for sensor in states.sensor -%}
-          {% if sensor.entity_id.startswith("sensor.avanza") %}
-            {% if input_text.entity_id.split(".")[1].startswith( sensor.entity_id.split(".")[1]) %}
-              {{ (sensor.state | float) > (input_text.state | float) }}
-            {% endif %}
-          {% endif %}
-        {%- endfor %}
-      {%- endfor %}
-   action:
-     - service: notify.kevin
-       data_template:
-         message: "Stock alert: {{trigger.entity_id}}"
+# automation:
+#  - id: Send Stock Alert
+#    alias: Send Stock Alert
+#    trigger:
+#      platform: template
+#      value_template: >
+#       {% for input_text in states.input_text-%}
+#         {% for sensor in states.sensor -%}
+#           {% if sensor.entity_id.startswith("sensor.avanza") %}
+#             {% if input_text.entity_id.split(".")[1].startswith( sensor.entity_id.split(".")[1]) %}
+#               {{ (sensor.state | float) > (input_text.state | float) }}
+#             {% endif %}
+#           {% endif %}
+#         {%- endfor %}
+#       {%- endfor %}
+#    action:
+#      - service: notify.kevin
+#        data_template:
+#          message: "Stock alert: {{trigger.entity_id}}"

@@ -20,7 +20,6 @@ sensor:
       - changePercent
       - country
       - currency
-      - description
       - directYield
       - dividends
       - flagCode
@@ -69,7 +68,6 @@ sensor:
       - changePercent
       - country
       - currency
-      - description
       - directYield
       - dividends
       - flagCode
@@ -118,7 +116,6 @@ sensor:
       - changePercent
       - country
       - currency
-      - description
       - directYield
       - dividends
       - flagCode
@@ -167,7 +164,6 @@ sensor:
       - changePercent
       - country
       - currency
-      - description
       - directYield
       - dividends
       - flagCode
@@ -216,7 +212,6 @@ sensor:
       - changePercent
       - country
       - currency
-      - description
       - directYield
       - dividends
       - flagCode
@@ -265,7 +260,6 @@ sensor:
       - changePercent
       - country
       - currency
-      - description
       - directYield
       - dividends
       - flagCode
@@ -314,7 +308,6 @@ sensor:
       - changePercent
       - country
       - currency
-      - description
       - directYield
       - dividends
       - flagCode
@@ -363,7 +356,6 @@ sensor:
       - changePercent
       - country
       - currency
-      - description
       - directYield
       - dividends
       - flagCode
@@ -412,7 +404,6 @@ sensor:
       - changePercent
       - country
       - currency
-      - description
       - directYield
       - dividends
       - flagCode
@@ -461,7 +452,6 @@ sensor:
       - changePercent
       - country
       - currency
-      - description
       - directYield
       - dividends
       - flagCode

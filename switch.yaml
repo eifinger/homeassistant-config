@@ -173,7 +173,7 @@
             entity_id: switch.broadlink_markise
     bedroom_receiver:
       friendly_name: "Receiver Schlafzimmer"
-      value_template: "{{state('sensor.teckin_power_usage') | float > 5}}"
+      value_template: "{{states('sensor.teckin_power_usage') | float > 5}}"
       turn_on:
         - condition: state
           entity_id: switch.bedroom_receiver

@@ -4,4 +4,4 @@ cd $DIR
 git pull
 git log -1 --oneline > currentCommit.txt
 ./turnBarRed.sh > /dev/null
-sudo docker restart homeassistant
+docker restart homeassistant

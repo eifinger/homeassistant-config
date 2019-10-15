@@ -104,12 +104,6 @@
     icon: mdi:window-open
   set_multiroom_audio_when_sleepmode_turns_off:
     icon: mdi:speaker
-  roggen_notifier:
-    icon: mdi:chart-bubble
-  graeser_notifier:
-    icon: mdi:chart-bubble
-  birke_notifier:
-    icon: mdi:chart-bubble
   notifier_alexa:
     icon: mdi:amazon-alexa
     name: Alexa Ansagen

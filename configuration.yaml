@@ -136,5 +136,4 @@ input_datetime: !include input_datetime.yaml
 binary_sensor: !include binary_sensor.yaml
 weather: !include weather.yaml
 scene: !include scenes.yaml
-tplink: !include tplink.yaml
 yeelight: !include yeelight.yaml

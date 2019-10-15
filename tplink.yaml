@@ -1,5 +1,0 @@
-discovery: False
-switch:
-  - host: !secret tp_link_ip
-  - host: !secret tp_link_washingmachine_ip
-  - host: !secret tp_link_dishwasher_ip

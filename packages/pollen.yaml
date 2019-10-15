@@ -103,22 +103,23 @@ input_boolean:
   birke_notifier:
     icon: mdi:chart-bubble
 
-customize:
-  sensor.pollen_101_roggen_today:
-    icon: mdi:barley
-  sensor.pollen_101_roggen_tomorrow:
-    icon: mdi:barley
-  sensor.pollen_101_roggen_dayaftertomorrow:
-    icon: mdi:barley
-  sensor.pollen_101_graeser_today:
-    icon: mdi:cannabis
-  sensor.pollen_101_graeser_tomorrow:
-    icon: mdi:cannabis
-  sensor.pollen_101_graeser_dayaftertomorrow:
-    icon: mdi:cannabis
-  sensor.pollen_101_birke_today:
-    icon: mdi:tree
-  sensor.pollen_101_birke_tomorrow:
-    icon:  mdi:tree
-  sensor.pollen_101_birke_dayaftertomorrow:
-    icon:  mdi:tree
+homeassistant:
+  customize:
+    sensor.pollen_101_roggen_today:
+      icon: mdi:barley
+    sensor.pollen_101_roggen_tomorrow:
+      icon: mdi:barley
+    sensor.pollen_101_roggen_dayaftertomorrow:
+      icon: mdi:barley
+    sensor.pollen_101_graeser_today:
+      icon: mdi:cannabis
+    sensor.pollen_101_graeser_tomorrow:
+      icon: mdi:cannabis
+    sensor.pollen_101_graeser_dayaftertomorrow:
+      icon: mdi:cannabis
+    sensor.pollen_101_birke_today:
+      icon: mdi:tree
+    sensor.pollen_101_birke_tomorrow:
+      icon:  mdi:tree
+    sensor.pollen_101_birke_dayaftertomorrow:
+      icon:  mdi:tree

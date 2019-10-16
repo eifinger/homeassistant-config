@@ -1,0 +1,144 @@
+sensor:
+#########User one
+- platform: mqtt
+  name: mqtt_room_user_one
+  state_topic: !secret room_user_one_state_topic
+  value_template: '{{ value_json.guesses[0].location }}'
+#Rename sensor in frontend
+- platform: template
+  sensors:
+    room_user_one:
+      friendly_name: !secret user_one_name
+      value_template: >-
+        {% if is_state('sensor.mqtt_room_user_one', 'livingroom') %}
+          Wohnzimmer
+        {% elif is_state('sensor.mqtt_room_user_one', 'kitchen') %}
+          Küche
+        {% elif is_state('sensor.mqtt_room_user_one', 'studyroom') %}
+          Arbeitszimmer
+        {% elif is_state('sensor.mqtt_room_user_one', 'bedroom') %}
+          Schlafzimmer
+        {% elif is_state('sensor.mqtt_room_user_one', 'lower_bathroom') %}
+          Bad unten
+        {% elif is_state('sensor.mqtt_room_user_one', 'lowe_bathroom') %}
+          Bad unten
+        {% elif is_state('sensor.mqtt_room_user_one', 'upper_bathroom') %}
+          Bad oben
+        {% elif is_state('sensor.mqtt_room_user_one', 'upper_balcony') %}
+          Balkon Oben
+        {% elif is_state('sensor.mqtt_room_user_one', 'guest_room') %}
+          Gästezimmer
+        {% else %}
+          Unbekannt
+        {% endif %}
+      entity_id:
+        - sensor.mqtt_room_user_one
+#########User two
+- platform: mqtt
+  name: mqtt_room_user_two
+  state_topic: !secret room_user_two_state_topic
+  value_template: '{{ value_json.guesses[0].location }}'
+#Rename sensor in frontend
+- platform: template
+  sensors:
+    room_user_two:
+      friendly_name: !secret user_two_name
+      value_template: >-
+        {% if is_state('sensor.mqtt_room_user_two', 'livingroom') %}
+          Wohnzimmer
+        {% elif is_state('sensor.mqtt_room_user_two', 'kitchen') %}
+          Küche
+        {% elif is_state('sensor.mqtt_room_user_two', 'studyroom') %}
+          Arbeitszimmer
+        {% elif is_state('sensor.mqtt_room_user_two', 'bedroom') %}
+          Schlafzimmer
+        {% elif is_state('sensor.mqtt_room_user_two', 'lower_bathroom') %}
+          Bad unten
+        {% elif is_state('sensor.mqtt_room_user_two', 'lowe_bathroom') %}
+          Bad unten
+        {% elif is_state('sensor.mqtt_room_user_two', 'upper_bathroom') %}
+          Bad oben
+        {% elif is_state('sensor.mqtt_room_user_two', 'upper_balcony') %}
+          Balkon Oben
+        {% elif is_state('sensor.mqtt_room_user_two', 'guest_room') %}
+          Gästezimmer
+        {% else %}
+          Unbekannt
+        {% endif %}
+      entity_id:
+       - sensor.mqtt_room_user_two
+#########S8Plus
+- platform: mqtt
+  name: mqtt_room_galaxys8
+  state_topic: eifinger/location/galaxys8
+  value_template: '{{ value_json.guesses[0].location }}'
+#Rename sensor in frontend
+- platform: template
+  sensors:
+    room_s8plus:
+      friendly_name: S8-Plus
+      value_template: >-
+        {% if is_state('sensor.mqtt_room_galaxys8', 'livingroom') %}
+          Wohnzimmer
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'kitchen') %}
+          Küche
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'studyroom') %}
+          Arbeitszimmer
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'bedroom') %}
+          Schlafzimmer
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'lower_bathroom') %}
+          Bad unten
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'lowe_bathroom') %}
+          Bad unten
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'upper_bathroom') %}
+          Bad oben
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'upper_balcony') %}
+          Balkon Oben
+        {% elif is_state('sensor.mqtt_room_galaxys8', 'guest_room') %}
+          Gästezimmer
+        {% else %}
+          Unbekannt
+        {% endif %}
+      entity_id:
+       - sensor.mqtt_room_galaxys8
+- platform: template
+  sensors:
+    location_user_one:
+      friendly_name: Kevin
+      value_template: >-
+        {% if states.device_tracker.kevin.state != 'home' and states.device_tracker.kevin.state == 'not_home' %}
+          Unterwegs
+        {% elif states.device_tracker.kevin.state != 'home' and states.device_tracker.kevin.state != 'not_home' %}
+          {{states.device_tracker.kevin.state}}
+        {% else %}
+          {{states.sensor.room_user_one.state}}
+        {% endif %}
+      entity_id:
+       - sensor.room_user_one
+       - device_tracker.kevin
+    location_user_two:
+      friendly_name: Sina
+      value_template: >-
+        {% if states.device_tracker.sina.state != 'home' and states.device_tracker.sina.state == 'not_home' %}
+          Unterwegs
+        {% elif states.device_tracker.sina.state != 'home' and states.device_tracker.sina.state != 'not_home' %}
+          {{states.device_tracker.sina.state}}
+        {% else %}
+          {{states.sensor.room_user_two.state}}
+        {% endif %}
+      entity_id:
+       - sensor.room_user_two
+       - device_tracker.sina
+    location_s8plus:
+      friendly_name: S8Plus
+      value_template: >-
+        {% if states.device_tracker.galaxys8.state != 'home' and states.device_tracker.galaxys8.state == 'not_home' %}
+          Unterwegs
+        {% elif states.device_tracker.galaxys8.state != 'home' and states.device_tracker.galaxys8.state != 'not_home' %}
+          {{states.device_tracker.galaxys8.state}}
+        {% else %}
+          {{states.sensor.room_s8plus.state}}
+        {% endif %}
+      entity_id:
+       - sensor.room_s8plus
+       - device_tracker.galaxys8

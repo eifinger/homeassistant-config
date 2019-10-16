@@ -76,8 +76,6 @@ recorder:
       - sensor.yr_symbol
 
 media_player:
-  - platform: denonavr
-    host: !secret denon_ip
   - platform: kodi
     host: !secret kodi_ip
     port: 8080
@@ -122,16 +120,13 @@ sensor: !include sensor.yaml
 group: !include group.yaml
 automation: !include automation.yaml
 script: !include scripts.yaml
-light: !include light.yaml
 input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml
 notify: !include notify.yaml
 zone: !include zone.yaml
 proximity: !include proximity.yaml
 camera: !include camera.yaml
-image_processing: !include image_processing.yaml
 history_graph: !include history_graph.yaml
-input_select: !include input_select.yaml
 input_datetime: !include input_datetime.yaml
 binary_sensor: !include binary_sensor.yaml
 weather: !include weather.yaml

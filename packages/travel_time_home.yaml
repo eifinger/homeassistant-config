@@ -1,0 +1,26 @@
+sensor:
+# Travel Time Home User One
+- platform: google_travel_time
+  name: travel_time_home_user_one
+  api_key: !secret google_maps_api_token
+  origin: !secret device_user_one
+  destination: zone.home
+  scan_interval: 2678400 # 1 month
+# Travel Time Home User Two
+- platform: google_travel_time
+  name: travel_time_home_user_two
+  api_key: !secret google_maps_api_token
+  origin: !secret device_user_two
+  destination: zone.home
+  scan_interval: 2678400 # 1 month
+
+script:
+  travel_time_home_user_one_update:
+    sequence:
+      - service: homeassistant.update_entity
+        entity_id: sensor.travel_time_home_user_one
+
+  travel_time_home_user_two_update:
+    sequence:
+      - service: homeassistant.update_entity
+        entity_id: sensor.travel_time_home_user_two

@@ -1,0 +1,16 @@
+sensor:
+- platform: command_line
+  name: current_commit
+  command: cat /config/currentCommit.txt
+- platform: template
+  sensors:
+    current_commit_id:
+      friendly_name: Id
+      value_template: "{{states.sensor.current_commit.state.split(' ',1)[0]}}"
+      entity_id:
+       - sensor.current_commit
+    current_commit_name:
+      friendly_name: Message
+      value_template: "{{states.sensor.current_commit.state.split(' ',1)[1]}}"
+      entity_id:
+       - sensor.current_commit

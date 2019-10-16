@@ -1,0 +1,237 @@
+switch:
+- platform: mqtt
+  name: "Snowboard"
+  state_topic: "stat/sonoff_snowboard/POWER"
+  command_topic: "cmnd/sonoff_snowboard/POWER"
+  availability_topic: "tele/sonoff_snowboard/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
+- platform: mqtt
+  name: "Large Lamp"
+  state_topic: "stat/sonoff_large_lamp/POWER"
+  command_topic: "cmnd/sonoff_large_lamp/POWER"
+  availability_topic: "tele/sonoff_large_lamp/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
+- platform: mqtt
+  name: "Small Lamp"
+  state_topic: "stat/sonoff_small_lamp/POWER"
+  command_topic: "cmnd/sonoff_small_lamp/POWER"
+  availability_topic: "tele/sonoff_small_lamp/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
+- platform: mqtt
+  name: "lobby"
+  state_topic: "stat/sonoff_lobby/POWER"
+  command_topic: "cmnd/sonoff_lobby/POWER"
+  availability_topic: "tele/sonoff_lobby/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
+- platform: mqtt
+  name: "studyroom"
+  state_topic: "stat/sonoff_studyroom/POWER"
+  command_topic: "cmnd/sonoff_studyroom/POWER"
+  availability_topic: "tele/sonoff_studyroom/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
+- platform: mqtt
+  name: "ventilator"
+  state_topic: "stat/sonoff_ventilator/POWER"
+  command_topic: "cmnd/sonoff_ventilator/POWER"
+  availability_topic: "tele/sonoff_ventilator/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
+- platform: mqtt
+  name: "Large Ventilator"
+  state_topic: "stat/sonoff_large_ventilator/POWER"
+  command_topic: "cmnd/sonoff_large_ventilator/POWER"
+  availability_topic: "tele/sonoff_large_ventilator/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
+- platform: mqtt
+  name: "Weihnachtslichter"
+  state_topic: "stat/sonoff_weihnachtslichter/POWER"
+  command_topic: "cmnd/sonoff_weihnachtslichter/POWER"
+  availability_topic: "tele/sonoff_weihnachtslichter/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 2
+  retain: false
+sensor:
+- platform: mqtt
+  state_topic: "tele/sonoff_small_lamp/SENSOR"
+  value_template: "{{ value_json['AM2301'].Temperature }}"
+  name: 'Small Lamp Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: "tele/sonoff_small_lamp/SENSOR"
+  value_template: "{{ value_json['AM2301'].Humidity }}"
+  name: 'Small Lamp Humidity'
+  unit_of_measurement: '%'
+- platform: mqtt
+  state_topic: "tele/sonoff_large_lamp/SENSOR"
+  value_template: "{{ value_json['AM2301'].Temperature }}"
+  name: 'Large Lamp Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: "tele/sonoff_large_lamp/SENSOR"
+  value_template: "{{ value_json['AM2301'].Humidity }}"
+  name: 'Large Lamp Humidity'
+  unit_of_measurement: '%'
+- platform: mqtt
+  state_topic: "tele/sonoff_ventilator/SENSOR"
+  value_template: "{{ value_json['AM2301'].Temperature }}"
+  name: 'Ventilator Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: "tele/sonoff_ventilator/SENSOR"
+  value_template: "{{ value_json['AM2301'].Humidity }}"
+  name: 'Ventilator Humidity'
+  unit_of_measurement: '%'
+- platform: mqtt
+  state_topic: "tele/sonoff_large_ventilator/SENSOR"
+  value_template: "{{ value_json['AM2301'].Temperature }}"
+  name: 'Large Ventilator Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: "tele/sonoff_large_ventilator/SENSOR"
+  value_template: "{{ value_json['AM2301'].Humidity }}"
+  name: 'Large Ventilator Humidity'
+  unit_of_measurement: '%'
+- platform: mqtt
+  state_topic: "tele/sonoff_weihnachtslichter/SENSOR"
+  value_template: "{{ value_json['AM2301'].Temperature }}"
+  name: 'Weihnachtslichter Temperature'
+  unit_of_measurement: '°C'
+- platform: mqtt
+  state_topic: "tele/sonoff_weihnachtslichter/SENSOR"
+  value_template: "{{ value_json['AM2301'].Humidity }}"
+  name: 'Weihnachtslichter Humidity'
+  unit_of_measurement: '%'
+- platform: mqtt
+  name: "teckin_power_usage"
+  icon: mdi:speaker
+  state_topic: "tele/sonoff_teckin/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Power }}"
+  unit_of_measurement: "W"
+  availability_topic: "tele/sonoff_teckin/LWT"
+  qos: 2
+  payload_available: "Online"
+  payload_not_available: "Offline"
+- platform: mqtt
+  name: "teckin_power_usage_today"
+  icon: mdi:speaker
+  state_topic: "tele/sonoff_teckin/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Today }}"
+  unit_of_measurement: "kWh"
+  availability_topic: "tele/sonoff_teckin/LWT"
+  qos: 2
+  payload_available: "Online"
+  payload_not_available: "Offline"
+- platform: mqtt
+  name: "teckin_power_usage_total"
+  icon: mdi:speaker
+  state_topic: "tele/sonoff_teckin/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Total }}"
+  unit_of_measurement: "kWh"
+  availability_topic: "tele/sonoff_teckin/LWT"
+  qos: 2
+  payload_available: "Online"
+  payload_not_available: "Offline"
+
+light:
+  - platform: mqtt
+    name: bar_table
+    state_topic: "stat/bar_light/RESULT"
+    command_topic: "cmnd/bar_light/POWER"
+    state_value_template: "{{ value_json.POWER }}"
+    brightness_state_topic: "stat/bar_light/RESULT"
+    brightness_command_topic: "cmnd/bar_light/Dimmer"
+    brightness_scale: 100
+    brightness_value_template: "{{ value_json.Dimmer }}"
+    white_value_state_topic: "stat/bar_light/RESULT"
+    white_value_command_topic: "cmnd/bar_light/Channel4"
+    white_value_scale: 100
+    white_value_template: "{{ value_json.Channel[3] }}"
+    rgb_command_topic: "cmnd/bar_light/Color"
+    rgb_command_template: "{{ '%02x%02x%02x' | format(green, red, blue)}}"
+    rgb_state_topic: "stat/bar_light/RESULT"
+    rgb_value_template: "{{(value_json.Channel[1]*2.55)|int}},{{(value_json.Channel[0]*2.55)|int}},{{(value_json.Channel[2]*2.55)|int}}"
+    effect_state_topic: "stat/bar_light/RESULT"
+    effect_command_topic: "cmnd/bar_light/Scheme"
+    effect_list:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+    retain: false
+    qos: 2
+    payload_on: "ON"
+    payload_off: "OFF"
+
+script:
+  bar_table_green:
+    sequence:
+      - service: mqtt.publish
+        data:
+          payload: '{"state":"ON","brightness":255,"white_value":0,"color":{"r":0,"g":255,"b":0},"transition":"5"}'
+          qos: 1
+          retain: false
+          topic: "RGBW/00D2EE20/json/set"
+
+  bar_table_red:
+    sequence:
+      - service: mqtt.publish
+        data:
+          payload: '{"state":"ON","brightness":255,"white_value":0,"color":{"r":255,"g":0,"b":0},"transition":"5"}'
+          qos: 1
+          retain: false
+          topic: "RGBW/00D2EE20/json/set"
+
+  bar_table_white:
+    sequence:
+      - service: mqtt.publish
+        data:
+          payload: '{"state":"ON","brightness":255,"white_value":255,"color":{"r":0,"g":0,"b":0},"transition":"5"}'
+          qos: 1
+          retain: false
+          topic: "RGBW/00D2EE20/json/set"

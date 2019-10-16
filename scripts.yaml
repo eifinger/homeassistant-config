@@ -1,16 +1,4 @@
 #################################################################
-## Kodi
-#################################################################
-kodi_pause:
-  sequence:
-    - service: media_player.media_pause
-      entity_id: media_player.kodi
-
-kodi_play:
-  sequence:
-    - service: media_player.media_play
-      entity_id: media_player.kodi
-#################################################################
 ## Learn Faces
 #################################################################
 learn_faces:

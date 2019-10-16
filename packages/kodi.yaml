@@ -1,0 +1,31 @@
+media_player:
+  - platform: kodi
+    host: !secret kodi_ip
+    port: 8080
+
+script:
+  kodi_pause:
+    sequence:
+      - service: media_player.media_pause
+        entity_id: media_player.kodi
+
+  kodi_play:
+    sequence:
+      - service: media_player.media_play
+        entity_id: media_player.kodi
+
+alexa:
+  smart_home:
+    filter:
+      include_entities:
+        - script.kodi_pause
+        - script.kodi_play
+    entity_config:
+      script.kodi_play:
+        name: Kodi Start
+        description: Kodi Start
+        display_categories: SCENE_TRIGGER
+      script.kodi_pause:
+        name: Kodi Stop
+        description: Kodi Pause
+        display_categories: SCENE_TRIGGER

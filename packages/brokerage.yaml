@@ -487,113 +487,120 @@ sensor:
       - totalVolumeTraded
       - tradable
       - volatility
-  - platform: rest
-    resource: !secret xmr_hashrate_url
-    name: Monero Hash Rate
-    value_template: "{{ value_json.hash }}"
-    unit_of_measurement: H/s
-    json_attributes:
-      - totalHashes
-      - validShares
-      - amtPaid
-      - amtDue
-      - txnCount
-  - platform: statistics
-    entity_id: sensor.monero_hash_rate
-    name: statistics_monero_hash_rate
-    max_age:
-      hours: 24
-  - platform: template
-    sensors:
-      monero_amount_earned:
-        friendly_name: "Monero Amount Earned"
-        value_template: "{{ state_attr('sensor.monero_hash_rate', 'amtDue') / 1000000000000 + state_attr('sensor.monero_hash_rate', 'amtPaid') / 1000000000000 }}"
-        unit_of_measurement: "XMR"
-      monero_total_hashes:
-        friendly_name: "Monero Total Shares"
-        value_template: "{{ state_attr('sensor.monero_hash_rate', 'totalHashes') }}"
-        unit_of_measurement: "Hash"
-      monero_valid_shares:
-        friendly_name: "Monero Valid Shares"
-        value_template: "{{ state_attr('sensor.monero_hash_rate', 'validShares') }}"
-        unit_of_measurement: "Share"
-      monero_hash_share_ratio:
-        friendly_name: "Monero Hash to Share Ratio"
-        value_template: "{{ state_attr('sensor.monero_hash_rate', 'totalHashes') / state_attr('sensor.monero_hash_rate', 'validShares') }}"
-        unit_of_measurement: "Hash/Share"
-      monero_hash_amount_earned_ratio:
-        friendly_name: "Monero Hash to Share Ratio"
-        value_template: "{{ state_attr('sensor.monero_hash_rate', 'totalHashes') / (state_attr('sensor.monero_hash_rate', 'amtDue') / 1000000000000 + state_attr('sensor.monero_hash_rate', 'amtPaid') / 1000000000000) }}"
-        unit_of_measurement: "Hash/XMR"
-      monero_share_amount_earned_ratio:
-        friendly_name: "Monero Hash to Share Ratio"
-        value_template: "{{ state_attr('sensor.monero_hash_rate', 'validShares') / (state_attr('sensor.monero_hash_rate', 'amtDue') / 1000000000000 + state_attr('sensor.monero_hash_rate', 'amtPaid') / 1000000000000) }}"
-        unit_of_measurement: "Share/XMR"
-      monero_average_hash_rate_24_hours:
-        friendly_name: "Monero Average Hash Rate 24 Hours"
-        value_template: "{{ state_attr('sensor.statistics_monero_hash_rate', 'mean') }}"
-        unit_of_measurement: "Hash/s"
-
+  - platform: avanza_stock
+    stock: 732452
+    name: avanza_bmw
+    monitored_conditions:
+      - change
+      - changePercent
+      - country
+      - currency
+      - directYield
+      - dividends
+      - flagCode
+      - hasInvestmentFees
+      - highestPrice
+      - id
+      - isin
+      - lastPrice
+      - lastPriceUpdated
+      - loanFactor
+      - lowestPrice
+      - marketCapital
+      - marketList
+      - marketMakerExpected
+      - marketPlace
+      - marketTrades
+      - morningStarFactSheetUrl
+      - name
+      - numberOfOwners
+      - orderDepthReceivedTime
+      - priceAtStartOfYear
+      - priceEarningsRatio
+      - priceFiveYearsAgo
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+      - priceThreeYearsAgo
+      - pushPermitted
+      - quoteUpdated
+      - sector
+      - shortSellable
+      - superLoan
+      - tickerSymbol
+      - totalNumberOfShares
+      - totalValueTraded
+      - totalVolumeTraded
+      - tradable
+      - volatility
 input_text:
   avanza_ibm_min:
-    icon: mdi:arrow-collapse-up
+    icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_ibm_max:
-    icon: mdi:arrow-collapse-down
+    icon: mdi:arrow-collapse-up
     name: Max Alert
   avanza_microsoft_min:
-    icon: mdi:arrow-collapse-up
+    icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_microsoft_max:
-    icon: mdi:arrow-collapse-down
+    icon: mdi:arrow-collapse-up
     name: Max Alert
   avanza_munich_re_min:
-    icon: mdi:arrow-collapse-up
+    icon: mdi:arrow-collapse-dwon
     name: Min Alert
   avanza_munich_re_max:
-    icon: mdi:arrow-collapse-down
+    icon: mdi:arrow-collapse-up
     name: Max Alert
   avanza_siemens_min:
-    icon: mdi:arrow-collapse-up
+    icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_siemens_max:
-    icon: mdi:arrow-collapse-down
+    icon: mdi:arrow-collapse-up
     name: Max Alert
   avanza_bayer_min:
-    icon: mdi:arrow-collapse-up
+    icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_bayer_max:
-    icon: mdi:arrow-collapse-down
+    icon: mdi:arrow-collapse-up
     name: Max Alert
   avanza_basf_min:
-    icon: mdi:arrow-collapse-up
+    icon: mdi:arrow-collapse-dwon
     name: Min Alert
   avanza_basf_max:
-    icon: mdi:arrow-collapse-down
+    icon: mdi:arrow-collapse-up
     name: Max Alert
   avanza_allianz_min:
-    icon: mdi:arrow-collapse-up
+    icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_allianz_max:
-    icon: mdi:arrow-collapse-down
+    icon: mdi:arrow-collapse-up
     name: Max Alert
   avanza_procter_and_gamble_min:
-    icon: mdi:arrow-collapse-up
+    icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_procter_and_gamble_max:
-    icon: mdi:arrow-collapse-down
+    icon: mdi:arrow-collapse-up
     name: Max Alert
   avanza_johnson_and_johnson_min:
-    icon: mdi:arrow-collapse-up
+    icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_johnson_and_johnson_max:
-    icon: mdi:arrow-collapse-down
+    icon: mdi:arrow-collapse-up
     name: Max Alert
   avanza_vinci_min:
-    icon: mdi:arrow-collapse-up
+    icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_vinci_max:
+    icon: mdi:arrow-collapse-up
+    name: Max Alert
+  avanza_bmw_min:
     icon: mdi:arrow-collapse-down
+    name: Min Alert
+  avanza_bmw_max:
+    icon: mdi:arrow-collapse-up
     name: Max Alert
 
 automation:
@@ -777,3 +784,21 @@ automation:
            {% else %}
            "Stock alert: {{ state_attr('sensor.avanza_vinci','name') }} under threshold of {{ states('input_text.avanza_vinci_min') }}"
            {% endif %}
+  - id: avanza_bmw
+    alias: Avanza BMW
+    trigger:
+      - platform: template
+        value_template: >
+          {{ states('sensor.avanza_bmw') | float > states('input_text.avanza_bmw_max') | float and states('input_text.avanza_bmw_max') not in ['unknown', ''] }}
+      - platform: template
+        value_template: >
+          {{ states('sensor.avanza_bmw') | float < states('input_text.avanza_bmw_min') | float and states('input_text.avanza_bmw_min') not in ['unknown', ''] }}
+    action:
+      - service: notify.kevin
+        data_template:
+          message: >
+            {% if states('sensor.avanza_bmw') | float > states('input_text.avanza_bmw_max') | float %}
+            "Stock alert: {{ state_attr('sensor.avanza_bmw','name') }} over threshold of {{ states('input_text.avanza_bmw_max') }}"
+            {% else %}
+            "Stock alert: {{ state_attr('sensor.avanza_bmw','name') }} under threshold of {{ states('input_text.avanza_bmw_min') }}"
+            {% endif %}

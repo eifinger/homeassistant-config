@@ -1,0 +1,49 @@
+---
+name: Home Assistant CI
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+  pull_request:
+
+jobs:
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Getting your configuration from GitHub
+        uses: actions/checkout@v1
+      - name: Running YAMLlint
+        uses: "docker://pipelinecomponents/yamllint:latest"
+        with:
+          args: yamllint .
+  remarklint:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Getting your configuration from GitHub
+        uses: actions/checkout@v1
+      - name: Running Remark lint
+        uses: "docker://pipelinecomponents/remark-lint:latest"
+        continue-on-error: true
+        with:
+          args: "remark --no-stdout --color --frail --use preset-lint-recommended ."
+  home_asistant_ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.6', '3.7']
+        hass: ['0.98.5', 'latest']
+    name: Python ${{ matrix.python }} - Hass ${{ matrix.hass }}
+    steps:
+      - name: Getting configuration from GitHub
+        uses: actions/checkout@master
+      - name: Setup python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python }}
+          architecture: x64
+      - name: Create secrets.yaml
+        run: mv travis_secrets.yaml secrets.yaml
+      - name: Home Assistant Check
+        uses: "docker://homeassistant/home-assistant:${{ matrix.hass }}"
+        with:
+          args: python -m homeassistant --config . --script check_config --info all

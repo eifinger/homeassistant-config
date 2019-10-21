@@ -26,7 +26,7 @@ jobs:
         continue-on-error: true
         with:
           args: "remark --no-stdout --color --frail --use preset-lint-recommended ."
-  home_asistant_ci:
+  home_assistant_ci:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -43,7 +43,11 @@ jobs:
           architecture: x64
       - name: Create secrets.yaml
         run: mv travis_secrets.yaml secrets.yaml
-      - name: Home Assistant Check
-        uses: "docker://homeassistant/home-assistant:${{ matrix.hass }}"
+      - name: Home Assistant Check Latest
+        uses: "docker://homeassistant/home-assistant:latest"
+        with:
+          args: python -m homeassistant --config . --script check_config --info all
+      - name: Home Assistant Check Installed
+        uses: "docker://homeassistant/home-assistant:0.98.5"
         with:
           args: python -m homeassistant --config . --script check_config --info all

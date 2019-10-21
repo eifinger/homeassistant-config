@@ -17,7 +17,7 @@ jobs:
         with:
           args: yamllint .
   remarklint:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Getting your configuration from GitHub
         uses: actions/checkout@v1
@@ -31,8 +31,7 @@ jobs:
     strategy:
       matrix:
         python: ['3.6', '3.7']
-        hass: ['0.98.5', 'latest']
-    name: Python ${{ matrix.python }} - Hass ${{ matrix.hass }}
+    name: Python ${{ matrix.python }}
     steps:
       - name: Getting configuration from GitHub
         uses: actions/checkout@master
@@ -43,10 +42,6 @@ jobs:
           architecture: x64
       - name: Create secrets.yaml
         run: mv travis_secrets.yaml secrets.yaml
-      - name: Home Assistant Check Latest
-        uses: "docker://homeassistant/home-assistant:latest"
-        with:
-          args: python -m homeassistant --config . --script check_config --info all
       - name: Home Assistant Check Installed
         uses: "docker://homeassistant/home-assistant:0.98.5"
         with:

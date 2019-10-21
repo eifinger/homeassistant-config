@@ -1,5 +1,5 @@
 ---
-name: Home Assistant CI
+name: Home Assistant Latest
 
 # yamllint disable-line rule:truthy
 on:

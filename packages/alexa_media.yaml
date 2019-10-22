@@ -104,9 +104,9 @@ automation:
         data:
           entity_id: input_select.alexa
           option: None
-#####################################################################
-### Virtual Light / Alexa Sequences
-#####################################################################
+  #####################################################################
+  ### Virtual Light / Alexa Sequences
+  #####################################################################
   - alias: "Alexa Report"
     trigger:
       - platform: state
@@ -117,8 +117,8 @@ automation:
       - delay: 00:00:01
       - service: notify.alexa_media
         data_template:
-          target: 
-            -  '{{ states.sensor.last_alexa.state }}' 
+          target:
+            - '{{ states.sensor.last_alexa.state }}'
           data:
             type: tts
           message: >-
@@ -133,7 +133,7 @@ automation:
       - platform: state
         entity_id: light.alexa_virtual
         to: 'on'
-    condition: 
+    condition:
       condition: template
       value_template: '{{ (states.light.alexa_virtual.attributes.brightness | int / 255 * 100 ) | round  == 2 }}'
     action:

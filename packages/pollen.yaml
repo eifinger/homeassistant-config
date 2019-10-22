@@ -85,7 +85,7 @@ sensor:
               |regex_findall_index("'dayafter_to': '[-0-9]+'")
               |regex_findall_index("[-0-9]+") }}
         entity_id:
-        - sensor.pollen_101_birke
+          - sensor.pollen_101_birke
       pollen_101_roggen_today:
         friendly_name: 'Roggen Heute'
         value_template: >

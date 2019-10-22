@@ -47,14 +47,12 @@ switch:
       floor_heating:
         friendly_name: "Fußbodenheizung"
         value_template: >
-          {{float(states.climate.wohnzimmer_thermostat.attributes.temperature) > 18 
+          {{float(states.climate.wohnzimmer_thermostat.attributes.temperature) > 18
           and float(states.climate.kuche_thermostat.attributes.temperature) > 18}}
         turn_on:
           - service: script.livingroom_wakeup
         turn_off:
           - service: script.livingroom_sleep
-      
-
 sensor:
   - platform: template
     sensors:

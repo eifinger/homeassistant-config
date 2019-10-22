@@ -18,7 +18,7 @@ homeassistant:
 frontend:
   themes: !include themes.yaml
 updater:
-  reporting: no
+  reporting: false
   include_used_components: true
 sun:
 map:
@@ -34,9 +34,9 @@ logbook:
 http:
   # Uncomment this if you are using SSL or running in Docker etc
   base_url: !secret homeassistant_url
-  ip_ban_enabled: True
+  ip_ban_enabled: true
   login_attempts_threshold: 3
-  use_x_forwarded_for: True
+  use_x_forwarded_for: true
   trusted_proxies:
     - !secret proxy_ip
 
@@ -105,9 +105,9 @@ breaking_changes:
 
 hacs:
   token: !secret hacs_token
-  appdaemon: True
-  python_script: True
-  theme: True
+  appdaemon: true
+  python_script: true
+  theme: true
 #################################################################
 ## Includes
 #################################################################

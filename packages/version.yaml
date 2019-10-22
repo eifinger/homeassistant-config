@@ -4,50 +4,51 @@ sensor:
     source: docker
   - platform: version
     source: local
-#################################################################
-## Available Unifi Version
-#################################################################
-# https://community.home-assistant.io/t/sensor-for-latest-docker-image-versions/4874
+  #################################################################
+  ## Available Unifi Version
+  #################################################################
+  # https://community.home-assistant.io/t/sensor-for-latest-docker-image-versions/4874
   - platform: command_line
-    name:  Unifi Controller Latest Docker
-    command:  curl -s -L https://registry.hub.docker.com/v2/repositories/jacobalberty/unifi/tags/ | grep -Eo '"name":\s"[0-9]*[.]+[0-9]*[.]+[0-9]*"' | head -1 | sed -e "s/\"name\":\s\"/${replace}/g" | sed -e "s/\"/${replace}/g"
+    name: Unifi Controller Latest Docker
+    # yamllint disable-line rule:line-length
+    command: curl -s -L https://registry.hub.docker.com/v2/repositories/jacobalberty/unifi/tags/ | grep -Eo '"name":\s"[0-9]*[.]+[0-9]*[.]+[0-9]*"' | head -1 | sed -e "s/\"name\":\s\"/${replace}/g" | sed -e "s/\"/${replace}/g"
     scan_interval: 28800
 
 automation:
-#################################################################
-## New Unifi Controller Version
-#################################################################
-- id: new_unifi_controller_version
-  alias: 'Notify of new Unifi Controller Version'
-  initial_state: 'on'
-  trigger:
-    - platform: state
-      entity_id: sensor.unifi_controller_latest_docker
-  action:
-    - service: notify.kevin
-      data_template:
-        message: "Neue Unifi Controller Version verfügbar: {{states.sensor.unifi_controller_latest_docker.state}}"
-  condition:
-    condition: template
-    value_template: >
-      {{ trigger.to_state.state not in [trigger.from_state.state, 'unavailable'] }}
-#################################################################
-## New Home Assistant Version
-#################################################################
-- id: new_homeassistant_version
-  alias: 'Notify of new Homeassistant Version'
-  initial_state: 'on'
-  trigger:
-    - platform: state
-      entity_id: sensor.latest_version
-  action:
-    - service: notify.kevin
-      data_template:
-        message: "Neue Homeassistant Version verfügbar: {{states.sensor.latest_version.state}}"
-  condition:
-    - condition: template
+  #################################################################
+  ## New Unifi Controller Version
+  #################################################################
+  - id: new_unifi_controller_version
+    alias: 'Notify of new Unifi Controller Version'
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: sensor.unifi_controller_latest_docker
+    action:
+      - service: notify.kevin
+        data_template:
+          message: "Neue Unifi Controller Version verfügbar: {{states.sensor.unifi_controller_latest_docker.state}}"
+    condition:
+      condition: template
       value_template: >
-        {{ trigger.to_state.state not in [trigger.from_state.state, 'unavailable', 'unknown'] }}
-    - condition: template
-      value_template: >
-        {{ trigger.from_state.state not in ['unavailable', 'unknown'] }}
+        {{ trigger.to_state.state not in [trigger.from_state.state, 'unavailable'] }}
+  #################################################################
+  ## New Home Assistant Version
+  #################################################################
+  - id: new_homeassistant_version
+    alias: 'Notify of new Homeassistant Version'
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: sensor.latest_version
+    action:
+      - service: notify.kevin
+        data_template:
+          message: "Neue Homeassistant Version verfügbar: {{states.sensor.latest_version.state}}"
+    condition:
+      - condition: template
+        value_template: >
+          {{ trigger.to_state.state not in [trigger.from_state.state, 'unavailable', 'unknown'] }}
+      - condition: template
+        value_template: >
+          {{ trigger.from_state.state not in ['unavailable', 'unknown'] }}

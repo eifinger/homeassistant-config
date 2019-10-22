@@ -1,6 +1,6 @@
 ---
 tplink:
-  discovery: False
+  discovery: false
   switch:
     - host: !secret tp_link_ip
     - host: !secret tp_link_washingmachine_ip
@@ -14,52 +14,52 @@ sensor:
         unit_of_measurement: 'W'
         value_template: "{{states.switch.tplink_tv.attributes.current_power_w}}"
         entity_id:
-        - switch.tplink_tv
+          - switch.tplink_tv
       tplink_tv_power_usage_total:
         friendly_name: Fernseher Total
         unit_of_measurement: 'kWh'
         value_template: "{{states.switch.tplink_tv.attributes.total_energy_kwh}}"
         entity_id:
-        - switch.tplink_tv
+          - switch.tplink_tv
       tplink_tv_power_usage_today:
         friendly_name: Fernseher Heute
         unit_of_measurement: 'kWh'
         value_template: "{{states.switch.tplink_tv.attributes.today_energy_kwh}}"
         entity_id:
-        - switch.tplink_tv
+          - switch.tplink_tv
       washingmachine_power_usage:
         friendly_name: Waschmaschine
         unit_of_measurement: 'W'
         value_template: "{{states.switch.washingmachine.attributes.current_power_w}}"
         entity_id:
-        - switch.washingmachine
+          - switch.washingmachine
       washingmachine_power_usage_total:
         friendly_name: Waschmaschine Total
         unit_of_measurement: 'kWh'
         value_template: "{{states.switch.washingmachine.attributes.total_energy_kwh}}"
         entity_id:
-        - switch.washingmachine
+          - switch.washingmachine
       washingmachine_power_usage_today:
         friendly_name: Waschmaschine Heute
         unit_of_measurement: 'kWh'
         value_template: "{{states.switch.washingmachine.attributes.today_energy_kwh}}"
         entity_id:
-        - switch.washingmachine
+          - switch.washingmachine
       dishwasher_power_usage:
         friendly_name: Spülmaschine
         unit_of_measurement: 'W'
         value_template: "{{states.switch.dishwasher.attributes.current_power_w}}"
         entity_id:
-        - switch.washingmachine
+          - switch.washingmachine
       dishwasher_power_usage_total:
         friendly_name: Spülmaschine Total
         unit_of_measurement: 'kWh'
         value_template: "{{states.switch.dishwasher.attributes.total_energy_kwh}}"
         entity_id:
-        - switch.washingmachine
+          - switch.washingmachine
       dishwasher_power_usage_today:
         friendly_name: Spülmaschine Heute
         unit_of_measurement: 'kWh'
         value_template: "{{states.switch.dishwasher.attributes.today_energy_kwh}}"
         entity_id:
-        - switch.washingmachine
+          - switch.washingmachine

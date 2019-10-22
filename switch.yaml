@@ -30,7 +30,7 @@
   host: !secret rm_mini_ip
   mac: !secret rm_mini_mac
   timeout: 15
-  switches:    
+  switches:
     broadlink_bedroom_receiver:
       command_on: 'JgAOAYWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPhM+Ex8TPhMfEz4THxM+EwABA4SBEz8SPxIgEiASIBIgEj8SIBI/EiASPxIgEiASIBI/Ej8TPhM+Ex8TPhMfEz4THxM+EwABAoWBEz4TPxIgEiASHxMfEz4THxM+EyASPxIgEiASHxM/Ej8SPxI/Ex8TPhMfEz4THxM+EwABAoWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPxI/EiASPxIgEj8THxI/EwABAoWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPhM/EiASPxIgEj8SIBI/EgANBQAAAAAAAAAAAAA='
       command_off: 'JgAOAYWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPhM+Ex8TPhMfEz4THxM+EwABA4SBEz8SPxIgEiASIBIgEj8SIBI/EiASPxIgEiASIBI/Ej8TPhM+Ex8TPhMfEz4THxM+EwABAoWBEz4TPxIgEiASHxMfEz4THxM+EyASPxIgEiASHxM/Ej8SPxI/Ex8TPhMfEz4THxM+EwABAoWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPxI/EiASPxIgEj8THxI/EwABAoWBEz4TPhMfEx8THxMfEz4THxM+Ex8TPhMfEx8THxM+Ez4TPhM/EiASPxIgEj8SIBI/EgANBQAAAAAAAAAAAAA='
@@ -89,4 +89,4 @@
           state: 'on'
         - service: switch.turn_off
           data:
-            entity_id: switch.broadlink_bedroom_receiver    
+            entity_id: switch.broadlink_bedroom_receiver

@@ -10,7 +10,7 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: 
+          message:
             "Potentielle Breaking Changes festgestellt in Version {{ states.sensor.potential_breaking_changes.attributes.versions[0] }}
             {% for key, value in states.sensor.potential_breaking_changes.attributes.items() %}
             {% if key not in ('versions', 'friendly_name', 'icon')%}

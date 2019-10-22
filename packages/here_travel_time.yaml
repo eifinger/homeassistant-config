@@ -1,29 +1,29 @@
 ---
 sensor:
-# Work from Home
-- platform: here_travel_time
-  name: travel_time_work_from_home_here
-  origin_entity_id: zone.home
-  destination_entity_id: zone.work
-  app_id: !secret here_app_id
-  app_code: !secret here_app_code
-  traffic_mode: True
-# Home from Work
-- platform: here_travel_time
-  name: travel_time_home_from_work_here
-  origin_entity_id: zone.work
-  destination_entity_id: zone.home
-  app_id: !secret here_app_id
-  app_code: !secret here_app_code
-  traffic_mode: True
-# Elmo from Home
-- platform: here_travel_time
-  name: travel_time_elmo_from_home_here
-  origin_entity_id: zone.home
-  destination_entity_id: zone.elmo
-  app_id: !secret here_app_id
-  app_code: !secret here_app_code
-  traffic_mode: True
+  # Work from Home
+  - platform: here_travel_time
+    name: travel_time_work_from_home_here
+    origin_entity_id: zone.home
+    destination_entity_id: zone.work
+    app_id: !secret here_app_id
+    app_code: !secret here_app_code
+    traffic_mode: true
+  # Home from Work
+  - platform: here_travel_time
+    name: travel_time_home_from_work_here
+    origin_entity_id: zone.work
+    destination_entity_id: zone.home
+    app_id: !secret here_app_id
+    app_code: !secret here_app_code
+    traffic_mode: true
+  # Elmo from Home
+  - platform: here_travel_time
+    name: travel_time_elmo_from_home_here
+    origin_entity_id: zone.home
+    destination_entity_id: zone.elmo
+    app_id: !secret here_app_id
+    app_code: !secret here_app_code
+    traffic_mode: true
 
 homeassistant:
   customize:

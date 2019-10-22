@@ -6,29 +6,29 @@ vacuum:
 
 sensor:
   - platform: rest
-    resource: !secret valetudo_url #http://192.168.x.x/api/remote/map
+    resource: !secret valetudo_url # http://192.168.x.x/api/remote/map
     name: snowie_map
     value_template: '{{ value_json.mapsrc }}'
 
 camera:
   - platform: generic
     name: Snowies Karte
-    still_image_url: !secret snowie_map_url #http://192.168.x.x{{states.sensor.snowie_map.state | string }}
+    still_image_url: !secret snowie_map_url # http://192.168.x.x{{states.sensor.snowie_map.state | string }}
     content_type: image/png
     framerate: 1
 
 switch:
-- platform: template
-  switches:
-    xiaomi_vacuum_cleaner:
-      value_template: "{{ is_state( 'vacuum.xiaomi_vacuum_cleaner', 'cleaning') }}"
-      turn_on:
-        service: vacuum.start
-        entity_id: vacuum.xiaomi_vacuum_cleaner
-      turn_off:
-        service: vacuum.return_to_base
-        entity_id: vacuum.xiaomi_vacuum_cleaner
-      icon_template: mdi:robot-vacuum
+  - platform: template
+    switches:
+      xiaomi_vacuum_cleaner:
+        value_template: "{{ is_state( 'vacuum.xiaomi_vacuum_cleaner', 'cleaning') }}"
+        turn_on:
+          service: vacuum.start
+          entity_id: vacuum.xiaomi_vacuum_cleaner
+        turn_off:
+          service: vacuum.return_to_base
+          entity_id: vacuum.xiaomi_vacuum_cleaner
+        icon_template: mdi:robot-vacuum
 
 alexa:
   smart_home:

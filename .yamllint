@@ -27,7 +27,7 @@ rules:
   comments:
     level: error
     require-starting-space: true
-    min-spaces-from-content: 2
+    min-spaces-from-content: 1
   comments-indentation:
     level: error
   document-end:
@@ -55,6 +55,7 @@ rules:
     ignore: |
       themes.yaml
       switch.yaml
+      packages/monero.yaml
     level: warning
     max: 120
     allow-non-breakable-words: true

@@ -17,7 +17,10 @@ switch:
   - platform: command_line
     switches:
       pihole_switch:
-        command_on: !secret pihole_switch_on #"curl -X GET 'http://192.168.10.11/admin/api.php?enable&auth=xxx'"
-        command_off: !secret pihole_switch_off #"curl -X GET 'http://192.168.10.11/admin/api.php?disable=3600&auth=xxx'"
-        command_state: !secret pihole_switch_state # "curl -X GET 'http://192.168.10.11/admin/api.php?status'| grep enabled"
+        # "curl -X GET 'http://192.168.10.11/admin/api.php?enable&auth=xxx'"
+        command_on: !secret pihole_switch_on
+        # "curl -X GET 'http://192.168.10.11/admin/api.php?disable=3600&auth=xxx'"
+        command_off: !secret pihole_switch_off
+        # "curl -X GET 'http://192.168.10.11/admin/api.php?status'| grep enabled"
+        command_state: !secret pihole_switch_state
         value_template: "{{ value_json.status == 'enabled' }}"

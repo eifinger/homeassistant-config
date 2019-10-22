@@ -1,45 +1,45 @@
 ---
 automation:
-- id: turn_off_bath_thermostat_when_window_open
-  alias: Fußbodenheizung im Bad ausschalten wenn Fenster offen
-  trigger: 
-    - platform: state
-      entity_id: binary_sensor.contact_bathroom_window
-      to: "on"
-  condition:
-  action: 
-    - service: homeassistant.turn_off
-      entity_id: climate.bad_thermostat
-- id: turn_on_bath_thermostat_when_window_closed
-  alias: Fußbodenheizung im Bad anschalten wenn Fenster zu
-  trigger: 
-    - platform: state
-      entity_id: binary_sensor.contact_bathroom_window
-      to: "off"
-  condition:
-  action: 
-    - service: homeassistant.turn_on
-      entity_id: climate.bad_thermostat
-- id: turn_off_upper_bath_thermostat_when_window_open
-  alias: Fußbodenheizung im Bad Oben ausschalten wenn Fenster offen
-  trigger: 
-    - platform: state
-      entity_id: binary_sensor.contact_upper_bathroom_window
-      to: "off"
-  condition:
-  action: 
-    - service: homeassistant.turn_off
-      entity_id: climate.bad_oben_thermostat
-- id: turn_on_upper_bath_thermostat_when_window_closed
-  alias: Fußbodenheizung im Bad Oben anschalten wenn Fenster zu
-  trigger: 
-    - platform: state
-      entity_id: binary_sensor.contact_upper_bathroom_window
-      to: "on"
-  condition:
-  action: 
-    - service: homeassistant.turn_off
-      entity_id: climate.bad_oben_thermostat
+  - id: turn_off_bath_thermostat_when_window_open
+    alias: Fußbodenheizung im Bad ausschalten wenn Fenster offen
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.contact_bathroom_window
+        to: "on"
+    condition:
+    action:
+      - service: homeassistant.turn_off
+        entity_id: climate.bad_thermostat
+  - id: turn_on_bath_thermostat_when_window_closed
+    alias: Fußbodenheizung im Bad anschalten wenn Fenster zu
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.contact_bathroom_window
+        to: "off"
+    condition:
+    action:
+      - service: homeassistant.turn_on
+        entity_id: climate.bad_thermostat
+  - id: turn_off_upper_bath_thermostat_when_window_open
+    alias: Fußbodenheizung im Bad Oben ausschalten wenn Fenster offen
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.contact_upper_bathroom_window
+        to: "off"
+    condition:
+    action:
+      - service: homeassistant.turn_off
+        entity_id: climate.bad_oben_thermostat
+  - id: turn_on_upper_bath_thermostat_when_window_closed
+    alias: Fußbodenheizung im Bad Oben anschalten wenn Fenster zu
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.contact_upper_bathroom_window
+        to: "on"
+    condition:
+    action:
+      - service: homeassistant.turn_off
+        entity_id: climate.bad_oben_thermostat
 
 homeassistant:
   customize:

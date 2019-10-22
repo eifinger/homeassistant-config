@@ -4,7 +4,7 @@
     light.reading_lamp_yeelight:
       state: on
       brightness: 255
-      rgb_color: [255,126,0]
+      rgb_color: [255, 126, 0]
     switch.large_lamp:
       state: on
     switch.small_lamp:
@@ -14,7 +14,7 @@
     light.stairs_lower_yeelight:
       state: on
       brightness: 209
-      rgb_color: [255,120,0]
+      rgb_color: [255, 120, 0]
     light.livingroom_yeelight: off
     light.bar_table: off
     light.treppe_oben: off
@@ -24,64 +24,64 @@
     light.livingroom_yeelight:
       state: on
       brightness: 255
-      rgb_color: [255,0,0]
+      rgb_color: [255, 0, 0]
     light.lobby_yeelight:
       state: on
       brightness: 255
-      rgb_color: [255,0,0]
+      rgb_color: [255, 0, 0]
     light.stairs_lower_yeelight:
       state: on
       brightness: 255
-      rgb_color: [255,0,0]
+      rgb_color: [255, 0, 0]
     light.reading_lamp_yeelight:
       state: on
       brightness: 255
-      rgb_color: [255,0,0]
+      rgb_color: [255, 0, 0]
     light.bar_table:
       state: on
       brightness: 255
-      rgb_color: [255,0,0]
+      rgb_color: [255, 0, 0]
 - name: Alles Grün
   entities:
     light.livingroom_yeelight:
       state: on
       brightness: 255
-      rgb_color: [0,255,0]
+      rgb_color: [0, 255, 0]
     light.lobby_yeelight:
       state: on
       brightness: 255
-      rgb_color: [0,255,0]
+      rgb_color: [0, 255, 0]
     light.stairs_lower_yeelight:
       state: on
       brightness: 255
-      rgb_color: [0,255,0]
+      rgb_color: [0, 255, 0]
     light.reading_lamp_yeelight:
       state: on
       brightness: 255
-      rgb_color: [0,255,0]
+      rgb_color: [0, 255, 0]
     light.bar_table:
       state: on
       brightness: 255
-      rgb_color: [0,255,0]
+      rgb_color: [0, 255, 0]
 - name: Alles Blau
   entities:
     light.livingroom_yeelight:
       state: on
       brightness: 255
-      rgb_color: [0,0,255]
+      rgb_color: [0, 0, 255]
     light.lobby_yeelight:
       state: on
       brightness: 255
-      rgb_color: [0,0,255]
+      rgb_color: [0, 0, 255]
     light.stairs_lower_yeelight:
       state: on
       brightness: 255
-      rgb_color: [0,0,255]
+      rgb_color: [0, 0, 255]
     light.reading_lamp_yeelight:
       state: on
       brightness: 255
-      rgb_color: [0,0,255]
+      rgb_color: [0, 0, 255]
     light.bar_table:
       state: on
       brightness: 255
-      rgb_color: [0,0,255]
+      rgb_color: [0, 0, 255]

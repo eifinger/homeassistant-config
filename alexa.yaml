@@ -116,17 +116,9 @@
         name: Gästezimmer Fenster
         description: Gästezimmer Fenster Sensor
         display_categories: CONTACT_SENSOR
-      group.strolch:
-        name: Strolch
-        description: Großer Ventilator
-        display_categories: SWITCH
       switch.large_ventilator:
         name: Großer Ventilator
         description: Großer Ventilator
-        display_categories: SWITCH
-      group.susie:
-        name: Susie
-        description: Ventilator
         display_categories: SWITCH
       switch.ventilator:
         name: Ventilator

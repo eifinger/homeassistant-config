@@ -72,13 +72,3 @@ eingang:
   name: Eingang
   entities:
     - light.lobby_yeelight
-
-susie:
-  name: Susie
-  entities:
-    - switch.ventilator
-
-strolch:
-  name: Strolch
-  entities:
-    - switch.large_ventilator

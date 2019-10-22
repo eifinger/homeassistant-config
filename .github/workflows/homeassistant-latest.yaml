@@ -28,18 +28,9 @@ jobs:
           args: "remark --no-stdout --color --frail --use preset-lint-recommended ."
   home_assistant_ci:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python: ['3.6', '3.7']
-    name: Python ${{ matrix.python }}
     steps:
       - name: Getting configuration from GitHub
         uses: actions/checkout@master
-      - name: Setup python
-        uses: actions/setup-python@v1
-        with:
-          python-version: ${{ matrix.python }}
-          architecture: x64
       - name: Create secrets.yaml
         run: mv travis_secrets.yaml secrets.yaml
       - name: Home Assistant Check Latest

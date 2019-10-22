@@ -77,4 +77,3 @@ automation:
         entity_id: input_boolean.warm_upper_bath_before_wakeup
       - service: homeassistant.turn_off
         entity_id: switch.bad_oben_thermostat_remote_lock
-    

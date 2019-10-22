@@ -43,6 +43,3 @@
   action:
     - service: homeassistant.turn_on
       entity_id: input_boolean.notifier_alexa
-
-
-      

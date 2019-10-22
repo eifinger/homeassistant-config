@@ -19,3 +19,4 @@ homeassistant:
       entity_picture: /local/user_one.jpg
     person.sina:
       entity_picture: /local/user_two.JPG
+

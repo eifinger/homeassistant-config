@@ -15,4 +15,3 @@
   - name: group_notifications
     platform: telegram
     chat_id: !secret telegram_allowed_chat_id_group_notifications
-    

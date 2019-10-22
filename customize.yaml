@@ -112,8 +112,6 @@ sensor.current_commit_id:
   icon: mdi:github-circle
 sensor.current_commit_name:
   icon: mdi:github-circle
-sensor.alarm_time:
-  icon: mdi:clock
 switch.large_ventilator:
   friendly_name: "Großer Ventilator"
   icon: mdi:fan

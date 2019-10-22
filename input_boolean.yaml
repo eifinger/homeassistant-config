@@ -31,14 +31,6 @@
     icon: mdi:lightbulb
   heading_home_notifier_user_one:
     icon: mdi:telegram
-  alarmweekday:
-    name: Nur an Arbeitstagen
-    icon: mdi:calendar
-  wakemeup:
-    name: Weck mich
-    icon: mdi:alarm-check
-  radiowakeup:
-    name: Radio
   dishwasher:
     name: Spühlmaschine
   washingmachine:

@@ -1,4 +1,25 @@
 ---
+input_datetime:
+  alarm:
+    name: Wecker
+    has_date: true
+    has_time: true
+input_boolean:
+  alarmweekday:
+    name: Nur an Arbeitstagen
+    icon: mdi:calendar
+  wakemeup:
+    name: Weck mich
+    icon: mdi:alarm-check
+  radiowakeup:
+    name: Radio
+input_number:
+  alarm_natural_wakeup_fade_in:
+    name: Fade-In Dauer
+    icon: mdi:theme-light-dark
+    min: 0
+    max: 30
+    step: 5
 sensor:
 - platform: template
   sensors:
@@ -13,3 +34,8 @@ sensor:
        - sensor.alarm_sina
        - input_boolean.user_one_home
        - input_boolean.user_two_home
+
+homeassistant:
+  customize:
+    sensor.alarm_time:
+    icon: mdi:clock

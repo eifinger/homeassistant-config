@@ -1,36 +1,15 @@
+---
 sensor:
-- platform: rmvtransport
-  next_departure:
-    - station: 3025386
-      name: Ruthof
-      time_offset: 5
-      products:
-        - 'RB'
-        - 'RE'
-        - 'Bus'
-        - 'S'
-    - station: 3025386
-      name: Nach Brückenkopf
-      destinations: ['Wiesbaden-Mainz-Kastel Brückenkopf']
-- platform: template
-  sensors:
-    nach_bruckenkopf_0:
-      value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][0]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][0]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][0]["minutes"]}} Minuten'
-      entity_id:
-       - sensor.nach_bruckenkopf
-    nach_bruckenkopf_1:
-      value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][1]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][1]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][1]["minutes"]}} Minuten'
-      entity_id:
-       - sensor.nach_bruckenkopf
-    nach_bruckenkopf_2:
-      value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][2]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][2]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][2]["minutes"]}} Minuten'
-      entity_id:
-       - sensor.nach_bruckenkopf
-    nach_bruckenkopf_3:
-      value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][3]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][3]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][3]["minutes"]}} Minuten'
-      entity_id:
-       - sensor.nach_bruckenkopf
-    nach_bruckenkopf_4:
-      value_template: 'Linie {{states.sensor.nach_bruckenkopf.attributes["next_departures"][4]["line"]}} Richtung {{states.sensor.nach_bruckenkopf.attributes["next_departures"][4]["direction"] }} in {{states.sensor.nach_bruckenkopf.attributes["next_departures"][4]["minutes"]}} Minuten'
-      entity_id:
-       - sensor.nach_bruckenkopf
+  - platform: rmvtransport
+    next_departure:
+      - station: 3025386
+        name: Ruthof
+        time_offset: 5
+        products:
+          - 'RB'
+          - 'RE'
+          - 'Bus'
+          - 'S'
+      - station: 3025386
+        name: Nach Brückenkopf
+        destinations: ['Wiesbaden-Mainz-Kastel Brückenkopf']

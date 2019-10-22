@@ -1,3 +1,4 @@
+---
 homeassistant:
   customize:
     device_tracker.kevin:

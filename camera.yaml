@@ -1,3 +1,4 @@
+---
 - platform: local_file
   name: Saved Image
   file_path: !secret saved_image_filepath

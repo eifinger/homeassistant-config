@@ -1,3 +1,4 @@
+---
 resources:
   - type: js
     url: /local/rmv-card.js?v=1

@@ -1,3 +1,4 @@
+---
 - platform: darksky
   api_key: !secret darsky_api_key
 - platform: openweathermap

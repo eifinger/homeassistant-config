@@ -1,3 +1,4 @@
+---
 - name: Home
   latitude: !secret homeassistant_latitude
   longitude: !secret homeassistant_longitude

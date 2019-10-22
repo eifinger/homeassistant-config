@@ -1,3 +1,4 @@
+---
 input_boolean:
   guestmode:
     name: Gäste Modus
@@ -49,7 +50,6 @@ automation:
         entity_id: input_boolean.warm_upper_bath_before_wakeup
       - service: homeassistant.turn_off
         entity_id: switch.bad_oben_thermostat_remote_lock
-  
   - id: on_guestmode_livingroom_on
     alias: On Guestmode Livingroom on
     initial_state: 'on'
@@ -76,4 +76,3 @@ automation:
         entity_id: input_boolean.warm_upper_bath_before_wakeup
       - service: homeassistant.turn_off
         entity_id: switch.bad_oben_thermostat_remote_lock
-    

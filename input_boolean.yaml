@@ -1,211 +1,204 @@
-  is_home:
-    name: Is someone home
-    icon: mdi:home
-  sleepmode:
-    name: Schlafmodus
-    icon: mdi:sleep
-  user_one_sleep:
-    name: Kevin
-    icon: mdi:sleep
-  user_two_sleep:
-    name: Sina
-    icon: mdi:sleep
-  user_one_home:
-    name: Is user one home
-    icon: mdi:home
-  user_two_home:
-    name: Is user two home
-    icon: mdi:home
-  travel_time_work_from_home:
-    icon: mdi:telegram
-  travel_time_home_from_work:
-    icon: mdi:telegram
-  travel_time_elmo_from_home:
-    icon: mdi:telegram
-  announce_time_to_leave:
-    icon: mdi:telegram
-  announce_time_to_leave_user_two:
-    icon: mdi:telegram
-  room_based_light:
-    icon: mdi:lightbulb
-  heading_home_notifier_user_one:
-    icon: mdi:telegram
-  alarmweekday:
-    name: Nur an Arbeitstagen
-    icon: mdi:calendar
-  wakemeup:
-    name: Weck mich
-    icon: mdi:alarm-check
-  radiowakeup:
-    name: Radio
-  dishwasher:
-    name: Spühlmaschine
-  washingmachine:
-    name: Waschmaschine  
+---
+is_home:
+  name: Is someone home
+  icon: mdi:home
+sleepmode:
+  name: Schlafmodus
+  icon: mdi:sleep
+user_one_sleep:
+  name: Kevin
+  icon: mdi:sleep
+user_two_sleep:
+  name: Sina
+  icon: mdi:sleep
+user_one_home:
+  name: Is user one home
+  icon: mdi:home
+user_two_home:
+  name: Is user two home
+  icon: mdi:home
+travel_time_work_from_home:
+  icon: mdi:telegram
+travel_time_home_from_work:
+  icon: mdi:telegram
+travel_time_elmo_from_home:
+  icon: mdi:telegram
+announce_time_to_leave:
+  icon: mdi:telegram
+announce_time_to_leave_user_two:
+  icon: mdi:telegram
+room_based_light:
+  icon: mdi:lightbulb
+heading_home_notifier_user_one:
+  icon: mdi:telegram
+dishwasher:
+  name: Spühlmaschine
+washingmachine:
+  name: Waschmaschine
 #################################################################
 ## Appdaemon persistence layer
 #################################################################
-  persistence_plantwateringnotifier_reminder_acknowledged:
-    name: Plant Watering Notifier got Acknowledged
-  persistence_reminder_plantwatering_new_reminder_acknowledged:
-    name: Plant Watering Notifier new got Acknowledged
+persistence_plantwateringnotifier_reminder_acknowledged:
+  name: Plant Watering Notifier got Acknowledged
+persistence_reminder_plantwatering_new_reminder_acknowledged:
+  name: Plant Watering Notifier new got Acknowledged
 #################################################################
 ## Appdaemon App switches
 #################################################################
-  turn_small_fan_on_when_hot:
-    icon: mdi:temperature-celsius
-  turn_large_fan_on_when_hot:
-    icon: mdi:temperature-celsius
-  notify_of_action_when_away:
-    icon: mdi:alert
-  facebox_notifier:
-    icon: mdi:face
-  facebox_teacher:
-    icon: mdi:face
-  oben_treppe_motion_trigger:
-    icon: mdi:stairs
-  bedroom_motion_trigger:
-    icon: mdi:hotel
-  coming_home_yeelight:
-    icon: mdi:lightbulb
-  coming_home_alexa:
-    icon: mdi:amazon-alexa
-  coming_home_set_volume:
-    icon: mdi:volume-medium
-  home_arrival_notifier_user_one:
-    icon: mdi:home-account
-  home_arrival_notifier_user_two:
-    icon: mdi:home-account
-  is_home_determiner:
-    icon: mdi:home
-  is_user_home_determiner_user_one:
-    icon: mdi:home-account
-  is_user_home_determiner_user_two:
-    icon: mdi:home-account
-  leaving_work_notifier_user_one:
-    icon: mdi:airplane-takeoff
-  leaving_work_notifier_user_two:
-    icon: mdi:airplane-takeoff
-  leaving_elmo_notifier_user_two:
-    icon: mdi:airplane-takeoff
-  plant_watering_notifier:
-    icon: mdi:leaf
-  plant_watering_reminder_new:
-    icon: mdi:leaf
-  power_usage_notification_dishwasher:
-    icon: mdi:gauge
-  power_usage_notification_washingmachine:
-    icon: mdi:gauge
-  detect_wrong_state_when_leaving:
-    icon: mdi:alarm
-  detect_door_open_when_going_to_bed:
-    icon: mdi:door-open
-  detect_windows_open_when_going_to_bed:
-    icon: mdi:window-open
-  set_multiroom_audio_when_sleepmode_turns_off:
-    icon: mdi:speaker
-  notifier_alexa:
-    icon: mdi:amazon-alexa
-    name: Alexa Ansagen
-  start_snowie_when_leaving:
-    icon: mdi:robot-vacuum
-    name: Snowie Starten wenn wir weg gehen
-  alexa_speaker_connector:
-    icon: mdi:amazon-alexa
-    name: Alexa automatisch auf Receiver Bluetooth spielen lassen
-  detect_devices_on_when_going_to_bed:
-    name: Schalte alles aus wenn wir ins Bett gehen
-    icon: mdi:alarm
-  sensor_watcher:
-    icon: mdi:alarm
-    name: Überwache ob alle Sensoren online sind
-  user_sleep_mode_handler_user_one:
-    icon: mdi:sleep
-    name: Schlafmodus Kevin
-  user_sleep_mode_handler_user_two:
-    icon: mdi:sleep
-    name: Schlafmodus Sina
-  sleep_mode_handler:
-    icon: mdi:sleep
-    name: Schlafmodus
-  bath_motion_trigger:
-    icon: mdi:shower
-    name: Badlicht Bewegungsmelder
+turn_small_fan_on_when_hot:
+  icon: mdi:temperature-celsius
+turn_large_fan_on_when_hot:
+  icon: mdi:temperature-celsius
+notify_of_action_when_away:
+  icon: mdi:alert
+facebox_notifier:
+  icon: mdi:face
+facebox_teacher:
+  icon: mdi:face
+oben_treppe_motion_trigger:
+  icon: mdi:stairs
+bedroom_motion_trigger:
+  icon: mdi:hotel
+coming_home_yeelight:
+  icon: mdi:lightbulb
+coming_home_alexa:
+  icon: mdi:amazon-alexa
+coming_home_set_volume:
+  icon: mdi:volume-medium
+home_arrival_notifier_user_one:
+  icon: mdi:home-account
+home_arrival_notifier_user_two:
+  icon: mdi:home-account
+is_home_determiner:
+  icon: mdi:home
+is_user_home_determiner_user_one:
+  icon: mdi:home-account
+is_user_home_determiner_user_two:
+  icon: mdi:home-account
+leaving_work_notifier_user_one:
+  icon: mdi:airplane-takeoff
+leaving_work_notifier_user_two:
+  icon: mdi:airplane-takeoff
+leaving_elmo_notifier_user_two:
+  icon: mdi:airplane-takeoff
+plant_watering_notifier:
+  icon: mdi:leaf
+plant_watering_reminder_new:
+  icon: mdi:leaf
+power_usage_notification_dishwasher:
+  icon: mdi:gauge
+power_usage_notification_washingmachine:
+  icon: mdi:gauge
+detect_wrong_state_when_leaving:
+  icon: mdi:alarm
+detect_door_open_when_going_to_bed:
+  icon: mdi:door-open
+detect_windows_open_when_going_to_bed:
+  icon: mdi:window-open
+set_multiroom_audio_when_sleepmode_turns_off:
+  icon: mdi:speaker
+notifier_alexa:
+  icon: mdi:amazon-alexa
+  name: Alexa Ansagen
+start_snowie_when_leaving:
+  icon: mdi:robot-vacuum
+  name: Snowie Starten wenn wir weg gehen
+alexa_speaker_connector:
+  icon: mdi:amazon-alexa
+  name: Alexa automatisch auf Receiver Bluetooth spielen lassen
+detect_devices_on_when_going_to_bed:
+  name: Schalte alles aus wenn wir ins Bett gehen
+  icon: mdi:alarm
+sensor_watcher:
+  icon: mdi:alarm
+  name: Überwache ob alle Sensoren online sind
+user_sleep_mode_handler_user_one:
+  icon: mdi:sleep
+  name: Schlafmodus Kevin
+user_sleep_mode_handler_user_two:
+  icon: mdi:sleep
+  name: Schlafmodus Sina
+sleep_mode_handler:
+  icon: mdi:sleep
+  name: Schlafmodus
+bath_motion_trigger:
+  icon: mdi:shower
+  name: Badlicht Bewegungsmelder
 #################################################################
 ## Appdaemon App Switches - Thermostats
 #################################################################
-  warm_bath_before_wakeup:
-    icon: mdi:temperature-celsius
-    name: Fußbodenheizung im Bad vorm aufstehen anschalten
-  warm_upper_bath_before_wakeup:
-    icon: mdi:temperature-celsius
-    name: Fußbodenheizung im Bad Oben vorm aufstehen anschalten
+warm_bath_before_wakeup:
+  icon: mdi:temperature-celsius
+  name: Fußbodenheizung im Bad vorm aufstehen anschalten
+warm_upper_bath_before_wakeup:
+  icon: mdi:temperature-celsius
+  name: Fußbodenheizung im Bad Oben vorm aufstehen anschalten
 #################################################################
 ## Appdaemon App Switches - Thermostats - Leaving
 #################################################################
-  set_livingroom_thermostat_when_leaving:
-    icon: mdi:temperature-celsius
-    name: Wohnzimmer wenn wir gehen
-  set_kitchen_thermostat_when_leaving:
-    icon: mdi:temperature-celsius
-    name: Küche wenn wir gehen
-  set_upper_bath_thermostat_when_leaving:
-    icon: mdi:temperature-celsius
-    name: Bad Oben wenn wir gehen
-  set_bath_thermostat_when_leaving:
-    icon: mdi:temperature-celsius
-    name: Bad wenn wir gehen
+set_livingroom_thermostat_when_leaving:
+  icon: mdi:temperature-celsius
+  name: Wohnzimmer wenn wir gehen
+set_kitchen_thermostat_when_leaving:
+  icon: mdi:temperature-celsius
+  name: Küche wenn wir gehen
+set_upper_bath_thermostat_when_leaving:
+  icon: mdi:temperature-celsius
+  name: Bad Oben wenn wir gehen
+set_bath_thermostat_when_leaving:
+  icon: mdi:temperature-celsius
+  name: Bad wenn wir gehen
 #################################################################
 ## Appdaemon App Switches - Thermostats - Sleeping
 #################################################################
-  set_livingroom_thermostat_when_sleeping:
-    icon: mdi:temperature-celsius
-    name: Wohnzimmer wenn wir schlafen
-  set_kitchen_thermostat_when_sleeping:
-    icon: mdi:temperature-celsius
-    name: Küche wenn wir schlafen
-  set_bath_thermostat_when_sleeping:
-    icon: mdi:temperature-celsius
-    name: Bad wenn wir schlafen
-  set_upper_bath_thermostat_when_sleeping:
-    icon: mdi:temperature-celsius
-    name: Bad Oben wenn wir schlafen
+set_livingroom_thermostat_when_sleeping:
+  icon: mdi:temperature-celsius
+  name: Wohnzimmer wenn wir schlafen
+set_kitchen_thermostat_when_sleeping:
+  icon: mdi:temperature-celsius
+  name: Küche wenn wir schlafen
+set_bath_thermostat_when_sleeping:
+  icon: mdi:temperature-celsius
+  name: Bad wenn wir schlafen
+set_upper_bath_thermostat_when_sleeping:
+  icon: mdi:temperature-celsius
+  name: Bad Oben wenn wir schlafen
 #################################################################
 ## Appdaemon App Switches - Thermostats - Waking Up
 #################################################################
-  set_livingroom_thermostat_when_waking_up:
-    icon: mdi:temperature-celsius
-    name: Wohnzimmer wenn wir aufstehen
-  set_kitchen_thermostat_when_waking_up:
-    icon: mdi:temperature-celsius
-    name: Küche wenn wir aufstehen
-  set_bath_thermostat_when_waking_up:
-    icon: mdi:temperature-celsius
-    name: Bad wenn wir aufstehen
-  set_upper_bath_thermostat_when_waking_up:
-    icon: mdi:temperature-celsius
-    name: Bad Oben wenn wir aufstehen
+set_livingroom_thermostat_when_waking_up:
+  icon: mdi:temperature-celsius
+  name: Wohnzimmer wenn wir aufstehen
+set_kitchen_thermostat_when_waking_up:
+  icon: mdi:temperature-celsius
+  name: Küche wenn wir aufstehen
+set_bath_thermostat_when_waking_up:
+  icon: mdi:temperature-celsius
+  name: Bad wenn wir aufstehen
+set_upper_bath_thermostat_when_waking_up:
+  icon: mdi:temperature-celsius
+  name: Bad Oben wenn wir aufstehen
 #################################################################
 ## Appdaemon App Switches - Thermostats - Coming Home
 #################################################################
-  set_livingroom_thermostat_when_coming_home:
-    icon: mdi:temperature-celsius
-    name: Wohnzimmer wenn wir nach Hause kommen
-  set_kitchen_thermostat_when_coming_home:
-    icon: mdi:temperature-celsius
-    name: Küche wenn wir nach Hause kommen
-  set_bath_thermostat_when_coming_home:
-    icon: mdi:temperature-celsius
-    name: Bad wenn wir nach Hause kommen
-  set_upper_bath_thermostat_when_coming_home:
-    icon: mdi:temperature-celsius
-    name: Bad Oben wenn wir nach Hause kommen
+set_livingroom_thermostat_when_coming_home:
+  icon: mdi:temperature-celsius
+  name: Wohnzimmer wenn wir nach Hause kommen
+set_kitchen_thermostat_when_coming_home:
+  icon: mdi:temperature-celsius
+  name: Küche wenn wir nach Hause kommen
+set_bath_thermostat_when_coming_home:
+  icon: mdi:temperature-celsius
+  name: Bad wenn wir nach Hause kommen
+set_upper_bath_thermostat_when_coming_home:
+  icon: mdi:temperature-celsius
+  name: Bad Oben wenn wir nach Hause kommen
 #################################################################
 ## Appdaemon App Switches - Thermostats - Heading Home
 #################################################################
-  set_livingroom_thermostat_when_heading_home:
-    icon: mdi:temperature-celsius
-    name: Wohnzimmer wenn Richtung nach Hause
-  set_kitchen_thermostat_when_heading_home:
-    icon: mdi:temperature-celsius
-    name: Küche wenn Richtung nach Hause
+set_livingroom_thermostat_when_heading_home:
+  icon: mdi:temperature-celsius
+  name: Wohnzimmer wenn Richtung nach Hause
+set_kitchen_thermostat_when_heading_home:
+  icon: mdi:temperature-celsius
+  name: Küche wenn Richtung nach Hause

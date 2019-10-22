@@ -1,4 +1,0 @@
-alarm:
-    name: Wecker
-    has_date: true
-    has_time: true

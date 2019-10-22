@@ -1,19 +1,4 @@
-leave_time_offset:
-  name: Extra Zeit
-  min: 0
-  max: 60
-  step: 5
-leave_time_offset_user_two:
-  name: Extra Zeit
-  min: 0
-  max: 60
-  step: 5
-alarm_natural_wakeup_fade_in:
-  name: Fade-In Dauer
-  icon: mdi:theme-light-dark
-  min: 0
-  max: 30
-  step: 5
+---
 turn_small_fan_on_when_hot_threshold:
   name: Ventilator - Temperatur Grenze
   icon: mdi:temperature-celsius

@@ -1,3 +1,4 @@
+---
 #################################################################
 ## Weather
 #################################################################
@@ -11,7 +12,7 @@
     - precip_type
     - precip_intensity
     - precip_probability
-    - precip_intensity_max 
+    - precip_intensity_max
     - temperature
     - wind_speed
     - cloud_cover
@@ -58,18 +59,18 @@
       value_template: "{{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom('%H:%M') }}"
       friendly_name: Sonnenuntergang
       entity_id:
-       - sun.sun
+        - sun.sun
     sunrise_time:
       value_template: "{{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom('%H:%M') }}"
       friendly_name: Sonnenaufgang
       entity_id:
-       - sun.sun
+        - sun.sun
     solar_angle:
       value_template: "{{ states.sun.sun.attributes.elevation }}"
       friendly_name: Solar Angle
       unit_of_measurement: degrees
       entity_id:
-       - sun.sun
+        - sun.sun
 #################################################################
 ## Uptime
 #################################################################
@@ -83,6 +84,7 @@
   db_url: !secret db_url
   queries:
     - name: DB size
+      # yamllint disable-line rule:line-length
       query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "value" FROM information_schema.tables WHERE table_schema="hass_db" GROUP BY table_schema;'
       column: 'value'
       unit_of_measurement: MB

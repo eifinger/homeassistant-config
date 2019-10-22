@@ -13,8 +13,8 @@ midnight:
   label-badge-border-color: 'green' # Label badge border, just a reference value
   # Background colors
   primary-background-color: '#383C45' # Settings background
-  secondary-background-color: '#383C45' # Main card UI background  
-  divider-color: 'rgba(0, 0, 0, .12)' # Divider 
+  secondary-background-color: '#383C45' # Main card UI background
+  divider-color: 'rgba(0, 0, 0, .12)' # Divider
   # Table rows
   table-row-background-color: '#353840' # Table row
   table-row-alternative-background-color: '#3E424B' # Table row alternative
@@ -42,7 +42,7 @@ midnight:
   paper-toggle-button-checked-ink-color: 'var(--accent-color)'
   paper-toggle-button-unchecked-button-color: 'var(--disabled-text-color)'
   paper-toggle-button-unchecked-bar-color: 'var(--disabled-text-color)'
-  paper-toggle-button-unchecked-ink-color: 'var(--disabled-text-color)'  
+  paper-toggle-button-unchecked-ink-color: 'var(--disabled-text-color)'
   # Sliders
   paper-slider-knob-color: 'var(--accent-color)'
   paper-slider-knob-start-color: 'var(--accent-color)'

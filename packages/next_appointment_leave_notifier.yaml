@@ -87,13 +87,21 @@ sensor:
       calc_leave_time:
         value_template: >
           {% if is_state("input_select.next_appointment_travel_mode","Auto") %}
-            {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_car") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
+            {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) -
+            states("sensor.travel_time_next_appointment_location_car") | int *60  -
+            (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
           {% elif is_state("input_select.next_appointment_travel_mode","Fahrrad")%}
-            {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_bike") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
+            {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) -
+            states("sensor.travel_time_next_appointment_location_bike") | int *60  -
+            (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
           {% elif is_state("input_select.next_appointment_travel_mode","Öffis")%}
-            {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_transit") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
+            {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) -
+            states("sensor.travel_time_next_appointment_location_transit") | int *60  -
+            (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
           {% elif is_state("input_select.next_appointment_travel_mode","Laufen")%}
-            {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_walking") | int *60  - (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
+            {{(as_timestamp(states.calendar.keifingergooglemailcom.attributes.start_time or now()) -
+            states("sensor.travel_time_next_appointment_location_walking") | int *60  -
+            (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
           {% endif %}
         friendly_name: Losfahren
         entity_id:
@@ -153,13 +161,21 @@ sensor:
       calc_leave_time_user_two:
         value_template: >
           {% if is_state("input_select.next_appointment_travel_mode_user_two","Auto") %}
-            {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_car_user_two") | int *60  - (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
+            {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) -
+            states("sensor.travel_time_next_appointment_location_car_user_two") | int *60  -
+            (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
           {% elif is_state("input_select.next_appointment_travel_mode_user_two","Fahrrad")%}
-            {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_bike_user_two") | int *60  - (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
+            {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) -
+            states("sensor.travel_time_next_appointment_location_bike_user_two") | int *60  -
+            (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
           {% elif is_state("input_select.next_appointment_travel_mode_user_two","Öffis")%}
-            {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_transit_user_two") | int *60  - (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
+            {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) -
+            states("sensor.travel_time_next_appointment_location_transit_user_two") | int *60  -
+            (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
           {% elif is_state("input_select.next_appointment_travel_mode_user_two","Laufen")%}
-            {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) - states("sensor.travel_time_next_appointment_location_walking_user_two") | int *60  - (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
+            {{(as_timestamp(states.calendar.stillhammersinagmailcom.attributes.start_time or now()) -
+            states("sensor.travel_time_next_appointment_location_walking_user_two") | int *60  -
+            (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
           {% endif %}
         friendly_name: Losfahren
         entity_id:

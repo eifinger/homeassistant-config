@@ -59,4 +59,4 @@ sensor:
 homeassistant:
   customize:
     sensor.alarm_time:
-    icon: mdi:clock
+      icon: mdi:clock

@@ -1,3 +1,4 @@
+---
 media_player:
   - platform: kodi
     host: !secret kodi_ip

@@ -1,3 +1,4 @@
+---
 - id: appdaemon_heartbeat_checker
   alias: 'Appdaemon Heartbeat Checker'
   initial_state: 'on'

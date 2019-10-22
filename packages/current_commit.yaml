@@ -1,3 +1,4 @@
+---
 sensor:
 - platform: command_line
   name: current_commit

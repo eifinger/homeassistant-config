@@ -1,3 +1,4 @@
+---
   home:
     devices:
       - !secret device_user_one

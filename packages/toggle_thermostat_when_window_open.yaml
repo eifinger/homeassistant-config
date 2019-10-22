@@ -1,3 +1,4 @@
+---
 automation:
 - id: turn_off_bath_thermostat_when_window_open
   alias: Fußbodenheizung im Bad ausschalten wenn Fenster offen

@@ -1,3 +1,4 @@
+---
 sensor:
 #########User one
 - platform: mqtt

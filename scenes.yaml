@@ -1,3 +1,4 @@
+---
 - name: Gemütliches Wohnzimmer
   entities:
     light.reading_lamp_yeelight:

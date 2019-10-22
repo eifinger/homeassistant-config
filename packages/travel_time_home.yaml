@@ -1,3 +1,4 @@
+---
 sensor:
 # Travel Time Home User One
 - platform: google_travel_time

@@ -1,3 +1,4 @@
+---
 automation:
   - id: alert_when_breaking_changes
     alias: 'Alarm bei Breaking Changes'

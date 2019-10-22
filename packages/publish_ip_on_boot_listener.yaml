@@ -1,3 +1,4 @@
+---
 sensor:
   - platform: mqtt
     state_topic: "pibakery-eifinger/ip"

@@ -1,3 +1,4 @@
+---
 media_player:
   - platform: denonavr
     host: !secret denon_ip

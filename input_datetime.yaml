@@ -1,3 +1,4 @@
+---
 alarm:
     name: Wecker
     has_date: true

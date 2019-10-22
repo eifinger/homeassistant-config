@@ -1,3 +1,4 @@
+---
 climate:
 - platform: hysen
   scan_interval: 15

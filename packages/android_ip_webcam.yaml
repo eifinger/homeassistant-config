@@ -1,3 +1,4 @@
+---
 android_ip_webcam:
   - host: !secret android_ip_webcam_door_ip
     port: 8080

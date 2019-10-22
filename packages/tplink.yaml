@@ -1,3 +1,4 @@
+---
 tplink:
   discovery: False
   switch:

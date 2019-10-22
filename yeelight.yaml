@@ -1,3 +1,4 @@
+---
 devices:
   !secret bedroom_yeelight_ip:
     name: Bedroom_Yeelight

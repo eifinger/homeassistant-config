@@ -1,3 +1,4 @@
+---
 input_boolean:
   guestmode:
     name: Gäste Modus

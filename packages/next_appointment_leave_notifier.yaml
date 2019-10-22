@@ -1,3 +1,4 @@
+---
 input_select:
   next_appointment_travel_mode:
     name: Reiseart

@@ -1,4 +1,15 @@
 ---
+input_number:
+  leave_time_offset:
+    name: Extra Zeit
+    min: 0
+    max: 60
+    step: 5
+  leave_time_offset_user_two:
+    name: Extra Zeit
+    min: 0
+    max: 60
+    step: 5
 input_select:
   next_appointment_travel_mode:
     name: Reiseart
@@ -7,7 +18,6 @@ input_select:
       - Fahrrad
       - Öffis
       - Laufen
-
   next_appointment_travel_mode_standard:
     name: Standard Reiseart Kevin
     options:
@@ -15,7 +25,6 @@ input_select:
       - Fahrrad
       - Öffis
       - Laufen
-
   next_appointment_travel_mode_user_two:
     name: Reiseart
     options:
@@ -23,7 +32,6 @@ input_select:
       - Fahrrad
       - Öffis
       - Laufen
-
   next_appointment_travel_mode_standard_user_two:
     name: Standard Reiseart Sina
     options:

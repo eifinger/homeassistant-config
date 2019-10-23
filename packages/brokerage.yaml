@@ -776,6 +776,54 @@ sensor:
       - totalVolumeTraded
       - tradable
       - volatility
+  - platform: avanza_stock
+    stock: 361180
+    name: avanza_service_now
+    monitored_conditions:
+      - change
+      - changePercent
+      - country
+      - currency
+      - directYield
+      - dividends
+      - flagCode
+      - hasInvestmentFees
+      - highestPrice
+      - id
+      - isin
+      - lastPrice
+      - lastPriceUpdated
+      - loanFactor
+      - lowestPrice
+      - marketCapital
+      - marketList
+      - marketMakerExpected
+      - marketPlace
+      - marketTrades
+      - morningStarFactSheetUrl
+      - name
+      - numberOfOwners
+      - orderDepthReceivedTime
+      - priceAtStartOfYear
+      - priceEarningsRatio
+      - priceFiveYearsAgo
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+      - priceThreeYearsAgo
+      - pushPermitted
+      - quoteUpdated
+      - sector
+      - shortSellable
+      - superLoan
+      - tickerSymbol
+      - totalNumberOfShares
+      - totalValueTraded
+      - totalVolumeTraded
+      - tradable
+      - volatility
 input_text:
   avanza_ibm_min:
     icon: mdi:arrow-collapse-down
@@ -871,6 +919,12 @@ input_text:
     icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_vivendi_max:
+    icon: mdi:arrow-collapse-up
+    name: Max Alert
+  avanza_service_now_min:
+    icon: mdi:arrow-collapse-down
+    name: Min Alert
+  avanza_service_now_max:
     icon: mdi:arrow-collapse-up
     name: Max Alert
 automation:
@@ -1267,4 +1321,28 @@ automation:
             "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
             {{ states('sensor.avanza_vivendi') }} {{ state_attr('sensor.avanza_vivendi','currency') }}.
             Under threshold of {{ states('input_text.avanza_vivendi_min') }}"
+            {% endif %}
+  - id: avanza_service_now
+    alias: Service Now Vivendi
+    trigger:
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_service_now') | float > states('input_text.avanza_service_now_max') | float
+            and states('input_text.avanza_service_now_max') not in ['unknown', ''] }}
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_service_now') | float < states('input_text.avanza_service_now_min') | float
+            and states('input_text.avanza_service_now_min') not in ['unknown', ''] }}
+    action:
+      - service: notify.kevin
+        data_template:
+          message: >
+            {% if states('sensor.avanza_service_now') | float > states('input_text.avanza_service_now_max') | float %}
+            "Stock alert: {{ state_attr('sensor.avanza_service_now','name') }}:
+            {{ states('sensor.avanza_service_now') }} {{ state_attr('sensor.avanza_service_now','currency') }}.
+            Over threshold of {{ states('input_text.avanza_service_now_max') }}"
+            {% else %}
+            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            {{ states('sensor.avanza_service_now') }} {{ state_attr('sensor.avanza_service_now','currency') }}.
+            Under threshold of {{ states('input_text.avanza_service_now_min') }}"
             {% endif %}

@@ -3,6 +3,8 @@ media_player:
   - platform: kodi
     host: !secret kodi_ip
     port: 8080
+    username: !secret kodi_username
+    password: !secret kodi_password
 
 script:
   kodi_pause:

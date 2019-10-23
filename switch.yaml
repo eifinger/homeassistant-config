@@ -4,8 +4,8 @@
 #################################################################
 - platform: wake_on_lan
   name: Starte Vive PC
-  host: !secret facebox_ip
-  mac_address: !secret facebox_mac
+  host: !secret vive_ip
+  mac_address: !secret vive_mac
 #################################################################
 ## Broadlink IR/RF
 #################################################################

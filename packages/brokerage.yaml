@@ -584,6 +584,150 @@ sensor:
       - totalVolumeTraded
       - tradable
       - volatility
+  - platform: avanza_stock
+    stock: 745846
+    name: avanza_veolia
+    monitored_conditions:
+      - change
+      - changePercent
+      - country
+      - currency
+      - directYield
+      - dividends
+      - flagCode
+      - hasInvestmentFees
+      - highestPrice
+      - id
+      - isin
+      - lastPrice
+      - lastPriceUpdated
+      - loanFactor
+      - lowestPrice
+      - marketCapital
+      - marketList
+      - marketMakerExpected
+      - marketPlace
+      - marketTrades
+      - morningStarFactSheetUrl
+      - name
+      - numberOfOwners
+      - orderDepthReceivedTime
+      - priceAtStartOfYear
+      - priceEarningsRatio
+      - priceFiveYearsAgo
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+      - priceThreeYearsAgo
+      - pushPermitted
+      - quoteUpdated
+      - sector
+      - shortSellable
+      - superLoan
+      - tickerSymbol
+      - totalNumberOfShares
+      - totalValueTraded
+      - totalVolumeTraded
+      - tradable
+      - volatility
+  - platform: avanza_stock
+    stock: 745836
+    name: avanza_air_liquide
+    monitored_conditions:
+      - change
+      - changePercent
+      - country
+      - currency
+      - directYield
+      - dividends
+      - flagCode
+      - hasInvestmentFees
+      - highestPrice
+      - id
+      - isin
+      - lastPrice
+      - lastPriceUpdated
+      - loanFactor
+      - lowestPrice
+      - marketCapital
+      - marketList
+      - marketMakerExpected
+      - marketPlace
+      - marketTrades
+      - morningStarFactSheetUrl
+      - name
+      - numberOfOwners
+      - orderDepthReceivedTime
+      - priceAtStartOfYear
+      - priceEarningsRatio
+      - priceFiveYearsAgo
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+      - priceThreeYearsAgo
+      - pushPermitted
+      - quoteUpdated
+      - sector
+      - shortSellable
+      - superLoan
+      - tickerSymbol
+      - totalNumberOfShares
+      - totalValueTraded
+      - totalVolumeTraded
+      - tradable
+      - volatility
+  - platform: avanza_stock
+    stock: 745901
+    name: avanza_loreal
+    monitored_conditions:
+      - change
+      - changePercent
+      - country
+      - currency
+      - directYield
+      - dividends
+      - flagCode
+      - hasInvestmentFees
+      - highestPrice
+      - id
+      - isin
+      - lastPrice
+      - lastPriceUpdated
+      - loanFactor
+      - lowestPrice
+      - marketCapital
+      - marketList
+      - marketMakerExpected
+      - marketPlace
+      - marketTrades
+      - morningStarFactSheetUrl
+      - name
+      - numberOfOwners
+      - orderDepthReceivedTime
+      - priceAtStartOfYear
+      - priceEarningsRatio
+      - priceFiveYearsAgo
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+      - priceThreeYearsAgo
+      - pushPermitted
+      - quoteUpdated
+      - sector
+      - shortSellable
+      - superLoan
+      - tickerSymbol
+      - totalNumberOfShares
+      - totalValueTraded
+      - totalVolumeTraded
+      - tradable
+      - volatility
 input_text:
   avanza_ibm_min:
     icon: mdi:arrow-collapse-down
@@ -655,6 +799,24 @@ input_text:
     icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_danone_max:
+    icon: mdi:arrow-collapse-up
+    name: Max Alert
+  avanza_veolia_min:
+    icon: mdi:arrow-collapse-down
+    name: Min Alert
+  avanza_veolia_max:
+    icon: mdi:arrow-collapse-up
+    name: Max Alert
+  avanza_air_liquide_min:
+    icon: mdi:arrow-collapse-down
+    name: Min Alert
+  avanza_air_liquide_max:
+    icon: mdi:arrow-collapse-up
+    name: Max Alert
+  avanza_loreal_min:
+    icon: mdi:arrow-collapse-down
+    name: Min Alert
+  avanza_loreal_max:
     icon: mdi:arrow-collapse-up
     name: Max Alert
 automation:
@@ -955,4 +1117,76 @@ automation:
             "Stock alert: {{ state_attr('sensor.avanza_danone','name') }}:
             {{ states('sensor.avanza_danone') }} {{ state_attr('sensor.avanza_danone','currency') }}.
             Under threshold of {{ states('input_text.avanza_danone_min') }}"
+            {% endif %}
+  - id: avanza_veolia
+    alias: Avanza Veolia
+    trigger:
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_veolia') | float > states('input_text.avanza_veolia_max') | float
+            and states('input_text.avanza_veolia_max') not in ['unknown', ''] }}
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_veolia') | float < states('input_text.avanza_veolia_min') | float
+            and states('input_text.avanza_veolia_min') not in ['unknown', ''] }}
+    action:
+      - service: notify.kevin
+        data_template:
+          message: >
+            {% if states('sensor.avanza_veolia') | float > states('input_text.avanza_veolia_max') | float %}
+            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            {{ states('sensor.avanza_veolia') }} {{ state_attr('sensor.avanza_veolia','currency') }}.
+            Over threshold of {{ states('input_text.avanza_veolia_max') }}"
+            {% else %}
+            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            {{ states('sensor.avanza_veolia') }} {{ state_attr('sensor.avanza_veolia','currency') }}.
+            Under threshold of {{ states('input_text.avanza_veolia_min') }}"
+            {% endif %}
+  - id: avanza_air_liquide
+    alias: Avanza Air Liquide
+    trigger:
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_air_liquide') | float > states('input_text.avanza_air_liquide_max') | float
+            and states('input_text.avanza_air_liquide_max') not in ['unknown', ''] }}
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_air_liquide') | float < states('input_text.avanza_air_liquide_min') | float
+            and states('input_text.avanza_air_liquide_min') not in ['unknown', ''] }}
+    action:
+      - service: notify.kevin
+        data_template:
+          message: >
+            {% if states('sensor.avanza_air_liquide') | float > states('input_text.avanza_air_liquide_max') | float %}
+            "Stock alert: {{ state_attr('sensor.avanza_air_liquide','name') }}:
+            {{ states('sensor.avanza_air_liquide') }} {{ state_attr('sensor.avanza_air_liquide','currency') }}.
+            Over threshold of {{ states('input_text.avanza_air_liquide_max') }}"
+            {% else %}
+            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            {{ states('sensor.avanza_air_liquide') }} {{ state_attr('sensor.avanza_air_liquide','currency') }}.
+            Under threshold of {{ states('input_text.avanza_air_liquide_min') }}"
+            {% endif %}
+  - id: avanza_loreal
+    alias: Avanza Loreal
+    trigger:
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_loreal') | float > states('input_text.avanza_loreal_max') | float
+            and states('input_text.avanza_loreal_max') not in ['unknown', ''] }}
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_loreal') | float < states('input_text.avanza_loreal_min') | float
+            and states('input_text.avanza_loreal_min') not in ['unknown', ''] }}
+    action:
+      - service: notify.kevin
+        data_template:
+          message: >
+            {% if states('sensor.avanza_loreal') | float > states('input_text.avanza_loreal_max') | float %}
+            "Stock alert: {{ state_attr('sensor.avanza_loreal','name') }}:
+            {{ states('sensor.avanza_loreal') }} {{ state_attr('sensor.avanza_loreal','currency') }}.
+            Over threshold of {{ states('input_text.avanza_loreal_max') }}"
+            {% else %}
+            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            {{ states('sensor.avanza_loreal') }} {{ state_attr('sensor.avanza_loreal','currency') }}.
+            Under threshold of {{ states('input_text.avanza_loreal_min') }}"
             {% endif %}

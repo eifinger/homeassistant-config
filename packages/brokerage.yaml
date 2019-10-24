@@ -872,6 +872,102 @@ sensor:
       - totalVolumeTraded
       - tradable
       - volatility
+  - platform: avanza_stock
+    stock: 3527
+    name: avanza_3m
+    monitored_conditions:
+      - change
+      - changePercent
+      - country
+      - currency
+      - directYield
+      - dividends
+      - flagCode
+      - hasInvestmentFees
+      - highestPrice
+      - id
+      - isin
+      - lastPrice
+      - lastPriceUpdated
+      - loanFactor
+      - lowestPrice
+      - marketCapital
+      - marketList
+      - marketMakerExpected
+      - marketPlace
+      - marketTrades
+      - morningStarFactSheetUrl
+      - name
+      - numberOfOwners
+      - orderDepthReceivedTime
+      - priceAtStartOfYear
+      - priceEarningsRatio
+      - priceFiveYearsAgo
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+      - priceThreeYearsAgo
+      - pushPermitted
+      - quoteUpdated
+      - sector
+      - shortSellable
+      - superLoan
+      - tickerSymbol
+      - totalNumberOfShares
+      - totalValueTraded
+      - totalVolumeTraded
+      - tradable
+      - volatility
+  - platform: avanza_stock
+    stock: 3619
+    name: avanza_cisco
+    monitored_conditions:
+      - change
+      - changePercent
+      - country
+      - currency
+      - directYield
+      - dividends
+      - flagCode
+      - hasInvestmentFees
+      - highestPrice
+      - id
+      - isin
+      - lastPrice
+      - lastPriceUpdated
+      - loanFactor
+      - lowestPrice
+      - marketCapital
+      - marketList
+      - marketMakerExpected
+      - marketPlace
+      - marketTrades
+      - morningStarFactSheetUrl
+      - name
+      - numberOfOwners
+      - orderDepthReceivedTime
+      - priceAtStartOfYear
+      - priceEarningsRatio
+      - priceFiveYearsAgo
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+      - priceThreeYearsAgo
+      - pushPermitted
+      - quoteUpdated
+      - sector
+      - shortSellable
+      - superLoan
+      - tickerSymbol
+      - totalNumberOfShares
+      - totalValueTraded
+      - totalVolumeTraded
+      - tradable
+      - volatility
 input_text:
   avanza_ibm_min:
     icon: mdi:arrow-collapse-down
@@ -979,6 +1075,18 @@ input_text:
     icon: mdi:arrow-collapse-down
     name: Min Alert
   avanza_blackrock_max:
+    icon: mdi:arrow-collapse-up
+    name: Max Alert
+  avanza_3m_min:
+    icon: mdi:arrow-collapse-down
+    name: Min Alert
+  avanza_3m_max:
+    icon: mdi:arrow-collapse-up
+    name: Max Alert
+  avanza_cisco_min:
+    icon: mdi:arrow-collapse-down
+    name: Min Alert
+  avanza_cisco_max:
     icon: mdi:arrow-collapse-up
     name: Max Alert
 automation:
@@ -1324,7 +1432,7 @@ automation:
             {{ states('sensor.avanza_air_liquide') }} {{ state_attr('sensor.avanza_air_liquide','currency') }}.
             Over threshold of {{ states('input_text.avanza_air_liquide_max') }}"
             {% else %}
-            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            "Stock alert: {{ state_attr('sensor.avanza_air_liquide','name') }}:
             {{ states('sensor.avanza_air_liquide') }} {{ state_attr('sensor.avanza_air_liquide','currency') }}.
             Under threshold of {{ states('input_text.avanza_air_liquide_min') }}"
             {% endif %}
@@ -1348,7 +1456,7 @@ automation:
             {{ states('sensor.avanza_loreal') }} {{ state_attr('sensor.avanza_loreal','currency') }}.
             Over threshold of {{ states('input_text.avanza_loreal_max') }}"
             {% else %}
-            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            "Stock alert: {{ state_attr('sensor.avanza_loreal','name') }}:
             {{ states('sensor.avanza_loreal') }} {{ state_attr('sensor.avanza_loreal','currency') }}.
             Under threshold of {{ states('input_text.avanza_loreal_min') }}"
             {% endif %}
@@ -1372,12 +1480,12 @@ automation:
             {{ states('sensor.avanza_vivendi') }} {{ state_attr('sensor.avanza_vivendi','currency') }}.
             Over threshold of {{ states('input_text.avanza_vivendi_max') }}"
             {% else %}
-            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            "Stock alert: {{ state_attr('sensor.avanza_vivendi','name') }}:
             {{ states('sensor.avanza_vivendi') }} {{ state_attr('sensor.avanza_vivendi','currency') }}.
             Under threshold of {{ states('input_text.avanza_vivendi_min') }}"
             {% endif %}
   - id: avanza_service_now
-    alias: Service Now Vivendi
+    alias: Avanza Service Now
     trigger:
       - platform: template
         value_template: >
@@ -1396,12 +1504,12 @@ automation:
             {{ states('sensor.avanza_service_now') }} {{ state_attr('sensor.avanza_service_now','currency') }}.
             Over threshold of {{ states('input_text.avanza_service_now_max') }}"
             {% else %}
-            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            "Stock alert: {{ state_attr('sensor.avanza_service_now','name') }}:
             {{ states('sensor.avanza_service_now') }} {{ state_attr('sensor.avanza_service_now','currency') }}.
             Under threshold of {{ states('input_text.avanza_service_now_min') }}"
             {% endif %}
   - id: avanza_blackrock
-    alias: Blackrock Vivendi
+    alias: Avanza Blackrock
     trigger:
       - platform: template
         value_template: >
@@ -1416,11 +1524,59 @@ automation:
         data_template:
           message: >
             {% if states('sensor.avanza_blackrock') | float > states('input_text.avanza_blackrock_max') | float %}
-            "Stock alert: {{ state_attr('sensor.avanza_service_now','name') }}:
+            "Stock alert: {{ state_attr('sensor.avanza_blackrock','name') }}:
             {{ states('sensor.avanza_blackrock') }} {{ state_attr('sensor.avanza_blackrock','currency') }}.
             Over threshold of {{ states('input_text.avanza_blackrock_max') }}"
             {% else %}
-            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            "Stock alert: {{ state_attr('sensor.avanza_blackrock','name') }}:
             {{ states('sensor.avanza_blackrock') }} {{ state_attr('sensor.avanza_blackrock','currency') }}.
             Under threshold of {{ states('input_text.avanza_blackrock_min') }}"
+            {% endif %}
+  - id: avanza_3m
+    alias: Avanza 3M
+    trigger:
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_3m') | float > states('input_text.avanza_3m_max') | float
+            and states('input_text.avanza_3m_max') not in ['unknown', ''] }}
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_3m') | float < states('input_text.avanza_3m_min') | float
+            and states('input_text.avanza_3m_min') not in ['unknown', ''] }}
+    action:
+      - service: notify.kevin
+        data_template:
+          message: >
+            {% if states('sensor.avanza_3m') | float > states('input_text.avanza_3m_max') | float %}
+            "Stock alert: {{ state_attr('sensor.avanza_3m','name') }}:
+            {{ states('sensor.avanza_3m') }} {{ state_attr('sensor.avanza_3m','currency') }}.
+            Over threshold of {{ states('input_text.avanza_3m_max') }}"
+            {% else %}
+            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            {{ states('sensor.avanza_3m') }} {{ state_attr('sensor.avanza_3m','currency') }}.
+            Under threshold of {{ states('input_text.avanza_3m_min') }}"
+            {% endif %}
+  - id: avanza_cisco
+    alias: Avanza Cisco
+    trigger:
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_cisco') | float > states('input_text.avanza_cisco_max') | float
+            and states('input_text.avanza_cisco_max') not in ['unknown', ''] }}
+      - platform: template
+        value_template: >
+            {{ states('sensor.avanza_cisco') | float < states('input_text.avanza_cisco_min') | float
+            and states('input_text.avanza_cisco_min') not in ['unknown', ''] }}
+    action:
+      - service: notify.kevin
+        data_template:
+          message: >
+            {% if states('sensor.avanza_cisco') | float > states('input_text.avanza_cisco_max') | float %}
+            "Stock alert: {{ state_attr('sensor.avanza_cisco','name') }}:
+            {{ states('sensor.avanza_cisco') }} {{ state_attr('sensor.avanza_cisco','currency') }}.
+            Over threshold of {{ states('input_text.avanza_cisco_max') }}"
+            {% else %}
+            "Stock alert: {{ state_attr('sensor.avanza_veolia','name') }}:
+            {{ states('sensor.avanza_cisco') }} {{ state_attr('sensor.avanza_cisco','currency') }}.
+            Under threshold of {{ states('input_text.avanza_cisco_min') }}"
             {% endif %}

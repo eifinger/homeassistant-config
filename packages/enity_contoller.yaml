@@ -5,11 +5,15 @@ entity_controller:
     sensor_type: duration
     entity: light.upper_stairs_yeelight
     delay: 60
+    override_states_on: "off"
+    override_states_off: "on"
+    overrides:
+      - input_boolean.oben_treppe_motion_trigger
     service_data:
-      brightness: 80
+      brightness: 100
     night_mode:
       delay: 60
       service_data:
-        brightness: 20
-      start_time: 'sunset'
+        brightness: 1
+      start_time: 'sunset + 02:00:00'
       end_time: 'sunrise'

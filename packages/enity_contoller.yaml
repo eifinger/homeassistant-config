@@ -10,7 +10,7 @@ entity_controller:
     overrides:
       - input_boolean.oben_treppe_motion_trigger
     service_data:
-      brightness: 100
+      brightness: 0
     night_mode:
       delay: 60
       service_data:

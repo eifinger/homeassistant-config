@@ -17,12 +17,6 @@ user_one_home:
 user_two_home:
   name: Is user two home
   icon: mdi:home
-travel_time_work_from_home:
-  icon: mdi:telegram
-travel_time_home_from_work:
-  icon: mdi:telegram
-travel_time_elmo_from_home:
-  icon: mdi:telegram
 announce_time_to_leave:
   icon: mdi:telegram
 announce_time_to_leave_user_two:

@@ -16,6 +16,22 @@ sensor:
     app_id: !secret here_app_id
     app_code: !secret here_app_code
     traffic_mode: true
+  # work_user_two from Home
+  - platform: here_travel_time
+    name: travel_time_work_user_two_from_home_here
+    origin_entity_id: zone.home
+    destination_entity_id: zone.work_user_two
+    app_id: !secret here_app_id
+    app_code: !secret here_app_code
+    traffic_mode: true
+  # Home from work_user_two
+  - platform: here_travel_time
+    name: travel_time_home_from_work_user_two_here
+    origin_entity_id: zone.work_user_two
+    destination_entity_id: zone.home
+    app_id: !secret here_app_id
+    app_code: !secret here_app_code
+    traffic_mode: true
   # Elmo from Home
   - platform: here_travel_time
     name: travel_time_elmo_from_home_here
@@ -24,12 +40,38 @@ sensor:
     app_id: !secret here_app_id
     app_code: !secret here_app_code
     traffic_mode: true
-
+  # Home from Elmo
+  - platform: here_travel_time
+    name: travel_time_elmo_from_home_here
+    origin_entity_id: zone.elmo
+    destination_entity_id: zone.home
+    app_id: !secret here_app_id
+    app_code: !secret here_app_code
+    traffic_mode: true
+input_boolean:
+  travel_time_work_from_home:
+    icon: mdi:telegram
+  travel_time_home_from_work:
+    icon: mdi:telegram
+  travel_time_elmo_from_home:
+    icon: mdi:telegram
+  travel_time_elmo_from_home:
+    icon: mdi:telegram
+  travel_time_work_user_two_from_home_here:
+    icon: mdi:telegram
+  travel_time_home_from_work_user_two:
+    icon: mdi:telegram
 homeassistant:
   customize:
     sensor.travel_time_work_from_home_here:
       friendly_name: "Zu Hause -> SVA"
     sensor.travel_time_home_from_work_here:
       friendly_name: "SVA -> Zu Hause"
+    sensor.travel_time_work_user_two_from_home_here:
+      friendly_name: !secret friendly_name_travel_time_work_user_two_from_home_here
+    sensor.travel_time_home_from_work_user_two_here:
+      friendly_name: !secret friendly_name_travel_time_home_from_work_user_two_here
     sensor.travel_time_elmo_from_home_here:
       friendly_name: "Zu Hause -> Elmo"
+    sensor.travel_time_home_from_elmp_here:
+      friendly_name: "Elmo -> Zu Hause"

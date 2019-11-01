@@ -42,7 +42,7 @@ sensor:
     traffic_mode: true
   # Home from Elmo
   - platform: here_travel_time
-    name: travel_time__home_from_elmo_here
+    name: travel_time_home_from_elmo_here
     origin_entity_id: zone.elmo
     destination_entity_id: zone.home
     app_id: !secret here_app_id

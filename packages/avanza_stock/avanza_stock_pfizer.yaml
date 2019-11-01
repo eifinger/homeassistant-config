@@ -1,0 +1,82 @@
+---
+sensor:
+  - platform: avanza_stock
+    stock: 4145
+    name: avanza_pfizer
+    monitored_conditions:
+      - change
+      - changePercent
+      - country
+      - currency
+      - directYield
+      - dividends
+      - flagCode
+      - hasInvestmentFees
+      - highestPrice
+      - id
+      - isin
+      - lastPrice
+      - lastPriceUpdated
+      - loanFactor
+      - lowestPrice
+      - marketCapital
+      - marketList
+      - marketMakerExpected
+      - marketPlace
+      - marketTrades
+      - morningStarFactSheetUrl
+      - name
+      - numberOfOwners
+      - orderDepthReceivedTime
+      - priceAtStartOfYear
+      - priceEarningsRatio
+      - priceFiveYearsAgo
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+      - priceThreeYearsAgo
+      - pushPermitted
+      - quoteUpdated
+      - sector
+      - shortSellable
+      - superLoan
+      - tickerSymbol
+      - totalNumberOfShares
+      - totalValueTraded
+      - totalVolumeTraded
+      - tradable
+      - volatility
+input_text:
+  avanza_pfizer_min:
+    icon: mdi:arrow-collapse-down
+    name: Min Alert
+  avanza_pfizer_max:
+    icon: mdi:arrow-collapse-up
+    name: Max Alert
+automation:
+  - id: avanza_pfizer
+    alias: Avanza pfizer
+    trigger:
+      - platform: template
+        value_template: >
+          {{ states('sensor.avanza_pfizer') | float > states('input_text.avanza_pfizer_max') |float
+          and states('input_text.avanza_pfizer_max') not in ['unknown', ''] }}
+      - platform: template
+        value_template: >
+          {{ states('sensor.avanza_pfizer') | float < states('input_text.avanza_pfizer_min') | float
+          and states('input_text.avanza_pfizer_min') not in ['unknown', ''] }}
+    action:
+      - service: notify.kevin
+        data_template:
+          message: >
+            {% if states('sensor.avanza_pfizer') | float >states('input_text.avanza_pfizer_max') | float %}
+            "Stock alert: {{ state_attr('sensor.avanza_pfizer','name') }}:
+            {{ states('sensor.avanza_pfizer') }} {{ state_attr('sensor.avanza_pfizer','currency') }}.
+            Over threshold of {{ states('input_text.avanza_pfizer_max') }}"
+            {% else %}
+            "Stock alert: {{ state_attr('sensor.avanza_pfizer','name') }}:
+            {{ states('sensor.avanza_pfizer') }} {{ state_attr('sensor.avanza_pfizer','currency') }}.
+            Under threshold of {{ states('input_text.avanza_pfizer_min') }}"
+            {% endif %}

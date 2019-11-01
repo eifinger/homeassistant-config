@@ -1,3 +1,4 @@
+---
 sensor:
   - platform: avanza_stock
     stock: 4014

@@ -1,28 +1,5 @@
 ---
 #################################################################
-## Travel times
-#################################################################
-sensor.travel_time_next_appointment_location_car:
-  icon: mdi:car
-  friendly_name: "Kevin -> Nächster Termin"
-sensor.travel_time_next_appointment_location_car_user_two:
-  icon: mdi:car
-  friendly_name: "Sina -> Nächster Termin"
-input_boolean.travel_time_work_from_home:
-  friendly_name: "Zu Hause -> SVA Benachrichtigung"
-input_boolean.travel_time_home_from_work:
-  friendly_name: "SVA -> Zu Hause Benachrichtigung"
-input_boolean.travel_time_elmo_from_home:
-  friendly_name: "Zu Hause -> Elmo Benachrichtigung"
-input_boolean.announce_time_to_leave:
-  friendly_name: "Kevin -> Nächster Termin Benachrichtigung"
-sensor.cal_next_appointment_title:
-  icon: mdi:calendar
-input_boolean.announce_time_to_leave_user_two:
-  friendly_name: "Sina -> Nächster Termin Benachrichtigung"
-sensor.cal_next_appointment_title_user_two:
-  icon: mdi:calendar
-#################################################################
 ## Visibility
 #################################################################
 group.lights:

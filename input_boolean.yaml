@@ -17,10 +17,6 @@ user_one_home:
 user_two_home:
   name: Is user two home
   icon: mdi:home
-announce_time_to_leave:
-  icon: mdi:telegram
-announce_time_to_leave_user_two:
-  icon: mdi:telegram
 room_based_light:
   icon: mdi:lightbulb
 heading_home_notifier_user_one:

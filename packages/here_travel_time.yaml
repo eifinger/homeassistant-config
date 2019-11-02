@@ -57,7 +57,7 @@ input_boolean:
     icon: mdi:telegram
   travel_time_home_from_elmo:
     icon: mdi:telegram
-  travel_time_work_user_two_from_home_here:
+  travel_time_work_user_two_from_home:
     icon: mdi:telegram
   travel_time_home_from_work_user_two:
     icon: mdi:telegram
@@ -75,3 +75,15 @@ homeassistant:
       friendly_name: "Zu Hause -> Elmo"
     sensor.travel_time_home_from_elmo_here:
       friendly_name: "Elmo -> Zu Hause"
+    input_boolean.travel_time_work_from_home:
+      friendly_name: "Zu Hause -> SVA Benachrichtigung"
+    input_boolean.travel_time_home_from_work:
+      friendly_name: "SVA -> Zu Hause Benachrichtigung"
+    input_boolean.travel_time_work_user_two_from_home:
+      friendly_name: !secret friendly_name_travel_time_work_user_two_from_home_here_notification
+    input_boolean.travel_time_home_from_work_user_two:
+      friendly_name: !secret friendly_name_travel_time_home_from_work_user_two_here_notification
+    input_boolean.travel_time_elmo_from_home:
+      friendly_name: "Zu Hause -> Elmo Benachrichtigung"
+    input_boolean.travel_time_home_from_elmo_here:
+      friendly_name: "Elmo -> Zu Hause Benachrichtigung"

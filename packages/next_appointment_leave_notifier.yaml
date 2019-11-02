@@ -39,6 +39,11 @@ input_select:
       - Fahrrad
       - Öffis
       - Laufen
+input_boolean:
+  announce_time_to_leave:
+    icon: mdi:telegram
+  announce_time_to_leave_user_two:
+    icon: mdi:telegram
 sensor:
   # User One
   - platform: google_travel_time
@@ -203,3 +208,19 @@ sensor:
           - sensor.travel_time_next_appointment_location_car_user_two
           - sensor.travel_time_next_appointment_location_transit_user_two
           - sensor.travel_time_next_appointment_location_bike_user_two
+homeassistant:
+  customize:
+    sensor.travel_time_next_appointment_location_car:
+      icon: mdi:car
+      friendly_name: "Kevin -> Nächster Termin"
+    sensor.travel_time_next_appointment_location_car_user_two:
+      icon: mdi:car
+      friendly_name: "Sina -> Nächster Termin"
+    input_boolean.announce_time_to_leave:
+      friendly_name: "Kevin -> Nächster Termin Benachrichtigung"
+    sensor.cal_next_appointment_title:
+      icon: mdi:calendar
+    input_boolean.announce_time_to_leave_user_two:
+      friendly_name: "Sina -> Nächster Termin Benachrichtigung"
+    sensor.cal_next_appointment_title_user_two:
+      icon: mdi:calendar

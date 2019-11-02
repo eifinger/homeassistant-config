@@ -9,6 +9,11 @@ TEMPLATE_FILE = "avanza_stock.yaml.template"
 @click.argument('name', type=click.STRING)
 @click.argument('id', type=click.INT)
 def cli(name, id):
+    """Create new Avanza Stock Sensors.
+
+    NAME: The name of the stock.\n
+    ID: The Avanza id of the stock. Obtainable via the URL.
+    """
     filein = open( TEMPLATE_FILE )
     template = Template( filein.read() )
     result = template.safe_substitute(name=name,id=id)

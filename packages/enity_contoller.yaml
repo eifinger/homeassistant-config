@@ -10,10 +10,51 @@ entity_controller:
     overrides:
       - input_boolean.oben_treppe_motion_trigger
     service_data:
-      brightness: 0
+      brightness: 100
+    start_time: 'sunset'
+    end_time: 'sunrise + 02:00:00'
     night_mode:
       delay: 60
       service_data:
         brightness: 1
-      start_time: 'sunset + 02:00:00'
+      start_time: '01:00:00'
       end_time: 'sunrise'
+  bathroom_motion_trigger:
+    sensor: binary_sensor.presence_bathroom
+    sensor_type: duration
+    entity: light.lower_bathroom_yeelight
+    delay: 300
+    override_states_on: "off"
+    override_states_off: "on"
+    overrides:
+      - input_boolean.bath_motion_trigger
+    service_data:
+      brightness: 100
+    start_time: 'sunset'
+    end_time: 'sunrise + 02:00:00'
+    night_mode:
+      delay: 60
+      service_data:
+        brightness: 1
+      start_time: '01:00:00'
+      end_time: 'sunrise'
+  # bedroom_motion_trigger:
+  #   sensor: binary_sensor.presence_bedroom
+  #   sensor_type: duration
+  #   entity: light.bedroom_yeelight
+  #   delay: 300
+  #   override_states_on: "off"
+  #   override_states_off: "on"
+  #   overrides:
+  #     - input_boolean.bedroom_motion_trigger
+  #     - input_boolean.sleepmode
+  #   service_data:
+  #     brightness: 100
+  #   start_time: 'sunset'
+  #   end_time: 'sunrise + 02:00:00'
+  #   night_mode:
+  #     delay: 60
+  #     service_data:
+  #       brightness: 1
+  #     start_time: '01:00:00'
+  #     end_time: 'sunrise'

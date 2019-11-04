@@ -51,8 +51,6 @@ bedroom_motion_trigger:
   icon: mdi:hotel
 coming_home_yeelight:
   icon: mdi:lightbulb
-coming_home_alexa:
-  icon: mdi:amazon-alexa
 coming_home_set_volume:
   icon: mdi:volume-medium
 home_arrival_notifier_user_one:

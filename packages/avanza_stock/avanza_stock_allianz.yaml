@@ -61,23 +61,28 @@ automation:
     trigger:
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_allianz') | float > states('input_text.avanza_allianz_max') |float
+          {{ states('sensor.avanza_allianz') | float
+          > states('input_text.avanza_allianz_max') |float
           and states('input_text.avanza_allianz_max') not in ['unknown', ''] }}
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_allianz') | float < states('input_text.avanza_allianz_min') | float
+          {{ states('sensor.avanza_allianz') | float
+          < states('input_text.avanza_allianz_min') | float
           and states('input_text.avanza_allianz_min') not in ['unknown', ''] }}
     action:
       - service: notify.kevin
         data_template:
           message: >
-            {% if states('sensor.avanza_allianz') | float > states('input_text.avanza_allianz_max') | float 
+            {% if states('sensor.avanza_allianz') | float
+            > states('input_text.avanza_allianz_max') | float
             and states('input_text.avanza_allianz_max') not in ['unknown', ''] %}
             "Stock alert: {{ state_attr('sensor.avanza_allianz','name') }}:
-            {{ states('sensor.avanza_allianz') }} {{ state_attr('sensor.avanza_allianz','currency') }}.
+            {{ states('sensor.avanza_allianz') }}
+            {{ state_attr('sensor.avanza_allianz','currency') }}.
             Over threshold of {{ states('input_text.avanza_allianz_max') }}"
             {% else %}
             "Stock alert: {{ state_attr('sensor.avanza_allianz','name') }}:
-            {{ states('sensor.avanza_allianz') }} {{ state_attr('sensor.avanza_allianz','currency') }}.
+            {{ states('sensor.avanza_allianz') }}
+            {{ state_attr('sensor.avanza_allianz','currency') }}.
             Under threshold of {{ states('input_text.avanza_allianz_min') }}"
             {% endif %}

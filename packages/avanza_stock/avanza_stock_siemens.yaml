@@ -61,23 +61,28 @@ automation:
     trigger:
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_siemens') | float > states('input_text.avanza_siemens_max') |float
+          {{ states('sensor.avanza_siemens') | float
+          > states('input_text.avanza_siemens_max') |float
           and states('input_text.avanza_siemens_max') not in ['unknown', ''] }}
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_siemens') | float < states('input_text.avanza_siemens_min') | float
+          {{ states('sensor.avanza_siemens') | float
+          < states('input_text.avanza_siemens_min') | float
           and states('input_text.avanza_siemens_min') not in ['unknown', ''] }}
     action:
       - service: notify.kevin
         data_template:
           message: >
-            {% if states('sensor.avanza_siemens') | float > states('input_text.avanza_siemens_max') | float 
+            {% if states('sensor.avanza_siemens') | float
+            > states('input_text.avanza_siemens_max') | float
             and states('input_text.avanza_siemens_max') not in ['unknown', ''] %}
             "Stock alert: {{ state_attr('sensor.avanza_siemens','name') }}:
-            {{ states('sensor.avanza_siemens') }} {{ state_attr('sensor.avanza_siemens','currency') }}.
+            {{ states('sensor.avanza_siemens') }}
+            {{ state_attr('sensor.avanza_siemens','currency') }}.
             Over threshold of {{ states('input_text.avanza_siemens_max') }}"
             {% else %}
             "Stock alert: {{ state_attr('sensor.avanza_siemens','name') }}:
-            {{ states('sensor.avanza_siemens') }} {{ state_attr('sensor.avanza_siemens','currency') }}.
+            {{ states('sensor.avanza_siemens') }}
+            {{ state_attr('sensor.avanza_siemens','currency') }}.
             Under threshold of {{ states('input_text.avanza_siemens_min') }}"
             {% endif %}

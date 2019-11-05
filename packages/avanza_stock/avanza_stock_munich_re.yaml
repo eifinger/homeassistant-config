@@ -61,23 +61,28 @@ automation:
     trigger:
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_munich_re') | float > states('input_text.avanza_munich_re_max') |float
+          {{ states('sensor.avanza_munich_re') | float
+          > states('input_text.avanza_munich_re_max') |float
           and states('input_text.avanza_munich_re_max') not in ['unknown', ''] }}
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_munich_re') | float < states('input_text.avanza_munich_re_min') | float
+          {{ states('sensor.avanza_munich_re') | float
+          < states('input_text.avanza_munich_re_min') | float
           and states('input_text.avanza_munich_re_min') not in ['unknown', ''] }}
     action:
       - service: notify.kevin
         data_template:
           message: >
-            {% if states('sensor.avanza_munich_re') | float > states('input_text.avanza_munich_re_max') | float 
+            {% if states('sensor.avanza_munich_re') | float
+            > states('input_text.avanza_munich_re_max') | float
             and states('input_text.avanza_munich_re_max') not in ['unknown', ''] %}
             "Stock alert: {{ state_attr('sensor.avanza_munich_re','name') }}:
-            {{ states('sensor.avanza_munich_re') }} {{ state_attr('sensor.avanza_munich_re','currency') }}.
+            {{ states('sensor.avanza_munich_re') }}
+            {{ state_attr('sensor.avanza_munich_re','currency') }}.
             Over threshold of {{ states('input_text.avanza_munich_re_max') }}"
             {% else %}
             "Stock alert: {{ state_attr('sensor.avanza_munich_re','name') }}:
-            {{ states('sensor.avanza_munich_re') }} {{ state_attr('sensor.avanza_munich_re','currency') }}.
+            {{ states('sensor.avanza_munich_re') }}
+            {{ state_attr('sensor.avanza_munich_re','currency') }}.
             Under threshold of {{ states('input_text.avanza_munich_re_min') }}"
             {% endif %}

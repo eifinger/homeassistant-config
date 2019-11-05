@@ -61,23 +61,28 @@ automation:
     trigger:
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_microsoft') | float > states('input_text.avanza_microsoft_max') |float
+          {{ states('sensor.avanza_microsoft') | float
+          > states('input_text.avanza_microsoft_max') |float
           and states('input_text.avanza_microsoft_max') not in ['unknown', ''] }}
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_microsoft') | float < states('input_text.avanza_microsoft_min') | float
+          {{ states('sensor.avanza_microsoft') | float
+          < states('input_text.avanza_microsoft_min') | float
           and states('input_text.avanza_microsoft_min') not in ['unknown', ''] }}
     action:
       - service: notify.kevin
         data_template:
           message: >
-            {% if states('sensor.avanza_microsoft') | float > states('input_text.avanza_microsoft_max') | float 
+            {% if states('sensor.avanza_microsoft') | float
+            > states('input_text.avanza_microsoft_max') | float
             and states('input_text.avanza_microsoft_max') not in ['unknown', ''] %}
             "Stock alert: {{ state_attr('sensor.avanza_microsoft','name') }}:
-            {{ states('sensor.avanza_microsoft') }} {{ state_attr('sensor.avanza_microsoft','currency') }}.
+            {{ states('sensor.avanza_microsoft') }}
+            {{ state_attr('sensor.avanza_microsoft','currency') }}.
             Over threshold of {{ states('input_text.avanza_microsoft_max') }}"
             {% else %}
             "Stock alert: {{ state_attr('sensor.avanza_microsoft','name') }}:
-            {{ states('sensor.avanza_microsoft') }} {{ state_attr('sensor.avanza_microsoft','currency') }}.
+            {{ states('sensor.avanza_microsoft') }}
+            {{ state_attr('sensor.avanza_microsoft','currency') }}.
             Under threshold of {{ states('input_text.avanza_microsoft_min') }}"
             {% endif %}

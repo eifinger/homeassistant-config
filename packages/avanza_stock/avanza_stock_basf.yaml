@@ -61,23 +61,28 @@ automation:
     trigger:
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_basf') | float > states('input_text.avanza_basf_max') |float
+          {{ states('sensor.avanza_basf') | float
+          > states('input_text.avanza_basf_max') |float
           and states('input_text.avanza_basf_max') not in ['unknown', ''] }}
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_basf') | float < states('input_text.avanza_basf_min') | float
+          {{ states('sensor.avanza_basf') | float
+          < states('input_text.avanza_basf_min') | float
           and states('input_text.avanza_basf_min') not in ['unknown', ''] }}
     action:
       - service: notify.kevin
         data_template:
           message: >
-            {% if states('sensor.avanza_basf') | float > states('input_text.avanza_basf_max') | float 
+            {% if states('sensor.avanza_basf') | float
+            > states('input_text.avanza_basf_max') | float
             and states('input_text.avanza_basf_max') not in ['unknown', ''] %}
             "Stock alert: {{ state_attr('sensor.avanza_basf','name') }}:
-            {{ states('sensor.avanza_basf') }} {{ state_attr('sensor.avanza_basf','currency') }}.
+            {{ states('sensor.avanza_basf') }}
+            {{ state_attr('sensor.avanza_basf','currency') }}.
             Over threshold of {{ states('input_text.avanza_basf_max') }}"
             {% else %}
             "Stock alert: {{ state_attr('sensor.avanza_basf','name') }}:
-            {{ states('sensor.avanza_basf') }} {{ state_attr('sensor.avanza_basf','currency') }}.
+            {{ states('sensor.avanza_basf') }}
+            {{ state_attr('sensor.avanza_basf','currency') }}.
             Under threshold of {{ states('input_text.avanza_basf_min') }}"
             {% endif %}

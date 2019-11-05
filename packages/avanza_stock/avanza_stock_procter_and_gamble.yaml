@@ -1,0 +1,83 @@
+---
+sensor:
+  - platform: avanza_stock
+    stock: 3644
+    name: avanza_procter_and_gamble
+    monitored_conditions:
+      - change
+      - changePercent
+      - country
+      - currency
+      - directYield
+      - dividends
+      - flagCode
+      - hasInvestmentFees
+      - highestPrice
+      - id
+      - isin
+      - lastPrice
+      - lastPriceUpdated
+      - loanFactor
+      - lowestPrice
+      - marketCapital
+      - marketList
+      - marketMakerExpected
+      - marketPlace
+      - marketTrades
+      - morningStarFactSheetUrl
+      - name
+      - numberOfOwners
+      - orderDepthReceivedTime
+      - priceAtStartOfYear
+      - priceEarningsRatio
+      - priceFiveYearsAgo
+      - priceOneMonthAgo
+      - priceOneWeekAgo
+      - priceOneYearAgo
+      - priceSixMonthsAgo
+      - priceThreeMonthsAgo
+      - priceThreeYearsAgo
+      - pushPermitted
+      - quoteUpdated
+      - sector
+      - shortSellable
+      - superLoan
+      - tickerSymbol
+      - totalNumberOfShares
+      - totalValueTraded
+      - totalVolumeTraded
+      - tradable
+      - volatility
+input_text:
+  avanza_procter_and_gamble_min:
+    icon: mdi:arrow-collapse-down
+    name: Min Alert
+  avanza_procter_and_gamble_max:
+    icon: mdi:arrow-collapse-up
+    name: Max Alert
+automation:
+  - id: avanza_procter_and_gamble
+    alias: Avanza procter_and_gamble
+    trigger:
+      - platform: template
+        value_template: >
+          {{ states('sensor.avanza_procter_and_gamble') | float > states('input_text.avanza_procter_and_gamble_max') |float
+          and states('input_text.avanza_procter_and_gamble_max') not in ['unknown', ''] }}
+      - platform: template
+        value_template: >
+          {{ states('sensor.avanza_procter_and_gamble') | float < states('input_text.avanza_procter_and_gamble_min') | float
+          and states('input_text.avanza_procter_and_gamble_min') not in ['unknown', ''] }}
+    action:
+      - service: notify.kevin
+        data_template:
+          message: >
+            {% if states('sensor.avanza_procter_and_gamble') | float > states('input_text.avanza_procter_and_gamble_max') | float 
+            and states('input_text.avanza_procter_and_gamble_max') not in ['unknown', ''] %}
+            "Stock alert: {{ state_attr('sensor.avanza_procter_and_gamble','name') }}:
+            {{ states('sensor.avanza_procter_and_gamble') }} {{ state_attr('sensor.avanza_procter_and_gamble','currency') }}.
+            Over threshold of {{ states('input_text.avanza_procter_and_gamble_max') }}"
+            {% else %}
+            "Stock alert: {{ state_attr('sensor.avanza_procter_and_gamble','name') }}:
+            {{ states('sensor.avanza_procter_and_gamble') }} {{ state_attr('sensor.avanza_procter_and_gamble','currency') }}.
+            Under threshold of {{ states('input_text.avanza_procter_and_gamble_min') }}"
+            {% endif %}

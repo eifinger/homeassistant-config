@@ -1,8 +1,8 @@
 ---
 sensor:
   - platform: avanza_stock
-    stock: 390389
-    name: avanza_abbvie
+    stock: 3619
+    name: avanza_cisco
     monitored_conditions:
       - change
       - changePercent
@@ -49,35 +49,35 @@ sensor:
       - tradable
       - volatility
 input_text:
-  avanza_abbvie_min:
+  avanza_cisco_min:
     icon: mdi:arrow-collapse-down
     name: Min Alert
-  avanza_abbvie_max:
+  avanza_cisco_max:
     icon: mdi:arrow-collapse-up
     name: Max Alert
 automation:
-  - id: avanza_abbvie
-    alias: Avanza abbvie
+  - id: avanza_cisco
+    alias: Avanza cisco
     trigger:
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_abbvie') | float > states('input_text.avanza_abbvie_max') |float
-          and states('input_text.avanza_abbvie_max') not in ['unknown', ''] }}
+          {{ states('sensor.avanza_cisco') | float > states('input_text.avanza_cisco_max') |float
+          and states('input_text.avanza_cisco_max') not in ['unknown', ''] }}
       - platform: template
         value_template: >
-          {{ states('sensor.avanza_abbvie') | float < states('input_text.avanza_abbvie_min') | float
-          and states('input_text.avanza_abbvie_min') not in ['unknown', ''] }}
+          {{ states('sensor.avanza_cisco') | float < states('input_text.avanza_cisco_min') | float
+          and states('input_text.avanza_cisco_min') not in ['unknown', ''] }}
     action:
       - service: notify.kevin
         data_template:
           message: >
-            {% if states('sensor.avanza_abbvie') | float > states('input_text.avanza_abbvie_max') | float 
-            and states('input_text.avanza_abbvie_max') not in ['unknown', ''] %}
-            "Stock alert: {{ state_attr('sensor.avanza_abbvie','name') }}:
-            {{ states('sensor.avanza_abbvie') }} {{ state_attr('sensor.avanza_abbvie','currency') }}.
-            Over threshold of {{ states('input_text.avanza_abbvie_max') }}"
+            {% if states('sensor.avanza_cisco') | float > states('input_text.avanza_cisco_max') | float 
+            and states('input_text.avanza_cisco_max') not in ['unknown', ''] %}
+            "Stock alert: {{ state_attr('sensor.avanza_cisco','name') }}:
+            {{ states('sensor.avanza_cisco') }} {{ state_attr('sensor.avanza_cisco','currency') }}.
+            Over threshold of {{ states('input_text.avanza_cisco_max') }}"
             {% else %}
-            "Stock alert: {{ state_attr('sensor.avanza_abbvie','name') }}:
-            {{ states('sensor.avanza_abbvie') }} {{ state_attr('sensor.avanza_abbvie','currency') }}.
-            Under threshold of {{ states('input_text.avanza_abbvie_min') }}"
+            "Stock alert: {{ state_attr('sensor.avanza_cisco','name') }}:
+            {{ states('sensor.avanza_cisco') }} {{ state_attr('sensor.avanza_cisco','currency') }}.
+            Under threshold of {{ states('input_text.avanza_cisco_min') }}"
             {% endif %}

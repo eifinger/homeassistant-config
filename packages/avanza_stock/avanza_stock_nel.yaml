@@ -71,7 +71,8 @@ automation:
       - service: notify.kevin
         data_template:
           message: >
-            {% if states('sensor.avanza_nel') | float >states('input_text.avanza_nel_max') | float %}
+            {% if states('sensor.avanza_nel') | float > states('input_text.avanza_nel_max') | float 
+            and states('input_text.avanza_nel_max') not in ['unknown', ''] %}
             "Stock alert: {{ state_attr('sensor.avanza_nel','name') }}:
             {{ states('sensor.avanza_nel') }} {{ state_attr('sensor.avanza_nel','currency') }}.
             Over threshold of {{ states('input_text.avanza_nel_max') }}"

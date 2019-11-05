@@ -12,7 +12,7 @@ entity_controller:
     service_data:
       brightness: 100
     start_time: 'sunset'
-    end_time: 'sunrise + 02:00:00'
+    end_time: 'sunrise'
     night_mode:
       delay: 60
       service_data:
@@ -31,7 +31,7 @@ entity_controller:
     service_data:
       brightness: 100
     start_time: 'sunset'
-    end_time: 'sunrise + 02:00:00'
+    end_time: 'sunrise'
     night_mode:
       delay: 60
       service_data:

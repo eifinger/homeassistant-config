@@ -52,7 +52,9 @@ input_select:
     name: Alexa
     options:
       - Oben
-      - Unten
+      - Schlafzimmer
+      - Arbeitszimmer
+      - Bad
       - None
     initial: None
     icon: mdi:amazon-alexa
@@ -66,6 +68,8 @@ sensor:
         entity_id:
           - media_player.kevin_s_echo_dot_unten
           - media_player.kevins_echo_dot_oben
+          - media_player.kevins_echo_dot
+          - media_player.kevins_echo
         value_template: >
           {{ states.media_player | selectattr('attributes.last_called','eq',True) |
           map(attribute='entity_id') | first }}
@@ -81,8 +85,12 @@ automation:
           entity_id: >
             {% if is_state('input_select.alexa', 'Oben') %}
               media_player.kevins_echo_dot_oben
-            {% elif is_state('input_select.alexa', 'Unten') %}
+            {% elif is_state('input_select.alexa', 'Schlafzimmer') %}
               media_player.kevin_s_echo_dot_unten
+            {% elif is_state('input_select.alexa', 'Arbeitszimmer') %}
+              media_player.kevins_echo_dot
+            {% elif is_state('input_select.alexa', 'Bad') %}
+              media_player.kevins_echo
             {% elif is_state('input_select.alexa', 'None') %}
               false
             {% endif %}
@@ -93,8 +101,12 @@ automation:
             - >-
               {% if is_state('input_select.alexa', 'Oben') %}
                 media_player.kevins_echo_dot_oben
-              {% elif is_state('input_select.alexa', 'Unten') %}
+              {% elif is_state('input_select.alexa', 'Schlafzimmer') %}
                 media_player.kevin_s_echo_dot_unten
+              {% elif is_state('input_select.alexa', 'Arbeitszimmer') %}
+                media_player.kevins_echo_dot
+              {% elif is_state('input_select.alexa', 'Bad') %}
+                media_player.kevins_echo
               {% endif %}
           data:
             type: announce

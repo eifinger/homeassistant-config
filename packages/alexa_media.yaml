@@ -97,7 +97,8 @@ automation:
                 media_player.kevin_s_echo_dot_unten
               {% endif %}
           data:
-            type: tts
+            type: announce
+            method: speak
           message: "{{  states.input_text.alexa_tts.state }}"
       - delay: '00:00:02'
       - service: input_select.select_option

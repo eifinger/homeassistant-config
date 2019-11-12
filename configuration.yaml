@@ -62,6 +62,7 @@ mqtt:
 
 recorder:
   db_url: !secret db_url
+  purge_keep_days: 31
   exclude:
     entities:
       - sensor.snowie_map

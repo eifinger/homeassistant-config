@@ -40,9 +40,11 @@
         "title": "HACS (Home Assistant Community Store)"
     },
     "confirm": {
+        "add_to_lovelace": "Möchtest du dies wirklich zu deinen Lovelace-Ressourcen hinzufügen?",
         "continue": "Bist du dir sicher, dass du fortfahren möchtest?",
         "delete": "Möchtest du \"{item}\" wirklich löschen?",
         "exsist": "{item} existiert bereits",
+        "generic": "Bist du dir sicher?",
         "overwrite": "Dadurch wird die Datei überschrieben.",
         "uninstall": "Möchtest du \"{item}\" wirklich löschen?"
     },
@@ -65,6 +67,7 @@
         "restart_pending": "Neustart ausstehend"
     },
     "repository": {
+        "add_to_lovelace": "Zu Lovelace hinzufügen",
         "authors": "Autoren",
         "available": "Verfügbar",
         "back_to": "Zurück zu",
@@ -99,9 +102,11 @@
         "display": "Anzeige",
         "grid": "Gitter",
         "hacs_repo": "HACS repo",
+        "hidden_repositories": "versteckte Repositories",
         "reload_data": "Daten neu laden",
         "save": "Speichern",
         "table": "Tabelle",
+        "unhide": "einblenden",
         "upgrade_all": "Alle aktualisieren"
     },
     "store": {

@@ -40,7 +40,11 @@
         "title": "HACS (Home Assistant Community Store)"
     },
     "confirm": {
-        "delete": "Ali ste prepričani, da želite izbrisati \"{item}\"?"
+        "continue": "Ali ste prepričani, da želite nadaljevati?",
+        "delete": "Ali ste prepričani, da želite izbrisati \"{item}\"?",
+        "exsist": "{item} že obstaja",
+        "overwrite": "Če to storite, bo to prepisano.",
+        "uninstall": "Ali ste prepričani, da želite odstraniti \"{item}\"?"
     },
     "options": {
         "step": {
@@ -52,6 +56,13 @@
                 }
             }
         }
+    },
+    "repository_banner": {
+        "integration_not_loaded": "Ta integracija ni naložena v programu Home Assistant.",
+        "not_loaded": "Ni naloženo",
+        "plugin_not_loaded": "Ta vtičnik ni dodan vašim virom Lovelace.",
+        "restart": "Znova morate zagnati Home Assistant.",
+        "restart_pending": "Vnovični zagon v čakanju"
     },
     "repository": {
         "authors": "Avtorji",
@@ -94,6 +105,8 @@
         "upgrade_all": "Nadgradite vse"
     },
     "store": {
+        "clear_new": "Počisti vse nove repozitorije",
+        "new_repositories": "Novi repozitoriji",
         "placeholder_search": "Prosim vnesite iskalni izraz ..."
     }
 }

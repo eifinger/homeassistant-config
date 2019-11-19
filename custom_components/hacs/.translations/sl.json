@@ -40,9 +40,11 @@
         "title": "HACS (Home Assistant Community Store)"
     },
     "confirm": {
+        "add_to_lovelace": "Ali si prepričan, da želiš to dodati med svoje vire Lovelace?",
         "continue": "Ali ste prepričani, da želite nadaljevati?",
         "delete": "Ali ste prepričani, da želite izbrisati \"{item}\"?",
         "exsist": "{item} že obstaja",
+        "generic": "Ali si prepričan?",
         "overwrite": "Če to storite, bo to prepisano.",
         "uninstall": "Ali ste prepričani, da želite odstraniti \"{item}\"?"
     },
@@ -65,6 +67,7 @@
         "restart_pending": "Vnovični zagon v čakanju"
     },
     "repository": {
+        "add_to_lovelace": "Dodaj v Lovelace",
         "authors": "Avtorji",
         "available": "Na voljo",
         "back_to": "Nazaj na",
@@ -99,9 +102,11 @@
         "display": "Prikaz",
         "grid": "Mreža",
         "hacs_repo": "HACS repo",
+        "hidden_repositories": "skriti repozitoriji",
         "reload_data": "Ponovno naloži podatke",
         "save": "Shranite",
         "table": "Tabela",
+        "unhide": "Razkrij",
         "upgrade_all": "Nadgradite vse"
     },
     "store": {

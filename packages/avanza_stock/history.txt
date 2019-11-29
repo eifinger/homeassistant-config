@@ -23,3 +23,7 @@ python .\new_avanza_stock_sensors.py service_now 361180
 python .\new_avanza_stock_sensors.py blackrock 181312
 python .\new_avanza_stock_sensors.py 3m 3527
 python .\new_avanza_stock_sensors.py cisco 3619
+python .\new_avanza_stock_sensors.py pepsi 3670
+python .\new_avanza_stock_sensors.py coca_cola 3803
+python .\new_avanza_stock_sensors.py novartis 3446 
+python .\new_avanza_stock_sensors.py lufthansa 732328

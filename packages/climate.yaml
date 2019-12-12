@@ -127,10 +127,10 @@ script:
       - service: climate.set_temperature
         entity_id: climate.wohnzimmer_thermostat
         data:
-          temperature: 18
+          temperature: 20
       - service: climate.turn_on
         entity_id: climate.kuche_thermostat
       - service: climate.set_temperature
         entity_id: climate.kuche_thermostat
         data:
-          temperature: 18
+          temperature: 21

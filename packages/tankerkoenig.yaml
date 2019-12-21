@@ -30,15 +30,3 @@ sensor:
         unit_of_measurement: '€'
         entity_id:
           - sensor.fuel
-  - platform: statistics
-    entity_id: sensor.gas_station_star
-    name: statistics_gas_station_star
-    sampling_size: 900 # Roughly 30 days
-  - platform: statistics
-    entity_id: sensor.gas_station_metro
-    name: statistics_gas_station_metro
-    sampling_size: 900 # Roughly 30 days
-  - platform: statistics
-    entity_id: sensor.gas_station_globus
-    name: statistics_gas_station_globus
-    sampling_size: 900 # Roughly 30 days

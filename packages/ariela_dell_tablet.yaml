@@ -1,4 +1,5 @@
 ---
+mobile_app:
 automation:
   - id: alert_when_ariela_dell_tablet_battery_lt_15
     alias: 'Alarm wenn Ariela Dell Tablet Batterie < 15%'

@@ -26,6 +26,9 @@ automation:
       - platform: state
         entity_id: binary_sensor.contact_upper_bathroom_window
         to: "off"
+      - platform: state
+        entity_id: binary_sensor.contact_upper_bathroom_window_tilted
+        to: "off"
     condition:
     action:
       - service: homeassistant.turn_off
@@ -35,6 +38,9 @@ automation:
     trigger:
       - platform: state
         entity_id: binary_sensor.contact_upper_bathroom_window
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.contact_upper_bathroom_window_tilted
         to: "on"
     condition:
     action:

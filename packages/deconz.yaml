@@ -28,3 +28,5 @@ homeassistant:
       device_class: window
     binary_sensor.contact_upper_bathroom_window:
       device_class: window
+    binary_sensor.contact_upper_bathroom_window_tilted:
+      device_class: window

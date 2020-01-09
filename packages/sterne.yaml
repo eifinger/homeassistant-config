@@ -1,0 +1,10 @@
+alexa:
+  smart_home:
+    filter:
+      include_entities:
+        - switch.kitchenplug_relay
+    entity_config:
+      switch.kitchenplug_relay:
+        name: Sterne
+        description: Sternendeko am Küchenfenster
+        display_categories: LIGHT

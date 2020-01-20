@@ -1,17 +1,11 @@
 ---
-sensor:
-  - platform: pi_hole
-    host: !secret pihole_ip
-    monitored_conditions:
-      - ads_blocked_today
-      - ads_percentage_today
-      - dns_queries_today
-  - platform: pi_hole
-    host: !secret zigbee2mqtt_ip
-    monitored_conditions:
-      - ads_blocked_today
-      - ads_percentage_today
-      - dns_queries_today
+pi_hole:
+  - host: !secret pihole_ip
+    name: pihole_primary
+    api_key: !secret pihole_primary_api_key
+  - host: !secret zigbee2mqtt_ip
+    name: pihole_secondary
+    api_key: !secret pihole_secondary_api_key
 
 switch:
   - platform: command_line

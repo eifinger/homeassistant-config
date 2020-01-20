@@ -17,6 +17,10 @@ homeassistant:
   customize:
     person.kevin:
       entity_picture: /local/user_one.jpg
+    device_tracker.sm_g975f:
+      entity_picture: /local/user_one.jpg
     person.sina:
+      entity_picture: /local/user_two.JPG
+    device_tracker.sina:
       entity_picture: /local/user_two.JPG
 

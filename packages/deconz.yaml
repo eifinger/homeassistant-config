@@ -10,7 +10,9 @@ homeassistant:
       device_class: window
     binary_sensor.contact_guest_window:
       device_class: window
-    binary_sensor.contact_bathroom_window:
+    binary_sensor.contact_bathroom_window_tilted:
+      device_class: window
+    binary_sensor.contact_badfenster:
       device_class: window
     binary_sensor.contact_bedroom_door:
       device_class: door

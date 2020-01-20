@@ -40,13 +40,13 @@ from homeassistant.const import (ATTR_TEMPERATURE, ATTR_ENTITY_ID, ATTR_UNIT_OF_
 from homeassistant.components.climate import (ClimateDevice, ENTITY_ID_FORMAT, PLATFORM_SCHEMA)
 
 from homeassistant.components.climate.const import (DOMAIN, SUPPORT_TARGET_TEMPERATURE,SUPPORT_PRESET_MODE, HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_AUTO, PRESET_AWAY,
-PRESET_NONE)
+PRESET_NONE,CURRENT_HVAC_HEAT, CURRENT_HVAC_IDLE)
 
 from homeassistant.helpers.entity import async_generate_entity_id
 
 DEFAULT_NAME = 'Hysen Thermostat Controller'
 
-VERSION = '2.0.1'
+VERSION = '2.0.2'
 
 REQUIREMENTS = ['broadlink==0.9.0']
 
@@ -541,6 +541,9 @@ class BroadlinkHysenClimate(ClimateDevice):
 
         self._week_day = ""
         self._week_end = ""
+        
+        #Sync the time on startup
+#        self.set_time(datetime.datetime.now().hour, datetime.datetime.now().minute, datetime.datetime.now().second, datetime.datetime.today().weekday())
 
         self._available = False  # should become True after first update()
 
@@ -632,6 +635,14 @@ class BroadlinkHysenClimate(ClimateDevice):
         return self._away_mode
 
     @property
+    def hvac_action(self):
+        """Return current HVAC action."""
+        if self._is_heating_active == 1:
+            return CURRENT_HVAC_HEAT
+        else:
+            return CURRENT_HVAC_IDLE
+
+    @property
     def device_state_attributes(self):
         """Return device specific state attributes."""
         attr = {}
@@ -654,18 +665,18 @@ class BroadlinkHysenClimate(ClimateDevice):
         attr['clock_min'] = self._clock_min
         attr['clock_sec'] = self._clock_sec
         attr['day_of_week'] = self._day_of_week
-        attr['week_day'] = str(self._week_day)
-        attr['week_end'] = str(self._week_end)
+        attr['week_day'] = str(self._week_day).replace("'",'"')
+        attr['week_end'] = str(self._week_end).replace("'",'"')
         return attr
 
     def turn_on(self):
         self.send_power_command(HYSEN_POWERON,self._remote_lock)
-        self.set_preset_mode(PRESET_NONE)
+        self._away_mode = False
         return True
 
     def turn_off(self):
         self.send_power_command(HYSEN_POWEROFF,self._remote_lock)
-        self.set_preset_mode(PRESET_NONE)
+        self._away_mode = False
         return True
 
     def set_temperature(self, **kwargs):
@@ -681,13 +692,10 @@ class BroadlinkHysenClimate(ClimateDevice):
         self._current_operation = operation_mode
         if self._away_mode == True:
             self.set_preset_mode(PRESET_NONE)
-        else:
-            self.set_operation_mode_command(operation_mode)
+        self.set_operation_mode_command(operation_mode)
         self.schedule_update_ha_state()
 
     def set_preset_mode(self, preset_mode):
-        if self._power_state == 0: 
-            return
         if preset_mode == PRESET_AWAY:
             if self._away_mode == False:
                 self._awaymodeLastState = self._current_operation
@@ -816,7 +824,10 @@ class BroadlinkHysenClimate(ClimateDevice):
     def set_lock(self, remote_lock):
         for retry in range(DEFAULT_RETRY):
             try:
-                self._broadlink_device.set_power(self._power_state, remote_lock)
+                if self._away_mode == False:
+                    self._broadlink_device.set_power(self._power_state, remote_lock)
+                else:
+                    self._broadlink_device.set_power(0, remote_lock)
                 break
             except socket.timeout:
                 try:
@@ -890,8 +901,9 @@ class BroadlinkHysenClimate(ClimateDevice):
              now_day_of_the_week = (datetime.datetime.today().weekday()) + 1
              if self._current_day_of_week < now_day_of_the_week:
                 currentDT = datetime.datetime.now()
-                self.set_time(currentDT.hour, currentDT.minute, currentDT.second, now_day_of_the_week)
-                self._current_day_of_week = now_day_of_the_week
-                _LOGGER.info("Broadlink Hysen Device:%s Clock Sync Success...",self.entity_id)
+                if currentDT.time() > datetime.time(hour=3): #Set am 3am
+                    self.set_time(currentDT.hour, currentDT.minute, currentDT.second, now_day_of_the_week)
+                    self._current_day_of_week = now_day_of_the_week
+                    _LOGGER.info("Broadlink Hysen Device:%s Clock Sync Success...",self.entity_id)
         except Exception as error:
           _LOGGER.error("Failed to Clock Sync Hysen Device:%s,:%s",self.entity_id,error)

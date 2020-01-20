@@ -1,71 +1,27 @@
 ---
-sensor:
-  - platform: glances
-    host: !secret pihole_ip
+glances:
+  - host: !secret pihole_ip
     name: glances_pihole
-    version: 3
     username: !secret glances_pihole_username
     password: !secret glances_pihole_password
-    resources:
-      - 'disk_use'
-      - 'disk_use_percent'
-      - 'disk_free'
-      - 'cpu_temp'
-      - 'processor_load'
-      - 'memory_use'
-  - platform: glances
-    host: !secret zigbee2mqtt_ip
+  - host: !secret zigbee2mqtt_ip
     name: glances_zigbee2mqtt
-    version: 3
     username: !secret glances_zigbee2mqtt_username
     password: !secret glances_zigbee2mqtt_password
-    resources:
-      - 'disk_use'
-      - 'disk_use_percent'
-      - 'disk_free'
-      - 'cpu_temp'
-      - 'processor_load'
-      - 'memory_use'
-  - platform: glances
-    host: !secret glances_host
+  - host: !secret glances_host
     name: glances_host
-    version: 3
     username: !secret glances_host_username
     password: !secret glances_host_password
-    resources:
-      - 'disk_use'
-      - 'disk_use_percent'
-      - 'disk_free'
-      - 'cpu_temp'
-      - 'processor_load'
-      - 'memory_use'
-  - platform: glances
-    host: !secret glances_odroid
+  - host: !secret glances_odroid
     name: glances_odroid
-    version: 3
     username: !secret glances_odroid_username
     password: !secret glances_odroid_password
-    resources:
-      - 'disk_use'
-      - 'disk_use_percent'
-      - 'disk_free'
-      - 'cpu_temp'
-      - 'processor_load'
-      - 'memory_use'
-  - platform: glances
-    host: !secret glances_wackernheim_pi
+  - host: !secret glances_wackernheim_pi
     port: !secret glances_wackernheim_pi_port
     name: glances_wackernheim_pi
-    version: 3
     username: !secret glances_wackernheim_pi_username
     password: !secret glances_wackernheim_pi_password
-    resources:
-      - 'disk_use'
-      - 'disk_use_percent'
-      - 'disk_free'
-      - 'cpu_temp'
-      - 'processor_load'
-      - 'memory_use'
+sensor:
   - platform: systemmonitor
     resources:
       - type: disk_use_percent

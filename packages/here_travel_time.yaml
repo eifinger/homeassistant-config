@@ -5,48 +5,42 @@ sensor:
     name: travel_time_work_from_home_here
     origin_entity_id: zone.home
     destination_entity_id: zone.work
-    app_id: !secret here_app_id
-    app_code: !secret here_app_code
+    api_key: !secret here_api_key
     traffic_mode: true
   # Home from Work
   - platform: here_travel_time
     name: travel_time_home_from_work_here
     origin_entity_id: zone.work
     destination_entity_id: zone.home
-    app_id: !secret here_app_id
-    app_code: !secret here_app_code
+    api_key: !secret here_api_key
     traffic_mode: true
   # work_user_two from Home
   - platform: here_travel_time
     name: travel_time_work_user_two_from_home_here
     origin_entity_id: zone.home
     destination_entity_id: zone.work_user_two
-    app_id: !secret here_app_id
-    app_code: !secret here_app_code
+    api_key: !secret here_api_key
     traffic_mode: true
   # Home from work_user_two
   - platform: here_travel_time
     name: travel_time_home_from_work_user_two_here
     origin_entity_id: zone.work_user_two
     destination_entity_id: zone.home
-    app_id: !secret here_app_id
-    app_code: !secret here_app_code
+    api_key: !secret here_api_key
     traffic_mode: true
   # Elmo from Home
   - platform: here_travel_time
     name: travel_time_elmo_from_home_here
     origin_entity_id: zone.home
     destination_entity_id: zone.elmo
-    app_id: !secret here_app_id
-    app_code: !secret here_app_code
+    api_key: !secret here_api_key
     traffic_mode: true
   # Home from Elmo
   - platform: here_travel_time
     name: travel_time_home_from_elmo_here
     origin_entity_id: zone.elmo
     destination_entity_id: zone.home
-    app_id: !secret here_app_id
-    app_code: !secret here_app_code
+    api_key: !secret here_api_key
     traffic_mode: true
 input_boolean:
   travel_time_work_from_home:

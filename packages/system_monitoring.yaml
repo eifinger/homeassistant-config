@@ -1,26 +1,4 @@
 ---
-glances:
-  - host: !secret pihole_ip
-    name: glances_pihole
-    username: !secret glances_pihole_username
-    password: !secret glances_pihole_password
-  - host: !secret zigbee2mqtt_ip
-    name: glances_zigbee2mqtt
-    username: !secret glances_zigbee2mqtt_username
-    password: !secret glances_zigbee2mqtt_password
-  - host: !secret glances_host
-    name: glances_host
-    username: !secret glances_host_username
-    password: !secret glances_host_password
-  - host: !secret glances_odroid
-    name: glances_odroid
-    username: !secret glances_odroid_username
-    password: !secret glances_odroid_password
-  - host: !secret glances_wackernheim_pi
-    port: !secret glances_wackernheim_pi_port
-    name: glances_wackernheim_pi
-    username: !secret glances_wackernheim_pi_username
-    password: !secret glances_wackernheim_pi_password
 sensor:
   - platform: systemmonitor
     resources:

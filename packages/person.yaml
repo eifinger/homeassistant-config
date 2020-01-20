@@ -4,8 +4,8 @@ person:
     id: kevin
     user_id: !secret user_id_user_one
     device_trackers:
-      - device_tracker.kevin
-      - device_tracker.oneplus3
+      - device_tracker.sm_g975f
+      - device_tracker.galaxy_s10
   - name: sina
     id: sina
     user_id: !secret user_id_user_two

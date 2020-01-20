@@ -7,22 +7,22 @@ sensor:
         from: XMR
         to: EUR
   - platform: coinmarketcap
-    currency_id: 328 #XMR
+    currency_id: 328 # XMR
   - platform: coinmarketcap
-    currency_id: 1 #BTC
+    currency_id: 1 # BTC
   - platform: coinmarketcap
-    currency_id: 1027 #ETH
+    currency_id: 1027 # ETH
   - platform: coinmarketcap
-    currency_id: 52 #XRP
+    currency_id: 52 # XRP
   - platform: coinmarketcap
-    currency_id: 1831 #BCH
+    currency_id: 1831 # BCH
   - platform: coinmarketcap
-    currency_id: 1765 #EOS
+    currency_id: 1765 # EOS
   - platform: coinmarketcap
-    currency_id: 512 #XLM
+    currency_id: 512 # XLM
   - platform: coinmarketcap
-    currency_id: 131 #DASH
+    currency_id: 131 # DASH
   - platform: coinmarketcap
-    currency_id: 2011 #XTZ
+    currency_id: 2011 # XTZ
   - platform: coinmarketcap
-    currency_id: 1104 #REP
+    currency_id: 1104 # REP

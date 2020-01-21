@@ -6,23 +6,39 @@ sensor:
       - name: Monero
         from: XMR
         to: EUR
-  - platform: coinmarketcap
-    currency_id: 328 # XMR
-  - platform: coinmarketcap
-    currency_id: 1 # BTC
-  - platform: coinmarketcap
-    currency_id: 1027 # ETH
-  - platform: coinmarketcap
-    currency_id: 52 # XRP
-  - platform: coinmarketcap
-    currency_id: 1831 # BCH
-  - platform: coinmarketcap
-    currency_id: 1765 # EOS
-  - platform: coinmarketcap
-    currency_id: 512 # XLM
-  - platform: coinmarketcap
-    currency_id: 131 # DASH
-  - platform: coinmarketcap
-    currency_id: 2011 # XTZ
-  - platform: coinmarketcap
-    currency_id: 1104 # REP
+      - name: Bitcoin
+        from: BTC
+        to: EUR
+      - name: Ethereum
+        from: ETH
+        to: EUR
+      - name: Ripple
+        from: XRP
+        to: EUR
+      - name: Bitcoin Cash
+        from: BCH
+        to: EUR
+      - name: EOS
+        from: EOS
+        to: EUR
+      - name: Lumen
+        from: XLM
+        to: EUR
+      - name: Dash
+        from: DASH
+        to: EUR
+      - name: Tezos
+        from: XTZ
+        to: EUR
+      - name: Augur
+        from: REP
+        to: EUR
+      - name: Litecoin
+        from: LTC
+        to: EUR
+      - name: Chainlink
+        from: LINK
+        to: EUR
+      - name: Basic Attention Token
+        from: BAT
+        to: EUR

@@ -111,9 +111,9 @@ script:
 
 homeassistant:
   customize:
-    automation.receiver_set_bluetooth_volume_30:
+    automation.bei_wechsel_zu_bluetooth_lautstarke_30:
       icon: mdi:speaker-bluetooth
-    automation.receiver_set_tv_audio_volume_50:
+    automation.bei_wechsel_zu_game_lautstarke_50:
       icon: mdi:speaker
-    automation.receiver_set_game_volume_50:
+    automation.bei_wechsel_zu_tv_audio_lautstarke_50:
       icon: mdi:speaker

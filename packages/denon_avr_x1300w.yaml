@@ -9,7 +9,7 @@ automation:
     initial_state: "on"
     trigger:
       - platform: template
-        value_template: "{{  trigger.from_state.attributes["source"] !=  'CBL/SAT' and trigger.to_state.attributes["source"] ==  'CBL/SAT'}}"
+        value_template: "{{  trigger.from_state.attributes['source'] !=  'CBL/SAT' and trigger.to_state.attributes['source'] ==  'CBL/SAT'}}"
     action:
       - service: media_player.volume_set
         entity_id: media_player.denon_avr_x1300w

@@ -4,18 +4,48 @@ media_player:
     host: !secret denon_ip
 
 automation:
-  - id: receiver_set_cbl_sat_volume_50
-    alias: "On CBL/SAT set volume to 50"
+  - id: receiver_set_bluetooth_volume_30
+    alias: "Bei wechsel zu Bluetooth Lautstärke 30"
     initial_state: "on"
     trigger:
-      - platform: template
-        value_template: "{{  trigger.from_state.attributes['source'] !=  'CBL/SAT' and trigger.to_state.attributes['source'] ==  'CBL/SAT'}}"
+      - platform: state
+        entity_id: media_player.denon_avr_x1300w
+    condition:
+      condition: template
+      value_template: "{{  trigger.from_state.attributes['source'] !=  'Bluetooth' and trigger.to_state.attributes['source'] ==  'Bluetooth'}}"
+    action:
+      - service: media_player.volume_set
+        entity_id: media_player.denon_avr_x1300w
+        data:
+          volume_level: 0.3
+  - id: receiver_set_tv_audio_volume_50
+    alias: "Bei wechsel zu TV Audio Lautstärke 50"
+    initial_state: "on"
+    trigger:
+      - platform: state
+        entity_id: media_player.denon_avr_x1300w
+    condition:
+      condition: template
+      value_template: "{{  trigger.from_state.attributes['source'] !=  'TV Audio' and trigger.to_state.attributes['source'] ==  'TV Audio'}}"
     action:
       - service: media_player.volume_set
         entity_id: media_player.denon_avr_x1300w
         data:
           volume_level: 0.5
-
+  - id: receiver_set_game_volume_50
+    alias: "Bei wechsel zu Game Lautstärke 50"
+    initial_state: "on"
+    trigger:
+      - platform: state
+        entity_id: media_player.denon_avr_x1300w
+    condition:
+      condition: template
+      value_template: "{{  trigger.from_state.attributes['source'] !=  'Game' and trigger.to_state.attributes['source'] ==  'Gameg'}}"
+    action:
+      - service: media_player.volume_set
+        entity_id: media_player.denon_avr_x1300w
+        data:
+          volume_level: 0.5
 script:
   receiver_set_source_cbl_sat:
     sequence:

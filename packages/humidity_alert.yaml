@@ -1,0 +1,34 @@
+
+---
+sensor:
+  - platform: statistics
+    entity_id: sensor.humidity_bathroom
+    name: statistics_humidity_bathroom
+    sampling_size: 300
+
+automation:
+  - id: humidity_low_alert_bathroom
+    alias: Alarm Badfenster schliessen wenn Humidity okay
+    trigger:
+      - platform: template
+        value_template: >
+          {{ states('sensor.humidity_bathroom') | float * 1.1
+          < states('sensor.statistics_humidity_bathroom') | float }}
+    condition:
+      - condition: state
+        entity_id: 'binary_sensor.contact_badfenster'
+        state: 'on'
+    action:
+      - service: notify.group_notifications
+        data_template:
+          message: >
+            "Du kannst das Badfenster wieder schließen,
+            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_bathroom') | float  }} Prozent."
+      - service: notify.alexa_media
+        data_template:
+          target: media_player.kevins_echo_dot_oben
+          data:
+            type: announce
+            method: speak
+          message: "Du kannst das Badfenster wieder schließen,
+            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_bathroom') | float  }} Prozent."

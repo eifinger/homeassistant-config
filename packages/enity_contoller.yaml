@@ -24,6 +24,7 @@ entity_controller:
     sensor_type: duration
     entity: light.lower_bathroom_yeelight
     delay: 300
+    stay: true
     override_states_on: "off"
     override_states_off: "on"
     overrides:

@@ -13,8 +13,8 @@ automation:
     condition:
       condition: template
       value_template: >
-        "{{  trigger.from_state.attributes['source'] != 'Bluetooth'
-        and trigger.to_state.attributes['source'] == 'Bluetooth'}}"
+        {{  trigger.from_state.attributes['source'] != 'Bluetooth'
+        and trigger.to_state.attributes['source'] == 'Bluetooth'}}
     action:
       - service: media_player.volume_set
         entity_id: media_player.denon_avr_x1300w
@@ -29,8 +29,8 @@ automation:
     condition:
       condition: template
       value_template: >
-        "{{  trigger.from_state.attributes['source'] != 'TV Audio'
-        and trigger.to_state.attributes['source'] == 'TV Audio'}}"
+        {{  trigger.from_state.attributes['source'] != 'TV Audio'
+        and trigger.to_state.attributes['source'] == 'TV Audio'}}
     action:
       - service: media_player.volume_set
         entity_id: media_player.denon_avr_x1300w
@@ -45,8 +45,8 @@ automation:
     condition:
       condition: template
       value_template: >
-        "{{  trigger.from_state.attributes['source'] != 'Game'
-        and trigger.to_state.attributes['source'] == 'Game'}}"
+        {{  trigger.from_state.attributes['source'] != 'Game'
+        and trigger.to_state.attributes['source'] == 'Game'}}
     action:
       - service: media_player.volume_set
         entity_id: media_player.denon_avr_x1300w

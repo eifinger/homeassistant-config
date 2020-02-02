@@ -46,8 +46,8 @@ automation:
     trigger: 
       - platform: template
         value_template: >
-            "{{ states('sensor.humidity_bathroom') | float
-            > states('sensor.statistics_humidity_bathroom') | float * 1.1 }}"
+            {{ states('sensor.humidity_bathroom') | float
+            > states('sensor.statistics_humidity_bathroom') | float * 1.1 }}
         for:
           minutes: 5
     action:

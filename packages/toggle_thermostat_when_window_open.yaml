@@ -4,7 +4,10 @@ automation:
     alias: Fußbodenheizung im Bad ausschalten wenn Fenster offen
     trigger:
       - platform: state
-        entity_id: binary_sensor.contact_bathroom_window
+        entity_id: binary_sensor.contact_bathroom_window_tilted
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.contact_badfenster
         to: "on"
     condition:
     action:
@@ -14,7 +17,10 @@ automation:
     alias: Fußbodenheizung im Bad anschalten wenn Fenster zu
     trigger:
       - platform: state
-        entity_id: binary_sensor.contact_bathroom_window
+        entity_id: binary_sensor.contact_bathroom_window_tilted
+        to: "off"
+      - platform: state
+        entity_id: binary_sensor.contact_badfenster
         to: "off"
     condition:
     action:

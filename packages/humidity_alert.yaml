@@ -6,7 +6,8 @@ sensor:
     sampling_size: 300
 
 automation:
-  - id: humidity_low_alert_bathroom # Alert when the bathroom window is open but the humidity is in an acceptable level again
+  # Alert when the bathroom window is open but the humidity is in an acceptable level again
+  - id: humidity_low_alert_bathroom
     alias: Alarm Badfenster schliessen wenn Humidity okay
     initial_state: false
     trigger:
@@ -43,7 +44,7 @@ automation:
   - id: activate_humidity_low_alert_bathroom # Enable the above automation when the humidity exceeds the treshold.
     alias: Aktiviere Alarm Badfenster schliessen wenn Humidity okay
     initial_state: true
-    trigger: 
+    trigger:
       - platform: template
         value_template: >
             {{ states('sensor.humidity_bathroom') | float
@@ -54,4 +55,3 @@ automation:
       - service: automation.turn_on
         data:
           entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
-      

@@ -109,6 +109,7 @@ hacs:
   appdaemon: true
   python_script: true
   theme: true
+  sidepanel_icon: hacs:hacs
 #################################################################
 ## Includes
 #################################################################

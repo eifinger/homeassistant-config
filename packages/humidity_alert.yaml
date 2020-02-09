@@ -6,8 +6,8 @@ sensor:
     sampling_size: 300
 
 automation:
-# Alert when the bathroom window is open but the humidity is in an acceptable level again
-  - id: humidity_low_alert_bathroom 
+  # Alert when the bathroom window is open but the humidity is in an acceptable level again
+  - id: humidity_low_alert_bathroom
     alias: Alarm Badfenster schliessen wenn Humidity okay
     initial_state: false
     trigger:

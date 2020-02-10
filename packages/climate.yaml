@@ -98,11 +98,16 @@ alexa:
     filter:
       include_entities:
         - switch.floor_heating
+        - script.alexa_i_am_cold
     entity_config:
       switch.floor_heating:
         name: Fußbodenheizung
         description: Fußbodenheizung in Wohnzimmer und Küche
         display_categories: SWITCH
+      script.alexa_i_am_cold:
+        name: Alexa mir ist kalt
+        description: Erhöhe Temperatur von Fußbodenheizung in Wohnzimmer und Küche um 2°
+        display_categories: SCENE_TRIGGER
 
 script:
   livingroom_wakeup:
@@ -111,14 +116,16 @@ script:
         entity_id: climate.wohnzimmer_thermostat
       - service: climate.set_temperature
         entity_id: climate.wohnzimmer_thermostat
-        data:
-          temperature: 22
+        data_template:
+          temperature: >
+            {{ states(input_number.set_livingroom_thermostat_when_waking_up) | float }}
       - service: climate.turn_on
         entity_id: climate.kuche_thermostat
       - service: climate.set_temperature
         entity_id: climate.kuche_thermostat
-        data:
-          temperature: 23
+        data_template:
+          temperature: >
+            {{ states(input_number.set_kitchen_thermostat_when_waking_up) | float }}
 
   livingroom_sleep:
     sequence:
@@ -126,11 +133,29 @@ script:
         entity_id: climate.wohnzimmer_thermostat
       - service: climate.set_temperature
         entity_id: climate.wohnzimmer_thermostat
-        data:
-          temperature: 20
+        data_template:
+          temperature: >
+            {{ states(input_number.set_kitchen_thermostat_when_sleeping) | float }}
       - service: climate.turn_on
         entity_id: climate.kuche_thermostat
       - service: climate.set_temperature
         entity_id: climate.kuche_thermostat
+        data_template:
+          temperature: >
+            {{ states(input_number.set_kitchen_thermostat_when_sleeping) | float }}
+  alexa_i_am_cold:
+    sequence:
+      - service: climate.set_temperature
         data:
-          temperature: 21
+          entity_id: climate.kuche_thermostat
+        data_template:
+          temperature: >
+            {{ state_attr('climate.kuche_thermostat', 'temperature') | float
+            + 2 }}
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.wohnzimmer_thermostat
+        data_template:
+          temperature: >
+            {{ state_attr('climate.wohnzimmer_thermostat', 'temperature') | float
+            + 2 }}

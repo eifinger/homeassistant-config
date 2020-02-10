@@ -106,7 +106,7 @@ alexa:
         display_categories: SWITCH
       script.alexa_i_am_cold:
         name: Alexa mir ist kalt
-        description: Erhöhe Temperatur von Fußbodenheizung in Wohnzimmer und Küche um 2 Grad
+        description: Erhöhe Temperatur der Fußbodenheizung in Wohnzimmer und Küche um 2 Grad
         display_categories: SCENE_TRIGGER
 
 script:

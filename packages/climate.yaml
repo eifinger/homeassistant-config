@@ -106,14 +106,14 @@ alexa:
     filter:
       include_entities:
         - switch.floor_heating
-        - script.alexa_i_am_cold
+        - script.i_am_cold
     entity_config:
       switch.floor_heating:
         name: Fußbodenheizung
         description: Fußbodenheizung in Wohnzimmer und Küche
         display_categories: SWITCH
-      script.alexa_i_am_cold:
-        name: Alexa mir ist kalt
+      script.i_am_cold:
+        name: Mir ist kalt
         description: Erhöhe Temperatur der Fußbodenheizung in Wohnzimmer und Küche um 2 Grad
         display_categories: SCENE_TRIGGER
 
@@ -151,7 +151,7 @@ script:
         data_template:
           temperature: >
             {{ states(input_number.set_kitchen_thermostat_when_sleeping) | float }}
-  alexa_i_am_cold:
+  i_am_cold:
     sequence:
       - service: climate.set_temperature
         data:

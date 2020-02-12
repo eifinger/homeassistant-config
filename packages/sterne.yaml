@@ -1,11 +1,16 @@
 ---
+script:
+  cold_test:
+    sequence:
+      - service: media_player.media_pause
+        entity_id: media_player.kodi
 alexa:
   smart_home:
     filter:
       include_entities:
-        - switch.kitchenplug_relay
+        - script.cold_test
     entity_config:
-      switch.kitchenplug_relay:
-        name: Sterne
-        description: Sternendeko am Küchenfenster
-        display_categories: LIGHT
+      script.cold_test:
+        name: Kalt Test Szene
+        description: Fußbodenheizung
+        display_categories: SCENE_TRIGGER

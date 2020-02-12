@@ -149,17 +149,12 @@ script:
           temperature: >
             {{ state_attr('climate.wohnzimmer_thermostat', 'temperature') | float
             + 2 }}
-  cold_test:
-    sequence:
-      - service: media_player.media_pause
-        entity_id: media_player.kodi
 alexa:
   smart_home:
     filter:
       include_entities:
         - switch.floor_heating
         - script.i_am_cold
-        - script.cold_test
     entity_config:
       switch.floor_heating:
         name: Fußbodenheizung
@@ -168,8 +163,4 @@ alexa:
       script.i_am_cold:
         name: Mir ist kalt
         description: Fußbodenheizung oben um 2 Grad
-        display_categories: SCENE_TRIGGER
-      script.cold_test:
-        name: Kalt Test Szene
-        description: Fußbodenheizung
         display_categories: SCENE_TRIGGER

@@ -154,13 +154,13 @@ alexa:
     filter:
       include_entities:
         - switch.floor_heating
-        - script.i_am_cold
+        - switch.pihole_switch
     entity_config:
       switch.floor_heating:
         name: Fußbodenheizung
         description: Fußbodenheizung in Wohnzimmer und Küche
         display_categories: SWITCH
-      script.i_am_cold:
-        name: Mir ist kalt
-        description: Fußbodenheizung oben um 2 Grad
+      switch.pihole_switch:
+        name: Pihole
+        description: pihole
         display_categories: SWITCH

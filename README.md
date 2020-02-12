@@ -570,6 +570,4 @@ volumes:
 **Message me on twitter :** [@eifinger](https://twitter.com/eifinger)
 
 <br>
-<a align="center" href="https://raw.githubusercontent.com/eifinger/homeassistant-config/master/AFFILIATEDISCLOSURE.md">
-Affiliate Disclosure
-</a></p>
+</p>

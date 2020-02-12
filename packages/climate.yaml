@@ -163,4 +163,4 @@ alexa:
       script.i_am_cold:
         name: Mir ist kalt
         description: Fußbodenheizung oben um 2 Grad
-        display_categories: SCENE_TRIGGER
+        display_categories: SWITCH

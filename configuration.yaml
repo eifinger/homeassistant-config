@@ -32,6 +32,7 @@ logger:
   logs:
     homeassistant.components.http.ban: warning
     homeassistant.components.alexa: debug
+    hass_nabucasa.iot: debug
 
 logbook:
 

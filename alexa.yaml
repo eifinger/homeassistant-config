@@ -16,7 +16,6 @@ filter:
     - switch.large_lamp
     - switch.lobby
     - media_player.denon_avr_x1300w
-    - media_player.spotify
     - script.receiver_set_source_bluetooth
     - script.receiver_set_source_media_player
     - script.receiver_set_source_dvd

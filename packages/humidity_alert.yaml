@@ -32,7 +32,7 @@ automation:
             die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_bathroom') | float  }} Prozent."
       - service: notify.alexa_media
         data_template:
-          target: 
+          target:
             - media_player.kevins_echo_dot_oben
             - media_player.kevin_s_echo_dot_unten
             - media_player.kevins_echo

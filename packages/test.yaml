@@ -1,0 +1,16 @@
+---
+alexa:
+  smart_home:
+    filter:
+      include_entities:
+        - switch.floor_heating
+        - switch.pihole_switch
+    entity_config:
+      switch.floor_heating:
+        name: Fußbodenheizung
+        description: Fußbodenheizung in Wohnzimmer und Küche
+        display_categories: SWITCH
+      switch.pihole_switch:
+        name: Pihole
+        description: pihole
+        display_categories: SWITCH

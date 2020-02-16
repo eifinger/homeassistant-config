@@ -62,31 +62,24 @@ entity_config:
   switch.large_ventilator:
     name: Großer Ventilator
     description: Großer Ventilator
-    display_categories: SWITCH
   switch.ventilator:
     name: Ventilator
     description: Ventilator
-    display_categories: SWITCH
   switch.markise:
     name: Markise
     description: Markise
-    display_categories: SWITCH
   switch.tv:
     name: Fernseher
     description: Fernseher
-    display_categories: SWITCH
   switch.broadlink_tv_select_hdm1:
     name: Fernseher HDMI
     description: Fernseher Input HDMI1
-    display_categories: SCENE_TRIGGER
   switch.broadlink_tv_select_tv:
     name: Fernseher TV
     description: Fernseher Input TV
-    display_categories: SCENE_TRIGGER
   switch.bedroom_receiver:
     name: Schlafzimmer Receiver
     description: Schlafzimmer Receiver
-    display_categories: SWITCH
   group.eingang:
     name: Eingang
     description: Anderer Name für Garderobe
@@ -94,7 +87,6 @@ entity_config:
   light.treppe_oben:
     name: Treppe Oben
     description: Oberes Treppenlicht
-    display_categories: LIGHT
   switch.snowboard:
     name: Snowboard
     description: Snowboard
@@ -124,67 +116,51 @@ entity_config:
   script.receiver_set_source_bluetooth:
     name: Sat
     description: Schalte Receiver auf Bluetooth / Alexa
-    display_categories: SCENE_TRIGGER
   script.receiver_set_source_media_player:
     name: Receiver Mediaplayer
     description: Schalte Receiver auf Mediaplayer / FireTV Stick
-    display_categories: SCENE_TRIGGER
   script.receiver_set_source_gaming:
     name: Receiver Gaming
     description: Schalte Receiver auf Gaming
-    display_categories: SCENE_TRIGGER
   script.receiver_set_source_tv:
     name: Receiver TV
     description: Schalte Receiver auf TV
-    display_categories: SCENE_TRIGGER
   script.watch_kodi:
     name: Kodi
     description: Gaming PC an, Fernseher an, Receiver auf Game
-    display_categories: SCENE_TRIGGER
   script.watch_netflix:
     name: Mediaplayer
     description: Gaming PC an, Fernseher an, Receiver auf Mediaplayer
-    display_categories: SCENE_TRIGGER
   light.bar_table:
     name: Bar
     description: Bartisch
-    display_categories: LIGHT
   light.bedroom_yeelight:
     name: Schlafzimmer
     description: Schlafzimmer Deckenlampe
-    display_categories: LIGHT
   light.stairs_lower_yeelight:
     name: Treppe Unten
     description: Unteres Treppenlicht
-    display_categories: LIGHT
   light.reading_lamp_yeelight:
     name: Leselampe
     description: Runde Lampe im Wohnzimmer
-    display_categories: LIGHT
   light.lobby_yeelight:
     name: Garderobe
     description: Garderobe hinter der Wohnungstür
-    display_categories: LIGHT
   light.livingroom_yeelight:
     name: Deckenlampe
     description: Deckenlampe im Wohnzimmer
-    display_categories: LIGHT
   light.lower_bathroom_yeelight:
     name: Bad
     description: Deckenlampe im Bad
-    display_categories: LIGHT
   group.stair_lights:
     name: Treppe
     description: Beide Treppenlichter
-    display_categories: LIGHT
   input_boolean.turn_fan_on_when_hot:
     name: Automation Ventilator
     description: Schalte Automation für den Ventilator an/aus
-    display_categories: SWITCH
   input_boolean.sleepmode:
     name: Schlafmodus
     description: Schalte Schlafmodus an/aus
-    display_categories: SWITCH
   scene.gemutliches_wohnzimmer:
     name: Gemütlich
     description: Lichter im Wohnzimmer wie wir sie mögen
@@ -200,24 +176,18 @@ entity_config:
   climate.bad_thermostat:
     name: Bad Thermostat
     description: Das Badezimmer Fußboden Thermostat
-    display_categories: THERMOSTAT
   climate.wohnzimmer_thermostat:
     name: Wohnzimmer Thermostat
     description: Das Wohnzimmer Fußboden Thermostat
-    display_categories: THERMOSTAT
   climate.bad_oben_thermostat:
     name: Bad Oben Thermostat
     description: Das Fußboden Thermostat im oberen Bad
-    display_categories: THERMOSTAT
   climate.kuche_thermostat:
     name: Küche Thermostat
     description: Das Fußboden Thermostat in der Küche
-    display_categories: THERMOSTAT
   switch.starte_vive_pc:
     name: Gaming PC
     description: Schalte Gaming PC an
-    display_categories: SWITCH
   switch.weihnachtslichter:
     name: Weihnachtslichter
     description: Schalte Weihnachtsbeleuchtung an/aus
-    display_categories: SWITCH

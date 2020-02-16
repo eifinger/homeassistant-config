@@ -8,4 +8,3 @@ alexa:
       switch.pihole_switch:
         name: Pihole
         description: pihole
-        display_categories: SWITCH

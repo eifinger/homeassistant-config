@@ -159,7 +159,6 @@ cloud:
       switch.floor_heating:
         name: Fußbodenheizung
         description: Fußbodenheizung in Wohnzimmer und Küche
-        display_categories: SWITCH
       script.i_am_cold:
         name: I am cold
         description: Fußbodenheizung in Wohnzimmer und Küche 2 Grad wärmer

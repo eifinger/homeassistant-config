@@ -17,12 +17,9 @@ cloud:
       input_boolean.guestmode:
         name: Gäste Modus
         description: Der Gästemodus
-        display_categories: SWITCH
       input_boolean.guestmode_livingroom:
         name: Gäste Modus Wohnzimmer
         description: Der Gästemodus wenn Gäste im Wohnzimmer schlafen
-        display_categories: SWITCH
-
 automation:
   - id: on_guestmode_on
     alias: On Guestmode on

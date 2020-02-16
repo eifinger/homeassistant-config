@@ -27,8 +27,6 @@ cloud:
       script.kodi_play:
         name: Kodi Start
         description: Kodi Start
-        display_categories: SCENE_TRIGGER
       script.kodi_pause:
         name: Kodi Stop
         description: Kodi Pause
-        display_categories: SCENE_TRIGGER

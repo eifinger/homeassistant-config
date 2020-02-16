@@ -39,7 +39,6 @@ cloud:
       switch.xiaomi_vacuum_cleaner:
         name: Snowie
         description: Snowie Xiaomi Staubsauger
-        display_categories: SWITCH
 
 automation:
   - id: alert_when_snowie_is_offline

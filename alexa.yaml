@@ -98,7 +98,7 @@ entity_config:
   media_player.denon_avr_x1300w:
     name: Receiver
     description: Receiver Denon AVRX 1300W
-    display_categories: TV
+    display_categories: SWITCH
   group.all:
     name: Wohnung
     description: Alle Geräte

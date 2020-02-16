@@ -14,7 +14,6 @@ filter:
     - switch.small_lamp
     - switch.large_lamp
     - switch.lobby
-    - media_player.denon_avr_x1300w
     - script.receiver_set_source_bluetooth
     - script.receiver_set_source_media_player
     - script.receiver_set_source_dvd
@@ -85,10 +84,6 @@ entity_config:
     name: Flur
     description: Flur
     display_categories: LIGHT
-  media_player.denon_avr_x1300w:
-    name: Receiver
-    description: Receiver Denon AVRX 1300W
-    display_categories: SWITCH
   script.receiver_set_source_bluetooth:
     name: Sat
     description: Schalte Receiver auf Bluetooth / Alexa

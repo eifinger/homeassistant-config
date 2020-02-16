@@ -17,15 +17,12 @@ filter:
     - switch.lobby
     - media_player.denon_avr_x1300w
     - media_player.spotify
-    - group.all
-    - group.livingroom
     - script.receiver_set_source_bluetooth
     - script.receiver_set_source_media_player
     - script.receiver_set_source_dvd
     - script.receiver_set_source_gaming
     - script.receiver_set_source_tv
     - script.watch_kodi
-    - group.stair_lights
     - input_boolean.turn_fan_on_when_hot
     - input_boolean.sleepmode
     - scene.gemutliches_wohnzimmer
@@ -38,8 +35,6 @@ filter:
     - climate.kuche_thermostat
     - switch.starte_vive_pc
     - switch.weihnachtslichter
-  include_domains:
-    - light
 entity_config:
   sensor.large_lamp_temperature:
     name: Große Lampe Thermostat
@@ -99,13 +94,6 @@ entity_config:
     name: Receiver
     description: Receiver Denon AVRX 1300W
     display_categories: SWITCH
-  group.all:
-    name: Wohnung
-    description: Alle Geräte
-    display_categories: SCENE_TRIGGER
-  group.livingroom:
-    name: Wohnzimmer
-    description: Alles im Wohnzimmer
   script.receiver_set_source_bluetooth:
     name: Sat
     description: Schalte Receiver auf Bluetooth / Alexa
@@ -145,9 +133,6 @@ entity_config:
   light.lower_bathroom_yeelight:
     name: Bad
     description: Deckenlampe im Bad
-  group.stair_lights:
-    name: Treppe
-    description: Beide Treppenlichter
   input_boolean.turn_fan_on_when_hot:
     name: Automation Ventilator
     description: Schalte Automation für den Ventilator an/aus

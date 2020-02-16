@@ -167,8 +167,8 @@ light:
         turn_off:
         set_level:
 
-alexa:
-  smart_home:
+cloud:
+  alexa:
     filter:
       include_entities:
         - light.alexa_virtual

@@ -30,8 +30,8 @@ switch:
           entity_id: vacuum.xiaomi_vacuum_cleaner
         icon_template: mdi:robot-vacuum
 
-alexa:
-  smart_home:
+cloud:
+  alexa:
     filter:
       include_entities:
         - switch.xiaomi_vacuum_cleaner

@@ -17,8 +17,8 @@ script:
       - service: media_player.media_play
         entity_id: media_player.kodi
 
-alexa:
-  smart_home:
+cloud:
+  alexa:
     filter:
       include_entities:
         - script.kodi_pause

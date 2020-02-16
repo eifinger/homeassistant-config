@@ -7,8 +7,8 @@ input_boolean:
     name: Gäste Modus Wohnzimmer
     icon: mdi:home-account
 
-alexa:
-  smart_home:
+cloud:
+  alexa:
     filter:
       include_entities:
         - input_boolean.guestmode

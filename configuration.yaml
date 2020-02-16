@@ -15,6 +15,9 @@ homeassistant:
     - type: homeassistant
   packages: !include_dir_named packages
 
+cloud:
+  alexa: !include alexa.yaml
+
 frontend:
   themes: !include themes.yaml
 updater:
@@ -115,7 +118,6 @@ hacs:
 ## Includes
 #################################################################
 
-alexa: !include alexa.yaml
 switch: !include switch.yaml
 sensor: !include sensor.yaml
 group: !include group.yaml

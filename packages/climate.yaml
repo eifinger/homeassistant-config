@@ -149,8 +149,8 @@ script:
           temperature: >
             {{ state_attr('climate.wohnzimmer_thermostat', 'temperature') | float
             + 2 }}
-alexa:
-  smart_home:
+cloud:
+  alexa:
     filter:
       include_entities:
         - switch.floor_heating

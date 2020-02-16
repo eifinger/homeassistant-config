@@ -32,6 +32,13 @@ filter:
     - climate.kuche_thermostat
     - switch.starte_vive_pc
     - switch.weihnachtslichter
+    - light.bedroom_yeelight
+    - light.bar_table
+    - light.livingroom_yeelight
+    - light.lower_bathroom_yeelight
+    - light.reading_lamp_yeelight
+    - light.stairs_lower_yeelight
+    - light.upper_stairs_yeelight
 entity_config:
   sensor.large_lamp_temperature:
     name: Große Lampe Thermostat

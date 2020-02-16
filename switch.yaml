@@ -6,6 +6,10 @@
   name: Starte Vive PC
   host: !secret vive_ip
   mac: !secret vive_mac
+- platform: wake_on_lan
+  name: Starte Odroid XU4
+  host: !secret glances_odroid
+  mac: !secret odroid_mac
 #################################################################
 ## Broadlink IR/RF
 #################################################################

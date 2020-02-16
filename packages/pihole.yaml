@@ -18,3 +18,13 @@ switch:
         # "curl -X GET 'http://192.168.10.11/admin/api.php?status'| grep enabled"
         command_state: !secret pihole_switch_state
         value_template: "{{ value_json.status == 'enabled' }}"
+
+alexa:
+  smart_home:
+    filter:
+      include_entities:
+        - switch.pihole_switch
+    entity_config:
+      switch.pihole_switch:
+        name: Pihole
+        description: pihole

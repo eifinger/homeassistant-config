@@ -10,8 +10,6 @@ filter:
     - switch.markise
     - switch.tv
     - switch.bedroom_receiver
-    - switch.broadlink_tv_select_hdm1
-    - switch.broadlink_tv_select_tv
     - group.eingang
     - switch.snowboard
     - switch.small_lamp
@@ -71,12 +69,6 @@ entity_config:
   switch.tv:
     name: Fernseher
     description: Fernseher
-  switch.broadlink_tv_select_hdm1:
-    name: Fernseher HDMI
-    description: Fernseher Input HDMI1
-  switch.broadlink_tv_select_tv:
-    name: Fernseher TV
-    description: Fernseher Input TV
   switch.bedroom_receiver:
     name: Schlafzimmer Receiver
     description: Schlafzimmer Receiver

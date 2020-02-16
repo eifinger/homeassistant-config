@@ -5,7 +5,7 @@ cover:
       markise:
         friendly_name: "Markise"
         device_class: awning
-        position_template: "{{states('binary_sensor.contact_markise') == 'on'}}"
+        value_template: "{{states('binary_sensor.contact_markise') == 'on'}}"
         open_cover:
           - condition: state
             entity_id: switch.markise

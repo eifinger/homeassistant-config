@@ -28,6 +28,7 @@ logger:
   default: error
   logs:
     homeassistant.components.http.ban: warning
+    homeassistant.components.alexa: debug
 
 logbook:
 

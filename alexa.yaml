@@ -1,5 +1,6 @@
 ---
 smart_home:
+  locale: de-DE
   filter:
     include_entities:
       - sensor.large_lamp_temperature

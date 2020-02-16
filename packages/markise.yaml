@@ -1,0 +1,27 @@
+---
+cover:
+  - platform: template
+    covers:
+      markise:
+        friendly_name: "Markise"
+        device_class: awning
+        position_template: "{{states('binary_sensor.contact_markise') == 'on'}}"
+        open_cover:
+          - condition: state
+            entity_id: switch.markise
+            state: 'off'
+          - service: switch.turn_on
+            data:
+              entity_id: switch.broadlink_markise
+        close_cover:
+          - condition: state
+            entity_id: switch.markise
+            state: 'on'
+          - service: switch.turn_off
+            data:
+              entity_id: switch.broadlink_markise
+cloud:
+  alexa:
+    filter:
+      include_entities:
+        - cover.markise

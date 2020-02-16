@@ -7,7 +7,6 @@ filter:
     - sensor.large_ventilator_temperature
     - switch.ventilator
     - switch.large_ventilator
-    - switch.markise
     - switch.tv
     - switch.bedroom_receiver
     - group.eingang
@@ -57,9 +56,6 @@ entity_config:
   switch.ventilator:
     name: Ventilator
     description: Ventilator
-  switch.markise:
-    name: Markise
-    description: Markise
   switch.tv:
     name: Fernseher
     description: Fernseher

@@ -89,8 +89,6 @@ switch.large_ventilator:
 switch.ventilator:
   friendly_name: "Ventilator"
   icon: mdi:fan
-switch.markise:
-  icon: mdi:garage
 switch.tv:
   icon: mdi:television
 group.eingang:

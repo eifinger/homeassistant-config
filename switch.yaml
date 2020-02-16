@@ -86,23 +86,6 @@
         - service: switch.turn_off
           data:
             entity_id: switch.broadlink_tv
-    markise:
-      friendly_name: Markise
-      value_template: "{{states('binary_sensor.contact_markise') == 'on'}}"
-      turn_on:
-        - condition: state
-          entity_id: switch.markise
-          state: 'off'
-        - service: switch.turn_on
-          data:
-            entity_id: switch.broadlink_markise
-      turn_off:
-        - condition: state
-          entity_id: switch.markise
-          state: 'on'
-        - service: switch.turn_off
-          data:
-            entity_id: switch.broadlink_markise
     bedroom_receiver:
       friendly_name: "Receiver Schlafzimmer"
       value_template: "{{states('sensor.teckin_power_usage') | float > 5}}"

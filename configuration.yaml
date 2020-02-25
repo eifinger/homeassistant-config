@@ -81,11 +81,6 @@ recorder:
       - sensor.calc_leave_time_user_two
       - sensor.yr_symbol
 
-media_player:
-  - platform: spotify
-    client_id: !secret spotify_client_id
-    client_secret: !secret spotify_client_secret
-
 google:
   client_id: !secret google_calendar_client_id
   client_secret: !secret google_calendar_client_key

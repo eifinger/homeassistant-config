@@ -54,14 +54,6 @@ sensor.large_ventilator_humidity:
   icon: mdi:water-percent
 sensor.weihnachtslichter_humidity:
   icon: mdi:water-percent
-history_graph.gas_station_globus:
-  friendly_name: Historie
-history_graph.gas_station_star:
-  friendly_name: Historie
-history_graph.gas_station_metro:
-  friendly_name: Historie
-history_graph.gas_stations:
-  friendly_name: Historie
 sensor.room_s8plus:
   icon: mdi:cellphone
 sensor.cal_next_appointment_location:

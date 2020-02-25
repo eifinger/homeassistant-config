@@ -122,7 +122,6 @@ notify: !include notify.yaml
 zone: !include zone.yaml
 proximity: !include proximity.yaml
 camera: !include camera.yaml
-history_graph: !include history_graph.yaml
 weather: !include weather.yaml
 scene: !include scenes.yaml
 yeelight: !include yeelight.yaml

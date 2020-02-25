@@ -10,6 +10,7 @@ deps/
 .HA_VERSION
 .uuid
 .storage/
+.cloud
 
 # custom_components
 __pycache__/

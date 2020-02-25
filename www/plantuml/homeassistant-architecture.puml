@@ -5,11 +5,11 @@
 LAYOUT_LEFT_RIGHT
 
 package "HP Microserver Gen10" {
-    Container(homeassistant, "homeassistant/home-assistant:0.104.2", "Homeassistant")
+    Container(homeassistant, "homeassistant/home-assistant:0.105.5", "Homeassistant")
     Container(find3, "https://github.com/schollz/find3", "FIND3")
     Container(mqtt, "eclipse-mosquitto:latest", "Mosquitto")
     Container(facerec_service, "eifinger/face_recognition:latest", "Facerecognition")
-    Container(appdaemon, "acockburn/appdaemon:3.0.2", "Appdaemon")
+    Container(appdaemon, "acockburn/appdaemon:4.0.1", "Appdaemon")
     Container(unifi, "jacobalberty/unifi:5.10.25", "Unifi Controller")
     Container(grafana, "grafana/grafana:latest", "Grafana")
     Container(influxdb, "influxdb:latest", "InfluxDB")

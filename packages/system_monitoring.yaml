@@ -46,7 +46,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: numeric_state
-        entity_id: sensor.glances_pihole_disk_used_percent
+        entity_id: sensor.glances_pihole_used_percent
         above: 80
     action:
       - service: notify.kevin
@@ -58,7 +58,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: numeric_state
-        entity_id: sensor.glances_zigbee2mqtt_disk_used_percent
+        entity_id: sensor.glances_zigbee2mqtt_used_percent
         above: 80
     action:
       - service: notify.kevin
@@ -70,7 +70,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: numeric_state
-        entity_id: sensor.glances_host_disk_used_percent
+        entity_id: sensor.glances_host_media_used_percent
         above: 80
     action:
       - service: notify.kevin
@@ -94,7 +94,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: numeric_state
-        entity_id: sensor.glances_wackernheim_pi_disk_used_percent
+        entity_id: sensor.glances_wackernheim_etc_hostname_used_percent
         above: 80
     action:
       - service: notify.kevin

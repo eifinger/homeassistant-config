@@ -8,14 +8,14 @@ cover:
         value_template: "{{states('binary_sensor.contact_markise') == 'on'}}"
         open_cover:
           - condition: state
-            entity_id: switch.markise
+            entity_id: binary_sensor.contact_markise
             state: 'off'
           - service: switch.turn_on
             data:
               entity_id: switch.broadlink_markise
         close_cover:
           - condition: state
-            entity_id: switch.markise
+            entity_id: binary_sensor.contact_markise
             state: 'on'
           - service: switch.turn_off
             data:

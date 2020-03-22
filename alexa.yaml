@@ -7,7 +7,7 @@ filter:
     - sensor.large_ventilator_temperature
     - switch.ventilator
     - switch.large_ventilator
-    - switch.tv
+    - switch.
     - switch.bedroom_receiver
     - group.eingang
     - switch.snowboard
@@ -62,9 +62,6 @@ entity_config:
   switch.ventilator:
     name: Ventilator
     description: Ventilator
-  switch.tv:
-    name: Fernseher
-    description: Fernseher
   switch.bedroom_receiver:
     name: Schlafzimmer Receiver
     description: Schlafzimmer Receiver
@@ -103,12 +100,6 @@ entity_config:
   script.receiver_set_source_tv:
     name: Receiver TV
     description: Schalte Receiver auf TV
-  script.watch_kodi:
-    name: Kodi
-    description: Gaming PC an, Fernseher an, Receiver auf Game
-  script.watch_netflix:
-    name: Mediaplayer
-    description: Gaming PC an, Fernseher an, Receiver auf Mediaplayer
   light.bar_table:
     name: Bar
     description: Bartisch

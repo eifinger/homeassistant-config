@@ -5,25 +5,3 @@
 learn_faces:
   sequence:
     - event: eifinger_learn_faces
-#################################################################
-## Movies
-#################################################################
-watch_kodi:
-  sequence:
-    - service: media_player.select_source
-      entity_id: media_player.denon_avr_x1300w
-      data:
-        source: 'Game'
-    - service: homeassistant.turn_on
-      entity_id: switch.tv
-    - service: homeassistant.turn_on
-      entity_id: switch.starte_vive_pc
-
-watch_netflix:
-  sequence:
-    - service: media_player.select_source
-      entity_id: media_player.denon_avr_x1300w
-      data:
-        source: 'Media Player'
-    - service: homeassistant.turn_on
-      entity_id: switch.tv

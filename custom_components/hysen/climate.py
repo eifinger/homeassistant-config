@@ -46,9 +46,9 @@ from homeassistant.helpers.entity import async_generate_entity_id
 
 DEFAULT_NAME = 'Hysen Thermostat Controller'
 
-VERSION = '2.0.2'
+VERSION = '2.0.3'
 
-REQUIREMENTS = ['broadlink==0.9.0']
+REQUIREMENTS = ['broadlink==0.13.0']
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -440,7 +440,7 @@ async def async_setup_platform(hass, config, async_add_devices, discovery_info=N
                weekend = [weekend_period_1, weekend_period_2]
                try:
                     thermostat.set_schedule(weekday, weekend)
-               except Expection as error:
+               except Exception as error:
                    _LOGGER.error("Failed to send Time schedule setup to Broadlink Hysen Device:%s,:",entity_id,error)
                    return False
                _LOGGER.info("Time schedule sent to Broadlink Hysen Device:%s",entity_id)
@@ -458,7 +458,7 @@ async def async_setup_platform(hass, config, async_add_devices, discovery_info=N
                 tamper_lock = service.data.get(CONFIG_REMOTELOCK)
                 try:
                   thermostat.set_lock(tamper_lock)
-                except Expection as error:
+                except Exception as error:
                   _LOGGER.error("Failed to send Tamper Lock setting to Broadlink Hysen Device:%s,:",entity_id,error)
                   return False
                 _LOGGER.info("Remote Lock setting sent to Broadlink Hysen Device:%s",entity_id)
@@ -717,7 +717,7 @@ class BroadlinkHysenClimate(ClimateDevice):
             except socket.timeout:
                 try:
                     self._broadlink_device.auth()
-                except Expection as error:
+                except Exception as error:
                         if retry == DEFAULT_RETRY-1:
                             _LOGGER.error(
                                 "Failed to send SetTemp command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)
@@ -730,7 +730,7 @@ class BroadlinkHysenClimate(ClimateDevice):
             except socket.timeout:
                 try:
                     self._broadlink_device.auth()
-                except Expection as error:
+                except Exception as error:
                     if retry == DEFAULT_RETRY-1:
                         _LOGGER.error(
                             "Failed to send Power command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)

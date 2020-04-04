@@ -1,5 +1,5 @@
 ---
-sensor:
+switch:
   - platform: wake_on_lan
     name: Starte Vive PC
     host: !secret vive_ip

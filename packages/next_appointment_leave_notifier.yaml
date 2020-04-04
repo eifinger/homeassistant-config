@@ -224,3 +224,13 @@ homeassistant:
       friendly_name: "Sina -> Nächster Termin Benachrichtigung"
     sensor.cal_next_appointment_title_user_two:
       icon: mdi:calendar
+    sensor.calc_leave_time:
+      icon: mdi:clock
+    sensor.calc_leave_time_user_two:
+      icon: mdi:clock
+
+recorder:
+  exclude:
+    entities:
+      - sensor.calc_leave_time
+      - sensor.calc_leave_time_user_two

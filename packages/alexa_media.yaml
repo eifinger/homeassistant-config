@@ -117,44 +117,6 @@ automation:
         data:
           entity_id: input_select.alexa
           option: None
-  #####################################################################
-  ### Virtual Light / Alexa Sequences
-  #####################################################################
-  - alias: "Alexa Report"
-    trigger:
-      - platform: state
-        entity_id: light.alexa_virtual
-        to: 'on'
-    action:
-      - service: alexa_media.update_last_called
-      - delay: 00:00:01
-      - service: notify.alexa_media
-        data_template:
-          target:
-            - '{{ states.sensor.last_alexa.state }}'
-          data:
-            type: tts
-          message: >-
-            {% if (states.light.alexa_virtual.attributes.brightness | int / 255 * 100 ) | round  == 1  %}
-              Linie {{ states.sensor.nach_bruckenkopf.attributes.line }}
-              fährt in {{ states.sensor.nach_bruckenkopf.attributes.minutes }} Minuten
-            {% endif %}
-      - service: light.turn_off
-        entity_id: light.alexa_virtual
-  - alias: Where is Vaccuum
-    trigger:
-      - platform: state
-        entity_id: light.alexa_virtual
-        to: 'on'
-    condition:
-      condition: template
-      value_template: '{{ (states.light.alexa_virtual.attributes.brightness | int / 255 * 100 ) | round  == 2 }}'
-    action:
-      - service: vacuum.locate
-        data:
-          entity_id: vacuum.xiaomi_vacuum_cleaner
-      - service: light.turn_off
-        entity_id: light.alexa_virtual
 #####################################################################
 ### Virtual Light / Alexa Sequences
 #####################################################################

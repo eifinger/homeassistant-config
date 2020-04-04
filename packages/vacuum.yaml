@@ -53,3 +53,22 @@ automation:
       - service: notify.kevin
         data:
           message: "Snowie ist offline"
+  - alias: Where is Vaccuum
+    trigger:
+      - platform: state
+        entity_id: light.alexa_virtual
+        to: 'on'
+    condition:
+      condition: template
+      value_template: '{{ (states.light.alexa_virtual.attributes.brightness | int / 255 * 100 ) | round  == 2 }}'
+    action:
+      - service: vacuum.locate
+        data:
+          entity_id: vacuum.xiaomi_vacuum_cleaner
+      - service: light.turn_off
+        entity_id: light.alexa_virtual
+
+recorder:
+  exclude:
+    entities:
+      - sensor.snowie_map

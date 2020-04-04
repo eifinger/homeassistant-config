@@ -13,3 +13,36 @@ sensor:
       - station: 3025386
         name: Nach Brückenkopf
         destinations: ['Wiesbaden-Mainz-Kastel Brückenkopf']
+
+recorder:
+  exclude:
+    entities:
+      - sensor.nach_bruckenkopf
+      - sensor.nach_bruckenkopf_0
+      - sensor.nach_bruckenkopf_1
+      - sensor.nach_bruckenkopf_2
+      - sensor.nach_bruckenkopf_3
+      - sensor.nach_bruckenkopf_4
+
+automation:
+  - alias: "Alexa Report"
+    trigger:
+      - platform: state
+        entity_id: light.alexa_virtual
+        to: 'on'
+    action:
+      - service: alexa_media.update_last_called
+      - delay: 00:00:01
+      - service: notify.alexa_media
+        data_template:
+          target:
+            - '{{ states.sensor.last_alexa.state }}'
+          data:
+            type: tts
+          message: >-
+            {% if (states.light.alexa_virtual.attributes.brightness | int / 255 * 100 ) | round  == 1  %}
+              Linie {{ states.sensor.nach_bruckenkopf.attributes.line }}
+              fährt in {{ states.sensor.nach_bruckenkopf.attributes.minutes }} Minuten
+            {% endif %}
+      - service: light.turn_off
+        entity_id: light.alexa_virtual

@@ -1,23 +1,4 @@
 ---
-- id: appdaemon_heartbeat_checker
-  alias: 'Appdaemon Heartbeat Checker'
-  initial_state: 'on'
-  condition:
-    condition: template
-    value_template: >
-      {%- if states.sensor.appdaemon_heartbeat.last_changed -%}
-        {{ (as_timestamp(now()) - as_timestamp(states.sensor.appdaemon_heartbeat.last_changed)) > 300 }}
-      {%- else -%}
-        true
-      {%- endif -%}
-  trigger:
-    - platform: time_pattern
-      minutes: '/5'
-  action:
-    - service: notify.kevin
-      data:
-        title: 'Alarm'
-        message: "Appdaemon scheint nicht mehr zu funktionieren"
 #################################################################
 ## Turn on/off Alexa Notifications on Sleepmode
 #################################################################

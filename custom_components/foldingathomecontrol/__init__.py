@@ -4,8 +4,7 @@ Component to integrate with PyFoldingAtHomeControl.
 
 import asyncio
 import itertools
-import logging
-from typing import Any
+from typing import Any, Tuple
 
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
@@ -26,9 +25,10 @@ from .const import (
     DOMAIN,
     SENSOR_ADDED,
     SENSOR_REMOVED,
+    _LOGGER,
 )
 
-_LOGGER = logging.getLogger(__name__)
+from .services import async_setup_services, async_unload_services
 
 FOLDINGATHOMECONTROL_SCHEMA = vol.Schema(
     {
@@ -64,13 +64,19 @@ async def async_setup_entry(hass, config_entry):
     if not await data.async_setup():
         return False
 
+    await async_setup_services(hass)
+
     return True
 
 
 async def async_unload_entry(hass, config_entry):
     """Unload a config entry."""
     await hass.config_entries.async_forward_entry_unload(config_entry, "sensor")
+    await hass.data[DOMAIN][config_entry.entry_id].async_remove()
     hass.data[DOMAIN].pop(config_entry.entry_id)
+    # If there is no instance of this integration registered anymore
+    if not hass.data[DOMAIN]:
+        await async_unload_services(hass)
     return True
 
 
@@ -87,30 +93,12 @@ class FoldingAtHomeControlData:
         self._task = None
 
     @callback
-    def callback(self, message_type: str, data: Any) -> None:
+    def data_received_callback(self, message_type: str, data: Any) -> None:
         """Called when data is received from the Folding@Home client."""
         if message_type == PyOnMessageTypes.SLOTS.value:
-            if PyOnMessageTypes.SLOTS.value in self.data:
-                added = list(
-                    itertools.filterfalse(
-                        lambda x: x in self.data[PyOnMessageTypes.SLOTS.value], data
-                    )
-                )
-                removed = list(
-                    itertools.filterfalse(
-                        lambda x: x in data, self.data[PyOnMessageTypes.SLOTS.value]
-                    )
-                )
-                async_dispatcher_send(
-                    self.hass, self.get_sensor_added_identifer(), added
-                )
-                async_dispatcher_send(
-                    self.hass, self.get_sensor_removed_identifer(), removed
-                )
-            else:
-                async_dispatcher_send(
-                    self.hass, self.get_sensor_added_identifer(), data
-                )
+            self.handle_slots_data_received(data)
+        if message_type == PyOnMessageTypes.ERROR.value:
+            self.handle_error_received(data)
         self.data[message_type] = data
         async_dispatcher_send(self.hass, self.get_data_update_identifer())
 
@@ -122,6 +110,7 @@ class FoldingAtHomeControlData:
         self.client = FoldingAtHomeController(address, port, password)
         try:
             await self.client.try_connect_async(timeout=5)
+            await self.client.subscribe_async()
         except FoldingAtHomeControlConnectionFailed:
             return False
 
@@ -131,8 +120,10 @@ class FoldingAtHomeControlData:
             )
         )
 
-        self._remove_callback = self.client.register_callback(self.callback)
-        self._task = asyncio.ensure_future(self.client.run())
+        self._remove_callback = self.client.register_callback(
+            self.data_received_callback
+        )
+        self._task = asyncio.ensure_future(self.client.start())
 
         return True
 
@@ -142,6 +133,7 @@ class FoldingAtHomeControlData:
             self._remove_callback()
         if self._task is not None:
             self._task.cancel()
+            await self._task
 
     def get_data_update_identifer(self) -> None:
         """Returns the unique data_update itentifier for this connection."""
@@ -154,6 +146,42 @@ class FoldingAtHomeControlData:
     def get_sensor_removed_identifer(self) -> None:
         """Returns the unique sensor_removed itentifier for this connection."""
         return f"{SENSOR_REMOVED}_{self.config_entry.data[CONF_ADDRESS]}"
+
+    def handle_error_received(self, error: Any) -> None:
+        """Handle received error message."""
+        _LOGGER.warning(
+            "%s received error: %s", self.config_entry.data[CONF_ADDRESS], error
+        )
+
+    def handle_slots_data_received(self, data: Any) -> None:
+        """Handle received slots data."""
+        if PyOnMessageTypes.SLOTS.value in self.data:
+            added, removed = self.calculate_slot_changes(data)
+            async_dispatcher_send(self.hass, self.get_sensor_added_identifer(), added)
+            async_dispatcher_send(
+                self.hass, self.get_sensor_removed_identifer(), removed
+            )
+        else:
+            async_dispatcher_send(self.hass, self.get_sensor_added_identifer(), data)
+
+    def calculate_slot_changes(self, slots: dict) -> Tuple[dict, dict]:
+        """Get added and removed slots."""
+        added = list(
+            itertools.filterfalse(
+                lambda slot: (
+                    slot["id"] != entry["id"]
+                    for entry in self.data[PyOnMessageTypes.SLOTS.value]
+                ),
+                slots,
+            )
+        )
+        removed = list(
+            itertools.filterfalse(
+                lambda entry: (entry["id"] != slot["id"] for slot in slots),
+                self.data[PyOnMessageTypes.SLOTS.value],
+            )
+        )
+        return added, removed
 
     @property
     def available(self):

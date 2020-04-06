@@ -1,0 +1,7 @@
+request_work_server_assignment:
+    description: Request a new assignment from the work server.
+    fields:
+      address:
+        description: The IP address or hostname of the client. It can be found as part of the integration name.
+        example: 'localhost'
+  

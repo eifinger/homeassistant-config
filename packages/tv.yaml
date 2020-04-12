@@ -7,3 +7,13 @@ media_player:
     username: !secret philips_tv_user
     password: !secret philips_tv_password
     favorite_channels_only: true
+
+cloud:
+  alexa:
+    filter:
+      include_entities:
+        - media_player.fernseher
+    entity_config:
+      media_player.fernseher:
+        name: Fernseher
+        description: Fernseher

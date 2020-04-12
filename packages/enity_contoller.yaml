@@ -1,7 +1,9 @@
 ---
 entity_controller:
   oben_treppe_motion_trigger:
-    sensor: binary_sensor.presence_stairs
+    sensor: 
+      - binary_sensor.presence_stairs
+      - binary_sensor.presence_upper_stairs
     sensor_type: duration
     entity: light.upper_stairs_yeelight
     delay: 60

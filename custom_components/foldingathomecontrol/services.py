@@ -22,15 +22,15 @@ SERVICE_REQUEST_WORK_SERVER_ASSIGNMENT_SCHEMA = vol.Schema(
 SERVICE_PAUSE = "pause"
 SERVICE_UNPAUSE = "unpause"
 SERVICE_SLOT_SCHEMA = vol.Schema(
-    {vol.Required(SERVICE_ADDRESS): cv.string,
-    vol.Optional(SERVICE_SLOT, default=None): cv.string}
+    {
+        vol.Required(SERVICE_ADDRESS): cv.string,
+        vol.Optional(SERVICE_SLOT, default=None): cv.string,
+    }
 )
 
 SERVICE_SHUTDOWN = "shutdown"
 SERVICE_REQUEST_WORK_SERVER_ASSIGNMENT = "request_work_server_assignment"
-SERVICE_SCHEMA = vol.Schema(
-    {vol.Required(SERVICE_ADDRESS): cv.string}
-)
+SERVICE_SCHEMA = vol.Schema({vol.Required(SERVICE_ADDRESS): cv.string})
 
 
 async def async_setup_services(hass):
@@ -102,13 +102,9 @@ async def async_pause_service(hass, data):
     for config_entry in hass.data[DOMAIN]:
         if hass.data[DOMAIN][config_entry].config_entry.data[CONF_ADDRESS] == address:
             if slot is not None:
-                await hass.data[DOMAIN][
-                    config_entry
-                ].client.pause_slot_async(slot)
+                await hass.data[DOMAIN][config_entry].client.pause_slot_async(slot)
                 return
-            await hass.data[DOMAIN][
-                config_entry
-            ].client.pause_all_slots_async()
+            await hass.data[DOMAIN][config_entry].client.pause_all_slots_async()
             return
     _LOGGER.warning("Could not find a registered integration with address: %s", address)
 
@@ -122,13 +118,9 @@ async def async_unpause_service(hass, data):
     for config_entry in hass.data[DOMAIN]:
         if hass.data[DOMAIN][config_entry].config_entry.data[CONF_ADDRESS] == address:
             if slot is not None:
-                await hass.data[DOMAIN][
-                    config_entry
-                ].client.unpause_slot_async(slot)
+                await hass.data[DOMAIN][config_entry].client.unpause_slot_async(slot)
                 return
-            await hass.data[DOMAIN][
-                config_entry
-            ].client.unpause_all_slots_async()
+            await hass.data[DOMAIN][config_entry].client.unpause_all_slots_async()
             return
     _LOGGER.warning("Could not find a registered integration with address: %s", address)
 
@@ -140,9 +132,7 @@ async def async_shutdown_service(hass, data):
 
     for config_entry in hass.data[DOMAIN]:
         if hass.data[DOMAIN][config_entry].config_entry.data[CONF_ADDRESS] == address:
-            await hass.data[DOMAIN][
-                config_entry
-            ].client.shutdown()
+            await hass.data[DOMAIN][config_entry].client.shutdown()
             return
     _LOGGER.warning("Could not find a registered integration with address: %s", address)
 

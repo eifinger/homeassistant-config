@@ -91,10 +91,12 @@ class FoldingAtHomeControlData:
         self.client = None
         self._remove_callback = None
         self._task = None
+        self._available = False
 
     @callback
     def data_received_callback(self, message_type: str, data: Any) -> None:
         """Called when data is received from the Folding@Home client."""
+        self._available = True
         if message_type == PyOnMessageTypes.SLOTS.value:
             self.handle_slots_data_received(data)
         if message_type == PyOnMessageTypes.ERROR.value:
@@ -102,15 +104,32 @@ class FoldingAtHomeControlData:
         self.data[message_type] = data
         async_dispatcher_send(self.hass, self.get_data_update_identifer())
 
+    @callback
+    def on_disconnect_callback(self) -> None:
+        """Called when data is received from the Folding@Home client."""
+        if self._available:
+            self._available = False
+            _LOGGER.error(
+                "Disconnected from %s:%s. Trying to reconnect.",
+                self.config_entry.data[CONF_ADDRESS],
+                self.config_entry.data[CONF_PORT],
+            )
+            async_dispatcher_send(self.hass, self.get_data_update_identifer())
+
     async def async_setup(self) -> bool:
         """Set up the Folding@Home client."""
         address = self.config_entry.data[CONF_ADDRESS]
         port = self.config_entry.data[CONF_PORT]
         password = self.config_entry.data.get(CONF_PASSWORD)
-        self.client = FoldingAtHomeController(address, port, password)
+        self.client = FoldingAtHomeController(address, port, password, read_timeout=10)
         try:
+            self._remove_callback = self.client.register_callback(
+                self.data_received_callback
+            )
+            self.client.on_disconnect(self.on_disconnect_callback)
             await self.client.try_connect_async(timeout=5)
             await self.client.subscribe_async()
+            self._available = True
         except FoldingAtHomeControlConnectionFailed:
             return False
 
@@ -120,9 +139,6 @@ class FoldingAtHomeControlData:
             )
         )
 
-        self._remove_callback = self.client.register_callback(
-            self.data_received_callback
-        )
         self._task = asyncio.ensure_future(self.client.start())
 
         return True
@@ -186,6 +202,4 @@ class FoldingAtHomeControlData:
     @property
     def available(self):
         """Is the Folding@Home client available."""
-        if self.client:
-            return self.client.is_connected
-        return False
+        return self._available

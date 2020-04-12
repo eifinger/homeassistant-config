@@ -1,0 +1,8 @@
+---
+media_player:
+  - platform: philips_android_tv
+    name: Fernseher
+    host: !secret philips_tv_ip
+    mac: !secret philips_tv_mac
+    username: !secret philips_tv_user
+    password: !secret philips_tv_password

@@ -124,11 +124,11 @@ homeassistant:
     automation.bei_wechsel_zu_tv_audio_lautstarke_50:
       icon: mdi:speaker
 
-# cloud:
-#   alexa:
-#     filter:
-#       include_entities:
-#         - media_player.denon_avr_x1300w
-#     entity_config:
-#       media_player.denon_avr_x1300w:
-#         name: Receiver
+cloud:
+  alexa:
+    filter:
+      include_entities:
+        - media_player.denon_avr_x1300w
+    entity_config:
+      media_player.denon_avr_x1300w:
+        name: Receiver

@@ -62,9 +62,7 @@ rules:
     allow-non-breakable-inline-mappings: true
   new-line-at-end-of-file:
     level: error
-  new-lines:
-    level: error
-    type: unix
+  new-lines: disable
   trailing-spaces:
     level: error
   truthy:

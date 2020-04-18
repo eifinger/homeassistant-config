@@ -25,16 +25,10 @@ dishwasher:
   name: Spühlmaschine
 washingmachine:
   name: Waschmaschine
-#################################################################
-## Appdaemon persistence layer
-#################################################################
 persistence_plantwateringnotifier_reminder_acknowledged:
   name: Plant Watering Notifier got Acknowledged
 persistence_reminder_plantwatering_new_reminder_acknowledged:
   name: Plant Watering Notifier new got Acknowledged
-#################################################################
-## Appdaemon App switches
-#################################################################
 turn_small_fan_on_when_hot:
   icon: mdi:temperature-celsius
 turn_large_fan_on_when_hot:
@@ -112,18 +106,12 @@ sleep_mode_handler:
 bath_motion_trigger:
   icon: mdi:shower
   name: Badlicht Bewegungsmelder
-#################################################################
-## Appdaemon App Switches - Thermostats
-#################################################################
 warm_bath_before_wakeup:
   icon: mdi:temperature-celsius
   name: Fußbodenheizung im Bad vorm aufstehen anschalten
 warm_upper_bath_before_wakeup:
   icon: mdi:temperature-celsius
   name: Fußbodenheizung im Bad Oben vorm aufstehen anschalten
-#################################################################
-## Appdaemon App Switches - Thermostats - Leaving
-#################################################################
 set_livingroom_thermostat_when_leaving:
   icon: mdi:temperature-celsius
   name: Wohnzimmer wenn wir gehen
@@ -136,9 +124,6 @@ set_upper_bath_thermostat_when_leaving:
 set_bath_thermostat_when_leaving:
   icon: mdi:temperature-celsius
   name: Bad wenn wir gehen
-#################################################################
-## Appdaemon App Switches - Thermostats - Sleeping
-#################################################################
 set_livingroom_thermostat_when_sleeping:
   icon: mdi:temperature-celsius
   name: Wohnzimmer wenn wir schlafen
@@ -151,9 +136,6 @@ set_bath_thermostat_when_sleeping:
 set_upper_bath_thermostat_when_sleeping:
   icon: mdi:temperature-celsius
   name: Bad Oben wenn wir schlafen
-#################################################################
-## Appdaemon App Switches - Thermostats - Waking Up
-#################################################################
 set_livingroom_thermostat_when_waking_up:
   icon: mdi:temperature-celsius
   name: Wohnzimmer wenn wir aufstehen
@@ -166,9 +148,6 @@ set_bath_thermostat_when_waking_up:
 set_upper_bath_thermostat_when_waking_up:
   icon: mdi:temperature-celsius
   name: Bad Oben wenn wir aufstehen
-#################################################################
-## Appdaemon App Switches - Thermostats - Coming Home
-#################################################################
 set_livingroom_thermostat_when_coming_home:
   icon: mdi:temperature-celsius
   name: Wohnzimmer wenn wir nach Hause kommen
@@ -181,9 +160,6 @@ set_bath_thermostat_when_coming_home:
 set_upper_bath_thermostat_when_coming_home:
   icon: mdi:temperature-celsius
   name: Bad Oben wenn wir nach Hause kommen
-#################################################################
-## Appdaemon App Switches - Thermostats - Heading Home
-#################################################################
 set_livingroom_thermostat_when_heading_home:
   icon: mdi:temperature-celsius
   name: Wohnzimmer wenn Richtung nach Hause

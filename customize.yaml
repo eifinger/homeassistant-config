@@ -1,11 +1,4 @@
 ---
-#################################################################
-## Visibility
-#################################################################
-group.lights:
-  friendly_name: "Lichter"
-group.all_devices:
-  hidden: false
 sensor.location_user_one:
   entity_picture: /local/user_one.jpg
 sensor.location_user_two:
@@ -81,8 +74,6 @@ switch.ventilator:
   icon: mdi:fan
 switch.tv:
   icon: mdi:television
-group.eingang:
-  friendly_name: "Eingang"
 light.treppe_oben:
   friendly_name: "Treppe Oben"
 switch.snowboard:
@@ -128,14 +119,8 @@ sensor.home_assistant_installed_version:
   icon: mdi:home-assistant
 sensor.last_alexa:
   icon: mdi:amazon-alexa
-#################################################################
-## Android IP Webcam
-#################################################################
 sensor.android_ip_webcam_door_motion:
   unit_of_measurement: 'motion_units'
-#################################################################
-## Zone
-#################################################################
 zone.work:
   friendly_name: "Arbeit"
 zone.work_user_two:

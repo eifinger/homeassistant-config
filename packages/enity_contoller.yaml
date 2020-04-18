@@ -1,7 +1,7 @@
 ---
 entity_controller:
   oben_treppe_motion_trigger:
-    sensor: 
+    sensor:
       - binary_sensor.presence_stairs
       - binary_sensor.presence_upper_stairs
     sensor_type: duration

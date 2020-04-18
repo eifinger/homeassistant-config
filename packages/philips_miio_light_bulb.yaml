@@ -1,0 +1,21 @@
+---
+light:
+  - platform: xiaomi_miio
+    name: philips_miio_light_bulb
+    host: !secret philips_miio_light_bulb_ip
+    token: !secret philips_miio_light_bulb_token
+    model: philips.light.bulb
+
+homeassistant:
+  customize:
+    light.philips_miio_light_bulb:
+      friendly_name: Arbeitszimmerlicht
+
+cloud:
+  alexa:
+    filter:
+      include_entities:
+        - light.philips_miio_light_bulb
+    entity_config:
+      light.philips_miio_light_bulb:
+        name: Arbeitszimmerlicht

@@ -26,10 +26,6 @@
       state: on
       brightness: 255
       rgb_color: [255, 0, 0]
-    light.lobby_yeelight:
-      state: on
-      brightness: 255
-      rgb_color: [255, 0, 0]
     light.stairs_lower_yeelight:
       state: on
       brightness: 255
@@ -48,10 +44,6 @@
       state: on
       brightness: 255
       rgb_color: [0, 255, 0]
-    light.lobby_yeelight:
-      state: on
-      brightness: 255
-      rgb_color: [0, 255, 0]
     light.stairs_lower_yeelight:
       state: on
       brightness: 255
@@ -67,10 +59,6 @@
 - name: Alles Blau
   entities:
     light.livingroom_yeelight:
-      state: on
-      brightness: 255
-      rgb_color: [0, 0, 255]
-    light.lobby_yeelight:
       state: on
       brightness: 255
       rgb_color: [0, 0, 255]

@@ -8,7 +8,6 @@ filter:
     - switch.ventilator
     - switch.large_ventilator
     - switch.bedroom_receiver
-    - group.eingang
     - switch.snowboard
     - switch.small_lamp
     - switch.large_lamp
@@ -65,10 +64,6 @@ entity_config:
   switch.bedroom_receiver:
     name: Schlafzimmer Receiver
     description: Schlafzimmer Receiver
-  group.eingang:
-    name: Eingang
-    description: Anderer Name für Garderobe
-    display_categories: LIGHT
   light.treppe_oben:
     name: Treppe Oben
     description: Oberes Treppenlicht
@@ -112,9 +107,6 @@ entity_config:
   light.reading_lamp_yeelight:
     name: Leselampe
     description: Runde Lampe im Wohnzimmer
-  light.lobby_yeelight:
-    name: Garderobe
-    description: Garderobe hinter der Wohnungstür
   light.livingroom_yeelight:
     name: Deckenlampe
     description: Deckenlampe im Wohnzimmer

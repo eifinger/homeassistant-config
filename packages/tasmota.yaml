@@ -147,33 +147,3 @@ sensor:
     value_template: "{{ value_json['AM2301'].Humidity }}"
     name: 'Weihnachtslichter Humidity'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: "teckin_power_usage"
-    icon: mdi:speaker
-    state_topic: "tele/sonoff_teckin/SENSOR"
-    value_template: "{{ value_json['ENERGY'].Power }}"
-    unit_of_measurement: "W"
-    availability_topic: "tele/sonoff_teckin/LWT"
-    qos: 2
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: "teckin_power_usage_today"
-    icon: mdi:speaker
-    state_topic: "tele/sonoff_teckin/SENSOR"
-    value_template: "{{ value_json['ENERGY'].Today }}"
-    unit_of_measurement: "kWh"
-    availability_topic: "tele/sonoff_teckin/LWT"
-    qos: 2
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: "teckin_power_usage_total"
-    icon: mdi:speaker
-    state_topic: "tele/sonoff_teckin/SENSOR"
-    value_template: "{{ value_json['ENERGY'].Total }}"
-    unit_of_measurement: "kWh"
-    availability_topic: "tele/sonoff_teckin/LWT"
-    qos: 2
-    payload_available: "Online"
-    payload_not_available: "Offline"

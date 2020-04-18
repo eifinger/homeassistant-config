@@ -25,12 +25,6 @@ sensor.dishwasher_power_usage_today:
   icon: mdi:gauge
 sensor.dishwasher_power_usage_total:
   icon: mdi:gauge
-sensor.teckin_power_usage:
-  friendly_name: "Schlafzimmerreceiver Verbrauch"
-sensor.teckin_power_usage_today:
-  friendly_name: "Schlafzimmerreceiver Heute"
-sensor.teckin_power_usage_total:
-  friendly_name: "Schlafzimmerreceiver Total"
 sensor.gas_station_star:
   icon: mdi:gas-station
 sensor.gas_station_metro:

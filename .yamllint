@@ -54,7 +54,7 @@ rules:
   line-length:
     ignore: |
       themes.yaml
-      switch.yaml
+      packages/bedroom_receiver.yaml
       packages/monero.yaml
     level: warning
     max: 120

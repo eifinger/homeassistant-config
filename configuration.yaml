@@ -97,11 +97,7 @@ hacs:
   token: !secret hacs_token
   appdaemon: true
   sidepanel_icon: hacs:hacs
-#################################################################
-## Includes
-#################################################################
 
-switch: !include switch.yaml
 group: !include group.yaml
 automation: !include automation.yaml
 script: !include scripts.yaml

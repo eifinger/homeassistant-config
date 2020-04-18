@@ -38,6 +38,7 @@ filter:
     - light.reading_lamp_yeelight
     - light.stairs_lower_yeelight
     - light.upper_stairs_yeelight
+    - switch.coffee_machine_plug_relay
 entity_config:
   sensor.large_lamp_temperature:
     name: Große Lampe Thermostat
@@ -156,3 +157,6 @@ entity_config:
   switch.weihnachtslichter:
     name: Weihnachtslichter
     description: Schalte Weihnachtsbeleuchtung an/aus
+  switch.coffee_machine_plug_relay:
+    name: Küchenlichter
+    description: Lichterkette auf dem Küchenschrank

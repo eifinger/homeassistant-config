@@ -98,7 +98,6 @@ hacs:
   appdaemon: true
   sidepanel_icon: hacs:hacs
 
-group: !include group.yaml
 automation: !include automation.yaml
 script: !include scripts.yaml
 input_boolean: !include input_boolean.yaml

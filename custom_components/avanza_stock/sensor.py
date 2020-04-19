@@ -15,7 +15,7 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import CONF_MONITORED_CONDITIONS, CONF_NAME
 from homeassistant.helpers.entity import Entity
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -97,7 +97,7 @@ MONITORED_CONDITIONS_DEFAULT = [
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_STOCK): cv.positive_int,
     vol.Optional(CONF_NAME): cv.string,
-    vol.Optional(CONF_SHARES): cv.positive_int,
+    vol.Optional(CONF_SHARES): vol.Coerce(float),
     vol.Optional(CONF_MONITORED_CONDITIONS,
                  default=MONITORED_CONDITIONS_DEFAULT):
     vol.All(cv.ensure_list, [vol.In(MONITORED_CONDITIONS)]),
@@ -181,8 +181,61 @@ class AvanzaStockSensor(Entity):
                     self._state_attributes[condition] = data.get(
                         condition, None)
 
+                if condition == 'change':
+                    for (change, price) in [
+                            ('changeOneWeek', 'priceOneWeekAgo'),
+                            ('changeOneMonth', 'priceOneMonthAgo'),
+                            ('changeThreeMonths', 'priceThreeMonthsAgo'),
+                            ('changeSixMonths', 'priceSixMonthsAgo'),
+                            ('changeOneYear', 'priceOneYearAgo'),
+                            ('changeThreeYears', 'priceThreeYearsAgo'),
+                            ('changeFiveYears', 'priceFiveYearsAgo'),
+                            ('changeCurrentYear', 'priceAtStartOfYear'),
+                    ]:
+                        if price in data:
+                            self._state_attributes[change] = round(
+                                data['lastPrice'] - data[price], 2)
+                        else:
+                            self._state_attributes[change] = 'unknown'
+
+                    if self._shares is not None:
+                        for (change, price) in [
+                                ('totalChangeOneWeek', 'priceOneWeekAgo'),
+                                ('totalChangeOneMonth', 'priceOneMonthAgo'),
+                                ('totalChangeThreeMonths', 'priceThreeMonthsAgo'),  # noqa: E501
+                                ('totalChangeSixMonths', 'priceSixMonthsAgo'),
+                                ('totalChangeOneYear', 'priceOneYearAgo'),
+                                ('totalChangeThreeYears', 'priceThreeYearsAgo'),  # noqa: E501
+                                ('totalChangeFiveYears', 'priceFiveYearsAgo'),
+                                ('totalChangeCurrentYear', 'priceAtStartOfYear'),  # noqa: E501
+                        ]:
+                            if price in data:
+                                self._state_attributes[change] = round(
+                                    self._shares * (data['lastPrice'] - data[price]), 2)  # noqa: E501
+                            else:
+                                self._state_attributes[change] = 'unknown'
+
+                if condition == 'changePercent':
+                    for (change, price) in [
+                            ('changePercentOneWeek', 'priceOneWeekAgo'),
+                            ('changePercentOneMonth', 'priceOneMonthAgo'),
+                            ('changePercentThreeMonths', 'priceThreeMonthsAgo'),  # noqa: E501
+                            ('changePercentSixMonths', 'priceSixMonthsAgo'),
+                            ('changePercentOneYear', 'priceOneYearAgo'),
+                            ('changePercentThreeYears', 'priceThreeYearsAgo'),
+                            ('changePercentFiveYears', 'priceFiveYearsAgo'),
+                            ('changePercentCurrentYear', 'priceAtStartOfYear'),
+                    ]:
+                        if price in data:
+                            self._state_attributes[change] = round(
+                                100 * (data['lastPrice'] - data[price]) / data[price], 2)  # noqa: E501
+                        else:
+                            self._state_attributes[change] = 'unknown'
+
         if self._shares is not None:
             self._state_attributes['shares'] = self._shares
+            self._state_attributes['totalValue'] = self._shares * data['lastPrice']  # noqa: E501
+            self._state_attributes['totalChange'] = self._shares * data['change']  # noqa: E501
 
     def update_dividends(self, dividends):
         """Update dividend attributes."""

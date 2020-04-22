@@ -889,6 +889,7 @@ class BroadlinkHysenClimate(ClimateDevice):
             except Exception as error:
                 if retry < 1:
                     _LOGGER.error("Failed to get Data from Broadlink Hysen Device:%s,:%s",self.entity_id,error)
+                    _LOGGER.exception("error")
                     self._current_operation = STATE_UNAVAILABLE
                     self._room_temp = 0
                     self._external_temp = 0

@@ -2,7 +2,7 @@
   "domain": "hysen",
   "name": "Hysen Thermostat Controller",
   "documentation": "",
-  "requirements": ["broadlink==0.13.0","pythoncrc"],
+  "requirements": ["broadlink==0.13.2"],
   "dependencies": [
     "http"
   ],

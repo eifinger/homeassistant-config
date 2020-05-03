@@ -46,7 +46,7 @@ from homeassistant.helpers.entity import async_generate_entity_id
 
 DEFAULT_NAME = 'Hysen Thermostat Controller'
 
-VERSION = '2.0.4'
+VERSION = '2.0.6'
 
 REQUIREMENTS = ['broadlink==0.13.2']
 
@@ -440,7 +440,7 @@ async def async_setup_platform(hass, config, async_add_devices, discovery_info=N
                weekend = [weekend_period_1, weekend_period_2]
                try:
                     thermostat.set_schedule(weekday, weekend)
-               except Exception as error:
+               except Expection as error:
                    _LOGGER.error("Failed to send Time schedule setup to Broadlink Hysen Device:%s,:",entity_id,error)
                    return False
                _LOGGER.info("Time schedule sent to Broadlink Hysen Device:%s",entity_id)
@@ -458,7 +458,7 @@ async def async_setup_platform(hass, config, async_add_devices, discovery_info=N
                 tamper_lock = service.data.get(CONFIG_REMOTELOCK)
                 try:
                   thermostat.set_lock(tamper_lock)
-                except Exception as error:
+                except Expection as error:
                   _LOGGER.error("Failed to send Tamper Lock setting to Broadlink Hysen Device:%s,:",entity_id,error)
                   return False
                 _LOGGER.info("Remote Lock setting sent to Broadlink Hysen Device:%s",entity_id)
@@ -653,6 +653,7 @@ class BroadlinkHysenClimate(ClimateDevice):
         attr['room_temp'] = self._room_temp
         attr['external_temp'] = self._external_temp
         attr['heating_active'] = self._is_heating_active
+        attr['auto_mode'] = self._auto_state
         attr['auto_override'] = self._auto_override
         attr['external_sensor_temprange'] = self._external_sensor_temprange
         attr['deadzone_sensor_temprange'] = self._deadzone_sensor_temprange
@@ -717,7 +718,7 @@ class BroadlinkHysenClimate(ClimateDevice):
             except socket.timeout:
                 try:
                     self._broadlink_device.auth()
-                except Exception as error:
+                except Expection as error:
                         if retry == DEFAULT_RETRY-1:
                             _LOGGER.error(
                                 "Failed to send SetTemp command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)
@@ -730,7 +731,7 @@ class BroadlinkHysenClimate(ClimateDevice):
             except socket.timeout:
                 try:
                     self._broadlink_device.auth()
-                except Exception as error:
+                except Expection as error:
                     if retry == DEFAULT_RETRY-1:
                         _LOGGER.error(
                             "Failed to send Power command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)

@@ -111,7 +111,7 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: "Host Disk1 Usage {{ !secret host_disk1_usage_sensor }}"
+          message: "Host Disk1 Usage über 80%"
 
   - id: alert_when_host_disk2_used_gt_80
     alias: 'Alarm wenn Host Disk2 Used > 80%'
@@ -123,7 +123,7 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: "Host Disk2 Usage {{ !secret host_disk2_usage_sensor }}"
+          message: "Host Disk2 Usage über 80%"
 
   - id: alert_when_host_disk3_used_gt_80
     alias: 'Alarm wenn Host Disk3 Used > 80%'
@@ -135,7 +135,7 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: "Host Disk3 Usage {{ !secret host_disk3_usage_sensor }}"
+          message: "Host Disk3 Usage über 80%"
 
   - id: alert_when_host_disk4_used_gt_80
     alias: 'Alarm wenn Host Disk4 Used > 80%'
@@ -147,7 +147,7 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: "Host Disk4 Usage {{ !secret host_disk4_usage_sensor }}"
+          message: "Host Disk4 Usage über 80%"
 
   - id: alert_when_check_seafile_failed
     alias: 'Alarm wenn Seafile fsck fehlgeschlagen'

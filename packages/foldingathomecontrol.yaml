@@ -1,0 +1,8 @@
+---
+recorder:
+  exclude:
+    entities:
+      - sensor.192_168_1_36_cpu_3
+      - sensor.192_168_1_36_gpu_0_hawaii_radeon_r9_200_300_series
+      - sensor.192_168_1_48_cpu_11
+      - sensor.192_168_1_48_gpu_0_gp104_geforce_gtx_1080_8873

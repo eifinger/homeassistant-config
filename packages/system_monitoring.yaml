@@ -50,8 +50,8 @@ automation:
         above: 80
     action:
       - service: notify.kevin
-        data:
-          message: "PiHole Disk Usage über 80%"
+        data_template:
+          message: "PiHole Disk Usage {{ sensor.glances_pihole_used_percent }}"
 
   - id: alert_when_glances_zigbee2mqtt_disk_used_gt_80
     alias: 'Alarm wenn Zigbee2MQTT Disk Used > 80%'
@@ -62,8 +62,8 @@ automation:
         above: 80
     action:
       - service: notify.kevin
-        data:
-          message: "Zigbee2MQTT Disk Usage über 80%"
+        data_template:
+          message: "Zigbee2MQTT Disk Usage {{ sensor.glances_zigbee2mqtt_used_percent }}"
 
   - id: alert_when_glances_host_disk_used_gt_80
     alias: 'Alarm wenn Host Disk Used > 80%'
@@ -74,8 +74,8 @@ automation:
         above: 80
     action:
       - service: notify.kevin
-        data:
-          message: "Host Disk Usage über 80%"
+        data_template:
+          message: "Host Disk Usage {{ sensor.glances_host_media_used_percent }}"
 
   - id: alert_when_glances_odroid_disk_used_gt_80
     alias: 'Alarm wenn Odroid Disk Used > 80%'
@@ -86,8 +86,8 @@ automation:
         above: 80
     action:
       - service: notify.kevin
-        data:
-          message: "Odroid Disk Usage über 80%"
+        data_template:
+          message: "Odroid Disk Usage {{ sensor.glances_odroid_disk_used_percent }}"
 
   - id: alert_when_glances_wackernheim_pi_disk_used_gt_80
     alias: 'Alarm wenn Wackernheim Pi Disk Used > 80%'
@@ -98,8 +98,8 @@ automation:
         above: 80
     action:
       - service: notify.kevin
-        data:
-          message: "Wackernheim Pi Disk Usage über 80%"
+        data_template:
+          message: "Wackernheim Disk Usage {{ sensor.glances_wackernheim_etc_hostname_used_percent }}"
 
   - id: alert_when_host_disk1_used_gt_80
     alias: 'Alarm wenn Host Disk1 Used > 80%'
@@ -110,8 +110,8 @@ automation:
         above: 80
     action:
       - service: notify.kevin
-        data:
-          message: "Host Disk1 Usage über 80%"
+        data_template:
+          message: "Host Disk1 Usage {{ !secret host_disk1_usage_sensor }}"
 
   - id: alert_when_host_disk2_used_gt_80
     alias: 'Alarm wenn Host Disk2 Used > 80%'
@@ -122,8 +122,8 @@ automation:
         above: 80
     action:
       - service: notify.kevin
-        data:
-          message: "Host Disk2 Usage über 80%"
+        data_template:
+          message: "Host Disk2 Usage {{ !secret host_disk2_usage_sensor }}"
 
   - id: alert_when_host_disk3_used_gt_80
     alias: 'Alarm wenn Host Disk3 Used > 80%'
@@ -134,8 +134,8 @@ automation:
         above: 80
     action:
       - service: notify.kevin
-        data:
-          message: "Host Disk3 Usage über 80%"
+        data_template:
+          message: "Host Disk3 Usage {{ !secret host_disk3_usage_sensor }}"
 
   - id: alert_when_host_disk4_used_gt_80
     alias: 'Alarm wenn Host Disk4 Used > 80%'
@@ -146,8 +146,8 @@ automation:
         above: 80
     action:
       - service: notify.kevin
-        data:
-          message: "Host Disk4 Usage über 80%"
+        data_template:
+          message: "Host Disk4 Usage {{ !secret host_disk4_usage_sensor }}"
 
   - id: alert_when_check_seafile_failed
     alias: 'Alarm wenn Seafile fsck fehlgeschlagen'

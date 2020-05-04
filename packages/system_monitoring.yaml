@@ -51,7 +51,7 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: "PiHole Disk Usage {{ states.sensor.glances_pihole_used_percent }}"
+          message: "PiHole Disk Usage {{ states('sensor.glances_pihole_used_percent') }}"
 
   - id: alert_when_glances_zigbee2mqtt_disk_used_gt_80
     alias: 'Alarm wenn Zigbee2MQTT Disk Used > 80%'
@@ -63,7 +63,7 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: "Zigbee2MQTT Disk Usage {{ states.sensor.glances_zigbee2mqtt_used_percent }}"
+          message: "Zigbee2MQTT Disk Usage {{ states('sensor.glances_zigbee2mqtt_used_percent') }}"
 
   - id: alert_when_glances_host_disk_used_gt_80
     alias: 'Alarm wenn Host Disk Used > 80%'
@@ -75,7 +75,7 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: "Host Disk Usage {{ states.sensor.glances_host_media_used_percent }}"
+          message: "Host Disk Usage {{ states('sensor.glances_host_media_used_percent') }}"
 
   - id: alert_when_glances_odroid_disk_used_gt_80
     alias: 'Alarm wenn Odroid Disk Used > 80%'
@@ -87,7 +87,7 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: "Odroid Disk Usage {{ states.sensor.glances_odroid_disk_used_percent }}"
+          message: "Odroid Disk Usage {{ states('sensor.glances_odroid_disk_used_percent') }}"
 
   - id: alert_when_glances_wackernheim_pi_disk_used_gt_80
     alias: 'Alarm wenn Wackernheim Pi Disk Used > 80%'
@@ -99,7 +99,7 @@ automation:
     action:
       - service: notify.kevin
         data_template:
-          message: "Wackernheim Disk Usage {{ states.sensor.glances_wackernheim_etc_hostname_used_percent }}"
+          message: "Wackernheim Disk Usage {{ states('sensor.glances_wackernheim_etc_hostname_used_percent') }}"
 
   - id: alert_when_host_disk1_used_gt_80
     alias: 'Alarm wenn Host Disk1 Used > 80%'

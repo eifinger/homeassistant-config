@@ -1,0 +1,2 @@
+ltss:
+  db_url: !secret ltss_url

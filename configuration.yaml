@@ -81,6 +81,9 @@ influxdb:
   password: !secret influxdb_password
   max_retries: 5
 
+ltss:
+  db_url: !secret ltss_url
+
 telegram_bot:
   - platform: polling
     api_key: !secret telegram_api_key

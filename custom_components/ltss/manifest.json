@@ -1,0 +1,13 @@
+{
+    "domain": "ltss",
+    "name": "Long Time State Storage (LTSS)",
+    "documentation": "https://github.com/freol35241/ltss",
+    "requirements": [
+      "sqlalchemy",
+      "geoalchemy2"
+    ],
+    "dependencies": [],
+    "codeowners": [
+      "@freol35241"
+    ]
+  }

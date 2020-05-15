@@ -123,6 +123,8 @@ homeassistant:
       icon: mdi:speaker
     automation.bei_wechsel_zu_tv_audio_lautstarke_50:
       icon: mdi:speaker
+    media_player.denon_avr_x1300w:
+      supported_features: 20413
 
 cloud:
   alexa:

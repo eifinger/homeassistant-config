@@ -6,7 +6,7 @@ from homeassistant.const import UNIT_PERCENTAGE, TIME_SECONDS
 # Base component constants
 DOMAIN = "foldingathomecontrol"
 DOMAIN_DATA = f"{DOMAIN}_data"
-VERSION = "2.0.0"
+VERSION = "2.0.1"
 PLATFORMS = ["sensor"]
 DATA_UPDATED = f"{DOMAIN}_data_updated"
 SENSOR_ADDED = f"{DOMAIN}_sensor_added"
@@ -31,7 +31,7 @@ CONF_UPDATE_RATE = "update_rate"
 CONF_READ_TIMEOUT = "read_timeout"
 
 # Units
-UNIT_POINTS_PER_DAY = "ppd"
+UNIT_POINTS = "points"
 UNIT_FRAMES = "frames"
 UNIT_CREDITS = "credits"
 UNIT_ATTEMPTS = "attempts"
@@ -54,7 +54,7 @@ SENSOR_TYPES = [
         "unit_of_measurement": None,
         "icon": "mdi:calendar-clock",
     },
-    {"name": "Points Per Day", "unit_of_measurement": UNIT_POINTS_PER_DAY, "icon": ICON},
+    {"name": "Points Per Day", "unit_of_measurement": UNIT_POINTS, "icon": ICON},
     {"name": "Creditestimate", "unit_of_measurement": UNIT_CREDITS, "icon": ICON},
     {"name": "Waiting On", "unit_of_measurement": None, "icon": ICON},
     {"name": "Next Attempt", "unit_of_measurement": None, "icon": "mdi:history"},

@@ -7,35 +7,41 @@ https://github.com/custom-components/sensor.avanza_stock/blob/master/README.md
 import logging
 from datetime import datetime, timedelta
 
-import voluptuous as vol
-
 import homeassistant.helpers.config_validation as cv
+import pyavanza
+import voluptuous as vol
+from custom_components.avanza_stock.const import (
+    CONF_SHARES,
+    CONF_STOCK,
+    DEFAULT_NAME,
+    MONITORED_CONDITIONS,
+    MONITORED_CONDITIONS_COMPANY,
+    MONITORED_CONDITIONS_DEFAULT,
+    MONITORED_CONDITIONS_DIVIDENDS,
+    MONITORED_CONDITIONS_KEYRATIOS,
+)
 from homeassistant.components.sensor import PLATFORM_SCHEMA
-from homeassistant.const import CONF_MONITORED_CONDITIONS, CONF_NAME
+from homeassistant.const import CONF_ID, CONF_MONITORED_CONDITIONS, CONF_NAME
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from homeassistant.helpers.entity import Entity
-
-import pyavanza
-
-from custom_components.avanza_stock.const import (
-    CONF_STOCK,
-    CONF_SHARES,
-    MONITORED_CONDITIONS_DEFAULT,
-    MONITORED_CONDITIONS,
-    DEFAULT_NAME,
-    MONITORED_CONDITIONS_KEYRATIOS,
-    MONITORED_CONDITIONS_COMPANY,
-    MONITORED_CONDITIONS_DIVIDENDS,
-)
 
 _LOGGER = logging.getLogger(__name__)
 
 SCAN_INTERVAL = timedelta(minutes=60)
 
+STOCK_SCHEMA = vol.Schema(
+    {
+        vol.Required(CONF_ID): cv.positive_int,
+        vol.Optional(CONF_NAME): cv.string,
+        vol.Optional(CONF_SHARES): vol.Coerce(float),
+    }
+)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
-        vol.Required(CONF_STOCK): cv.positive_int,
+        vol.Required(CONF_STOCK): vol.Any(
+            cv.positive_int, vol.All(cv.ensure_list, [STOCK_SCHEMA])
+        ),
         vol.Optional(CONF_NAME): cv.string,
         vol.Optional(CONF_SHARES): vol.Coerce(float),
         vol.Optional(
@@ -47,14 +53,30 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Set up the Avanza Stock sensor."""
-    stock = config.get(CONF_STOCK)
-    name = config.get(CONF_NAME)
-    shares = config.get(CONF_SHARES)
-    if name is None:
-        name = DEFAULT_NAME + " " + str(stock)
-    monitored_conditions = config.get(CONF_MONITORED_CONDITIONS)
     session = async_create_clientsession(hass)
-    entities = [AvanzaStockSensor(stock, name, shares, monitored_conditions, session)]
+    monitored_conditions = config.get(CONF_MONITORED_CONDITIONS)
+    stock = config.get(CONF_STOCK)
+    entities = []
+    if isinstance(stock, int):
+        name = config.get(CONF_NAME)
+        shares = config.get(CONF_SHARES)
+        if name is None:
+            name = DEFAULT_NAME + " " + str(stock)
+        entities.append(
+            AvanzaStockSensor(stock, name, shares, monitored_conditions, session)
+        )
+        _LOGGER.info("Tracking %s [%d] using Avanza" % (name, stock))
+    else:
+        for s in stock:
+            id = s.get(CONF_ID)
+            name = s.get(CONF_NAME)
+            if name is None:
+                name = DEFAULT_NAME + " " + str(id)
+            shares = s.get(CONF_SHARES)
+            entities.append(
+                AvanzaStockSensor(id, name, shares, monitored_conditions, session)
+            )
+            _LOGGER.info("Tracking %s [%d] using Avanza" % (name, id))
     async_add_entities(entities, True)
 
 
@@ -177,8 +199,12 @@ class AvanzaStockSensor(Entity):
 
             if self._shares is not None:
                 self._state_attributes["shares"] = self._shares
-                self._state_attributes["totalValue"] = self._shares * data["lastPrice"]
-                self._state_attributes["totalChange"] = self._shares * data["change"]
+                self._state_attributes["totalValue"] = round(
+                    self._shares * data["lastPrice"], 2
+                )
+                self._state_attributes["totalChange"] = round(
+                    self._shares * data["change"], 2
+                )
 
     def update_dividends(self, dividends):
         """Update dividend attributes."""

@@ -2,9 +2,10 @@
   "domain": "hysen",
   "name": "Hysen Thermostat Controller",
   "documentation": "",
-  "requirements": ["broadlink==0.13.2"],
+  "requirements": "",
   "dependencies": [
     "http"
   ],
   "codeowners": ["@markcarter", "@iwantto.com"]
 }
+

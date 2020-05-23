@@ -96,11 +96,6 @@ system_health:
 
 breaking_changes:
 
-hacs:
-  token: !secret hacs_token
-  appdaemon: true
-  sidepanel_icon: hacs:hacs
-
 automation: !include automation.yaml
 script: !include scripts.yaml
 input_boolean: !include input_boolean.yaml

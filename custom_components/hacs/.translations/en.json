@@ -149,6 +149,7 @@
         "about": "About HACS",
         "clear": "Clear all new",
         "custom_repositories": "Custom repositories",
+        "dismiss": "Dismiss all new repositories",
         "documentation": "Documentation",
         "open_issue": "Open issue",
         "reload": "Reload window"
@@ -181,6 +182,7 @@
         "restart_pending": "Restart pending"
     },
     "repository_card": {
+        "dismiss": "dismiss",
         "hide": "Hide",
         "information": "Information",
         "new_repository": "New repository",
@@ -278,6 +280,7 @@
         "last_updated": "Last updated",
         "name": "Name",
         "new_repositories": "New Repositories",
+        "new_repositories_note": "You have over 10 new repositories showing here, if you want to clear them all click the 3 dots in the top right corner and dismiss all of them.",
         "no_repositories": "No repositories",
         "no_repositories_desc1": "It seems like you don't have any repositories installed in this section yet.",
         "no_repositories_desc2": "Click on the + in the bottom corner to add your first!",

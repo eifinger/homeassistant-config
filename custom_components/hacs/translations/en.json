@@ -24,9 +24,9 @@
         "netdaemon": "NetDaemon",
         "netdaemon_apps": "NetDaemon Apps",
         "netdaemon_plural": "NetDaemon Apps",
-        "plugin": "Plugin",
+        "plugin": "Lovelace",
         "plugin_plural": "Lovelace elements",
-        "plugins": "Plugins",
+        "plugins": "Lovelace elements",
         "python_script": "Python Script",
         "python_script_plural": "Python Scripts",
         "python_scripts": "Python Scripts",
@@ -94,6 +94,7 @@
     "dialog_add_repo": {
         "limit": "Only the first 100 repositories are shown, use the search to filter what you need",
         "no_match": "No repositories found matching your filter",
+        "sort_by": "Sort by",
         "title": "Add repository"
     },
     "dialog_custom_repositories": {
@@ -115,6 +116,7 @@
         "version_installed": "Version installed"
     },
     "dialog_install": {
+        "restart": "Remember that you need to restart Home Assistant before changes to integrations (custom_components) are applied.",
         "select_version": "Select version",
         "show_beta": "Show beta versions",
         "type": "Type",
@@ -218,7 +220,7 @@
         "note_plugin": "you still need to add it to your lovelace configuration ('ui-lovelace.yaml' or the raw UI config editor)",
         "note_plugin_post_107": "you still need to add it to your lovelace configuration ('configuration.yaml' or the resource editor '\/config\/lovelace\/resources')",
         "open_issue": "Open issue",
-        "open_plugin": "Open plugin",
+        "open_plugin": "Open element",
         "reinstall": "Reinstall",
         "repository": "Repository",
         "restart_home_assistant": "Restart Home Assistant",

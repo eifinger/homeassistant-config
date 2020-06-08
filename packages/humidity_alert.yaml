@@ -102,7 +102,7 @@ automation:
       - service: automation.turn_off
         data:
           entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
-  - id: activate_humidity_low_alert_bathroom # Enable the above automation when the humidity exceeds the treshold.
+  - id: activate_humidity_low_alert_upper_bathroom # Enable the above automation when the humidity exceeds the treshold.
     alias: Aktiviere Alarm Badfenster Oben schliessen wenn Humidity okay
     initial_state: true
     trigger:

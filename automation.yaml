@@ -32,6 +32,6 @@
   action:
     - service: light.turn_on
       data:
-        - entity_id: light.bar_table
-        - color_name: red
-        - brightness: 255
+        entity_id: light.bar_table
+        color_name: red
+        brightness: 255

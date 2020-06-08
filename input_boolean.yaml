@@ -43,6 +43,8 @@ oben_treppe_motion_trigger:
   icon: mdi:stairs
 bedroom_motion_trigger:
   icon: mdi:hotel
+studyroom_motion_trigger:
+  icon: mdi:briefcase
 coming_home_yeelight:
   icon: mdi:lightbulb
 coming_home_set_volume:

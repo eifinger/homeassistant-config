@@ -4,6 +4,10 @@ sensor:
     entity_id: sensor.humidity_bathroom
     name: statistics_humidity_bathroom
     sampling_size: 300
+  - platform: statistics
+    entity_id: sensor.humidity_upper_bathroom
+    name: statistics_humidity_upper_bathroom
+    sampling_size: 300
 
 automation:
   # Alert when the bathroom window is open but the humidity is in an acceptable level again
@@ -59,3 +63,57 @@ automation:
       - service: automation.turn_on
         data:
           entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
+  # Alert when the upper bathroom window is open but the humidity is in an acceptable level again
+  - id: humidity_low_alert_upper_bathroom
+    alias: Alarm Badfenster Oben schliessen wenn Humidity okay
+    initial_state: false
+    trigger:
+      - platform: template
+        value_template: >
+          {{ states('sensor.humidity_upper_bathroom') | float
+          < states('sensor.statistics_humidity_upper_bathroom') | float * 1.1 }}
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: 'binary_sensor.contact_upper_bathroom_window'
+          state: 'on'
+        - condition: state
+          entity_id: 'binary_sensor.contact_upper_bathroom_window_tilted'
+          state: 'on'
+    action:
+      - service: notify.group_notifications
+        data_template:
+          message: >
+            "Du kannst das Badfenster Oben wieder schließen,
+            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_upper_bathroom') | float  }} Prozent."
+      - service: notify.alexa_media
+        data_template:
+          target:
+            - media_player.kevins_echo_dot_oben
+            - media_player.kevin_s_echo_dot_unten
+            - media_player.kevins_echo
+            - media_player.kevins_echo_dot
+          data:
+            type: announce
+            method: speak
+          message: "Du kannst das Badfenster wieder schließen,
+            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_upper_bathroom') | float  }} Prozent."
+      - service: automation.turn_off
+        data:
+          entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
+  - id: activate_humidity_low_alert_bathroom # Enable the above automation when the humidity exceeds the treshold.
+    alias: Aktiviere Alarm Badfenster Oben schliessen wenn Humidity okay
+    initial_state: true
+    trigger:
+      - platform: template
+        value_template: >
+            {{ states('sensor.humidity_upper_bathroom') | float
+            > states('sensor.statistics_humidity_upper_bathroom') | float * 1.1 }}
+        for:
+          minutes: 5
+    action:
+      - service: automation.turn_on
+        data:
+          entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
+

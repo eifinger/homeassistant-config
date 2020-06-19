@@ -21,43 +21,67 @@ Author: Mark Carter
 #        target_temp_default: 20
 #        target_temp_step: 0.5        
 #        sync_clock_time_per_day: True
+#        sync_clock_time_on_startup: True
 #        current_temp_from_sensor_override: 0 # if this is set to 1 always use the internal sensor to report current temp, if 1 always use external sensor to report current temp.
 #        update_timeout:5
 
 #*****************************************************************************************************************************
+DEFAULT_NAME = 'Hysen Thermostat Controller'
+VERSION = '2.1.1'
 
+
+import asyncio
 import logging
 import binascii
-import socket
 import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
+from datetime import timedelta
 import datetime
 import time
-import random
-
-from homeassistant.const import (ATTR_TEMPERATURE, ATTR_ENTITY_ID, ATTR_UNIT_OF_MEASUREMENT, CONF_NAME, CONF_HOST, CONF_MAC, CONF_TIMEOUT, CONF_CUSTOMIZE, STATE_UNAVAILABLE)
+import socket
+from homeassistant import util
 
 try:
     from homeassistant.components.climate import ClimateEntity, PLATFORM_SCHEMA, ENTITY_ID_FORMAT
 except ImportError:
     from homeassistant.components.climate import ClimateDevice as ClimateEntity, PLATFORM_SCHEMA, ENTITY_ID_FORMAT
 
-from homeassistant.components.climate.const import (DOMAIN, SUPPORT_TARGET_TEMPERATURE,SUPPORT_PRESET_MODE, HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_AUTO, PRESET_AWAY,
-PRESET_NONE,CURRENT_HVAC_HEAT, CURRENT_HVAC_IDLE)
+from homeassistant.const import (
+    ATTR_TEMPERATURE, 
+    ATTR_ENTITY_ID, 
+    ATTR_UNIT_OF_MEASUREMENT, 
+    CONF_NAME, CONF_HOST, 
+    CONF_MAC, CONF_TIMEOUT, 
+    CONF_CUSTOMIZE, 
+    STATE_UNAVAILABLE)
+
+from homeassistant.components.climate.const import (
+    DOMAIN,
+    SUPPORT_TARGET_TEMPERATURE,
+    SUPPORT_PRESET_MODE, 
+    HVAC_MODE_OFF, 
+    HVAC_MODE_HEAT, 
+    HVAC_MODE_AUTO, 
+    PRESET_AWAY,
+    PRESET_NONE,
+    CURRENT_HVAC_HEAT, 
+    CURRENT_HVAC_IDLE)
 
 from homeassistant.helpers.entity import async_generate_entity_id
 
-DEFAULT_NAME = 'Hysen Thermostat Controller'
-
-VERSION = '2.1.0'
-
-
 _LOGGER = logging.getLogger(__name__)
 
-SUPPORT_FLAGS = SUPPORT_TARGET_TEMPERATURE
+SUPPORT_FLAGS = SUPPORT_PRESET_MODE | SUPPORT_TARGET_TEMPERATURE
+SUPPORT_HVAC = [HVAC_MODE_AUTO, HVAC_MODE_HEAT, HVAC_MODE_OFF]
+SUPPORT_PRESET = [PRESET_NONE, PRESET_AWAY]
+DEFAULT_OPERATIONS_LIST = [HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_AUTO]
 
-DEFAULT_RETRY = 2
-DEFAULT_TIMEOUT = 5
+SCAN_INTERVAL = timedelta(seconds=10)
+MIN_TIME_BETWEEN_SCANS = SCAN_INTERVAL
+MIN_TIME_BETWEEN_FORCED_SCANS = timedelta(milliseconds=100)
+
+DEFAULT_RETRY = 5
+DEFAULT_TIMEOUT = 3
 
 CONF_WIFI_SSID = "ssid"
 CONF_WIFI_PASSWORD ="password"
@@ -159,7 +183,7 @@ SET_TIME_SCHEDULE_SCHEMA = vol.Schema({
     vol.Required(CONFIG_WEEKEND_PERIOD2_TEMP): vol.Coerce(float),
 })
 
-DEFAULT_OPERATIONS_LIST = [HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_AUTO]
+
 HYSEN_POWERON = 1
 HYSEN_POWEROFF = 0
 HYSEN_MANUALMODE = 0
@@ -168,12 +192,14 @@ HYSEN_AUTOMODE = 1
 DEFAULT_TARGET_TEMP = 20
 DEFAULT_TARGET_TEMP_STEP = 1
 DEFAULT_CONF_SYNC_CLOCK_TIME_ONCE_PER_DAY = False
+DEFAULT_CONF_SYNC_CLOCK_TIME_ON_STARTUP = True
 
 CONF_DEVICES = 'devices'
 CONF_TARGET_TEMP = 'target_temp_default'
 CONF_TARGET_TEMP_STEP = 'target_temp_step'
 CONF_TIMEOUT = 'update_timeout'
 CONF_SYNC_CLOCK_TIME_ONCE_PER_DAY = 'sync_clock_time_per_day'
+CONF_SYNC_CLOCK_TIME_ON_STARTUP = 'sync_clock_time_on_startup'
 CONF_GETCURERNTTEMP_FROM_SENSOR = "current_temp_from_sensor_override"
 
 CONF_DNSHOST = 'host_dns'
@@ -191,6 +217,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
             vol.Optional(CONF_TARGET_TEMP, default=DEFAULT_TARGET_TEMP): vol.Range(min=5, max=99),
             vol.Optional(CONF_TARGET_TEMP_STEP, default=DEFAULT_TARGET_TEMP_STEP): vol.Coerce(float),
             vol.Optional(CONF_SYNC_CLOCK_TIME_ONCE_PER_DAY, default=DEFAULT_CONF_SYNC_CLOCK_TIME_ONCE_PER_DAY): cv.boolean,
+            vol.Optional(CONF_SYNC_CLOCK_TIME_ON_STARTUP, default=DEFAULT_CONF_SYNC_CLOCK_TIME_ON_STARTUP): cv.boolean,
             vol.Optional(CONF_GETCURERNTTEMP_FROM_SENSOR, default=-1): vol.Range(min=-1, max=1),
         })
     },
@@ -219,6 +246,7 @@ async def devices_from_config(domain_config, hass):
         target_temp_default = config.get(CONF_TARGET_TEMP)
         target_temp_step = config.get(CONF_TARGET_TEMP_STEP)
         sync_clock_time_per_day = config.get(CONF_SYNC_CLOCK_TIME_ONCE_PER_DAY)
+        sync_clock_time_on_startup = config.get(CONF_SYNC_CLOCK_TIME_ON_STARTUP)
         get_current_temp_from_sensor_override = config.get(CONF_GETCURERNTTEMP_FROM_SENSOR)
 
         # Set up the Hysen Climate devices.
@@ -231,7 +259,7 @@ async def devices_from_config(domain_config, hass):
                     device_id, timeout, hass, name,
                     hysen((ip_addr, ip_port), blmac_addr, None),
                     target_temp_default, target_temp_step, operation_list,
-                    sync_clock_time_per_day, get_current_temp_from_sensor_override))
+                    sync_clock_time_per_day,sync_clock_time_on_startup, get_current_temp_from_sensor_override))
             else:
                 devices = discover(timeout)
                 devicecount = len(devices)
@@ -245,7 +273,7 @@ async def devices_from_config(domain_config, hass):
                                 hass_devices.append(await create_broadlink_device(
                                     device_id, timeout, hass, name, device,
                                     target_temp_default, target_temp_step, operation_list,
-                                    sync_clock_time_per_day, get_current_temp_from_sensor_override))
+                                    sync_clock_time_per_day,sync_clock_time_on_startup, get_current_temp_from_sensor_override))
                                 _LOGGER.warning("Discovered Broadlink Hysen device : %s, at %s",stringmac,device.host[0])
                             else:
                                 _LOGGER.error("Broadlink Hysen device MAC:%s not found.",mac_addr)
@@ -258,7 +286,7 @@ async def devices_from_config(domain_config, hass):
 
 async def create_broadlink_device(
         device_id, timeout, hass, name, broadlink_device, target_temp_default,
-        target_temp_step, operation_list, sync_clock_time_per_day,
+        target_temp_step, operation_list, sync_clock_time_per_day,sync_clock_time_on_startup,
         get_current_temp_from_sensor_override):
     broadlink_device.timeout = timeout
     broadlink_device.auth()
@@ -266,7 +294,7 @@ async def create_broadlink_device(
     return BroadlinkHysenClimate(
         entity_id,
         hass, name, broadlink_device, target_temp_default,
-        target_temp_step, operation_list, sync_clock_time_per_day,
+        target_temp_step, operation_list, sync_clock_time_per_day,sync_clock_time_on_startup,
         get_current_temp_from_sensor_override)
 
 async def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
@@ -284,7 +312,10 @@ async def async_setup_platform(hass, config, async_add_devices, discovery_info=N
 
     #Example for service call (hysen_config_wifi) setting
     """
-    {"ssid":"yoursid","password":"yourpassword","sectype":4,"timeout":5}
+    ssid: yoursid
+    password: yourpassword
+    sectype: 4 
+    timeout: 5
     """
     async def async_hysen_set_wifi(thermostat,service):
                 ssid  = service.data.get(CONF_WIFI_SSID)
@@ -330,7 +361,8 @@ async def async_setup_platform(hass, config, async_add_devices, discovery_info=N
 
    #Example for service call (hysen_set_advanced) setting
     """
-    {"entity_id":"climate.house_thermostat","poweron_mem":"1"}
+    entity_id: climate.house_thermostat 
+    poweron_mem: 1
     """
     async def async_hysen_set_advanced(thermostat,service):
                 entity_id = service.data.get(ATTR_ENTITY_ID)
@@ -363,23 +395,23 @@ async def async_setup_platform(hass, config, async_add_devices, discovery_info=N
 
     #Example sfor service call (hysen_set_heatingschedule)
     """
-    {"entity_id":"climate.house_thermostat",
-    "week_period1_start":"06:30",
-    "week_period1_temp":"20.5",
-    "week_period2_start":"09:00",
-    "week_period2_temp":"17.0",
-    "week_period3_start":"13:00",
-    "week_period3_temp":"17.0",
-    "week_period4_start":"13:00",
-    "week_period4_temp":"17.0",
-    "week_period5_start":"17:00",
-    "week_period5_temp":"20.5",
-    "week_period6_start":"22:00",
-    "week_period6_temp":"17.0",
-    "weekend_period1_start":"7:30",
-    "weekend_period1_temp":"20.5",
-    "weekend_period2_start":"22:30",
-    "weekend_period2_temp":"17.0"}
+    entity_id: climate.house_thermostat
+    week_period1_start: 06:30 
+    week_period1_temp:  20.5
+    week_period2_start: 09:00
+    week_period2_temp: 17.0
+    week_period3_start: 13:00
+    week_period3_temp: 17.0 
+    week_period4_start: 13:00
+    week_period4_temp: 17.0
+    week_period5_start: 17:00
+    week_period5_temp: 20.5
+    week_period6_start: 22:00
+    week_period6_temp: 17.0
+    weekend_period1_start: 7:30
+    weekend_period1_temp: 20.5
+    weekend_period2_start: 22:30
+    weekend_period2_temp: 17.0
     """
     async def async_hysen_set_time_schedule(thermostat,service):
                entity_id = service.data.get(ATTR_ENTITY_ID)
@@ -449,7 +481,8 @@ async def async_setup_platform(hass, config, async_add_devices, discovery_info=N
 
     #Example for service call (hysen_set_remotelock) setting
     """
-    {"entity_id":"climate.house_thermostat","remotelock":1}
+    entity_id: climate.house_thermostat
+    remotelock: 1
     """
     async def async_hysen_set_remotelock(thermostat,service):
                 entity_id = service.data.get(ATTR_ENTITY_ID)
@@ -490,425 +523,445 @@ async def async_setup_platform(hass, config, async_add_devices, discovery_info=N
     if hass_devices:
         async_add_devices(hass_devices)
 
+######################################################################################################################################
+######################################################################################################################################
 class BroadlinkHysenClimate(ClimateEntity):
 
-    def __init__(self, entity_id, hass, name, broadlink_device, target_temp_default,
-                 target_temp_step, operation_list,sync_clock_time_per_day,get_current_temp_from_sensor_override):
-        """Initialize the Broadlink Hysen Climate device."""
-        self.entity_id = entity_id
-        self._hass = hass
-        self._name = name
-        self._HysenData = []
-        self._broadlink_device = broadlink_device
+        def __init__(self, entity_id, hass, name, broadlink_device, target_temp_default,
+                     target_temp_step, operation_list,sync_clock_time_per_day,sync_clock_time_on_startup,get_current_temp_from_sensor_override):
+            """Initialize the Broadlink Hysen Climate device."""
+            self.entity_id = entity_id
+            self._hass = hass
+            self._name = name
+            self._HysenData = []
+            self._broadlink_device = broadlink_device
 
-        self._sync_clock_time_per_day = sync_clock_time_per_day
-        self._current_day_of_week = 0
+            self._sync_clock_time_per_day = sync_clock_time_per_day
+            self._sync_clock_time_on_startup = sync_clock_time_on_startup
+            self._current_day_of_week = 0
 
-        self._get_current_temp_from_sensor_override = get_current_temp_from_sensor_override
+            self._get_current_temp_from_sensor_override = get_current_temp_from_sensor_override
 
-        self._target_temperature = target_temp_default
-        self._target_temperature_step = target_temp_step
-        self._unit_of_measurement = hass.config.units.temperature_unit
+            self._target_temperature = target_temp_default
+            self._target_temperature_step = target_temp_step
+            self._unit_of_measurement = hass.config.units.temperature_unit
 
-        self._power_state = HYSEN_POWEROFF
-        self._auto_state = HYSEN_MANUALMODE
-        self._current_operation = STATE_UNAVAILABLE
-        self._operation_list = operation_list
+            self._power_state = HYSEN_POWEROFF
+            self._auto_state = HYSEN_MANUALMODE
+            self._current_operation = STATE_UNAVAILABLE
+            self._operation_list = operation_list
 
-        self._away_mode = False
-        self._awaymodeLastState = HVAC_MODE_OFF
+            self._away_mode = False
+            self._awaymodeLastState = HVAC_MODE_OFF
 
-        self._is_heating_active = 0
-        self._auto_override = 0
-        self._remote_lock = 0
+            self._is_heating_active = 0
+            self._auto_override = 0
+            self._remote_lock = 0
 
-        self._loop_mode = DEFAULT_LOOPMODE
-        self._sensor_mode = DEFAULT_SENSORMODE
-        self._min_temp = DEFAULT_MINTEMP
-        self._max_temp = DEFAULT_MAXTEMP
-        self._roomtemp_offset = DEFAULT_ROOMTEMPOFFSET
-        self._anti_freeze_function = DEFAULT_ANTIFREEZE
-        self._poweron_mem = DEFAULT_POWERONMEM
+            self._loop_mode = DEFAULT_LOOPMODE
+            self._sensor_mode = DEFAULT_SENSORMODE
+            self._min_temp = DEFAULT_MINTEMP
+            self._max_temp = DEFAULT_MAXTEMP
+            self._roomtemp_offset = DEFAULT_ROOMTEMPOFFSET
+            self._anti_freeze_function = DEFAULT_ANTIFREEZE
+            self._poweron_mem = DEFAULT_POWERONMEM
 
-        self._external_sensor_temprange = DEFAULT_EXTERNALSENSORTEMPRANGE
-        self._deadzone_sensor_temprange = DEFAULT_DEADZONESENSORTEMPRANGE
-        self._room_temp = 0
-        self._external_temp = 0
+            self._external_sensor_temprange = DEFAULT_EXTERNALSENSORTEMPRANGE
+            self._deadzone_sensor_temprange = DEFAULT_DEADZONESENSORTEMPRANGE
+            self._room_temp = 0
+            self._external_temp = 0
 
-        self._clock_hour = 0
-        self._clock_min = 0
-        self._clock_sec = 0
-        self._day_of_week = 1
+            self._clock_hour = 0
+            self._clock_min = 0
+            self._clock_sec = 0
+            self._day_of_week = 1
 
-        self._week_day = ""
-        self._week_end = ""
-        
-        #Sync the time on startup
-#        self.set_time(datetime.datetime.now().hour, datetime.datetime.now().minute, datetime.datetime.now().second, datetime.datetime.today().weekday())
+            self._week_day = ""
+            self._week_end = ""
+            
+            self._available = False  # should become True after first update()
 
-        self._available = False  # should become True after first update()
+        async def async_added_to_hass(self):
+            """Run when entity about to be added."""
+            try:
+                await self._hass.async_add_executor_job(self._broadlink_device.auth)
+            except Exception as error:
+                _LOGGER.error("Failed to Auth. Broadlink Hysen device:%s, on adding to HA, %s",self.entity_id,error)
 
-    async def async_added_to_hass(self):
-        """Run when entity about to be added."""
-        try:
-            await self._hass.async_add_executor_job(self._broadlink_device.auth)
-        except Exception as error:
-            _LOGGER.error("Failed to Auth. Broadlink Hysen device:%s, on adding to HA, %s",self.entity_id,error)
+    ######################################################################################################################################
+    ######################################################################################################################################
+        @property
+        def name(self):
+            """Return the name of the climate device."""
+            return self._name
 
-    @property
-    def available(self) -> bool:
-        """Return True if the device is currently available."""
-        return self._available
+        @property
+        def available(self) -> bool:
+            """Return True if the device is currently available."""
+            return self._available
 
-    @property
-    def should_poll(self):
-        """Return the polling state."""
-        return True
+        @property
+        def temperature_unit(self):
+            """Return the unit of measurement."""
+            return self._unit_of_measurement
 
-    @property
-    def name(self):
-        """Return the name of the climate device."""
-        return self._name
-
-    @property
-    def temperature_unit(self):
-        """Return the unit of measurement."""
-        return self._unit_of_measurement
-
-    @property
-    def current_temperature(self):
-        """Return the current temperature."""
-        # sensor = 0 for internal sensor, 1 for external sensor, 2 for internal control temperature, external limit temperature.
-        if self._get_current_temp_from_sensor_override == 0:
-            return self._room_temp
-        elif self._get_current_temp_from_sensor_override == 1:
-            return self._external_temp
-        else:
-            if self._sensor_mode == 1:
+        @property
+        def current_temperature(self):
+            """Return the current temperature."""
+            # sensor = 0 for internal sensor, 1 for external sensor, 2 for internal control temperature, external limit temperature.
+            if self._get_current_temp_from_sensor_override == 0:
+                return self._room_temp
+            elif self._get_current_temp_from_sensor_override == 1:
                 return self._external_temp
             else:
-                return self._room_temp
+                if self._sensor_mode == 1:
+                    return self._external_temp
+                else:
+                    return self._room_temp
 
-    @property
-    def min_temp(self):
-        """Return the polling state."""
-        return self._min_temp
+        @property
+        def min_temp(self):
+            """Return the polling state."""
+            return self._min_temp
 
-    @property
-    def max_temp(self):
-        """Return the polling state."""
-        return self._max_temp
+        @property
+        def max_temp(self):
+            """Return the polling state."""
+            return self._max_temp
 
-    @property
-    def target_temperature(self):
-        """Return the temperature we try to reach."""
-        return self._target_temperature
+        @property
+        def target_temperature(self):
+            """Return the temperature we try to reach."""
+            return self._target_temperature
 
-    @property
-    def target_temperature_step(self):
-        """Return the supported step of target temperature."""
-        return self._target_temperature_step
+        @property
+        def target_temperature_step(self):
+            """Return the supported step of target temperature."""
+            return self._target_temperature_step
 
-    @property
-    def hvac_mode(self):
-        """Return current operation ie. heat, idle."""
-        return self._current_operation
+        @property
+        def hvac_mode(self):
+            """Return current operation ie. heat, idle."""
+            return self._current_operation
 
-    @property
-    def hvac_modes(self):
-        """Return the list of available operation modes."""
-        return self._operation_list
+        @property
+        def hvac_modes(self):
+            """Return the list of available operation modes."""
+            return SUPPORT_HVAC
 
-    @property
-    def supported_features(self):
-        """Return the list of supported features."""
-        return SUPPORT_FLAGS
+        @property
+        def supported_features(self):
+            """Return the list of supported features."""
+            return SUPPORT_FLAGS
 
-    def preset_modes(self):
-        """Return valid preset modes."""
-        return [
-            PRESET_AWAY,PRESET_NONE
-        ]
+        @property
+        def preset_mode(self):
+            """Return the current preset mode, e.g., home, away, temp."""
+            return PRESET_AWAY if self._away_mode else PRESET_NONE
 
-    @property
-    def is_away_mode_on(self):
-        """Return if away mode is on."""
-        return self._away_mode
+        @property
+        def preset_modes(self):
+            """Return valid preset modes."""
+            return SUPPORT_PRESET
 
-    @property
-    def hvac_action(self):
-        """Return current HVAC action."""
-        if self._is_heating_active == 1:
-            return CURRENT_HVAC_HEAT
-        else:
-            return CURRENT_HVAC_IDLE
+        @property
+        def is_away_mode_on(self):
+            """Return if away mode is on."""
+            return self._away_mode
 
-    @property
-    def device_state_attributes(self):
-        """Return device specific state attributes."""
-        attr = {}
-        attr['sfw_version'] = VERSION
-        attr['power_state'] = self._power_state
-        attr['away_mode'] = self._away_mode
-        attr['sensor_mode'] = self._sensor_mode
-        attr['room_temp'] = self._room_temp
-        attr['external_temp'] = self._external_temp
-        attr['heating_active'] = self._is_heating_active
-        attr['auto_mode'] = self._auto_state
-        attr['auto_override'] = self._auto_override
-        attr['external_sensor_temprange'] = self._external_sensor_temprange
-        attr['deadzone_sensor_temprange'] = self._deadzone_sensor_temprange
-        attr['loop_mode'] = self._loop_mode
-        attr['roomtemp_offset'] = float(self._roomtemp_offset)
-        attr['anti_freeze_function'] = self._anti_freeze_function
-        attr['poweron_mem'] = self._poweron_mem
-        attr['remote_lock'] = self._remote_lock
-        attr['clock_hour'] = self._clock_hour
-        attr['clock_min'] = self._clock_min
-        attr['clock_sec'] = self._clock_sec
-        attr['day_of_week'] = self._day_of_week
-        attr['week_day'] = str(self._week_day).replace("'",'"')
-        attr['week_end'] = str(self._week_end).replace("'",'"')
-        return attr
+        @property
+        def hvac_action(self):
+            """Return current HVAC action."""
+            if self._is_heating_active == 1:
+                return CURRENT_HVAC_HEAT
+            else:
+                return CURRENT_HVAC_IDLE
 
-    def turn_on(self):
-        self.send_power_command(HYSEN_POWERON,self._remote_lock)
-        self._away_mode = False
-        return True
+        @property
+        def device_state_attributes(self):
+            """Return device specific state attributes."""
+            attr = {}
+            attr['sfw_version'] = VERSION
+            attr['power_state'] = self._power_state
+            attr['away_mode'] = self._away_mode
+            attr['sensor_mode'] = self._sensor_mode
+            attr['room_temp'] = self._room_temp
+            attr['external_temp'] = self._external_temp
+            attr['heating_active'] = self._is_heating_active
+            attr['auto_mode'] = self._auto_state
+            attr['auto_override'] = self._auto_override
+            attr['external_sensor_temprange'] = self._external_sensor_temprange
+            attr['deadzone_sensor_temprange'] = self._deadzone_sensor_temprange
+            attr['loop_mode'] = self._loop_mode
+            attr['roomtemp_offset'] = float(self._roomtemp_offset)
+            attr['anti_freeze_function'] = self._anti_freeze_function
+            attr['poweron_mem'] = self._poweron_mem
+            attr['remote_lock'] = self._remote_lock
+            attr['clock_hour'] = self._clock_hour
+            attr['clock_min'] = self._clock_min
+            attr['clock_sec'] = self._clock_sec
+            attr['day_of_week'] = self._day_of_week
+            attr['week_day'] = str(self._week_day).replace("'",'"')
+            attr['week_end'] = str(self._week_end).replace("'",'"')
+            return attr
 
-    def turn_off(self):
-        self.send_power_command(HYSEN_POWEROFF,self._remote_lock)
-        self._away_mode = False
-        return True
+    ######################################################################################################################################
+    ######################################################################################################################################
 
-    def set_temperature(self, **kwargs):
-        """Set new target temperatures."""
-        if kwargs.get(ATTR_TEMPERATURE) is not None:
-            self._target_temperature = kwargs.get(ATTR_TEMPERATURE)
-            if (self._power_state == HYSEN_POWERON):
-                self.send_tempset_command(self._target_temperature)
-            self.schedule_update_ha_state()
+        def turn_on(self):
+            self.send_power_command(HYSEN_POWERON,self._remote_lock)
+            self._away_mode = False
+            return True
 
-    def set_hvac_mode(self, operation_mode):
-        """Set new opmode """
-        self._current_operation = operation_mode
-        if self._away_mode == True:
-            self.set_preset_mode(PRESET_NONE)
-        self.set_operation_mode_command(operation_mode)
-        self.schedule_update_ha_state()
+        def turn_off(self):
+            self.send_power_command(HYSEN_POWEROFF,self._remote_lock)
+            self._away_mode = False
+            return True
 
-    def set_preset_mode(self, preset_mode):
-        if preset_mode == PRESET_AWAY:
-            if self._away_mode == False:
-                self._awaymodeLastState = self._current_operation
-                self._away_mode = True
-                self.set_operation_mode_command(HVAC_MODE_OFF)
-        elif preset_mode == PRESET_NONE:
+        def set_temperature(self, **kwargs):
+            """Set new target temperatures."""
+            if kwargs.get(ATTR_TEMPERATURE) is not None:
+                self._target_temperature = kwargs.get(ATTR_TEMPERATURE)
+                if (self._power_state == HYSEN_POWERON):
+                    self.send_tempset_command(self._target_temperature)
+
+        def set_hvac_mode(self, operation_mode):
+            """Set new opmode """
+            self._current_operation = operation_mode
             if self._away_mode == True:
-                self._away_mode = False
-                self.set_operation_mode_command(self._awaymodeLastState)
-        else:
-            _LOGGER.error("Unknown mode: %s", preset_mode)
-        self.schedule_update_ha_state()
+                self.set_preset_mode(PRESET_NONE)
+            self.set_operation_mode_command(operation_mode)
 
-    def send_tempset_command(self, target_temperature):
-        for retry in range(DEFAULT_RETRY):
-            try:
-                self._broadlink_device.set_temp(target_temperature)
-                break
-            except socket.timeout:
+
+        def set_preset_mode(self, preset_mode):
+            if preset_mode == PRESET_AWAY:
+                if self._away_mode == False:
+                    self._awaymodeLastState = self._current_operation
+                    self._away_mode = True
+                    self.set_operation_mode_command(HVAC_MODE_OFF)
+            elif preset_mode == PRESET_NONE:
+                if self._away_mode == True:
+                    self._away_mode = False
+                    self.set_operation_mode_command(self._awaymodeLastState)
+
+
+        def send_tempset_command(self, target_temperature):
+            for retry in range(DEFAULT_RETRY):
                 try:
-                    self._broadlink_device.auth()
-                except Expection as error:
+                    self._broadlink_device.set_temp(target_temperature)
+                    break
+                except socket.timeout:
+                    try:
+                        self._broadlink_device.auth()
+                    except Expection as error:
+                            if retry == DEFAULT_RETRY-1:
+                                _LOGGER.error(
+                                    "Failed to send SetTemp command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)
+            self.force_update()
+
+        def send_power_command(self, target_state,remote_lock):
+            for retry in range(DEFAULT_RETRY):
+                try:
+                    self._broadlink_device.set_power(target_state,remote_lock)
+                    break
+                except socket.timeout:
+                    try:
+                        self._broadlink_device.auth()
+                    except Expection as error:
                         if retry == DEFAULT_RETRY-1:
                             _LOGGER.error(
-                                "Failed to send SetTemp command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)
+                                "Failed to send Power command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)
+            self.force_update()
 
-    def send_power_command(self, target_state,remote_lock):
-        for retry in range(DEFAULT_RETRY):
-            try:
-                self._broadlink_device.set_power(target_state,remote_lock)
-                break
-            except socket.timeout:
+        def send_mode_command(self, target_state, loopmode, sensor):
+            for retry in range(DEFAULT_RETRY):
                 try:
-                    self._broadlink_device.auth()
-                except Expection as error:
-                    if retry == DEFAULT_RETRY-1:
-                        _LOGGER.error(
-                            "Failed to send Power command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)
+                    self._broadlink_device.set_mode(target_state, loopmode, sensor)
+                    break
+                except socket.timeout:
+                    try:
+                        self._broadlink_device.auth()
+                    except Exception as error:
+                        if retry == DEFAULT_RETRY-1:
+                            _LOGGER.error(
+                                "Failed to send OpMode-Heat/Manual command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)
+            self.force_update()
 
-    def send_mode_command(self, target_state, loopmode, sensor):
-        for retry in range(DEFAULT_RETRY):
-            try:
-                self._broadlink_device.set_mode(target_state, loopmode, sensor)
-                break
-            except socket.timeout:
+        def set_operation_mode_command(self, operation_mode):
+            if operation_mode == HVAC_MODE_HEAT:
+                if self._power_state == HYSEN_POWEROFF:
+                    self.send_power_command(HYSEN_POWERON,self._remote_lock)
+                self.send_mode_command(HYSEN_MANUALMODE, self._loop_mode,self._sensor_mode)
+            elif operation_mode == HVAC_MODE_AUTO:
+                if self._power_state == HYSEN_POWEROFF:
+                    self.send_power_command(HYSEN_POWERON,self._remote_lock)
+                self.send_mode_command(HYSEN_AUTOMODE, self._loop_mode,self._sensor_mode)
+            elif operation_mode == HVAC_MODE_OFF:
+                      self.send_power_command(HYSEN_POWEROFF,self._remote_lock)
+            else:
+                _LOGGER.error("Unknown command for Broadlink Hysen Device: %s",self.entity_id)
+            self.force_update()
+            return
+
+        def set_time(self, hour, minute, second, day):
+            for retry in range(DEFAULT_RETRY):
                 try:
-                    self._broadlink_device.auth()
-                except Exception as error:
-                    if retry == DEFAULT_RETRY-1:
-                        _LOGGER.error(
-                            "Failed to send OpMode-Heat/Manual command to Broadlink Hysen Device:%s, :%s",self.entity_id,error)
+                    self._broadlink_device.set_time(hour, minute, second, day)
+                    break
+                except socket.timeout:
+                    try:
+                        self._broadlink_device.auth()
+                    except Exception as error:
+                        if retry == DEFAULT_RETRY-1:
+                            _LOGGER.error(
+                                "Failed to send Set Time command to Broadlink Hysen Device: %s, :%s",self.entity_id,error)
+            self.force_update()
 
-    def set_operation_mode_command(self, operation_mode):
-        if operation_mode == HVAC_MODE_HEAT:
-            if self._power_state == HYSEN_POWEROFF:
-                self.send_power_command(HYSEN_POWERON,self._remote_lock)
-            self.send_mode_command(HYSEN_MANUALMODE, self._loop_mode,self._sensor_mode)
-        elif operation_mode == HVAC_MODE_AUTO:
-            if self._power_state == HYSEN_POWEROFF:
-                self.send_power_command(HYSEN_POWERON,self._remote_lock)
-            self.send_mode_command(HYSEN_AUTOMODE, self._loop_mode,self._sensor_mode)
-        elif operation_mode == HVAC_MODE_OFF:
-                  self.send_power_command(HYSEN_POWEROFF,self._remote_lock)
-        else:
-            _LOGGER.error("Unknown command for Broadlink Hysen Device: %s",self.entity_id)
-        return
+        def set_advanced(self, loop_mode=None, sensor=None, osv=None, dif=None,
+                         svh=None, svl=None, adj=None, fre=None, poweronmem=None):
+            loop_mode = self._loop_mode if loop_mode is None else loop_mode
+            sensor = self._sensor_mode if sensor is None else sensor
+            osv = self._external_sensor_temprange if osv is None else osv
+            dif = self._deadzone_sensor_temprange if dif is None else dif
+            svh = self._max_temp if svh is None else svh
+            svl = self._min_temp if svl is None else svl
+            adj = self._roomtemp_offset if adj is None else adj
+            fre = self._anti_freeze_function if fre is None else fre
+            poweronmem = self._poweron_mem if poweronmem is None else poweronmem
 
-    def set_time(self, hour, minute, second, day):
-        for retry in range(DEFAULT_RETRY):
-            try:
-                self._broadlink_device.set_time(hour, minute, second, day)
-                break
-            except socket.timeout:
+           # Fix for native broadlink.py set_advanced breaking loopmode and operation_mode
+            if self._current_operation == HVAC_MODE_HEAT:
+                current_mode = HYSEN_MANUALMODE
+            else:
+                current_mode = HYSEN_AUTOMODE
+            mode_byte = ( (loop_mode + 1) << 4) + current_mode
+
+            for retry in range(DEFAULT_RETRY):
                 try:
-                    self._broadlink_device.auth()
-                except Exception as error:
-                    if retry == DEFAULT_RETRY-1:
-                        _LOGGER.error(
-                            "Failed to send Set Time command to Broadlink Hysen Device: %s, :%s",self.entity_id,error)
+                    self._broadlink_device.set_advanced(
+                        mode_byte, sensor, osv, dif, svh, svl, adj, fre, poweronmem)
+                    break
+                except socket.timeout:
+                    try:
+                        self._broadlink_device.auth()
+                    except Exception as error:
+                        if retry == DEFAULT_RETRY-1:
+                            _LOGGER.error(
+                                "Failed to send Set Advanced to Broadlink Hysen Device: %s, :%s",self.entity_id,error)
+            self.force_update()
 
-    def set_advanced(self, loop_mode=None, sensor=None, osv=None, dif=None,
-                     svh=None, svl=None, adj=None, fre=None, poweronmem=None):
-        loop_mode = self._loop_mode if loop_mode is None else loop_mode
-        sensor = self._sensor_mode if sensor is None else sensor
-        osv = self._external_sensor_temprange if osv is None else osv
-        dif = self._deadzone_sensor_temprange if dif is None else dif
-        svh = self._max_temp if svh is None else svh
-        svl = self._min_temp if svl is None else svl
-        adj = self._roomtemp_offset if adj is None else adj
-        fre = self._anti_freeze_function if fre is None else fre
-        poweronmem = self._poweron_mem if poweronmem is None else poweronmem
-
-       # Fix for native broadlink.py set_advanced breaking loopmode and operation_mode
-        if self._current_operation == HVAC_MODE_HEAT:
-            current_mode = HYSEN_MANUALMODE
-        else:
-            current_mode = HYSEN_AUTOMODE
-        mode_byte = ( (loop_mode + 1) << 4) + current_mode
-
-        for retry in range(DEFAULT_RETRY):
-            try:
-                self._broadlink_device.set_advanced(
-                    mode_byte, sensor, osv, dif, svh, svl, adj, fre, poweronmem)
-                break
-            except socket.timeout:
+        def set_schedule(self, weekday, weekend):
+            for retry in range(DEFAULT_RETRY):
                 try:
-                    self._broadlink_device.auth()
-                except Exception as error:
-                    if retry == DEFAULT_RETRY-1:
-                        _LOGGER.error(
-                            "Failed to send Set Advanced to Broadlink Hysen Device: %s, :%s",self.entity_id,error)
+                    self._broadlink_device.set_schedule(weekday, weekend)
+                    break
+                except socket.timeout:
+                    try:
+                        self._broadlink_device.auth()
+                    except Exception as error:
+                        if retry == DEFAULT_RETRY-1:
+                            _LOGGER.error(
+                                "Failed to send Set Schedule to Broadlink Hysen Device: %s, :%s",self.entity_id,error)
+            self.force_update()
 
-    def set_schedule(self, weekday, weekend):
-        for retry in range(DEFAULT_RETRY):
-            try:
-                self._broadlink_device.set_schedule(weekday, weekend)
-                break
-            except socket.timeout:
+        def set_lock(self, remote_lock):
+            for retry in range(DEFAULT_RETRY):
                 try:
-                    self._broadlink_device.auth()
-                except Exception as error:
-                    if retry == DEFAULT_RETRY-1:
-                        _LOGGER.error(
-                            "Failed to send Set Schedule to Broadlink Hysen Device: %s, :%s",self.entity_id,error)
-
-    def set_lock(self, remote_lock):
-        for retry in range(DEFAULT_RETRY):
-            try:
-                if self._away_mode == False:
-                    self._broadlink_device.set_power(self._power_state, remote_lock)
-                else:
-                    self._broadlink_device.set_power(0, remote_lock)
-                break
-            except socket.timeout:
-                try:
-                    self._broadlink_device.auth()
-                except Exception as error:
-                    if retry == DEFAULT_RETRY-1:
-                        _LOGGER.error(
-                            "Failed to send Set Lock to Broadlink Hysen Device: %s, :%s",self.entity_id,error)
-
-    def update(self):
-        """Get the latest data from the thermostat."""
-        time.sleep(random.uniform(0.1, 0.5))
-        for retry in range(DEFAULT_RETRY):
-            try:
-                self._HysenData = self._broadlink_device.get_full_status()
-                if self._HysenData is not None:
-                    self._room_temp = self._HysenData['room_temp']
-                    self._target_temperature = self._HysenData['thermostat_temp']
-                    self._min_temp = self._HysenData['svl']
-                    self._max_temp = self._HysenData['svh']
-                    self._loop_mode = int(self._HysenData['loop_mode'])-1
-                    self._power_state = self._HysenData['power']
-                    self._auto_state = self._HysenData['auto_mode']
-                    self._is_heating_active = self._HysenData['active']
-
-                    self._remote_lock = self._HysenData['remote_lock']
-                    self._auto_override = self._HysenData['temp_manual']
-                    self._sensor_mode = self._HysenData['sensor']
-                    self._external_sensor_temprange = self._HysenData['osv']
-                    self._deadzone_sensor_temprange = self._HysenData['dif']
-                    self._roomtemp_offset = self._HysenData['room_temp_adj']
-                    self._anti_freeze_function = self._HysenData['fre']
-                    self._poweron_mem = self._HysenData['poweron']
-                    self._external_temp = self._HysenData['external_temp']
-                    self._clock_hour = self._HysenData['hour']
-                    self._clock_min = self._HysenData['min']
-                    self._clock_sec = self._HysenData['sec']
-                    self._day_of_week = self._HysenData['dayofweek']
-                    self._week_day = self._HysenData['weekday']
-                    self._week_end = self._HysenData['weekend']
-
-                    self._available = True
-                    if self._power_state == HYSEN_POWERON:
-                        if self._auto_state == HYSEN_AUTOMODE:
-                            self._current_operation = HVAC_MODE_AUTO
-                        else:
-                            self._current_operation = HVAC_MODE_HEAT
-                    elif self._power_state == HYSEN_POWEROFF:
-                         self._target_temperature = self._min_temp
-                         self._current_operation = HVAC_MODE_OFF
+                    if self._away_mode == False:
+                        self._broadlink_device.set_power(self._power_state, remote_lock)
                     else:
-                         self._current_operation = STATE_UNAVAILABLE
-                         self._available = False
-                else:
-                    _LOGGER.error("Failed to get Update from Broadlink Hysen Device: %s, GetFullStatus returned None!",self.entity_id)
-                    self._current_operation = STATE_UNAVAILABLE
-                    self._available = False
+                        self._broadlink_device.set_power(0, remote_lock)
+                    break
+                except socket.timeout:
+                    try:
+                        self._broadlink_device.auth()
+                    except Exception as error:
+                        if retry == DEFAULT_RETRY-1:
+                            _LOGGER.error(
+                                "Failed to send Set Lock to Broadlink Hysen Device: %s, :%s",self.entity_id,error)
+            self.force_update()
 
+    ######################################################################################################################################
+    ######################################################################################################################################
+        def force_update(self):
+            self.update(no_throttle=True)
+            self.schedule_update_ha_state(True)
+
+        @util.Throttle(MIN_TIME_BETWEEN_SCANS,MIN_TIME_BETWEEN_FORCED_SCANS)
+        def update(self):
+            """Get the latest data from the thermostat."""
+            for retry in range(DEFAULT_RETRY):
+                try:
+                    self._HysenData = self._broadlink_device.get_full_status()
+                    if self._HysenData is not None:
+                        self._room_temp = self._HysenData['room_temp']
+                        self._target_temperature = self._HysenData['thermostat_temp']
+                        self._min_temp = self._HysenData['svl']
+                        self._max_temp = self._HysenData['svh']
+                        self._loop_mode = int(self._HysenData['loop_mode'])-1
+                        self._power_state = self._HysenData['power']
+                        self._auto_state = self._HysenData['auto_mode']
+                        self._is_heating_active = self._HysenData['active']
+
+                        self._remote_lock = self._HysenData['remote_lock']
+                        self._auto_override = self._HysenData['temp_manual']
+                        self._sensor_mode = self._HysenData['sensor']
+                        self._external_sensor_temprange = self._HysenData['osv']
+                        self._deadzone_sensor_temprange = self._HysenData['dif']
+                        self._roomtemp_offset = self._HysenData['room_temp_adj']
+                        self._anti_freeze_function = self._HysenData['fre']
+                        self._poweron_mem = self._HysenData['poweron']
+                        self._external_temp = self._HysenData['external_temp']
+                        self._clock_hour = self._HysenData['hour']
+                        self._clock_min = self._HysenData['min']
+                        self._clock_sec = self._HysenData['sec']
+                        self._day_of_week = self._HysenData['dayofweek']
+                        self._week_day = self._HysenData['weekday']
+                        self._week_end = self._HysenData['weekend']
+
+                        self._available = True
+                        if self._power_state == HYSEN_POWERON:
+                            if self._auto_state == HYSEN_AUTOMODE:
+                                self._current_operation = HVAC_MODE_AUTO
+                            else:
+                                self._current_operation = HVAC_MODE_HEAT
+                        elif self._power_state == HYSEN_POWEROFF:
+                             self._target_temperature = self._min_temp
+                             self._current_operation = HVAC_MODE_OFF
+                        else:
+                             self._current_operation = STATE_UNAVAILABLE
+                             self._available = False
+                    else:
+                        _LOGGER.error("Failed to get Update from Broadlink Hysen Device: %s, GetFullStatus returned None!",self.entity_id)
+                        self._current_operation = STATE_UNAVAILABLE
+                        self._available = False
+
+                except Exception as error:
+                    if retry < 1:
+                        _LOGGER.error("Failed to get Data from Broadlink Hysen Device:%s,:%s",self.entity_id,error)
+                        self._current_operation = STATE_UNAVAILABLE
+                        self._room_temp = 0
+                        self._external_temp = 0
+                        self._available = False
+                    return
+
+            """Sync the clock if required."""        
+            try:
+                """Sync the clock once on startup."""        
+                if self._sync_clock_time_on_startup:
+                    self.set_time(datetime.datetime.now().hour, datetime.datetime.now().minute, datetime.datetime.now().second, datetime.datetime.today().weekday()+1)
+                    self._sync_clock_time_on_startup = False
+                """Sync the clock once per day if required."""        
+                if self._sync_clock_time_per_day == True:
+                 now_day_of_the_week = (datetime.datetime.today().weekday()) + 1
+                 if self._current_day_of_week < now_day_of_the_week:
+                    currentDT = datetime.datetime.now()
+                    if currentDT.time() > datetime.time(hour=3): #Set am 3am
+                        self.set_time(currentDT.hour, currentDT.minute, currentDT.second, now_day_of_the_week)
+                        self._current_day_of_week = now_day_of_the_week
+                        _LOGGER.info("Broadlink Hysen Device:%s Clock Sync Success...",self.entity_id)
             except Exception as error:
-                if retry < 1:
-                    _LOGGER.error("Failed to get Data from Broadlink Hysen Device:%s,:%s",self.entity_id,error)
-                    self._current_operation = STATE_UNAVAILABLE
-                    self._room_temp = 0
-                    self._external_temp = 0
-                    self._available = False
-                return
-
-        """Sync the clock once per day if required."""        
-        try:
-          if self._sync_clock_time_per_day == True:
-             now_day_of_the_week = (datetime.datetime.today().weekday()) + 1
-             if self._current_day_of_week < now_day_of_the_week:
-                currentDT = datetime.datetime.now()
-                if currentDT.time() > datetime.time(hour=3): #Set am 3am
-                    self.set_time(currentDT.hour, currentDT.minute, currentDT.second, now_day_of_the_week)
-                    self._current_day_of_week = now_day_of_the_week
-                    _LOGGER.info("Broadlink Hysen Device:%s Clock Sync Success...",self.entity_id)
-        except Exception as error:
-          _LOGGER.error("Failed to Clock Sync Hysen Device:%s,:%s",self.entity_id,error)
+              _LOGGER.error("Failed to Clock Sync Hysen Device:%s,:%s",self.entity_id,error)
 ######################################################################################################################################
 ######################################################################################################################################
 ######################################################################################################################################

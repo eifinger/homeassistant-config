@@ -1,0 +1,14 @@
+amcrest:
+  - host: !secret amcrest_wohnzimmer_ip
+    username: !secret amcrest_wohnzimmer_user
+    password: !secret amcrest_wohnzimmer_password
+    name: amcrest_livingroom
+    stream_source: mjpeg
+    binary_sensors:
+      - motion_detected
+      - online
+
+homeassistant:
+  customize:
+    camera.amcrest_livingroom:
+      friendly_name: Wohnzimmer Kamera

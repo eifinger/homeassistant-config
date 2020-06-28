@@ -1,3 +1,4 @@
+---
 amcrest:
   - host: !secret amcrest_wohnzimmer_ip
     username: !secret amcrest_wohnzimmer_user

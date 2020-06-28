@@ -5,13 +5,11 @@ person:
     user_id: !secret user_id_user_one
     device_trackers:
       - device_tracker.sm_g975f
-      - device_tracker.galaxy_s10
   - name: sina
     id: sina
     user_id: !secret user_id_user_two
     device_trackers:
       - device_tracker.sina
-      - device_tracker.oneplus3t
 
 homeassistant:
   customize:

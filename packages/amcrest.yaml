@@ -4,8 +4,8 @@ amcrest:
     username: !secret amcrest_wohnzimmer_user
     password: !secret amcrest_wohnzimmer_password
     name: amcrest_livingroom
-    # stream_source: mjpeg
-    # resolution: low
+    stream_source: mjpeg
+    resolution: low
     binary_sensors:
       - motion_detected
       - online

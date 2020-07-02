@@ -440,14 +440,6 @@ services:
     ports:
       - "5050:5050"
       - "8124:8124"
-# Does currently not work because I don't know how to properly handle multiline stacktraces
-#    logging:
-#      driver: splunk
-#      options:
-#        splunk-token: secure
-#        splunk-url: https://splunk.kevineifinger.de:8088
-#        splunk-insecureskipverify: "true"
-#        splunk-verify-connection: "false"
     links:
       - facerec_service
     depends_on:
@@ -476,19 +468,39 @@ services:
       - "8083:8083"
       - "8086:8086"
       - "8090:8090"
+  timescaledb:
+    container_name: timescaledb
+    restart: unless-stopped
+    image: timescale/timescaledb-postgis:1.7.0-pg12
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/admin/timescaledb/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=admin
   grafana:
     container_name: grafana
     restart: unless-stopped
-    image: grafana/grafana:latest
+    image: grafana/grafana:7.0.3
     volumes:
       - grafana-storage:/var/lib/grafana
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD="secure"
+      - GF_SECURITY_ADMIN_PASSWORD="admin"
       - GF_ANALYTICS_REPORTING_ENABLED=false
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_ANONYMOUS_ENABLED=false
+      - GF_RENDERING_SERVER_URL=http://grafana-renderer:8081/render
+      - GF_RENDERING_CALLBACK_URL=http://grafana:3000
     ports:
       - "3000:3000"
     depends_on:
       - influxdb
+  grafana-renderer:
+    image: grafana/grafana-image-renderer:latest
+    container_name: grafana-renderer
+    ports:
+      - "8081:8081"
   mysql-homeassistant:
     container_name: mysql-homeassistant
     restart: unless-stopped
@@ -519,24 +531,52 @@ services:
       - "1883:1883"
       - "9001:9001"
       - "8883:8883"
-  splunk:
-    container_name: splunk
-    hostname: splunk
+  hass-data-detective:
+    container_name: hass-data-detective
+    hostname: hass-data-detective
     restart: unless-stopped
-    image: splunk/splunk:7.2
+    image: kylerw/hass-data-detective:latest
+    network_mode: host
     volumes:
-      - /home/admin/splunk/etc:/opt/splunk/etc
-      - /home/admin/splunk/var:/opt/splunk/var
+      - /home/admin/homeassistant:/hass-config:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /home/admin/hass-data-detective/:/home/jovyan
     environment:
-      - SPLUNK_START_ARGS="--accept-license"
-      - SPLUNK_ENABLE_LISTEN="9997"
-      - SPLUNK_ADD="tcp 1514"
-      - SPLUNK_PASSWORD="secure"
+      - JUPYTER_ENABLE_LAB="yes"
+    depends_on:
+      - homeassistant
+  glances:
+    container_name: glances
+    image: eifinger/glances-docker:3.1.4
+    restart: unless-stopped
+    pid: "host"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /home/admin/glances/conf/glances.pwd:/root/.config/glances/glances.pwd
+      - /media:/media:ro
+    environment:
+      - "GLANCES_OPT=-w --password"
     ports:
-      - "8001:8000"
-      - "9997:9997"
-      - "8088:8088"
-      - "1514:1514"
+      - "61208:61208"
+      - "61209:61209"
+  esphome:
+    container_name: esphome
+    image: esphome/esphome:1.14.3
+    volumes:
+      - /home/admin/esphome:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    network_mode: host
+  seq:
+    container_name: seq
+    image: datalust/seq:2020.1.4212
+    volumes:
+      - /home/damin/seq/data:/data
+    ports:
+      - "5342:80"
+      - "5341:5341"
+    environment:
+      - "ACCEPT_EULA=Y"
 volumes:
   grafana-storage:
 ```

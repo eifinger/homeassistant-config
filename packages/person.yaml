@@ -9,7 +9,7 @@ person:
     id: sina
     user_id: !secret user_id_user_two
     device_trackers:
-      - device_tracker.sina
+      - device_tracker.oneplus_a3003
 
 homeassistant:
   customize:
@@ -19,6 +19,6 @@ homeassistant:
       entity_picture: /local/user_one.jpg
     person.sina:
       entity_picture: /local/user_two.JPG
-    device_tracker.sina:
+    device_tracker.oneplus_a3003:
       entity_picture: /local/user_two.JPG
 

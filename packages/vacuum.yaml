@@ -67,6 +67,44 @@ automation:
           entity_id: vacuum.xiaomi_vacuum_cleaner
       - service: light.turn_off
         entity_id: light.alexa_virtual
+# Start vacuum when leaving
+  - id: ask_to_start_vacuum_when_leaving
+    alias: Frage ob Staubsauger gestartet werden soll wenn alle weg sind
+    trigger:
+      - platform: state
+        entity_id: input_boolean.is_home
+        to: 'off'
+    condition:
+      - condition: state
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        state: 'docked'
+    action:
+      - service: notify.group_notifications
+        data:
+          message: "Soll ich Snowie starten?"
+          data:
+            inline_keyboard:
+              - 'Ja:/ask_to_start_vacuum_when_leaving_yes, Nein:/ask_to_start_vacuum_when_leaving_no'
+  - id: start_vacuum_callback
+    alias: Starte Staubsauger durch Telegram Callbacks
+    trigger:
+      - platform: event
+        event_type: telegram_callback
+        event_data:
+          data: '/ask_to_start_vacuum_when_leaving_yes'
+    action:
+      - service: vacuum.start
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      - service: telegram_bot.answer_callback_query
+        data_template:
+          callback_query_id: '{{ trigger.event.data.id }}'
+          message: 'Okay'
+      - service: telegram_bot.edit_message
+        data_template:
+          message_id: '{{ trigger.event.data.message.message_id }}'
+          chat_id: '{{ trigger.event.data.user_id }}'
+          message: Ich habe Snowie um {{ now() }} gestartet.
+          inline_keyboard:
 
 recorder:
   exclude:

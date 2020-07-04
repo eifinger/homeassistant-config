@@ -117,6 +117,16 @@ automation:
         data:
           entity_id: input_select.alexa
           option: None
+  - id: send_notification_if_alexa_login_timed_out
+    alias: send_notification_if_alexa_login_timed_out
+    trigger:
+      platform: event
+      event_type: alexa_media_player/relogin_required
+    action:
+      - service: notify.kevin
+        data:
+          message: "Alexa_Media Login Timed Out"
+
 #####################################################################
 ### Virtual Light / Alexa Sequences
 #####################################################################

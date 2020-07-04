@@ -49,7 +49,7 @@ sensor:
   - platform: google_travel_time
     name: travel_time_next_appointment_location_car
     api_key: !secret google_maps_api_token
-    origin: !secret device_user_one
+    origin: person.kevin
     destination: sensor.cal_next_appointment_location_google_prepared
     options:
       arrival_time: sensor.cal_next_appointment_start_time
@@ -57,7 +57,7 @@ sensor:
   - platform: google_travel_time
     name: travel_time_next_appointment_location_car_user_two
     api_key: !secret google_maps_api_token
-    origin: !secret device_user_two
+    origin: person.sina
     destination: sensor.cal_next_appointment_location_google_prepared_user_two
     options:
       arrival_time: sensor.cal_next_appointment_start_time_user_two

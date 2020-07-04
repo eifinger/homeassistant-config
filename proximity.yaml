@@ -1,15 +1,15 @@
 ---
 home:
   devices:
-    - !secret device_user_one
-    - !secret device_user_two
+    - person.kevin
+    - perosn.sina
   tolerance: 50
 home_user_one:
   devices:
-    - !secret device_user_one
+    - person.kevin
   tolerance: 50
 work:
   zone: Work
   devices:
-    - !secret device_user_one
+    - person.kevin
   tolerance: 50

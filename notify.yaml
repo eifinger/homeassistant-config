@@ -1,9 +1,9 @@
 ---
-- name: !secret user_one_name
+- name: Kevin
   platform: telegram
   chat_id: !secret telegram_allowed_chat_id_user_one
 
-- name: !secret user_two_name
+- name: Sina
   platform: telegram
   chat_id: !secret telegram_allowed_chat_id_user_two
 

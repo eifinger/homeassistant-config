@@ -9,7 +9,7 @@ sensor:
   - platform: template
     sensors:
       room_user_one:
-        friendly_name: !secret user_one_name
+        friendly_name: Kevin
         value_template: >-
           {% if is_state('sensor.mqtt_room_user_one', 'livingroom') %}
             Wohnzimmer
@@ -43,7 +43,7 @@ sensor:
   - platform: template
     sensors:
       room_user_two:
-        friendly_name: !secret user_two_name
+        friendly_name: Sina
         value_template: >-
           {% if is_state('sensor.mqtt_room_user_two', 'livingroom') %}
             Wohnzimmer
@@ -88,15 +88,15 @@ sensor:
       location_user_two:
         friendly_name: Sina
         value_template: >-
-          {% if states.device_tracker.sina.state != 'home'
-          and states.device_tracker.sina.state == 'not_home' %}
+          {% if states.device_tracker.oneplus_a3003.state != 'home'
+          and states.device_tracker.oneplus_a3003.state == 'not_home' %}
             Unterwegs
-          {% elif states.device_tracker.sina.state != 'home'
-          and states.device_tracker.sina.state != 'not_home' %}
-            {{states.device_tracker.sina.state}}
+          {% elif states.device_tracker.oneplus_a3003.state != 'home'
+          and states.device_tracker.oneplus_a3003.state != 'not_home' %}
+            {{states.device_tracker.oneplus_a3003.state}}
           {% else %}
             {{states.sensor.room_user_two.state}}
           {% endif %}
         entity_id:
           - sensor.room_user_two
-          - device_tracker.sina
+          - device_tracker.oneplus_a3003

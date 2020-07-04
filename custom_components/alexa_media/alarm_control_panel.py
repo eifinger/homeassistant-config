@@ -134,9 +134,10 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
         # Class info
         self._login = login
         self.alexa_api = AlexaAPI(self, login)
-        self.alexa_api_session = login.session
         self.email = login.email
         self.account = hide_email(login.email)
+        self._available = None
+        self._assumed_state = None
 
         # Guard info
         self._appliance_id = None
@@ -146,6 +147,21 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
         self._should_poll = False
         self._attrs: Dict[Text, Text] = {}
         self._media_players = {} or media_players
+
+    def check_login_changes(self):
+        """Update Login object if it has changed."""
+        try:
+            login = self.hass.data[DATA_ALEXAMEDIA]["accounts"][self.email]["login_obj"]
+        except (AttributeError, KeyError):
+            return
+        if self._login != login or self._login.session != login.session:
+            from alexapy import AlexaAPI
+
+            _LOGGER.debug("Login object has changed; updating")
+            self._login = login
+            self.alexa_api = AlexaAPI(self, login)
+            self.email = login.email
+            self.account = hide_email(login.email)
 
     async def init(self):
         """Initialize."""
@@ -228,6 +244,8 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
         import json
 
         if self._login.session.closed:
+            self._available = False
+            self._assumed_state = True
             return
         _LOGGER.debug("%s: Refreshing %s", self.account, self.name)
         state = None
@@ -252,6 +270,8 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
                 json.dumps(state_json["errors"]) if state_json else None,
             )
         if state is None:
+            self._available = False
+            self._assumed_state = True
             return
         if state == "ARMED_AWAY":
             self._state = STATE_ALARM_ARMED_AWAY
@@ -259,6 +279,8 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
             self._state = STATE_ALARM_DISARMED
         else:
             self._state = STATE_ALARM_DISARMED
+        self._available = True
+        self._assumed_state = False
         _LOGGER.debug("%s: Alarm State: %s", self.account, self.state)
         self.async_schedule_update_ha_state()
 
@@ -296,13 +318,11 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
         await self.async_update(no_throttle=True)
         self.async_schedule_update_ha_state()
 
-    @_catch_login_errors
     async def async_alarm_disarm(self, code=None) -> None:
         # pylint: disable=unexpected-keyword-arg
         """Send disarm command."""
         await self._async_alarm_set(STATE_ALARM_DISARMED)
 
-    @_catch_login_errors
     async def async_alarm_arm_away(self, code=None) -> None:
         """Send arm away command."""
         # pylint: disable=unexpected-keyword-arg
@@ -345,3 +365,13 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
         except ImportError:
             return 0
         return SUPPORT_ALARM_ARM_AWAY
+
+    @property
+    def available(self):
+        """Return the availability of the device."""
+        return self._available
+
+    @property
+    def assumed_state(self):
+        """Return whether the state is an assumed_state."""
+        return self._assumed_state

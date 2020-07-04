@@ -67,7 +67,7 @@ automation:
           entity_id: vacuum.xiaomi_vacuum_cleaner
       - service: light.turn_off
         entity_id: light.alexa_virtual
-# Start vacuum when leaving
+  # Start vacuum when leaving
   - id: ask_to_start_vacuum_when_leaving
     alias: Frage ob Staubsauger gestartet werden soll wenn alle weg sind
     trigger:

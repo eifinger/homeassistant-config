@@ -1,15 +1,15 @@
 ---
 home:
   devices:
-    - person.kevin
-    - perosn.sina
+    - device_tracker.sm_g975f
+    - device_tracker.oneplus_a3003
   tolerance: 50
 home_user_one:
   devices:
-    - person.kevin
+    - device_tracker.sm_g975f
   tolerance: 50
 work:
   zone: Work
   devices:
-    - person.kevin
+    - device_tracker.sm_g975f
   tolerance: 50

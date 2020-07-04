@@ -179,6 +179,7 @@ class AlexaClient(MediaPlayerDevice):
         self._device_owner_customer_id = None
         self._software_version = None
         self._available = None
+        self._assumed_state = False
         self._capabilities = []
         self._cluster_members = []
         self._locale = None
@@ -218,6 +219,21 @@ class AlexaClient(MediaPlayerDevice):
     async def init(self, device):
         """Initialize."""
         await self.refresh(device)
+
+    def check_login_changes(self):
+        """Update Login object if it has changed."""
+        try:
+            login = self.hass.data[DATA_ALEXAMEDIA]["accounts"][self.email]["login_obj"]
+        except (AttributeError, KeyError):
+            return
+        if self._login != login:
+            from alexapy import AlexaAPI
+
+            _LOGGER.debug("Login object has changed; updating")
+            self._login = login
+            self.alexa_api = AlexaAPI(self, login)
+            self.email = login.email
+            self.account = hide_email(login.email)
 
     async def async_added_to_hass(self):
         """Perform tasks after loading."""
@@ -316,7 +332,7 @@ class AlexaClient(MediaPlayerDevice):
             )
         if not event_serial:
             return
-        self.available = True
+        self._available = True
         self.async_schedule_update_ha_state()
         if "last_called_change" in event:
             if event_serial == self.device_serial_number or any(
@@ -484,6 +500,7 @@ class AlexaClient(MediaPlayerDevice):
         session = None
         if self.available:
             _LOGGER.debug("%s: Refreshing %s", self.account, self.name)
+            self._assumed_state = False
             if "PAIR_BT_SOURCE" in self._capabilities:
                 self._source = self._get_source()
                 self._source_list = self._get_source_list()
@@ -567,7 +584,6 @@ class AlexaClient(MediaPlayerDevice):
                 )
             if self._session.get("state"):
                 self._media_player_state = self._session["state"]
-                self._media_pos = self._session.get("progress", {}).get("mediaProgress")
                 self._media_title = self._session.get("infoText", {}).get("title")
                 self._media_artist = self._session.get("infoText", {}).get("subText1")
                 self._media_album_name = self._session.get("infoText", {}).get(
@@ -578,8 +594,15 @@ class AlexaClient(MediaPlayerDevice):
                     if self._session.get("mainArt")
                     else None
                 )
-                self._media_duration = self._session.get("progress", {}).get(
-                    "mediaLength"
+                self._media_pos = (
+                    self._session.get("progress", {}).get("mediaProgress")
+                    if self._session.get("progress")
+                    else None
+                )
+                self._media_duration = (
+                    self._session.get("progress", {}).get("mediaLength")
+                    if self._session.get("progress")
+                    else None
                 )
                 if not self._session.get("lemurVolume"):
                     self._media_is_muted = (
@@ -728,6 +751,11 @@ class AlexaClient(MediaPlayerDevice):
         self._available = state
 
     @property
+    def assumed_state(self):
+        """Return whether the state is an assumed_state."""
+        return self._assumed_state
+
+    @property
     def hidden(self):
         """Return whether the sensor should be hidden."""
         return "MUSIC_SKILL" not in self._capabilities
@@ -786,6 +814,8 @@ class AlexaClient(MediaPlayerDevice):
             or email not in self.hass.data[DATA_ALEXAMEDIA]["accounts"]
             or self._login.session.closed
         ):
+            self._assumed_state = True
+            self.available = False
             return
         device = self.hass.data[DATA_ALEXAMEDIA]["accounts"][email]["devices"][
             "media_player"

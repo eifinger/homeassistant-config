@@ -84,7 +84,7 @@ automation:
           message: "Soll ich Snowie starten?"
           data:
             inline_keyboard:
-              - 'Ja:/ask_to_start_vacuum_when_leaving_yes, Nein:/ask_to_start_vacuum_when_leaving_no'
+              - 'Ja:/ask_to_start_vacuum_when_leaving'
   - id: start_vacuum_callback
     alias: Starte Staubsauger durch Telegram Callbacks
     trigger:

@@ -13,6 +13,12 @@ homeassistant:
   customize: !include customize.yaml
   auth_providers:
     - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.1.0/24
+      trusted_users:
+        !secret user_one_ip: !secret user_id_user_one
+        !secret user_two_ip: !secret user_id_user_two
   packages: !include_dir_named packages
 
 cloud:

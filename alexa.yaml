@@ -17,7 +17,6 @@ filter:
     - script.receiver_set_source_dvd
     - script.receiver_set_source_gaming
     - script.receiver_set_source_tv
-    - script.watch_kodi
     - input_boolean.turn_fan_on_when_hot
     - input_boolean.sleepmode
     - scene.gemutliches_wohnzimmer

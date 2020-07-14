@@ -1,16 +1,4 @@
 ---
-person:
-  - name: Kevin
-    id: kevin
-    user_id: !secret user_id_user_one
-    device_trackers:
-      - device_tracker.sm_g975f
-  - name: sina
-    id: sina
-    user_id: !secret user_id_user_two
-    device_trackers:
-      - device_tracker.oneplus_a3003
-
 homeassistant:
   customize:
     person.kevin:
@@ -21,4 +9,3 @@ homeassistant:
       entity_picture: /local/user_two.JPG
     device_tracker.oneplus_a3003:
       entity_picture: /local/user_two.JPG
-

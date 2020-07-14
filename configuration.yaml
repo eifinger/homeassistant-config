@@ -44,7 +44,7 @@ logbook:
 http:
   # Uncomment this if you are using SSL or running in Docker etc
   base_url: !secret homeassistant_url
-  ip_ban_enabled: true
+  ip_ban_enabled: false
   login_attempts_threshold: 3
   use_x_forwarded_for: true
   trusted_proxies:

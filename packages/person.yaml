@@ -5,7 +5,7 @@ person:
     user_id: !secret user_id_user_one
     device_trackers:
       - device_tracker.sm_g975f
-  - name: Kina
+  - name: Sina
     id: sina
     user_id: !secret user_id_user_two
     device_trackers:

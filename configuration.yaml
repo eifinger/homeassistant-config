@@ -12,7 +12,7 @@ homeassistant:
   time_zone: !secret homeassistant_timezone
   customize: !include customize.yaml
   external_url: !secret external_url
-  internal_url: !secert internal_url
+  internal_url: !secret internal_url
   auth_providers:
     - type: homeassistant
     - type: trusted_networks

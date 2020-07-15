@@ -11,6 +11,8 @@ homeassistant:
   unit_system: metric
   time_zone: !secret homeassistant_timezone
   customize: !include customize.yaml
+  external_url: !secret external_url
+  internal_url: !secert internal_url
   auth_providers:
     - type: homeassistant
     - type: trusted_networks
@@ -42,8 +44,6 @@ logger:
 logbook:
 
 http:
-  # Uncomment this if you are using SSL or running in Docker etc
-  base_url: !secret homeassistant_url
   ip_ban_enabled: false
   login_attempts_threshold: 3
   use_x_forwarded_for: true

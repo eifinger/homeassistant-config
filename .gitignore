@@ -22,6 +22,7 @@ currentCommit.txt
 .google.token
 google_calendars.yaml
 turnBarRed.sh
+restartHomeassistant.sh
 sendNotification.sh
 alexa_media*.pickle
 

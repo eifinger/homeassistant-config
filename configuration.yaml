@@ -1,8 +1,4 @@
 ---
-#################################################################
-## Home Assistant
-#################################################################
-
 homeassistant:
   name: Home
   latitude: !secret homeassistant_latitude
@@ -15,12 +11,6 @@ homeassistant:
   internal_url: !secret internal_url
   auth_providers:
     - type: homeassistant
-    - type: trusted_networks
-      trusted_networks:
-        - 192.168.1.0/24
-      trusted_users:
-        !secret user_one_ip: !secret user_id_user_one
-        !secret user_two_ip: !secret user_id_user_two
   packages: !include_dir_named packages
 
 cloud:
@@ -99,8 +89,6 @@ telegram_bot:
       - !secret telegram_allowed_chat_id_user_two
 
 system_health:
-
-breaking_changes:
 
 automation: !include automation.yaml
 script: !include scripts.yaml

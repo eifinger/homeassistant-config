@@ -1,8 +1,8 @@
 ---
 sensor:
   - platform: statistics
-    entity_id: sensor.humidity_bathroom
-    name: statistics_humidity_bathroom
+    entity_id: sensor.humidity_lower_bathroom
+    name: statistics_humidity_lower_bathroom
     sampling_size: 300
   - platform: statistics
     entity_id: sensor.humidity_upper_bathroom
@@ -17,23 +17,23 @@ automation:
     trigger:
       - platform: template
         value_template: >
-          {{ states('sensor.humidity_bathroom') | float
-          < states('sensor.statistics_humidity_bathroom') | float * 1.1 }}
+          {{ states('sensor.humidity_lower_bathroom') | float
+          < states('sensor.statistics_humidity_lower_bathroom') | float * 1.1 }}
     condition:
       condition: or
       conditions:
         - condition: state
-          entity_id: 'binary_sensor.contact_badfenster'
+          entity_id: 'binary_sensor.contact_lower_bathroom_window'
           state: 'on'
         - condition: state
-          entity_id: 'binary_sensor.contact_bathroom_window_tilted'
+          entity_id: 'binary_sensor.contact_lower_bathroom_window_tilted'
           state: 'on'
     action:
       - service: notify.group_notifications
         data_template:
           message: >
             "Du kannst das Badfenster wieder schließen,
-            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_bathroom') | float  }} Prozent."
+            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
       - service: notify.alexa_media
         data_template:
           target:
@@ -45,7 +45,7 @@ automation:
             type: announce
             method: speak
           message: "Du kannst das Badfenster wieder schließen,
-            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_bathroom') | float  }} Prozent."
+            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
       - service: automation.turn_off
         data:
           entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
@@ -55,8 +55,8 @@ automation:
     trigger:
       - platform: template
         value_template: >
-            {{ states('sensor.humidity_bathroom') | float
-            > states('sensor.statistics_humidity_bathroom') | float * 1.1 }}
+            {{ states('sensor.humidity_lower_bathroom') | float
+            > states('sensor.statistics_humidity_lower_bathroom') | float * 1.1 }}
         for:
           minutes: 5
     action:

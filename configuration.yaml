@@ -13,6 +13,7 @@ homeassistant:
     - type: homeassistant
   packages: !include_dir_named packages
 
+discovery:
 cloud:
   alexa: !include alexa.yaml
 mobile_app:

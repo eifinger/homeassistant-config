@@ -6,13 +6,13 @@ deconz:
 
 homeassistant:
   customize:
-    binary_sensor.contact_kitchen_window:
+    binary_sensor.contact_kitchen_window_tilted:
       device_class: window
-    binary_sensor.contact_guest_window:
+    binary_sensor.contact_guestroom_window_tilted:
       device_class: window
-    binary_sensor.contact_bathroom_window_tilted:
+    binary_sensor.contact_lower_bathroom_window_tilted:
       device_class: window
-    binary_sensor.contact_badfenster:
+    binary_sensor.contact_lower_bathroom_window:
       device_class: window
     binary_sensor.contact_bedroom_door:
       device_class: door

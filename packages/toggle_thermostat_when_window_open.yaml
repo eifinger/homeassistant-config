@@ -31,15 +31,15 @@ automation:
     action:
       - choose:
         - conditions:
-            - condition: template
-              value_template: >
-                {{  trigger.to_state.state == 'on'}}
-            sequence:
-              - service: homeassistant.turn_off
-                entity_id: climate.bad_oben_thermostat
-          default:
-            - service: homeassistant.turn_on
+          - condition: template
+            value_template: >
+              {{  trigger.to_state.state == 'on'}}
+          sequence:
+            - service: homeassistant.turn_off
               entity_id: climate.bad_oben_thermostat
+        default:
+          - service: homeassistant.turn_on
+            entity_id: climate.bad_oben_thermostat
 
 homeassistant:
   customize:

@@ -48,7 +48,7 @@ sensor:
 ### Input Select
 #####################################################################
 automation:
-  - id: fd41d92b-1aec-43d9-ab57-17311fbf5191 
+  - id: fd41d92b-1aec-43d9-ab57-17311fbf5191
     alias: Alexa TTS
     description: Announce what is typed as input
     mode: queued

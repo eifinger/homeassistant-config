@@ -10,9 +10,9 @@ sensor:
     sampling_size: 300
 
 automation:
-  # Alert when the bathroom window is open but the humidity is in an acceptable level again
-  - id: humidity_low_alert_bathroom
+  - id: 2d02919b-eb85-428a-93fa-b90702d93145
     alias: Alarm Badfenster schliessen wenn Humidity okay
+    description: Alert when the bathroom window is open but the humidity is in an acceptable level again
     initial_state: false
     trigger:
       - platform: template
@@ -49,8 +49,9 @@ automation:
       - service: automation.turn_off
         data:
           entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
-  - id: activate_humidity_low_alert_bathroom # Enable the above automation when the humidity exceeds the treshold.
+  - id: 86d3ca92-6bdd-4345-b393-ae44a2add641
     alias: Aktiviere Alarm Badfenster schliessen wenn Humidity okay
+    description: Enable the above automation when the humidity exceeds the treshold
     initial_state: true
     trigger:
       - platform: template
@@ -63,9 +64,9 @@ automation:
       - service: automation.turn_on
         data:
           entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
-  # Alert when the upper bathroom window is open but the humidity is in an acceptable level again
-  - id: humidity_low_alert_upper_bathroom
+  - id: b4081e41-a64c-4afb-a8d3-e1cd4ad718c6
     alias: Alarm Badfenster Oben schliessen wenn Humidity okay
+    description: Alert when the upper bathroom window is open but the humidity is in an acceptable level again
     initial_state: false
     trigger:
       - platform: template
@@ -102,8 +103,9 @@ automation:
       - service: automation.turn_off
         data:
           entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
-  - id: activate_humidity_low_alert_upper_bathroom # Enable the above automation when the humidity exceeds the treshold.
+  - id: 022e36c3-ff3d-4a9a-b449-504527867472
     alias: Aktiviere Alarm Badfenster Oben schliessen wenn Humidity okay
+    description: Enable the above automation when the humidity exceeds the treshold
     initial_state: true
     trigger:
       - platform: template

@@ -39,12 +39,6 @@ mqtt:
   password: !secret mqtt_pass
   keepalive: 60
   discovery: true
-  birth_message:
-    topic: 'hass/status'
-    payload: 'online'
-  will_message:
-    topic: 'hass/status'
-    payload: 'offline'
 recorder:
   db_url: !secret db_url
   purge_keep_days: 7
@@ -68,7 +62,6 @@ telegram_bot:
       - !secret telegram_allowed_chat_id_group_notifications
       - !secret telegram_allowed_chat_id_user_one
       - !secret telegram_allowed_chat_id_user_two
-automation: !include automation.yaml
 script: !include scripts.yaml
 input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml

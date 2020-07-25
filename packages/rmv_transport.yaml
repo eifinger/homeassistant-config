@@ -25,7 +25,10 @@ recorder:
       - sensor.nach_bruckenkopf_4
 
 automation:
-  - alias: "Alexa Report"
+  - id: cb5ea28c-622a-4d48-adf7-6b79e8769f13
+    alias: "Alexa wann fährt der nächste Bus"
+    mode: single
+    description: Use a virtual light, an alexa sequence and alexa_media to announce when the next bus leaves
     trigger:
       - platform: state
         entity_id: light.alexa_virtual

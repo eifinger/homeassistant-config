@@ -41,7 +41,7 @@ cloud:
         description: Snowie Xiaomi Staubsauger
 
 automation:
-  - id: alert_when_snowie_is_offline
+  - id: 0329e412-7a07-42cd-a602-55307712f07b
     alias: 'Alarm wenn Snowie offline ist'
     initial_state: 'on'
     trigger:
@@ -53,7 +53,8 @@ automation:
       - service: notify.kevin
         data:
           message: "Snowie ist offline"
-  - alias: Where is Vaccuum
+  - id: c5a72dc1-35e2-45ff-9de7-33103202cbd3
+    alias: Where is Vaccuum
     trigger:
       - platform: state
         entity_id: light.alexa_virtual
@@ -67,9 +68,9 @@ automation:
           entity_id: vacuum.xiaomi_vacuum_cleaner
       - service: light.turn_off
         entity_id: light.alexa_virtual
-  # Start vacuum when leaving
-  - id: ask_to_start_vacuum_when_leaving
+  - id: 4f73c88e-c04f-435c-b44a-decd1cf9678f
     alias: Frage ob Staubsauger gestartet werden soll wenn alle weg sind
+    description: Start vacuum when leaving
     trigger:
       - platform: state
         entity_id: input_boolean.is_home
@@ -85,13 +86,14 @@ automation:
           data:
             inline_keyboard:
               - 'Ja:/ask_to_start_vacuum_when_leaving'
-  - id: start_vacuum_callback
+  - id: 4cc856a8-b236-4ecb-bf15-0bcdb228feb5
     alias: Starte Staubsauger durch Telegram Callbacks
+    description: Start vacuum when leaving callback
     trigger:
       - platform: event
         event_type: telegram_callback
         event_data:
-          data: '/ask_to_start_vacuum_when_leaving_yes'
+          data: '/ask_to_start_vacuum_when_leaving'
     action:
       - service: vacuum.start
         entity_id: vacuum.xiaomi_vacuum_cleaner

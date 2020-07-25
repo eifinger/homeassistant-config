@@ -1,24 +1,4 @@
 ---
-homeassistant:
-  customize:
-    ################################################
-    ## Input Text
-    ################################################
-    input_text.alexa_tts:
-      icon: mdi:textbox
-    ################################################
-    ## Input Select
-    ################################################
-    input_select.alexa:
-      icon: mdi:format-list-bulleted
-    ################################################
-    ## Input Number
-    ################################################
-    input_number.alexa_volume:
-      icon: mdi:volume-high
-################################################
-## Component
-################################################
 alexa_media:
   accounts:
     - email: !secret amazon_email
@@ -28,15 +8,12 @@ notify:
   - platform: alexa_media
     name: alexa_media
 #####################################################################
-### Input Text
+### UI Controller for TTS
 #####################################################################
 input_text:
   alexa_tts:
     name: Alexa TTS
     initial: Hallo
-#####################################################################
-### Input Number
-#####################################################################
 input_number:
   alexa_volume:
     name: Alexa Volume
@@ -44,9 +21,6 @@ input_number:
     min: 1
     max: 10
     step: 1
-#####################################################################
-### Input Select
-#####################################################################
 input_select:
   alexa:
     name: Alexa
@@ -58,9 +32,6 @@ input_select:
       - None
     initial: None
     icon: mdi:amazon-alexa
-#####################################################################
-### Sensor
-#####################################################################
 sensor:
   - platform: template
     sensors:
@@ -73,9 +44,14 @@ sensor:
         value_template: >
           {{ states.media_player | selectattr('attributes.last_called','eq',True) |
           map(attribute='entity_id') | first }}
+#####################################################################
+### Input Select
+#####################################################################
 automation:
-  # Announce what is typed as input
-  - alias: Alexa TTS
+  - id: fd41d92b-1aec-43d9-ab57-17311fbf5191 
+    alias: Alexa TTS
+    description: Announce what is typed as input
+    mode: queued
     trigger:
       platform: state
       entity_id: input_select.alexa
@@ -117,7 +93,9 @@ automation:
         data:
           entity_id: input_select.alexa
           option: None
-  - id: send_notification_if_alexa_login_timed_out
+  - id: 0857d9ec-4c7b-4a0a-aeaf-e5e8300cf8ff
+    description: Sende eine Nachricht wenn alexa_media neu authentifiziert werden muss
+    mode: single
     alias: send_notification_if_alexa_login_timed_out
     trigger:
       platform: event
@@ -126,6 +104,32 @@ automation:
       - service: notify.kevin
         data:
           message: "Alexa_Media Login Timed Out"
+  - id: 0cdc8f40-8de1-499f-ad30-733c04d8f728
+    alias: 'Alexa Ansagen aus wenn wir schlafen'
+    description: Keine lauten Ansagen auf Alexa Lautsprechern wenn der Schlafmodus an ist
+    mode: single
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.sleepmode
+        from: "off"
+        to: "on"
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.notifier_alexa
+  - id: ea44693e-9d17-4538-9477-1074afd66cc4
+    alias: 'Alexa Ansagen an wenn wir aufstehen'
+    description: Schalte Ansagen auf Alexa Lautsprechern wieder an wenn wir aufstehen
+    mode: single
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.sleepmode
+        from: "on"
+        to: "off"
+    action:
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.notifier_alexa
 
 #####################################################################
 ### Virtual Light / Alexa Sequences
@@ -149,3 +153,12 @@ cloud:
         name: Sequence Trigger
         description: Virtual Light / Alexa Sequences
         display_categories: LIGHT
+
+homeassistant:
+  customize:
+    input_text.alexa_tts:
+      icon: mdi:textbox
+    input_select.alexa:
+      icon: mdi:format-list-bulleted
+    input_number.alexa_volume:
+      icon: mdi:volume-high

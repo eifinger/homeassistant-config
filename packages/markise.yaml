@@ -35,3 +35,21 @@ cloud:
     filter:
       include_entities:
         - cover.markise
+
+automation:
+  - id: 2b791d46-fab0-4a0a-8241-9b7ca9a59fa4
+    description: Fahre Markise ein wenn die Sonne untergeht
+    alias: Fahre Markise ein wenn die Sonne untergeht
+    trigger:
+      - event: sunset
+        platform: sun
+    condition:
+      - condition: state
+        entity_id: cover.markise
+        state: "on"
+    action:
+      - service: cover.close_cover
+        entity_id: cover.markise
+      - service: notify.group_notifications
+        data:
+          message: "Ich habe Markise eingefahren."

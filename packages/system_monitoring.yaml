@@ -41,115 +41,44 @@ sensor:
         value_template: "{{  states.sensor.odroid_xu4_cpu_temp_raw.state.split('\r\n')[1] | float / 1000 }}"
 
 automation:
-  - id: alert_when_glances_pihole_disk_used_gt_80
-    alias: 'Alarm wenn PiHole Disk Used > 80%'
+  - id: c11b9bed-4bba-4245-925f-9dbbd6c3a344
+    alias: 'Alarm wenn Disk Used > 80%'
+    description: Alert when a disk usage is greater than 80%
     initial_state: 'on'
     trigger:
       - platform: numeric_state
         entity_id: sensor.glances_pihole_used_percent
         above: 80
-    action:
-      - service: notify.kevin
-        data_template:
-          message: "PiHole Disk Usage {{ states('sensor.glances_pihole_used_percent') }}"
-
-  - id: alert_when_glances_zigbee2mqtt_disk_used_gt_80
-    alias: 'Alarm wenn Zigbee2MQTT Disk Used > 80%'
-    initial_state: 'on'
-    trigger:
       - platform: numeric_state
         entity_id: sensor.glances_zigbee2mqtt_used_percent
         above: 80
-    action:
-      - service: notify.kevin
-        data_template:
-          message: "Zigbee2MQTT Disk Usage {{ states('sensor.glances_zigbee2mqtt_used_percent') }}"
-
-  - id: alert_when_glances_host_disk_used_gt_80
-    alias: 'Alarm wenn Host Disk Used > 80%'
-    initial_state: 'on'
-    trigger:
       - platform: numeric_state
         entity_id: sensor.glances_host_media_used_percent
         above: 80
-    action:
-      - service: notify.kevin
-        data_template:
-          message: "Host Disk Usage {{ states('sensor.glances_host_media_used_percent') }}"
-
-  - id: alert_when_glances_odroid_disk_used_gt_80
-    alias: 'Alarm wenn Odroid Disk Used > 80%'
-    initial_state: 'on'
-    trigger:
       - platform: numeric_state
         entity_id: sensor.glances_odroid_disk_used_percent
         above: 80
-    action:
-      - service: notify.kevin
-        data_template:
-          message: "Odroid Disk Usage {{ states('sensor.glances_odroid_disk_used_percent') }}"
-
-  - id: alert_when_glances_wackernheim_pi_disk_used_gt_80
-    alias: 'Alarm wenn Wackernheim Pi Disk Used > 80%'
-    initial_state: 'on'
-    trigger:
       - platform: numeric_state
         entity_id: sensor.glances_wackernheim_etc_hostname_used_percent
         above: 80
-    action:
-      - service: notify.kevin
-        data_template:
-          message: "Wackernheim Disk Usage {{ states('sensor.glances_wackernheim_etc_hostname_used_percent') }}"
-
-  - id: alert_when_host_disk1_used_gt_80
-    alias: 'Alarm wenn Host Disk1 Used > 80%'
-    initial_state: 'on'
-    trigger:
       - platform: numeric_state
         entity_id: !secret host_disk1_usage_sensor
         above: 80
-    action:
-      - service: notify.kevin
-        data_template:
-          message: "Host Disk1 Usage über 80%"
-
-  - id: alert_when_host_disk2_used_gt_80
-    alias: 'Alarm wenn Host Disk2 Used > 80%'
-    initial_state: 'on'
-    trigger:
       - platform: numeric_state
         entity_id: !secret host_disk2_usage_sensor
         above: 80
-    action:
-      - service: notify.kevin
-        data_template:
-          message: "Host Disk2 Usage über 80%"
-
-  - id: alert_when_host_disk3_used_gt_80
-    alias: 'Alarm wenn Host Disk3 Used > 80%'
-    initial_state: 'on'
-    trigger:
       - platform: numeric_state
         entity_id: !secret host_disk3_usage_sensor
         above: 80
-    action:
-      - service: notify.kevin
-        data_template:
-          message: "Host Disk3 Usage über 80%"
-
-  - id: alert_when_host_disk4_used_gt_80
-    alias: 'Alarm wenn Host Disk4 Used > 80%'
-    initial_state: 'on'
-    trigger:
       - platform: numeric_state
         entity_id: !secret host_disk4_usage_sensor
         above: 80
     action:
       - service: notify.kevin
         data_template:
-          message: "Host Disk4 Usage über 80%"
+          message: "Disk Usage {{ trigger.entity_id }}: {{ trigger.to_state }}"
 
-  - id: alert_when_check_seafile_failed
+  - id: a8993d6e-f612-4f07-9ffd-be733e13762c
     alias: 'Alarm wenn Seafile fsck fehlgeschlagen'
     initial_state: 'on'
     trigger:

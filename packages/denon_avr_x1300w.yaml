@@ -8,30 +8,30 @@ automation:
         entity_id: media_player.denon_avr_x1300w
     action:
       - choose:
-          - conditions:
-            - condition: template
-              value_template: >
-                {{  trigger.from_state.attributes['source'] != 'Bluetooth'
-                and trigger.to_state.attributes['source'] == 'Bluetooth'}}
-            sequence:
-              - service: media_player.volume_set
-                entity_id: media_player.denon_avr_x1300w
-                data:
-                  volume_level: 0.3
-          - conditions:
-            - condition: template
-              value_template: >
-                {{  trigger.from_state.attributes['source'] != 'TV Audio'
-                and trigger.to_state.attributes['source'] == 'TV Audio'}}
-            - condition: template
-              value_template: >
-                {{  trigger.from_state.attributes['source'] != 'Game'
-                and trigger.to_state.attributes['source'] == 'Game'}}
-            sequence:
-              - service: media_player.volume_set
-                entity_id: media_player.denon_avr_x1300w
-                data:
-                  volume_level: 0.5
+        - conditions:
+          - condition: template
+            value_template: >
+              {{  trigger.from_state.attributes['source'] != 'Bluetooth'
+              and trigger.to_state.attributes['source'] == 'Bluetooth'}}
+          sequence:
+            - service: media_player.volume_set
+              entity_id: media_player.denon_avr_x1300w
+              data:
+                volume_level: 0.3
+        - conditions:
+          - condition: template
+            value_template: >
+              {{  trigger.from_state.attributes['source'] != 'TV Audio'
+              and trigger.to_state.attributes['source'] == 'TV Audio'}}
+          - condition: template
+            value_template: >
+              {{  trigger.from_state.attributes['source'] != 'Game'
+              and trigger.to_state.attributes['source'] == 'Game'}}
+          sequence:
+            - service: media_player.volume_set
+              entity_id: media_player.denon_avr_x1300w
+              data:
+                volume_level: 0.5
 script:
   receiver_set_source_cbl_sat:
     sequence:

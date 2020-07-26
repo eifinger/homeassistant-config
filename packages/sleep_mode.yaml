@@ -1,0 +1,63 @@
+---
+automation:
+  - id: 66562027-abbf-4f45-a22f-fd13a83f9ede
+    alias: Schalte Wohnung aus wenn wir schlafen oder weggehen
+    description: Turn off everything which should be turned off when we go to sleep or leave the house
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: input_boolean.sleepmode
+        to: "on"
+      - platform: state
+        entity_id: input_boolean.is_home
+        to: "off"
+    action:
+      - service: homeassistant.turn_off
+        entity_id:
+          - media_player.denon_avr_x1300w
+          - switch.large_lamp
+          - switch.small_lamp
+          - switch.snowboard
+          - switch.ventilator
+          - switch.tv
+          - switch.weihnachtslichter
+          - switch.bedroom_receiver
+          - switch.markise
+          - switch.coffee_machine_plug_relay
+          - switch.lobby
+          - light.bedroom_yeelight
+          - light.bar_table
+          - light.lobby_yeelight
+          - light.reading_lamp_yeelight
+          - light.upper_stairs_yeelight
+          - light.stairs_lower_yeelight
+          - light.livingroom_yeelight
+          - light.lower_bathroom_yeelight
+          - light.philips_miio_light_bulb
+          - media_player.kevin_s_echo_dot_unten
+          - media_player.kevins_echo
+          - media_player.kevins_echo_dot
+          - media_player.kevins_echo_dot_oben
+  - id: af5f082f-20a9-486e-b572-69b98fd7f781 
+    alias: Alexa sagt wenn Terassentür noch offen ist wenn wir schlafne
+    description: Alexa alarms us when we forgot to close the terrasse door when going to sleep
+    mode: single
+    trigger:
+      platform: state
+      entity_id: input_boolean.sleepmode
+      to: "on"
+    action:
+      - service: notify.alexa_media_kevin_s_echo_dot_unten
+        data_template:
+          data:
+            type: announce
+            method: speak
+          message: >
+            Du hast vergessen
+            {% set entities = 'binary_sensor.contact_lower_bathroom_window', 
+                              'binary_sensor.contact_studyroom_door',
+                              'binary_sensor.contact_terrace_door',
+                              'binary_sensor.contact_upper_bathroom_window' %}
+            {{ states | selectattr('entity_id','in',entities) | selectattr('state','eq','on')| map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
+            zu schließen!
+          

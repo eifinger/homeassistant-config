@@ -1,10 +1,10 @@
 ---
-tplink:
-  discovery: false
-  switch:
-    - host: !secret tp_link_ip
-    - host: !secret tp_link_washingmachine_ip
-    - host: !secret tp_link_dishwasher_ip
+# tplink:
+#   discovery: false
+#   switch:
+#     - host: !secret tp_link_ip
+#     - host: !secret tp_link_washingmachine_ip
+#     - host: !secret tp_link_dishwasher_ip
 
 sensor:
   - platform: template

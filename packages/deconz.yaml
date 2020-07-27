@@ -1,14 +1,13 @@
 ---
-deconz:
-  host: !secret deconz_host
-  port: !secret deconz_port
-  api_key: !secret deconz_api_key
-
 homeassistant:
   customize:
     binary_sensor.contact_kitchen_window_tilted:
       device_class: window
+    binary_sensor.contact_kitchen_window:
+      device_class: window
     binary_sensor.contact_guestroom_window_tilted:
+      device_class: window
+    binary_sensor.contact_guestroom_window:
       device_class: window
     binary_sensor.contact_lower_bathroom_window_tilted:
       device_class: window

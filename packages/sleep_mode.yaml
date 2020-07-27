@@ -39,8 +39,8 @@ automation:
           - media_player.kevins_echo_dot
           - media_player.kevins_echo_dot_oben
   - id: af5f082f-20a9-486e-b572-69b98fd7f781 
-    alias: Alexa sagt wenn Terassentür noch offen ist wenn wir schlafne
-    description: Alexa alarms us when we forgot to close the terrasse door when going to sleep
+    alias: Alexa sagt wenn Türen und Fenster noch offen ist wenn wir schlafen
+    description: Alexa alarms us when we forgot to close doors or windwos when going to sleep
     mode: single
     trigger:
       platform: state

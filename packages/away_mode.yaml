@@ -1,0 +1,44 @@
+---
+  automation:
+    - id: 02241047-0872-433f-9d88-df451479ec1a
+      alias: Notification wenn Türen und Fenster noch offen ist wenn wir weg gehen
+      description: Notification when we forgot to close doors or windwos when leaving
+      mode: single
+      trigger:
+        platform: state
+        entity_id: input_boolean.is_home
+        to: "off"
+      condition:
+        condition: template
+        value_template: >
+          {% set ns = namespace(open_doors="") %}
+          {% for state in states %}
+              {% if state.entity_id.startswith("binary_sensor.contact") %}
+                  {% if ns.open_doors == "" %}
+                      {% set ns.open_doors = ns.open_doors + state.entity_id %}
+                  {% else %}
+                      {% set ns.open_doors = ns.open_doors + "," + state.entity_id %}
+                  {% endif %}
+              {% endif %}
+          {% endfor %}
+          {% set open_doors_list = ns.open_doors.split(",") %}
+          {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on') | list | count > 0 }}
+      action:
+        - service: notify.group_notifications
+          data_template:
+            message: >
+              {% set ns = namespace(open_doors="") %}
+              {% for state in states %}
+                  {% if state.entity_id.startswith("binary_sensor.contact") %}
+                      {% if ns.open_doors == "" %}
+                          {% set ns.open_doors = ns.open_doors + state.entity_id %}
+                      {% else %}
+                          {% set ns.open_doors = ns.open_doors + "," + state.entity_id %}
+                      {% endif %}
+                  {% endif %}
+              {% endfor %}
+              {% set open_doors_list = ns.open_doors.split(",") %}
+              Du hast vergessen
+              {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on')| map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
+              zu schließen!
+  

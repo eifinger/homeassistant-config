@@ -46,6 +46,22 @@ automation:
       platform: state
       entity_id: input_boolean.sleepmode
       to: "on"
+    condition:
+      condition: template
+      value_template: >
+        {% set ns = namespace(open_doors="") %}
+        {% for state in states %}
+            {% if state.entity_id.startswith("binary_sensor.contact")
+              and not state.entity_id.endswith("tilted") %}
+                {% if ns.open_doors == "" %}
+                    {% set ns.open_doors = ns.open_doors + state.entity_id %}
+                {% else %}
+                    {% set ns.open_doors = ns.open_doors + "," + state.entity_id %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% set open_doors_list = ns.open_doors.split(",") %}
+        {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on') | list | count > 0 }}
     action:
       - service: notify.alexa_media_kevin_s_echo_dot_unten
         data_template:
@@ -53,11 +69,18 @@ automation:
             type: announce
             method: speak
           message: >
+            {% set ns = namespace(open_doors="") %}
+            {% for state in states %}
+                {% if state.entity_id.startswith("binary_sensor.contact")
+                  and not state.entity_id.endswith("tilted") %}
+                    {% if ns.open_doors == "" %}
+                        {% set ns.open_doors = ns.open_doors + state.entity_id %}
+                    {% else %}
+                        {% set ns.open_doors = ns.open_doors + "," + state.entity_id %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% set open_doors_list = ns.open_doors.split(",") %}
             Du hast vergessen
-            {% set entities = 'binary_sensor.contact_lower_bathroom_window', 
-                              'binary_sensor.contact_studyroom_door',
-                              'binary_sensor.contact_terrace_door',
-                              'binary_sensor.contact_upper_bathroom_window' %}
-            {{ states | selectattr('entity_id','in',entities) | selectattr('state','eq','on')| map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
+            {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on')| map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
             zu schließen!
-          

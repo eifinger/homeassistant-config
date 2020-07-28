@@ -64,7 +64,7 @@ automation:
           - media_player.kevins_echo
           - media_player.kevins_echo_dot
           - media_player.kevins_echo_dot_oben
-  - id: af5f082f-20a9-486e-b572-69b98fd7f781 
+  - id: af5f082f-20a9-486e-b572-69b98fd7f781
     alias: Alexa sagt wenn Türen und Fenster noch offen ist wenn wir schlafen
     description: Alexa alarms us when we forgot to close doors or windwos when going to sleep
     mode: single
@@ -78,7 +78,7 @@ automation:
         {% set ns = namespace(open_doors="") %}
         {% for state in states %}
             {% if state.entity_id.startswith("binary_sensor.contact")
-              and not state.entity_id.endswith("tilted") 
+              and not state.entity_id.endswith("tilted")
               and not state.entity_id == "binary_sensor.contact_bedroom_door" %}
                 {% if ns.open_doors == "" %}
                     {% set ns.open_doors = ns.open_doors + state.entity_id %}
@@ -88,7 +88,8 @@ automation:
             {% endif %}
         {% endfor %}
         {% set open_doors_list = ns.open_doors.split(",") %}
-        {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on') | list | count > 0 }}
+        {{ states | selectattr('entity_id', 'in', open_doors_list)
+          | selectattr('state', 'eq', 'on') | list | count > 0 }}
     action:
       - service: notify.alexa_media_kevin_s_echo_dot_unten
         data_template:
@@ -99,7 +100,7 @@ automation:
             {% set ns = namespace(open_doors="") %}
             {% for state in states %}
                 {% if state.entity_id.startswith("binary_sensor.contact")
-                  and not state.entity_id.endswith("tilted") 
+                  and not state.entity_id.endswith("tilted")
                   and not state.entity_id == "binary_sensor.contact_bedroom_door" %}
                     {% if ns.open_doors == "" %}
                         {% set ns.open_doors = ns.open_doors + state.entity_id %}
@@ -110,7 +111,8 @@ automation:
             {% endfor %}
             {% set open_doors_list = ns.open_doors.split(",") %}
             Du hast vergessen
-            {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on')| map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
+            {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on')
+              | map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
             zu schließen!
 
 homeassistant:

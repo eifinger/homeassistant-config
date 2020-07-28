@@ -22,7 +22,8 @@ automation:
             {% endif %}
         {% endfor %}
         {% set open_doors_list = ns.open_doors.split(",") %}
-        {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on') | list | count > 0 }}
+        {{ states | selectattr('entity_id', 'in', open_doors_list)
+          | selectattr('state', 'eq', 'on') | list | count > 0 }}
     action:
       - service: notify.group_notifications
         data_template:
@@ -39,7 +40,8 @@ automation:
             {% endfor %}
             {% set open_doors_list = ns.open_doors.split(",") %}
             Du hast vergessen
-            {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on')| map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
+            {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on')
+              | map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
             zu schließen!
   - id: 65549e31-0f06-470d-93ef-718e9fb53da9
     alias: Licht an wenn der erste nach Sonnenuntergang nach Hause kommt
@@ -61,7 +63,8 @@ automation:
               entity_id: input_boolean.is_home
               state: "off"
             - condition: template
-              value_template: "{{ as_timestamp(now()) - (as_timestamp(states.input_boolean.is_home.last_changed)) < 2 }}"
+              value_template: >
+                {{ as_timestamp(now()) - (as_timestamp(states.input_boolean.is_home.last_changed)) < 2 }}
     action:
       - service: switch.turn_on
         entity_id: switch.large_lamp
@@ -71,7 +74,7 @@ automation:
     mode: single
     trigger:
       - platform: state
-        entity_id: 
+        entity_id:
           - input_boolean.user_one_home
           - input_boolean.user_two_home
         from: "off"
@@ -93,7 +96,6 @@ automation:
               {% set name = "Sina" %}
             {% endif %}
             Willkommen zu Hause, {{ name }}
-
 
 homeassistant:
   customize:

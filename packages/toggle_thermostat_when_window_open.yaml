@@ -10,13 +10,13 @@ automation:
         entity_id: binary_sensor.contact_lower_bathroom_window
     action:
       - choose:
-        - conditions:
-          - condition: template
-            value_template: >
-              {{  trigger.to_state.state == 'on'}}
-          sequence:
-            - service: homeassistant.turn_off
-              entity_id: climate.bad_thermostat
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{  trigger.to_state.state == 'on'}}
+            sequence:
+              - service: homeassistant.turn_off
+                entity_id: climate.bad_thermostat
         default:
           - service: homeassistant.turn_on
             entity_id: climate.bad_thermostat
@@ -30,13 +30,13 @@ automation:
         entity_id: binary_sensor.contact_upper_bathroom_window
     action:
       - choose:
-        - conditions:
-          - condition: template
-            value_template: >
-              {{  trigger.to_state.state == 'on'}}
-          sequence:
-            - service: homeassistant.turn_off
-              entity_id: climate.bad_oben_thermostat
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{  trigger.to_state.state == 'on'}}
+            sequence:
+              - service: homeassistant.turn_off
+                entity_id: climate.bad_oben_thermostat
         default:
           - service: homeassistant.turn_on
             entity_id: climate.bad_oben_thermostat

@@ -1,44 +1,105 @@
 ---
-  automation:
-    - id: 02241047-0872-433f-9d88-df451479ec1a
-      alias: Notification wenn Türen und Fenster noch offen ist wenn wir weg gehen
-      description: Notification when we forgot to close doors or windwos when leaving
-      mode: single
-      trigger:
-        platform: state
-        entity_id: input_boolean.is_home
-        to: "off"
-      condition:
-        condition: template
-        value_template: >
-          {% set ns = namespace(open_doors="") %}
-          {% for state in states %}
-              {% if state.entity_id.startswith("binary_sensor.contact") %}
-                  {% if ns.open_doors == "" %}
-                      {% set ns.open_doors = ns.open_doors + state.entity_id %}
-                  {% else %}
-                      {% set ns.open_doors = ns.open_doors + "," + state.entity_id %}
-                  {% endif %}
-              {% endif %}
-          {% endfor %}
-          {% set open_doors_list = ns.open_doors.split(",") %}
-          {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on') | list | count > 0 }}
-      action:
-        - service: notify.group_notifications
-          data_template:
-            message: >
-              {% set ns = namespace(open_doors="") %}
-              {% for state in states %}
-                  {% if state.entity_id.startswith("binary_sensor.contact") %}
-                      {% if ns.open_doors == "" %}
-                          {% set ns.open_doors = ns.open_doors + state.entity_id %}
-                      {% else %}
-                          {% set ns.open_doors = ns.open_doors + "," + state.entity_id %}
-                      {% endif %}
-                  {% endif %}
-              {% endfor %}
-              {% set open_doors_list = ns.open_doors.split(",") %}
-              Du hast vergessen
-              {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on')| map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
-              zu schließen!
-  
+automation:
+  - id: 02241047-0872-433f-9d88-df451479ec1a
+    alias: Notification wenn Türen und Fenster noch offen ist wenn wir weg gehen
+    description: Notification when we forgot to close doors or windwos when leaving
+    mode: single
+    trigger:
+      platform: state
+      entity_id: input_boolean.is_home
+      to: "off"
+    condition:
+      condition: template
+      value_template: >
+        {% set ns = namespace(open_doors="") %}
+        {% for state in states %}
+            {% if state.entity_id.startswith("binary_sensor.contact") %}
+                {% if ns.open_doors == "" %}
+                    {% set ns.open_doors = ns.open_doors + state.entity_id %}
+                {% else %}
+                    {% set ns.open_doors = ns.open_doors + "," + state.entity_id %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% set open_doors_list = ns.open_doors.split(",") %}
+        {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on') | list | count > 0 }}
+    action:
+      - service: notify.group_notifications
+        data_template:
+          message: >
+            {% set ns = namespace(open_doors="") %}
+            {% for state in states %}
+                {% if state.entity_id.startswith("binary_sensor.contact") %}
+                    {% if ns.open_doors == "" %}
+                        {% set ns.open_doors = ns.open_doors + state.entity_id %}
+                    {% else %}
+                        {% set ns.open_doors = ns.open_doors + "," + state.entity_id %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% set open_doors_list = ns.open_doors.split(",") %}
+            Du hast vergessen
+            {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on')| map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
+            zu schließen!
+  - id: 65549e31-0f06-470d-93ef-718e9fb53da9
+    alias: Licht an wenn der erste nach Sonnenuntergang nach Hause kommt
+    description: Turn on lamp when the first person gets home after sundown
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.contact_door
+        to: "on"
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: "below_horizon"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: input_boolean.is_home
+              state: "off"
+            - condition: template
+              value_template: "{{ as_timestamp(now()) - (as_timestamp(states.input_boolean.is_home.last_changed)) < 2 }}"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.large_lamp
+  - id: 36f4528f-5992-4e7f-a9b7-87adfd6b137b
+    alias: Willkommen zu Hause
+    description: Welcome Home
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: 
+          - input_boolean.user_one_home
+          - input_boolean.user_two_home
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.notifier_alexa
+        state: "on"
+    action:
+      - service: notify.alexa_media_kevins_echo_dot_oben
+        data_template:
+          data:
+            type: announce
+            method: speak
+          message: >
+            {% if trigger.entity_id == "input_boolean.user_one_home" %}
+              {% set name = "Kevin" %}
+            {% elif trigger.entity_id == "input_boolean.user_two_home" %}
+              {% set name = "Sina" %}
+            {% endif %}
+            Willkommen zu Hause, {{ name }}
+
+
+homeassistant:
+  customize:
+    automation.notification_wenn_turen_und_fenster_noch_offen_ist_wenn_wir_weg_gehen:
+      icon: mdi:alert
+    automation.licht_an_wenn_der_erste_nach_sonnenuntergang_nach_hause_kommt:
+      icon: mdi:lightbulb
+    automation.willkommen_zu_hause:
+      icon: mdi:home-account

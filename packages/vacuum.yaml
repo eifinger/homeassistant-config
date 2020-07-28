@@ -112,3 +112,8 @@ recorder:
   exclude:
     entities:
       - sensor.snowie_map
+
+homeassistant:
+  customize:
+    automation.frage_ob_staubsauger_gestartet_werden_soll_wenn_alle_weg_sind:
+      icon: mdi:robot-vacuum

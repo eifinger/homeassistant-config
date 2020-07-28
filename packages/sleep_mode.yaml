@@ -1,5 +1,31 @@
 ---
 automation:
+  - id: 0cdc8f40-8de1-499f-ad30-733c04d8f728
+    alias: 'Alexa Ansagen aus wenn wir schlafen'
+    description: Keine lauten Ansagen auf Alexa Lautsprechern wenn der Schlafmodus an ist
+    mode: single
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_boolean.sleepmode
+        from: "off"
+        to: "on"
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.notifier_alexa
+  - id: ea44693e-9d17-4538-9477-1074afd66cc4
+    alias: 'Alexa Ansagen an wenn wir aufstehen'
+    description: Schalte Ansagen auf Alexa Lautsprechern wieder an wenn wir aufstehen
+    mode: single
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: input_boolean.sleepmode
+        from: "on"
+        to: "off"
+    action:
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.notifier_alexa
   - id: 66562027-abbf-4f45-a22f-fd13a83f9ede
     alias: Schalte Wohnung aus wenn wir schlafen oder weggehen
     description: Turn off everything which should be turned off when we go to sleep or leave the house
@@ -52,7 +78,8 @@ automation:
         {% set ns = namespace(open_doors="") %}
         {% for state in states %}
             {% if state.entity_id.startswith("binary_sensor.contact")
-              and not state.entity_id.endswith("tilted") %}
+              and not state.entity_id.endswith("tilted") 
+              and not state.entity_id == "binary_sensor.contact_bedroom_door" %}
                 {% if ns.open_doors == "" %}
                     {% set ns.open_doors = ns.open_doors + state.entity_id %}
                 {% else %}
@@ -72,7 +99,8 @@ automation:
             {% set ns = namespace(open_doors="") %}
             {% for state in states %}
                 {% if state.entity_id.startswith("binary_sensor.contact")
-                  and not state.entity_id.endswith("tilted") %}
+                  and not state.entity_id.endswith("tilted") 
+                  and not state.entity_id == "binary_sensor.contact_bedroom_door" %}
                     {% if ns.open_doors == "" %}
                         {% set ns.open_doors = ns.open_doors + state.entity_id %}
                     {% else %}
@@ -84,3 +112,10 @@ automation:
             Du hast vergessen
             {{ states | selectattr('entity_id', 'in', open_doors_list) | selectattr('state', 'eq', 'on')| map(attribute='attributes') | map(attribute='friendly_name') | list | join(', ') }}
             zu schließen!
+
+homeassistant:
+  customize:
+    automation.schalte_wohnung_aus_wenn_wir_schlafen_oder_weggehen:
+      icon: mdi:toggle-switch-off
+    automation.alexa_sagt_wenn_terassentur_noch_offen_ist_wenn_wir_schlafne:
+      icon: mdi:amazon-alexa

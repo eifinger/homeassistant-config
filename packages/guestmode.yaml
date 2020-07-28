@@ -21,9 +21,9 @@ cloud:
         name: Gäste Modus Wohnzimmer
         description: Der Gästemodus wenn Gäste im Wohnzimmer schlafen
 automation:
-  - id: on_guestmode_on
+  - id: 459ad293-dae6-4779-9e00-468311a41467
     alias: On Guestmode on
-    initial_state: 'on'
+    initial_state: true
     trigger:
       - platform: state
         entity_id: input_boolean.guestmode
@@ -34,9 +34,9 @@ automation:
         entity_id: input_boolean.warm_upper_bath_before_wakeup
       - service: homeassistant.turn_on
         entity_id: switch.bad_oben_thermostat_remote_lock
-  - id: on_guestmode_off
+  - id: 8f799d8a-b5d8-4982-b999-f57a6628235d
     alias: On Guestmode off
-    initial_state: 'on'
+    initial_state: true
     trigger:
       - platform: state
         entity_id: input_boolean.guestmode
@@ -47,9 +47,9 @@ automation:
         entity_id: input_boolean.warm_upper_bath_before_wakeup
       - service: homeassistant.turn_off
         entity_id: switch.bad_oben_thermostat_remote_lock
-  - id: on_guestmode_livingroom_on
+  - id: 4eaedf02-f889-432b-bb1e-15b5a8e86cef
     alias: On Guestmode Livingroom on
-    initial_state: 'on'
+    initial_state: true
     trigger:
       - platform: state
         entity_id: input_boolean.guestmode_livingroom
@@ -60,9 +60,9 @@ automation:
         entity_id: input_boolean.warm_upper_bath_before_wakeup
       - service: homeassistant.turn_on
         entity_id: switch.bad_oben_thermostat_remote_lock
-  - id: on_guestmode_livingroom_off
+  - id: 542fe14a-e56d-4ded-8786-3764b53cd346
     alias: On Guestmode Livingroom off
-    initial_state: 'on'
+    initial_state: true
     trigger:
       - platform: state
         entity_id: input_boolean.guestmode_livingroom
@@ -73,3 +73,30 @@ automation:
         entity_id: input_boolean.warm_upper_bath_before_wakeup
       - service: homeassistant.turn_off
         entity_id: switch.bad_oben_thermostat_remote_lock
+  - id: b10a5f7b-7a3d-48a7-82a4-66f95c4728f7
+    alias: Willkommen Gast
+    description: Welcome Guests
+    initial_state: true
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: device_tracker.assi_phone
+        from: "not_home"
+        to: "home"
+    condition:
+      - condition: state
+        entity_id: input_boolean.notifier_alexa
+        state: "on"
+    action:
+      - service: notify.alexa_media_kevins_echo_dot_oben
+        data_template:
+          data:
+            type: announce
+            method: speak
+          message: >
+            {% if trigger.entity_id == "device_tracker.assi_phone" %}
+              {% set name = "Astrid" %}
+            {% elif trigger.entity_id == "input_boolean.user_two_home" %}
+              {% set name = "Sina" %}
+            {% endif %}
+            Herzlich Willkommen zurück, {{ name }}!

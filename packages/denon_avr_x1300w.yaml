@@ -3,36 +3,36 @@ automation:
   - id: d7da11ed-a7d7-4b26-8b05-85ea4a999c08
     alias: "Denon Lautstärke einstellen bei Quellenwechsel"
     description: Set volume to the desired level per source
-    initial_state: "on"
+    initial_state: true
     trigger:
       - platform: state
         entity_id: media_player.denon_avr_x1300w
     action:
       - choose:
-        - conditions:
-          - condition: template
-            value_template: >
-              {{  trigger.from_state.attributes['source'] != 'Bluetooth'
-              and trigger.to_state.attributes['source'] == 'Bluetooth'}}
-          sequence:
-            - service: media_player.volume_set
-              entity_id: media_player.denon_avr_x1300w
-              data:
-                volume_level: 0.3
-        - conditions:
-          - condition: template
-            value_template: >
-              {{  trigger.from_state.attributes['source'] != 'TV Audio'
-              and trigger.to_state.attributes['source'] == 'TV Audio'}}
-          - condition: template
-            value_template: >
-              {{  trigger.from_state.attributes['source'] != 'Game'
-              and trigger.to_state.attributes['source'] == 'Game'}}
-          sequence:
-            - service: media_player.volume_set
-              entity_id: media_player.denon_avr_x1300w
-              data:
-                volume_level: 0.5
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{  trigger.from_state.attributes['source'] != 'Bluetooth'
+                  and trigger.to_state.attributes['source'] == 'Bluetooth'}}
+            sequence:
+              - service: media_player.volume_set
+                entity_id: media_player.denon_avr_x1300w
+                data:
+                  volume_level: 0.3
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{  trigger.from_state.attributes['source'] != 'TV Audio'
+                  and trigger.to_state.attributes['source'] == 'TV Audio'}}
+              - condition: template
+                value_template: >
+                  {{  trigger.from_state.attributes['source'] != 'Game'
+                  and trigger.to_state.attributes['source'] == 'Game'}}
+            sequence:
+              - service: media_player.volume_set
+                entity_id: media_player.denon_avr_x1300w
+                data:
+                  volume_level: 0.5
 
   - id: 805c67f5-8484-4e07-a09e-a0c1c49eacbc
     alias: "Denon Bluetooth an wenn Alexa Musik abspielt"
@@ -116,11 +116,9 @@ script:
 
 homeassistant:
   customize:
-    automation.bei_wechsel_zu_bluetooth_lautstarke_30:
+    automation.denon_bluetooth_an_wenn_alexa_musik_abspielt:
       icon: mdi:speaker-bluetooth
-    automation.bei_wechsel_zu_game_lautstarke_50:
-      icon: mdi:speaker
-    automation.bei_wechsel_zu_tv_audio_lautstarke_50:
+    automation.denon_lautstarke_einstellen_bei_quellenwechsel:
       icon: mdi:speaker
 
 cloud:

@@ -29,26 +29,33 @@ automation:
           entity_id: 'binary_sensor.contact_lower_bathroom_window_tilted'
           state: 'on'
     action:
-      - service: notify.group_notifications
-        data_template:
-          message: >
-            "Du kannst das Badfenster wieder schließen,
-            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
-      - service: notify.alexa_media
-        data_template:
-          target:
-            - media_player.kevins_echo_dot_oben
-            - media_player.kevin_s_echo_dot_unten
-            - media_player.kevins_echo
-            - media_player.kevins_echo_dot
-          data:
-            type: announce
-            method: speak
-          message: "Du kannst das Badfenster wieder schließen,
-            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
-      - service: automation.turn_off
-        data:
-          entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
+      - choose:
+          - conditions:
+              - condition: state
+                entity_id: input_boolean.notifier_alexa
+                state: "on"
+            sequence:
+              - service: notify.alexa_media
+                data_template:
+                  target:
+                    - media_player.kevins_echo_dot_oben
+                    - media_player.kevin_s_echo_dot_unten
+                    - media_player.kevins_echo
+                    - media_player.kevins_echo_dot
+                  data:
+                    type: announce
+                    method: speak
+                  message: "Du kannst das Badfenster wieder schließen,
+                    die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
+        default:
+          - service: notify.group_notifications
+            data_template:
+              message: >
+                "Du kannst das Badfenster wieder schließen,
+                die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
+          - service: automation.turn_off
+            data:
+              entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
   - id: 86d3ca92-6bdd-4345-b393-ae44a2add641
     alias: Aktiviere Alarm Badfenster schliessen wenn Humidity okay
     description: Enable the above automation when the humidity exceeds the treshold
@@ -119,3 +126,13 @@ automation:
         data:
           entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
 
+homeassistant:
+  customize:
+    automation.aktiviere_alarm_badfenster_oben_schliessen_wenn_humidity_okay:
+      icon: mdi:water-percent-alert
+    automation.aktiviere_alarm_badfenster_schliessen_wenn_humidity_okay:
+      icon: mdi:water-percent-alert
+    automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay:
+      icon: mdi:water-percent-alert
+    automation.alarm_badfenster_schliessen_wenn_humidity_okay:
+      icon: mdi:water-percent-alert

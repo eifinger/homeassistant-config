@@ -99,4 +99,12 @@ automation:
             {% elif trigger.entity_id == "input_boolean.user_two_home" %}
               {% set name = "Sina" %}
             {% endif %}
-            Herzlich Willkommen zurück, {{ name }}!
+            {% set last_visit = relative_time(trigger.from_state.last_updated)
+              | replace("years", "Jahren")
+              | replace("months", "Monaten")
+              | replace("days", "Tagen")
+              | replace("hours", "Stunden")
+              | replace("minutes", "Minuten")
+              | replace("seconds", "Sekunden") %}
+            Herzlich Willkommen zurück, {{ name }}! Ich hoffe, du hattest eine schöne Zeit
+            seit deinem letzten Besuch vor {{ last_visit }}.

@@ -80,7 +80,7 @@ automation:
     mode: single
     trigger:
       - platform: state
-        entity_id: device_tracker.assi_phone
+        entity_id: device_tracker.assiphone
         from: "not_home"
         to: "home"
     condition:
@@ -94,10 +94,8 @@ automation:
             type: announce
             method: speak
           message: >
-            {% if trigger.entity_id == "device_tracker.assi_phone" %}
+            {% if trigger.entity_id == "devicetracker.assi_phone" %}
               {% set name = "Astrid" %}
-            {% elif trigger.entity_id == "input_boolean.user_two_home" %}
-              {% set name = "Sina" %}
             {% endif %}
             {% set last_visit = relative_time(trigger.from_state.last_updated)
               | replace("years", "Jahren")

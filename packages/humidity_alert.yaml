@@ -58,7 +58,9 @@ automation:
               entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
   - id: 86d3ca92-6bdd-4345-b393-ae44a2add641
     alias: Aktiviere Alarm Badfenster schliessen wenn Humidity okay
-    description: Enable the above automation when the humidity exceeds the treshold
+    description: >
+      Enable the above automation when the humidity exceeds the treshold and
+      the outside temperature is colder than 20°C
     initial_state: true
     trigger:
       - platform: template
@@ -67,6 +69,11 @@ automation:
             > states('sensor.statistics_humidity_lower_bathroom') | float * 1.1 }}
         for:
           minutes: 5
+    condition:
+      condition: numeric_state
+      entity_id:
+        - sensor.owm_temperature
+      below: 20
     action:
       - service: automation.turn_on
         data:
@@ -81,14 +88,19 @@ automation:
           {{ states('sensor.humidity_upper_bathroom') | float
           < states('sensor.statistics_humidity_upper_bathroom') | float * 1.1 }}
     condition:
-      condition: or
+      condition: and
       conditions:
         - condition: state
-          entity_id: 'binary_sensor.contact_upper_bathroom_window'
-          state: 'on'
-        - condition: state
-          entity_id: 'binary_sensor.contact_upper_bathroom_window_tilted'
-          state: 'on'
+          entity_id: input_boolean.notifier_alexa
+          state: "on"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: 'binary_sensor.contact_upper_bathroom_window'
+              state: 'on'
+            - condition: state
+              entity_id: 'binary_sensor.contact_upper_bathroom_window_tilted'
+              state: 'on'
     action:
       - service: notify.group_notifications
         data_template:
@@ -112,7 +124,9 @@ automation:
           entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
   - id: 022e36c3-ff3d-4a9a-b449-504527867472
     alias: Aktiviere Alarm Badfenster Oben schliessen wenn Humidity okay
-    description: Enable the above automation when the humidity exceeds the treshold
+    description: >
+      Enable the above automation when the humidity exceeds the treshold and
+      the outside temperature is colder than 20°C
     initial_state: true
     trigger:
       - platform: template
@@ -121,6 +135,11 @@ automation:
             > states('sensor.statistics_humidity_upper_bathroom') | float * 1.1 }}
         for:
           minutes: 5
+    condition:
+      condition: numeric_state
+      entity_id:
+        - sensor.owm_temperature
+      below: 20
     action:
       - service: automation.turn_on
         data:

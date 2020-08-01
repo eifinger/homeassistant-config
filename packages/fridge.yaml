@@ -21,3 +21,17 @@ automation:
             sequence:
               - service: switch.turn_off
                 entity_id: switch.blitzwolf_shp6_15a_1_relay
+
+homeassistant:
+  customize:
+    automation.kuhlschrank_strom_kontrolle:
+      icon: mdi:fridge
+
+cloud:
+  alexa:
+    filter:
+      include_entities:
+        - switch.blitzwolf_shp6_15a_1_relay
+    entity_config:
+      switch.blitzwolf_shp6_15a_1_relay:
+        name: Kühlschrank

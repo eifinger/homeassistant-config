@@ -1,0 +1,63 @@
+---
+automation:
+  - id: c3a886c8-67bc-48a2-a14b-dbf873e12187
+    alias: Treppe Bewegungsmelder
+    description: Control the stair lights with motion triggers
+    mode: restart
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.presence_upper_stairs
+          - binary_sensor.presence_lower_stairs
+    condition:
+      - condition: and
+        conditions:
+          - condition: or
+            conditions:
+              - condition: sun
+                after: sunset
+              - condition: sun
+                before: sunrise
+          - condition: state
+            entity_id:
+              - input_boolean.sleepmode
+            state: "off"
+    action:
+      - choose:
+          - conditions:
+              - condition: time
+                after: "01:00:00"
+                before: "07:00:00"
+            sequence:
+              - service: light.turn_on
+                data:
+                  entity_id: light.stairs_lower_yeelight
+                  brightness: 1
+              - service: light.turn_on
+                data:
+                  entity_id: light.upper_stairs_yeelight
+                  brightness: 1
+              - delay: 60
+              - service: light.turn_off
+                data: 
+                  entity_id: light.stairs_lower_yeelight
+              - service: light.turn_off
+                data: 
+                  entity_id: light.stairs_lower_yeelight
+        default:
+          - service: light.turn_on
+            data:
+              entity_id: light.stairs_lower_yeelight
+              brightness: 100
+          - service: light.turn_on
+            data:
+              entity_id: light.upper_stairs_yeelight
+              brightness: 100
+          - delay: 60
+          - service: light.turn_off
+            data: 
+              entity_id: light.stairs_lower_yeelight
+          - service: light.turn_off
+            data: 
+              entity_id: light.stairs_lower_yeelight
+        

@@ -63,9 +63,6 @@ power_usage_notification_dishwasher:
   icon: mdi:gauge
 power_usage_notification_washingmachine:
   icon: mdi:gauge
-sensor_watcher:
-  icon: mdi:alarm
-  name: Überwache ob alle Sensoren online sind
 user_sleep_mode_handler_user_one:
   icon: mdi:sleep
   name: Schlafmodus Kevin

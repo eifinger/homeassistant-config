@@ -87,7 +87,7 @@ automation:
         value_template: >
           {{ states('sensor.humidity_upper_bathroom') | float
           < states('sensor.statistics_humidity_upper_bathroom') | float * 1.1 }}
-    - platform:  state
+      - platform:  state
         entity_id:
           - input_boolean.sensor_watcher
     condition:

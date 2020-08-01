@@ -39,10 +39,10 @@ automation:
                   brightness: 1
               - delay: 60
               - service: light.turn_off
-                data: 
+                data:
                   entity_id: light.stairs_lower_yeelight
               - service: light.turn_off
-                data: 
+                data:
                   entity_id: light.stairs_lower_yeelight
         default:
           - service: light.turn_on
@@ -55,9 +55,8 @@ automation:
               brightness: 100
           - delay: 60
           - service: light.turn_off
-            data: 
+            data:
               entity_id: light.stairs_lower_yeelight
           - service: light.turn_off
-            data: 
+            data:
               entity_id: light.stairs_lower_yeelight
-        

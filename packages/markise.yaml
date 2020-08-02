@@ -41,8 +41,9 @@ automation:
     description: Fahre Markise ein wenn die Sonne untergeht
     alias: Fahre Markise ein wenn die Sonne untergeht
     trigger:
-      - event: sunset
-        platform: sun
+      - platform: state
+        entity_id: sun.sun
+        to: below_horizon
     condition:
       - condition: state
         entity_id: cover.markise

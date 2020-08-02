@@ -75,7 +75,7 @@ sensor:
         value_template: >-
           {% if states.device_tracker.sm_g975f.state != 'home'
           and states.device_tracker.sm_g975f.state == 'not_home' %}
-            Unterwegs
+          {{ states('sensor.sm_g975f_geocoded_location') }}
           {% elif states.device_tracker.sm_g975f.state != 'home'
           and states.device_tracker.sm_g975f.state != 'not_home' %}
             {{states.device_tracker.sm_g975f.state}}
@@ -90,7 +90,7 @@ sensor:
         value_template: >-
           {% if states.device_tracker.oneplus_a3003.state != 'home'
           and states.device_tracker.oneplus_a3003.state == 'not_home' %}
-            Unterwegs
+          {{ states('sensor.oneplus_a3003_geocoded_location') }}
           {% elif states.device_tracker.oneplus_a3003.state != 'home'
           and states.device_tracker.oneplus_a3003.state != 'not_home' %}
             {{states.device_tracker.oneplus_a3003.state}}

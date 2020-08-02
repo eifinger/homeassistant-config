@@ -54,7 +54,7 @@ automation:
             method: speak
           message: "Du kannst das Badfenster wieder schließen,
             die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
-  # Lower Bathroom Humidity Alert Activation 
+  # Lower Bathroom Humidity Alert Activation
   - id: 86d3ca92-6bdd-4345-b393-ae44a2add641
     alias: Aktiviere Alarm Badfenster schliessen wenn Humidity okay
     description: >

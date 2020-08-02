@@ -26,7 +26,6 @@ homeassistant:
   customize:
     automation.kuhlschrank_strom_kontrolle:
       icon: mdi:fridge
-
 cloud:
   alexa:
     filter:

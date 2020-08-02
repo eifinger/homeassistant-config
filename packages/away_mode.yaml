@@ -77,12 +77,12 @@ automation:
         entity_id:
           - input_boolean.user_one_home
           - input_boolean.user_two_home
-        from: "off"
-        to: "on"
     condition:
       - condition: state
         entity_id: input_boolean.notifier_alexa
         state: "on"
+      - condition: template
+        value_template: "{{ trigger.from_state.state == 'off' and trigger.to_state.state == 'on' }}"
     action:
       - service: notify.alexa_media_kevins_echo_dot_oben
         data_template:

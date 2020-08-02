@@ -1,10 +1,10 @@
 ---
 automation:
   - id: e7c6ab1c-cb56-4b41-af8c-06e472521a5d
-    alias: 'Appdaemon Heartbeat Checker'
+    alias: Appdaemon Heartbeat Checker
     description: Sende eine Nachricht wenn Appdaemon seit mehr als 5 Minuten nicht mehr einen Heartbeat gesendet hat
     mode: single
-    initial_state: 'on'
+    initial_state: true
     trigger:
       - platform: time_pattern
         minutes: '/5'

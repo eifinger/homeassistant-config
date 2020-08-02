@@ -10,6 +10,7 @@ sensor:
     sampling_size: 300
 
 automation:
+  # Lower Bathroom Humidity Alert
   - id: 2d02919b-eb85-428a-93fa-b90702d93145
     alias: Alarm Badfenster schliessen wenn Humidity okay
     description: Alert when the bathroom window is open but the humidity is in an acceptable level again
@@ -29,36 +30,31 @@ automation:
           entity_id: 'binary_sensor.contact_lower_bathroom_window_tilted'
           state: 'on'
     action:
-      - choose:
-          - conditions:
-              - condition: state
-                entity_id: input_boolean.notifier_alexa
-                state: "on"
-            sequence:
-              - service: notify.alexa_media
-                data_template:
-                  target:
-                    - media_player.kevins_echo_dot_oben
-                    - media_player.kevin_s_echo_dot_unten
-                    - media_player.kevins_echo
-                    - media_player.kevins_echo_dot
-                  data:
-                    type: announce
-                    method: speak
-                  message: "Du kannst das Badfenster wieder schließen,
-                    die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
-              - service: automation.turn_off
-                data:
-                  entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
-        default:
-          - service: notify.group_notifications
-            data_template:
-              message: >
-                "Du kannst das Badfenster wieder schließen,
-                die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
-          - service: automation.turn_off
-            data:
-              entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
+      - service: automation.turn_off
+        data:
+          entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
+      - service: notify.group_notifications
+        data_template:
+          message: >
+            "Du kannst das Badfenster wieder schließen,
+            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
+
+      - condition: state
+        entity_id: input_boolean.notifier_alexa
+        state: "on"
+      - service: notify.alexa_media
+        data_template:
+          target:
+            - media_player.kevins_echo_dot_oben
+            - media_player.kevin_s_echo_dot_unten
+            - media_player.kevins_echo
+            - media_player.kevins_echo_dot
+          data:
+            type: announce
+            method: speak
+          message: "Du kannst das Badfenster wieder schließen,
+            die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
+  # Lower Bathroom Humidity Alert Activation 
   - id: 86d3ca92-6bdd-4345-b393-ae44a2add641
     alias: Aktiviere Alarm Badfenster schliessen wenn Humidity okay
     description: >
@@ -81,6 +77,7 @@ automation:
       - service: automation.turn_on
         data:
           entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
+  # Upper Bathroom Humidity Alert
   - id: b4081e41-a64c-4afb-a8d3-e1cd4ad718c6
     alias: Alarm Badfenster Oben schliessen wenn Humidity okay
     description: Alert when the upper bathroom window is open but the humidity is in an acceptable level again
@@ -100,6 +97,9 @@ automation:
           entity_id: 'binary_sensor.contact_upper_bathroom_window_tilted'
           state: 'on'
     action:
+      - service: automation.turn_off
+        data:
+          entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
       - choose:
           - conditions:
               - condition: state
@@ -118,18 +118,13 @@ automation:
                     method: speak
                   message: "Du kannst das Badfenster wieder schließen,
                     die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_upper_bathroom') | float  }} Prozent."
-              - service: automation.turn_off
-                data:
-                  entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
         default:
           - service: notify.group_notifications
             data_template:
               message: >
                 "Du kannst das Badfenster wieder schließen,
                 die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_upper_bathroom') | float  }} Prozent."
-          - service: automation.turn_off
-            data:
-              entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
+  # Upper Bathroom Humidity Alert Activation
   - id: 022e36c3-ff3d-4a9a-b449-504527867472
     alias: Aktiviere Alarm Badfenster Oben schliessen wenn Humidity okay
     description: >

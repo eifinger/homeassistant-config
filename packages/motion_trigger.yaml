@@ -10,18 +10,12 @@ automation:
           - binary_sensor.presence_upper_stairs
           - binary_sensor.presence_lower_stairs
     condition:
-      - condition: and
+      - condition: or
         conditions:
-          - condition: or
-            conditions:
-              - condition: sun
-                after: sunset
-              - condition: sun
-                before: sunrise
-          - condition: state
-            entity_id:
-              - input_boolean.sleepmode
-            state: "off"
+          - condition: sun
+            after: sunset
+          - condition: sun
+            before: sunrise
     action:
       - choose:
           - conditions:
@@ -60,3 +54,110 @@ automation:
           - service: light.turn_off
             data:
               entity_id: light.stairs_lower_yeelight
+  - id: fd30fed1-bb71-4387-b126-ee039921f575
+    alias: Arbeitszimmer Bewegungsmelder
+    description: Control the studyroom lights with motion triggers
+    mode: restart
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.presence_studyroom
+    condition:
+      - condition: and
+        conditions:
+          - condition: or
+            conditions:
+              - condition: sun
+                after: sunset
+              - condition: sun
+                before: sunrise
+          - condition: state
+            entity_id:
+              - input_boolean.sleepmode
+            state: "off"
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: light.philips_miio_light_bulb
+          brightness: 100
+      - delay: 60
+      - service: light.turn_off
+        data:
+          entity_id: light.philips_miio_light_bulb
+  - id: d3fb887c-c15d-46a0-8b28-4edbecab9613
+    alias: Bad Bewegungsmelder
+    description: Control the bathroom lights with motion triggers
+    mode: restart
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.presence_lower_bathroom
+    condition:
+      - condition: or
+        conditions:
+          - condition: sun
+            after: sunset
+          - condition: sun
+            before: sunrise
+    action:
+      - choose:
+          - conditions:
+              - condition: time
+                after: "01:00:00"
+                before: "07:00:00"
+            sequence:
+              - service: light.turn_on
+                data:
+                  entity_id: light.lower_bathroom_yeelight
+                  brightness: 1
+              - delay: 60
+              - service: light.turn_off
+                data:
+                  entity_id: light.lower_bathroom_yeelight
+        default:
+          - service: light.turn_on
+            data:
+              entity_id: light.lower_bathroom_yeelight
+              brightness: 100
+          - delay: 60
+          - service: light.turn_off
+            data:
+              entity_id: light.lower_bathroom_yeelight
+  - id: 29089a46-1a2b-4b2f-9e2d-fb690a92c535
+    alias: Schlafzimmer Bewegungsmelder
+    description: Control the bedroom lights with motion triggers
+    mode: restart
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.presence_bedroom
+    condition:
+      - condition: and
+        conditions:
+          - condition: or
+            conditions:
+              - condition: sun
+                after: sunset
+              - condition: sun
+                before: sunrise
+          - condition: state
+            entity_id:
+              - input_boolean.sleepmode
+            state: "off"
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: light.bedroom_yeelight
+          brightness: 100
+      - delay: 60
+      - service: light.turn_off
+        data:
+          entity_id: light.bedroom_yeelight
+homeassistant:
+  customize:
+    automation.treppe_bewegungsmelder:
+      icon: mdi:stairs
+    automation.arbeitszimmer_bewegungsmelder:
+      icon: mdi:briefcase
+    automation.bad_bewegungsmelder:
+      icon: mdi:shower

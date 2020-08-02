@@ -100,7 +100,7 @@ automation:
     alias: send_notification_if_alexa_login_timed_out
     trigger:
       platform: event
-      event_type: alexa_media_player/relogin_required
+      event_type: alexa_media_player_relogin_required
     action:
       - service: notify.kevin
         data:

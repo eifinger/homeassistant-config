@@ -2,7 +2,7 @@
 automation:
   - id: a8100c1a-85cf-47dd-a604-ddfaac0d7dc3
     alias: Kühlschrank Strom Kontrolle
-    description: Turn off the fridge when its colder than 4°C and turn it on when its warmer than 7°C
+    description: Turn off the fridge when its colder than 4°C
     trigger:
       platform: state
       entity_id:
@@ -11,16 +11,13 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.to_state | float > 7 }}"
-            sequence:
-              - service: switch.turn_on
-                entity_id: switch.blitzwolf_shp6_15a_1_relay
-          - conditions:
-              - condition: template
                 value_template: "{{ trigger.to_state | float < 4 }}"
             sequence:
               - service: switch.turn_off
                 entity_id: switch.blitzwolf_shp6_15a_1_relay
+        default:
+          - service: switch.turn_on
+            entity_id: switch.blitzwolf_shp6_15a_1_relay
 
 homeassistant:
   customize:

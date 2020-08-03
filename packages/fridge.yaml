@@ -11,7 +11,7 @@ automation:
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.to_state | float < 4 }}"
+                value_template: "{{ trigger.to_state.state | float < 4 }}"
             sequence:
               - service: switch.turn_off
                 entity_id: switch.blitzwolf_shp6_15a_1_relay

@@ -55,7 +55,7 @@ automation:
               entity_id: light.stairs_lower_yeelight
           - service: light.turn_off
             data:
-              entity_id: light.stairs_lower_yeelight
+              entity_id: light.upper_stairs_yeelight
   - id: fd30fed1-bb71-4387-b126-ee039921f575
     alias: Arbeitszimmer Bewegungsmelder
     description: Control the studyroom lights with motion triggers

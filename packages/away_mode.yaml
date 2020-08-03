@@ -71,7 +71,7 @@ automation:
   - id: 36f4528f-5992-4e7f-a9b7-87adfd6b137b
     alias: Willkommen zu Hause
     description: Welcome Home
-    mode: single
+    mode: queued
     trigger:
       - platform: state
         entity_id:

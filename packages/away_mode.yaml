@@ -95,7 +95,7 @@ automation:
             {% elif trigger.entity_id == "input_boolean.user_two_home" %}
               {% set name = "Sina" %}
             {% endif %}
-            Willkommen zu Hause, {{ name }}
+            Willkommen zu Hause {{ name }}
 
 homeassistant:
   customize:

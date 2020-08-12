@@ -9,6 +9,8 @@ automation:
         entity_id:
           - binary_sensor.presence_upper_stairs
           - binary_sensor.presence_lower_stairs
+        from: "off"
+        to: "on"
     condition:
       - condition: or
         conditions:

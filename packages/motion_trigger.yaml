@@ -66,6 +66,8 @@ automation:
       - platform: state
         entity_id:
           - binary_sensor.presence_studyroom
+        from: "off"
+        to: "on"
     condition:
       - condition: and
         conditions:
@@ -97,6 +99,8 @@ automation:
       - platform: state
         entity_id:
           - binary_sensor.presence_lower_bathroom
+        from: "off"
+        to: "on"
     condition:
       - condition: or
         conditions:
@@ -138,6 +142,8 @@ automation:
       - platform: state
         entity_id:
           - binary_sensor.presence_bedroom
+        from: "off"
+        to: "on"
     condition:
       - condition: and
         conditions:

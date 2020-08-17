@@ -28,11 +28,11 @@ automation:
               - service: light.turn_on
                 data:
                   entity_id: light.stairs_lower_yeelight
-                  brightness: 1
+                  brightness_pct: 1
               - service: light.turn_on
                 data:
                   entity_id: light.upper_stairs_yeelight
-                  brightness: 1
+                  brightness_pct: 1
               - delay:
                   seconds: "{{ states('input_number.stairs_motion_trigger_delay') | int }}"
               - service: light.turn_off
@@ -45,11 +45,11 @@ automation:
           - service: light.turn_on
             data:
               entity_id: light.stairs_lower_yeelight
-              brightness: 100
+              brightness_pct: 100
           - service: light.turn_on
             data:
               entity_id: light.upper_stairs_yeelight
-              brightness: 100
+              brightness_pct: 100
           - delay:
               seconds: "{{ states('input_number.stairs_motion_trigger_delay') | int }}"
           - service: light.turn_off
@@ -85,7 +85,7 @@ automation:
       - service: light.turn_on
         data:
           entity_id: light.philips_miio_light_bulb
-          brightness: 100
+          brightness_pct: 100
       - delay:
           seconds: "{{ states('input_number.studyroom_motion_trigger_delay') | int }}"
       - service: light.turn_off
@@ -118,7 +118,7 @@ automation:
               - service: light.turn_on
                 data:
                   entity_id: light.lower_bathroom_yeelight
-                  brightness: 1
+                  brightness_pct: 1
               - delay:
                   seconds: "{{ states('input_number.bathroom_motion_trigger_delay') | int }}"
               - service: light.turn_off
@@ -128,7 +128,7 @@ automation:
           - service: light.turn_on
             data:
               entity_id: light.lower_bathroom_yeelight
-              brightness: 100
+              brightness_pct: 100
           - delay:
               seconds: "{{ states('input_number.bathroom_motion_trigger_delay') | int }}"
           - service: light.turn_off
@@ -161,7 +161,7 @@ automation:
       - service: light.turn_on
         data:
           entity_id: light.bedroom_yeelight
-          brightness: 100
+          brightness_pct: 100
 
 input_number:
   stairs_motion_trigger_delay:
@@ -180,7 +180,7 @@ input_number:
     name: Bad Bewegungsmelder Licht Dauer
     icon: mdi:alarm
     min: 90
-    max: 6000
+    max: 600
     step: 5
 homeassistant:
   customize:

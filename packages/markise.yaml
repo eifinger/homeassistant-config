@@ -38,12 +38,11 @@ cloud:
 
 automation:
   - id: 2b791d46-fab0-4a0a-8241-9b7ca9a59fa4
-    description: Fahre Markise ein wenn die Sonne untergeht
+    description: Retract the awning when the sun goes down
     alias: Fahre Markise ein wenn die Sonne untergeht
     trigger:
-      - platform: state
-        entity_id: sun.sun
-        to: below_horizon
+      - platform: sun
+        event: sunset
     condition:
       - condition: state
         entity_id: cover.markise

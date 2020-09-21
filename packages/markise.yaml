@@ -46,7 +46,7 @@ automation:
     condition:
       - condition: state
         entity_id: cover.markise
-        state: "on"
+        state: "open"
     action:
       - service: cover.close_cover
         entity_id: cover.markise

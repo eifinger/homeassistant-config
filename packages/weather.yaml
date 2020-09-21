@@ -1,21 +1,5 @@
 ---
 sensor:
-  - platform: yr
-    forecast: 24
-    monitored_conditions:
-      - temperature
-      - symbol
-      - precipitation
-      - windSpeed
-      - pressure
-      - windDirection
-      - humidity
-      - fog
-      - cloudiness
-      - lowClouds
-      - mediumClouds
-      - highClouds
-      - dewpointTemperature
   - platform: openweathermap
     api_key: !secret openweathermap_api_key
     monitored_conditions:

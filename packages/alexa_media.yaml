@@ -36,11 +36,6 @@ sensor:
   - platform: template
     sensors:
       last_alexa:
-        entity_id:
-          - media_player.kevin_s_echo_dot_unten
-          - media_player.kevins_echo_dot_oben
-          - media_player.kevins_echo_dot
-          - media_player.kevins_echo
         value_template: >
           {{ states.media_player | selectattr('attributes.last_called','eq',True) |
           map(attribute='entity_id') | first }}

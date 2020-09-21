@@ -20,7 +20,7 @@ automation:
   #################################################################
   - id: ed9c5ff8-b4f2-4763-a347-57ad487dd12b
     alias: 'Notify of new Unifi Controller Version'
-    initial_state: 'on'
+    initial_state: true
     trigger:
       - platform: state
         entity_id: sensor.unifi_controller_latest_docker
@@ -37,7 +37,7 @@ automation:
   #################################################################
   - id: a8a91979-2f53-48f2-88fe-935a2340558e
     alias: 'Notify of new Homeassistant Version'
-    initial_state: 'on'
+    initial_state: true
     trigger:
       - platform: state
         entity_id: sensor.latest_version

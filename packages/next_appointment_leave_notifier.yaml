@@ -66,13 +66,9 @@ sensor:
       cal_next_appointment_title:
         friendly_name: Termin
         value_template: "{{ states.calendar.keifingergooglemailcom.attributes.message }}"
-        entity_id:
-          - calendar.keifingergooglemailcom
       cal_next_appointment_location:
         friendly_name: Ort
         value_template: "{{ states.calendar.keifingergooglemailcom.attributes.location }}"
-        entity_id:
-          - calendar.keifingergooglemailcom
       cal_next_appointment_location_google_prepared:
         value_template: >
           {% if states("sensor.cal_next_appointment_location") == "" %}
@@ -81,14 +77,9 @@ sensor:
             {{ states.calendar.keifingergooglemailcom.attributes.location }}
           {% endif %}
         friendly_name: Ort
-        entity_id:
-          - calendar.keifingergooglemailcom
-          - sensor.cal_next_appointment_location
       cal_next_appointment_start_time:
         friendly_name: Um
         value_template: "{{ states.calendar.keifingergooglemailcom.attributes.start_time or now() }}"
-        entity_id:
-          - calendar.keifingergooglemailcom
       calc_leave_time:
         value_template: >
           {% if is_state("input_select.next_appointment_travel_mode","Auto") %}
@@ -109,13 +100,6 @@ sensor:
             (states("input_number.leave_time_offset") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
           {% endif %}
         friendly_name: Losfahren
-        entity_id:
-          - input_select.next_appointment_travel_mode
-          - calendar.keifingergooglemailcom
-          - input_number.leave_time_offset
-          - sensor.travel_time_next_appointment_location_car
-          - sensor.travel_time_next_appointment_location_transit
-          - sensor.travel_time_next_appointment_location_bike
       travel_time_next_appointment_location:
         friendly_name: Dauer
         unit_of_measurement: min
@@ -129,24 +113,15 @@ sensor:
           {% elif is_state("input_select.next_appointment_travel_mode","Laufen")%}
             {{ states("sensor.travel_time_next_appointment_location_walking")}}
           {% endif %}
-        entity_id:
-          - input_select.next_appointment_travel_mode
-          - sensor.travel_time_next_appointment_location_car
-          - sensor.travel_time_next_appointment_location_transit
-          - sensor.travel_time_next_appointment_location_bike
   # User Two
   - platform: template
     sensors:
       cal_next_appointment_title_user_two:
         friendly_name: Termin
         value_template: "{{ states.calendar.stillhammersinagmailcom.attributes.message }}"
-        entity_id:
-          - calendar.stillhammersinagmailcom
       cal_next_appointment_location_user_two:
         friendly_name: Ort
         value_template: "{{ states.calendar.stillhammersinagmailcom.attributes.location }}"
-        entity_id:
-          - calendar.stillhammersinagmailcom
       cal_next_appointment_location_google_prepared_user_two:
         value_template: >
           {% if states("sensor.cal_next_appointment_location_user_two") == "" %}
@@ -155,14 +130,9 @@ sensor:
             {{ states.calendar.stillhammersinagmailcom.attributes.location }}
           {% endif %}
         friendly_name: Ort
-        entity_id:
-          - sensor.cal_next_appointment_location_user_two
-          - calendar.stillhammersinagmailcom
       cal_next_appointment_start_time_user_two:
         friendly_name: Um
         value_template: "{{ states.calendar.stillhammersinagmailcom.attributes.start_time or now() }}"
-        entity_id:
-          - calendar.stillhammersinagmailcom
       calc_leave_time_user_two:
         value_template: >
           {% if is_state("input_select.next_appointment_travel_mode_user_two","Auto") %}
@@ -183,13 +153,6 @@ sensor:
             (states("input_number.leave_time_offset_user_two") | int * 60)) | timestamp_custom("%Y-%m-%d %H:%M")}}
           {% endif %}
         friendly_name: Losfahren
-        entity_id:
-          - input_select.next_appointment_travel_mode_user_two
-          - calendar.stillhammersinagmailcom
-          - input_number.leave_time_offset_user_two
-          - sensor.travel_time_next_appointment_location_car_user_two
-          - sensor.travel_time_next_appointment_location_transit_user_two
-          - sensor.travel_time_next_appointment_location_bike_user_two
       travel_time_next_appointment_location_user_two:
         friendly_name: Dauer
         unit_of_measurement: min
@@ -203,11 +166,6 @@ sensor:
           {% elif is_state("input_select.next_appointment_travel_mode_user_two","Laufen")%}
             {{ states("sensor.travel_time_next_appointment_location_walking_user_two")}}
           {% endif %}
-        entity_id:
-          - input_select.next_appointment_travel_mode_user_two
-          - sensor.travel_time_next_appointment_location_car_user_two
-          - sensor.travel_time_next_appointment_location_transit_user_two
-          - sensor.travel_time_next_appointment_location_bike_user_two
 homeassistant:
   customize:
     sensor.travel_time_next_appointment_location_car:

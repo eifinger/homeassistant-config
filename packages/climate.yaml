@@ -63,43 +63,27 @@ sensor:
       climate_wohnzimmer_current:
         value_template: >
           {{ state_attr('climate.wohnzimmer_thermostat', 'current_temperature') }}
-        entity_id:
-          - climate.wohnzimmer_thermostat
       climate_wohnzimmer_target:
         value_template: >
           {{ state_attr('climate.wohnzimmer_thermostat', 'temperature') }}
-        entity_id:
-          - climate.wohnzimmer_thermostat
       climate_kuche_current:
         value_template: >
           {{ state_attr('climate.kuche_thermostat', 'current_temperature') }}
-        entity_id:
-          - climate.kuche_thermostat
       climate_kuche_target:
         value_template: >
           {{ state_attr('climate.kuche_thermostat', 'temperature') }}
-        entity_id:
-          - climate.kuche_thermostat
       climate_bad_oben_current:
         value_template: >
           {{ state_attr('climate.bad_oben_thermostat', 'current_temperature') }}
-        entity_id:
-          - climate.bad_oben_thermostat
       climate_bad_oben_target:
         value_template: >
           {{ state_attr('climate.bad_oben_thermostat', 'temperature') }}
-        entity_id:
-          - climate.bad_oben_thermostat
       climate_bad_current:
         value_template: >
           {{ state_attr('climate.bad_thermostat', 'current_temperature') }}
-        entity_id:
-          - climate.bad_thermostat
       climate_bad_target:
         value_template: >
           {{ state_attr('climate.bad_thermostat', 'temperature') }}
-        entity_id:
-          - climate.bad_thermostat
 script:
   livingroom_wakeup:
     sequence:

@@ -44,7 +44,7 @@ automation:
   - id: c11b9bed-4bba-4245-925f-9dbbd6c3a344
     alias: 'Alarm wenn Disk Used > 80%'
     description: Alert when a disk usage is greater than 80%
-    initial_state: 'on'
+    initial_state: true
     trigger:
       - platform: numeric_state
         entity_id: sensor.glances_pihole_used_percent
@@ -80,7 +80,7 @@ automation:
 
   - id: a8993d6e-f612-4f07-9ffd-be733e13762c
     alias: 'Alarm wenn Seafile fsck fehlgeschlagen'
-    initial_state: 'on'
+    initial_state: true
     trigger:
       - platform: state
         entity_id: sensor.seafile_fsck

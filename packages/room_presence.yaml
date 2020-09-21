@@ -32,8 +32,6 @@ sensor:
           {% else %}
             Unbekannt
           {% endif %}
-        entity_id:
-          - sensor.mqtt_room_user_one
   # User two
   - platform: mqtt
     name: mqtt_room_user_two
@@ -66,8 +64,6 @@ sensor:
           {% else %}
             Unbekannt
           {% endif %}
-        entity_id:
-          - sensor.mqtt_room_user_two
   - platform: template
     sensors:
       location_user_one:
@@ -82,9 +78,6 @@ sensor:
           {% else %}
             {{states.sensor.room_user_one.state}}
           {% endif %}
-        entity_id:
-          - sensor.room_user_one
-          - device_tracker.sm_g975f
       location_user_two:
         friendly_name: Sina
         value_template: >-
@@ -97,6 +90,3 @@ sensor:
           {% else %}
             {{states.sensor.room_user_two.state}}
           {% endif %}
-        entity_id:
-          - sensor.room_user_two
-          - device_tracker.oneplus_a3003

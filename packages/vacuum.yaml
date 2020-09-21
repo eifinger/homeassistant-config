@@ -43,7 +43,7 @@ cloud:
 automation:
   - id: 0329e412-7a07-42cd-a602-55307712f07b
     alias: 'Alarm wenn Snowie offline ist'
-    initial_state: 'on'
+    initial_state: true
     trigger:
       - platform: state
         entity_id: vacuum.xiaomi_vacuum_cleaner

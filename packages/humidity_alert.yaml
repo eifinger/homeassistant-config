@@ -70,8 +70,8 @@ automation:
           minutes: 5
     condition:
       condition: numeric_state
-      entity_id:
-        - sensor.owm_temperature
+      entity_id: weather.dwd_weather_wiesbaden_biebrich
+      attribute: temperature
       below: 20
     action:
       - service: automation.turn_on
@@ -140,8 +140,8 @@ automation:
           minutes: 5
     condition:
       condition: numeric_state
-      entity_id:
-        - sensor.owm_temperature
+      entity_id: weather.dwd_weather_wiesbaden_biebrich
+      attribute: temperature
       below: 20
     action:
       - service: automation.turn_on

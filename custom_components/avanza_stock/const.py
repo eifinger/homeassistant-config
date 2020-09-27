@@ -1,5 +1,5 @@
 """Constants for avanza_stock."""
-__version__ = "1.0.6"
+__version__ = "1.0.7"
 
 DEFAULT_NAME = "Avanza Stock"
 
@@ -91,18 +91,30 @@ CHANGE_PRICE_MAPPING = [
 TOTAL_CHANGE_PRICE_MAPPING = [
     ("totalChangeOneWeek", "priceOneWeekAgo"),
     ("totalChangeOneMonth", "priceOneMonthAgo"),
-    ("totalChangeThreeMonths", "priceThreeMonthsAgo",),
+    (
+        "totalChangeThreeMonths",
+        "priceThreeMonthsAgo",
+    ),
     ("totalChangeSixMonths", "priceSixMonthsAgo"),
     ("totalChangeOneYear", "priceOneYearAgo"),
-    ("totalChangeThreeYears", "priceThreeYearsAgo",),
+    (
+        "totalChangeThreeYears",
+        "priceThreeYearsAgo",
+    ),
     ("totalChangeFiveYears", "priceFiveYearsAgo"),
-    ("totalChangeCurrentYear", "priceAtStartOfYear",),
+    (
+        "totalChangeCurrentYear",
+        "priceAtStartOfYear",
+    ),
 ]
 
 CHANGE_PERCENT_PRICE_MAPPING = [
     ("changePercentOneWeek", "priceOneWeekAgo"),
     ("changePercentOneMonth", "priceOneMonthAgo"),
-    ("changePercentThreeMonths", "priceThreeMonthsAgo",),
+    (
+        "changePercentThreeMonths",
+        "priceThreeMonthsAgo",
+    ),
     ("changePercentSixMonths", "priceSixMonthsAgo"),
     ("changePercentOneYear", "priceOneYearAgo"),
     ("changePercentThreeYears", "priceThreeYearsAgo"),

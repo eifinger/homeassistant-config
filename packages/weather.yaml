@@ -1,16 +1,4 @@
 ---
 sensor:
-  - platform: openweathermap
-    api_key: !secret openweathermap_api_key
-    monitored_conditions:
-      - weather
-      - temperature
-      - wind_speed
-      - wind_bearing
-      - humidity
-      - pressure
-      - clouds
-      - rain
-      - snow
   - platform: dwd_weather_warnings
     region_name: !secret dwd_weather_warnings_region

@@ -65,6 +65,5 @@ input_number: !include input_number.yaml
 notify: !include notify.yaml
 zone: !include zone.yaml
 camera: !include camera.yaml
-weather: !include weather.yaml
 scene: !include scenes.yaml
 yeelight: !include yeelight.yaml

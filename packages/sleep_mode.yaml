@@ -92,7 +92,7 @@ automation:
           | selectattr('state', 'eq', 'on') | list | count > 0 }}
     action:
       - service: notify.alexa_media_kevin_s_echo_dot_unten
-        data_template:
+        data:
           data:
             type: announce
             method: speak

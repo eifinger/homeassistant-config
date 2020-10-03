@@ -26,7 +26,7 @@ automation:
         entity_id: sensor.unifi_controller_latest_docker
     action:
       - service: notify.kevin
-        data_template:
+        data:
           message: "Neue Unifi Controller Version verfügbar: {{states.sensor.unifi_controller_latest_docker.state}}"
     condition:
       condition: template
@@ -43,7 +43,7 @@ automation:
         entity_id: sensor.latest_version
     action:
       - service: notify.kevin
-        data_template:
+        data:
           message: "Neue Homeassistant Version verfügbar: {{states.sensor.latest_version.state}}"
     condition:
       - condition: template

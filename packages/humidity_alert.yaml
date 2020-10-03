@@ -34,7 +34,7 @@ automation:
         data:
           entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
       - service: notify.group_notifications
-        data_template:
+        data:
           message: >
             "Du kannst das Badfenster wieder schließen,
             die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
@@ -43,7 +43,7 @@ automation:
         entity_id: input_boolean.notifier_alexa
         state: "on"
       - service: notify.alexa_media
-        data_template:
+        data:
           target:
             - media_player.kevins_echo_dot_oben
             - media_player.kevin_s_echo_dot_unten
@@ -107,7 +107,7 @@ automation:
                 state: "on"
             sequence:
               - service: notify.alexa_media
-                data_template:
+                data:
                   target:
                     - media_player.kevins_echo_dot_oben
                     - media_player.kevin_s_echo_dot_unten
@@ -120,7 +120,7 @@ automation:
                     die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_upper_bathroom') | float  }} Prozent."
         default:
           - service: notify.group_notifications
-            data_template:
+            data:
               message: >
                 "Du kannst das Badfenster wieder schließen,
                 die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_upper_bathroom') | float  }} Prozent."

@@ -26,7 +26,7 @@ automation:
           | selectattr('state', 'eq', 'on') | list | count > 0 }}
     action:
       - service: notify.group_notifications
-        data_template:
+        data:
           message: >
             {% set ns = namespace(open_doors="") %}
             {% for state in states %}
@@ -85,7 +85,7 @@ automation:
         value_template: "{{ trigger.from_state.state == 'off' and trigger.to_state.state == 'on' }}"
     action:
       - service: notify.alexa_media_kevins_echo_dot_oben
-        data_template:
+        data:
           data:
             type: announce
             method: speak

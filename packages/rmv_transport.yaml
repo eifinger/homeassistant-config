@@ -37,7 +37,7 @@ automation:
       - service: alexa_media.update_last_called
       - delay: 00:00:01
       - service: notify.alexa_media
-        data_template:
+        data:
           target:
             - '{{ states.sensor.last_alexa.state }}'
           data:

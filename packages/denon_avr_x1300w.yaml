@@ -105,7 +105,7 @@ script:
   receiver_mute_unmute:
     sequence:
       - service: media_player.volume_mute
-        data_template:
+        data:
           entity_id: media_player.denon_avr_x1300w
           is_volume_muted: >-
               {%- if states.media_player.denon_avr_x1300w.attributes.is_volume_muted == false -%}

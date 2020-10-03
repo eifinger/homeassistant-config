@@ -53,7 +53,7 @@ automation:
         state: "on"
     action:
       - service: media_player.volume_set
-        data_template:
+        data:
           entity_id: >
             {% if is_state('input_select.alexa', 'Oben') %}
               media_player.kevins_echo_dot_oben
@@ -68,7 +68,7 @@ automation:
             {% endif %}
           volume_level: '{{ states.input_number.alexa_volume.state | float /10 }}'
       - service: notify.alexa_media
-        data_template:
+        data:
           target:
             - >-
               {% if is_state('input_select.alexa', 'Oben') %}

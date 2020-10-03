@@ -31,7 +31,7 @@ automation:
           state: 'on'
     action:
       - variables:
-          humidity_alert_message: > 
+          humidity_alert_message: >
             "Du kannst das Badfenster wieder schließen,
             die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
       - service: automation.turn_off
@@ -99,7 +99,7 @@ automation:
           state: 'on'
     action:
       - variables:
-          humidity_alert_message: > 
+          humidity_alert_message: >
             "Du kannst das Badfenster wieder schließen,
             die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_upper_bathroom') | float  }} Prozent."
       - service: automation.turn_off

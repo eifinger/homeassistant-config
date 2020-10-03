@@ -30,9 +30,10 @@ automation:
           entity_id: 'binary_sensor.contact_lower_bathroom_window_tilted'
           state: 'on'
     action:
-      # - service: automation.turn_off
-      #   data:
-      #     entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
+      - service: automation.turn_off
+        data:
+          entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
+          stop_actions: false
       - service: notify.group_notifications
         data:
           message: >
@@ -99,6 +100,7 @@ automation:
       - service: automation.turn_off
         data:
           entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
+          stop_actions: false
       - choose:
           - conditions:
               - condition: state

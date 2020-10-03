@@ -30,15 +30,14 @@ automation:
           entity_id: 'binary_sensor.contact_lower_bathroom_window_tilted'
           state: 'on'
     action:
-      - service: automation.turn_off
-        data:
-          entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
+      # - service: automation.turn_off
+      #   data:
+      #     entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
       - service: notify.group_notifications
         data:
           message: >
             "Du kannst das Badfenster wieder schließen,
             die Luftfeuchtigkeit liegt bei {{ states('sensor.humidity_lower_bathroom') | float  }} Prozent."
-
       - condition: state
         entity_id: input_boolean.notifier_alexa
         state: "on"

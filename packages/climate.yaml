@@ -122,14 +122,12 @@ script:
       - service: climate.set_temperature
         data:
           entity_id: climate.kuche_thermostat
-        data:
           temperature: >
             {{ state_attr('climate.kuche_thermostat', 'temperature') | float
             + 2 }}
       - service: climate.set_temperature
         data:
           entity_id: climate.wohnzimmer_thermostat
-        data:
           temperature: >
             {{ state_attr('climate.wohnzimmer_thermostat', 'temperature') | float
             + 2 }}

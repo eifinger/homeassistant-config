@@ -1,4 +1,0 @@
----
-learn_faces:
-  sequence:
-    - event: eifinger_learn_faces

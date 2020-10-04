@@ -13,3 +13,21 @@ automation:
           entity_id: light.bar_table
           color_name: red
           brightness: 255
+  - id: 935122bc-4f2b-4993-acc5-8af23223c806
+    description: Turn Bar green and then off after homeassistant started
+    alias: 'Bar Grün und aus wenn Homeassistant gestartet ist'
+    mode: single
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: light.bar_table
+          color_name: green
+          brightness: 255
+      - delay:
+          seconds: 5
+      - service: light.turn_off
+        data:
+          entity_id: light.bar_table

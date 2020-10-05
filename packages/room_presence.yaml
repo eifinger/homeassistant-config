@@ -1,12 +1,4 @@
 ---
-device_tracker:
-  - platform: mqtt
-    devices:
-      galaxy_s10_room_presence: 'room-assistant/device_tracker/bluetooth-classic-f0-8a-76-39-3d-4b-tracker/state'
-      oneplus_3t_room_presence: 'room-assistant/device_tracker/bluetooth-classic-c0-ee-fb-f5-9a-d3-tracker/state'
-    payload_home: 'true'
-    payload_not_home: 'false'
-    source_type: bluetooth
 sensor:
   - platform: template
     sensors:

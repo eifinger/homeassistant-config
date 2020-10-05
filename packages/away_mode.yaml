@@ -13,13 +13,14 @@ script:
         example: input_boolean.user_one_home
     sequence:
       - choose:
-        # User is already home
+          # User is already home
           - conditions:
-             - condition: template
-               value_template: "{{ is_state(person, 'home') and true }}"
+              - condition: template
+                value_template: "{{ is_state(person, 'home') and true }}"
             sequence:
               - service: input_boolean.turn_on
-                entity_id: "{{ input_boolean }}"
+                data:
+                  entity_id: "{{ input_boolean }}"
         default:
           # User is not yet/still home
           - wait_for_trigger:
@@ -35,13 +36,15 @@ script:
                     value_template: "{{ is_state(person, 'home') }}"
                 sequence:
                   - service: input_boolean.turn_on
-                    entity_id: "{{ person }}"
+                    data:
+                      entity_id: "{{ person }}"
               - conditions:
                   - condition: template
                     value_template: "{{ is_state(person, 'home') }}"
                 sequence:
                   - service: input_boolean.turn_off
-                    entity_id: "{{ person }}"
+                    data:
+                      entity_id: "{{ person }}"
 automation:
   - id: 602560d6-f0f2-4692-acf1-a88b116a2ffb
     alias: Is User Home Determiner

@@ -53,7 +53,7 @@ automation:
         state: "on"
     action:
       - service: media_player.volume_set
-        data_template:
+        data:
           entity_id: >
             {% if is_state('input_select.alexa', 'Oben') %}
               media_player.kevins_echo_dot_oben
@@ -68,7 +68,7 @@ automation:
             {% endif %}
           volume_level: '{{ states.input_number.alexa_volume.state | float /10 }}'
       - service: notify.alexa_media
-        data_template:
+        data:
           target:
             - >-
               {% if is_state('input_select.alexa', 'Oben') %}
@@ -95,7 +95,7 @@ automation:
     alias: send_notification_if_alexa_login_timed_out
     trigger:
       platform: event
-      event_type: alexa_media_player_relogin_required
+      event_type: alexa_media_relogin_required
     action:
       - service: notify.kevin
         data:

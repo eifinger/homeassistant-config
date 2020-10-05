@@ -12,52 +12,56 @@ automation:
         from: "off"
         to: "on"
     condition:
-      - condition: or
+      - condition: and
         conditions:
-          - condition: sun
-            after: sunset
-          - condition: sun
-            before: sunrise
+          - condition: or
+            conditions:
+              - condition: sun
+                after: sunset
+              - condition: sun
+                before: sunrise
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id:
+                  - light.stairs_lower_yeelight
+                  - light.upper_stairs_yeelight
+                state: "off"
+              - condition: state
+                entity_id: input_boolean.stairs_motion_trigger_turned_on_light
+                state: "off"
     action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.stairs_motion_trigger_turned_on_light
       - choose:
           - conditions:
               - condition: time
                 after: "01:00:00"
                 before: "07:00:00"
             sequence:
-              - service: light.turn_on
-                data:
-                  entity_id: light.stairs_lower_yeelight
+              - variables:
                   brightness_pct: 1
-              - service: light.turn_on
-                data:
-                  entity_id: light.upper_stairs_yeelight
-                  brightness_pct: 1
-              - delay:
-                  seconds: "{{ states('input_number.stairs_motion_trigger_delay') | int }}"
-              - service: light.turn_off
-                data:
-                  entity_id: light.stairs_lower_yeelight
-              - service: light.turn_off
-                data:
-                  entity_id: light.stairs_lower_yeelight
         default:
-          - service: light.turn_on
-            data:
-              entity_id: light.stairs_lower_yeelight
+          - variables:
               brightness_pct: 100
-          - service: light.turn_on
-            data:
-              entity_id: light.upper_stairs_yeelight
-              brightness_pct: 100
-          - delay:
-              seconds: "{{ states('input_number.stairs_motion_trigger_delay') | int }}"
-          - service: light.turn_off
-            data:
-              entity_id: light.stairs_lower_yeelight
-          - service: light.turn_off
-            data:
-              entity_id: light.upper_stairs_yeelight
+      - service: light.turn_on
+        data:
+          entity_id: light.stairs_lower_yeelight
+          brightness_pct: "{{ brightness_pct }}"
+      - service: light.turn_on
+        data:
+          entity_id: light.upper_stairs_yeelight
+          brightness_pct: "{{ brightness_pct }}"
+      - delay:
+          seconds: "{{ states('input_number.stairs_motion_trigger_delay') | int }}"
+      - service: light.turn_off
+        data:
+          entity_id: light.stairs_lower_yeelight
+      - service: light.turn_off
+        data:
+          entity_id: light.upper_stairs_yeelight
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.stairs_motion_trigger_turned_on_light
   - id: fd30fed1-bb71-4387-b126-ee039921f575
     alias: Arbeitszimmer Bewegungsmelder
     description: Control the studyroom lights with motion triggers
@@ -81,7 +85,17 @@ automation:
             entity_id:
               - input_boolean.sleepmode
             state: "off"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: light.philips_miio_light_bulb
+                state: "off"
+              - condition: state
+                entity_id: input_boolean.studyroom_motion_trigger_turned_on_light
+                state: "off"
     action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.studyroom_motion_trigger_turned_on_light
       - service: light.turn_on
         data:
           entity_id: light.philips_miio_light_bulb
@@ -91,6 +105,8 @@ automation:
       - service: light.turn_off
         data:
           entity_id: light.philips_miio_light_bulb
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.studyroom_motion_trigger_turned_on_light
   - id: d3fb887c-c15d-46a0-8b28-4edbecab9613
     alias: Bad Bewegungsmelder
     description: Control the bathroom lights with motion triggers
@@ -102,38 +118,47 @@ automation:
         from: "off"
         to: "on"
     condition:
-      - condition: or
+      - condition: and
         conditions:
-          - condition: sun
-            after: sunset
-          - condition: sun
-            before: sunrise
+          - condition: or
+            conditions:
+              - condition: sun
+                after: sunset
+              - condition: sun
+                before: sunrise
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: light.lower_bathroom_yeelight
+                state: "off"
+              - condition: state
+                entity_id: input_boolean.bathroom_motion_trigger_turned_on_light
+                state: "off"
     action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.bathroom_motion_trigger_turned_on_light
       - choose:
           - conditions:
               - condition: time
                 after: "01:00:00"
                 before: "07:00:00"
             sequence:
-              - service: light.turn_on
-                data:
-                  entity_id: light.lower_bathroom_yeelight
+              - variables:
                   brightness_pct: 1
-              - delay:
-                  seconds: "{{ states('input_number.bathroom_motion_trigger_delay') | int }}"
-              - service: light.turn_off
-                data:
-                  entity_id: light.lower_bathroom_yeelight
         default:
-          - service: light.turn_on
-            data:
-              entity_id: light.lower_bathroom_yeelight
+          - variables:
               brightness_pct: 100
-          - delay:
-              seconds: "{{ states('input_number.bathroom_motion_trigger_delay') | int }}"
-          - service: light.turn_off
-            data:
-              entity_id: light.lower_bathroom_yeelight
+      - service: light.turn_on
+        data:
+          entity_id: light.lower_bathroom_yeelight
+          brightness_pct: "{{ brightness_pct }}"
+      - delay:
+          seconds: "{{ states('input_number.bathroom_motion_trigger_delay') | int }}"
+      - service: light.turn_off
+        data:
+          entity_id: light.lower_bathroom_yeelight
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.bathroom_motion_trigger_turned_on_light
   - id: 29089a46-1a2b-4b2f-9e2d-fb690a92c535
     alias: Schlafzimmer Bewegungsmelder
     description: Control the bedroom lights with motion triggers
@@ -182,6 +207,10 @@ input_number:
     min: 90
     max: 600
     step: 5
+input_boolean:
+  stairs_motion_trigger_turned_on_light:
+  studyroom_motion_trigger_turned_on_light:
+  bathroom_motion_trigger_turned_on_light:
 homeassistant:
   customize:
     automation.treppe_bewegungsmelder:

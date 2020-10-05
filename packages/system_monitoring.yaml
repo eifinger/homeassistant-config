@@ -75,7 +75,7 @@ automation:
         above: 80
     action:
       - service: notify.kevin
-        data_template:
+        data:
           message: "Disk Usage {{ trigger.entity_id }}: {{ trigger.to_state }}"
 
   - id: a8993d6e-f612-4f07-9ffd-be733e13762c

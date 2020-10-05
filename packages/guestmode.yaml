@@ -89,7 +89,7 @@ automation:
         state: "on"
     action:
       - service: notify.alexa_media_kevins_echo_dot_oben
-        data_template:
+        data:
           data:
             type: announce
             method: speak

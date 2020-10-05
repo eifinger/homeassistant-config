@@ -98,11 +98,11 @@ automation:
       - service: vacuum.start
         entity_id: vacuum.xiaomi_vacuum_cleaner
       - service: telegram_bot.answer_callback_query
-        data_template:
+        data:
           callback_query_id: '{{ trigger.event.data.id }}'
           message: 'Okay'
       - service: telegram_bot.edit_message
-        data_template:
+        data:
           message_id: '{{ trigger.event.data.message.message_id }}'
           chat_id: '{{ trigger.event.data.user_id }}'
           message: Ich habe Snowie um {{ now() }} gestartet.

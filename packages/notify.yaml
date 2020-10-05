@@ -1,0 +1,20 @@
+---
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_allowed_chat_id_group_notifications
+      - !secret telegram_allowed_chat_id_user_one
+      - !secret telegram_allowed_chat_id_user_two
+notify:
+  - name: Kevin
+    platform: telegram
+    chat_id: !secret telegram_allowed_chat_id_user_one
+
+  - name: Sina
+    platform: telegram
+    chat_id: !secret telegram_allowed_chat_id_user_two
+
+  - name: group_notifications
+    platform: telegram
+    chat_id: !secret telegram_allowed_chat_id_group_notifications

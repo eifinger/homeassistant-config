@@ -52,18 +52,6 @@ influxdb:
   max_retries: 5
 ltss:
   db_url: !secret ltss_url
-telegram_bot:
-  - platform: polling
-    api_key: !secret telegram_api_key
-    allowed_chat_ids:
-      - !secret telegram_allowed_chat_id_group_notifications
-      - !secret telegram_allowed_chat_id_user_one
-      - !secret telegram_allowed_chat_id_user_two
-script: !include scripts.yaml
 input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml
-notify: !include notify.yaml
-zone: !include zone.yaml
-camera: !include camera.yaml
 scene: !include scenes.yaml
-yeelight: !include yeelight.yaml

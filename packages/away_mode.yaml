@@ -81,7 +81,7 @@ automation:
       - service: system_log.write
         data:
           message: "{{ trigger.to_state }}"
-          level: info
+          level: error
       - choose:
           - conditions:
               - condition: template

@@ -78,14 +78,10 @@ automation:
         - input_boolean.user_one_home
         - input_boolean.user_two_home
     action:
-      - service: system_log.write
-        data:
-          message: "{{ trigger.to_state }}"
-          level: error
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.to_state == 'on' }}"
+                value_template: "{{ trigger.to_state.state == 'on' }}"
             sequence:
               - service: input_boolean.turn_on
                 entity_id: input_boolean.is_home

@@ -1,5 +1,59 @@
 ---
 automation:
+  - id: 268809fc-5e8c-4009-872e-61ba419cd733
+    alias: User Sleepmode Determiner
+    description: Control input_boolean.user_one_sleep
+    mode: single
+    trigger:
+      platform: state
+      entity_id:
+        - sensor.galaxy_s10_room_presence
+        - sensor.oneplus_3t_room_presence
+      from: "bedroom"
+      for:
+        minutes: 5
+    condition:
+      - condition: time
+        after: "06:00:00"
+        before: "23:00:00"
+    action:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.entity_id == 'sensor.galaxy_s10_room_presence' }}"
+            sequence:
+              - service: input_boolean.turn_off
+                entity_id: input_boolean.user_one_sleep
+        default:
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.user_two_sleep
+  - id: 72d1f4c2-253c-4291-99d0-83f045fea397
+    alias: Sleepmode Determiner
+    description: Control input_boolean.sleepmode
+    mode: single
+    trigger:
+      platform: state
+      entity_id:
+        - input_boolean.user_one_sleep
+        - input_boolean.user_two_sleep
+    action:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ trigger.to_state == 'on' }}"
+            sequence:
+              - service: input_boolean.turn_on
+                entity_id: input_boolean.sleepmode
+        default:
+          - condition: and
+            conditions:
+              - condition: state
+                entity_id:
+                  - input_boolean.user_one_sleep
+                  - input_boolean.user_two_sleep
+                state: "off"
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.sleepmode
   - id: 0cdc8f40-8de1-499f-ad30-733c04d8f728
     alias: 'Alexa Ansagen aus wenn wir schlafen'
     description: Keine lauten Ansagen auf Alexa Lautsprechern wenn der Schlafmodus an ist

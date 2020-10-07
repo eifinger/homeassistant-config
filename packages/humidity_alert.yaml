@@ -54,7 +54,7 @@ automation:
           data:
             type: announce
             method: speak
-            message: "{{ humidity_alert_message }}"
+          message: "{{ humidity_alert_message }}"
   # Lower Bathroom Humidity Alert Activation
   - id: 86d3ca92-6bdd-4345-b393-ae44a2add641
     alias: Aktiviere Alarm Badfenster schliessen wenn Humidity okay
@@ -122,7 +122,7 @@ automation:
           data:
             type: announce
             method: speak
-            message: "{{ humidity_alert_message }}"
+          message: "{{ humidity_alert_message }}"
   # Upper Bathroom Humidity Alert Activation
   - id: 022e36c3-ff3d-4a9a-b449-504527867472
     alias: Aktiviere Alarm Badfenster Oben schliessen wenn Humidity okay

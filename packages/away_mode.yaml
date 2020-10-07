@@ -69,13 +69,17 @@ automation:
   - id: 4f8dd19f-0d78-4614-bce1-77fd7bc31214
     alias: Is Home Determiner
     description: Control input_boolean.is_home
-    mode: single
+    mode: queued
     trigger:
       platform: state
       entity_id:
         - input_boolean.user_one_home
         - input_boolean.user_two_home
     action:
+      - service: system_log.write
+        data:
+          message: "{{ trigger.to_state }}"
+          level: info
       - choose:
           - conditions:
               - condition: template

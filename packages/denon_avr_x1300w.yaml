@@ -41,7 +41,7 @@ automation:
     initial_state: true
     trigger:
       - platform: state
-        entity_id: media_player.kevins_echo_dot_oben
+        entity_id: media_player.kevins_echo_dot_wohnzimmer
         to: "playing"
     condition:
       - condition: template

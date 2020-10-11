@@ -189,7 +189,7 @@ automation:
       - condition: template
         value_template: "{{ trigger.from_state.state == 'off' and trigger.to_state.state == 'on' }}"
     action:
-      - service: notify.alexa_media_kevins_echo_dot_oben
+      - service: notify.alexa_media_kevins_echo_dot_wohnzimmer
         data:
           data:
             type: announce

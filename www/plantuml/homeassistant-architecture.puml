@@ -17,7 +17,7 @@ package "HP Microserver Gen10" {
     Container(splunk, "splunk/splunk:7.2", "Splunk")
 }
 
-System(alexa, "2x Echo Dot")
+System(alexa, "4x Echo Dot")
 System(broadklink, "Broadlink Pro")
 System(hs110, "3x HS110")
 System(xiaomiTempHum, "2x Xiaomi Temp/Hum Sensor")

@@ -114,10 +114,10 @@ automation:
           - light.livingroom_yeelight
           - light.lower_bathroom_yeelight
           - light.philips_miio_light_bulb
-          - media_player.kevin_s_echo_dot_unten
-          - media_player.kevins_echo
-          - media_player.kevins_echo_dot
-          - media_player.kevins_echo_dot_oben
+          - media_player.kevin_s_echo_dot_schlafzimmer
+          - media_player.kevins_echo_bad
+          - media_player.kevins_echo_dot_arbeitszimmer
+          - media_player.kevins_echo_dot_wohnzimmer
   - id: af5f082f-20a9-486e-b572-69b98fd7f781
     alias: Alexa sagt wenn Türen und Fenster noch offen ist wenn wir schlafen
     description: Alexa alarms us when we forgot to close doors or windwos when going to sleep

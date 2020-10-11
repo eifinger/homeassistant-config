@@ -47,10 +47,10 @@ automation:
       - service: notify.alexa_media
         data:
           target:
-            - media_player.kevins_echo_dot_oben
-            - media_player.kevin_s_echo_dot_unten
-            - media_player.kevins_echo
-            - media_player.kevins_echo_dot
+            - media_player.kevins_echo_dot_wohnzimmer
+            - media_player.kevin_s_echo_dot_schlafzimmer
+            - media_player.kevins_echo_bad
+            - media_player.kevins_echo_dot_arbeitszimmer
           data:
             type: announce
             method: speak
@@ -115,10 +115,10 @@ automation:
       - service: notify.alexa_media
         data:
           target:
-            - media_player.kevins_echo_dot_oben
-            - media_player.kevin_s_echo_dot_unten
-            - media_player.kevins_echo
-            - media_player.kevins_echo_dot
+            - media_player.kevins_echo_dot_wohnzimmer
+            - media_player.kevin_s_echo_dot_schlafzimmer
+            - media_player.kevins_echo_bad
+            - media_player.kevins_echo_dot_arbeitszimmer
           data:
             type: announce
             method: speak

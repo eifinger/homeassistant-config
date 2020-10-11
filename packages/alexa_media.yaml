@@ -25,7 +25,7 @@ input_select:
   alexa:
     name: Alexa
     options:
-      - Oben
+      - Wohnzimmer
       - Schlafzimmer
       - Arbeitszimmer
       - Bad
@@ -52,34 +52,27 @@ automation:
         entity_id: input_boolean.notifier_alexa
         state: "on"
     action:
-      - service: media_player.volume_set
-        data:
-          entity_id: >
-            {% if is_state('input_select.alexa', 'Oben') %}
-              media_player.kevins_echo_dot_oben
+      - variables:
+          echo_device: >
+            {% if is_state('input_select.alexa', 'Wohnzimmer') %}
+              media_player.kevins_echo_dot_wohnzimmer
             {% elif is_state('input_select.alexa', 'Schlafzimmer') %}
-              media_player.kevin_s_echo_dot_unten
+              media_player.kevin_s_echo_dot_schlafzimmer
             {% elif is_state('input_select.alexa', 'Arbeitszimmer') %}
-              media_player.kevins_echo_dot
+              media_player.kevins_echo_dot_arbeitszimmer
             {% elif is_state('input_select.alexa', 'Bad') %}
-              media_player.kevins_echo
+              media_player.kevins_echo_bad
             {% elif is_state('input_select.alexa', 'None') %}
               false
             {% endif %}
+      - service: media_player.volume_set
+        data:
+          entity_id: "{{ echo_device }}"
           volume_level: '{{ states.input_number.alexa_volume.state | float /10 }}'
       - service: notify.alexa_media
         data:
           target:
-            - >-
-              {% if is_state('input_select.alexa', 'Oben') %}
-                media_player.kevins_echo_dot_oben
-              {% elif is_state('input_select.alexa', 'Schlafzimmer') %}
-                media_player.kevin_s_echo_dot_unten
-              {% elif is_state('input_select.alexa', 'Arbeitszimmer') %}
-                media_player.kevins_echo_dot
-              {% elif is_state('input_select.alexa', 'Bad') %}
-                media_player.kevins_echo
-              {% endif %}
+            - "{{ echo_device }}"
           data:
             type: announce
             method: speak

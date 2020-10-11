@@ -1,12 +1,4 @@
 ---
-alexa_media:
-  accounts:
-    - email: !secret amazon_email
-      password: !secret amazon_password
-      url: amazon.de
-notify:
-  - platform: alexa_media
-    name: alexa_media
 #####################################################################
 ### UI Controller for TTS
 #####################################################################

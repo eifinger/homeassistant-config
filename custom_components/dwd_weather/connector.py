@@ -56,7 +56,7 @@ class DWDWeatherData:
         if self.dwd_weather.get_station_name(False) == "":
             _LOGGER.exception("No update possible")
         else:
-            _LOGGER.info("Updating ", self.dwd_weather.get_station_name(False))
+            _LOGGER.info("Updating {}".format(self.dwd_weather.get_station_name(False)))
             self.infos[ATTR_LATEST_UPDATE] = datetime.now(timezone.utc)
             self.latest_update = datetime.now(timezone.utc)
             self.infos[ATTR_ISSUE_TIME] = self.dwd_weather.issue_time
@@ -75,13 +75,13 @@ class DWDWeatherData:
                     dwdforecast.WeatherDataType.TEMPERATURE, timestamp, False
                 )
                 if temp_max is not None:
-                    temp_max -= 273.1
+                    temp_max = int(round(temp_max - 273.1, 0))
 
                 temp_min = self.dwd_weather.get_daily_min(
                     dwdforecast.WeatherDataType.TEMPERATURE, timestamp, False
                 )
                 if temp_min is not None:
-                    temp_min -= 273.1
+                    temp_min = int(round(temp_min - 273.1, 0))
 
                 precipitation_prop = self.dwd_weather.get_daily_max(
                     dwdforecast.WeatherDataType.PRECIPITATION_PROBABILITY,

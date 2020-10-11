@@ -28,8 +28,6 @@ script:
                 event_type: state_changed
                 event_data:
                   entity_id: "{{ person }}"
-            timeout: 600
-            continue_on_timeout: false
           - choose:
               - conditions:
                   - condition: template

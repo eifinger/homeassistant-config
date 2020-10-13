@@ -35,14 +35,14 @@ script:
                 sequence:
                   - service: input_boolean.turn_on
                     data:
-                      entity_id: "{{ person }}"
+                      entity_id: "{{ input_boolean }}"
               - conditions:
                   - condition: template
                     value_template: "{{ not is_state(person, 'home') }}"
                 sequence:
                   - service: input_boolean.turn_off
                     data:
-                      entity_id: "{{ person }}"
+                      entity_id: "{{ input_boolean }}"
 automation:
   - id: 602560d6-f0f2-4692-acf1-a88b116a2ffb
     alias: Is User Home Determiner

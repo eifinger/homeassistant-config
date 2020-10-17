@@ -80,9 +80,6 @@ switch.large_lamp:
 switch.lobby:
   friendly_name: "Flur"
   icon: mdi:lightbulb
-switch.studyroom:
-  friendly_name: "Arbeitszimmer"
-  icon: mdi:lightbulb
 switch.weihnachtslichter:
   icon: mdi:pine-tree
 light.bar_table:

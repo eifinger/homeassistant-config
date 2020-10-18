@@ -93,14 +93,14 @@ script:
         entity_id: climate.wohnzimmer_thermostat
         data:
           temperature: >
-            {{ states(input_number.set_livingroom_thermostat_when_waking_up) | float }}
+            {{ states('input_number.set_livingroom_thermostat_when_waking_up') | float }}
       - service: climate.turn_on
         entity_id: climate.kuche_thermostat
       - service: climate.set_temperature
         entity_id: climate.kuche_thermostat
         data:
           temperature: >
-            {{ states(input_number.set_kitchen_thermostat_when_waking_up) | float }}
+            {{ states('input_number.set_kitchen_thermostat_when_waking_up') | float }}
   livingroom_sleep:
     sequence:
       - service: climate.turn_on
@@ -109,14 +109,14 @@ script:
         entity_id: climate.wohnzimmer_thermostat
         data:
           temperature: >
-            {{ states(input_number.set_kitchen_thermostat_when_sleeping) | float }}
+            {{ states('input_number.set_kitchen_thermostat_when_sleeping') | float }}
       - service: climate.turn_on
         entity_id: climate.kuche_thermostat
       - service: climate.set_temperature
         entity_id: climate.kuche_thermostat
         data:
           temperature: >
-            {{ states(input_number.set_kitchen_thermostat_when_sleeping) | float }}
+            {{ states('input_number.set_kitchen_thermostat_when_sleeping') | float }}
   i_am_cold:
     sequence:
       - service: climate.set_temperature

@@ -8,6 +8,9 @@ script:
       person:
         description: The person to track
         example: person.kevin
+      mobile_app:
+        description: The mobile app to send the location request to
+        example: notify.mobile_app_sm_g975f
       input_boolean:
         description: The input_boolean to turn on
         example: input_boolean.user_one_home
@@ -25,6 +28,9 @@ script:
           # User is not yet/still home
           - variables:
               current_state: "{{ states(person) }}"
+          - service: "{{ mobile_app }}"
+            data:
+              message: "request_location_update"
           # Wait until the state changes
           - wait_for_trigger:
               - platform: template
@@ -60,12 +66,14 @@ automation:
         data:
           variables:
             person: person.kevin
+            mobile_app: notify.mobile_app_sm_g975f
             input_boolean: input_boolean.user_one_home
       - service: script.turn_on
         entity_id: script.is_user_home_determiner
         data:
           variables:
             person: person.sina
+            mobile_app: notify.mobile_app_oneplus_a3003
             input_boolean: input_boolean.user_two_home
 
   - id: 4f8dd19f-0d78-4614-bce1-77fd7bc31214

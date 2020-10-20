@@ -11,20 +11,18 @@ automation:
     description: >
       Turn the bathroom floor heating on for 1 hour before the alarm clock goes off.
       This is triggered by the companion app next_alarm sensor if the user is home.
-    variables:
-      heat_time: 7200
     trigger:
       - platform: template
         value_template: >
           {{ states('sensor.date_time') ==
           ((as_timestamp(states.sensor.sm_g975f_nachster_wecker.state)
-          | int - heat_time) | timestamp_custom('%Y-%m-%d, %H:%M', True))
+          | int - 7200) | timestamp_custom('%Y-%m-%d, %H:%M', True))
           and (states('person.kevin') == 'home') }}
       - platform: template
         value_template: >
           {{ states('sensor.date_time') ==
           ((as_timestamp(states.sensor.oneplus_a3003_nachster_wecker.state)
-          | int - heat_time) | timestamp_custom('%Y-%m-%d, %H:%M', True))
+          | int - 7200) | timestamp_custom('%Y-%m-%d, %H:%M', True))
           and (states('person.sina') == 'home') }}
     action:
       - service: climate.turn_on
@@ -42,7 +40,7 @@ automation:
         data:
           message: "Ich habe das Bad auf {{ states('input_number.warm_bath_before_wakeup') }}C° gestellt."
       - delay:
-          minutes: "{{ heat_time }}"
+          minutes: 7200
       - service: climate.set_temperature
         data:
           entity_id: climate.bad_thermostat

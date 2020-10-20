@@ -1,0 +1,55 @@
+---
+sensor:
+  - platform: time_date
+    display_options:
+      - 'date_time'
+
+automation:
+  - id: bc5f5b6b-0ea7-4afa-befd-fee0f032c376
+    mode: single
+    alias: warm_bath_before_wakeup
+    description: >
+      Turn the bathroom floor heating on for 1 hour before the alarm clock goes off.
+      This is triggered by the companion app next_alarm sensor if the user is home.
+    variables:
+      heat_time: 120
+    trigger:
+      - platform: template
+        value_template: >
+          {{ states('sensor.date_time') ==
+          ((as_timestamp(states.sensor.sm_g975f_nachster_wecker.state)
+          | int - heat_time) | timestamp_custom('%Y-%m-%d, %H:%M', True))
+          and (states('person.kevin') == 'home') }}
+      - platform: template
+        value_template: >
+          {{ states('sensor.date_time') ==
+          ((as_timestamp(states.sensor.oneplus_a3003_nachster_wecker.state)
+          | int - heat_time) | timestamp_custom('%Y-%m-%d, %H:%M', True))
+          and (states('person.sina') == 'home') }}
+    action:
+      - service: climate.turn_on
+        entity_id: climate.bad_thermostat
+      - variables:
+          old_temperature: "{{ state_attr('climate.bad_thermostat', 'temperature') }}"
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.bad_thermostat
+          temperature: "{{ states('input_number.warm_bath_before_wakeup') }}"
+      - service: notify.mobile_app_oneplus_a3003
+        data:
+          message: "Ich habe das Bad auf {{ states('input_number.warm_bath_before_wakeup') }}C° gestellt."
+      - service: notify.mobile_app_sm_g975f
+        data:
+          message: "Ich habe das Bad auf {{ states('input_number.warm_bath_before_wakeup') }}C° gestellt."
+      - delay:
+          minutes: "{{ heat_time }}"
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.bad_thermostat
+          temperature: "{{ old_temperature }}"
+      - service: notify.mobile_app_oneplus_a3003
+        data:
+          message: "Ich habe das Bad auf {{ old_temperature }}C° gestellt."
+      - service: notify.mobile_app_sm_g975f
+        data:
+          message: "Ich habe das Bad auf {{ old_temperature }}C° gestellt."

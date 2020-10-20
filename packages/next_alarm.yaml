@@ -12,7 +12,7 @@ automation:
       Turn the bathroom floor heating on for 1 hour before the alarm clock goes off.
       This is triggered by the companion app next_alarm sensor if the user is home.
     variables:
-      heat_time: 120
+      heat_time: 7200
     trigger:
       - platform: template
         value_template: >

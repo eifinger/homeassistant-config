@@ -41,7 +41,6 @@ automation:
           variables:
             climate_entity_id: "climate.bad_oben_thermostat"
             target_temperature_entity_id: "input_number.warm_upper_bath_before_wakeup"
-      
 
 script:
   warm_bath_before_wakeup:
@@ -57,7 +56,8 @@ script:
         example: input_number.warm_bath_before_wakeup
     sequence:
       - service: climate.turn_on
-        entity_id: "{{ climate_entity_id }}"
+        data:
+          entity_id: "{{ climate_entity_id }}"
       - variables:
           old_temperature: "{{ state_attr(climate_entity_id, 'temperature') }}"
       - service: climate.set_temperature
@@ -66,10 +66,14 @@ script:
           temperature: "{{ states(target_temperature_entity_id) }}"
       - service: notify.mobile_app_oneplus_a3003
         data:
-          message: "Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }} auf {{ states(target_temperature_entity_id) }}C° gestellt."
+          message: >
+            Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }}
+            auf {{ states(target_temperature_entity_id) }}C° gestellt.
       - service: notify.mobile_app_sm_g975f
         data:
-          message: "Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }} auf {{ states(target_temperature_entity_id) }}C° gestellt."
+          message: >
+            Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }}
+            auf {{ states(target_temperature_entity_id) }}C° gestellt.
       - delay:
           minutes: 7200
       - service: climate.set_temperature

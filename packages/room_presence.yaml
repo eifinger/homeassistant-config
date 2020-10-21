@@ -86,8 +86,10 @@ automation:
           - sensor.room_assistant_studyroom_health
           - sensor.room_assistant_livingroom_health
         from: "ok"
+        for:
+          minutes: 5
     action:
       - service: notify.kevin
         data:
           title: room-assistant alarm!
-          message: "{{ trigger.entity_id }} is unhealthy!"
+          message: "{{ trigger.entity_id | replace('_', '\_') }} is unhealthy!"

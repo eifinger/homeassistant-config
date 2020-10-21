@@ -25,29 +25,60 @@ automation:
           | int - 7200) | timestamp_custom('%Y-%m-%d, %H:%M', True))
           and (states('person.sina') == 'home') }}
     action:
+      - service: script.turn_on
+        entity_id: script.warm_bath_before_wakeup
+        data:
+          variables:
+            climate_entity_id: "climate.bad_thermostat"
+            target_temperature_entity_id: "input_number.warm_bath_before_wakeup"
+      - condition: state
+        entity_id:
+          - input_boolean.guestmode
+        state: "on"
+      - service: script.turn_on
+        entity_id: script.warm_bath_before_wakeup
+        data:
+          variables:
+            climate_entity_id: "climate.bad_oben_thermostat"
+            target_temperature_entity_id: "input_number.warm_upper_bath_before_wakeup"
+      
+
+script:
+  warm_bath_before_wakeup:
+    alias: Warm Bath before wakeup
+    description: Turn the bathroom floor heating on for 1 hour before the alarm clock goes off.
+    mode: parallel
+    fields:
+      climate_entity_id:
+        description: The climate entity to turn on
+        example: climate.bad_thermostat
+      target_temperature_entity_id:
+        description: The input_number holding the target temperature
+        example: input_number.warm_bath_before_wakeup
+    sequence:
       - service: climate.turn_on
-        entity_id: climate.bad_thermostat
+        entity_id: "{{ climate_entity_id }}"
       - variables:
-          old_temperature: "{{ state_attr('climate.bad_thermostat', 'temperature') }}"
+          old_temperature: "{{ state_attr(climate_entity_id, 'temperature') }}"
       - service: climate.set_temperature
         data:
           entity_id: climate.bad_thermostat
-          temperature: "{{ states('input_number.warm_bath_before_wakeup') }}"
+          temperature: "{{ states(target_temperature_entity_id) }}"
       - service: notify.mobile_app_oneplus_a3003
         data:
-          message: "Ich habe das Bad auf {{ states('input_number.warm_bath_before_wakeup') }}C° gestellt."
+          message: "Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }} auf {{ states(target_temperature_entity_id) }}C° gestellt."
       - service: notify.mobile_app_sm_g975f
         data:
-          message: "Ich habe das Bad auf {{ states('input_number.warm_bath_before_wakeup') }}C° gestellt."
+          message: "Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }} auf {{ states(target_temperature_entity_id) }}C° gestellt."
       - delay:
           minutes: 7200
       - service: climate.set_temperature
         data:
-          entity_id: climate.bad_thermostat
+          entity_id: "{{ climate_entity_id }}"
           temperature: "{{ old_temperature }}"
       - service: notify.mobile_app_oneplus_a3003
         data:
-          message: "Ich habe das Bad auf {{ old_temperature }}C° gestellt."
+          message: "Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }} auf {{ old_temperature }}C° gestellt."
       - service: notify.mobile_app_sm_g975f
         data:
-          message: "Ich habe das Bad auf {{ old_temperature }}C° gestellt."
+          message: "Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }} auf {{ old_temperature }}C° gestellt."

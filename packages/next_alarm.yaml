@@ -66,12 +66,7 @@ script:
         data:
           entity_id: climate.bad_thermostat
           temperature: "{{ states(target_temperature_entity_id) }}"
-      - service: notify.mobile_app_oneplus_a3003
-        data:
-          message: >
-            Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }}
-            auf {{ states(target_temperature_entity_id) }}C° gestellt.
-      - service: notify.mobile_app_sm_g975f
+      - service: notify.group_notifications
         data:
           message: >
             Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }}
@@ -82,9 +77,6 @@ script:
         data:
           entity_id: "{{ climate_entity_id }}"
           temperature: "{{ old_temperature }}"
-      - service: notify.mobile_app_oneplus_a3003
-        data:
-          message: "Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }} auf {{ old_temperature }}C° gestellt."
-      - service: notify.mobile_app_sm_g975f
+      - service: notify.group_notifications
         data:
           message: "Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }} auf {{ old_temperature }}C° gestellt."

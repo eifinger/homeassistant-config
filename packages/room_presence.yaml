@@ -87,7 +87,7 @@ automation:
           - sensor.room_assistant_livingroom_health
         from: "ok"
     action:
-      - service: notify.mobile_app_sm_g975f
+      - service: notify.kevin
         data:
           title: room-assistant alarm!
           message: "{{ trigger.entity_id }} is unhealthy!"

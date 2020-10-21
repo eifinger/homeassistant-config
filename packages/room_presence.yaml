@@ -1,4 +1,4 @@
----
+--- 
 sensor:
   - platform: template
     sensors:
@@ -57,3 +57,37 @@ sensor:
           {% else %}
             {{states.sensor.room_user_two.state}}
           {% endif %}
+  # Health Monitoring
+  - platform: rest
+    name: room_assistant_bedroom_health
+    scan_interval: 5
+    resource: !secret room_assistant_bedroom_health_url
+    value_template: '{ value_json.status }'
+  - platform: rest
+    name: room_assistant_studyroom_health
+    scan_interval: 5
+    resource: !secret room_assistant_studyroom_health_url
+    value_template: '{ value_json.status }'
+  - platform: rest
+    name: room_assistant_livingroom_health
+    scan_interval: 5
+    resource: !secret room_assistant_livingroom_health_url
+    value_template: '{ value_json.status }'
+
+automation:
+  - id: 85d8ebc0-11ea-4e71-a692-7b0c1d9cdd71
+    alias: alert_when_room_assistant_is_not_okay
+    description: Send an alert when a room assistant instance is not okay
+    mode: parallel
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.room_assistant_bedroom_health
+          - sensor.room_assistant_studyroom_health
+          - sensor.room_assistant_livingroom_health
+        from: "ok"
+    action:
+      - service: notify.mobile_app_sm_g975f
+        data:
+          title: room-assistant alarm!
+          message: "{{ trigger.entity_id }} is unhealthy!"

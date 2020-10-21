@@ -62,17 +62,17 @@ sensor:
     name: room_assistant_bedroom_health
     scan_interval: 5
     resource: !secret room_assistant_bedroom_health_url
-    value_template: '{ value_json.status }'
+    value_template: "{{ value_json.status }}"
   - platform: rest
     name: room_assistant_studyroom_health
     scan_interval: 5
     resource: !secret room_assistant_studyroom_health_url
-    value_template: '{ value_json.status }'
+    value_template: "{{ value_json.status }}"
   - platform: rest
     name: room_assistant_livingroom_health
     scan_interval: 5
     resource: !secret room_assistant_livingroom_health_url
-    value_template: '{ value_json.status }'
+    value_template: "{{ value_json.status }}"
 
 automation:
   - id: 85d8ebc0-11ea-4e71-a692-7b0c1d9cdd71

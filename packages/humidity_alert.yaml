@@ -51,7 +51,7 @@ automation:
               data:
                 message: "{{ humidity_alert_message }}"
             - choose:
-              # Also notify with alexa?
+                # Also notify with alexa?
                 - conditions:
                     - condition: state
                       entity_id: input_boolean.notifier_alexa
@@ -139,7 +139,7 @@ automation:
               data:
                 message: "{{ humidity_alert_message }}"
             - choose:
-              # Also notify with alexa?
+                # Also notify with alexa?
                 - conditions:
                     - condition: state
                       entity_id: input_boolean.notifier_alexa

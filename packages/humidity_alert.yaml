@@ -39,7 +39,7 @@ automation:
           entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
           stop_actions: false
       - repeat:
-          while: 
+          while:
             - condition: state
               entity_id: 'binary_sensor.contact_lower_bathroom_window'
               state: 'on'
@@ -52,22 +52,22 @@ automation:
                 message: "{{ humidity_alert_message }}"
             - choose:
               # Also notify with alexa?
-              - conditions:
-                  - condition: state
-                    entity_id: input_boolean.notifier_alexa
-                    state: "on"
-                sequence:
-                  - service: notify.alexa_media
-                    data:
-                      target:
-                        - media_player.kevins_echo_dot_wohnzimmer
-                        - media_player.kevin_s_echo_dot_schlafzimmer
-                        - media_player.kevins_echo_bad
-                        - media_player.kevins_echo_dot_arbeitszimmer
+                - conditions:
+                    - condition: state
+                      entity_id: input_boolean.notifier_alexa
+                      state: "on"
+                  sequence:
+                    - service: notify.alexa_media
                       data:
-                        type: announce
-                        method: speak
-                      message: "{{ humidity_alert_message }}"
+                        target:
+                          - media_player.kevins_echo_dot_wohnzimmer
+                          - media_player.kevin_s_echo_dot_schlafzimmer
+                          - media_player.kevins_echo_bad
+                          - media_player.kevins_echo_dot_arbeitszimmer
+                        data:
+                          type: announce
+                          method: speak
+                        message: "{{ humidity_alert_message }}"
             - delay:
                 minutes: >
                   {% if repeat.index < 3 %}
@@ -127,7 +127,7 @@ automation:
           entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
           stop_actions: false
       - repeat:
-          while: 
+          while:
             - condition: state
               entity_id: 'binary_sensor.contact_lower_bathroom_window'
               state: 'on'
@@ -140,22 +140,22 @@ automation:
                 message: "{{ humidity_alert_message }}"
             - choose:
               # Also notify with alexa?
-              - conditions:
-                  - condition: state
-                    entity_id: input_boolean.notifier_alexa
-                    state: "on"
-                sequence:
-                  - service: notify.alexa_media
-                    data:
-                      target:
-                        - media_player.kevins_echo_dot_wohnzimmer
-                        - media_player.kevin_s_echo_dot_schlafzimmer
-                        - media_player.kevins_echo_bad
-                        - media_player.kevins_echo_dot_arbeitszimmer
+                - conditions:
+                    - condition: state
+                      entity_id: input_boolean.notifier_alexa
+                      state: "on"
+                  sequence:
+                    - service: notify.alexa_media
                       data:
-                        type: announce
-                        method: speak
-                      message: "{{ humidity_alert_message }}"
+                        target:
+                          - media_player.kevins_echo_dot_wohnzimmer
+                          - media_player.kevin_s_echo_dot_schlafzimmer
+                          - media_player.kevins_echo_bad
+                          - media_player.kevins_echo_dot_arbeitszimmer
+                        data:
+                          type: announce
+                          method: speak
+                        message: "{{ humidity_alert_message }}"
             - delay:
                 minutes: >
                   {% if repeat.index < 3 %}

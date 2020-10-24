@@ -38,23 +38,43 @@ automation:
         data:
           entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
           stop_actions: false
-      - service: notify.group_notifications
-        data:
-          message: "{{ humidity_alert_message }}"
-      - condition: state
-        entity_id: input_boolean.notifier_alexa
-        state: "on"
-      - service: notify.alexa_media
-        data:
-          target:
-            - media_player.kevins_echo_dot_wohnzimmer
-            - media_player.kevin_s_echo_dot_schlafzimmer
-            - media_player.kevins_echo_bad
-            - media_player.kevins_echo_dot_arbeitszimmer
-          data:
-            type: announce
-            method: speak
-          message: "{{ humidity_alert_message }}"
+      - repeat:
+          while: 
+            - condition: state
+              entity_id: 'binary_sensor.contact_lower_bathroom_window'
+              state: 'on'
+            - condition: state
+              entity_id: 'binary_sensor.contact_lower_bathroom_window_tilted'
+              state: 'on'
+          sequence:
+            - service: notify.group_notifications
+              data:
+                message: "{{ humidity_alert_message }}"
+            - choose:
+              # Also notify with alexa?
+              - conditions:
+                  - condition: state
+                    entity_id: input_boolean.notifier_alexa
+                    state: "on"
+                sequence:
+                  - service: notify.alexa_media
+                    data:
+                      target:
+                        - media_player.kevins_echo_dot_wohnzimmer
+                        - media_player.kevin_s_echo_dot_schlafzimmer
+                        - media_player.kevins_echo_bad
+                        - media_player.kevins_echo_dot_arbeitszimmer
+                      data:
+                        type: announce
+                        method: speak
+                      message: "{{ humidity_alert_message }}"
+            - delay:
+                minutes: >
+                  {% if repeat.index < 3 %}
+                    15
+                  {% else %}
+                    30
+                  {% endif %}
   # Lower Bathroom Humidity Alert Activation
   - id: 86d3ca92-6bdd-4345-b393-ae44a2add641
     alias: Aktiviere Alarm Badfenster schliessen wenn Humidity okay
@@ -106,23 +126,43 @@ automation:
         data:
           entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
           stop_actions: false
-      - service: notify.group_notifications
-        data:
-          message: "{{ humidity_alert_message }}"
-      - condition: state
-        entity_id: input_boolean.notifier_alexa
-        state: "on"
-      - service: notify.alexa_media
-        data:
-          target:
-            - media_player.kevins_echo_dot_wohnzimmer
-            - media_player.kevin_s_echo_dot_schlafzimmer
-            - media_player.kevins_echo_bad
-            - media_player.kevins_echo_dot_arbeitszimmer
-          data:
-            type: announce
-            method: speak
-          message: "{{ humidity_alert_message }}"
+      - repeat:
+          while: 
+            - condition: state
+              entity_id: 'binary_sensor.contact_lower_bathroom_window'
+              state: 'on'
+            - condition: state
+              entity_id: 'binary_sensor.contact_lower_bathroom_window_tilted'
+              state: 'on'
+          sequence:
+            - service: notify.group_notifications
+              data:
+                message: "{{ humidity_alert_message }}"
+            - choose:
+              # Also notify with alexa?
+              - conditions:
+                  - condition: state
+                    entity_id: input_boolean.notifier_alexa
+                    state: "on"
+                sequence:
+                  - service: notify.alexa_media
+                    data:
+                      target:
+                        - media_player.kevins_echo_dot_wohnzimmer
+                        - media_player.kevin_s_echo_dot_schlafzimmer
+                        - media_player.kevins_echo_bad
+                        - media_player.kevins_echo_dot_arbeitszimmer
+                      data:
+                        type: announce
+                        method: speak
+                      message: "{{ humidity_alert_message }}"
+            - delay:
+                minutes: >
+                  {% if repeat.index < 3 %}
+                    15
+                  {% else %}
+                    30
+                  {% endif %}
   # Upper Bathroom Humidity Alert Activation
   - id: 022e36c3-ff3d-4a9a-b449-504527867472
     alias: Aktiviere Alarm Badfenster Oben schliessen wenn Humidity okay

@@ -3,26 +3,20 @@ input_boolean:
   guestmode:
     name: Gäste Modus
     icon: mdi:home-account
-  guestmode_livingroom:
-    name: Gäste Modus Wohnzimmer
-    icon: mdi:home-account
 
 cloud:
   alexa:
     filter:
       include_entities:
         - input_boolean.guestmode
-        - input_boolean.guestmode_livingroom
     entity_config:
       input_boolean.guestmode:
         name: Gäste Modus
         description: Der Gästemodus
-      input_boolean.guestmode_livingroom:
-        name: Gäste Modus Wohnzimmer
-        description: Der Gästemodus wenn Gäste im Wohnzimmer schlafen
 automation:
   - id: 459ad293-dae6-4779-9e00-468311a41467
-    alias: On Guestmode on
+    alias: Deaktiviere manuelle Bad Oben Temperatur wenn Gäste da sind
+    description: Lock Upper Bathroom Climate when we have guests
     initial_state: true
     trigger:
       - platform: state
@@ -30,12 +24,11 @@ automation:
         from: "off"
         to: "on"
     action:
-      - service: homeassistant.turn_on
-        entity_id: input_boolean.warm_upper_bath_before_wakeup
       - service: homeassistant.turn_on
         entity_id: switch.bad_oben_thermostat_remote_lock
   - id: 8f799d8a-b5d8-4982-b999-f57a6628235d
-    alias: On Guestmode off
+    alias: Aktiviere manuelle Bad Oben Temperatur wenn Gäste wieder weg sind
+    description: Unlock Upper Bathroom Climate when guests leave
     initial_state: true
     trigger:
       - platform: state
@@ -44,65 +37,4 @@ automation:
         to: "off"
     action:
       - service: homeassistant.turn_off
-        entity_id: input_boolean.warm_upper_bath_before_wakeup
-      - service: homeassistant.turn_off
         entity_id: switch.bad_oben_thermostat_remote_lock
-  - id: 4eaedf02-f889-432b-bb1e-15b5a8e86cef
-    alias: On Guestmode Livingroom on
-    initial_state: true
-    trigger:
-      - platform: state
-        entity_id: input_boolean.guestmode_livingroom
-        from: "off"
-        to: "on"
-    action:
-      - service: homeassistant.turn_on
-        entity_id: input_boolean.warm_upper_bath_before_wakeup
-      - service: homeassistant.turn_on
-        entity_id: switch.bad_oben_thermostat_remote_lock
-  - id: 542fe14a-e56d-4ded-8786-3764b53cd346
-    alias: On Guestmode Livingroom off
-    initial_state: true
-    trigger:
-      - platform: state
-        entity_id: input_boolean.guestmode_livingroom
-        from: "on"
-        to: "off"
-    action:
-      - service: homeassistant.turn_off
-        entity_id: input_boolean.warm_upper_bath_before_wakeup
-      - service: homeassistant.turn_off
-        entity_id: switch.bad_oben_thermostat_remote_lock
-  - id: b10a5f7b-7a3d-48a7-82a4-66f95c4728f7
-    alias: Willkommen Gast
-    description: Welcome Guests
-    initial_state: true
-    mode: single
-    trigger:
-      - platform: state
-        entity_id: device_tracker.assiphone
-        from: "not_home"
-        to: "home"
-    condition:
-      - condition: state
-        entity_id: input_boolean.notifier_alexa
-        state: "on"
-    action:
-      - service: notify.alexa_media_kevins_echo_dot_wohnzimmer
-        data:
-          data:
-            type: announce
-            method: speak
-          message: >
-            {% if trigger.entity_id == "device_tracker.assiphone" %}
-              {% set name = "Astrid" %}
-            {% endif %}
-            {% set last_visit = relative_time(trigger.from_state.last_updated)
-              | replace("years", "Jahren")
-              | replace("months", "Monaten")
-              | replace("days", "Tagen")
-              | replace("hours", "Stunden")
-              | replace("minutes", "Minuten")
-              | replace("seconds", "Sekunden") %}
-            Herzlich Willkommen zurück, {{ name }}! Ich hoffe, du hattest eine schöne Zeit
-            seit deinem letzten Besuch vor {{ last_visit }}.

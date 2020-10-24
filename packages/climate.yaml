@@ -172,6 +172,28 @@ automation:
         default:
           - service: homeassistant.turn_on
             entity_id: climate.bad_oben_thermostat
+  - id: ff420301-06c7-4d5e-b97d-8f2d96970de4
+    alias: Fußbodenheizung oben aus/an wenn Fenster auf/zu
+    description: Turn on/off livingroom and kitchen floor heating when the terrace is opened/closed
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.contact_terrace_door
+    action:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{  trigger.to_state.state == 'on'}}
+            sequence:
+              - service: homeassistant.turn_off
+                entity_id: climate.kuche_thermostat
+              - service: homeassistant.turn_off
+                entity_id: climate.wohnzimmer_thermostat
+        default:
+          - service: homeassistant.turn_on
+            entity_id: climate.kuche_thermostat
+          - service: homeassistant.turn_on
+            entity_id: climate.wohnzimmer_thermostat
 homeassistant:
   customize:
     automation.fussbodenheizung_im_bad_aus_an_wenn_fenster_auf_zu:

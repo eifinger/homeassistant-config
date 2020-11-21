@@ -40,10 +40,10 @@ automation:
                 before: "07:00:00"
             sequence:
               - variables:
-                  brightness_pct: 1
+                  brightness_pct: 1.0
         default:
           - variables:
-              brightness_pct: 100
+              brightness_pct: 100.0
       - service: light.turn_on
         data:
           entity_id: light.stairs_lower_yeelight
@@ -99,7 +99,7 @@ automation:
       - service: light.turn_on
         data:
           entity_id: light.philips_miio_light_bulb
-          brightness_pct: 100
+          brightness_pct: 100.0
       - delay:
           seconds: "{{ states('input_number.studyroom_motion_trigger_delay') | int }}"
       - service: light.turn_off
@@ -144,10 +144,10 @@ automation:
                 before: "07:00:00"
             sequence:
               - variables:
-                  brightness_pct: 1
+                  brightness_pct: 1.0
         default:
           - variables:
-              brightness_pct: 100
+              brightness_pct: 100.0
       - service: light.turn_on
         data:
           entity_id: light.lower_bathroom_yeelight
@@ -186,7 +186,7 @@ automation:
       - service: light.turn_on
         data:
           entity_id: light.bedroom_yeelight
-          brightness_pct: 100
+          brightness_pct: 100.0
 
 input_number:
   stairs_motion_trigger_delay:

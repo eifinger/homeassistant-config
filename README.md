@@ -412,7 +412,7 @@ version: '2.1'
 services:
   homeassistant:
     container_name: homeassistant
-    image: homeassistant/home-assistant:0.118.2
+    image: homeassistant/home-assistant:0.118.3
     volumes:
       - /home/admin/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro

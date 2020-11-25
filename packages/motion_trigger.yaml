@@ -46,7 +46,8 @@ automation:
               brightness_pct: 100
       - service: system_log.write
         data:
-          message: "{{ brightness_pct }}"
+          message: "Variables: brightness_pct is: {{ brightness_pct }}"
+          level: info
       - service: light.turn_on
         data:
           entity_id: light.stairs_lower_yeelight

@@ -47,11 +47,11 @@ automation:
       - service: light.turn_on
         data:
           entity_id: light.stairs_lower_yeelight
-          brightness_pct: "{{ brightness_pct }}"
+          brightness_pct: {{ brightness_pct }}
       - service: light.turn_on
         data:
           entity_id: light.upper_stairs_yeelight
-          brightness_pct: "{{ brightness_pct }}"
+          brightness_pct: {{ brightness_pct }}
       - delay:
           seconds: "{{ states('input_number.stairs_motion_trigger_delay') | int }}"
       - service: light.turn_off
@@ -151,7 +151,7 @@ automation:
       - service: light.turn_on
         data:
           entity_id: light.lower_bathroom_yeelight
-          brightness_pct: "{{ brightness_pct }}"
+          brightness_pct: {{ brightness_pct }}
       - delay:
           seconds: "{{ states('input_number.bathroom_motion_trigger_delay') | int }}"
       - service: light.turn_off

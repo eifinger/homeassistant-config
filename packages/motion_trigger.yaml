@@ -40,16 +40,16 @@ automation:
                 before: "07:00:00"
             sequence:
               - variables:
-                  brightness_pct: 1
+                  brightness: 1
         default:
           - variables:
-              brightness_pct: 100
+              brightness: 100
       - service: system_log.write
         data:
-          message: "Variables: brightness_pct is:"
+          message: "Variables: brightness is:"
       - service: system_log.write
         data:
-          message: "{{ brightness_pct }}"
+          message: "{{ brightness }}"
       - service: light.turn_on
         data:
           entity_id: light.stairs_lower_yeelight

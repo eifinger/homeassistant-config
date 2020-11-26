@@ -39,13 +39,10 @@ automation:
           entity_id: automation.alarm_badfenster_schliessen_wenn_humidity_okay
           stop_actions: false
       - repeat:
-          while:
-            - condition: state
-              entity_id: 'binary_sensor.contact_lower_bathroom_window'
-              state: 'on'
-            - condition: state
-              entity_id: 'binary_sensor.contact_lower_bathroom_window_tilted'
-              state: 'on'
+          while: >
+            {{ is_state('binary_sensor.contact_lower_bathroom_window', 'on')
+            or is_state('binary_sensor.contact_lower_bathroom_window_tilted', 'on')
+            }}
           sequence:
             - service: notify.group_notifications
               data:
@@ -127,13 +124,10 @@ automation:
           entity_id: automation.alarm_badfenster_oben_schliessen_wenn_humidity_okay
           stop_actions: false
       - repeat:
-          while:
-            - condition: state
-              entity_id: 'binary_sensor.contact_lower_bathroom_window'
-              state: 'on'
-            - condition: state
-              entity_id: 'binary_sensor.contact_lower_bathroom_window_tilted'
-              state: 'on'
+          while: >
+            {{ is_state('binary_sensor.contact_upper_bathroom_window', 'on')
+            or is_state('binary_sensor.contact_upper_bathroom_window_tilted', 'on')
+            }}
           sequence:
             - service: notify.group_notifications
               data:

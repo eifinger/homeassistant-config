@@ -1,7 +1,7 @@
 ---
 automation:
   - id: 268809fc-5e8c-4009-872e-61ba419cd733
-    alias: User Sleepmode Determiner
+    alias: User Sleepmode Off Determiner
     description: Control input_boolean.user_*_sleep
     mode: queued
     trigger:
@@ -27,6 +27,40 @@ automation:
         default:
           - service: input_boolean.turn_off
             entity_id: input_boolean.user_two_sleep
+  - id: 06639822-2dba-4ae5-9a1c-dfdef754352d
+    alias: User One Sleepmode On 
+    description: Turn input_boolean.user_one_sleep on when input_boolean.sleepmode turns on and user is home
+    mode: single
+    trigger:
+      platform: state
+      entity_id:
+        - input_boolean.sleepmode
+      from: "to"
+    condition:
+      - condition: state
+        entity_id:
+          - input_boolean.user_one_home
+        state: "on"
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.user_one_sleep
+  - id: 682f3b03-036f-4905-89a4-f448737bfd36
+    alias: User Two Sleepmode On 
+    description: Turn input_boolean.user_two_sleep on when input_boolean.sleepmode turns on and user is home
+    mode: single
+    trigger:
+      platform: state
+      entity_id:
+        - input_boolean.sleepmode
+      from: "to"
+    condition:
+      - condition: state
+        entity_id:
+          - input_boolean.user_two_home
+        state: "on"
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.user_two_sleep
   - id: 72d1f4c2-253c-4291-99d0-83f045fea397
     alias: Sleepmode Determiner
     description: Control input_boolean.sleepmode

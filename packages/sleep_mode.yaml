@@ -28,7 +28,7 @@ automation:
           - service: input_boolean.turn_off
             entity_id: input_boolean.user_two_sleep
   - id: 06639822-2dba-4ae5-9a1c-dfdef754352d
-    alias: User One Sleepmode On 
+    alias: User One Sleepmode On
     description: Turn input_boolean.user_one_sleep on when input_boolean.sleepmode turns on and user is home
     mode: single
     trigger:
@@ -45,7 +45,7 @@ automation:
       - service: input_boolean.turn_on
         entity_id: input_boolean.user_one_sleep
   - id: 682f3b03-036f-4905-89a4-f448737bfd36
-    alias: User Two Sleepmode On 
+    alias: User Two Sleepmode On
     description: Turn input_boolean.user_two_sleep on when input_boolean.sleepmode turns on and user is home
     mode: single
     trigger:

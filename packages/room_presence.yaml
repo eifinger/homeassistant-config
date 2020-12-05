@@ -95,7 +95,12 @@ automation:
         for:
           minutes: 5
     action:
-      - service: notify.kevin
-        data:
-          title: room-assistant alarm!
-          message: "{{ trigger.entity_id | replace('_', '\_') }} is unhealthy!"
+      - repeat:
+          while: "{{ not is_state(trigger.entity_id, 'ok') }}"
+          sequence:
+            - service: notify.kevin
+              data:
+                title: room-assistant alarm!
+                message: "{{ trigger.entity_id | replace('_', '\_') }} is unhealthy!"
+            - delay:
+                minutes: 30

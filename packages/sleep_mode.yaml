@@ -37,7 +37,7 @@ automation:
       platform: state
       entity_id:
         - input_boolean.sleepmode
-      from: "to"
+      from: "off"
     condition:
       - condition: state
         entity_id:
@@ -55,7 +55,7 @@ automation:
       platform: state
       entity_id:
         - input_boolean.sleepmode
-      from: "to"
+      from: "off"
     condition:
       - condition: state
         entity_id:

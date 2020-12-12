@@ -224,6 +224,8 @@ homeassistant:
       icon: mdi:radiator-off
     automation.fussbodenheizung_im_bad_oben_aus_an_wenn_fenster_auf_zu:
       icon: mdi:radiator-off
+    automation.fussbodenheizung_oben_aus_an_wenn_fenster_auf_zu:
+      icon: mdi:radiator-off
 cloud:
   alexa:
     filter:

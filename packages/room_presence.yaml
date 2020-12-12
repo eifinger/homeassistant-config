@@ -60,18 +60,23 @@ sensor:
   # Health Monitoring
   - platform: rest
     name: room_assistant_bedroom_health
-    scan_interval: 5
+    scan_interval: 60
     resource: !secret room_assistant_bedroom_health_url
     value_template: "{{ value_json.status }}"
   - platform: rest
     name: room_assistant_studyroom_health
-    scan_interval: 5
+    scan_interval: 60
     resource: !secret room_assistant_studyroom_health_url
     value_template: "{{ value_json.status }}"
   - platform: rest
     name: room_assistant_livingroom_health
-    scan_interval: 5
+    scan_interval: 60
     resource: !secret room_assistant_livingroom_health_url
+    value_template: "{{ value_json.status }}"
+  - platform: rest
+    name: room_assistant_bathroom_health
+    scan_interval: 60
+    resource: !secret room_assistant_bathroom_health_url
     value_template: "{{ value_json.status }}"
 
 automation:
@@ -85,11 +90,17 @@ automation:
           - sensor.room_assistant_bedroom_health
           - sensor.room_assistant_studyroom_health
           - sensor.room_assistant_livingroom_health
+          - sensor.room_assistant_bathroom_health
         from: "ok"
         for:
           minutes: 5
     action:
-      - service: notify.kevin
-        data:
-          title: room-assistant alarm!
-          message: "{{ trigger.entity_id | replace('_', '\_') }} is unhealthy!"
+      - repeat:
+          while: "{{ not is_state(trigger.entity_id, 'ok') }}"
+          sequence:
+            - service: notify.kevin
+              data:
+                title: room-assistant alarm!
+                message: "{{ trigger.entity_id | replace('_', '\_') }} is unhealthy!"
+            - delay:
+                minutes: 30

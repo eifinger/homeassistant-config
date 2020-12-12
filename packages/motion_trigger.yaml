@@ -30,28 +30,20 @@ automation:
               - condition: state
                 entity_id: input_boolean.stairs_motion_trigger_turned_on_light
                 state: "off"
+          - condition: state
+            entity_id: input_boolean.sleepmode
+            state: "off"
     action:
       - service: input_boolean.turn_on
         entity_id: input_boolean.stairs_motion_trigger_turned_on_light
-      - choose:
-          - conditions:
-              - condition: time
-                after: "01:00:00"
-                before: "07:00:00"
-            sequence:
-              - variables:
-                  brightness_pct: 1.0
-        default:
-          - variables:
-              brightness_pct: 100.0
       - service: light.turn_on
         data:
           entity_id: light.stairs_lower_yeelight
-          brightness_pct: "{{ brightness_pct }}"
+          brightness_pct: "{{ '1' if now().hour in [1, 2, 3, 4, 5, 6] else '100' }}"
       - service: light.turn_on
         data:
           entity_id: light.upper_stairs_yeelight
-          brightness_pct: "{{ brightness_pct }}"
+          brightness_pct: "{{ '1' if now().hour in [1, 2, 3, 4, 5, 6] else '100' }}"
       - delay:
           seconds: "{{ states('input_number.stairs_motion_trigger_delay') | int }}"
       - service: light.turn_off
@@ -99,7 +91,7 @@ automation:
       - service: light.turn_on
         data:
           entity_id: light.philips_miio_light_bulb
-          brightness_pct: 100.0
+          brightness_pct: 100
       - delay:
           seconds: "{{ states('input_number.studyroom_motion_trigger_delay') | int }}"
       - service: light.turn_off
@@ -137,23 +129,15 @@ automation:
     action:
       - service: input_boolean.turn_on
         entity_id: input_boolean.bathroom_motion_trigger_turned_on_light
-      - choose:
-          - conditions:
-              - condition: time
-                after: "01:00:00"
-                before: "07:00:00"
-            sequence:
-              - variables:
-                  brightness_pct: 1.0
-        default:
-          - variables:
-              brightness_pct: 100.0
       - service: light.turn_on
         data:
           entity_id: light.lower_bathroom_yeelight
-          brightness_pct: "{{ brightness_pct }}"
-      - delay:
-          seconds: "{{ states('input_number.bathroom_motion_trigger_delay') | int }}"
+          brightness_pct: "{{ '1' if now().hour in [1, 2, 3, 4, 5, 6] else '100' }}"
+      - repeat:
+          while: "{{ is_state('binary_sensor.presence_lower_bathroom', 'on') }}"
+          sequence:
+            - delay:
+                seconds: "{{ states('input_number.bathroom_motion_trigger_delay') | int }}"
       - service: light.turn_off
         data:
           entity_id: light.lower_bathroom_yeelight
@@ -186,7 +170,7 @@ automation:
       - service: light.turn_on
         data:
           entity_id: light.bedroom_yeelight
-          brightness_pct: 100.0
+          brightness_pct: 100
 
 input_number:
   stairs_motion_trigger_delay:

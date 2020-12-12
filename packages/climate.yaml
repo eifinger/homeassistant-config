@@ -134,7 +134,7 @@ script:
 automation:
   - id: bfbb961f-ca65-4916-b9f6-b4afabadc7af
     alias: Fußbodenheizung im Bad aus/an wenn Fenster auf/zu
-    description: Turn on/off bathroom floor heating when the window is opened/closed
+    description: Turn on/off bathroom floor heating when the window is opened/closed for more than 30s
     trigger:
       - platform: state
         entity_id: binary_sensor.contact_lower_bathroom_window_tilted
@@ -147,14 +147,22 @@ automation:
                 value_template: >
                   {{  trigger.to_state.state == 'on'}}
             sequence:
+              - delay:
+                  seconds: 30
+              - condition: template
+                value_template: "{{  trigger.entity_id.state == 'on' }}"
               - service: homeassistant.turn_off
                 entity_id: climate.bad_thermostat
         default:
+          - delay:
+              seconds: 30
+          - condition: template
+            value_template: "{{  trigger.entity_id.state == 'off' }}"
           - service: homeassistant.turn_on
             entity_id: climate.bad_thermostat
   - id: cc85d256-87ae-4303-b234-27d81c98451b
     alias: Fußbodenheizung im Bad oben aus/an wenn Fenster auf/zu
-    description: Turn on/off upper bathroom floor heating when the window is opened/closed
+    description: Turn on/off upper bathroom floor heating when the window is opened/closed for more than 30s
     trigger:
       - platform: state
         entity_id: binary_sensor.contact_upper_bathroom_window_tilted
@@ -167,14 +175,22 @@ automation:
                 value_template: >
                   {{  trigger.to_state.state == 'on'}}
             sequence:
+              - delay:
+                  seconds: 30
+              - condition: template
+                value_template: "{{  trigger.entity_id.state == 'on' }}"
               - service: homeassistant.turn_off
                 entity_id: climate.bad_oben_thermostat
         default:
+          - delay:
+              seconds: 30
+          - condition: template
+            value_template: "{{  trigger.entity_id.state == 'off' }}"
           - service: homeassistant.turn_on
             entity_id: climate.bad_oben_thermostat
   - id: ff420301-06c7-4d5e-b97d-8f2d96970de4
     alias: Fußbodenheizung oben aus/an wenn Fenster auf/zu
-    description: Turn on/off livingroom and kitchen floor heating when the terrace is opened/closed
+    description: Turn on/off livingroom and kitchen floor heating when the terrace is opened/closed for more than 30s
     trigger:
       - platform: state
         entity_id: binary_sensor.contact_terrace_door
@@ -185,11 +201,19 @@ automation:
                 value_template: >
                   {{  trigger.to_state.state == 'on'}}
             sequence:
+              - delay:
+                  seconds: 30
+              - condition: template
+                value_template: "{{  trigger.entity_id.state == 'on' }}"
               - service: homeassistant.turn_off
                 entity_id: climate.kuche_thermostat
               - service: homeassistant.turn_off
                 entity_id: climate.wohnzimmer_thermostat
         default:
+          - delay:
+              seconds: 30
+          - condition: template
+            value_template: "{{  trigger.entity_id.state == 'off' }}"
           - service: homeassistant.turn_on
             entity_id: climate.kuche_thermostat
           - service: homeassistant.turn_on
@@ -199,6 +223,8 @@ homeassistant:
     automation.fussbodenheizung_im_bad_aus_an_wenn_fenster_auf_zu:
       icon: mdi:radiator-off
     automation.fussbodenheizung_im_bad_oben_aus_an_wenn_fenster_auf_zu:
+      icon: mdi:radiator-off
+    automation.fussbodenheizung_oben_aus_an_wenn_fenster_auf_zu:
       icon: mdi:radiator-off
 cloud:
   alexa:

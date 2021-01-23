@@ -4,6 +4,7 @@ tplink:
   switch:
     - host: !secret tp_link_washingmachine_ip
     - host: !secret tp_link_dishwasher_ip
+    - host: !secret tp_link_snowboard
 
 sensor:
   - platform: template
@@ -32,3 +33,15 @@ sensor:
         friendly_name: Spülmaschine Heute
         unit_of_measurement: 'kWh'
         value_template: "{{states.switch.dishwasher.attributes.today_energy_kwh}}"
+      snowboard_power_usage:
+        friendly_name: Snowboard
+        unit_of_measurement: 'W'
+        value_template: "{{states.switch.snowboard.attributes.current_power_w}}"
+      snowboard_power_usage_total:
+        friendly_name: Snowboard Total
+        unit_of_measurement: 'kWh'
+        value_template: "{{states.switch.snowboard.attributes.total_energy_kwh}}"
+      snowboard_power_usage_today:
+        friendly_name: Snowboard Heute
+        unit_of_measurement: 'kWh'
+        value_template: "{{states.switch.snowboard.attributes.today_energy_kwh}}"

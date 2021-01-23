@@ -11,6 +11,7 @@ import asyncio
 from datetime import datetime, timedelta
 from json import JSONDecodeError
 import logging
+import random
 import time
 from typing import Optional, Text
 
@@ -28,6 +29,7 @@ import async_timeout
 from homeassistant.config_entries import SOURCE_IMPORT
 from homeassistant.const import (
     CONF_EMAIL,
+    CONF_NAME,
     CONF_PASSWORD,
     CONF_SCAN_INTERVAL,
     CONF_URL,
@@ -35,9 +37,10 @@ from homeassistant.const import (
 )
 from homeassistant.data_entry_flow import UnknownFlow
 from homeassistant.helpers import config_validation as cv
+from homeassistant.helpers.discovery import async_load_platform
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
-from homeassistant.util import dt
+from homeassistant.util import dt, slugify
 from homeassistant import util
 import voluptuous as vol
 
@@ -49,11 +52,14 @@ from .const import (
     CONF_DEBUG,
     CONF_EXCLUDE_DEVICES,
     CONF_INCLUDE_DEVICES,
+    CONF_OAUTH,
+    CONF_OAUTH_LOGIN,
     CONF_OTPSECRET,
     CONF_QUEUE_DELAY,
     DATA_ALEXAMEDIA,
     DATA_LISTENER,
     DEFAULT_QUEUE_DELAY,
+    DEPENDENT_ALEXA_COMPONENTS,
     DOMAIN,
     ISSUE_URL,
     MIN_TIME_BETWEEN_FORCED_SCANS,
@@ -61,7 +67,7 @@ from .const import (
     SCAN_INTERVAL,
     STARTUP,
 )
-from .helpers import _existing_serials, _catch_login_errors
+from .helpers import _existing_serials, _catch_login_errors, calculate_uuid
 from .notify import async_unload_entry as notify_async_unload_entry
 from .services import AlexaMediaServices
 
@@ -135,7 +141,9 @@ async def async_setup(hass, config, discovery_info=None):
                             CONF_SCAN_INTERVAL: account[
                                 CONF_SCAN_INTERVAL
                             ].total_seconds(),
+                            CONF_OAUTH: account.get(CONF_OAUTH, {}),
                             CONF_OTPSECRET: account.get(CONF_OTPSECRET, ""),
+                            CONF_OAUTH_LOGIN: account.get(CONF_OAUTH_LOGIN, True),
                         },
                     )
                     entry_found = True
@@ -154,7 +162,9 @@ async def async_setup(hass, config, discovery_info=None):
                         CONF_INCLUDE_DEVICES: account[CONF_INCLUDE_DEVICES],
                         CONF_EXCLUDE_DEVICES: account[CONF_EXCLUDE_DEVICES],
                         CONF_SCAN_INTERVAL: account[CONF_SCAN_INTERVAL].total_seconds(),
+                        CONF_OAUTH: account.get(CONF_OAUTH, {}),
                         CONF_OTPSECRET: account.get(CONF_OTPSECRET, ""),
+                        CONF_OAUTH_LOGIN: account.get(CONF_OAUTH_LOGIN, True),
                     },
                 )
             )
@@ -168,55 +178,59 @@ async def async_setup_entry(hass, config_entry):
     async def close_alexa_media(event=None) -> None:
         """Clean up Alexa connections."""
         _LOGGER.debug("Received shutdown request: %s", event)
-        for email, _ in hass.data[DATA_ALEXAMEDIA]["accounts"].items():
-            await close_connections(hass, email)
+        if hass.data.get(DATA_ALEXAMEDIA, {}).get("accounts"):
+            for email, _ in hass.data[DATA_ALEXAMEDIA]["accounts"].items():
+                await close_connections(hass, email)
 
     async def relogin(event=None) -> None:
         """Relogin to Alexa."""
-        for email, _ in hass.data[DATA_ALEXAMEDIA]["accounts"].items():
-            if hide_email(email) == event.data.get("email"):
-                _LOGGER.debug("Received relogin request: %s", event)
-                email = account.get(CONF_EMAIL)
-                login_obj = hass.data[DATA_ALEXAMEDIA]["accounts"][email].get(
-                    "login_obj"
+        if hide_email(email) == event.data.get("email"):
+            _LOGGER.debug("%s: Received relogin request: %s", hide_email(email), event)
+            login_obj: AlexaLogin = hass.data[DATA_ALEXAMEDIA]["accounts"][email].get(
+                "login_obj"
+            )
+            uuid = (await calculate_uuid(hass, email, url))["uuid"]
+            if login_obj is None:
+                login_obj = AlexaLogin(
+                    url=url,
+                    email=email,
+                    password=password,
+                    outputpath=hass.config.path,
+                    debug=account.get(CONF_DEBUG),
+                    otp_secret=account.get(CONF_OTPSECRET, ""),
+                    oauth=account.get(CONF_OAUTH, {}),
+                    uuid=uuid,
+                    oauth_login=bool(
+                        account.get(CONF_OAUTH, {}).get("access_token")
+                        or account.get(CONF_OAUTH_LOGIN)
+                    ),
                 )
-                if login_obj is None:
-                    login_obj = AlexaLogin(
-                        url,
-                        email,
-                        password,
-                        hass.config.path,
-                        account.get(CONF_DEBUG),
-                        account.get(CONF_OTPSECRET, ""),
-                    )
-                    hass.data[DATA_ALEXAMEDIA]["accounts"][email][
-                        "login_obj"
-                    ] = login_obj
-                await login_obj.reset()
-                # await login_obj.login()
-                if await test_login_status(hass, config_entry, login_obj):
-                    await setup_alexa(hass, config_entry, login_obj)
-                break
+                hass.data[DATA_ALEXAMEDIA]["accounts"][email]["login_obj"] = login_obj
+            await login_obj.reset()
+            # await login_obj.login()
+            if await test_login_status(hass, config_entry, login_obj):
+                await setup_alexa(hass, config_entry, login_obj)
 
     async def login_success(event=None) -> None:
         """Relogin to Alexa."""
-        for email, _ in hass.data[DATA_ALEXAMEDIA]["accounts"].items():
-            if hide_email(email) == event.data.get("email"):
-                _LOGGER.debug("Received Login success: %s", event)
-                email = account.get(CONF_EMAIL)
-                login_obj = hass.data[DATA_ALEXAMEDIA]["accounts"][email].get(
-                    "login_obj"
-                )
-                await setup_alexa(hass, config_entry, login_obj)
-                break
+        if hide_email(email) == event.data.get("email"):
+            _LOGGER.debug("Received Login success: %s", event)
+            login_obj: AlexaLogin = hass.data[DATA_ALEXAMEDIA]["accounts"][email].get(
+                "login_obj"
+            )
+            await setup_alexa(hass, config_entry, login_obj)
 
-    hass.data.setdefault(DATA_ALEXAMEDIA, {"accounts": {}, "config_flows": {}})
-
-    _LOGGER.info(STARTUP)
-    _LOGGER.info("Loaded alexapy==%s", alexapy_version)
-    hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STOP, close_alexa_media)
-    hass.bus.async_listen("alexa_media_relogin_required", relogin)
-    hass.bus.async_listen("alexa_media_relogin_success", login_success)
+    if not hass.data.get(DATA_ALEXAMEDIA):
+        _LOGGER.info(STARTUP)
+        _LOGGER.info("Loaded alexapy==%s", alexapy_version)
+    hass.data.setdefault(
+        DATA_ALEXAMEDIA, {"accounts": {}, "config_flows": {}, "notify_service": None}
+    )
+    if not hass.data[DATA_ALEXAMEDIA].get("accounts"):
+        hass.data[DATA_ALEXAMEDIA] = {
+            "accounts": {},
+            "config_flows": {},
+        }
     account = config_entry.data
     email = account.get(CONF_EMAIL)
     password = account.get(CONF_PASSWORD)
@@ -228,7 +242,12 @@ async def async_setup_entry(hass, config_entry):
             "config_entry": config_entry,
             "setup_alexa": setup_alexa,
             "devices": {"media_player": {}, "switch": {}},
-            "entities": {"media_player": {}, "switch": {}},
+            "entities": {
+                "media_player": {},
+                "switch": {},
+                "sensor": {},
+                "alarm_control_panel": {},
+            },
             "excluded": {},
             "new_devices": True,
             "websocket_lastattempt": 0,
@@ -237,6 +256,7 @@ async def async_setup_entry(hass, config_entry):
             "websocket_activity": {"serials": {}, "refreshed": {}},
             "websocket": None,
             "auth_info": None,
+            "second_account_index": 0,
             "options": {
                 CONF_QUEUE_DELAY: config_entry.options.get(
                     CONF_QUEUE_DELAY, DEFAULT_QUEUE_DELAY
@@ -245,27 +265,41 @@ async def async_setup_entry(hass, config_entry):
             DATA_LISTENER: [config_entry.add_update_listener(update_listener)],
         },
     )
-    login = hass.data[DATA_ALEXAMEDIA]["accounts"][email].get(
+    uuid_dict = await calculate_uuid(hass, email, url)
+    uuid = uuid_dict["uuid"]
+    hass.data[DATA_ALEXAMEDIA]["accounts"][email]["second_account_index"] = uuid_dict[
+        "index"
+    ]
+    login: AlexaLogin = hass.data[DATA_ALEXAMEDIA]["accounts"][email].get(
         "login_obj",
         AlexaLogin(
-            url,
-            email,
-            password,
-            hass.config.path,
-            account.get(CONF_DEBUG),
-            account.get(CONF_OTPSECRET, ""),
+            url=url,
+            email=email,
+            password=password,
+            outputpath=hass.config.path,
+            debug=account.get(CONF_DEBUG),
+            otp_secret=account.get(CONF_OTPSECRET, ""),
+            oauth=account.get(CONF_OAUTH, {}),
+            uuid=uuid,
+            oauth_login=bool(
+                account.get(CONF_OAUTH, {}).get("access_token")
+                or account.get(CONF_OAUTH_LOGIN)
+            ),
         ),
     )
     hass.data[DATA_ALEXAMEDIA]["accounts"][email]["login_obj"] = login
+    if not hass.data[DATA_ALEXAMEDIA]["accounts"][email]["second_account_index"]:
+        hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STOP, close_alexa_media)
+    hass.bus.async_listen("alexa_media_relogin_required", relogin)
+    hass.bus.async_listen("alexa_media_relogin_success", login_success)
     await login.login(cookies=await login.load_cookie())
     if await test_login_status(hass, config_entry, login):
         await setup_alexa(hass, config_entry, login)
         return True
-    await login.reset()
     return False
 
 
-async def setup_alexa(hass, config_entry, login_obj):
+async def setup_alexa(hass, config_entry, login_obj: AlexaLogin):
     """Set up a alexa api based on host parameter."""
 
     async def async_update_data():
@@ -290,7 +324,7 @@ async def setup_alexa(hass, config_entry, login_obj):
         login_obj = hass.data[DATA_ALEXAMEDIA]["accounts"][email]["login_obj"]
         if (
             email not in hass.data[DATA_ALEXAMEDIA]["accounts"]
-            or "login_successful" not in login_obj.status
+            or not login_obj.status.get("login_successful")
             or login_obj.session.closed
             or login_obj.close_requested
         ):
@@ -311,7 +345,6 @@ async def setup_alexa(hass, config_entry, login_obj):
             AlexaAPI.get_bluetooth(login_obj),
             AlexaAPI.get_device_preferences(login_obj),
             AlexaAPI.get_dnd_state(login_obj),
-            AlexaAPI.get_notifications(login_obj),
         ]
         if new_devices:
             tasks.append(AlexaAPI.get_authentication(login_obj))
@@ -326,17 +359,12 @@ async def setup_alexa(hass, config_entry, login_obj):
                         bluetooth,
                         preferences,
                         dnd,
-                        raw_notifications,
                         auth_info,
                     ) = await asyncio.gather(*tasks)
                 else:
-                    (
-                        devices,
-                        bluetooth,
-                        preferences,
-                        dnd,
-                        raw_notifications,
-                    ) = await asyncio.gather(*tasks)
+                    (devices, bluetooth, preferences, dnd,) = await asyncio.gather(
+                        *tasks
+                    )
                 _LOGGER.debug(
                     "%s: Found %s devices, %s bluetooth",
                     hide_email(email),
@@ -384,7 +412,7 @@ async def setup_alexa(hass, config_entry, login_obj):
                     serial
                 ] = device
                 continue
-            elif exclude and dev_name in exclude:
+            if exclude and dev_name in exclude:
                 exclude_filter.append(dev_name)
                 if "appDeviceList" in device:
                     for app in device["appDeviceList"]:
@@ -396,6 +424,18 @@ async def setup_alexa(hass, config_entry, login_obj):
                 hass.data[DATA_ALEXAMEDIA]["accounts"][email]["excluded"][
                     serial
                 ] = device
+                continue
+
+            if (
+                dev_name not in include_filter
+                and device.get("capabilities")
+                and not any(
+                    x in device["capabilities"]
+                    for x in ["MUSIC_SKILL", "TIMERS_AND_ALARMS", "REMINDERS"]
+                )
+            ):
+                # skip devices without music or notification skill
+                _LOGGER.debug("Excluding %s for lacking capability", dev_name)
                 continue
 
             if "bluetoothStates" in bluetooth:
@@ -466,15 +506,42 @@ async def setup_alexa(hass, config_entry, login_obj):
             cleaned_config.pop(CONF_PASSWORD, None)
             # CONF_PASSWORD contains sensitive info which is no longer needed
             for component in ALEXA_COMPONENTS:
-                _LOGGER.debug("Loading %s", component)
-                hass.async_add_job(
-                    hass.config_entries.async_forward_entry_setup(
-                        config_entry, component
-                    )
+                entry_setup = len(
+                    hass.data[DATA_ALEXAMEDIA]["accounts"][email]["entities"][component]
                 )
+                if not entry_setup:
+                    _LOGGER.debug("Loading config entry for %s", component)
+                    hass.async_add_job(
+                        hass.config_entries.async_forward_entry_setup(
+                            config_entry, component
+                        )
+                    )
+                else:
+                    _LOGGER.debug("Loading %s", component)
+                    hass.async_create_task(
+                        async_load_platform(
+                            hass,
+                            component,
+                            DOMAIN,
+                            {CONF_NAME: DOMAIN, "config": cleaned_config},
+                            cleaned_config,
+                        )
+                    )
 
         hass.data[DATA_ALEXAMEDIA]["accounts"][email]["new_devices"] = False
         await login_obj.save_cookiefile()
+        if login_obj.access_token:
+            hass.config_entries.async_update_entry(
+                config_entry,
+                data={
+                    **config_entry.data,
+                    CONF_OAUTH: {
+                        "access_token": login_obj.access_token,
+                        "refresh_token": login_obj.refresh_token,
+                        "expires_in": login_obj.expires_in,
+                    },
+                },
+            )
 
     @_catch_login_errors
     async def process_notifications(login_obj, raw_notifications=None):
@@ -520,20 +587,22 @@ async def setup_alexa(hass, config_entry, login_obj):
         )
 
     @_catch_login_errors
-    async def update_last_called(login_obj, last_called=None):
+    async def update_last_called(login_obj, last_called=None, force=False):
         """Update the last called device for the login_obj.
 
         This will store the last_called in hass.data and also fire an event
         to notify listeners.
         """
-        if not last_called:
+        if not last_called or not (last_called and last_called.get("summary")):
             last_called = await AlexaAPI.get_last_device_serial(login_obj)
         _LOGGER.debug(
             "%s: Updated last_called: %s", hide_email(email), hide_serial(last_called)
         )
         stored_data = hass.data[DATA_ALEXAMEDIA]["accounts"][email]
         if (
-            "last_called" in stored_data and last_called != stored_data["last_called"]
+            force
+            or "last_called" in stored_data
+            and last_called != stored_data["last_called"]
         ) or ("last_called" not in stored_data and last_called is not None):
             _LOGGER.debug(
                 "%s: last_called changed: %s to %s",
@@ -860,6 +929,11 @@ async def setup_alexa(hass, config_entry, login_obj):
                 "%s: Close requested; will not reconnect websocket", hide_email(email)
             )
             return
+        if not login_obj.status.get("login_successful"):
+            _LOGGER.debug(
+                "%s: Login error; will not reconnect websocket", hide_email(email)
+            )
+            return
         errors: int = (hass.data[DATA_ALEXAMEDIA]["accounts"][email]["websocketerror"])
         delay: int = 5 * 2 ** errors
         last_attempt = hass.data[DATA_ALEXAMEDIA]["accounts"][email][
@@ -942,7 +1016,7 @@ async def setup_alexa(hass, config_entry, login_obj):
     ] = await ws_connect()
     coordinator = hass.data[DATA_ALEXAMEDIA]["accounts"][email].get("coordinator")
     if coordinator is None:
-        _LOGGER.debug("Creating coordinator")
+        _LOGGER.debug("%s: Creating coordinator", hide_email(email))
         hass.data[DATA_ALEXAMEDIA]["accounts"][email][
             "coordinator"
         ] = coordinator = DataUpdateCoordinator(
@@ -957,15 +1031,14 @@ async def setup_alexa(hass, config_entry, login_obj):
             ),
         )
     else:
-        _LOGGER.debug("Reusing coordinator")
+        _LOGGER.debug("%s: Reusing coordinator", hide_email(email))
         coordinator.update_interval = timedelta(
             seconds=scan_interval * 10 if websocket_enabled else scan_interval
         )
     # Fetch initial data so we have data when entities subscribe
-    _LOGGER.debug("Refreshing coordinator")
+    _LOGGER.debug("%s: Refreshing coordinator", hide_email(email))
     await coordinator.async_refresh()
 
-    coordinator.async_add_listener(lambda: None)
     hass.data[DATA_ALEXAMEDIA]["services"] = alexa_services = AlexaMediaServices(
         hass, functions={"update_last_called": update_last_called}
     )
@@ -977,7 +1050,8 @@ async def async_unload_entry(hass, entry) -> bool:
     """Unload a config entry."""
     email = entry.data["email"]
     _LOGGER.debug("Attempting to unload entry for %s", hide_email(email))
-    for component in ALEXA_COMPONENTS:
+    for component in ALEXA_COMPONENTS + DEPENDENT_ALEXA_COMPONENTS:
+        _LOGGER.debug("Forwarding unload entry to %s", component)
         await hass.config_entries.async_forward_entry_unload(entry, component)
     # notify has to be handled manually as the forward does not work yet
     await notify_async_unload_entry(hass, entry)
@@ -987,33 +1061,40 @@ async def async_unload_entry(hass, entry) -> bool:
     hass.data[DATA_ALEXAMEDIA]["accounts"].pop(email)
     # Clean up config flows in progress
     flows_to_remove = []
-    for key, flow in hass.data[DATA_ALEXAMEDIA]["config_flows"].items():
-        if key.startswith(email):
-            _LOGGER.debug("Aborting flow %s %s", key, flow)
-            flows_to_remove.append(key)
-            try:
-                hass.config_entries.flow.async_abort(flow.get("flow_id"))
-            except UnknownFlow:
-                pass
-    for flow in flows_to_remove:
-        hass.data[DATA_ALEXAMEDIA]["config_flows"].pop(flow)
+    if hass.data[DATA_ALEXAMEDIA].get("config_flows"):
+        for key, flow in hass.data[DATA_ALEXAMEDIA]["config_flows"].items():
+            if key.startswith(email) and flow:
+                _LOGGER.debug("Aborting flow %s %s", key, flow)
+                flows_to_remove.append(key)
+                try:
+                    hass.config_entries.flow.async_abort(flow.get("flow_id"))
+                except UnknownFlow:
+                    pass
+        for flow in flows_to_remove:
+            hass.data[DATA_ALEXAMEDIA]["config_flows"].pop(flow)
     # Clean up hass.data
-    if not hass.data[DATA_ALEXAMEDIA]["accounts"]:
+    if not hass.data[DATA_ALEXAMEDIA].get("accounts"):
         _LOGGER.debug("Removing accounts data and services")
         hass.data[DATA_ALEXAMEDIA].pop("accounts")
         alexa_services = hass.data[DATA_ALEXAMEDIA].get("services")
         if alexa_services:
             await alexa_services.unregister()
             hass.data[DATA_ALEXAMEDIA].pop("services")
-    if not hass.data[DATA_ALEXAMEDIA]["config_flows"]:
+    if hass.data[DATA_ALEXAMEDIA].get("config_flows") == {}:
         _LOGGER.debug("Removing config_flows data")
         hass.components.persistent_notification.async_dismiss(
-            "alexa_media_relogin_required"
+            f"alexa_media_{slugify(email)}{slugify((entry.data['url'])[7:])}"
         )
         hass.data[DATA_ALEXAMEDIA].pop("config_flows")
     if not hass.data[DATA_ALEXAMEDIA]:
         _LOGGER.debug("Removing alexa_media data structure")
-        hass.data.pop(DATA_ALEXAMEDIA)
+        if hass.data.get(DATA_ALEXAMEDIA):
+            hass.data.pop(DATA_ALEXAMEDIA)
+    else:
+        _LOGGER.debug(
+            "Unable to remove alexa_media data structure: %s",
+            hass.data.get(DATA_ALEXAMEDIA),
+        )
     _LOGGER.debug("Unloaded entry for %s", hide_email(email))
     return True
 
@@ -1062,7 +1143,7 @@ async def test_login_status(hass, config_entry, login) -> bool:
     _LOGGER.debug("Logging in: %s %s", obfuscate(account), in_progess_instances(hass))
     _LOGGER.debug("Login stats: %s", login.stats)
     message: Text = (
-        "Reauthenticate on the [Integrations](/config/integrations) page. "
+        f"Reauthenticate {login.email} on the [Integrations](/config/integrations) page. "
     )
     if login.stats.get("login_timestamp") != datetime(1, 1, 1):
         elaspsed_time: str = str(datetime.now() - login.stats.get("login_timestamp"))
@@ -1071,7 +1152,7 @@ async def test_login_status(hass, config_entry, login) -> bool:
     hass.components.persistent_notification.async_create(
         title="Alexa Media Reauthentication Required",
         message=message,
-        notification_id="alexa_media_relogin_required",
+        notification_id=f"alexa_media_{slugify(login.email)}{slugify(login.url[7:])}",
     )
     flow = hass.data[DATA_ALEXAMEDIA]["config_flows"].get(
         f"{account[CONF_EMAIL]} - {account[CONF_URL]}"

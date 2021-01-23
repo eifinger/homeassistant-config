@@ -10,6 +10,16 @@ from datetime import datetime, timedelta
 import homeassistant.helpers.config_validation as cv
 import pyavanza
 import voluptuous as vol
+from homeassistant.components.sensor import PLATFORM_SCHEMA
+from homeassistant.const import (
+    CONF_CURRENCY,
+    CONF_ID,
+    CONF_MONITORED_CONDITIONS,
+    CONF_NAME,
+)
+from homeassistant.helpers.aiohttp_client import async_create_clientsession
+from homeassistant.helpers.entity import Entity
+
 from custom_components.avanza_stock.const import (
     CHANGE_PERCENT_PRICE_MAPPING,
     CHANGE_PRICE_MAPPING,
@@ -27,15 +37,6 @@ from custom_components.avanza_stock.const import (
     MONITORED_CONDITIONS_KEYRATIOS,
     TOTAL_CHANGE_PRICE_MAPPING,
 )
-from homeassistant.components.sensor import PLATFORM_SCHEMA
-from homeassistant.const import (
-    CONF_CURRENCY,
-    CONF_ID,
-    CONF_MONITORED_CONDITIONS,
-    CONF_NAME,
-)
-from homeassistant.helpers.aiohttp_client import async_create_clientsession
-from homeassistant.helpers.entity import Entity
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -300,11 +301,15 @@ class AvanzaStockSensor(Entity):
                 self._state_attributes[attribute] = round(
                     self._state_attributes[attribute] * rate, 2
                 )
+        self._update_profit_loss(self._state)
 
     def _update_dividends(self, data):
         dividends = data.get("dividends", [])
         # Create empty dividend attributes, will be overwritten with valid
         # data if information is available
+        for key in self._state_attributes:
+            if key.startswith("dividend"):
+                self._state_attributes.pop(key)
         for dividend_condition in MONITORED_CONDITIONS_DIVIDENDS:
             attribute = "dividend0_{}".format(dividend_condition)
             self._state_attributes[attribute] = "unknown"

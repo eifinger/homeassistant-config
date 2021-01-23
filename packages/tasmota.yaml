@@ -1,18 +1,6 @@
 ---
 switch:
   - platform: mqtt
-    name: "Snowboard"
-    state_topic: "stat/sonoff_snowboard/POWER"
-    command_topic: "cmnd/sonoff_snowboard/POWER"
-    availability_topic: "tele/sonoff_snowboard/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    payload_on: "ON"
-    payload_off: "OFF"
-    optimistic: false
-    qos: 2
-    retain: false
-  - platform: mqtt
     name: "Large Lamp"
     state_topic: "stat/sonoff_large_lamp/POWER"
     command_topic: "cmnd/sonoff_large_lamp/POWER"

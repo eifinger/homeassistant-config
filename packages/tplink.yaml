@@ -4,7 +4,7 @@ tplink:
   switch:
     - host: !secret tp_link_washingmachine_ip
     - host: !secret tp_link_dishwasher_ip
-    - host: !secret tp_link_snowboard
+    - host: !secret tp_link_snowboard_ip
 
 sensor:
   - platform: template

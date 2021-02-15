@@ -1,8 +1,7 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-#  SPDX-License-Identifier: Apache-2.0
 """
 Support to interface with Alexa Devices.
+
+SPDX-License-Identifier: Apache-2.0
 
 For more details about this platform, please refer to the documentation at
 https://community.home-assistant.io/t/echo-devices-alexa-as-media-player-testers-needed/58639
@@ -11,13 +10,13 @@ import asyncio
 from datetime import datetime, timedelta
 from json import JSONDecodeError
 import logging
-import random
 import time
 from typing import Optional, Text
 
 from alexapy import (
     AlexaAPI,
     AlexaLogin,
+    AlexapyConnectionError,
     AlexapyLoginError,
     WebsocketEchoClient,
     __version__ as alexapy_version,
@@ -26,6 +25,7 @@ from alexapy import (
     obfuscate,
 )
 import async_timeout
+from homeassistant import util
 from homeassistant.config_entries import SOURCE_IMPORT
 from homeassistant.const import (
     CONF_EMAIL,
@@ -33,6 +33,7 @@ from homeassistant.const import (
     CONF_PASSWORD,
     CONF_SCAN_INTERVAL,
     CONF_URL,
+    EVENT_HOMEASSISTANT_STARTED,
     EVENT_HOMEASSISTANT_STOP,
 )
 from homeassistant.data_entry_flow import UnknownFlow
@@ -41,7 +42,6 @@ from homeassistant.helpers.discovery import async_load_platform
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.util import dt, slugify
-from homeassistant import util
 import voluptuous as vol
 
 from .config_flow import in_progess_instances
@@ -67,7 +67,7 @@ from .const import (
     SCAN_INTERVAL,
     STARTUP,
 )
-from .helpers import _existing_serials, _catch_login_errors, calculate_uuid
+from .helpers import _catch_login_errors, _existing_serials, calculate_uuid
 from .notify import async_unload_entry as notify_async_unload_entry
 from .services import AlexaMediaServices
 
@@ -182,6 +182,15 @@ async def async_setup_entry(hass, config_entry):
             for email, _ in hass.data[DATA_ALEXAMEDIA]["accounts"].items():
                 await close_connections(hass, email)
 
+    async def complete_startup(event=None) -> None:
+        """Run final tasks after startup."""
+        _LOGGER.debug("Completing remaining startup tasks.")
+        await asyncio.sleep(10)
+        if hass.data[DATA_ALEXAMEDIA].get("notify_service"):
+            notify = hass.data[DATA_ALEXAMEDIA].get("notify_service")
+            _LOGGER.debug("Refreshing notify targets")
+            await notify.async_register_services()
+
     async def relogin(event=None) -> None:
         """Relogin to Alexa."""
         if hide_email(email) == event.data.get("email"):
@@ -290,6 +299,7 @@ async def async_setup_entry(hass, config_entry):
     hass.data[DATA_ALEXAMEDIA]["accounts"][email]["login_obj"] = login
     if not hass.data[DATA_ALEXAMEDIA]["accounts"][email]["second_account_index"]:
         hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STOP, close_alexa_media)
+        hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STARTED, complete_startup)
     hass.bus.async_listen("alexa_media_relogin_required", relogin)
     hass.bus.async_listen("alexa_media_relogin_success", login_success)
     await login.login(cookies=await login.load_cookie())
@@ -362,9 +372,12 @@ async def setup_alexa(hass, config_entry, login_obj: AlexaLogin):
                         auth_info,
                     ) = await asyncio.gather(*tasks)
                 else:
-                    (devices, bluetooth, preferences, dnd,) = await asyncio.gather(
-                        *tasks
-                    )
+                    (
+                        devices,
+                        bluetooth,
+                        preferences,
+                        dnd,
+                    ) = await asyncio.gather(*tasks)
                 _LOGGER.debug(
                     "%s: Found %s devices, %s bluetooth",
                     hide_email(email),
@@ -373,6 +386,9 @@ async def setup_alexa(hass, config_entry, login_obj: AlexaLogin):
                     if bluetooth is not None
                     else "",
                 )
+            await process_notifications(login_obj, raw_notifications)
+            # Process last_called data to fire events
+            await update_last_called(login_obj)
         except (AlexapyLoginError, JSONDecodeError):
             _LOGGER.debug(
                 "%s: Alexa API disconnected; attempting to relogin : status %s",
@@ -387,10 +403,6 @@ async def setup_alexa(hass, config_entry, login_obj: AlexaLogin):
             return
         except BaseException as err:
             raise UpdateFailed(f"Error communicating with API: {err}")
-
-        await process_notifications(login_obj, raw_notifications)
-        # Process last_called data to fire events
-        await update_last_called(login_obj)
 
         new_alexa_clients = []  # list of newly discovered device names
         exclude_filter = []
@@ -746,13 +758,17 @@ async def setup_alexa(hass, config_entry, login_obj: AlexaLogin):
                     "serialNumber": serial,
                     "timestamp": json_payload["timestamp"],
                 }
-                if serial and serial in existing_serials:
-                    await update_last_called(login_obj, last_called)
-                async_dispatcher_send(
-                    hass,
-                    f"{DOMAIN}_{hide_email(email)}"[0:32],
-                    {"push_activity": json_payload},
-                )
+                try:
+                    if serial and serial in existing_serials:
+                        await update_last_called(login_obj, last_called)
+                    async_dispatcher_send(
+                        hass,
+                        f"{DOMAIN}_{hide_email(email)}"[0:32],
+                        {"push_activity": json_payload},
+                    )
+                except (AlexapyConnectionError):
+                    # Catch case where activities doesn't report valid json
+                    pass
             elif command in (
                 "PUSH_AUDIO_PLAYER_STATE",
                 "PUSH_MEDIA_CHANGE",
@@ -909,7 +925,7 @@ async def setup_alexa(hass, config_entry, login_obj: AlexaLogin):
         """Handle websocket open."""
 
         email: Text = login_obj.email
-        _LOGGER.debug("%s: Websocket succesfully connected", hide_email(email))
+        _LOGGER.debug("%s: Websocket successfully connected", hide_email(email))
         hass.data[DATA_ALEXAMEDIA]["accounts"][email][
             "websocketerror"
         ] = 0  # set errors to 0
@@ -934,7 +950,7 @@ async def setup_alexa(hass, config_entry, login_obj: AlexaLogin):
                 "%s: Login error; will not reconnect websocket", hide_email(email)
             )
             return
-        errors: int = (hass.data[DATA_ALEXAMEDIA]["accounts"][email]["websocketerror"])
+        errors: int = hass.data[DATA_ALEXAMEDIA]["accounts"][email]["websocketerror"]
         delay: int = 5 * 2 ** errors
         last_attempt = hass.data[DATA_ALEXAMEDIA]["accounts"][email][
             "websocket_lastattempt"
@@ -1142,9 +1158,7 @@ async def test_login_status(hass, config_entry, login) -> bool:
     account = config_entry.data
     _LOGGER.debug("Logging in: %s %s", obfuscate(account), in_progess_instances(hass))
     _LOGGER.debug("Login stats: %s", login.stats)
-    message: Text = (
-        f"Reauthenticate {login.email} on the [Integrations](/config/integrations) page. "
-    )
+    message: Text = f"Reauthenticate {login.email} on the [Integrations](/config/integrations) page. "
     if login.stats.get("login_timestamp") != datetime(1, 1, 1):
         elaspsed_time: str = str(datetime.now() - login.stats.get("login_timestamp"))
         api_calls: int = login.stats.get("api_calls")

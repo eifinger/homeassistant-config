@@ -104,7 +104,7 @@ automation:
       - service: telegram_bot.edit_message
         data:
           message_id: '{{ trigger.event.data.message.message_id }}'
-          chat_id: '{{ trigger.event.data.user_id }}'
+          chat_id: '{{ trigger.event.data.chat_id }}'
           message: Ich habe Snowie um {{ now() }} gestartet.
           inline_keyboard:
 

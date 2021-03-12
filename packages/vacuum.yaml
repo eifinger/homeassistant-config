@@ -1,9 +1,4 @@
 ---
-vacuum:
-  - platform: xiaomi_miio
-    host: !secret xiaomi_vacuum_ip
-    token: !secret xiaomi_vacuum_token
-
 sensor:
   - platform: rest
     resource: !secret valetudo_url # http://192.168.x.x/api/remote/map

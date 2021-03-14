@@ -1,6 +1,7 @@
 {
   "domain": "hysen",
   "name": "Hysen Thermostat Controller",
+  "version": "2.1.9",
   "documentation": "",
   "requirements": "",
   "dependencies": [

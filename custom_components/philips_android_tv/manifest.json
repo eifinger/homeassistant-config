@@ -1,8 +1,0 @@
-{
-  "domain": "philips_android_tv",
-  "name": "Philips Android TV",
-  "documentation": "https://github.com/nstrelow/ha_philips_2016",
-  "dependencies": [],
-  "codeowners": [],
-  "requirements": ["wakeonlan"]
-}

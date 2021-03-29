@@ -54,11 +54,11 @@ automation:
               entity_id: media_player.denon_avr_x1300w
               data:
                 source: "Bluetooth"
-        until:
-          - condition: state
-            entity_id: media_player.denon_avr_x1300w
-            attribute: "source"
-            state: "Bluetooth"
+          until:
+            - condition: state
+              entity_id: media_player.denon_avr_x1300w
+              attribute: "source"
+              state: "Bluetooth"
 script:
   receiver_set_source_cbl_sat:
     sequence:

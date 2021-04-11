@@ -468,17 +468,6 @@ services:
       - "8083:8083"
       - "8086:8086"
       - "8090:8090"
-  timescaledb:
-    container_name: timescaledb
-    restart: unless-stopped
-    image: timescale/timescaledb-postgis:1.7.0-pg12
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /home/admin/timescaledb/data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=admin
   grafana:
     container_name: grafana
     restart: unless-stopped

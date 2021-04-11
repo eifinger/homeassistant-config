@@ -50,8 +50,6 @@ influxdb:
   username: !secret influxdb_user
   password: !secret influxdb_password
   max_retries: 5
-ltss:
-  db_url: !secret ltss_url
 input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml
 scene: !include scenes.yaml

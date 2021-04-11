@@ -5,12 +5,6 @@ is_home:
 sleepmode:
   name: Schlafmodus
   icon: mdi:sleep
-user_one_sleep:
-  name: Kevin
-  icon: mdi:sleep
-user_two_sleep:
-  name: Sina
-  icon: mdi:sleep
 user_one_home:
   name: Is user one home
   icon: mdi:home

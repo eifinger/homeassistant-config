@@ -5,12 +5,6 @@ is_home:
 sleepmode:
   name: Schlafmodus
   icon: mdi:sleep
-user_one_sleep:
-  name: Kevin
-  icon: mdi:sleep
-user_two_sleep:
-  name: Sina
-  icon: mdi:sleep
 user_one_home:
   name: Is user one home
   icon: mdi:home
@@ -21,6 +15,8 @@ heading_home_notifier_user_one:
   icon: mdi:telegram
 dishwasher:
   name: Spühlmaschine
+coffeemachine:
+  name: Kaffeemaschine
 washingmachine:
   name: Waschmaschine
 persistence_plantwateringnotifier_reminder_acknowledged:

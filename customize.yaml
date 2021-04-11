@@ -1,8 +1,4 @@
 ---
-sensor.location_user_one:
-  entity_picture: /local/user_one.jpg
-sensor.location_user_two:
-  entity_picture: /local/user_two.JPG
 input_boolean.heading_home_notifier_user_one:
   friendly_name: Benachrichtigung wenn Kevin in Richtung nach Hause fährt
 sensor.tplink_tv_power_usage:

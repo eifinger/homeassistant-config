@@ -1,97 +1,19 @@
 ---
+# Sleep mode is turned on manually by saying "Alexa, good night!"
 automation:
-  - id: 268809fc-5e8c-4009-872e-61ba419cd733
-    initial_state: true
-    alias: User Sleepmode Off Determiner
-    description: Control input_boolean.user_*_sleep
-    mode: queued
-    trigger:
-      platform: state
-      entity_id:
-        - sensor.galaxy_s10_room_presence
-        - sensor.oneplus_3t_room_presence
-      from: "bedroom"
-      for:
-        minutes: 5
-    condition:
-      - condition: time
-        after: "06:00:00"
-        before: "23:00:00"
-    action:
-      - choose:
-          - conditions:
-              - condition: template
-                value_template: "{{ trigger.entity_id == 'sensor.galaxy_s10_room_presence' }}"
-            sequence:
-              - service: input_boolean.turn_off
-                entity_id: input_boolean.user_one_sleep
-        default:
-          - service: input_boolean.turn_off
-            entity_id: input_boolean.user_two_sleep
-  - id: 06639822-2dba-4ae5-9a1c-dfdef754352d
-    initial_state: true
-    alias: User One Sleepmode On
-    description: Turn input_boolean.user_one_sleep on when input_boolean.sleepmode turns on and user is home
+  - id: 3d1f8ae5-469e-49c2-8414-445403da0260
+    alias: 'Schalte Schlafmodus aus wenn Kaffeemaschine angeht'
+    description: Turn off sleepmode when coffeemachine turns on
     mode: single
-    trigger:
-      platform: state
-      entity_id:
-        - input_boolean.sleepmode
-      from: "off"
-    condition:
-      - condition: state
-        entity_id:
-          - input_boolean.user_one_home
-        state: "on"
-    action:
-      - service: input_boolean.turn_on
-        entity_id: input_boolean.user_one_sleep
-  - id: 682f3b03-036f-4905-89a4-f448737bfd36
     initial_state: true
-    alias: User Two Sleepmode On
-    description: Turn input_boolean.user_two_sleep on when input_boolean.sleepmode turns on and user is home
-    mode: single
     trigger:
-      platform: state
-      entity_id:
-        - input_boolean.sleepmode
-      from: "off"
-    condition:
-      - condition: state
-        entity_id:
-          - input_boolean.user_two_home
-        state: "on"
+      - platform: state
+        entity_id: input_boolean.coffeemachine
+        from: "off"
+        to: "on"
     action:
-      - service: input_boolean.turn_on
-        entity_id: input_boolean.user_two_sleep
-  - id: 72d1f4c2-253c-4291-99d0-83f045fea397
-    initial_state: true
-    alias: Sleepmode Determiner
-    description: Control input_boolean.sleepmode
-    mode: single
-    trigger:
-      platform: state
-      entity_id:
-        - input_boolean.user_one_sleep
-        - input_boolean.user_two_sleep
-    action:
-      - choose:
-          - conditions:
-              - condition: template
-                value_template: "{{ trigger.to_state == 'on' }}"
-            sequence:
-              - service: input_boolean.turn_on
-                entity_id: input_boolean.sleepmode
-        default:
-          - condition: and
-            conditions:
-              - condition: state
-                entity_id:
-                  - input_boolean.user_one_sleep
-                  - input_boolean.user_two_sleep
-                state: "off"
-          - service: input_boolean.turn_off
-            entity_id: input_boolean.sleepmode
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.sleepmode
   - id: 0cdc8f40-8de1-499f-ad30-733c04d8f728
     alias: 'Alexa Ansagen aus wenn wir schlafen'
     description: Keine lauten Ansagen auf Alexa Lautsprechern wenn der Schlafmodus an ist

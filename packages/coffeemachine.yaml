@@ -1,0 +1,8 @@
+---
+binary_sensor:
+  - platform: template
+    sensors:
+      coffeemachine:
+        friendly_name: "Kaffeemaschine ist an"
+        value_template: >-
+          {{ states("sensor.blitzwolf_shp6_15a_1_wattage") | float > 5 }}

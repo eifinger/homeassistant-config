@@ -15,8 +15,6 @@ heading_home_notifier_user_one:
   icon: mdi:telegram
 dishwasher:
   name: Spühlmaschine
-coffeemachine:
-  name: Kaffeemaschine
 washingmachine:
   name: Waschmaschine
 persistence_plantwateringnotifier_reminder_acknowledged:

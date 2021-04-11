@@ -8,11 +8,11 @@ automation:
     initial_state: true
     trigger:
       - platform: state
-        entity_id: input_boolean.coffeemachine
+        entity_id: binary_sensor.coffeemachine
         from: "off"
         to: "on"
     action:
-      - service: homeassistant.turn_on
+      - service: homeassistant.turn_off
         entity_id: input_boolean.sleepmode
   - id: 0cdc8f40-8de1-499f-ad30-733c04d8f728
     alias: 'Alexa Ansagen aus wenn wir schlafen'

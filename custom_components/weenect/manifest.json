@@ -1,0 +1,15 @@
+{
+  "domain": "weenect",
+  "name": "Weenect",
+  "documentation": "https://github.com/eifinger/hass-weenect",
+  "issue_tracker": "https://github.com/eifinger/hass-weenect/issues",
+  "dependencies": [],
+  "version": "0.0.1",
+  "config_flow": true,
+  "codeowners": [
+    "@eifinger"
+  ],
+  "requirements": [
+    "aioweenect==1.0.1"
+  ]
+}

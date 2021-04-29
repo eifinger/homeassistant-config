@@ -93,7 +93,7 @@ class WeenectDataUpdateCoordinator(DataUpdateCoordinator):
             self._detect_added_and_removed_trackers(data)
             return data
         except Exception as exception:
-            raise UpdateFailed() from exception
+            raise UpdateFailed(exception) from exception
 
     def _detect_added_and_removed_trackers(self, data: Any):
         """Detect if trackers were added or removed."""

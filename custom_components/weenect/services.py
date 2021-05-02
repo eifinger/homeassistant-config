@@ -21,6 +21,8 @@ SERVICE_SET_UPDATE_INTERVAL_SCHEMA = vol.Schema(
 
 SERVICE_ACTIVATE_SUPER_LIVE = "activate_super_live"
 SERVICE_REFRESH_LOCATION = "refresh_location"
+SERVICE_RING = "ring"
+SERVICE_VIBRATE = "vibrate"
 SERVICE_SCHEMA = vol.Schema({vol.Required(TRACKER_ID): cv.string})
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
@@ -44,6 +46,10 @@ async def async_setup_services(hass):
             await async_activate_super_live(hass, service_data)
         if service == SERVICE_REFRESH_LOCATION:
             await async_refresh_location(hass, service_data)
+        if service == SERVICE_RING:
+            await async_ring(hass, service_data)
+        if service == SERVICE_VIBRATE:
+            await async_vibrate(hass, service_data)
 
     hass.services.async_register(
         DOMAIN,
@@ -63,6 +69,18 @@ async def async_setup_services(hass):
         async_call_service,
         schema=SERVICE_SCHEMA,
     )
+    hass.services.async_register(
+        DOMAIN,
+        SERVICE_RING,
+        async_call_service,
+        schema=SERVICE_SCHEMA,
+    )
+    hass.services.async_register(
+        DOMAIN,
+        SERVICE_VIBRATE,
+        async_call_service,
+        schema=SERVICE_SCHEMA,
+    )
 
 
 async def async_unload_services(hass):
@@ -75,6 +93,8 @@ async def async_unload_services(hass):
     hass.services.async_remove(DOMAIN, SERVICE_SET_UPDATE_INTERVAL)
     hass.services.async_remove(DOMAIN, SERVICE_ACTIVATE_SUPER_LIVE)
     hass.services.async_remove(DOMAIN, SERVICE_REFRESH_LOCATION)
+    hass.services.async_remove(DOMAIN, SERVICE_RING)
+    hass.services.async_remove(DOMAIN, SERVICE_VIBRATE)
 
 
 async def async_set_update_interval(hass, data):
@@ -116,6 +136,34 @@ async def async_refresh_location(hass, data):
     for config_entry in hass.data[DOMAIN]:
         if tracker_id in hass.data[DOMAIN][config_entry].data.keys():
             await hass.data[DOMAIN][config_entry].client.refresh_location(tracker_id)
+            return
+    _LOGGER.warning(
+        "Could not find a registered integration for tracker with id: %s", tracker_id
+    )
+
+
+async def async_ring(hass, data):
+    """Send a ring command for this tracker id"""
+
+    tracker_id = data[TRACKER_ID]
+
+    for config_entry in hass.data[DOMAIN]:
+        if tracker_id in hass.data[DOMAIN][config_entry].data.keys():
+            await hass.data[DOMAIN][config_entry].client.ring(tracker_id)
+            return
+    _LOGGER.warning(
+        "Could not find a registered integration for tracker with id: %s", tracker_id
+    )
+
+
+async def async_vibrate(hass, data):
+    """Send a vibrate command for this tracker id"""
+
+    tracker_id = data[TRACKER_ID]
+
+    for config_entry in hass.data[DOMAIN]:
+        if tracker_id in hass.data[DOMAIN][config_entry].data.keys():
+            await hass.data[DOMAIN][config_entry].client.vibrate(tracker_id)
             return
     _LOGGER.warning(
         "Could not find a registered integration for tracker with id: %s", tracker_id

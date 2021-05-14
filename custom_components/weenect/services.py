@@ -100,7 +100,7 @@ async def async_unload_services(hass):
 async def async_set_update_interval(hass, data):
     """Set the update interval for this tracker id."""
 
-    tracker_id = data[TRACKER_ID]
+    tracker_id = int(data[TRACKER_ID])
     update_interval = data[UPDATE_INTERVAL]
 
     for config_entry in hass.data[DOMAIN]:
@@ -117,7 +117,7 @@ async def async_set_update_interval(hass, data):
 async def async_activate_super_live(hass, data):
     """Activate the super live mode for this tracker id"""
 
-    tracker_id = data[TRACKER_ID]
+    tracker_id = int(data[TRACKER_ID])
 
     for config_entry in hass.data[DOMAIN]:
         if tracker_id in hass.data[DOMAIN][config_entry].data.keys():
@@ -131,7 +131,7 @@ async def async_activate_super_live(hass, data):
 async def async_refresh_location(hass, data):
     """Request a position refresh for this tracker id"""
 
-    tracker_id = data[TRACKER_ID]
+    tracker_id = int(data[TRACKER_ID])
 
     for config_entry in hass.data[DOMAIN]:
         if tracker_id in hass.data[DOMAIN][config_entry].data.keys():
@@ -145,7 +145,7 @@ async def async_refresh_location(hass, data):
 async def async_ring(hass, data):
     """Send a ring command for this tracker id"""
 
-    tracker_id = data[TRACKER_ID]
+    tracker_id = int(data[TRACKER_ID])
 
     for config_entry in hass.data[DOMAIN]:
         if tracker_id in hass.data[DOMAIN][config_entry].data.keys():
@@ -159,7 +159,7 @@ async def async_ring(hass, data):
 async def async_vibrate(hass, data):
     """Send a vibrate command for this tracker id"""
 
-    tracker_id = data[TRACKER_ID]
+    tracker_id = int(data[TRACKER_ID])
 
     for config_entry in hass.data[DOMAIN]:
         if tracker_id in hass.data[DOMAIN][config_entry].data.keys():

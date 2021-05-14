@@ -4,13 +4,15 @@ from homeassistant.const import (
     DEVICE_CLASS_BATTERY,
     DEVICE_CLASS_SIGNAL_STRENGTH,
     DEVICE_CLASS_TIMESTAMP,
+    PERCENTAGE,
+    SIGNAL_STRENGTH_DECIBELS,
 )
 
 # Base component constants
 NAME = "Weenect"
 DOMAIN = "weenect"
 DOMAIN_DATA = f"{DOMAIN}_data"
-VERSION = "1.1.0"
+VERSION = "1.3.0"
 ATTRIBUTION = "Data provided by https://my.weenect.com/"
 ISSUE_URL = "https://github.com/eifinger/hass-weenect/issues"
 
@@ -23,36 +25,70 @@ PLATFORMS = ["binary_sensor", "device_tracker", "sensor"]
 # Sensors
 SENSOR_TYPES = [
     {
+        "name": "Update Rate",
+        "value_name": "freq_mode",
+        "device_class": None,
+        "enabled": True,
+        "unit_of_measurement": None,
+    },
+    {
+        "name": "Last Update Rate",
+        "value_name": "last_freq_mode",
+        "device_class": None,
+        "enabled": True,
+        "unit_of_measurement": None,
+    },
+    {
+        "name": "Sensor Mode",
+        "value_name": "sensor_mode",
+        "device_class": None,
+        "enabled": True,
+        "unit_of_measurement": None,
+    },
+    {
+        "name": "Last Sensor Mode",
+        "value_name": "last_sensor_mode",
+        "device_class": None,
+        "enabled": True,
+        "unit_of_measurement": None,
+    },
+]
+LOCATION_SENSOR_TYPES = [
+    {
         "name": "Battery",
         "value_name": "battery",
         "device_class": DEVICE_CLASS_BATTERY,
         "enabled": True,
+        "unit_of_measurement": PERCENTAGE,
     },
     {
         "name": "Cell Tower Id",
         "value_name": "cellid",
         "device_class": None,
         "enabled": True,
+        "unit_of_measurement": None,
     },
     {
         "name": "GSM Strength",
         "value_name": "gsm",
         "device_class": DEVICE_CLASS_SIGNAL_STRENGTH,
         "enabled": True,
+        "unit_of_measurement": SIGNAL_STRENGTH_DECIBELS,
     },
     {
         "name": "Last Message Received",
         "value_name": "last_message",
         "device_class": DEVICE_CLASS_TIMESTAMP,
         "enabled": True,
+        "unit_of_measurement": "ISO8601",
     },
     {
         "name": "GPS Satellites",
         "value_name": "satellites",
         "device_class": None,
         "enabled": True,
+        "unit_of_measurement": None,
     },
-    {"name": "Type", "value_name": "type", "device_class": None, "enabled": False},
 ]
 
 BINARY_SENSOR_TYPES = [

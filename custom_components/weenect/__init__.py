@@ -16,6 +16,7 @@ from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
+from .util import parse_duration
 
 from .const import (
     CONF_PASSWORD,
@@ -69,21 +70,16 @@ class WeenectDataUpdateCoordinator(DataUpdateCoordinator):
         self, hass: HomeAssistant, config_entry: ConfigEntry, client: AioWeenect
     ) -> None:
         """Initialize."""
-        if CONF_UPDATE_RATE in config_entry.options:
-            update_interval = timedelta(seconds=config_entry.options[CONF_UPDATE_RATE])
-        else:
-            update_interval = timedelta(seconds=DEFAULT_UPDATE_RATE)
         super().__init__(
             hass,
             _LOGGER,
             name=DOMAIN,
-            update_interval=update_interval,
+            update_interval=timedelta(seconds=DEFAULT_UPDATE_RATE),
         )
         self.client = client
         self.config_entry = config_entry
         self.unsub_dispatchers = []
         self.data = {}
-        self.add_options()
 
     async def _async_update_data(self):
         """Update data via library."""
@@ -91,6 +87,7 @@ class WeenectDataUpdateCoordinator(DataUpdateCoordinator):
             data = await self.client.get_trackers()
             data = self.transform_data(data)
             self._detect_added_and_removed_trackers(data)
+            self._adjust_update_rate(data)
             return data
         except Exception as exception:
             raise UpdateFailed(exception) from exception
@@ -102,6 +99,16 @@ class WeenectDataUpdateCoordinator(DataUpdateCoordinator):
             self.hass, f"{self.config_entry.entry_id}_{TRACKER_ADDED}", added
         )
 
+    def _adjust_update_rate(self, data: Any):
+        """Set the update rate to the shortest update rate of all trackers."""
+        update_rate = timedelta(seconds=DEFAULT_UPDATE_RATE)
+        for tracker in data.values():
+            tracker_rate = parse_duration(tracker["last_freq_mode"])
+            if tracker_rate and tracker_rate < update_rate:
+                update_rate = tracker_rate
+        self.update_interval = update_rate
+        _LOGGER.debug("Setting update_interval to %s", update_rate)
+
     @staticmethod
     def transform_data(data: Any):
         """Extract trackers from list and put them in a dict by tracker id."""
@@ -109,23 +116,6 @@ class WeenectDataUpdateCoordinator(DataUpdateCoordinator):
         for tracker in data["items"]:
             result[tracker["id"]] = tracker
         return result
-
-    def add_options(self) -> None:
-        """Add options for weenect integration."""
-        if not self.config_entry.options:
-            options = {
-                CONF_UPDATE_RATE: DEFAULT_UPDATE_RATE,
-            }
-            self.hass.config_entries.async_update_entry(
-                self.config_entry, options=options
-            )
-        else:
-            options = dict(self.config_entry.options)
-            if CONF_UPDATE_RATE not in self.config_entry.options:
-                options[CONF_UPDATE_RATE] = DEFAULT_UPDATE_RATE
-            self.hass.config_entries.async_update_entry(
-                self.config_entry, options=options
-            )
 
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:

@@ -23,3 +23,57 @@ zone:
     longitude: !secret elmo_longitude
     radius: 600
     icon: mdi:horseshoe
+
+automation:
+  - id: 7c8cefc2-9bc6-4a2c-8d2a-45e02a301c42
+    alias: 'Sina hat Elmo verlassen'
+    description: Notify when Sina left Elmo
+    mode: single
+    initial_state: true
+    trigger:
+      - platform: zone
+        entity_id: "person.sina"
+        zone: "zone.elmo"
+        event: "enter"
+    condition:
+      - alias: "Only if Kevin is not nearby"
+        condition: "{{ distance('device_tracker.sm_g975f', 'device_tracker.oneplus_a3003') < 1 }}"
+    action:
+      - alias: "Wait until Sina leaves Zone again"
+        wait_for_trigger:
+          - platform: zone
+            entity_id: "person.sina"
+            zone: "zone.elmo"
+            event: "leave"
+        timeout: "00:30:00"
+      - alias: "Only continue when at least 30 minutes in zone"
+        condition: "{{ wait.completed }}"
+      - alias: "Update travel time home of Sina"
+        service: homeassistant.update_entity
+        entity_id: sensor.travel_time_home_user_two_here
+      - alias: "Wait 5s"
+        delay: 5
+      - alias: "Notify Kevin via mobile app"
+        service: notify.mobile_app_sm_g975f
+        data:
+          message: "Sina hat Elmo verlassen. Sie braucht circa {{ states('sensor.travel_time_home_user_two_here') | int }} Minuten bis nach Hause."
+      - condition:
+          - condition: state
+            entity_id: "person.kevin"
+            state: "home"
+          - condition: state
+            entity_id: input_boolean.notifier_alexa
+            state: "on"
+      - alias: "Notify Kevin via Alexa"
+        service: notify.alexa_media
+        data:
+          target:
+            - media_player.kevins_echo_dot_wohnzimmer
+            - media_player.kevin_s_echo_dot_schlafzimmer
+            - media_player.kevins_echo_bad
+            - media_player.kevins_echo_dot_arbeitszimmer
+          data:
+            type: announce
+            method: speak
+          message: "Sina hat Elmo verlassen. Sie braucht circa {{ states('sensor.travel_time_home_user_two_here') | int }} Minuten bis nach Hause."
+  

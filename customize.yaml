@@ -37,16 +37,10 @@ sensor.weihnachtslichter_humidity:
   icon: mdi:water-percent
 sensor.room_s8plus:
   icon: mdi:cellphone
-sensor.cal_next_appointment_location:
-  icon: mdi:map-marker
-sensor.cal_next_appointment_start_time:
-  icon: mdi:clock
 input_number.leave_time_offset:
   icon: mdi:clock
 sensor.facebox_detection:
   icon: mdi:account
-sensor.travel_time_next_appointment_location:
-  icon: mdi:clock
 script.learn_faces:
   action_name: Learn
   friendly_name: Lerne Gesichter

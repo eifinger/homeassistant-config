@@ -206,7 +206,6 @@ automation:
       - condition: state
         entity_id: input_boolean.notifier_alexa
         state: "on"
-      - condition:
       - condition: template
         value_template: "{{ trigger.from_state.state == 'off' and trigger.to_state.state == 'on' }}"
     action:

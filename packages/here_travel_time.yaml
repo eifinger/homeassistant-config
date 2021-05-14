@@ -46,16 +46,16 @@ sensor:
   - platform: here_travel_time
     name: travel_time_home_user_one_here
     api_key: !secret here_api_key
-    origin: person.kevin
-    destination: zone.home
+    origin_entity_id: person.kevin
+    destination_entity_id: zone.home
     scan_interval: 2678400 # 1 month
     traffic_mode: true
   # Travel Time Home User Two
   - platform: here_travel_time
     name: travel_time_home_user_two_here
     api_key: !secret here_api_key
-    origin: person.sina
-    destination: zone.home
+    origin_entity_id: person.sina
+    destination_entity_id: zone.home
     scan_interval: 2678400 # 1 month
     traffic_mode: true
 input_boolean:

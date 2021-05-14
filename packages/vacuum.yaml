@@ -87,7 +87,7 @@ automation:
         data:
           message_id: '{{ trigger.event.data.message.message_id }}'
           chat_id: '{{ trigger.event.data.chat_id }}'
-          message: Ich habe Snowie um {{ now() }} gestartet.
+          message: Ich habe Snowie um {{ now().hour }}:{{ now().minute }} gestartet.
           inline_keyboard:
 
 recorder:

@@ -11,6 +11,9 @@ user_one_home:
 user_two_home:
   name: Is user two home
   icon: mdi:home
+verona_home:
+  name: Is Verona home
+  icon: mdi:home
 heading_home_notifier_user_one:
   icon: mdi:telegram
 dishwasher:

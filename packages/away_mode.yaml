@@ -77,6 +77,13 @@ automation:
             person: person.sina
             mobile_app: notify.mobile_app_oneplus_a3003
             input_boolean: input_boolean.user_two_home
+      - service: script.turn_on
+        entity_id: script.is_user_home_determiner
+        data:
+          variables:
+            person: person.verona
+            mobile_app: notify.mobile_app_sm_g975f # Reuse until own mobile app
+            input_boolean: input_boolean.verona_home
 
   - id: 4f8dd19f-0d78-4614-bce1-77fd7bc31214
     alias: Is Home Determiner
@@ -87,6 +94,7 @@ automation:
       entity_id:
         - input_boolean.user_one_home
         - input_boolean.user_two_home
+        - input_boolean.verona_home
     action:
       - choose:
           - conditions:
@@ -102,6 +110,7 @@ automation:
                 entity_id:
                   - input_boolean.user_one_home
                   - input_boolean.user_two_home
+                  - input_boolean.verona_home
                 state: "off"
           - service: input_boolean.turn_off
             entity_id: input_boolean.is_home
@@ -192,10 +201,12 @@ automation:
         entity_id:
           - input_boolean.user_one_home
           - input_boolean.user_two_home
+          - input_boolean.verona_home
     condition:
       - condition: state
         entity_id: input_boolean.notifier_alexa
         state: "on"
+      - condition:
       - condition: template
         value_template: "{{ trigger.from_state.state == 'off' and trigger.to_state.state == 'on' }}"
     action:
@@ -209,6 +220,8 @@ automation:
               {% set name = "Kevin" %}
             {% elif trigger.entity_id == "input_boolean.user_two_home" %}
               {% set name = "Sina" %}
+            {% elif trigger.entity_id == "input_boolean.verona_home" %}
+              {% set name = "Verona" %}
             {% endif %}
             Willkommen zu Hause {{ name }}
 

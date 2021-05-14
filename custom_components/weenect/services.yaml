@@ -21,3 +21,17 @@ refresh_location:
     tracker_id:
       description: The tracker id.
       example: '10000'
+
+ring:
+  description: Let the tracker ring.
+  fields:
+    tracker_id:
+      description: The tracker id.
+      example: '10000'
+
+vibrate:
+  description: Let the tracker vibrate.
+  fields:
+    tracker_id:
+      description: The tracker id.
+      example: '10000'

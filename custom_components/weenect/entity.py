@@ -64,6 +64,7 @@ class WeenectEntity(CoordinatorEntity):
         """Return the state attributes."""
         return {
             "attribution": ATTRIBUTION,
+            "id": self.id,
             "sim": self.sim,
             "imei": self.imei,
         }

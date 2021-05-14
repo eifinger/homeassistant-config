@@ -40,7 +40,7 @@ from .const import (
     RECURRING_PATTERN,
     RECURRING_PATTERN_ISO_SET,
 )
-from .helpers import add_devices, retry_async
+from .helpers import add_devices, alarm_just_dismissed
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -53,7 +53,7 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
     SENSOR_TYPES = {
         "Alarm": AlarmSensor,
         "Timer": TimerSensor,
-        "Reminder": ReminderSensor
+        "Reminder": ReminderSensor,
     }
     account = config[CONF_EMAIL] if config else discovery_info["config"][CONF_EMAIL]
     include_filter = config.get(CONF_INCLUDE_DEVICES, [])
@@ -116,8 +116,12 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
 
     temperature_sensors = []
     temperature_entities = account_dict.get("devices", {}).get("temperature", [])
-    if temperature_entities and account_dict["options"].get(CONF_EXTENDED_ENTITY_DISCOVERY):
-        temperature_sensors = await create_temperature_sensors(account_dict, temperature_entities)
+    if temperature_entities and account_dict["options"].get(
+        CONF_EXTENDED_ENTITY_DISCOVERY
+    ):
+        temperature_sensors = await create_temperature_sensors(
+            account_dict, temperature_entities
+        )
 
     return await add_devices(
         hide_email(account),
@@ -126,6 +130,7 @@ async def async_setup_platform(hass, config, add_devices_callback, discovery_inf
         include_filter,
         exclude_filter,
     )
+
 
 async def async_setup_entry(hass, config_entry, async_add_devices):
     """Set up the Alexa sensor platform by config_entry."""
@@ -150,7 +155,11 @@ async def create_temperature_sensors(account_dict, temperature_entities):
     devices = []
     coordinator = account_dict["coordinator"]
     for temp in temperature_entities:
-        _LOGGER.debug("Creating entity %s for a temperature sensor with name %s", temp["id"], temp["name"])
+        _LOGGER.debug(
+            "Creating entity %s for a temperature sensor with name %s",
+            temp["id"],
+            temp["name"],
+        )
         serial = temp["device_serial"]
         device_info = lookup_device_info(account_dict, serial)
         sensor = TemperatureSensor(coordinator, temp["id"], temp["name"], device_info)
@@ -174,7 +183,7 @@ def lookup_device_info(account_dict, device_serial):
 
 
 class TemperatureSensor(CoordinatorEntity):
-    """A temperature sensor reported by an Echo. """
+    """A temperature sensor reported by an Echo."""
 
     def __init__(self, coordinator, entity_id, name, media_player_device_id):
         super().__init__(coordinator)
@@ -202,7 +211,9 @@ class TemperatureSensor(CoordinatorEntity):
 
     @property
     def state(self):
-        return parse_temperature_from_coordinator(self.coordinator, self.alexa_entity_id)
+        return parse_temperature_from_coordinator(
+            self.coordinator, self.alexa_entity_id
+        )
 
     @property
     def unique_id(self):
@@ -241,6 +252,10 @@ class AlexaMediaNotificationSensor(Entity):
         self._timestamp: Optional[datetime.datetime] = None
         self._tracker: Optional[Callable] = None
         self._state: Optional[datetime.datetime] = None
+        self._dismissed: Optional[datetime.datetime] = None
+        self._status: Optional[Text] = None
+        self._amz_id: Optional[Text] = None
+        self._version: Optional[Text] = None
 
     def _process_raw_notifications(self):
         self._all = (
@@ -252,12 +267,22 @@ class AlexaMediaNotificationSensor(Entity):
         self._all = sorted(self._all, key=lambda x: x[1][self._sensor_property])
         self._prior_value = self._next if self._active else None
         self._active = (
-            list(filter(lambda x: x[1]["status"] == "ON", self._all))
+            list(filter(lambda x: x[1]["status"] in ("ON", "SNOOZED"), self._all))
             if self._all
             else []
         )
         self._next = self._active[0][1] if self._active else None
+        alarm = next(
+            (alarm[1] for alarm in self._all if alarm[1].get("id") == self._amz_id),
+            None,
+        )
+        if alarm_just_dismissed(alarm, self._status, self._version):
+            self._dismissed = dt.now().isoformat()
         self._state = self._process_state(self._next)
+        self._status = self._next.get("status", "OFF") if self._next else "OFF"
+        self._version = self._next.get("version", "0") if self._next else None
+        self._amz_id = self._next.get("id") if self._next else None
+
         if self._state == STATE_UNAVAILABLE or self._next != self._prior_value:
             # cancel any event triggers
             if self._tracker:
@@ -266,7 +291,7 @@ class AlexaMediaNotificationSensor(Entity):
                     self,
                 )
                 self._tracker()
-            if self._state != STATE_UNAVAILABLE:
+            if self._state != STATE_UNAVAILABLE and self._status != "SNOOZED":
                 _LOGGER.debug(
                     "%s: Scheduling event in %s",
                     self,
@@ -522,6 +547,8 @@ class AlexaMediaNotificationSensor(Entity):
             "total_all": len(self._all),
             "sorted_active": json.dumps(self._active, default=str),
             "sorted_all": json.dumps(self._all, default=str),
+            "status": self._status,
+            "dismissed": self._dismissed,
         }
         return attr
 

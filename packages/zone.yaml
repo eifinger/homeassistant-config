@@ -57,7 +57,9 @@ automation:
         service: notify.mobile_app_sm_g975f
         data:
           message: "Sina hat Elmo verlassen. Sie braucht circa {{ states('sensor.travel_time_home_user_two_here') | int }} Minuten bis nach Hause."
-      - condition:
+      - alias: "Only when Kevin is home and Alexa Notifications turned on"
+        condition: and
+        conditions:
           - condition: state
             entity_id: "person.kevin"
             state: "home"

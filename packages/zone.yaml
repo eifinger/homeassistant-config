@@ -48,7 +48,8 @@ automation:
             event: "leave"
         timeout: "00:30:00"
       - alias: "Only continue when at least 30 minutes in zone"
-        condition: "{{ wait.completed }}"
+        condition: template
+        value_template: "{{ wait.completed }}"
       - alias: "Update travel time home of Sina"
         service: homeassistant.update_entity
         entity_id: sensor.travel_time_home_user_two_here

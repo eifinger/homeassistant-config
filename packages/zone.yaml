@@ -37,7 +37,8 @@ automation:
         event: "enter"
     condition:
       - alias: "Only if Kevin is not nearby"
-        condition: "{{ distance('device_tracker.sm_g975f', 'device_tracker.oneplus_a3003') < 1 }}"
+        condition: template
+        value_template: "{{ distance('device_tracker.sm_g975f', 'device_tracker.oneplus_a3003') < 1 }}"
     action:
       - alias: "Wait until Sina leaves Zone again"
         wait_for_trigger:
@@ -53,10 +54,15 @@ automation:
         entity_id: sensor.travel_time_home_user_two_here
       - alias: "Wait 5s"
         delay: 5
+      - variables:
+        notification_message: >
+          Sina hat Elmo verlassen.
+          Sie braucht circa {{ states('sensor.travel_time_home_user_two_here') | int }}
+          Minuten bis nach Hause.
       - alias: "Notify Kevin via mobile app"
         service: notify.mobile_app_sm_g975f
         data:
-          message: "Sina hat Elmo verlassen. Sie braucht circa {{ states('sensor.travel_time_home_user_two_here') | int }} Minuten bis nach Hause."
+          message: "{{ notification_message }}"
       - alias: "Only when Kevin is home and Alexa Notifications turned on"
         condition: and
         conditions:
@@ -77,5 +83,4 @@ automation:
           data:
             type: announce
             method: speak
-          message: "Sina hat Elmo verlassen. Sie braucht circa {{ states('sensor.travel_time_home_user_two_here') | int }} Minuten bis nach Hause."
-  
+          message: "{{ notification_message }}"

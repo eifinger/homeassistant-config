@@ -24,6 +24,12 @@ automation:
           ((as_timestamp(states.sensor.oneplus_a3003_nachster_wecker.state)
           | int - 7200) | timestamp_custom('%Y-%m-%d, %H:%M', True))
           and (states('person.sina') == 'home') }}
+      - platform: template
+        value_template: >
+          {{ states('sensor.date_time') ==
+          ((as_timestamp(states.sensor.kevin_s_echo_dot_schlafzimmer_next_alarm.state)
+          | int - 7200) | timestamp_custom('%Y-%m-%d, %H:%M', True))
+          and (states('person.sina') == 'home') }}
     action:
       - service: script.turn_on
         entity_id: script.warm_bath_before_wakeup

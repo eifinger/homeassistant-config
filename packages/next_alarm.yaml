@@ -77,6 +77,3 @@ script:
         data:
           entity_id: "{{ climate_entity_id }}"
           temperature: "{{ old_temperature }}"
-      - service: notify.group_notifications
-        data:
-          message: "Ich habe {{ state_attr(climate_entity_id, 'friendly_name') }} auf {{ old_temperature }}C° gestellt."

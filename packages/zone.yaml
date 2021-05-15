@@ -55,10 +55,10 @@ automation:
       - alias: "Wait 5s"
         delay: 5
       - variables:
-        notification_message: >
-          Sina hat Elmo verlassen.
-          Sie braucht circa {{ states('sensor.travel_time_home_user_two_here') | int }}
-          Minuten bis nach Hause.
+          notification_message: >
+            Sina hat Elmo verlassen.
+            Sie braucht circa {{ states('sensor.travel_time_home_user_two_here') | int }}
+            Minuten bis nach Hause.
       - alias: "Notify Kevin via mobile app"
         service: notify.mobile_app_sm_g975f
         data:

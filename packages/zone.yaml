@@ -35,10 +35,6 @@ automation:
         entity_id: "person.sina"
         zone: "zone.elmo"
         event: "enter"
-    condition:
-      - alias: "Only if Kevin is not nearby"
-        condition: template
-        value_template: "{{ distance('device_tracker.sm_g975f', 'device_tracker.oneplus_a3003') < 1 }}"
     action:
       - alias: "Wait until Sina leaves Zone again"
         wait_for_trigger:
@@ -50,6 +46,9 @@ automation:
       - alias: "Only continue when at least 30 minutes in zone"
         condition: template
         value_template: "{{ wait.completed }}"
+      - alias: "Only if Kevin is not nearby"
+        condition: template
+        value_template: "{{ distance('device_tracker.sm_g975f', 'device_tracker.oneplus_a3003') < 1 }}"
       - alias: "Update travel time home of Sina"
         service: homeassistant.update_entity
         entity_id: sensor.travel_time_home_user_two_here

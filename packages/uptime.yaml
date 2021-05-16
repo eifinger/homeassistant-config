@@ -1,5 +1,0 @@
----
-sensor:
-  - platform: uptime
-    name: Uptime
-    unit_of_measurement: minutes

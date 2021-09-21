@@ -90,7 +90,7 @@ automation:
       condition: numeric_state
       entity_id: weather.dwd_weather_wiesbaden_biebrich
       attribute: temperature
-      below: 20
+      below: 10
     action:
       - service: automation.turn_on
         data:
@@ -175,7 +175,7 @@ automation:
       condition: numeric_state
       entity_id: weather.dwd_weather_wiesbaden_biebrich
       attribute: temperature
-      below: 20
+      below: 10
     action:
       - service: automation.turn_on
         data:

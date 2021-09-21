@@ -61,7 +61,6 @@ automation:
     trigger:
       platform: state
       entity_id: binary_sensor.contact_door
-      to: "on"
     action:
       - service: script.turn_on
         entity_id: script.is_user_home_determiner

@@ -57,6 +57,8 @@ automation:
       - platform: state
         entity_id: input_boolean.is_home
         to: 'off'
+        for:
+          seconds: 10
     condition:
       - condition: state
         entity_id: vacuum.xiaomi_vacuum_cleaner
@@ -89,6 +91,24 @@ automation:
           chat_id: '{{ trigger.event.data.chat_id }}'
           message: Ich habe Snowie um {{ now().hour }}:{{ now().minute }} gestartet.
           inline_keyboard:
+  - id: 4215d971-3572-4097-8f5f-269c3d5b614f
+    alias: Starte Snowie wenn wir weg sind
+    description: If the button on vacuum station is pressed the vacuum will start as
+      soon as we leave.
+    use_blueprint:
+      path: sp3cialck/deconz-xiaomi-aqara-wxkg11lm-smart-wireless-mini-switch.yaml
+      input:
+        remote: 4924aa9b422d4c18970529401bd1880f
+        button_press_in:
+        - wait_for_trigger:
+          - platform: state
+            entity_id: input_boolean.is_home
+            to: 'off'
+            from: 'on'
+        - device_id: 9df393a887e04b2c952fa35d3a92ac59
+          domain: vacuum
+          entity_id: vacuum.xiaomi_vacuum_cleaner
+          type: clean
 
 recorder:
   exclude:

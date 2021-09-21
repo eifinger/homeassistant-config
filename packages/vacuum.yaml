@@ -101,15 +101,15 @@ automation:
       input:
         remote: f9593a92724b462e815eb27253bb7dab
         button_press_in:
-        - wait_for_trigger:
-          - platform: state
-            entity_id: input_boolean.is_home
-            to: 'off'
-            from: 'on'
-        - device_id: 9df393a887e04b2c952fa35d3a92ac59
-          domain: vacuum
-          entity_id: vacuum.xiaomi_vacuum_cleaner
-          type: clean
+          - wait_for_trigger:
+              - platform: state
+                entity_id: input_boolean.is_home
+                to: 'off'
+                from: 'on'
+          - device_id: 9df393a887e04b2c952fa35d3a92ac59
+            domain: vacuum
+            entity_id: vacuum.xiaomi_vacuum_cleaner
+            type: clean
 
 recorder:
   exclude:

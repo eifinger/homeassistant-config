@@ -1,0 +1,19 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "description": "Möchtest Du mit der Einrichtung beginnen?",
+                "data": {
+                    "api_key": "API-Schlücssel",
+                    "latitude": "Breitengrad",
+                    "longitude": "Längengrad",
+                    "name": "Name"
+                }
+            }
+        },
+        "error": {
+            "invalid_request": "HERE hat eine invalide Anfrage entdeckt. Das deutet daraufhin, dass die Koordination falsch sind.",
+            "unauthorized": "Ungültiger API Key."
+        }
+    }
+}

@@ -2,7 +2,7 @@
 from homeassistant.loader import async_get_custom_components
 
 from custom_components.hacs.enums import HacsCategory
-from custom_components.hacs.helpers.classes.exceptions import HacsException
+from custom_components.hacs.exceptions import HacsException
 from custom_components.hacs.helpers.classes.repository import HacsRepository
 from custom_components.hacs.helpers.functions.filters import (
     get_first_directory_in_directory,
@@ -10,10 +10,9 @@ from custom_components.hacs.helpers.functions.filters import (
 from custom_components.hacs.helpers.functions.information import (
     get_integration_manifest,
 )
-from custom_components.hacs.helpers.functions.logger import getLogger
 
 
-class HacsIntegration(HacsRepository):
+class HacsIntegrationRepository(HacsRepository):
     """Integrations in HACS."""
 
     def __init__(self, full_name):

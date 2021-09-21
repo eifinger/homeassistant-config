@@ -1,0 +1,16 @@
+{
+  "domain": "here_weather",
+  "name": "HERE Destination Weather",
+  "documentation": "https://github.com/eifinger/hass-here-weather",
+  "issue_tracker": "https://github.com/eifinger/hass-here-weather/issues",
+  "dependencies": [],
+  "version": "1.0.2",
+  "config_flow": true,
+  "codeowners": [
+    "@eifinger"
+  ],
+  "requirements": [
+    "aiohere==1.2.0"
+  ],
+  "iot_class": "cloud_polling"
+}

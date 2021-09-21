@@ -56,6 +56,7 @@ automation:
     trigger:
       - platform: state
         entity_id: input_boolean.is_home
+        from: 'on'
         to: 'off'
         for:
           seconds: 10
@@ -98,7 +99,7 @@ automation:
     use_blueprint:
       path: sp3cialck/deconz-xiaomi-aqara-wxkg11lm-smart-wireless-mini-switch.yaml
       input:
-        remote: 4924aa9b422d4c18970529401bd1880f
+        remote: f9593a92724b462e815eb27253bb7dab
         button_press_in:
         - wait_for_trigger:
           - platform: state

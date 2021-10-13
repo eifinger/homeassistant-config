@@ -7,5 +7,5 @@ homeassistant:
       entity_picture: /local/user_one.jpg
     person.sina:
       entity_picture: /local/user_two.JPG
-    device_tracker.oneplus_a3003:
+    device_tracker.dn2103:
       entity_picture: /local/user_two.JPG

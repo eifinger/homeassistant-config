@@ -99,7 +99,7 @@ automation:
     use_blueprint:
       path: sp3cialck/deconz-xiaomi-aqara-wxkg11lm-smart-wireless-mini-switch.yaml
       input:
-        remote: f9593a92724b462e815eb27253bb7dab
+        remote: 4924aa9b422d4c18970529401bd1880f
         button_press_in:
           - wait_for_trigger:
               - platform: state

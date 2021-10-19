@@ -94,22 +94,23 @@ automation:
           inline_keyboard:
   - id: 4215d971-3572-4097-8f5f-269c3d5b614f
     alias: Starte Snowie wenn wir weg sind
-    description: If the button on vacuum station is pressed the vacuum will start as
+    description: If the button on the vacuum station is pressed the vacuum will start as
       soon as we leave.
     use_blueprint:
       path: sp3cialck/deconz-xiaomi-aqara-wxkg11lm-smart-wireless-mini-switch.yaml
       input:
-        remote: 4924aa9b422d4c18970529401bd1880f
+        remote: f9593a92724b462e815eb27253bb7dab
         button_press_in:
           - wait_for_trigger:
               - platform: state
                 entity_id: input_boolean.is_home
                 to: 'off'
                 from: 'on'
-          - device_id: 9df393a887e04b2c952fa35d3a92ac59
-            domain: vacuum
+          - condition: state
             entity_id: vacuum.xiaomi_vacuum_cleaner
-            type: clean
+            state: 'docked'
+          - service: vacuum.start
+            entity_id: vacuum.xiaomi_vacuum_cleaner
 
 recorder:
   exclude:
@@ -119,4 +120,6 @@ recorder:
 homeassistant:
   customize:
     automation.frage_ob_staubsauger_gestartet_werden_soll_wenn_alle_weg_sind:
+      icon: mdi:robot-vacuum
+    automation.starte_snowie_wenn_wir_weg_sind:
       icon: mdi:robot-vacuum

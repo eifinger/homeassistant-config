@@ -1,21 +1,24 @@
 """Sensor platform for weenect."""
-import logging
 from typing import Any, Dict, List
 
-from homeassistant.core import callback
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
 from .const import DOMAIN, LOCATION_SENSOR_TYPES, SENSOR_TYPES, TRACKER_ADDED
 from .entity import WeenectEntity
 
-_LOGGER = logging.getLogger(__name__)
 
-
-async def async_setup_entry(hass, config_entry, async_add_entities):
+async def async_setup_entry(
+    hass: HomeAssistant,
+    entry: ConfigEntry,
+    async_add_entities: AddEntitiesCallback,
+) -> None:
     """Set up the weenect sensors."""
 
-    coordinator = hass.data[DOMAIN][config_entry.entry_id]
+    coordinator = hass.data[DOMAIN][entry.entry_id]
 
     @callback
     def async_add_sensors(
@@ -36,7 +39,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
     unsub_dispatcher = async_dispatcher_connect(
         hass,
-        f"{config_entry.entry_id}_{TRACKER_ADDED}",
+        f"{entry.entry_id}_{TRACKER_ADDED}",
         async_add_sensors,
     )
     coordinator.unsub_dispatchers.append(unsub_dispatcher)

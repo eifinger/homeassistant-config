@@ -1,7 +1,7 @@
 """Utility methods for weenect."""
 
-import re
 from datetime import timedelta
+import re
 from typing import Optional
 
 

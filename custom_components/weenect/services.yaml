@@ -1,37 +1,46 @@
 set_update_interval:
   description: Set the tracker update interval.
+  target:
+    entity:
+      integration: weenect
+    device:
+      integration: weenect
   fields:
-    tracker_id:
-      description: The tracker id.
-      example: '10000'
     update_interval:
       description: The update interval. Possible values are 30S 1M 5M 10M 30M 1H
+      required: true
       example: "30M"
+      selector:
+        text:
 
 activate_super_live:
   description: Activate the super live mode.
-  fields:
-    tracker_id:
-      description: The tracker id.
-      example: '10000'
+  target:
+    entity:
+      integration: weenect
+    device:
+      integration: weenect
 
 refresh_location:
   description: Request a location update.
-  fields:
-    tracker_id:
-      description: The tracker id.
-      example: '10000'
+  target:
+    entity:
+      integration: weenect
+    device:
+      integration: weenect
 
 ring:
   description: Let the tracker ring.
-  fields:
-    tracker_id:
-      description: The tracker id.
-      example: '10000'
+  target:
+    entity:
+      integration: weenect
+    device:
+      integration: weenect
 
 vibrate:
   description: Let the tracker vibrate.
-  fields:
-    tracker_id:
-      description: The tracker id.
-      example: '10000'
+  target:
+    entity:
+      integration: weenect
+    device:
+      integration: weenect

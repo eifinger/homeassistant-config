@@ -6,11 +6,7 @@ from homeassistant import config_entries
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 import voluptuous as vol
 
-from .const import (
-    CONF_PASSWORD,
-    CONF_USERNAME,
-    DOMAIN,
-)
+from .const import CONF_PASSWORD, CONF_USERNAME, DOMAIN
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 

@@ -52,9 +52,9 @@ automation:
             entity_id: "person.sina"
             zone: "zone.elmo"
             event: "leave"
-      - alias: "Only if Kevin is not nearby"
+      - alias: "Only if Kevin is not within 5 km"
         condition: template
-        value_template: "{{ distance('device_tracker.sm_g975f', 'device_tracker.oneplus_a3003') > 1 }}"
+        value_template: "{{ distance('person.kevin', 'person.sina') > 5 }}"
       - alias: "Update travel time home of Sina"
         service: homeassistant.update_entity
         entity_id: sensor.travel_time_home_user_two_here

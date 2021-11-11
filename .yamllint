@@ -2,6 +2,7 @@
 ignore: |
   custom_components/
   www/
+  blueprints/
 rules:
   braces:
     level: error

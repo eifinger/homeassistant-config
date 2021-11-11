@@ -32,3 +32,6 @@ out/
 
 # homeassistant in different repo
 appdaemon/
+
+# python
+venv/

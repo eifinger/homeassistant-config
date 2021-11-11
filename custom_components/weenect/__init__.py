@@ -16,11 +16,9 @@ from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
-from .util import parse_duration
 
 from .const import (
     CONF_PASSWORD,
-    CONF_UPDATE_RATE,
     CONF_USERNAME,
     DEFAULT_UPDATE_RATE,
     DOMAIN,
@@ -28,7 +26,7 @@ from .const import (
     STARTUP_MESSAGE,
     TRACKER_ADDED,
 )
-from .services import async_setup_services, async_unload_services
+from .util import parse_duration
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -37,7 +35,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Set up this integration using UI."""
     if hass.data.get(DOMAIN) is None:
         hass.data.setdefault(DOMAIN, {})
-        await async_setup_services(hass)
         _LOGGER.info(STARTUP_MESSAGE)
 
     username = entry.data.get(CONF_USERNAME)
@@ -133,9 +130,6 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if unloaded:
         hass.data[DOMAIN].pop(entry.entry_id)
 
-    # If there is no instance of this integration registered anymore
-    if not hass.data[DOMAIN]:
-        await async_unload_services(hass)
     return unloaded
 
 

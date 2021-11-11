@@ -31,3 +31,16 @@ homeassistant:
       device_class: window
     binary_sensor.contact_upper_bathroom_window_tilted:
       device_class: window
+
+automation:
+  - id: 426859aa-ddea-414e-bfa4-c08c5ad1e11f
+    alias: Toggle bath light on button click
+    description: Turn the bathroom light on and off via button
+    use_blueprint:
+      path: sp3cialck/deconz-xiaomi-aqara-wxkg11lm-smart-wireless-mini-switch.yaml
+      input:
+        remote: f9593a92724b462e815eb27253bb7dab
+        button_press_in:
+          - service: light.toggle
+            target:
+              entity_id: light.lower_bathroom_yeelight

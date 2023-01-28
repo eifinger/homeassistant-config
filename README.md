@@ -3,7 +3,6 @@
   <br>
   My Home Assistant Configuration
 </h1>
-<h4 align="center">Be sure to :star: my repo so you can keep up to date on the daily progress!.</h4>
 <div align="center">
   <h4>
     <a href="https://github.com/eifinger/homeassistant-config/workflows/Home%20Assistant%20Installed/badge.svg"><img src="https://github.com/eifinger/homeassistant-config/workflows/Home%20Assistant%20Installed/badge.svg"/></a>
